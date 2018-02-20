@@ -3,7 +3,6 @@
 #include "SDL_image.h"
 #include <iostream>
 #include <string>
-
 using namespace std;
 
 Texture::Texture(SDL_Renderer* renderer, string filename){
