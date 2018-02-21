@@ -31,6 +31,13 @@ Game::Game()
 	loadTexture("..\\images\\bag.png", 1, 1);
 	loadTexture("..\\images\\shop.png", 1, 1);
 	loadTexture("..\\images\\exit.png", 1, 1);
+	//Para la tienda
+	loadTexture("..\\images\\food2.png", 1, 1);
+	loadTexture("..\\images\\fruit.png", 1, 1);
+	loadTexture("..\\images\\invent.png", 1, 1);
+	loadTexture("..\\images\\inventFront.png", 1, 1);
+	loadTexture("..\\images\\keyboard.png", 1, 2);
+
 
 	//inicializamos booleanos de control
 	exit_ = false; error_ = false;
