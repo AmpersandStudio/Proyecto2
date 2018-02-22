@@ -35,8 +35,8 @@ private:
 public:
 	ShopState(Game* gamePtr);
 	virtual ~ShopState();
-	virtual void render();
-	virtual bool handleEvent(SDL_Event& event);
+	//virtual void render();
+	//virtual bool handleEvent(SDL_Event& event);
 	int devuelveDinero() { return dinero; };
 	void cambiaDinero(int d);
 	bool devMat(int& x, int& y, int ident, Item* elemento);

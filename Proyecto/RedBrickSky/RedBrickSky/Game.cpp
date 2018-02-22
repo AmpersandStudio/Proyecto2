@@ -31,7 +31,7 @@ Game::Game()
 	loadTexture("..\\images\\bag.png", 1, 1);
 	loadTexture("..\\images\\shop.png", 1, 1);
 	loadTexture("..\\images\\exit.png", 1, 1);
-	//Para la tienda
+	//Para la tienda 4 -> incluido
 	loadTexture("..\\images\\food2.png", 1, 1);
 	loadTexture("..\\images\\fruit.png", 1, 1);
 	loadTexture("..\\images\\invent.png", 1, 1);
