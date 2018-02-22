@@ -3,15 +3,21 @@
 #include "GameComponent.h"
 
 
-ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
+ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 {
-	game = gamePtr; 
+	game = gamePtr;
+
+
+	invent = GameManager::Instance()->copyInventory();
+	money = GameManager::Instance()->getMoney();
+	std::cout << "Tu dinero actual es: " << money << std::endl;
 
 	//Texturas necesitadas
 	back = gamePtr->getTexture(6);
 	standPoint = gamePtr->getTexture(8);
 	front = gamePtr->getTexture(7);
 	bot = gamePtr->getTexture(3); //Para el botón
+	food = gamePtr->getTexture(4); //Para el botón
 
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
@@ -27,22 +33,21 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 	stage.push_back(backShop);
 
 	//Creamos la matriz
-	matriz = new estado*[4];
-	for (int i = 0; i < 4; i++) {
-		matriz[i] = new estado[1];
+	matriz = new estado*[3];
+	for (int i = 0; i < 3; i++) {
+		matriz[i] = new estado[2];
 	}
-
-	//La rellenamos /////////////////////(ESTE CODIGO DESENCADENA UN ERROR DE MEMORIA)\\\\\\\\\\\\\\\\\
+	//La rellenamos
 	//tenemos en cuenta que estos son los StanPoints que se encuentran en la mochila dentro de la tienda. Los que están
 	//en la tienda como tal son diferentes, ya que los elementos de la tienda son fijos
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < 2; j++) {
 			matriz[i][j].empty = true;
-			matriz[i][j].identificador = 0;
-			matriz[i][j].cantidad = 0;
-
+			matriz[i][j].ID = 0;
+			matriz[i][j].objects = 0;
+			
 			GameComponent* gc = new GameComponent(game);
-			Vector2D position0(1.7 * i + 1.5, 2 * j + 2);
+			Vector2D position0(2 * i +2, 2 * j + 2);
 			double width = 70;
 			double height = 70;
 
@@ -54,6 +59,33 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 		}
 	ultimaFilaY = 4;
 	actFilas = 1;
+
+	//Asginamos los elementos dentro del vector de la mochila a cada casilla
+	for (unsigned int i = 0; i < invent.size(); i++) {
+
+		int x = invent[i].mX;
+		int y = invent[i].mY;
+		//mochila[i]->setInventario(this);
+		matriz[x][y].ID = invent[i].ID;
+		matriz[x][y].objects++;
+		matriz[x][y].empty = false;
+
+		GameComponent* gc = new GameComponent(game);
+		Vector2D position0(x, y);
+		double width = 70;
+		double height = 70;
+
+		gc->setText(food); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
+		gc->addRenderComponent(rcF); gc->addInputComponent(MSC);  gc->addInputComponent(MSOC);
+
+		stage.push_back(gc);
+
+		//mochila[i]->setComprado();
+		//stage.push_back(invent[i]);
+
+		ocupados++;
+	}
+
 
 	//Creamos la imagen que va por encima de la mochila para que no se vea al hacer scroll
 	GameComponent* frontShop = new GameComponent(game);
@@ -73,34 +105,7 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 
 	stage.push_back(bottonBack);
 
-	//Puntero al juego
-
-
-					//ESTO IRIA DENTRO DEL GAME MANAGER (PLAY STATE AHORA MISMO)
-					/*private:
-
-					vector<Item> mochila;
-					int dinero = 340;
-
-					public:
-					GameManager();
-					~GameManager();
-					Item getN(int n) { return mochila[n]; };
-					int tamMochila() { return mochila.size(); };
-					void meteEnMochila(Item t) { mochila.push_back(t); };
-					int getDinero() { return dinero; };*/
-
-
 	/*
-	dinero = 340;
-	ocupados = 0;
-	numSP = 0;
-	actFilas = 0;
-	cout << "Tu dinero actual es: " << dinero << endl;
-
-	int xM = 0; int yM = 0;
-
-
 	//////////////////////////////////CREAMOS LOS ITEMS DE LA TIENDA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 	for (int i = 0; i < 4; i++)
@@ -110,33 +115,12 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 		stage.push_back(new Item(this, game, Prueba3, 637 + i * 120, 210, 100, 100, 150, false, -1, -1, 2));
 
 
-	//Asginamos los elementos dentro del vector de la mochila a cada casilla
-	for (int i = 0; i < mochila.size(); i++) {
 
-		int x = mochila[i]->getmX();
-		int y = mochila[i]->getmY();
-		mochila[i]->setInventario(this);
-		matriz[x][y].identificador = mochila[i]->getIdentificador();
-		matriz[x][y].cantidad++;
-		matriz[x][y].empty = false;
-		mochila[i]->setX(matriz[x][y].x);
-		mochila[i]->setY(matriz[x][y].y);
-		mochila[i]->setComprado();
-		stage.push_back(mochila[i]);
-
-		ocupados++;
-	}*/
 
 }
 
-ShopState::~ShopState()
-{
-}
+/*
 
-void ShopState::cambiaDinero(int n) {
-
-	dinero = dinero - n;
-}
 
 bool ShopState::devMat(int& x, int& y, int ident, Item* elemento) {
 	bool aceptada = false;
@@ -197,22 +181,22 @@ bool ShopState::devMat(int& x, int& y, int ident, Item* elemento) {
 				creaFila();
 		}
 	}*/
-	return aceptada;
+	//return aceptada;
 }
 
 void ShopState::creaFila() {
 
 	actFilas++;
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		numSP++;
 		matriz[i][actFilas].empty = true;
-		matriz[i][actFilas].identificador = 0;
-		matriz[i][actFilas].cantidad = 0;
+		matriz[i][actFilas].ID = 0;
+		matriz[i][actFilas].objects = 0;
 
 		GameComponent* gc = new GameComponent(game);
-		Vector2D position0(1.7 * i + 1.5, ultimaFilaY + 2);
+		Vector2D position0(2 * i + 2, ultimaFilaY + 2);
 		double width = 70;
 		double height = 70;
 
@@ -225,11 +209,18 @@ void ShopState::creaFila() {
 	
 }
 
+void ShopState::cambiaDinero(int n) {
+
+	money = money - n;
+}
+
 void ShopState::toMenu(Game* game) {
 	
 	StateMachine* sm = game->getStateMachine();
 	sm->popState();
-
-
 }
 
+ShopState::~ShopState()
+{
+
+}

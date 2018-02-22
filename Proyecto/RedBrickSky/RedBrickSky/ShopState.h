@@ -5,6 +5,9 @@
 #include "MouseOverObjectComponent.h"
 #include "StateMachine.h"
 #include "MouseInputComponentButton.h"
+#include <vector>
+
+#include "GameManager.h"
 
 using namespace std;
 
@@ -20,6 +23,7 @@ private:
 	Texture* standPoint;
 	Texture* front;
 	Texture* bot;
+	Texture* food;
 
 	//COMPONENTES NECESARIOS
 	RenderComponent* rcF; //Render Frame
@@ -29,26 +33,19 @@ private:
 	InputComponent* MIC;
 
 	Game* game;
-	int dinero;
-	struct estado {
-		bool empty;
-		int identificador;
-		int cantidad;
-		int x;
-		int y;
-	};
+	int money;
 
-	vector<Item*> mochila;
+	vector<estado> invent;
 	estado** matriz;
 	int ocupados;
 	int numSP; int actFilas;
 	int ultimaFilaY;
-	int xM; int yM;
+
 
 public:
 	ShopState(Game* gamePtr);
 	virtual ~ShopState();
-	int devuelveDinero() { return dinero; };
+	int devuelveDinero() { return money; };
 	void cambiaDinero(int d);
 	bool devMat(int& x, int& y, int ident, Item* elemento);
 	void creaFila();
