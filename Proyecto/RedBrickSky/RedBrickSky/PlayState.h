@@ -7,5 +7,7 @@ class PlayState :
 public:
 	PlayState(Game* gamePtr);
 	virtual ~PlayState();
+	//EL BOTON PARA LA TIENDA
+	static void toGame(Game* game);
 };
 

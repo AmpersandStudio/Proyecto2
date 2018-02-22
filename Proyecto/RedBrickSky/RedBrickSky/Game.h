@@ -20,6 +20,8 @@ private:
 	int FRAME_RATE_; //tiempo
 	vector<Texture*> textures_;
 	StateMachine* stateMachine_; //maquina de estados
+
+
 public:
 	Game();
 	~Game();

@@ -21,5 +21,6 @@ public:
 	virtual void render(); //llama al render de cada uno de los go de su lista
 	virtual void update(); //llama al update de cada uno de los go de su lista
 	virtual bool handleEvent(SDL_Event& event); //llama al he de cada uno de los go de su lista
+
 };
 

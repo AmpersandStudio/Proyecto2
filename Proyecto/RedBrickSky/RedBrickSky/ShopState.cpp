@@ -33,12 +33,14 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 	}
 
 	//La rellenamos /////////////////////(ESTE CODIGO DESENCADENA UN ERROR DE MEMORIA)\\\\\\\\\\\\\\\\\
-
+	//tenemos en cuenta que estos son los StanPoints que se encuentran en la mochila dentro de la tienda. Los que están
+	//en la tienda como tal son diferentes, ya que los elementos de la tienda son fijos
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 2; j++) {
 			matriz[i][j].empty = true;
 			matriz[i][j].identificador = 0;
 			matriz[i][j].cantidad = 0;
+
 			GameComponent* gc = new GameComponent(game);
 			Vector2D position0(1.7 * i + 1.5, 2 * j + 2);
 			double width = 70;
@@ -48,7 +50,7 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 			gc->addRenderComponent(rcF); gc->addInputComponent(MSC);  gc->addInputComponent(MSOC);
 
 			stage.push_back(gc);
-			elementos++;
+			numSP++;
 		}
 	ultimaFilaY = 4;
 	actFilas = 1;
@@ -71,13 +73,10 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 
 	stage.push_back(bottonBack);
 
-	creaFila();
-	creaFila();
-
 	//Puntero al juego
 
 
-					//ESTO IRIA DENTRO DEL GAME MANAGER
+					//ESTO IRIA DENTRO DEL GAME MANAGER (PLAY STATE AHORA MISMO)
 					/*private:
 
 					vector<Item> mochila;
@@ -92,15 +91,10 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 					int getDinero() { return dinero; };*/
 
 
-	/*txF = g->getTexture(20);
-	txF2 = g->getTexture(21);
-	Prueba = g->getTexture(3);
-	Prueba2 = g->getTexture(12);
-	Prueba3 = g->getTexture(4);
-
+	/*
 	dinero = 340;
 	ocupados = 0;
-	elementos = 0;
+	numSP = 0;
 	actFilas = 0;
 	cout << "Tu dinero actual es: " << dinero << endl;
 
@@ -199,7 +193,7 @@ bool ShopState::devMat(int& x, int& y, int ident, Item* elemento) {
 			//cout << mochila.size() << endl;
 			aceptada = true;
 
-			if (elementos - ocupados == 1)
+			if (numSP - ocupados == 1)
 				creaFila();
 		}
 	}*/
@@ -212,7 +206,7 @@ void ShopState::creaFila() {
 
 	for (int i = 0; i < 4; i++)
 	{
-		elementos++;
+		numSP++;
 		matriz[i][actFilas].empty = true;
 		matriz[i][actFilas].identificador = 0;
 		matriz[i][actFilas].cantidad = 0;

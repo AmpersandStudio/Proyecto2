@@ -41,7 +41,7 @@ private:
 	vector<Item*> mochila;
 	estado** matriz;
 	int ocupados;
-	int elementos; int actFilas;
+	int numSP; int actFilas;
 	int ultimaFilaY;
 	int xM; int yM;
 
