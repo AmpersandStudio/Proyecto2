@@ -1,5 +1,10 @@
 #pragma once
 #include "GameState.h"
+#include "RenderFullComponent.h"
+#include "MouseScrollComponent.h"
+#include "MouseOverObjectComponent.h"
+#include "StateMachine.h"
+#include "MouseInputComponentButton.h"
 
 using namespace std;
 
@@ -10,11 +15,19 @@ class ShopState :
 {
 private:
 
-	Texture* txF;
-	Texture* txF2;
-	Texture* Prueba;
-	Texture* Prueba2;
-	Texture* Prueba3;
+	//TEXTURAS NECESARIAS
+	Texture* back;
+	Texture* standPoint;
+	Texture* front;
+	Texture* bot;
+
+	//COMPONENTES NECESARIOS
+	RenderComponent* rcF; //Render Frame
+	RenderComponent* rc; //Render FS
+	InputComponent* MSC;
+	InputComponent* MSOC;
+	InputComponent* MIC;
+
 	Game* game;
 	int dinero;
 	struct estado {
@@ -35,14 +48,11 @@ private:
 public:
 	ShopState(Game* gamePtr);
 	virtual ~ShopState();
-	//virtual void render();
-	//virtual bool handleEvent(SDL_Event& event);
 	int devuelveDinero() { return dinero; };
 	void cambiaDinero(int d);
 	bool devMat(int& x, int& y, int ident, Item* elemento);
-	void mouseEncima(int x, int y);
 	void creaFila();
-	void vuelveNormal();
 	static void toMenu(Game* game);
+
 };
 

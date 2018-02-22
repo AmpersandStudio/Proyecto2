@@ -1,39 +1,78 @@
 #include "ShopState.h"
 #include "Button.h"
 #include "GameComponent.h"
-#include "RenderFullComponent.h"
+
 
 ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 {
 	game = gamePtr; 
 
-	GameComponent* gc = new GameComponent(game);
-	Texture* tx0 = gamePtr->getTexture(6);
+	//Texturas necesitadas
+	back = gamePtr->getTexture(6);
+	standPoint = gamePtr->getTexture(8);
+	front = gamePtr->getTexture(7);
+	bot = gamePtr->getTexture(3); //Para el botón
 
-	RenderComponent* rc = new RenderFullComponent();
+	//Componentes necesarios
+	rcF = new RenderFrameComponent(); //Render Frame
+	rc = new RenderFullComponent(); //Render FS
+	MSC = new MouseScrollComponent();
+	MSOC = new MouseOverObjectComponent();
+	MIC = new MouseInputComponentButton();
 
 
-	gc->setText(tx0); gc->addRenderComponent(rc);
+	//Imagen de fondo de la tienda
+	GameComponent* backShop = new GameComponent(game);
+	backShop->setText(back); backShop->addRenderComponent(rc);
+	stage.push_back(backShop);
 
-
-	stage.push_back(gc);
-
+	//Creamos la matriz
+	matriz = new estado*[4];
 	for (int i = 0; i < 4; i++) {
-		GameComponent* gc = new GameComponent(game);
-		Texture* tx0 = gamePtr->getTexture(8);
-		Vector2D position0(1.7 * i + 1.5, 2);
-		double width = 70;
-		double height = 70;
-
-		RenderComponent* rc = new RenderFrameComponent();
-
-		gc->setText(tx0); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height); gc->addRenderComponent(rc);
-
-
-		stage.push_back(gc);
+		matriz[i] = new estado[1];
 	}
 
-	
+	//La rellenamos /////////////////////(ESTE CODIGO DESENCADENA UN ERROR DE MEMORIA)\\\\\\\\\\\\\\\\\
+
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 2; j++) {
+			matriz[i][j].empty = true;
+			matriz[i][j].identificador = 0;
+			matriz[i][j].cantidad = 0;
+			GameComponent* gc = new GameComponent(game);
+			Vector2D position0(1.7 * i + 1.5, 2 * j + 2);
+			double width = 70;
+			double height = 70;
+
+			gc->setText(standPoint); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
+			gc->addRenderComponent(rcF); gc->addInputComponent(MSC);  gc->addInputComponent(MSOC);
+
+			stage.push_back(gc);
+			elementos++;
+		}
+	ultimaFilaY = 4;
+	actFilas = 1;
+
+	//Creamos la imagen que va por encima de la mochila para que no se vea al hacer scroll
+	GameComponent* frontShop = new GameComponent(game);
+	frontShop->setText(front); frontShop->addRenderComponent(rc);
+	stage.push_back(frontShop);
+
+	//Creamos botón para volver al menú principal
+	Button* bottonBack = new Button(gamePtr, toMenu, 0);
+
+	Vector2D position0(7, 6);
+
+	double width = 150;
+	double height = 100;
+
+	bottonBack->setText(bot); bottonBack->setPosition(position0); bottonBack->setWidth(width); bottonBack->setHeight(height);
+	bottonBack->addRenderComponent(rcF); bottonBack->addInputComponent(MIC);
+
+	stage.push_back(bottonBack);
+
+	creaFila();
+	creaFila();
 
 	//Puntero al juego
 
@@ -59,8 +98,6 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 	Prueba2 = g->getTexture(12);
 	Prueba3 = g->getTexture(4);
 
-	stage.push_back(new Button(toMenu, game, g->getTexture(17), 1000, 500, 200, 100));
-
 	dinero = 340;
 	ocupados = 0;
 	elementos = 0;
@@ -69,23 +106,6 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 
 	int xM = 0; int yM = 0;
 
-	//Creamos la matriz
-	matriz = new estado*[4];
-	for (int i = 0; i < 4; i++) {
-		matriz[i] = new estado[1];
-	}
-
-	//La rellenamos
-	for (int i = 0; i < 4; i++)
-		for (int j = 0; j < 2; j++) {
-			matriz[i][j].empty = true;
-			matriz[i][j].identificador = 0;
-			matriz[i][j].cantidad = 0;
-			stage.push_back(new Item(this, game, Prueba2, 90 + 120 * i, 105 * (j + 2), 100, 100, 50, true, i, j, 0));
-			elementos++;
-		}
-	ultimaFilaY = 315;
-	actFilas = 1;
 
 	//////////////////////////////////CREAMOS LOS ITEMS DE LA TIENDA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -95,13 +115,6 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 	for (int i = 0; i < 4; i++)
 		stage.push_back(new Item(this, game, Prueba3, 637 + i * 120, 210, 100, 100, 150, false, -1, -1, 2));
 
-	//CREAMOS UN ITEM PARA TENER DENTRO DE LA MOCHILA, ESTO DESPUES SE ELIMINARÁ 
-	Item* nuevo = new Item(this, game, Prueba3, 637, 210, 100, 100, 150, false, 0, 0, 2);
-	nuevo->setComprado();
-	mochila.push_back(nuevo);
-
-	//matriz[mochila[0]->getmX()][mochila[0]->getmY()].x = 90;
-	//matriz[mochila[0]->getmX()][mochila[0]->getmY()].y = 210;
 
 	//Asginamos los elementos dentro del vector de la mochila a cada casilla
 	for (int i = 0; i < mochila.size(); i++) {
@@ -125,105 +138,6 @@ ShopState::ShopState(Game* gamePtr) : GameState (gamePtr)
 ShopState::~ShopState()
 {
 }
-
-//bool ShopState::handleEvent(SDL_Event& event) {
-
-	//bool handledEvent = false;
-	/*handledEvent = (GameState::handleEvent(event));
-
-	if (event.wheel.y == 1) // scroll up
-	{
-		for (list<GameObject*>::iterator it = stage.begin();
-			it != stage.end(); ++it) {
-			Item* aux = dynamic_cast<Item*>((*it));
-			if (aux != nullptr)
-				if (static_cast<Item*>((*it))->getSP()) {
-					int auxY = dynamic_cast<Item*>(*it)->getY();
-					static_cast<Item*>(*it)->setY(auxY - 20);
-					ultimaFilaY -= 20;
-
-				}
-		}
-
-		for (list<GameObject*>::iterator it = stage.begin();
-			it != stage.end(); ++it) {
-			Item* aux = dynamic_cast<Item*>((*it));
-			if (aux != nullptr)
-				if (!static_cast<Item*>((*it))->getSP() && static_cast<Item*>((*it))->getComprado())
-				{
-					int auxY = static_cast<Item*>(*it)->getY();
-					static_cast<Item*>(*it)->setY(auxY - 20);
-				}
-		}
-	}
-	else if (event.wheel.y == -1) // scroll down
-	{
-
-		for (list<GameObject*>::iterator it = stage.begin();
-			it != stage.end(); ++it) {
-			Item* aux = dynamic_cast<Item*>((*it));
-			if (aux != nullptr)
-				if (static_cast<Item*>((*it))->getSP()) {
-					int auxY = static_cast<Item*>(*it)->getY();
-					static_cast<Item*>(*it)->setY(auxY + 20);
-					ultimaFilaY += 20;
-				}
-		}
-
-		for (list<GameObject*>::iterator it = stage.begin();
-			it != stage.end(); ++it) {
-			Item* aux = dynamic_cast<Item*>((*it));
-			if (aux != nullptr)
-				if (!static_cast<Item*>((*it))->getSP() && static_cast<Item*>((*it))->getComprado()) {
-					int auxY = static_cast<Item*>(*it)->getY();
-					static_cast<Item*>(*it)->setY(auxY + 20);
-				}
-		}
-	}*/
-	//return handledEvent;
-//}
-
-//void ShopState::render() {
-
-	/*txF->renderComplete();
-
-	for (list<GameObject*>::iterator it = stage.begin();
-		it != stage.end(); ++it) {
-		Item* aux = dynamic_cast<Item*>((*it));
-		if (aux != nullptr)
-			if (static_cast<Item*>((*it))->getSP())
-				(*it)->render();
-	}
-
-	for (list<GameObject*>::iterator it = stage.begin();
-		it != stage.end(); ++it) {
-		Item* aux = dynamic_cast<Item*>((*it));
-		if (aux != nullptr)
-			if (!static_cast<Item*>((*it))->getSP() && static_cast<Item*>((*it))->getComprado()) {
-				(*it)->render();
-
-			}
-	}
-
-	txF2->renderComplete();
-
-	for (list<GameObject*>::iterator it = stage.begin();
-		it != stage.end(); ++it) {
-		Item* aux = dynamic_cast<Item*>((*it));
-		if (aux != nullptr)
-			if (!static_cast<Item*>((*it))->getSP() && !static_cast<Item*>((*it))->getComprado())
-				(*it)->render();
-	}
-
-	for (list<GameObject*>::iterator it = stage.begin();
-		it != stage.end(); ++it) {
-		Button* aux = dynamic_cast<Button*>((*it));
-		if (aux != nullptr) {
-			(*it)->render();
-		}
-	}
-	*/
-//}
 
 void ShopState::cambiaDinero(int n) {
 
@@ -292,54 +206,9 @@ bool ShopState::devMat(int& x, int& y, int ident, Item* elemento) {
 	return aceptada;
 }
 
-void ShopState::mouseEncima(int x, int y) {
-	
-	/*int auxX;
-	int auxY;
-	int auxW;
-	int auxH;
-
-	bool encontrado = false;
-	bool aceptada = false;
-	list<GameObject*>::iterator it;
-	for (it = stage.begin(); it != stage.end(); ++it) {
-
-		Item* aux = dynamic_cast<Item*>((*it));
-		if (aux != nullptr)
-			if (static_cast<Item*>((*it))->getSP()) {
-
-				auxX = static_cast<Item*>(*it)->getX();
-				auxY = static_cast<Item*>(*it)->getY();
-				auxW = static_cast<Item*>(*it)->getW();
-				auxH = static_cast<Item*>(*it)->getH();
-
-				if (x > (auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
-					static_cast<Item*>((*it))->cambiaSprite(1);
-				}
-				else
-					static_cast<Item*>((*it))->cambiaSprite(0);
-			}
-	}*/
-	
-}
-
-void ShopState::vuelveNormal() {
-
-	/*list<GameObject*>::iterator it;
-	for (it = stage.begin(); it != stage.end(); ++it) {
-
-		Item* aux = dynamic_cast<Item*>((*it));
-		if (aux != nullptr)
-			if (static_cast<Item*>((*it))->getSP()) {
-				static_cast<Item*>((*it))->cambiaSprite(0);
-			}
-	}
-	*/
-}
-
 void ShopState::creaFila() {
 
-/*	actFilas++;
+	actFilas++;
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -347,16 +216,26 @@ void ShopState::creaFila() {
 		matriz[i][actFilas].empty = true;
 		matriz[i][actFilas].identificador = 0;
 		matriz[i][actFilas].cantidad = 0;
-		stage.push_back(new Item(this, game, Prueba2, 90 + 120 * i, ultimaFilaY + 105, 100, 100, 50, true, i, actFilas, 0));
+
+		GameComponent* gc = new GameComponent(game);
+		Vector2D position0(1.7 * i + 1.5, ultimaFilaY + 2);
+		double width = 70;
+		double height = 70;
+
+		gc->setText(standPoint); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
+		gc->addRenderComponent(rcF); gc->addInputComponent(MSC);  gc->addInputComponent(MSOC);
+
+		stage.push_back(gc);
 	}
-	ultimaFilaY = ultimaFilaY + 105;
-	*/
+	ultimaFilaY += 2;
+	
 }
 
 void ShopState::toMenu(Game* game) {
-	/*
+	
 	StateMachine* sm = game->getStateMachine();
-	sm->popState();*/
+	sm->popState();
 
 
 }
+
