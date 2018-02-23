@@ -43,4 +43,3 @@ bool GameState::handleEvent(SDL_Event& event) {
 	}
 	return handledEvent;
 }
-

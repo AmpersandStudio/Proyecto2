@@ -52,7 +52,3 @@ void MainMenuState::toInventary(Game* game) {
 	sm->pushState(new BackPack(game));
 }
 
-void MainMenuState::toShop(Game* game) {
-	StateMachine* sm = game->getStateMachine();
-	sm->pushState(new ShopState(game));
-}

@@ -4,6 +4,7 @@
 
 MouseOverObjectComponent::MouseOverObjectComponent()
 {
+	selected = false;
 }
 
 

@@ -5,13 +5,14 @@
 #include "MouseOverObjectComponent.h"
 #include "StateMachine.h"
 #include "MouseInputComponentButton.h"
+#include "DragNDropShopComponent.h"
+#include "MouseInfoClickComponent.h"
+#include "GameComponent.h"
 #include <vector>
 
 #include "GameManager.h"
 
 using namespace std;
-
-class Item; //Incursión circular
 
 class ShopState :
 	public GameState
@@ -31,11 +32,17 @@ private:
 	InputComponent* MSC;
 	InputComponent* MSOC;
 	InputComponent* MIC;
+	InputComponent* DND;
+	InputComponent* DND2;
+	InputComponent* Info;
 
 	Game* game;
 	int money;
 
 	vector<estado> invent;
+	vector<estado> SP;
+	vector<GameComponent*> GCshopV;
+	vector<GameComponent*> GCInventV;
 	estado** matriz;
 	int ocupados;
 	int numSP; int actFilas;
@@ -45,11 +52,14 @@ private:
 public:
 	ShopState(Game* gamePtr);
 	virtual ~ShopState();
-	int devuelveDinero() { return money; };
-	void cambiaDinero(int d);
-	bool devMat(int& x, int& y, int ident, Item* elemento);
+	int getMoney() { return money; };
+	void setMoney(int d);
 	void creaFila();
 	static void toMenu(Game* game);
-
+	//estado** devMat() { return matriz; };
+	vector<estado> getInvent() { return invent; };
+	void setInvent(estado s) { invent.push_back(s); };
+	vector<estado> getSP() { return SP; };
+	void setSP(vector<estado> s);
 };
 

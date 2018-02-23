@@ -1,13 +1,11 @@
 #pragma once
 #include "InputComponent.h"
-class MouseOverObjectComponent :
+class MouseInfoClickComponent :
 	public InputComponent
 {
-private:
-	bool selected;
 public:
-	MouseOverObjectComponent();
-	~MouseOverObjectComponent();
+	MouseInfoClickComponent();
+	~MouseInfoClickComponent();
 	virtual bool handleEvent(GameObject* o, const SDL_Event& event);
 };
 

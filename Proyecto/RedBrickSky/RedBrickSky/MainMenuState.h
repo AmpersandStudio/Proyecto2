@@ -10,7 +10,6 @@ public:
 	virtual ~MainMenuState();
 	static void toGame(Game* game);
 	static void toInventary(Game* game);
-	static void toShop(Game* game); 
 	static void exit(Game* game) { game->exitApp(); }; 
 };
 
