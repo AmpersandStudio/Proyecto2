@@ -30,27 +30,27 @@ private:
 
 		money = 340;
 		vector<estado> aux;
-		inventory.resize(2);
+		//inventory.resize(1);
 
-		inventory[0].empty = false;
+		/*inventory[0].empty = false;
 		inventory[0].comprado = false;
 		inventory[0].ID = 1;
 		inventory[0].objects = 1;
 		inventory[0].x = 2;
 		inventory[0].y = 2;
-		inventory[0].mY = 0;
 		inventory[0].mX = 0;
-		inventory[0].price = 50;
+		inventory[0].mY = 0;
+		inventory[0].price = 50;*/
 
-		inventory[1].empty = false;
+		/*inventory[1].empty = false;
 		inventory[1].comprado = false;
 		inventory[1].ID = 1;
 		inventory[1].objects = 1;
 		inventory[1].x = 1;
 		inventory[1].y = 1;
-		inventory[1].mY = 0;
 		inventory[1].mX = 1;
-		inventory[1].price = 50;
+		inventory[1].mY = 0;
+		inventory[1].price = 50;*/
 	}
 	~GameManager();
 
@@ -70,6 +70,7 @@ public:
 	int inventorySize() { return inventory.size(); };
 	void setInventory(estado t) { inventory.push_back(t); };
 	int getMoney() { return money; };
+	void setMoney(int m) { money = m; };
 
 
 };

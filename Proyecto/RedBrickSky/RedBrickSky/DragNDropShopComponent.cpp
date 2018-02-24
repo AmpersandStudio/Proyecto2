@@ -29,7 +29,7 @@ bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 	int y = 0;
 	SDL_GetMouseState(&x, &y); //comprobamos estado del raton
 
-	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) { //si es evento de raton
+	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT && !comprado) { //si es evento de raton
 
 		if (x > (position.getX()*o->getWidth()) && x < ((position.getX()*o->getWidth()) + o->getWidth())
 			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight()))
@@ -52,7 +52,7 @@ bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 		if (!comprado && devMat(x, y, o) && shop->getMoney() >= price) {
 			//xO = x - w / 2; yO = y - h / 2;
 			shop->setMoney(price);
-			
+			o->setPosition(o->getOriPos());
 			cout << "Objeto comprado, tu dinero ahora es: " << shop->getMoney() << endl;
 			//Invent->vuelveNormal();
 		}
@@ -64,9 +64,13 @@ bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 				cout << "No tienes dinero para pagar eso!" << endl;
 			else
 				cout << "Ahi ya hay algo!!!" << endl;
+
+			//delete(o);
 			o->setPosition(o->getOriPos());
 		}
+		
 	}	
+
 	return handledEvent;
 }
 
@@ -80,7 +84,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 	int auxMx;
 	int auxMy;
 	bool encontrado = false;
-	
+	Vector2D v;
 
 	unsigned int i = 0;
 	while (i < StandPoints.size() && !encontrado) {
@@ -92,39 +96,46 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			auxH = StandPoints[i].h;
 			auxMx = StandPoints[i].mX;
 			auxMy = StandPoints[i].mY;
-
+			
+			//cout  << auxY << "," << endl;
 
 	if (x > (auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
 	encontrado = true;
 		x = auxX + auxW / 2;
 		y = auxY + auxH / 2;
-		Vector2D v;
+		
 		v.set(x / 70, y / 70);
 		o->setPosition(v);
-		
+		//cout << auxMx << "," << auxMy << "," << endl;
+	
 	//cout << x << "," << y << "," << auxX << "," << auxY << "," << auxW << "," << auxH << endl;
 		}
-	}
+
+	else 
 		i++;
+	}
+		
 }
 
 	if (encontrado) {
-
+		//cout << StandPoints[i].ID << "," << identifier << endl;
 		if (StandPoints[i].empty == true || StandPoints[i].ID == identifier) {
-			comprado = true;
-
+			//comprado = true;
+			
 			if (StandPoints[i].empty == true) {
+
 				StandPoints[i].ID = identifier;
 				StandPoints[i].empty = false;
-				StandPoints[i].x = x;
-				StandPoints[i].y = y;
+				//StandPoints[i].x = x;
+				//StandPoints[i].y = y;
 				//ocupados++;
 			}
 
 			else {
 
+
 				StandPoints[i].objects++;
-				cout << "Tienes " << StandPoints[i].objects << " elementos del tipo " << identifier << " en tu inventario ahora." << endl;
+				cout << "Tienes " << StandPoints[i].objects +1 << " elementos del tipo " << identifier << " en tu inventario ahora." << endl;
 			}
 
 			estado n;
@@ -141,7 +152,13 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			n.h = StandPoints[i].h;
 		
 			shop->setInvent(n);
-			//cout <<  mochila.size() << endl;
+			GameManager::Instance()->setInventory(n);
+
+			GameComponent* gc2 = new GameComponent(o->getGame());
+			gc2->setText(o->getText()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(70); gc2->setHeight(70);
+			gc2->addRenderComponent(new RenderFrameComponent()); gc2->addInputComponent(new MouseScrollComponent(shop));
+
+			shop->stageBack(gc2);
 
 			aceptada = true;
 

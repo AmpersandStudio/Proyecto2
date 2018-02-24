@@ -1,10 +1,10 @@
 #include "MouseScrollComponent.h"
 #include "ShopState.h"
 
-MouseScrollComponent::MouseScrollComponent(ShopState* s)
+MouseScrollComponent::MouseScrollComponent(ShopState* s, int oID)
 {
 	shop = s;
-	
+	objectID = oID;
 }
 
 
@@ -31,7 +31,8 @@ bool MouseScrollComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 			pos.setY(pos.getY() - 0.5);
 			o->setPosition(pos);
 			for (int i = 0; i < states.size(); i++)
-				states[i].y = pos.getY() - 0.5;
+				if(states[i].objectID == objectID)
+					states[i].y = pos.getY() - 0.5;
 			shop->setSP(states);
 			//ultimaFilaY -= 20;
 		}
@@ -42,7 +43,8 @@ bool MouseScrollComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 			pos.setY(pos.getY() - 0.5);
 			o->setPosition(pos);
 			for (int i = 0; i < states.size(); i++)
-				states[i].y = pos.getY() - 0.5;
+				if (states[i].objectID == objectID)
+					states[i].y = pos.getY() - 0.5;
 			shop->setSP(states);
 			//ultimaFilaY -= 20;
 		}
@@ -56,6 +58,7 @@ bool MouseScrollComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 			pos.setY(pos.getY() + 0.5);
 			o->setPosition(pos);
 			for (int i = 0; i < states.size(); i++)
+				if (states[i].objectID == objectID)
 				states[i].y = pos.getY() + 0.5;
 			shop->setSP(states);
 			//ultimaFilaY += 20;
@@ -67,6 +70,7 @@ bool MouseScrollComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 			pos.setY(pos.getY() + 0.5);
 			o->setPosition(pos);
 			for (int i = 0; i < states.size(); i++)
+				if (states[i].objectID == objectID)
 				states[i].y = pos.getY() + 0.5;
 			shop->setSP(states);
 			//ultimaFilaY -= 20;

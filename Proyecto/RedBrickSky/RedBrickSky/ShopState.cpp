@@ -42,6 +42,7 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 	//La rellenamos DE SP
 	//tenemos en cuenta que estos son los StanPoints que se encuentran en la mochila dentro de la tienda. Los que están
 	//en la tienda como tal son diferentes, ya que los elementos de la tienda son fijos
+	int aux = 0;
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < 2; j++) {
 			double width = 70;
@@ -51,18 +52,25 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 			matriz[i][j].objects = 0;
 			matriz[i][j].w = width;
 			matriz[i][j].h = height;
+			matriz[i][j].mX = i;
+			matriz[i][j].mY = j;
+			matriz[i][j].objectID = aux;
+
+		//	cout << matriz[i][j].mX << "," << matriz[i][j].mY << "," << endl;
 
 			Vector2D position0(2 * i + 2, 2 * j + 2);
 			matriz[i][j].x = position0.getX();
 			matriz[i][j].y = position0.getY();
 			GameComponent* gc = new GameComponent(game);
+			InputComponent* auxSCP = new MouseScrollComponent(this, aux);
 			
 			gc->setText(standPoint); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-			gc->addRenderComponent(rcF); gc->addInputComponent(MSC);  gc->addInputComponent(MSOC); 
+			gc->addRenderComponent(rcF); gc->addInputComponent(auxSCP);  gc->addInputComponent(MSOC); 
 
 			stage.push_back(gc);
 			SP.push_back(matriz[i][j]);
 			numSP++;
+			aux++;
 		}
 	ultimaFilaY = 4;
 	actFilas = 1;
@@ -78,7 +86,6 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 		matriz[x][y].empty = false;
 		matriz[x][y].comprado = true;
 		matriz[x][y].price = invent[i].price;
-		invent[i].objectID = i;
 
 		GameComponent* gc = new GameComponent(game);
 		Vector2D position0(matriz[x][y].x, matriz[x][y].y);
@@ -94,26 +101,34 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 		ocupados++;
 	}
 
+	//Creación de los items que tendrá la tienda
+
+	for (int i = 0; i < 2; i++) {
+
+		GameComponent* gc = new GameComponent(game);
+		Vector2D position5(i + 10, 2);
+		Vector2D oriPos(i + 10, 2);
+		DragNDropShopComponent* p = new DragNDropShopComponent(this, 50, false, 1, gc);
+		gc->setText(food); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(70); gc->setHeight(70);
+		gc->addRenderComponent(rcF); gc->addInputComponent(p); gc->addInputComponent(Info);	gc->addInputComponent(MSC);
+
+	
+		GameComponent* gc2 = new GameComponent(game);
+		gc2->setText(food); gc2->setOriPos(oriPos); gc2->setPosition(position5); gc2->setWidth(70); gc2->setHeight(70);
+		gc2->addRenderComponent(rcF); gc2->addInputComponent(MSC);
+
+		stageBack(gc2);
+		stageBack(gc);
+		GCshopV.push_back(gc);
+		
+	}
 
 	//Creamos la imagen que va por encima de la mochila para que no se vea al hacer scroll
 	GameComponent* frontShop = new GameComponent(game);
 	frontShop->setText(front); frontShop->addRenderComponent(rc);
 	stage.push_back(frontShop);
 
-	//Creación de los items que tendrá la tienda
-
-	for (int i = 0; i < 2; i++) {
-
-		GameComponent* gc = new GameComponent(game);
-		Vector2D position5(i+10, 2);
-		Vector2D oriPos(i + 10, 2);
-		DragNDropShopComponent* p = new DragNDropShopComponent(this, invent[i].price, invent[i].comprado, invent[i].ID, gc);
-		gc->setText(food); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(70); gc->setHeight(70);
-		gc->addRenderComponent(rcF); gc->addInputComponent(p); gc->addInputComponent(Info);	gc->addInputComponent(MSC);
-
-		stage.push_back(gc);
-		GCshopV.push_back(gc);
-	}
+	
 		
 	//Creamos botón para volver al menú principal
 	Button* bottonBack = new Button(gamePtr, toMenu, 0);
@@ -160,6 +175,7 @@ void ShopState::creaFila() {
 void ShopState::setMoney(int n) {
 
 	money = money - n;
+	GameManager::Instance()->setMoney(money);
 }
 
 void ShopState::toMenu(Game* game) {

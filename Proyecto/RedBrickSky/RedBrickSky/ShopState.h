@@ -61,5 +61,6 @@ public:
 	void setInvent(estado s) { invent.push_back(s); };
 	vector<estado> getSP() { return SP; };
 	void setSP(vector<estado> s);
+	void stageBack(GameComponent* s) { stage.push_back(s); };
 };
 

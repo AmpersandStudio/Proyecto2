@@ -14,7 +14,6 @@ private:
 	ShopState* shop;
 	GameComponent* thisComponent;
 	int price;
-	int objectID;
 	bool comprado;
 	int identifier;
 	vector<estado> StandPoints;

@@ -10,8 +10,9 @@ class MouseScrollComponent :
 private:
 	ShopState* shop;
 	vector<estado> states;
+	int objectID;
 public:
-	MouseScrollComponent(ShopState* s);
+	MouseScrollComponent(ShopState* s, int oID = -1);
 	~MouseScrollComponent();
 	virtual bool handleEvent(GameObject* o, const SDL_Event& event);
 };
