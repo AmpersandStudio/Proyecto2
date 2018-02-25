@@ -9,7 +9,7 @@
 
 class GameObject
 {
-private:
+protected:
 	Game* game_;
 
 	Texture* text_;

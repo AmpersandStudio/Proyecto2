@@ -5,7 +5,10 @@
 #include "StateMachine.h"
 #include "KeyInputComponentButton.h"
 #include "MouseInputComponentButton.h"
+#include "MovementInputComponent.h"
 #include "ShopState.h"
+
+
 
 PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 {
@@ -23,6 +26,8 @@ PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 
 	stage.push_back(button0);
 
+	initPlayer();
+
 }
 
 PlayState::~PlayState()
@@ -34,3 +39,28 @@ void PlayState::toGame(Game* game) {
 	StateMachine* sm = game->getStateMachine();
 	sm->pushState(new ShopState(game));
 }
+
+
+void PlayState::initPlayer()
+{
+	player_ = new MovableObject(game_,Vector2D(2,2));
+
+	InputComponent* movementComp = new MovementInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d) ; // Para el jugador
+	RenderComponent* rc = new RenderFullComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
+	
+	player_->addInputComponent(movementComp);
+	player_->addRenderComponent(rc);
+
+	// Para probar
+	Texture* testTex = game_->getTexture(4);
+	player_->setText(testTex);
+
+	player_->setPosition(Vector2D(6, 6));
+
+	stage.push_back(player_);
+	
+}
+
+
+
+

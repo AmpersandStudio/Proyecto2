@@ -30,6 +30,8 @@
     <ClCompile Include="MouseInputComponentButton.cpp" />
     <ClCompile Include="MouseOverObjectComponent.cpp" />
     <ClCompile Include="MouseScrollComponent.cpp" />
+    <ClCompile Include="MovableObject.cpp" />
+    <ClCompile Include="MovementInputComponent.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PlayState.cpp" />
@@ -61,6 +63,8 @@
     <ClInclude Include="MouseInputComponentButton.h" />
     <ClInclude Include="MouseOverObjectComponent.h" />
     <ClInclude Include="MouseScrollComponent.h" />
+    <ClInclude Include="MovableObject.h" />
+    <ClInclude Include="MovementInputComponent.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="PlayState.h" />
