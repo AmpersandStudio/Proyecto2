@@ -1,12 +1,9 @@
 #include "ShopState.h"
 #include "Button.h"
 
-
-
 ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 {
 	game = gamePtr;
-
 
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
@@ -17,12 +14,14 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 	standPoint = gamePtr->getTexture(8);
 	front = gamePtr->getTexture(7);
 	bot = gamePtr->getTexture(3); //Para el botón
-	food = gamePtr->getTexture(4); //Para el botón
+	food = gamePtr->getTexture(4); //Item1
+	food2 = gamePtr->getTexture(5);
+
 
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
 	rc = new RenderFullComponent(); //Render FS
-	MSC = new MouseScrollComponent(this);
+	MSC = new MouseScrollShopComponent(this);
 	MSOC = new MouseOverObjectComponent();
 	MIC = new MouseInputComponentButton();
 	//DND = new DragNDropComponent(this); //this es el puntero a tienda
@@ -56,13 +55,13 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 			matriz[i][j].mY = j;
 			matriz[i][j].objectID = aux;
 
-		//	cout << matriz[i][j].mX << "," << matriz[i][j].mY << "," << endl;
+		//cout << matriz[i][j].mX << "," << matriz[i][j].mY << "," << endl;
 
 			Vector2D position0(2 * i + 2, 2 * j + 2);
 			matriz[i][j].x = position0.getX();
 			matriz[i][j].y = position0.getY();
 			GameComponent* gc = new GameComponent(game);
-			InputComponent* auxSCP = new MouseScrollComponent(this, aux);
+			InputComponent* auxSCP = new MouseScrollShopComponent(this, aux);
 			
 			gc->setText(standPoint); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
 			gc->addRenderComponent(rcF); gc->addInputComponent(auxSCP);  gc->addInputComponent(MSOC); 
@@ -86,13 +85,19 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 		matriz[x][y].empty = false;
 		matriz[x][y].comprado = true;
 		matriz[x][y].price = invent[i].price;
+		matriz[x][y].tx = invent[i].tx;
+
+		if (invent[i].tx != nullptr)
+			matriz[x][y].tx = invent[i].tx;
+		else
+			matriz[x][y].tx = food;
 
 		GameComponent* gc = new GameComponent(game);
 		Vector2D position0(matriz[x][y].x, matriz[x][y].y);
 		double width = 70;
 		double height = 70;
 
-		gc->setText(food); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
+		gc->setText(matriz[x][y].tx); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
 		gc->addRenderComponent(rcF); gc->addInputComponent(MSC);  gc->addInputComponent(Info);
 
 		stage.push_back(gc);
@@ -105,16 +110,30 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 
 	for (int i = 0; i < 2; i++) {
 
+		Texture* txt;
+		int id;
+		int val;
+		if (i % 2 == 0) {
+			txt = food;
+			val = 50;
+			id = 1;
+		}
+		else {
+			id = 0;
+			txt = food2;
+			val = 100;
+		}
+
 		GameComponent* gc = new GameComponent(game);
 		Vector2D position5(i + 10, 2);
 		Vector2D oriPos(i + 10, 2);
-		DragNDropShopComponent* p = new DragNDropShopComponent(this, 50, false, 1, gc);
-		gc->setText(food); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(70); gc->setHeight(70);
+		DragNDropShopComponent* p = new DragNDropShopComponent(this, val, false, id, gc);
+		gc->setText(txt); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(70); gc->setHeight(70);
 		gc->addRenderComponent(rcF); gc->addInputComponent(p); gc->addInputComponent(Info);	gc->addInputComponent(MSC);
 
 	
 		GameComponent* gc2 = new GameComponent(game);
-		gc2->setText(food); gc2->setOriPos(oriPos); gc2->setPosition(position5); gc2->setWidth(70); gc2->setHeight(70);
+		gc2->setText(txt); gc2->setOriPos(oriPos); gc2->setPosition(position5); gc2->setWidth(70); gc2->setHeight(70);
 		gc2->addRenderComponent(rcF); gc2->addInputComponent(MSC);
 
 		stageBack(gc2);

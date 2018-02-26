@@ -1,7 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "RenderFullComponent.h"
-#include "MouseScrollComponent.h"
+#include "MouseScrollShopComponent.h"
 #include "MouseOverObjectComponent.h"
 #include "StateMachine.h"
 #include "MouseInputComponentButton.h"
@@ -25,6 +25,7 @@ private:
 	Texture* front;
 	Texture* bot;
 	Texture* food;
+	Texture* food2;
 
 	//COMPONENTES NECESARIOS
 	RenderComponent* rcF; //Render Frame

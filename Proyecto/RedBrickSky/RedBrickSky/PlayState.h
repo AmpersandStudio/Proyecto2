@@ -16,5 +16,6 @@ public:
 	virtual ~PlayState();
 	//EL BOTON PARA LA TIENDA
 	static void toGame(Game* game);
+	static void toInventary(Game* game);
 };
 

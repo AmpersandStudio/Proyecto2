@@ -37,7 +37,8 @@ Game::Game()
 	loadTexture("..\\images\\invent.png", 1, 1);
 	loadTexture("..\\images\\inventFront.png", 1, 1);
 	loadTexture("..\\images\\keyboard.png", 1, 2);
-
+	loadTexture("..\\images\\backPack.png", 1, 1); //9
+	loadTexture("..\\images\\backPackBack.png", 1, 1);
 
 	//inicializamos booleanos de control
 	exit_ = false; error_ = false;

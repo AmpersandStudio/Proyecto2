@@ -1,7 +1,9 @@
 #pragma once
+#include "Texture.h"
 #include <vector>
 
 struct estado {
+	Texture* tx;
 	int price;
 	bool empty;
 	bool comprado;
@@ -30,17 +32,18 @@ private:
 
 		money = 340;
 		vector<estado> aux;
-		//inventory.resize(1);
+		inventory.resize(1);
 
-		/*inventory[0].empty = false;
-		inventory[0].comprado = false;
+		inventory[0].empty = false;
+		inventory[0].comprado = true;
 		inventory[0].ID = 1;
 		inventory[0].objects = 1;
 		inventory[0].x = 2;
 		inventory[0].y = 2;
 		inventory[0].mX = 0;
 		inventory[0].mY = 0;
-		inventory[0].price = 50;*/
+		inventory[0].price = 50;
+		inventory[0].tx = nullptr;
 
 		/*inventory[1].empty = false;
 		inventory[1].comprado = false;

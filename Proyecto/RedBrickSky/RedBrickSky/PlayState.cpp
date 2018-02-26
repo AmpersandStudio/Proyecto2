@@ -7,6 +7,7 @@
 #include "MouseInputComponentButton.h"
 #include "MovementInputComponent.h"
 #include "ShopState.h"
+#include "BackPack.h"
 
 
 
@@ -17,7 +18,7 @@ PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 
 	Button* button0 = new Button(gamePtr, toGame, 0);
 	Texture* tx0 = gamePtr->getTexture(2);
-	Vector2D position0(6, 6);
+	Vector2D position0(5, 6);
 	double width = 150;
 	double height = 100;
 	RenderComponent* rc = new RenderFrameComponent();
@@ -25,6 +26,18 @@ PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 	button0->setText(tx0); button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(rc); button0->addInputComponent(ic2);
 
 	stage.push_back(button0);
+
+	Button* button1 = new Button(gamePtr, toInventary, 1);
+
+	Texture* tx1 = gamePtr->getTexture(1);
+
+	Vector2D position1(7, 6);
+
+	button1->setText(tx1); button1->setPosition(position1); button1->setWidth(width); button1->setHeight(height); button1->addRenderComponent(rc); button1->addInputComponent(ic2);
+	
+	stage.push_back(button1);
+
+
 
 	initPlayer();
 
@@ -40,6 +53,11 @@ void PlayState::toGame(Game* game) {
 	sm->pushState(new ShopState(game));
 }
 
+//PARA JAVI PROBAR LA TIENDA TAMBIEN
+void PlayState::toInventary(Game* game) {
+	StateMachine* sm = game->getStateMachine();
+	sm->pushState(new BackPack(game));
+}
 
 void PlayState::initPlayer()
 {
