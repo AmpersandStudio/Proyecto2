@@ -106,7 +106,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 
 		//cout << auxMx << "," << auxMy << "," << endl;
 	
-	cout << x << "," << y << "," << auxX << "," << auxY << "," << auxW << "," << auxH << endl;
+	//cout << x << "," << y << "," << auxX << "," << auxY << "," << auxW << "," << auxH << endl;
 		}
 
 	else 

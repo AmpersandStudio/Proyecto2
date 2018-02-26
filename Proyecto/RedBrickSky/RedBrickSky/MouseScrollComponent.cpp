@@ -18,23 +18,26 @@ bool MouseScrollComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 	int x = 0;
 	int y = 0;
 	SDL_GetMouseState(&x, &y); //comprobamos estado del raton
-	Vector2D pos = o->getPosition();
+	
 
 	if (event.wheel.y == 1) // scroll up
 	{
-		Vector2D pos = o->getPosition();
-		pos.setY(pos.getY() - 0.5);
-		o->setPosition(pos);
+		move(o, -1);
 	}
 
 
 	else if (event.wheel.y == -1) // scroll down
 	{
-		Vector2D pos = o->getPosition();
-		pos.setY(pos.getY() + 0.5);
-		o->setPosition(pos);
+		move(o);
 	}
 
 
 	return handledEvent;
+}
+
+void MouseScrollComponent::move(GameObject* o, int s) {
+
+	Vector2D pos = o->getPosition();
+	pos.setY(pos.getY() - 0.5 * s);
+	o->setPosition(pos);
 }
