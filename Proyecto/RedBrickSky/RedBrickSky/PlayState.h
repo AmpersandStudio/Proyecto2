@@ -1,12 +1,12 @@
 #pragma once
 #include "GameState.h"
-#include "MovableObject.h"
+#include "GameComponent.h"
 
 class PlayState :
 	public GameState
 {
 protected:
-	MovableObject* player_;
+	GameComponent* player_;
 
 
 	// Métodos

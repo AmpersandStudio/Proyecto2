@@ -102,9 +102,6 @@
     <ClCompile Include="DragNDropShopComponent.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="MovableObject.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
     <ClCompile Include="MovementInputComponent.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
@@ -198,9 +195,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="DragNDropShopComponent.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="MovableObject.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="MovementInputComponent.h">

@@ -1,5 +1,5 @@
 #include "MovementInputComponent.h"
-#include "MovableObject.h"
+
 
 
 MovementInputComponent::MovementInputComponent(SDL_Keycode up, SDL_Keycode down, SDL_Keycode left, SDL_Keycode right) :
@@ -21,7 +21,7 @@ bool MovementInputComponent::handleEvent(GameObject * o, const SDL_Event & event
 	if (event.type == SDL_KEYDOWN) 
 	{
 		Vector2D auxPos = o->getPosition();
-		Vector2D auxVel = dynamic_cast<MovableObject*>(o)->getVelocity(); // dynamicCast en un MovableObject
+		Vector2D auxVel(1,1); // dynamicCast en un MovableObject
 	
 		// Eje X
 		if (event.key.keysym.sym == left_)

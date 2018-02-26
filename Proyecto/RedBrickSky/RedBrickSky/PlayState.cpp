@@ -61,18 +61,19 @@ void PlayState::toInventary(Game* game) {
 
 void PlayState::initPlayer()
 {
-	player_ = new MovableObject(game_,Vector2D(2,2));
+	player_ = new GameComponent(game_);
 
 	InputComponent* movementComp = new MovementInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d) ; // Para el jugador
-	RenderComponent* rc = new RenderFullComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
+	RenderComponent* rc = new RenderFrameComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
 	
 	player_->addInputComponent(movementComp);
 	player_->addRenderComponent(rc);
 
+
 	// Para probar
 	Texture* testTex = game_->getTexture(4);
 	player_->setText(testTex);
-
+	player_->setWidth(70); player_->setHeight(70);
 	player_->setPosition(Vector2D(6, 6));
 
 	stage.push_back(player_);

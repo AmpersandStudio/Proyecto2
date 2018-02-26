@@ -20,13 +20,13 @@ bool MouseScrollComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 	SDL_GetMouseState(&x, &y); //comprobamos estado del raton
 	
 
-	if (event.wheel.y == 1) // scroll up
+	if (event.wheel.y == -1) // scroll up
 	{
 		move(o, -1);
 	}
 
 
-	else if (event.wheel.y == -1) // scroll down
+	else if (event.wheel.y == 1) // scroll down
 	{
 		move(o);
 	}
