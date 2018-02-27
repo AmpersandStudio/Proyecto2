@@ -15,6 +15,7 @@
     <ClCompile Include="BattleState.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CreditsState.cpp" />
+    <ClCompile Include="DragNDropComponent.cpp" />
     <ClCompile Include="DragNDropShopComponent.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="BattleState.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CreditsState.h" />
+    <ClInclude Include="DragNDropComponent.h" />
     <ClInclude Include="DragNDropShopComponent.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Game.h" />

@@ -51,5 +51,6 @@ public:
 	BackPack(Game* gamePtr);
 	virtual ~BackPack();
     static void toMenu(Game* game);
+	vector<estado> getSP() { return SP; };
 };
 

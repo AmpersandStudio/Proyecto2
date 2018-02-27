@@ -27,7 +27,6 @@ bool MouseOverObjectComponent::handleEvent(GameObject* o, const SDL_Event& event
 
 			o->setColFrame(1);
 		
-			//SDL_SetTextureAlphaMod(o->getText()->getSDLText(), 100);
 		}
 		else {
 			o->setColFrame(0);
