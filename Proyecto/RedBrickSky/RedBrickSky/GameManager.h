@@ -28,6 +28,8 @@ private:
 
 	vector<estado> inventory;
 
+	string name;
+
 	GameManager() {
 
 		money = 340;
@@ -54,8 +56,10 @@ private:
 		inventory[1].mX = 1;
 		inventory[1].mY = 0;
 		inventory[1].price = 50;*/
+
+		name = "";
 	}
-	~GameManager();
+	~GameManager() {};
 
 	static GameManager* s_pInstance;
 
@@ -74,6 +78,6 @@ public:
 	void setInventory(estado t) { inventory.push_back(t); };
 	int getMoney() { return money; };
 	void setMoney(int m) { money = m; };
-
+	void setName(string n) { name = n;  };
 
 };

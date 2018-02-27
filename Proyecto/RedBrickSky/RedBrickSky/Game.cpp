@@ -39,6 +39,9 @@ Game::Game()
 	loadTexture("..\\images\\keyboard.png", 1, 2);
 	loadTexture("..\\images\\backPack.png", 1, 1); //9
 	loadTexture("..\\images\\backPackBack.png", 1, 1);
+	loadTexture("..\\images\\abc.png", 9, 6);
+	loadTexture("..\\images\\selector.png", 1, 1);
+	loadTexture("..\\images\\name.png", 1, 1);
 
 	//inicializamos booleanos de control
 	exit_ = false; error_ = false;

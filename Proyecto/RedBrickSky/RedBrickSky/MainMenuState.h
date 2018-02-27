@@ -10,5 +10,6 @@ public:
 	virtual ~MainMenuState();
 	static void toGame(Game* game);
 	static void exit(Game* game) { game->exitApp(); }; 
+	static void toSelector(Game* game);
 };
 
