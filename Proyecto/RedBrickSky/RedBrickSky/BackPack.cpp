@@ -1,5 +1,5 @@
 #include "BackPack.h"
-
+#include "MouseOverObjectComponent.h"
 
 BackPack::BackPack(Game* gamePtr) : GameState (gamePtr)
 {
@@ -63,9 +63,10 @@ BackPack::BackPack(Game* gamePtr) : GameState (gamePtr)
 			matriz[i][j].y = position0.getY();
 			GameComponent* gc = new GameComponent(game);
 			InputComponent* auxSCP = new MouseScrollComponent();
+			InputComponent* mooCP = new MouseOverObjectComponent();
 
 			gc->setText(standPoint); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-			gc->addRenderComponent(rcF); gc->addInputComponent(auxSCP);  gc->addInputComponent(MSOC);
+			gc->addRenderComponent(rcF); gc->addInputComponent(mooCP); gc->addInputComponent(auxSCP);
 
 			stage.push_back(gc);
 			SP.push_back(matriz[i][j]);
@@ -106,6 +107,7 @@ BackPack::BackPack(Game* gamePtr) : GameState (gamePtr)
 
 		ocupados++;
 	}
+
 
 
 	//Creamos la imagen que va por encima de la mochila para que no se vea al hacer scroll

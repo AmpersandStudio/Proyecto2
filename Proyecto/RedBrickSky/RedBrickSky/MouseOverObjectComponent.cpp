@@ -25,11 +25,12 @@ bool MouseOverObjectComponent::handleEvent(GameObject* o, const SDL_Event& event
 		if (x > (position.getX()*o->getWidth()) && x < ((position.getX()*o->getWidth()) + o->getWidth())
 			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight())) {
 
-			SDL_SetTextureAlphaMod(o->getText()->getSDLText(), 100);
+			o->setColFrame(1);
+		
+			//SDL_SetTextureAlphaMod(o->getText()->getSDLText(), 100);
 		}
 		else {
-
-			SDL_SetTextureAlphaMod(o->getText()->getSDLText(), 255);
+			o->setColFrame(0);
 		}
 	}
 
