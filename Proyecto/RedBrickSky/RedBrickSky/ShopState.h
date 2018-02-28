@@ -41,6 +41,7 @@ private:
 	int money;
 
 	vector<estado> invent;
+	vector<estado> shopObjects;
 	vector<estado> SP;
 	vector<GameComponent*> GCshopV;
 	vector<GameComponent*> GCInventV;

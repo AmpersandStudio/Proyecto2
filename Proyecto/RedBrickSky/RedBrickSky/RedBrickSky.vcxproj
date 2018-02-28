@@ -24,6 +24,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="InventBottomsComponent.cpp" />
     <ClCompile Include="KeyInputComponent.cpp" />
     <ClCompile Include="KeyInputComponentButton.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -61,6 +62,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="InventBottomsComponent.h" />
     <ClInclude Include="KeyInputComponent.h" />
     <ClInclude Include="KeyInputComponentButton.h" />
     <ClInclude Include="MainMenuState.h" />

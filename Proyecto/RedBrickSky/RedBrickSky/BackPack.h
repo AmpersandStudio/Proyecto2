@@ -40,8 +40,14 @@ private:
 
 	vector<estado> invent;
 	vector<estado> SP;
-	vector<GameComponent*> GCshopV;
-	vector<GameComponent*> GCInventV;
+	
+	vector<GameComponent*> botones;
+	vector<estado> Weapons; //Vector para las armas
+	vector<estado> Potions; //Vector para las pociones
+	vector<estado> Objects; //Vector para los objetos
+
+	vector<estado> GCInventV;
+
 	estado** matriz;
 	int ocupados;
 	int numSP; int actFilas;
@@ -52,5 +58,15 @@ public:
 	virtual ~BackPack();
     static void toMenu(Game* game);
 	vector<estado> getSP() { return SP; };
+	vector<estado> getInvent() { return invent; };
+	void setInvent(vector<estado> v);
+	void cargaElementos(vector<estado> l);
+	void elimina();
+	void creaSP();
+	void creaEscena();
+	void creaFondoTienda();
+	void createButtons(int x, int y, vector<estado> type, int t);
+	void separateElements();
+
 };
 

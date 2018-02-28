@@ -2,10 +2,13 @@
 
 
 
-DragNDropComponent::DragNDropComponent(BackPack* b)
+DragNDropComponent::DragNDropComponent(BackPack* b, int id)
 {
+	bag = b;
 	isMouseSelection = false;
 	StandPoints = b->getSP();
+	Inventary = b->getInvent();
+	identifier = id;
 
 }
 
@@ -23,14 +26,14 @@ bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 	int y = 0;
 	SDL_GetMouseState(&x, &y); //comprobamos estado del raton
 
-	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT && !comprado) { //si es evento de raton
+	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) { //si es evento de raton
 
 		if (x > (position.getX()*o->getWidth()) && x < ((position.getX()*o->getWidth()) + o->getWidth())
 			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight()))
 			isMouseSelection = true;
 	}
 
-	else if (event.type == SDL_MOUSEMOTION  && isMouseSelection && !comprado) {
+	else if (event.type == SDL_MOUSEMOTION  && isMouseSelection) {
 
 		Vector2D v;
 		v.set((x - 38) / (o->getWidth()), (y - 40) / (o->getHeight()));
@@ -71,6 +74,7 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			auxMx = StandPoints[i].mX;
 			auxMy = StandPoints[i].mY;
 
+		
 			//cout  << auxY << "," << endl;
 
 			if (x > (auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
@@ -86,12 +90,18 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 	if (encontrado) {
 	
 		if (StandPoints[i].empty == true) {
-			//comprado = true;
+
 			StandPoints[i].ID = identifier;
 			StandPoints[i].empty = false;
 			x = auxX + auxW / 2;
 			y = auxY + auxH / 2;
 
+			Inventary[identifier].x = x;
+			Inventary[identifier].y = y;
+			Inventary[identifier].mX = auxMx;
+			Inventary[identifier].mY = auxMy;
+
+			bag->setInvent(Inventary);
 			v.set(x / 70, y / 70);
 			o->setPosition(v);
 			o->setOriPos(v);

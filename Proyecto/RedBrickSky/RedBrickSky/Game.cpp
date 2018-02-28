@@ -42,6 +42,9 @@ Game::Game()
 	loadTexture("..\\images\\abc.png", 9, 6);
 	loadTexture("..\\images\\selector.png", 1, 1);
 	loadTexture("..\\images\\name.png", 1, 1);
+	loadTexture("..\\images\\Weapons.png", 1, 1);//14
+	loadTexture("..\\images\\Potions.png", 1, 1);
+	loadTexture("..\\images\\Items.png", 1, 1);
 
 	//inicializamos booleanos de control
 	exit_ = false; error_ = false;

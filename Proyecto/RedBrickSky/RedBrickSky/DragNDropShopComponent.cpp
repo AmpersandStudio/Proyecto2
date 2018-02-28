@@ -5,12 +5,13 @@
 #include "ShopState.h"
 
 
-DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy, int iden, GameComponent* comp)
+DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy, int iden, GameComponent* comp, int type)
 {
 	isMouseSelection = false;
 	shop = s;
 	price = money;
 	comprado = buy;
+	tipo = type;
 	identifier = iden;
 	thisComponent = comp;
 }
@@ -148,6 +149,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			n.w = StandPoints[i].w;
 			n.h = StandPoints[i].h;
 			n.tx = o->getText();
+			n.type = tipo;
 		
 			shop->setInvent(n);
 			GameManager::Instance()->setInventory(n);

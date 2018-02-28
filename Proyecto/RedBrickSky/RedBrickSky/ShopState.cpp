@@ -7,6 +7,7 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
+	shopObjects = GameManager::Instance()->copyShopObjects();
 	std::cout << "Tu dinero actual es: " << money << std::endl;
 
 	//Texturas necesitadas
@@ -54,6 +55,7 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 			matriz[i][j].mX = i;
 			matriz[i][j].mY = j;
 			matriz[i][j].objectID = aux;
+			matriz[i][j].type = -1;
 
 		//cout << matriz[i][j].mX << "," << matriz[i][j].mY << "," << endl;
 
@@ -86,6 +88,7 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 		matriz[x][y].comprado = true;
 		matriz[x][y].price = invent[i].price;
 		matriz[x][y].tx = invent[i].tx;
+		matriz[x][y].type = invent[i].type;
 
 		if (invent[i].tx != nullptr)
 			matriz[x][y].tx = invent[i].tx;
@@ -108,26 +111,23 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 
 	//Creación de los items que tendrá la tienda
 
-	for (int i = 0; i < 2; i++) {
+	for (int i = 0; i < shopObjects.size(); i++) {
 
 		Texture* txt;
-		int id;
-		int val;
+	
 		if (i % 2 == 0) {
 			txt = food;
-			val = 50;
-			id = 1;
+			
 		}
 		else {
-			id = 0;
 			txt = food2;
-			val = 100;
+		
 		}
 
 		GameComponent* gc = new GameComponent(game);
 		Vector2D position5(i + 10, 2);
 		Vector2D oriPos(i + 10, 2);
-		DragNDropShopComponent* p = new DragNDropShopComponent(this, val, false, id, gc);
+		DragNDropShopComponent* p = new DragNDropShopComponent(this, shopObjects[i].price, false, shopObjects[i].ID, gc, shopObjects[i].type);
 		gc->setText(txt); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(70); gc->setHeight(70);
 		gc->addRenderComponent(rcF); gc->addInputComponent(p); gc->addInputComponent(Info);	gc->addInputComponent(MSC);
 

@@ -16,10 +16,11 @@ private:
 	int price;
 	bool comprado;
 	int identifier;
+	int tipo;
 	vector<estado> StandPoints;
 
 public:
-	DragNDropShopComponent(ShopState* s, int money, bool buy, int iden,GameComponent* component);
+	DragNDropShopComponent(ShopState* s, int money, bool buy, int iden,GameComponent* component, int type);
 	~DragNDropShopComponent();
 	virtual bool handleEvent(GameObject* o, const SDL_Event& event);
 	bool devMat(int x, int y, GameObject* o);
