@@ -7,7 +7,6 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
-	shopObjects = GameManager::Instance()->copyShopObjects();
 	std::cout << "Tu dinero actual es: " << money << std::endl;
 
 	//Texturas necesitadas
@@ -18,21 +17,33 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 	food = gamePtr->getTexture(4); //Item1
 	food2 = gamePtr->getTexture(5);
 
-
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
 	rc = new RenderFullComponent(); //Render FS
 	MSC = new MouseScrollShopComponent(this);
 	MSOC = new MouseOverObjectComponent();
 	MIC = new MouseInputComponentButton();
-	//DND = new DragNDropComponent(this); //this es el puntero a tienda
 	Info = new MouseInfoClickComponent();
-
 
 	//Imagen de fondo de la tienda
 	GameComponent* backShop = new GameComponent(game);
 	backShop->setText(back); backShop->addRenderComponent(rc);
 	stage.push_back(backShop);
+
+	shopObjects.resize(2);
+	shopObjects[0] = invent[0];
+
+	shopObjects[1].empty = false;
+	shopObjects[1].comprado = true;
+	shopObjects[1].ID = 2;
+	shopObjects[1].objects = 1;
+	shopObjects[1].x = 2;
+	shopObjects[1].y = 2;
+	shopObjects[1].mX = 1;
+	shopObjects[1].mY = 0;
+	shopObjects[1].price = 100;
+	shopObjects[1].tx = food2;
+	shopObjects[1].type = 1; //Es una poción
 
 	//Creamos la matriz
 	matriz = new estado*[3];
@@ -114,16 +125,12 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 	for (int i = 0; i < shopObjects.size(); i++) {
 
 		Texture* txt;
-	
-		if (i % 2 == 0) {
-			txt = food;
-			
-		}
-		else {
-			txt = food2;
-		
-		}
 
+		if (shopObjects[i].tx == nullptr)
+			txt = food;
+		else
+			txt = shopObjects[i].tx;
+		
 		GameComponent* gc = new GameComponent(game);
 		Vector2D position5(i + 10, 2);
 		Vector2D oriPos(i + 10, 2);
