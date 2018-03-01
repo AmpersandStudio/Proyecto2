@@ -26,6 +26,7 @@ private:
 	Texture* bot;
 	Texture* food;
 	Texture* food2;
+	Texture* food3;
 
 	//COMPONENTES NECESARIOS
 	RenderComponent* rcF; //Render Frame

@@ -16,6 +16,7 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 	bot = gamePtr->getTexture(3); //Para el botón
 	food = gamePtr->getTexture(4); //Item1
 	food2 = gamePtr->getTexture(5);
+	food3 = gamePtr->getTexture(21);
 
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
@@ -30,7 +31,7 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 	backShop->setText(back); backShop->addRenderComponent(rc);
 	stage.push_back(backShop);
 
-	shopObjects.resize(2);
+	shopObjects.resize(3);
 	shopObjects[0] = invent[0];
 
 	shopObjects[1].empty = false;
@@ -44,6 +45,18 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 	shopObjects[1].price = 100;
 	shopObjects[1].tx = food2;
 	shopObjects[1].type = 1; //Es una poción
+
+	shopObjects[2].empty = false;
+	shopObjects[2].comprado = true;
+	shopObjects[2].ID = 3;
+	shopObjects[2].objects = 1;
+	shopObjects[2].x = 2;
+	shopObjects[2].y = 2;
+	shopObjects[2].mX = 2;
+	shopObjects[2].mY = 0;
+	shopObjects[2].price = 75;
+	shopObjects[2].tx = food3;
+	shopObjects[2].type = 2; //Es un objeto
 
 	//Creamos la matriz
 	matriz = new estado*[3];
