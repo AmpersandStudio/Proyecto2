@@ -45,6 +45,12 @@ Game::Game()
 	loadTexture("..\\images\\Weapons.png", 1, 1);//14
 	loadTexture("..\\images\\Potions.png", 1, 1);
 	loadTexture("..\\images\\Items.png", 1, 1);
+		//BattleState
+	loadTexture("..\\images\\Battle_UI_Panel.png", 1, 1); //17
+	loadTexture("..\\images\\grey_button.png", 1, 1);
+	loadTexture("..\\images\\Battle_UI_Personajes.png", 1, 1);
+	loadTexture("..\\images\\Battle_UI_Vida.png", 1, 1);
+
 
 	//inicializamos booleanos de control
 	exit_ = false; error_ = false;

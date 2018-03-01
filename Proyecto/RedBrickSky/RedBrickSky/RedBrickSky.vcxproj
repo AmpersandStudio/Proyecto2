@@ -12,8 +12,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackPack.cpp" />
+    <ClCompile Include="BattleCharacter.cpp" />
+    <ClCompile Include="BattleEnemy.cpp" />
+    <ClCompile Include="BattlePlayer.cpp" />
     <ClCompile Include="BattleState.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Combat.cpp" />
     <ClCompile Include="CreditsState.cpp" />
     <ClCompile Include="DragNDropComponent.cpp" />
     <ClCompile Include="DragNDropShopComponent.cpp" />
@@ -50,8 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackPack.h" />
+    <ClInclude Include="BattleCharacter.h" />
+    <ClInclude Include="BattleEnemy.h" />
+    <ClInclude Include="BattlePlayer.h" />
     <ClInclude Include="BattleState.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Combat.h" />
     <ClInclude Include="CreditsState.h" />
     <ClInclude Include="DragNDropComponent.h" />
     <ClInclude Include="DragNDropShopComponent.h" />

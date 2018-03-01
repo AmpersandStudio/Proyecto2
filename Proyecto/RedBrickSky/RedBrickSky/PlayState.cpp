@@ -7,6 +7,7 @@
 #include "MouseInputComponentButton.h"
 #include "MovementInputComponent.h"
 #include "ShopState.h"
+#include "BattleState.h"
 #include "BackPack.h"
 
 
@@ -37,6 +38,12 @@ PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 	
 	stage.push_back(button1);
 
+	//ESTO ES DE MARTIN, UN BOTON PARA IR AL BATTLESTATE
+	Button* button2 = new Button(gamePtr, toBattle, 2);
+	Texture* tx2 = gamePtr->getTexture(18);
+	Vector2D position2(3, 6);
+	button2->setText(tx2); button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(rc); button2->addInputComponent(ic2);
+	stage.push_back(button2);
 
 
 	initPlayer();
@@ -80,6 +87,9 @@ void PlayState::initPlayer()
 	
 }
 
-
-
+//DE MARTIN PARA PROBAR BATTLESTATE
+void PlayState::toBattle(Game* game) {
+	StateMachine* sm = game->getStateMachine();
+	sm->pushState(new BattleState(game));
+}
 

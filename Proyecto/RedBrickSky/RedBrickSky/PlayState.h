@@ -11,6 +11,7 @@ protected:
 
 	// Métodos
 	void initPlayer();
+	static void toBattle(Game * game);
 public:
 	PlayState(Game* gamePtr);
 	virtual ~PlayState();
