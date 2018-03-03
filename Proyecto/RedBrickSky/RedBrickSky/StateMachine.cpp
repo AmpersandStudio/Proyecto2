@@ -33,3 +33,5 @@ void StateMachine::clearStack() {
 GameState* StateMachine::currentState() {
 	return (gameStates.top());
 }
+
+

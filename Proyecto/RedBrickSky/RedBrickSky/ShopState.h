@@ -64,6 +64,9 @@ private:
 public:
 	ShopState(Game* gamePtr);
 	virtual ~ShopState();
+
+	//virtual bool handleEvent(SDL_Event& event);
+
 	int getMoney() { return money; };
 	void setMoney(int d);
 	void creaFila();

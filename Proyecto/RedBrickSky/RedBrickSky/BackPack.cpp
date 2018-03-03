@@ -44,6 +44,19 @@ BackPack::~BackPack()
 {
 }
 
+bool BackPack::handleEvent(SDL_Event & event)
+{
+		// 1) Comprueba las teclas de acceso a los distintos menús, etc.
+		if (event.type == SDL_KEYDOWN)
+		{
+			if (event.key.keysym.sym == SDLK_ESCAPE)
+				game_->getStateMachine()->popState();
+		
+		}
+		// 2) LLama a los input de cada objeto del propio estado
+		return GameState::handleEvent(event);
+}
+
 void BackPack::toMenu(Game* game) {
 	
 	StateMachine* sm = game->getStateMachine();

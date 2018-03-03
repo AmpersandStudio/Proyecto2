@@ -13,5 +13,8 @@ public:
 	void popState(); //quita estado de la pila
 	void changeState(GameState* gs); //sustituye un estado por otro en la pila
 	void clearStack(); //limpia la memoria dinamica
+
+	const size_t& size() { return gameStates.size(); };
+
 	GameState* currentState(); //nos da el estado actual
 };
