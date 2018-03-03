@@ -56,6 +56,10 @@ private:
 public:
 	BackPack(Game* gamePtr);
 	virtual ~BackPack();
+
+
+	virtual bool handleEvent(SDL_Event& event);
+
     static void toMenu(Game* game);
 	vector<estado> getSP() { return SP; };
 	vector<estado> getInvent() { return invent; };

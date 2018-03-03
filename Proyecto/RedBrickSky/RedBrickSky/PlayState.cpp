@@ -10,7 +10,7 @@
 #include "BattleState.h"
 #include "BackPack.h"
 
-
+#include "PauseState.h"
 
 PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 {
@@ -52,6 +52,22 @@ PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 
 PlayState::~PlayState()
 {
+}
+
+// Input general del estado: acceso a menús e input de los objetos del estado
+bool PlayState::handleEvent(SDL_Event & event)
+{
+
+	// 1) Comprueba las teclas de acceso a los distintos menús, etc.
+	if (event.type == SDL_KEYDOWN)
+	{
+		if (event.key.keysym.sym == SDLK_ESCAPE)
+			game_->getStateMachine()->pushState(new PauseState(game_));
+		else if (event.key.keysym.sym == SDLK_i)
+			game_->getStateMachine()->pushState(new BackPack(game_));
+	}
+	// 2) LLama a los input de cada objeto del propio estado
+	return GameState::handleEvent(event);
 }
 
 //PARA JAVI PROBAR LA TIENDA TAMBIEN
