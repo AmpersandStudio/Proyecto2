@@ -75,9 +75,6 @@
     <ClCompile Include="RenderFrameComponent.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="ShopState.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
     <ClCompile Include="StateMachine.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
@@ -133,6 +130,9 @@
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
     <ClCompile Include="Combat.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopState.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -194,9 +194,6 @@
     <ClInclude Include="RenderFrameComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ShopState.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="StateMachine.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -252,6 +249,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Combat.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopItems.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopState.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

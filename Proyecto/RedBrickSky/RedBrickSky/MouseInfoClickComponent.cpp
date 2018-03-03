@@ -2,8 +2,9 @@
 
 
 
-MouseInfoClickComponent::MouseInfoClickComponent()
+MouseInfoClickComponent::MouseInfoClickComponent(estado s)
 {
+	st = s;
 }
 
 
@@ -23,7 +24,8 @@ bool MouseInfoClickComponent::handleEvent(GameObject* o, const SDL_Event& event)
 		//si el click es dentro de las dimensiones del boton
 		if (event.button.button == SDL_BUTTON_RIGHT && (x > (position.getX()*o->getWidth()) && x < ((position.getX()*o->getWidth()) + o->getWidth())
 			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight())))
-			cout << "Informacion sobre el objeto:______" << endl;
+			cout << "Informacion sobre el objeto:\n" << "   Nombre: "<< st.nombre << "\n   Precio: "  << st.price << endl;
+		 
 	}
 
 

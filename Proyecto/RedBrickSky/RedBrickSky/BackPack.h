@@ -42,6 +42,8 @@ private:
 	vector<estado> SP;
 	
 	vector<GameComponent*> botones;
+
+	//Vectores para los distintos tipos de objetos
 	vector<estado> Weapons; //Vector para las armas
 	vector<estado> Potions; //Vector para las pociones
 	vector<estado> Objects; //Vector para los objetos
@@ -49,6 +51,9 @@ private:
 	vector<estado> GCInventV;
 
 	estado** matriz;
+	int numFils = 3;
+	int numRows = 2;
+
 	int ocupados;
 	int numSP; int actFilas;
 	int ultimaFilaY;
@@ -67,6 +72,7 @@ public:
 	void creaFondoTienda();
 	void createButtons(int x, int y, vector<estado> type, int t);
 	void separateElements();
+	void createItemAtSP(int x, int y, int aux, estado st);
 
 };
 

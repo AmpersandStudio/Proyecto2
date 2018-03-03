@@ -9,6 +9,7 @@
 #include "MouseInfoClickComponent.h"
 #include "GameComponent.h"
 #include <vector>
+#include "ShopItems.h"
 
 #include "GameManager.h"
 
@@ -24,9 +25,7 @@ private:
 	Texture* standPoint;
 	Texture* front;
 	Texture* bot;
-	Texture* food;
-	Texture* food2;
-	Texture* food3;
+
 
 	//COMPONENTES NECESARIOS
 	RenderComponent* rcF; //Render Frame
@@ -36,9 +35,9 @@ private:
 	InputComponent* MIC;
 	InputComponent* DND;
 	InputComponent* DND2;
-	InputComponent* Info;
 
 	Game* game;
+	ShopItems* items;
 	int money;
 
 	vector<estado> invent;
@@ -46,10 +45,20 @@ private:
 	vector<estado> SP;
 	vector<GameComponent*> GCshopV;
 	vector<GameComponent*> GCInventV;
+
+	//Vectores para los distintos tipos de objetos
+	vector<estado> Weapons; //Vector para las armas
+	vector<estado> Potions; //Vector para las pociones
+	vector<estado> Objects; //Vector para los objetos
+
 	estado** matriz;
 	int ocupados;
 	int numSP; int actFilas;
 	int ultimaFilaY;
+	int auxOID;
+
+	int Fils = 1;
+	int Cols = 3;
 
 
 public:
@@ -65,5 +74,12 @@ public:
 	vector<estado> getSP() { return SP; };
 	void setSP(vector<estado> s);
 	void stageBack(GameComponent* s) { stage.push_back(s); };
+	void separateElements();
+	void mainMenuBotton();
+	void createShopItems();
+	void createBagItems();
+	void createMatrix();
+	void fillMatrix();
+	void destroyMatix();
 };
 

@@ -14,7 +14,7 @@ BattleState::BattleState(Game* gamePtr) : GameState (gamePtr)
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
 	rc = new RenderFullComponent(); //Render FS
-	Info = new MouseInfoClickComponent();
+	//Info = new MouseInfoClickComponent();
 	MIC = new MouseInputComponentButton();
 
 	createUI();

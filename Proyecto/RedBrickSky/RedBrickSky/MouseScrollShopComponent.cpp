@@ -42,13 +42,11 @@ bool MouseScrollShopComponent::handleEvent(GameObject* o, const SDL_Event& event
 			move(o);
 
 			//ultimaFilaY += 20;
-		
 
 		else if(x >= o->getGame()->getWinWidth() / 2 && pos.getX() * o->getWidth() >= o->getGame()->getWinWidth() / 2)
 			move(o);
 
 			//ultimaFilaY -= 20;
-		
 	}
 
 	return handledEvent;

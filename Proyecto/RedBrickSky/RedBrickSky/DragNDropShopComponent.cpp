@@ -5,7 +5,7 @@
 #include "ShopState.h"
 
 
-DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy, int iden, GameComponent* comp, int type)
+DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy, int iden, GameComponent* comp, int type, string n)
 {
 	isMouseSelection = false;
 	shop = s;
@@ -14,6 +14,7 @@ DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy
 	tipo = type;
 	identifier = iden;
 	thisComponent = comp;
+	name = n;
 }
 
 
@@ -53,7 +54,6 @@ bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 
 			if (shop->getMoney() >= price) {
 				shop->setMoney(price);
-				o->setPosition(o->getOriPos());
 				cout << "Objeto comprado, tu dinero ahora es: " << shop->getMoney() << endl;
 			}
 
@@ -144,12 +144,13 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			n.objects = StandPoints[i].objects;
 			n.x = StandPoints[i].x;
 			n.y = StandPoints[i].y;
-			n.mX = StandPoints[i].mX;
-			n.mY = StandPoints[i].mY;
+			n.mX = -1;
+			n.mY = -1;
 			n.w = StandPoints[i].w;
 			n.h = StandPoints[i].h;
 			n.tx = o->getText();
 			n.type = tipo;
+			n.nombre = name;
 		
 			shop->setInvent(n);
 			GameManager::Instance()->setInventory(n);

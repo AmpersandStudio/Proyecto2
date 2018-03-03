@@ -27,12 +27,12 @@ BackPack::BackPack(Game* gamePtr) : GameState (gamePtr)
 	MSOC = new MouseOverObjectComponent();
 	MIC = new MouseInputComponentButton();
 	//DND = new DragNDropComponent(this); //this es el puntero a tienda
-	Info = new MouseInfoClickComponent();
+	//Info = new MouseInfoClickComponent();
 
 	//Creamos la matriz
-	matriz = new estado*[3];
-	for (int i = 0; i < 3; i++) {
-		matriz[i] = new estado[3];
+	matriz = new estado*[numFils];
+	for (int i = 0; i < numFils; i++) {
+		matriz[i] = new estado[numRows];
 	}
 	
 	separateElements();
@@ -45,7 +45,7 @@ BackPack::~BackPack()
 }
 
 void BackPack::toMenu(Game* game) {
-
+	
 	StateMachine* sm = game->getStateMachine();
 	sm->popState();
 }
@@ -53,45 +53,73 @@ void BackPack::toMenu(Game* game) {
 void BackPack::cargaElementos(vector<estado> l) {
 
 	//Asginamos los elementos dentro del vector de la mochila a cada casilla
-	int aux = 0;
+	vector<estado> auxV;
 	for (unsigned int i = 0; i < l.size(); i++) {
 
-		int x = l[i].mX;
-		int y = l[i].mY;
-		matriz[x][y].ID = l[i].ID;
-		matriz[x][y].objects++;
-		matriz[x][y].empty = false;
-		matriz[x][y].comprado = true;
-		matriz[x][y].price = l[i].price;
-		matriz[x][y].tx = l[i].tx;
-		matriz[x][y].w = 70;
-		matriz[x][y].h = 70;
-		matriz[x][y].objectID = aux;
+		if (l[i].mX != -1 && l[i].mY != -1) {
 
+			int x = l[i].mX;
+			int y = l[i].mY;
+			createItemAtSP(x, y, l[i].objectID, l[i]);
+		}
 
-		if (l[i].tx != nullptr)
-			matriz[x][y].tx = l[i].tx;
-		else
-			matriz[x][y].tx = food;
-
-		GameComponent* gc = new GameComponent(game);
-		Vector2D position0(matriz[x][y].x, matriz[x][y].y);
-
-		gc->setText(matriz[x][y].tx); gc->setPosition(position0); gc->setWidth(matriz[x][y].w); gc->setHeight(matriz[x][y].h);
-		gc->addRenderComponent(rcF); gc->addInputComponent(MSC);  gc->addInputComponent(Info); gc->addInputComponent(new DragNDropComponent(this, aux));
-		gc->setOriPos(position0);
-
-		stage.push_back(gc);
-		aux++;
+		else	
+			auxV.push_back(l[i]);
 	}
 
+	//todos aquellos elementos que no hayan sido ordenados previamente, los asignamos a un lugar 
+	for (int p = 0; p < auxV.size(); p++)
+	{
+		int i = 0;
+		int j = 0;
+		bool place = false;
+		while (i < numFils && !place) {
+			if (j > numRows) {
+				i++;
+				j = 0;
+			}
+
+			if (matriz[i][j].empty == true) {
+				int x = j;
+				int y = i;
+				createItemAtSP(x, y, auxV[i].objectID, auxV[i]);
+				place = true;
+			}
+			else 
+				j++;
+		}
+	}
+}
+
+void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
+
+	matriz[x][y].ID = st.ID;
+	matriz[x][y].objects++;
+	matriz[x][y].empty = false;
+	matriz[x][y].comprado = true;
+	matriz[x][y].price = st.price;
+	matriz[x][y].tx = st.tx;
+	matriz[x][y].w = 70;
+	matriz[x][y].h = 70;
+	matriz[x][y].objectID = aux;
+	st.mX = matriz[x][y].mX;
+	st.mY = matriz[x][y].mY;
+
+	GameComponent* gc = new GameComponent(game);
+	Vector2D position0(matriz[x][y].x, matriz[x][y].y);
+
+	gc->setText(matriz[x][y].tx); gc->setPosition(position0); gc->setWidth(matriz[x][y].w); gc->setHeight(matriz[x][y].h);
+	gc->addRenderComponent(rcF); gc->addInputComponent(MSC);  gc->addInputComponent(new MouseInfoClickComponent(st)); gc->addInputComponent(new DragNDropComponent(this, aux));
+	gc->setOriPos(position0);
+
+	stage.push_back(gc);
 }
 
 void BackPack::creaSP() {
 	//Creamos los SP
 	int aux = 0;
-	for (int i = 0; i < 3; i++)
-		for (int j = 0; j < 3; j++) {
+	for (int i = 0; i < numFils; i++)
+		for (int j = 0; j < numRows; j++) {
 			double width = 70;
 			double height = 70;
 			matriz[i][j].empty = true;
@@ -178,6 +206,7 @@ void BackPack::creaEscena() {
 	//Boton para los objetos
 	createButtons(6,6, Objects,16);
 
+	GameManager::Instance()->changeInventory(invent);
 }
 
 void BackPack::creaFondoTienda() {
@@ -216,6 +245,7 @@ void BackPack::separateElements() {
 	Potions.clear();
 	Objects.clear();
 	for (unsigned int i = 0; i < invent.size(); i++) {
+		invent[i].objectID = i;
 		if (invent[i].type == 0)
 			Weapons.push_back(invent[i]);
 		else if (invent[i].type == 1)
@@ -223,8 +253,6 @@ void BackPack::separateElements() {
 		else if (invent[i].type == 2)
 			Objects.push_back(invent[i]);
 
-		GCInventV.push_back(invent[i]);
-
-		ocupados++;
+		//ocupados++;
 	}
 }

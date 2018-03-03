@@ -1,7 +1,5 @@
 #include "DragNDropComponent.h"
 
-
-
 DragNDropComponent::DragNDropComponent(BackPack* b, int id)
 {
 	bag = b;
@@ -44,10 +42,8 @@ bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		isMouseSelection = false;
 
 		if (!devMat(x, y, o))
-			o->setPosition(o->getOriPos());
-		
+			o->setPosition(o->getOriPos());	
 	}
-
 	return handledEvent;
 }
 
@@ -84,7 +80,6 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			else
 				i++;
 		}
-
 	}
 
 	if (encontrado) {
@@ -106,7 +101,6 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			o->setPosition(v);
 			o->setOriPos(v);
 			aceptada = true;
-
 		}
 	}
 
