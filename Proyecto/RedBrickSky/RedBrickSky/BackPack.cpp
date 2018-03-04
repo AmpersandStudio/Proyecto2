@@ -50,8 +50,7 @@ bool BackPack::handleEvent(SDL_Event & event)
 		if (event.type == SDL_KEYDOWN)
 		{
 			if (event.key.keysym.sym == SDLK_ESCAPE)
-				game_->getStateMachine()->popState();
-		
+				toMenu(game);	
 		}
 		// 2) LLama a los input de cada objeto del propio estado
 		return GameState::handleEvent(event);
