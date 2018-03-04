@@ -1,7 +1,7 @@
 #include "BackPack.h"
-#include "MouseOverObjectComponent.h"
 #include "DragNDropComponent.h"
 #include "InventBottomsComponent.h"
+#include "InventoryShopFBcomponent.h"
 
 BackPack::BackPack(Game* gamePtr) : GameState (gamePtr)
 {
@@ -19,12 +19,11 @@ BackPack::BackPack(Game* gamePtr) : GameState (gamePtr)
 	food = gamePtr->getTexture(4); //Item1
 	food2 = gamePtr->getTexture(5);
 
-
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
 	rc = new RenderFullComponent(); //Render FS
-	MSC = new MouseScrollComponent();
-	MSOC = new MouseOverObjectComponent();
+	//MSC = new MouseScrollComponent();
+	//MSOC = new MouseOverObjectComponent();
 	MIC = new MouseInputComponentButton();
 	//DND = new DragNDropComponent(this); //this es el puntero a tienda
 	//Info = new MouseInfoClickComponent();
@@ -121,15 +120,19 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 	Vector2D position0(matriz[x][y].x, matriz[x][y].y);
 
 	gc->setText(matriz[x][y].tx); gc->setPosition(position0); gc->setWidth(matriz[x][y].w); gc->setHeight(matriz[x][y].h);
-	gc->addRenderComponent(rcF); gc->addInputComponent(MSC);  gc->addInputComponent(new MouseInfoClickComponent(st)); gc->addInputComponent(new DragNDropComponent(this, aux));
+	gc->addRenderComponent(rcF); gc->addInputComponent(new MouseInfoClickComponent(st)); gc->addInputComponent(new DragNDropComponent(this, aux));
 	gc->setOriPos(position0);
 
+	invent[aux].GC = gc;
 	stage.push_back(gc);
 }
 
 void BackPack::creaSP() {
 	//Creamos los SP
+	Vector2D selecPos;
+	int auxD = 0;
 	int aux = 0;
+	
 	for (int i = 0; i < numFils; i++)
 		for (int j = 0; j < numRows; j++) {
 			double width = 70;
@@ -141,22 +144,25 @@ void BackPack::creaSP() {
 			matriz[i][j].h = height;
 			matriz[i][j].mX = i;
 			matriz[i][j].mY = j;
-			//matriz[i][j].objectID = aux;
-
-			//cout << matriz[i][j].mX << "," << matriz[i][j].mY << "," << endl;
 
 			Vector2D position0(2 * i + 11, 2 * j + 2);
+			if (i == 0 && j == 0)
+				selecPos = position0;
+			if (i == 0 && j == 1)
+				auxD = position0.getY() - selecPos.getY();
+
 			matriz[i][j].x = position0.getX();
 			matriz[i][j].y = position0.getY();
 			GameComponent* gc = new GameComponent(game);
-			InputComponent* auxSCP = new MouseScrollComponent();
-			InputComponent* mooCP = new MouseOverObjectComponent();
+			//InputComponent* auxSCP = new MouseScrollComponent();
+			//InputComponent* mooCP = new MouseOverObjectComponent();
 
 			gc->setText(standPoint); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-			gc->addRenderComponent(rcF); gc->addInputComponent(mooCP); gc->addInputComponent(auxSCP);
+			gc->addRenderComponent(rcF); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
 
 			stage.push_back(gc);
 			SP.push_back(matriz[i][j]);
+			StandPointsO.push_back(gc);
 			numSP++;
 			aux++;
 		}
@@ -174,6 +180,14 @@ void BackPack::creaSP() {
 	stage.push_back(weapon);
 	botones.push_back(weapon);
 
+	//Creamos el elemento que nos permitirá movernos con teclado
+	selector_ = new GameComponent(game);
+
+	selector_->setText(game->getTexture(12)); selector_->setPosition(selecPos);
+	selector_->setWidth(70); selector_->setHeight(70);
+	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), numRows, numFils, auxD, StandPointsO, this));
+	//selector_->addInputComponent(MSC);
+	stage.push_back(selector_);
 }
 
 void BackPack::elimina() {

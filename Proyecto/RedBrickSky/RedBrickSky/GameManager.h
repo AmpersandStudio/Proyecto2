@@ -2,6 +2,7 @@
 #include "Texture.h"
 #include <vector>
 #include <iostream>
+#include "GameComponent.h"
 
 struct estado {
 	Texture* tx;
@@ -19,6 +20,7 @@ struct estado {
 	int objectID;
 	int type; //Arma = 0, pocion = 1, objeto = 2;
 	string nombre;
+	GameComponent* GC = nullptr;
 
 };
 

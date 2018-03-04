@@ -3,6 +3,7 @@
 #include "ShopState.h"
 #include "Button.h"
 #include <iostream>
+#include "InventoryShopFBcomponent.h"
 
 
 ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
@@ -21,13 +22,12 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 	standPoint = gamePtr->getTexture(8);
 	front = gamePtr->getTexture(7);
 	bot = gamePtr->getTexture(3); //Para el botón
-	
 
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
 	rc = new RenderFullComponent(); //Render FS
 	MSC = new MouseScrollShopComponent(this);
-	MSOC = new MouseOverObjectComponent();
+	//MSOC = new MouseOverObjectComponent();
 	MIC = new MouseInputComponentButton();
 
 	//Separamos elementos dependiendo de su clase
@@ -52,15 +52,6 @@ ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 	//Creamos botón para volver al menú principal
 	mainMenuBotton();
 
-}
-
-void ShopState::creaFila() {
-
-	Fils++;
-	//destroyMatix();
-	createMatrix();
-	ultimaFilaY += 2;
-	
 }
 
 void ShopState::setMoney(int n) {
@@ -181,10 +172,7 @@ void ShopState::createBagItems() {
 		GCInventV.push_back(gc);
 
 		ocupados++;
-		cout << "Ocupados: " << ocupados << endl << "SP: " << numSP << endl;
-		if (ocupados == numSP - 1)
-			creaFila();
-		
+
 		k++;
 	}
 }
@@ -212,6 +200,8 @@ void ShopState::createMatrix() {
 
 void ShopState::fillMatrix() {
 	//Rellenamos la matriz DE SP
+	Vector2D selecPos;
+	int auxD = 0;
 	auxOID = 0;
 	numSP = 0;
 	for (int i = 0; i < Cols; i++)
@@ -231,20 +221,37 @@ void ShopState::fillMatrix() {
 			//cout << matriz[i][j].mX << "," << matriz[i][j].mY << "," << endl;
 
 			Vector2D position0(2 * i + 2, 2 * j + 2);
+			if (i == 0 && j == 0)
+				selecPos = position0;
+			if (i == 1 && j == 0)
+				auxD = position0.getX() - selecPos.getX();
+
 			matriz[i][j].x = position0.getX();
 			matriz[i][j].y = position0.getY();
 			GameComponent* gc = new GameComponent(game);
 			InputComponent* auxSCP = new MouseScrollShopComponent(this, auxOID);
 
 			gc->setText(standPoint); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-			gc->addRenderComponent(rcF); gc->addInputComponent(auxSCP);  gc->addInputComponent(MSOC);
+			gc->addRenderComponent(rcF); gc->addInputComponent(auxSCP);//  gc->addInputComponent(InventoryShopFBcomponent());
 
 			stage.push_back(gc);
 			SP.push_back(matriz[i][j]);
+			StandPointsO.push_back(gc);
+
 			numSP++;
 			auxOID++;
 		}
 	ultimaFilaY = Fils;
+
+	//Creamos el elemento que nos permitirá movernos con teclado
+	selector_ = new GameComponent(game);
+
+	selector_->setText(game->getTexture(12)); selector_->setPosition(selecPos);
+	selector_->setWidth(70); selector_->setHeight(70);
+	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(),Fils, Cols, auxD, StandPointsO, nullptr, this));
+	selector_->addInputComponent(MSC);
+
+	stage.push_back(selector_);
 
 	//Creamos los elementos de la mochila
 	createBagItems();

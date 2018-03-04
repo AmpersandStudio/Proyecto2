@@ -40,6 +40,7 @@ private:
 
 	vector<estado> invent;
 	vector<estado> SP;
+	vector<GameObject*> StandPointsO;
 	
 	vector<GameComponent*> botones;
 
@@ -52,11 +53,13 @@ private:
 
 	estado** matriz;
 	int numFils = 3;
-	int numRows = 2;
+	int numRows = 4;
 
 	int ocupados;
 	int numSP; int actFilas;
 	int ultimaFilaY;
+
+	GameComponent* selector_;
 
 public:
 	BackPack(Game* gamePtr);

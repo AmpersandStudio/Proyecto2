@@ -2,7 +2,6 @@
 #include "GameState.h"
 #include "RenderFullComponent.h"
 #include "MouseScrollShopComponent.h"
-#include "MouseOverObjectComponent.h"
 #include "StateMachine.h"
 #include "MouseInputComponentButton.h"
 #include "DragNDropShopComponent.h"
@@ -57,8 +56,10 @@ private:
 	int ultimaFilaY;
 	int auxOID;
 
-	int Fils = 1;
+	int Fils = 4;
 	int Cols = 3;
+	GameComponent* selector_;
+	vector<GameObject*> StandPointsO;
 
 
 public:
@@ -69,7 +70,6 @@ public:
 
 	int getMoney() { return money; };
 	void setMoney(int d);
-	void creaFila();
 	static void toMenu(Game* game);
 	//estado** devMat() { return matriz; };
 	vector<estado> getInvent() { return invent; };

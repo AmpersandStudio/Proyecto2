@@ -18,7 +18,7 @@ NameSelectorState::NameSelectorState(Game* gamePtr) : GameState(gamePtr)
 	int selectorHeight = gamePtr->getWinHeight() / rows;
 
 	RenderComponent* rc = new RenderFrameComponent();
-	InputComponent* ic = new KeyInputComponent(SDLK_w, SDLK_s, SDLK_d, SDLK_a, 6, 9);
+	InputComponent* ic = new KeyInputComponent(SDLK_w, SDLK_s, SDLK_d, SDLK_a, rows, cols);
 
 	selector_->setText(tx0); selector_->setPosition(position0); selector_->setWidth(selectorWidth); selector_->setHeight(selectorHeight); selector_->addRenderComponent(rc); selector_->addInputComponent(ic);
 
