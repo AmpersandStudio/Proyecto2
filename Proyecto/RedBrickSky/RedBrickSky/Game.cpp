@@ -51,7 +51,7 @@ Game::Game()
 	loadTexture("..\\images\\Battle_UI_Personajes.png", 1, 1);
 	loadTexture("..\\images\\Battle_UI_Vida.png", 1, 1);
 	//Objeto de tienda
-	loadTexture("..\\images\\food3.png", 1, 1); //21
+	loadTexture("..\\images\\weaponsSet.png", 8, 8); //21
 
 
 	//inicializamos booleanos de control

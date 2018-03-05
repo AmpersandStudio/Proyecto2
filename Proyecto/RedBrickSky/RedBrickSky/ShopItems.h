@@ -13,7 +13,7 @@ private:
 
 	Texture* food;
 	Texture* food2;
-	Texture* food3;
+	Texture* WP;
 
 public:
 	ShopItems(Game* gameptr) {
@@ -22,7 +22,7 @@ public:
 
 		food = game->getTexture(4); //Item1
 		food2 = game->getTexture(5);
-		food3 = game->getTexture(21);
+		WP = game->getTexture(21);
 
 		int weaponType = 0;
 		int potionType = 1;
@@ -33,7 +33,7 @@ public:
 		shopObjects[0].ID = 0;
 		shopObjects[0].objects = 1;
 		shopObjects[0].price = 50;
-		shopObjects[0].tx = food;
+		shopObjects[0].tx = WP;
 		shopObjects[0].type = weaponType; //Es un arma
 		shopObjects[0].nombre = "Compas";
 
