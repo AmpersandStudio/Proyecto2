@@ -19,6 +19,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Combat.cpp" />
     <ClCompile Include="CreditsState.cpp" />
+    <ClCompile Include="DiscretMovementIAComponent.cpp" />
     <ClCompile Include="DragNDropComponent.cpp" />
     <ClCompile Include="DragNDropShopComponent.cpp" />
     <ClCompile Include="EndState.cpp" />
@@ -50,6 +51,7 @@
     <ClCompile Include="ShopState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TransitionState.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +63,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Combat.h" />
     <ClInclude Include="CreditsState.h" />
+    <ClInclude Include="DiscretMovementIAComponent.h" />
     <ClInclude Include="DragNDropComponent.h" />
     <ClInclude Include="DragNDropShopComponent.h" />
     <ClInclude Include="EndState.h" />
@@ -92,6 +95,7 @@
     <ClInclude Include="ShopState.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TransitionState.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

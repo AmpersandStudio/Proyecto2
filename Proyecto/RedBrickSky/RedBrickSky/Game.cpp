@@ -51,8 +51,11 @@ Game::Game()
 	loadTexture("..\\images\\Battle_UI_Personajes.png", 1, 1);
 	loadTexture("..\\images\\Battle_UI_Vida.png", 1, 1);
 	//Objeto de tienda
-	loadTexture("..\\images\\weaponsSet.png", 8, 8); //21
 
+	loadTexture("..\\images\\weaponsSet.png", 8, 8); //22
+
+	//objeto de presentacion
+	loadTexture("..\\images\\transition.png", 1, 1);
 
 	//inicializamos booleanos de control
 	exit_ = false; error_ = false;
@@ -71,7 +74,7 @@ Game::~Game()
 }
 
 void Game::loadTexture(string filename, int rows, int cols) {
-	if (filename == " ") {
+	if (filename == " ") { // WARMIMG!!!!!!!!!!!!!!
 		cout << "Error cargando la textura";
 	}
 	else {
@@ -84,7 +87,6 @@ void Game::loadTexture(string filename, int rows, int cols) {
 void Game::render() {
 	//renderizamos los objetos
 	SDL_SetRenderDrawColor(RENDERER_, 0, 255, 255, 255);
-	SDL_RenderClear(RENDERER_);
 	stateMachine_->currentState()->render();
 	if (!exit_) SDL_RenderPresent(RENDERER_);
 }

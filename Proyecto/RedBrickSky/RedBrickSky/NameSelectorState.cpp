@@ -6,8 +6,9 @@
 NameSelectorState::NameSelectorState(Game* gamePtr) : GameState(gamePtr)
 {
 	selector_ = new GameComponent(gamePtr);
+	letters_ = new GameComponent(gamePtr);
 
-	abcdary_ = gamePtr->getTexture(11); //letras
+	Texture* abcdary_ = gamePtr->getTexture(11); //letras
 	Texture* tx0 = gamePtr->getTexture(12); //selector
 
 	Vector2D position0(0, 0);
@@ -18,10 +19,13 @@ NameSelectorState::NameSelectorState(Game* gamePtr) : GameState(gamePtr)
 	int selectorHeight = gamePtr->getWinHeight() / rows;
 
 	RenderComponent* rc = new RenderFrameComponent();
+	RenderComponent* rc2 = new RenderFullComponent();
 	InputComponent* ic = new KeyInputComponent(SDLK_w, SDLK_s, SDLK_d, SDLK_a, rows, cols);
 
 	selector_->setText(tx0); selector_->setPosition(position0); selector_->setWidth(selectorWidth); selector_->setHeight(selectorHeight); selector_->addRenderComponent(rc); selector_->addInputComponent(ic);
+	letters_->setText(abcdary_); letters_->addRenderComponent(rc2);
 
+	stage.push_back(letters_);
 	stage.push_back(selector_);
 }
 
@@ -30,7 +34,6 @@ NameSelectorState::~NameSelectorState()
 }
 
 void NameSelectorState::render() {
-	abcdary_->renderComplete();
 	GameState::render();
 }
 
