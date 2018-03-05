@@ -18,6 +18,7 @@ GameState::~GameState()
 }
 
 void GameState::render() {
+	SDL_RenderClear(game_->getRenderer());
 	for (unsigned int i = 0; i < stage.size(); i++)
 		stage[i]->render();
 }

@@ -10,19 +10,19 @@
 class GameObject
 {
 protected:
-	Game* game_;
+	Game* game_; // by cleon, puede que no sea const
 
 	Texture* text_;
 
-	Vector2D position_;
-	Vector2D iniPosition_;
-	Vector2D direction_;
+	Vector2D position_ = Vector2D(0,0);
+	Vector2D iniPosition_ = Vector2D(0, 0);
+	Vector2D direction_ = Vector2D(0, 0);
 
-	double width_;
-	double height_;
+	double width_ = 0;
+	double height_ = 0;
 
-	int colFrame_;
-	int rowFrame_;
+	int colFrame_ = 0;
+	int rowFrame_ = 0;
 
 public:
 	GameObject(Game* gamePtr);
@@ -36,11 +36,11 @@ public:
 	void setText(Texture* t) { text_ = t; };
 
 	//para obtener o cambiar las dimensiones del go
-	double getWidth() const { return width_; };
+	inline double getWidth() const { return width_; };
 	void setWidth(double width) { width_ = width; };
-	double getHeight() const { return height_; };
+	inline double getHeight() const { return height_; };
 	void setHeight(double height) { height_ = height; };
-	void scale(double s) { width_ *= s; height_ *= s; };
+	inline void scale(double s) { width_ *= s; height_ *= s; };
 
 	//para cambiar los frames
 	int getRowFrame() const { return rowFrame_; };

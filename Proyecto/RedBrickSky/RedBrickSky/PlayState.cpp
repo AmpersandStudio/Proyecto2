@@ -9,6 +9,7 @@
 #include "ShopState.h"
 #include "BattleState.h"
 #include "BackPack.h"
+#include "TransitionState.h"
 
 #include "PauseState.h"
 
@@ -65,6 +66,8 @@ bool PlayState::handleEvent(SDL_Event & event)
 			game_->getStateMachine()->pushState(new PauseState(game_));
 		else if (event.key.keysym.sym == SDLK_i)
 			game_->getStateMachine()->pushState(new BackPack(game_));
+		else if (event.key.keysym.sym == SDLK_b)
+			game_->getStateMachine()->pushState(new TransitionState(game_));
 	}
 	// 2) LLama a los input de cada objeto del propio estado
 	return GameState::handleEvent(event);

@@ -38,5 +38,6 @@ public:
 	int getWinHeight() { return winHeight_; };
 	void cleanSreen() { SDL_RenderClear(RENDERER_); }; //limpia pantalla
 	void exitApp(); //sale de la aplicacion
+	SDL_Renderer* getRenderer() { return RENDERER_; };
 };
 

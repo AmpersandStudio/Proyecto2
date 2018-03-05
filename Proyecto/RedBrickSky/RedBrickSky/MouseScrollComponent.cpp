@@ -38,6 +38,6 @@ bool MouseScrollComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 void MouseScrollComponent::move(GameObject* o, int s) {
 
 	Vector2D pos = o->getPosition();
-	pos.setY(pos.getY() - 0.5 * s);
+	pos.setY(pos.getY() - 0.5 * s); // NUMERO A PIÑON. MORIREIS.
 	o->setPosition(pos);
 }

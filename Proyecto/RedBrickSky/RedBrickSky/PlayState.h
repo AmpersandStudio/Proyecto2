@@ -20,5 +20,6 @@ public:
 	//EL BOTON PARA LA TIENDA
 	static void toGame(Game* game);
 	static void toInventary(Game* game);
+	//static void toTransition(Game* game);
 };
 
