@@ -95,9 +95,11 @@ public:
 		shopObjects[6].ID = 6;
 		shopObjects[6].objects = 1;
 		shopObjects[6].price = 50;
-		shopObjects[6].tx = food;
+		shopObjects[6].tx = WP;
 		shopObjects[6].type = weaponType; //Es un arma
 		shopObjects[6].nombre = "Pegamento";
+		shopObjects[6].colFrame = 2;
+		shopObjects[6].FilFrame = 3;
 
 		shopObjects[7].empty = false;
 		shopObjects[7].comprado = true;
@@ -151,9 +153,11 @@ public:
 		shopObjects[12].ID = 12;
 		shopObjects[12].objects = 1;
 		shopObjects[12].price = 50;
-		shopObjects[12].tx = food;
+		shopObjects[12].tx = WP;
 		shopObjects[12].type = weaponType; //Es un arma
 		shopObjects[12].nombre = "Sacapuntas";
+		shopObjects[12].colFrame = 0;
+		shopObjects[12].FilFrame = 2;
 
 		shopObjects[13].empty = false;
 		shopObjects[13].comprado = true;
