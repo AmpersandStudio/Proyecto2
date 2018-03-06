@@ -1,6 +1,6 @@
 #include "BattleState.h"
 
-BattleState::BattleState(Game* gamePtr) : GameState (gamePtr)
+BattleState::BattleState(Game* gamePtr) : GameState(gamePtr)
 {
 
 	//Texturas necesitadas
@@ -14,7 +14,7 @@ BattleState::BattleState(Game* gamePtr) : GameState (gamePtr)
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
 	rc = new RenderFullComponent(); //Render FS
-	//Info = new MouseInfoClickComponent();
+									//Info = new MouseInfoClickComponent();
 	MIC = new MouseInputComponentButton();
 
 	createUI();
@@ -32,9 +32,9 @@ void BattleState::buttonsToAttack(Game* gamePtr) {
 }
 
 void BattleState::tryEscape(Game* gamePtr) {
-	
+
 	//Aquí iría la comprobación aleatoria de "Has logrado escapar!" o "Eres un pringado y tienes que luchar!"
-	
+
 	StateMachine* sm = gamePtr->getStateMachine();
 	sm->popState();
 }
@@ -68,6 +68,8 @@ void BattleState::attack4(Game * gamePtr)
 }
 
 void BattleState::createUI() {
+
+	stage.clear();
 
 	//Panel de fondo
 	Vector2D position0(0, 2.6);
@@ -112,33 +114,11 @@ void BattleState::createCharacterInfo()
 	UI_Enemy->addRenderComponent(rcF);
 	stage.push_back(UI_Enemy);
 
-	//Vidas
-	interfaz.UI_Vida_Player = new GameComponent(game);
-	interfaz.UI_Vida_Enemy = new GameComponent(game);
-
-	position0.setX(0.75); position0.setY(6.6);
-	interfaz.VPlayer_position = position0;
-	Vector2D position1(6.13, 6.6);
-	interfaz.VEnemy_position = position1;
-	interfaz.Vida_Width = 160;
-
-	interfaz.UI_Vida_Player->setText(interfaz.Vida);
-	interfaz.UI_Vida_Player->setWidth(interfaz.Vida_Width); interfaz.UI_Vida_Player->setHeight((20));
-	interfaz.UI_Vida_Player->setPosition(interfaz.VPlayer_position);
-	interfaz.UI_Vida_Player->addRenderComponent(rcF);
-
-	interfaz.UI_Vida_Enemy->setText(interfaz.Vida);
-	interfaz.UI_Vida_Enemy->setWidth(interfaz.Vida_Width); interfaz.UI_Vida_Enemy->setHeight((20));
-	interfaz.UI_Vida_Enemy->setPosition(interfaz.VEnemy_position);
-	interfaz.UI_Vida_Enemy->addRenderComponent(rcF);
-
-	stage.push_back(interfaz.UI_Vida_Player);
-	stage.push_back(interfaz.UI_Vida_Enemy);
+	updateVidas();
 }
 
 void BattleState::createBattleButtons()
 {
-	clearButtons();
 	Vector2D position0;
 	double buttonWidth = 230;
 	double buttonHeight = 75;
@@ -181,7 +161,6 @@ void BattleState::createBattleButtons()
 
 void BattleState::createAttackButtons()
 {
-	clearButtons();
 	Vector2D position0;
 	double buttonWidth = 230;
 	double buttonHeight = 75;
@@ -215,42 +194,46 @@ void BattleState::createAttackButtons()
 	stage.push_back(interfaz.button_3);
 }
 
+void BattleState::updateVidas()
+{
+	interfaz.UI_Vida_Player = new GameComponent(game);
+	interfaz.UI_Vida_Enemy = new GameComponent(game);
+
+	Vector2D position0(0.75, 6.6);
+	interfaz.VPlayer_position = position0;
+	Vector2D position1(6.13, 6.6);
+	interfaz.VEnemy_position = position1;
+
+	interfaz.UI_Vida_Player->setText(interfaz.Vida);
+	interfaz.UI_Vida_Player->setWidth(interfaz.Vida_Width); interfaz.UI_Vida_Player->setHeight((interfaz.Vida_height));
+	interfaz.UI_Vida_Player->setPosition(interfaz.VPlayer_position);
+	interfaz.UI_Vida_Player->addRenderComponent(rcF);
+
+	interfaz.UI_Vida_Enemy->setText(interfaz.Vida);
+	interfaz.UI_Vida_Enemy->setWidth(interfaz.Vida_Width); interfaz.UI_Vida_Enemy->setHeight((interfaz.Vida_height));
+	interfaz.UI_Vida_Enemy->setPosition(interfaz.VEnemy_position);
+	interfaz.UI_Vida_Enemy->addRenderComponent(rcF);
+
+	stage.push_back(interfaz.UI_Vida_Player);
+	stage.push_back(interfaz.UI_Vida_Enemy);
+}
+
 void BattleState::updateVida(GameComponent* barraVida, double variacion)
 {
 	barraVida->setWidth(barraVida->getWidth()*variacion);
-	Vector2D positionNew (barraVida->getPosition().getX() * (1 / variacion), barraVida->getPosition().getY());
+	Vector2D positionNew(barraVida->getPosition().getX() * (1 / variacion), barraVida->getPosition().getY());
 	stage.push_back(barraVida);
-}
-
-void BattleState::reduceVida(Game* gamePtr)
-{
-	/*updateVida(interfaz.UI_Vida_Player, 0.25);*/
-}
-
-void BattleState::clearButtons()
-{
-	/*vector<GameObject*>::iterator it = stage.begin();
-
-	while (it != stage.end()) {
-
-		if (typeid(it) == typeid(Button())) {
-
-			it = stage.erase(it);
-		}
-		else ++it;
-	}*/
-	//stage.erase(std::remove_if(stage.begin(), stage.end(), isButton), stage.end());
 }
 
 bool BattleState::isButton(GameObject * object)
 {
-	if ( typeid(object) == typeid(Button()) ) {
+	if (typeid(object) == typeid(Button())) {
 		return true;
 	}
 	return false;
 }
 
 void BattleState::update() {
-	c.run();
-	GameState::update();
+	/*c.run();
+	GameState::update();*/
 }

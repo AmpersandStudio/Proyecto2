@@ -25,6 +25,7 @@ bool MouseInputComponentButton::handleEvent(GameObject* o, const SDL_Event& even
 
 			Button* b = dynamic_cast<Button*>(o);
 			if (b != nullptr) {
+				TheSoundManager::Instance()->playSound("woah", 0);
 				CallBackOnClick* cboc = b->getCallback();
 				cboc(g); //llamamos a la funcion callback generica que hemos pasado como parametro a la constructora
 				handledEvent = true; //marcamos el evento como handleado

@@ -49,6 +49,7 @@
     <ClCompile Include="RenderFrameComponent.cpp" />
     <ClCompile Include="RenderFullComponent.cpp" />
     <ClCompile Include="ShopState.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TransitionState.cpp" />
@@ -93,6 +94,7 @@
     <ClInclude Include="RenderFullComponent.h" />
     <ClInclude Include="ShopItems.h" />
     <ClInclude Include="ShopState.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TransitionState.h" />
@@ -101,7 +103,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>RedBrickSky</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

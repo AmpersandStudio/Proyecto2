@@ -30,11 +30,13 @@ typedef struct {
 	//TEXTOS
 
 	//BARRAS DE VIDA
+	double Vida_Width = 160;
+	double Vida_height = 20;
+
 	GameComponent* UI_Vida_Player;
 	Vector2D VPlayer_position;
 	GameComponent* UI_Vida_Enemy;
 	Vector2D VEnemy_position;
-	double Vida_Width;
 
 }battle_UI;
 
@@ -60,14 +62,11 @@ private:
 	void createCharacterInfo();
 	void createBattleButtons();
 	void createAttackButtons();
+	void updateVidas();
 
 	//Actualizacion de la interfaz
 	void updateVida(GameComponent* barraVida, double variacion); //Variación es el porcentaje que varía la vida en decimal (Ej: 75% es 0.75), para que la posición sea constante
-	void clearButtons(); //Limpia botones antes de cambiarlos por nuevos botones en pantalla
 	bool isButton(GameObject* object);
-
-	//Testeo
-	static void reduceVida(Game* gamePtr);
 
 	//Acciones del menu de combate
 	static void buttonsToAttack(Game* gamePtr);

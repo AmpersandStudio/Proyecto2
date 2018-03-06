@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "SoundManager.h"
 
 //para evitar inclusiones circulares
 class StateMachine;
