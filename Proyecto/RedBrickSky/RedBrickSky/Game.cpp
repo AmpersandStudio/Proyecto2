@@ -20,6 +20,10 @@ Game::Game()
 	RENDERER_ = SDL_CreateRenderer(WINDOW_, -1, SDL_RENDERER_ACCELERATED);
 	if (WINDOW_ == nullptr || RENDERER_ == nullptr)
 		cout << "Error initializing SDL\n";
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	{
+		cout << "Error initializing SDL_Mixer" << endl;
+	}
 
 	srand(time(nullptr)); //semilla de aleatorios
 
@@ -57,6 +61,9 @@ Game::Game()
 	//objeto de presentacion
 	loadTexture("..\\images\\transition.png", 1, 1);
 
+	//CARGA DE SONIDOS
+	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
+
 	//inicializamos booleanos de control
 	exit_ = false; error_ = false;
 
@@ -70,6 +77,7 @@ Game::~Game()
 		delete textures_[i];
 		textures_[i] = nullptr;
 	}
+	Mix_Quit();
 	delete stateMachine_;
 }
 

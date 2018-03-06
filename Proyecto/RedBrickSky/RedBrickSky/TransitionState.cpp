@@ -4,9 +4,9 @@
 TransitionState::TransitionState(Game* gamePtr) : GameState (gamePtr)
 {
 	Texture* tx0 = gamePtr->getTexture(22);
-	Vector2D position0(0, 0);
-	double width = 100;
-	double height = 100;
+	Vector2D position0(-1, 0);
+	double width = gamePtr->getWinWidth() / 5;
+	double height = gamePtr->getWinWidth() / 5;
 	RenderComponent* rc = new RenderFrameComponent();
 	PhysicsComponent* pc = new DiscretMovementIAComponent();
 	square = new GameComponent(gamePtr);

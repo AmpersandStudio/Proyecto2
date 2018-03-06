@@ -66,8 +66,6 @@ bool PlayState::handleEvent(SDL_Event & event)
 			game_->getStateMachine()->pushState(new PauseState(game_));
 		else if (event.key.keysym.sym == SDLK_i)
 			game_->getStateMachine()->pushState(new BackPack(game_));
-		else if (event.key.keysym.sym == SDLK_b)
-			game_->getStateMachine()->pushState(new TransitionState(game_));
 	}
 	// 2) LLama a los input de cada objeto del propio estado
 	return GameState::handleEvent(event);
@@ -109,6 +107,6 @@ void PlayState::initPlayer()
 //DE MARTIN PARA PROBAR BATTLESTATE
 void PlayState::toBattle(Game* game) {
 	StateMachine* sm = game->getStateMachine();
-	sm->pushState(new BattleState(game));
+	sm->pushState(new TransitionState(game));
 }
 

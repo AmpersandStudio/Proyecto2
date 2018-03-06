@@ -1,5 +1,7 @@
 #pragma once
 #include "InputComponent.h"
+#include "SoundManager.h"
+
 class MouseInputComponentButton :
 	public InputComponent
 {
