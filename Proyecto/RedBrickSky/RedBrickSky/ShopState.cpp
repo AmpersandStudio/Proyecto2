@@ -125,14 +125,16 @@ void ShopState::createShopItems() {
 		GameComponent* gc = new GameComponent(game);
 		Vector2D position5(k + 10, 2 * j);
 		Vector2D oriPos(k + 10, 2 * j);
-		DragNDropShopComponent* p = new DragNDropShopComponent(this, shopObjects[i].price, false, shopObjects[i].ID, gc, shopObjects[i].type, shopObjects[i].nombre);
+		DragNDropShopComponent* p = new DragNDropShopComponent(this, shopObjects[i].price, false, shopObjects[i].ID, gc, shopObjects[i].type, shopObjects[i].nombre, shopObjects[i].FilFrame, shopObjects[i].colFrame);
 		gc->setText(shopObjects[i].tx); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(70); gc->setHeight(70);
 		gc->addRenderComponent(rcF); gc->addInputComponent(p); gc->addInputComponent(new MouseInfoClickComponent(shopObjects[i]));	gc->addInputComponent(MSC);
+		gc->setColFrame(shopObjects[i].colFrame); gc->setRowFrame(shopObjects[i].FilFrame);
 
 		//Crea objetos debajo de los anteriores que no se moverán, serán solo imagen
 		GameComponent* gc2 = new GameComponent(game);
 		gc2->setText(shopObjects[i].tx); gc2->setOriPos(oriPos); gc2->setPosition(position5); gc2->setWidth(70); gc2->setHeight(70);
 		gc2->addRenderComponent(rcF); gc2->addInputComponent(MSC);
+		gc2->setColFrame(shopObjects[i].colFrame); gc2->setRowFrame(shopObjects[i].FilFrame);
 
 		stageBack(gc2); //Añadimos la imagen de detrás del objeto al stage
 		stageBack(gc); //Añadimos el objeto
@@ -167,6 +169,7 @@ void ShopState::createBagItems() {
 
 		gc->setText(invent[i].tx); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
 		gc->addRenderComponent(rcF); gc->addInputComponent(MSC);  gc->addInputComponent(new MouseInfoClickComponent(invent[i]));
+		gc->setColFrame(invent[i].colFrame); gc->setRowFrame(invent[i].FilFrame);
 
 		stage.push_back(gc);
 		GCInventV.push_back(gc);

@@ -21,6 +21,8 @@ struct estado {
 	int type; //Arma = 0, pocion = 1, objeto = 2;
 	string nombre;
 	GameComponent* GC = nullptr;
+	int colFrame;
+	int FilFrame;
 
 };
 

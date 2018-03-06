@@ -36,15 +36,19 @@ public:
 		shopObjects[0].tx = WP;
 		shopObjects[0].type = weaponType; //Es un arma
 		shopObjects[0].nombre = "Compas";
+		shopObjects[0].colFrame = 0;
+		shopObjects[0].FilFrame = 0;
 
 		shopObjects[1].empty = false;
 		shopObjects[1].comprado = true;
 		shopObjects[1].ID = 1;
 		shopObjects[1].objects = 1;
 		shopObjects[1].price = 50;
-		shopObjects[1].tx = food;
+		shopObjects[1].tx = WP;
 		shopObjects[1].type = weaponType; //Es un arma
 		shopObjects[1].nombre = "Escobilla";
+		shopObjects[1].colFrame = 1;
+		shopObjects[1].FilFrame = 0;
 
 		shopObjects[2].empty = false;
 		shopObjects[2].comprado = true;

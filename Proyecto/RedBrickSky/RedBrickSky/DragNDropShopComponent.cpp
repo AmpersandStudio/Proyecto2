@@ -5,7 +5,7 @@
 #include "ShopState.h"
 
 
-DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy, int iden, GameComponent* comp, int type, string n)
+DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy, int iden, GameComponent* comp, int type, string n, int fil, int col)
 {
 	isMouseSelection = false;
 	shop = s;
@@ -15,6 +15,8 @@ DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy
 	identifier = iden;
 	thisComponent = comp;
 	name = n;
+	filFrame = fil;
+	colFrame = col;
 }
 
 
@@ -151,13 +153,16 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			n.tx = o->getText();
 			n.type = tipo;
 			n.nombre = name;
-		
+			n.FilFrame = filFrame;
+			n.colFrame = colFrame;
+
 			shop->setInvent(n);
 			GameManager::Instance()->setInventory(n);
 
 			GameComponent* gc2 = new GameComponent(o->getGame());
 			gc2->setText(o->getText()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(70); gc2->setHeight(70);
 			gc2->addRenderComponent(new RenderFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(shop));
+			gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
 
 			shop->stageBack(gc2);
 

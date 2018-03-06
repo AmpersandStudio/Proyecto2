@@ -93,7 +93,7 @@ void BackPack::cargaElementos(vector<estado> l) {
 			if (matriz[i][j].empty == true) {
 				int x = j;
 				int y = i;
-				createItemAtSP(x, y, auxV[i].objectID, auxV[i]);
+				createItemAtSP(x, y, auxV[p].objectID, auxV[p]);
 				place = true;
 			}
 			else 
@@ -115,6 +115,8 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 	matriz[x][y].objectID = aux;
 	st.mX = matriz[x][y].mX;
 	st.mY = matriz[x][y].mY;
+	matriz[x][y].colFrame = st.colFrame;
+	matriz[x][y].FilFrame = st.FilFrame;
 
 	GameComponent* gc = new GameComponent(game);
 	Vector2D position0(matriz[x][y].x, matriz[x][y].y);
@@ -122,6 +124,7 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 	gc->setText(matriz[x][y].tx); gc->setPosition(position0); gc->setWidth(matriz[x][y].w); gc->setHeight(matriz[x][y].h);
 	gc->addRenderComponent(rcF); gc->addInputComponent(new MouseInfoClickComponent(st)); gc->addInputComponent(new DragNDropComponent(this, aux));
 	gc->setOriPos(position0);
+	gc->setColFrame(matriz[x][y].colFrame); gc->setRowFrame(matriz[x][y].FilFrame);
 
 	invent[aux].GC = gc;
 	stage.push_back(gc);
@@ -144,6 +147,7 @@ void BackPack::creaSP() {
 			matriz[i][j].h = height;
 			matriz[i][j].mX = i;
 			matriz[i][j].mY = j;
+
 
 			Vector2D position0(2 * i + 11, 2 * j + 2);
 			if (i == 0 && j == 0)
