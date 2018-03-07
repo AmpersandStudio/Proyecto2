@@ -9,6 +9,15 @@ BattleState::BattleState(Game* gamePtr) : GameState(gamePtr)
 	interfaz.Vida = gamePtr->getTexture(20);
 	interfaz.botones = gamePtr->getTexture(18);
 
+	//JR para el inicio
+	Texture* fadeTx = gamePtr->getTexture(23); 
+	rcfade = new RenderFullComponent();
+	alpha_ = 255;
+	fade_ = new GameComponent(gamePtr);
+	fade_->setText(fadeTx); fade_->addRenderComponent(rcfade);
+	fadeDone_ = false;
+	fade2Done_ = false;
+
 	game = gamePtr;
 
 	//Componentes necesarios
@@ -18,10 +27,12 @@ BattleState::BattleState(Game* gamePtr) : GameState(gamePtr)
 	MIC = new MouseInputComponentButton();
 
 	createUI();
+
 }
 
 BattleState::~BattleState()
 {
+	SDL_SetTextureAlphaMod(fade_->getText()->getSDLText(), 255); //para restaurar el alpha original
 }
 
 void BattleState::buttonsToAttack(Game* gamePtr) {
@@ -67,6 +78,17 @@ void BattleState::attack4(Game * gamePtr)
 {
 }
 
+void BattleState::init() {
+	if (alpha_ > 0) {
+		SDL_SetTextureAlphaMod(fade_->getText()->getSDLText(), alpha_);
+		alpha_ = alpha_ - 15;
+	}
+	else {
+		stage.pop_back();
+		fade2Done_ = true;
+	}
+}
+
 void BattleState::createUI() {
 
 	stage.clear();
@@ -89,6 +111,9 @@ void BattleState::createUI() {
 	SDL_Color Black = { 0, 0, 0 };
 	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, "Aquí van los mensajes de batalla", Black);
 	SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);*/
+
+	//fade inicial
+	stage.push_back(fade_);
 
 }
 
@@ -234,6 +259,27 @@ bool BattleState::isButton(GameObject * object)
 }
 
 void BattleState::update() {
-	/*c.run();
-	GameState::update();*/
+	if (!fade2Done_ && fadeDone_)
+		init();
+	else if (fade2Done_) {
+		GameState::update();
+	}
+}
+
+void BattleState::render() {
+	if (!fadeDone_ && !fade2Done_) {
+		stage[stage.size() - 1]->render();
+		fadeDone_ = true;
+	}
+	else
+		GameState::render();
+}
+
+bool BattleState::handleEvent(SDL_Event& event) {
+	bool handledEvent = false;
+
+	if (fade2Done_)
+		handledEvent = GameState::handleEvent(event);
+
+	return handledEvent;
 }

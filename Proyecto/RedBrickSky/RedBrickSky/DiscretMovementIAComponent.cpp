@@ -27,6 +27,8 @@ void DiscretMovementIAComponent::update(GameObject * o) {
 		o->setPosition(pos);
 	}
 	else {
+		Vector2D oriPos(0,0);
+		o->setPosition(oriPos);
 		StateMachine* sm = o->getGame()->getStateMachine();
 		sm->changeState(new BattleState(o->getGame()));
 	}

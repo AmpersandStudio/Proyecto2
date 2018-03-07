@@ -56,10 +56,11 @@ Game::Game()
 	loadTexture("..\\images\\Battle_UI_Vida.png", 1, 1);
 	//Objeto de tienda
 
-	loadTexture("..\\images\\weaponsSet.png", 8, 8); //22
+	loadTexture("..\\images\\weaponsSet.png", 8, 8); //21
 
 	//objeto de presentacion
 	loadTexture("..\\images\\transition.png", 1, 1);
+	loadTexture("..\\images\\go.png", 1, 1); //23
 
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
