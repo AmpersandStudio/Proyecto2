@@ -47,6 +47,7 @@
     <ClCompile Include="PreloadState.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="RenderFrameComponent.cpp" />
+    <ClCompile Include="RenderFrameNDComponent.cpp" />
     <ClCompile Include="RenderFullComponent.cpp" />
     <ClCompile Include="ShopState.cpp" />
     <ClCompile Include="SoundManager.cpp" />
@@ -91,6 +92,7 @@
     <ClInclude Include="PreloadState.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="RenderFrameComponent.h" />
+    <ClInclude Include="RenderFrameNDComponent.h" />
     <ClInclude Include="RenderFullComponent.h" />
     <ClInclude Include="ShopItems.h" />
     <ClInclude Include="ShopState.h" />

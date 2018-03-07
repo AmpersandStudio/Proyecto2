@@ -16,6 +16,7 @@ protected:
 
 	Vector2D position_ = Vector2D(0,0);
 	Vector2D iniPosition_ = Vector2D(0, 0);
+	Vector2D velocity_ = Vector2D(0, 0);
 	Vector2D direction_ = Vector2D(0, 0);
 
 	double width_ = 0;
@@ -56,6 +57,9 @@ public:
 
 	const Vector2D& getDirection() const { return direction_; };
 	void setDirection(const Vector2D &dir) { direction_ = dir; direction_.normalize(); };
+
+	const Vector2D& getVel() const { return velocity_; };
+	void setVel(const Vector2D &vel) { velocity_ = vel; };
 
 	//metodos abstractos que se redifiniran en clases hijas
 	virtual bool handleEvent(const SDL_Event& event) = 0;

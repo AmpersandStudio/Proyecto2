@@ -21,7 +21,7 @@ bool MovementInputComponent::handleEvent(GameObject * o, const SDL_Event & event
 	if (event.type == SDL_KEYDOWN) 
 	{
 		Vector2D auxPos = o->getPosition();
-		Vector2D auxVel(1,1); // dynamicCast en un MovableObject
+		Vector2D auxVel = o->getVel();
 	
 		// Eje X
 		if (event.key.keysym.sym == left_)

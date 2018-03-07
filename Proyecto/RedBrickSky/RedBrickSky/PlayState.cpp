@@ -10,6 +10,7 @@
 #include "BattleState.h"
 #include "BackPack.h"
 #include "TransitionState.h"
+#include "RenderFrameNDComponent.h"
 
 #include "PauseState.h"
 
@@ -88,7 +89,7 @@ void PlayState::initPlayer()
 	player_ = new GameComponent(game_);
 
 	InputComponent* movementComp = new MovementInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d) ; // Para el jugador
-	RenderComponent* rc = new RenderFrameComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
+	RenderComponent* rc = new RenderFrameNDComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
 	
 	player_->addInputComponent(movementComp);
 	player_->addRenderComponent(rc);
@@ -98,7 +99,8 @@ void PlayState::initPlayer()
 	Texture* testTex = game_->getTexture(4);
 	player_->setText(testTex);
 	player_->setWidth(70); player_->setHeight(70);
-	player_->setPosition(Vector2D(6, 6));
+	player_->setPosition(Vector2D(0, 0));
+	player_->setVel(Vector2D(5, 5));
 
 	stage.push_back(player_);
 	
