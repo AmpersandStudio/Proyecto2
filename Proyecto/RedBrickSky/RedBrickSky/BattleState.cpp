@@ -81,7 +81,7 @@ void BattleState::attack4(Game * gamePtr)
 void BattleState::init() {
 	if (alpha_ > 0) {
 		SDL_SetTextureAlphaMod(fade_->getText()->getSDLText(), alpha_);
-		alpha_ = alpha_ - 15;
+		alpha_ = alpha_ - 20;
 	}
 	else {
 		stage.pop_back();
