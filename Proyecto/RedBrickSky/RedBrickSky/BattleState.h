@@ -47,15 +47,24 @@ public:
 	BattleState(Game* gamePtr);
 	virtual ~BattleState();
 	virtual void update();
+	virtual void render();
+	virtual bool handleEvent(SDL_Event & event);
+	void init();
 private:
 	Combat c;
 
 	RenderComponent* rcF; //Render Frame
 	RenderComponent* rc; //Render FS
+	RenderComponent* rcfade;
 	InputComponent* MIC;
 	InputComponent* Info;
 	Game* game;
 	battle_UI interfaz;
+
+	GameComponent* fade_;
+	int alpha_;
+	bool fadeDone_;
+	bool fade2Done_;
 
 	//Creacion de la interfaz
 	void createUI();
