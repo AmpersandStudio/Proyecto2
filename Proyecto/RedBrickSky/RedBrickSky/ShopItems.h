@@ -86,9 +86,11 @@ public:
 		shopObjects[5].ID = 5;
 		shopObjects[5].objects = 1;
 		shopObjects[5].price = 50;
-		shopObjects[5].tx = food;
+		shopObjects[5].tx = WP;
 		shopObjects[5].type = weaponType; //Es un arma
 		shopObjects[5].nombre = "Libro";
+		shopObjects[5].colFrame = 1;
+		shopObjects[5].FilFrame = 3;
 
 		shopObjects[6].empty = false;
 		shopObjects[6].comprado = true;
@@ -106,18 +108,22 @@ public:
 		shopObjects[7].ID = 7;
 		shopObjects[7].objects = 1;
 		shopObjects[7].price = 50;
-		shopObjects[7].tx = food;
+		shopObjects[7].tx = WP;
 		shopObjects[7].type = weaponType; //Es un arma
 		shopObjects[7].nombre = "Tartera";
+		shopObjects[7].colFrame = 3;
+		shopObjects[7].FilFrame = 3;
 
 		shopObjects[8].empty = false;
 		shopObjects[8].comprado = true;
 		shopObjects[8].ID = 8;
 		shopObjects[8].objects = 1;
 		shopObjects[8].price = 50;
-		shopObjects[8].tx = food;
+		shopObjects[8].tx = WP;
 		shopObjects[8].type = weaponType; //Es un arma
 		shopObjects[8].nombre = "Cerbatana";
+		shopObjects[8].colFrame = 0;
+		shopObjects[8].FilFrame = 1;
 
 		shopObjects[9].empty = false;
 		shopObjects[9].comprado = true;
@@ -135,18 +141,22 @@ public:
 		shopObjects[10].ID = 10;
 		shopObjects[10].objects = 1;
 		shopObjects[10].price = 50;
-		shopObjects[10].tx = food;
+		shopObjects[10].tx = WP;
 		shopObjects[10].type = weaponType; //Es un arma
 		shopObjects[10].nombre = "Tirachinas";
+		shopObjects[10].colFrame = 2;
+		shopObjects[10].FilFrame = 1;
 
 		shopObjects[11].empty = false;
 		shopObjects[11].comprado = true;
 		shopObjects[11].ID = 11;
 		shopObjects[11].objects = 1;
 		shopObjects[11].price = 50;
-		shopObjects[11].tx = food;
+		shopObjects[11].tx = WP;
 		shopObjects[11].type = weaponType; //Es un arma
 		shopObjects[11].nombre = "Grapadora";
+		shopObjects[11].colFrame = 3;
+		shopObjects[11].FilFrame = 1;
 
 		shopObjects[12].empty = false;
 		shopObjects[12].comprado = true;
@@ -175,18 +185,22 @@ public:
 		shopObjects[14].ID = 14;
 		shopObjects[14].objects = 1;
 		shopObjects[14].price = 50;
-		shopObjects[14].tx = food;
+		shopObjects[14].tx = WP;
 		shopObjects[14].type = weaponType; //Es un arma
 		shopObjects[14].nombre = "Bandeja";
+		shopObjects[14].colFrame = 2;
+		shopObjects[14].FilFrame = 2;
 
 		shopObjects[15].empty = false;
 		shopObjects[15].comprado = true;
 		shopObjects[15].ID = 15;
 		shopObjects[15].objects = 1;
 		shopObjects[15].price = 50;
-		shopObjects[15].tx = food;
+		shopObjects[15].tx = WP;
 		shopObjects[15].type = weaponType; //Es un arma
 		shopObjects[15].nombre = "Borrador";
+		shopObjects[15].colFrame = 3;
+		shopObjects[15].FilFrame = 2;
 
 		shopObjects[16].empty = false;
 		shopObjects[16].comprado = true;
