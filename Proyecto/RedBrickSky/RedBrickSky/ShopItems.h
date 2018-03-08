@@ -77,9 +77,11 @@ public:
 		shopObjects[4].ID = 4;
 		shopObjects[4].objects = 1;
 		shopObjects[4].price = 50;
-		shopObjects[4].tx = food;
+		shopObjects[4].tx = WP;
 		shopObjects[4].type = weaponType; //Es un arma
 		shopObjects[4].nombre = "Insulto";
+		shopObjects[4].colFrame = 0;
+		shopObjects[4].FilFrame = 3;
 
 		shopObjects[5].empty = false;
 		shopObjects[5].comprado = true;
