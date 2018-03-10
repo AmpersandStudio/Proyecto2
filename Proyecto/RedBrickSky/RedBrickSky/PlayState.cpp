@@ -4,6 +4,7 @@
 #include "Button.h"
 #include "StateMachine.h"
 #include "KeyInputComponentButton.h"
+#include "KeyInputComponent.h"
 #include "MouseInputComponentButton.h"
 #include "MovementInputComponent.h"
 #include "ShopState.h"
@@ -90,6 +91,9 @@ void PlayState::initPlayer()
 
 	InputComponent* movementComp = new MovementInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d) ; // Para el jugador
 	RenderComponent* rc = new RenderFrameNDComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
+
+	//DE PABLO PARA PROBAR DIALOGOS
+	KeyInputComponent* KeyComponent = new KeyInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d);
 	
 	player_->addInputComponent(movementComp);
 	player_->addRenderComponent(rc);

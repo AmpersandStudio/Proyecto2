@@ -3,6 +3,7 @@
 #include "SDL_image.h"
 #include <iostream>
 #include <string>
+#include "Font.h"
 using namespace std;
 
 class Texture
@@ -29,6 +30,8 @@ public:
 	void renderFrame(SDL_Rect& destRect,
 		int row, int col, SDL_RendererFlip flip = SDL_FLIP_NONE);//Pinta en un destino concreto el frame concreto 
 																 //de una textura determinado por su fila y columna
+	bool Texture::loadFromText(SDL_Renderer* renderer, string text, Font* font, SDL_Color color);	//Constructora para las fuentes
+
 	void free();//Libera memoria dinamica
 	
 	SDL_Texture* getSDLText() { return TEXTURE; };

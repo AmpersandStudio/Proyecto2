@@ -13,13 +13,16 @@ Game::Game()
 	winX = winY = SDL_WINDOWPOS_CENTERED;
 	winWidth_ = 1280;
 	winHeight_ = 720;
+	Black.a = 255; Black.b = 0; Black.r = 0; Black.g = 0;	//color negro
 
 	SDL_Init(SDL_INIT_EVERYTHING);
+	TTF_Init();
 	WINDOW_ = SDL_CreateWindow("RBS", winX, winY,
 		winWidth_, winHeight_, SDL_WINDOW_SHOWN);
 	RENDERER_ = SDL_CreateRenderer(WINDOW_, -1, SDL_RENDERER_ACCELERATED);
 	if (WINDOW_ == nullptr || RENDERER_ == nullptr)
 		cout << "Error initializing SDL\n";
+
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
 		cout << "Error initializing SDL_Mixer" << endl;
@@ -29,6 +32,9 @@ Game::Game()
 
 	//Creamos maquina de estados
 	stateMachine_ = new StateMachine();
+
+	//Fuente
+	font = new Font(FONT_PATH + "OpenSans-Regular.ttf", 50);
 
 	//Cargamos las texturas
 	loadTexture("..\\images\\play.png", 1, 1);
@@ -139,4 +145,20 @@ void Game::run() {
 	}
 	stateMachine_->clearStack(); 
 	//en cuanto salgamos de la app, limpiamos la maquina de estados (vaciamos la pila y su memoria dinamica)
+}
+
+void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color color) {
+
+	SDL_Rect font_dest;
+
+	font_dest.w = destH * text.size();
+	font_dest.h = destH;
+	
+	font_dest.x = destX;
+	font_dest.y = destY;
+
+	fontTexture->loadFromText(RENDERER_, text, font, color);
+	fontTexture->render(font_dest, SDL_FLIP_NONE);
+	SDL_RenderPresent(RENDERER_);
+
 }
