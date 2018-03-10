@@ -1,0 +1,11 @@
+T1
+Hola, soy Tyler.
+
+R1
+Frase enemigo random.
+
+D1
+Hola, soy el director.
+
+E1
+Hola, soy un enemigo que hace avanzar el tiempo.

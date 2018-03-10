@@ -1,0 +1,6 @@
+Esto es la guía con los símbolos que identifican a cada personaje para escribir su diálogo
+(Estos son unos ejemplos, nada definitivo).
+
+P = Player
+D = Director
+~ = Jefe Final
