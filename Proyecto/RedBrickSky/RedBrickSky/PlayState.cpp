@@ -14,6 +14,7 @@
 #include "RenderFrameNDComponent.h"
 
 #include "PauseState.h"
+#include "MapState.h"
 
 PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 {
@@ -48,6 +49,10 @@ PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 	button2->setText(tx2); button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(rc); button2->addInputComponent(ic2);
 	stage.push_back(button2);
 
+	Button* button3 = new Button(gamePtr, toMap, 3);
+	Vector2D position3(1, 6);
+	button3->setText(tx2); button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(rc); button3->addInputComponent(ic2);
+	stage.push_back(button3);
 
 	initPlayer();
 
@@ -115,4 +120,11 @@ void PlayState::toBattle(Game* game) {
 	StateMachine* sm = game->getStateMachine();
 	sm->pushState(new TransitionState(game));
 }
+
+void PlayState::toMap(Game* game)
+{
+	StateMachine* sm = game->getStateMachine();
+	sm->pushState(new MapState(game));
+}
+
 

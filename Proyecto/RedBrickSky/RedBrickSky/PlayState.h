@@ -8,10 +8,11 @@ class PlayState :
 protected:
 	GameComponent* player_;
 
-
 	// Métodos
 	void initPlayer();
 	static void toBattle(Game * game);
+	static void toMap(Game* game);
+
 public:
 	PlayState(Game* gamePtr);
 	virtual ~PlayState();

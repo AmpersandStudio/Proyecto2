@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" nextobjectid="2">
+ <properties>
+  <property name="helicopter" value="assets/helicopter16.png"/>
+ </properties>
+ <tileset firstgid="1" name="pokemon" tilewidth="16" tileheight="16" tilecount="104" columns="8">
+  <image source="pokemon.png" width="128" height="208"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1csKgzAQheF5gq59CumqLnpbSLXv/0SdQAItNBcxMgz8HxwEMZBDLo4iMnaMlZ4d6LEfPehxBHr47HFq/M5Kbj53zSOTZ2Gcldx8Xpqb+O+Ruizy2+eqWQtjrLTs+e89FtZiiO/f8XkWnz08nXPWw8bWHrPm8ieT+OpR+6dYaemR7t9S0l1spaVHSK2H9fkAAAAAAAAAAAD7fQDSBk0b
+  </data>
+ </layer>
+ <layer name="Interactuable" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztz6ENADAMBLHMk/0HLAktK+hHtnQDXBUAAK/1lK5rx0tfSrP9I+3HBwAAAAAAwH8O3sUGuw==
+  </data>
+ </layer>
+ <layer name="Colisiones" width="50" height="50">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0L0KwjAYheFPQUVBnGo3RxfFe+jYOhUH/wa9/6vwLEIpSakYaKLvgWdJO+TNyMy2gYzlMJC9hduODjocHROZ9jCLvGPpuV97Kzro+KAjk7VD3vqem3uxdPTdM7GOi+f8lFjHVSo5Ns5KuSfW8V7z/euO/+ig4987zj/S0bXYOx5SyM2jiKBjLptAFgN2AAAAAAAAAACA770At4qO/Q==
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1">
+  <object id="1" name="Helicopter1" type="Player" x="17" y="3" width="25.087" height="24.087">
+   <properties>
+    <property name="numFrames" type="int" value="4"/>
+    <property name="textureHeight" type="int" value="16"/>
+    <property name="textureID" value="helicopter"/>
+    <property name="textureWidth" type="int" value="16"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

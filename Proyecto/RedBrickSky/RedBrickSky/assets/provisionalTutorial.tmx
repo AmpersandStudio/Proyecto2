@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="33">
+ <properties>
+  <property name="helicopter" value="assets/helicopter.png"/>
+ </properties>
+ <tileset firstgid="1" name="Patrones1" tilewidth="32" tileheight="32" tilecount="168" columns="14">
+  <image source="Tileset_1.png" width="448" height="384"/>
+ </tileset>
+ <layer name="Collisions" width="50" height="100">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmEESwyAIRb1V7n+zbjstAiYoH/LfjBul6Ksxaq4xxtWkDIAxRIydHvllp8cQckp19Jh7oEKP/zxZeJ/XN3lUgB5YdPOI3v8y+u40H9WhBxb0wIIeWHAfxALZQ7pbzMaK6HHnGUL1WI2hBxb0wIIeWHT0qHxe0fb8t3rsjrdy0eNsvJXLOkNq/UXeo55Q7b00gx5YdFwfHd5XUl567Im3cnU8X3U471aGHljQAwt6YEEPLOiBBT2woMd+pHuEVRDp4HHHAdVjNZ4e+6AHFpkekd/h6IEF5+M50R5Z+7k335247HJ6XL/9af+R1hY5H1YOKacW423ztK/GeX9f1UPKF+mRQfT6OMnOde5pX43z8u3heY9YMV08sujoodVp9Qggj20FemBBDywiPU6e22c5I3PR43nf1enm0aF8AEdHwjk=
+  </data>
+ </layer>
+ <layer name="Floor" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt3D1PwzAUheEMIGAFASsIOjABRYylrRihBf7/n8FWFcmK0uRc+zq+bs/wLiDFeZoPHDdi2TTNyvVeaX7f164lHSaiw1Zdx2eldR01d0yObcH9Q8cec/jfLwBrjtqxNRy+eQGDdOxjuj5qyDs2ze560ujP9QumNabvx/WkmMShOa7vC2wBdO26AboFtyfZtzPX+UgXhRzIvrX7h4yNjqvtkGyPDjrooIOO9O09uB6BZsYdz4IQ82xiR8wcCfVO6Riaj6BzpJS0HEPbQc9JC46hcx09xy04NM5xC47S0WErOnQLx6KDDjr2O9A1sLAUR8x4YeHcMhwLWf/qhhhStj8U+hlaL5xbhj9Hnie7ScaN2f5Q4TwyHEf6fPUiOLbt9SF5bpXMgVPuVx8RDov3XTroyBEdtqLDVnTYig5b0WErOmx1KI7vwg7kuzft9ZIcjrFt51hPyeFAvntDv48v6UBC1iti1ksspn2/OnGdCsrpeG1270S/RTguXVeCcjm8YRUUWmpxdA1dSw2OfYbQYt0xZggtlh3oO/9rYHt02HLcue4FaTkWyo5SaR8PjfbNy8ccG9CxncjRN09C7vnIMdE4Fn3vL2o5JH8/5hk+Z03HVNfHoTj6nutqdKQcNzroSK3vOhp7j9miIyY6bEWHreiwFR06pb43GyZxaI7ra9eSNUIMbVpjtuvg/H8ZdvL/L+MfN/fztA==
+  </data>
+ </layer>
+ <layer name="Top" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2zkOwjAQQFHXbDVbzZIaOABw/zPhiJSYOIlEcPSe9BsrkieNuwnh7RA7FtYpTN8ytupx9umbLvf0vZd2u9g+4yzHLDZPtBgwY45zU9tZjnVsk2g7YMZf+/aOlvReXWLXRLcR5+pqKv9xjz0SPUecCwAAAAAAAAAAAAAAAJi2evexCv32H/9JvfdYNQEAAACU4gUlUBGL
+  </data>
+ </layer>
+ <layer name="Top-Top" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzrEJwDAMRUHvkSxg4z3i/SeyWqcLThCEO3ioUfFLAYB/O6Ize8QLatSyRwAAAAAAAAAAAAAAAACfuKLxMFb9dnf/AAAAALJMCvgE4g==
+  </data>
+ </layer>
+ <layer name="Fences&amp;Trees" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztmwlOwzAQRXMfygGqHgBuxb5IDfvWlB0uyoyUSJFpHDuZ1t/TedJXTZg6/nhcO9idFvkzI01TN0IA84GF+cDCfGAR4qPcRENG3jvEx3JkW8YQeu9tyqsc0ORjlroRAmjw0KAlr8wHDuYDC/OBhSYfL6SJkGKQuuek9vASeX9EkH2UrdfSueaC6GNRa9l6XTrXFs57UH3ExmjycbmGtmwa9vCcuhECsAe0vBqC5RUWmvLKfOAg6SO2Hsm/H9c1r8vuHBkyr7p1rTO+r66qLufsg/tiUaxeQ3Zdd9vSVgxj3utSCdSBgJbPK0aDD/agYXwwzTNvzp9X7KHZS8zZB3uQ2ldG6Y+ckeyPlGjqDy3zh+UVDpZXWFheYaHl+cN8YKHJR9UbhY+W/kD+vw/PbfNaXeX2z6g+qkgh+tgphp3NQCP27A7vq2nwgbqvZv2BRawPyXlw3h8SHJ8yr2LXN774bc0ryf6Ifc73xafsD8m8YrrWUU25dMpSPg5Ih6Qjobgh66tmjbJbDFvbsK5I16Sb1rU2vjiJc69uLvr2b3y/eyW9kd49MTFxPtx2rDpPPdQHE3qWa+yZr3X7CD3LJX3mS9pHCrhNufrYK/6P9RzHh0u7P45JJ6RTT3xfDML4uCXdke498SExKWj7+CB9kr488SExKega56vGQd9Zk5Ro+l6R+cDBfGAh6eOMdE66EIqLQdLHA+mR9CQUF4Okj2/SD+lXKC4GGx9YNN+v3c9c7OEP/XDnLA==
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="28" name="Player" type="Player" x="85.576" y="350" width="63.6364" height="69.697">
+   <properties>
+    <property name="numFrames" type="int" value="4"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="helicopter"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

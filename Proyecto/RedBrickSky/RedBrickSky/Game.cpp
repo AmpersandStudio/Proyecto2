@@ -7,6 +7,8 @@
 #include "PlayState.h"
 #include "MainMenuState.h"
 
+Game* Game::s_pInstance = 0;
+
 Game::Game()
 {
 	int winX, winY;

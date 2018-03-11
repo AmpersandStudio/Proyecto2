@@ -15,6 +15,10 @@ class PlayState;
 class Game
 {
 private:
+	Game();
+	~Game();
+	static Game* s_pInstance;
+
 	SDL_Window* WINDOW_; //punteros de SDL
 	SDL_Renderer* RENDERER_;
 	bool error_; bool exit_; //booleanos de control
@@ -28,8 +32,15 @@ private:
 	Texture* fontTexture = nullptr;	//textura para la fuente
 
 public:
-	Game();
-	~Game();
+	static Game* Instance()
+	{
+		if (s_pInstance == 0)
+		{
+			s_pInstance = new Game();
+		}
+		return s_pInstance;
+	}
+
 	void loadTexture(string filename, int rows, int cols); //se encarga de cargar las texturas y llamar a su constructora
 	void render(); //recorre la lista de game characters y llama a sus metodos render
 	void update(); //recorre la lista de game characters y llama a sus metodos update
@@ -48,3 +59,4 @@ public:
 	SDL_Color getBlackColor() { return Black; };
 };
 
+typedef Game TheGame;
