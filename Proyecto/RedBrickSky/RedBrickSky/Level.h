@@ -5,6 +5,7 @@
 
 #include "Layer.h"
 #include "LevelParser.h"
+#include "Player.h"
 #include "CollisionManager.h"
 
 class TileLayer;
@@ -32,10 +33,9 @@ public:
 	std::vector<Tileset>* getTilesets() { return &m_tilesets; }
 	std::vector<Layer*>* getLayers() { return &m_layers; }
 	std::vector<TileLayer*>* getCollisionLayers() { return &m_collisionLayers; }
-	// const std::vector<TileLayer*>& getCollidableLayers() { return m_collisionLayers; }
 
-	// cuando tengamos un Player definirlo aqui
-
+	Player* getPlayer() { return m_pPlayer; }
+	void setPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
 	void setTilewidth(int w) { m_tileWidth = w; }
 	void setTileheight(int h) { m_tileHeight = h; }
 
@@ -49,5 +49,7 @@ private:
 
 	int m_tileWidth;	// ancho de tile del nivel
 	int m_tileHeight;	// alto de tile del nivel
+
+	Player* m_pPlayer;
 };
 
