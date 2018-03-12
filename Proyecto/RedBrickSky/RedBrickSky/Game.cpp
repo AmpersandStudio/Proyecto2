@@ -7,6 +7,7 @@
 #include "PlayState.h"
 #include "MainMenuState.h"
 
+
 Game* Game::s_pInstance = 0;
 
 Game::Game()
@@ -37,6 +38,7 @@ Game::Game()
 
 	//Fuente
 	font = new Font(FONT_PATH + "OpenSans-Regular.ttf", 50);
+	fontTexture = new Texture(RENDERER_);
 
 	//Cargamos las texturas
 	loadTexture("..\\images\\play.png", 1, 1);
@@ -167,6 +169,7 @@ void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color c
 	font_dest.x = destX;
 	font_dest.y = destY;
 
+	//TTF_OpenFont();
 	fontTexture->loadFromText(RENDERER_, text, font, color);
 	fontTexture->render(font_dest, SDL_FLIP_NONE);
 	SDL_RenderPresent(RENDERER_);

@@ -29,8 +29,6 @@ void Font::free()
 
 SDL_Surface* Font::generateSurface(std::string text, SDL_Color color) const
 {
-	if (font_)
 		return TTF_RenderText_Solid(font_, text.c_str(), color);
-	else
-		return nullptr;
+	
 }

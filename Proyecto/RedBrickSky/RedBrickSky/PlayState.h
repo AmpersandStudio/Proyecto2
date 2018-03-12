@@ -12,6 +12,7 @@ protected:
 	void initPlayer();
 	static void toBattle(Game * game);
 	static void toMap(Game* game);
+	Game* g = nullptr;
 
 public:
 	PlayState(Game* gamePtr);

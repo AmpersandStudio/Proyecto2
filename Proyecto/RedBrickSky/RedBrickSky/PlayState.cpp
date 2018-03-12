@@ -16,10 +16,15 @@
 #include "PauseState.h"
 #include "MapState.h"
 
+//Para probar lo de los dialogos
+#include "Dialogue.h"
+
 PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 {
 	//ESTO ES DE JAVI, UN BOTON QUE TE LLEVA A LA TIENDA DESDE DENTRO DEL JUEGO PORQUE GAME STATE ES EL QUE TIENE LA INFO DE LA MOCHILA,
 	//MODIFICAD LA POSICION SI QUEREIS PERO DECIDMELO PLS
+
+	g = gamePtr;
 
 	Button* button0 = new Button(gamePtr, toGame, 0);
 	Texture* tx0 = gamePtr->getTexture(2);
@@ -73,6 +78,14 @@ bool PlayState::handleEvent(SDL_Event & event)
 			game_->getStateMachine()->pushState(new PauseState(game_));
 		else if (event.key.keysym.sym == SDLK_i)
 			game_->getStateMachine()->pushState(new BackPack(game_));
+
+		//CERDADA PARA PROBAR LA CLASE DE TEXTOS
+		else if (event.key.keysym.sym == SDLK_t)
+			{
+				int level_dialogues = 1;
+				Dialogue d = Dialogue(level_dialogues);
+				g->textPrinter(d.getText('E', 1), 200, g->getWinWidth() / 3, g->getWinHeight() / 2, g->getBlackColor());
+			}
 	}
 	// 2) LLama a los input de cada objeto del propio estado
 	return GameState::handleEvent(event);

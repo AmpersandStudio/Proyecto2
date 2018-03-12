@@ -43,12 +43,6 @@ bool KeyInputComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 				position.setX(posX);
 			o->setPosition(position);
 		}
-		else if (event.key.keysym.sym == SDLK_t)
-		{
-			int level_dialogues = 1;
-			Dialogue d = Dialogue(level_dialogues);
-			o->getGame()->textPrinter(d.getText('E', 1), 200, o->getGame()->getWinWidth() / 3, o->getGame()->getWinHeight() / 2, o->getGame()->getBlackColor());
-		}
 	}
 	return handledEvent;
 }

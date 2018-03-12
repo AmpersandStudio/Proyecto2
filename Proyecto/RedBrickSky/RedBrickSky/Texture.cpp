@@ -71,8 +71,10 @@ bool Texture::loadFromText(SDL_Renderer* renderer, string text, Font* font, SDL_
 
 }
 
+
 void Texture::free() {
 	//Liberacion de memoria adicional
+	
 	SDL_DestroyTexture(TEXTURE);
 	TEXTURE = nullptr;
 	W = H = 0;
