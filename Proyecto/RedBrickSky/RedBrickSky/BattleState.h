@@ -24,6 +24,9 @@ typedef struct {
 	//TEXTURAS UI
 	Texture* cuadro_principal;
 	Texture* cuadro_personaje;
+	Texture* cuadro_enemigo;
+	Texture* cuadro_ataque;
+	Texture* ground;
 	Texture* Vida;
 	Texture* botones;
 
@@ -50,6 +53,11 @@ public:
 	virtual void render();
 	virtual bool handleEvent(SDL_Event & event);
 	void init();
+
+protected:
+	battle_UI interfaz;
+	bool attackMode;
+
 private:
 	Combat c;
 
@@ -59,7 +67,6 @@ private:
 	InputComponent* MIC;
 	InputComponent* Info;
 	Game* game;
-	battle_UI interfaz;
 
 	GameComponent* fade_;
 	int alpha_;

@@ -70,6 +70,14 @@ Game::Game()
 	loadTexture("..\\images\\transition.png", 1, 1);//22
 	loadTexture("..\\images\\go.png", 1, 1); //23
 
+	//battleState boxes
+	loadTexture("..\\images\\bigbox.png", 1, 1); //24
+	loadTexture("..\\images\\enemyBox.png", 1, 1);
+	loadTexture("..\\images\\playerBox.png", 1, 1);
+	loadTexture("..\\images\\ground.png", 1, 1);
+	loadTexture("..\\images\\buttonArea.png", 1, 1);
+	loadTexture("..\\images\\emptyBox.png", 1, 1);
+
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
 

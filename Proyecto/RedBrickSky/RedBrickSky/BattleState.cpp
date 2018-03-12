@@ -4,10 +4,13 @@ BattleState::BattleState(Game* gamePtr) : GameState(gamePtr)
 {
 
 	//Texturas necesitadas
-	interfaz.cuadro_principal = gamePtr->getTexture(17);
-	interfaz.cuadro_personaje = gamePtr->getTexture(19);
-	interfaz.Vida = gamePtr->getTexture(20);
-	interfaz.botones = gamePtr->getTexture(18);
+	interfaz.cuadro_principal = gamePtr->getTexture(24);
+	interfaz.cuadro_personaje = gamePtr->getTexture(26);
+	interfaz.cuadro_enemigo = gamePtr->getTexture(25);
+	interfaz.cuadro_ataque = gamePtr->getTexture(29);
+	interfaz.Vida = gamePtr->getTexture(28);
+	interfaz.botones = gamePtr->getTexture(28);
+	interfaz.ground = gamePtr->getTexture(27);
 
 	//JR para el inicio
 	Texture* fadeTx = gamePtr->getTexture(23); 
@@ -40,6 +43,11 @@ void BattleState::buttonsToAttack(Game* gamePtr) {
 	interfaz.button_1 = new Button(game, XXXXXXX, 1);
 	interfaz.button_2 = new Button(game, XXXXXXX, 2);
 	interfaz.button_3 = new Button(game, XXXXXXX, 3);*/
+
+	//totalmente consciente de la guarrada, solo es para probar
+	GameState* gs = gamePtr->getStateMachine()->currentState();
+	BattleState* bs = static_cast<BattleState*>(gs);
+	bs->attackMode = !bs->attackMode;
 }
 
 void BattleState::tryEscape(Game* gamePtr) {
@@ -112,9 +120,26 @@ void BattleState::createUI() {
 	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, "Aquí van los mensajes de batalla", Black);
 	SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);*/
 
+	GameComponent* ground = new GameComponent(game);
+	ground->setText(interfaz.ground);
+	Vector2D pos(1, 1.5);
+	ground->setPosition(pos);
+	ground->setWidth(200); ground->setHeight(200);
+	RenderComponent* rc = new RenderFrameComponent();
+	ground->addRenderComponent(rc);
+	stage.push_back(ground);
+
+	GameComponent* ground2 = new GameComponent(game);
+	ground2->setText(interfaz.ground);
+	Vector2D pos2(4.325, 1.5);
+	ground2->setPosition(pos2);
+	ground2->setWidth(200); ground2->setHeight(200);
+	RenderComponent* rc2 = new RenderFrameComponent();
+	ground2->addRenderComponent(rc2);
+	stage.push_back(ground2);
+
 	//fade inicial
 	stage.push_back(fade_);
-
 }
 
 void BattleState::createCharacterInfo()
@@ -123,18 +148,18 @@ void BattleState::createCharacterInfo()
 
 	//Cuadro Jugador
 	GameComponent* UI_Player = new GameComponent(game);
-	position0.setX(0.5); position0.setY(0.5);
+	position0.setX(0.3); position0.setY(0.5);
 	UI_Player->setText(interfaz.cuadro_personaje);
-	UI_Player->setWidth(200); UI_Player->setHeight((120));
+	UI_Player->setWidth(340); UI_Player->setHeight((150));
 	UI_Player->setPosition(position0);
 	UI_Player->addRenderComponent(rcF);
 	stage.push_back(UI_Player);
 
 	//Cuadro Enemigo
 	GameComponent* UI_Enemy = new GameComponent(game);
-	position0.setX(4.8); position0.setY(0.5);
-	UI_Enemy->setText(interfaz.cuadro_personaje);
-	UI_Enemy->setWidth(200); UI_Enemy->setHeight((120));
+	position0.setX(2.45); position0.setY(0.5);
+	UI_Enemy->setText(interfaz.cuadro_enemigo);
+	UI_Enemy->setWidth(340); UI_Enemy->setHeight((150));
 	UI_Enemy->setPosition(position0);
 	UI_Enemy->addRenderComponent(rcF);
 	stage.push_back(UI_Enemy);
@@ -150,27 +175,27 @@ void BattleState::createBattleButtons()
 
 	//Boton 0
 	interfaz.button_0 = new Button(game, buttonsToAttack, 0);
-	position0.setX(3); position0.setY(7.2);
-	interfaz.button_0->setText(interfaz.botones); interfaz.button_0->setPosition(position0); interfaz.button_0->setWidth(buttonWidth); interfaz.button_0->setHeight(buttonHeight);
+	position0.setX(3); position0.setY(3.6);
+	interfaz.button_0->setText(interfaz.botones); interfaz.button_0->setPosition(position0); interfaz.button_0->setWidth(buttonWidth); interfaz.button_0->setHeight(buttonHeight*2);
 	interfaz.button_0->addRenderComponent(rcF); interfaz.button_0->addInputComponent(MIC);
 	stage.push_back(interfaz.button_0);
 
 	//Boton 1
-	interfaz.button_1 = new Button(game, tryEscape, 1);
+	interfaz.button_1 = new Button(game, usePotion, 1);
 	position0.setX(4.2); position0.setY(7.2);
 	interfaz.button_1->setText(interfaz.botones); interfaz.button_1->setPosition(position0); interfaz.button_1->setWidth(buttonWidth); interfaz.button_1->setHeight(buttonHeight);
 	interfaz.button_1->addRenderComponent(rcF); interfaz.button_1->addInputComponent(MIC);
 	stage.push_back(interfaz.button_1);
 
 	//Boton 2
-	interfaz.button_2 = new Button(game, usePotion, 2);
-	position0.setX(3); position0.setY(8.4);
-	interfaz.button_2->setText(interfaz.botones); interfaz.button_2->setPosition(position0); interfaz.button_2->setWidth(buttonWidth); interfaz.button_2->setHeight(buttonHeight);
-	interfaz.button_2->addRenderComponent(rcF); interfaz.button_2->addInputComponent(MIC);
-	stage.push_back(interfaz.button_2);
+	//interfaz.button_2 = new Button(game, specialAttack, 2);
+	//position0.setX(3); position0.setY(8.4);
+	//interfaz.button_2->setText(interfaz.botones); interfaz.button_2->setPosition(position0); interfaz.button_2->setWidth(buttonWidth); interfaz.button_2->setHeight(buttonHeight);
+	//interfaz.button_2->addRenderComponent(rcF); interfaz.button_2->addInputComponent(MIC);
+	//stage.push_back(interfaz.button_2);
 
 	//Boton 3
-	interfaz.button_3 = new Button(game, specialAttack, 3);
+	interfaz.button_3 = new Button(game, tryEscape, 3);
 	position0.setX(4.2); position0.setY(8.4);
 	interfaz.button_3->setText(interfaz.botones); interfaz.button_3->setPosition(position0); interfaz.button_3->setWidth(buttonWidth); interfaz.button_3->setHeight(buttonHeight);
 	interfaz.button_3->addRenderComponent(rcF); interfaz.button_3->addInputComponent(MIC);
@@ -224,9 +249,9 @@ void BattleState::updateVidas()
 	interfaz.UI_Vida_Player = new GameComponent(game);
 	interfaz.UI_Vida_Enemy = new GameComponent(game);
 
-	Vector2D position0(0.75, 6.6);
+	Vector2D position0(1.25, 8);
 	interfaz.VPlayer_position = position0;
-	Vector2D position1(6.13, 6.6);
+	Vector2D position1(5.65, 8);
 	interfaz.VEnemy_position = position1;
 
 	interfaz.UI_Vida_Player->setText(interfaz.Vida);
@@ -259,6 +284,14 @@ bool BattleState::isButton(GameObject * object)
 }
 
 void BattleState::update() {
+	SDL_SetTextureAlphaMod(interfaz.botones->getSDLText(), 50); //para delimitar los botones
+	
+	//para comprobar el cambio de textura
+	if (!attackMode)
+		stage[0]->setText(interfaz.cuadro_principal); 
+	else
+		stage[0]->setText(interfaz.cuadro_ataque);
+
 	if (!fade2Done_ && fadeDone_)
 		init();
 	else if (fade2Done_) {
