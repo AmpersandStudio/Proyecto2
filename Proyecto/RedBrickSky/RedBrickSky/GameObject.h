@@ -10,10 +10,12 @@
 class GameObject
 {
 protected:
-	Game* game_; // by cleon, puede que no sea const
+	Game* game_ = nullptr; // by cleon, puede que no sea const
 
-	Texture* text_;
+	Texture* text_ = nullptr;
+	string textureId_ = "";	// id para TextureManager (key)
 
+	// NCM: deberiamos inicializar todo en la constructora
 	Vector2D position_ = Vector2D(0,0);
 	Vector2D iniPosition_ = Vector2D(0, 0);
 	Vector2D velocity_ = Vector2D(0, 0);
@@ -24,10 +26,19 @@ protected:
 
 	int colFrame_ = 0;
 	int rowFrame_ = 0;
+	int numFrames_ = 0;
+	int animSpeed_ = 0;
+
+	int alpha_ = 255;
+	double angle_ = 0;
+	int callbackId_ = 0;
 
 public:
 	GameObject(Game* gamePtr);
 	virtual ~GameObject();
+
+	int getCallbackId() const { return callbackId_; };
+	void setCallbackId(int id) { callbackId_ = id; };
 
 	//para poder acceder al juego desde los go
 	Game* getGame() const { return game_; };
@@ -35,6 +46,22 @@ public:
 	//para poder modificar la textura del go
 	Texture* getText() const { return text_; };
 	void setText(Texture* t) { text_ = t; };
+	string getTextureId() { return textureId_; };
+	void setTextureId(string s) { textureId_ = s; };
+	int getAlpha() const { return alpha_; };
+	void setAlpha(int a) { alpha_ = a; };
+	double getAngle() const { return angle_; };
+	void setAngle(double a) { angle_ = a; };
+
+	//para obtener o cambiar su posicion y direccion
+	const Vector2D& getPosition() const { return position_; };
+	void setPosition(const Vector2D &pos) { position_ = pos; };
+	const Vector2D& getOriPos() const { return iniPosition_; };
+	void setOriPos(const Vector2D &pos) { iniPosition_ = pos; };
+	const Vector2D& getDirection() const { return direction_; };
+	void setDirection(const Vector2D &dir) { direction_ = dir; direction_.normalize(); };
+	const Vector2D& getVel() const { return velocity_; };
+	void setVel(const Vector2D &vel) { velocity_ = vel; };
 
 	//para obtener o cambiar las dimensiones del go
 	inline double getWidth() const { return width_; };
@@ -48,18 +75,10 @@ public:
 	void setRowFrame(int rf) { rowFrame_ = rf; };
 	int getColFrame() const { return colFrame_; };
 	void setColFrame(int cf) { colFrame_ = cf; };
-
-	//para obtener o cambiar su posiciobn y direccion
-	const Vector2D& getPosition() const { return position_; };
-	void setPosition(const Vector2D &pos) { position_ = pos; };
-	const Vector2D& getOriPos() const { return iniPosition_; };
-	void setOriPos(const Vector2D &pos) { iniPosition_ = pos; };
-
-	const Vector2D& getDirection() const { return direction_; };
-	void setDirection(const Vector2D &dir) { direction_ = dir; direction_.normalize(); };
-
-	const Vector2D& getVel() const { return velocity_; };
-	void setVel(const Vector2D &vel) { velocity_ = vel; };
+	int getNumFrames() const { return numFrames_; };
+	void setNumFrames(int n) { numFrames_ = n; };
+	int getAnimSpeed() const { return animSpeed_; };
+	void setAniMSpeed(int a) { animSpeed_ = a; };
 
 	//metodos abstractos que se redifiniran en clases hijas
 	virtual bool handleEvent(const SDL_Event& event) = 0;

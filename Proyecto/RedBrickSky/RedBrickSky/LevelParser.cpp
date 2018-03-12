@@ -118,6 +118,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			type = e->Attribute("type");
 
 			// CREAR EL OBJETO EN FUNCION DE SU TIPO
+			// Necesitamos la GameObjectFactory para que esto funcione adecaudamente
 			//GameObject* pGameObject = TheGameObjectFactory::Instance()->create(type);
 
 			// get the property values
@@ -159,13 +160,21 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			}
 
 			// ASIGNAR VALORES AL OBJETO CREADO
+			// Si implementamos el metodo load() a la clase GameObject para que funcione
+			// la GameObjectFactory aqui cargariamos los parametros que acabamos de parsear
 			//pGameObject->load(new LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
 
 			// SI ES EL PLAYER, ASIGNARLO AL NIVEL
-			//if (type == "Player")
-			//{
-			//	pLevel->setPlayer(dynamic_cast<Player*>(pGameObject));
-			//}
+			// Codigo temporal: cuando implementemos la GameObjectFactory solo hara falta setear
+			// al player en el nivel (utilizando un static_cast); ahora ademas tenemos que crearlo
+			if (type == "Player")
+			{
+				Player* pPlayer = new Player(TheGame::Instance(), Vector2D(x, y), width, height, textureID, numFrames, callbackID, animSpeed);
+				pLevel->setPlayer(pPlayer);
+				pObjectLayer->getGameObjects()->push_back(pPlayer);
+
+				//pLevel->setPlayer(static_cast<Player*>(pGameObject));
+			}
 
 			//pObjectLayer->getGameObjects()->push_back(pGameObject);
 		}
