@@ -139,6 +139,8 @@ void BackPack::creaSP() {
 	
 	for (int i = 0; i < numFils; i++)
 		for (int j = 0; j < numRows; j++) {
+
+			estado s;
 			double width = 70;
 			double height = 70;
 			matriz[i][j].empty = true;

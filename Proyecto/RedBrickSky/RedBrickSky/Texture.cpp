@@ -31,7 +31,7 @@ void Texture::load(int rows, int cols) {
 
 void Texture::render(const SDL_Rect& rect, SDL_RendererFlip flip) {
 	SDL_RenderCopy(RENDERER, TEXTURE, &rect, nullptr);
-	SDL_RenderPresent(RENDERER);
+	//SDL_RenderPresent(RENDERER);
 }
 
 void Texture::renderComplete() {
