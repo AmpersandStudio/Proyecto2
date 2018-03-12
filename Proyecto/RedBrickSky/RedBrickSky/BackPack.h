@@ -35,7 +35,6 @@ private:
 	InputComponent* DND2;
 	InputComponent* Info;
 
-	Game* game;
 	int money;
 
 	vector<estado> invent;
@@ -62,13 +61,13 @@ private:
 	GameComponent* selector_;
 
 public:
-	BackPack(Game* gamePtr);
+	BackPack();
 	virtual ~BackPack();
 
 
 	virtual bool handleEvent(SDL_Event& event);
 
-    static void toMenu(Game* game);
+    static void toMenu();
 	vector<estado> getSP() { return SP; };
 	vector<estado> getInvent() { return invent; };
 	void setInvent(vector<estado> v);

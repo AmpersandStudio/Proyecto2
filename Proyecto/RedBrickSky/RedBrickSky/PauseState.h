@@ -5,11 +5,11 @@ class PauseState :
 	public GameState
 {
 public:
-	PauseState(Game* gamePtr);
+	PauseState();
 	virtual ~PauseState();
 
 	virtual bool handleEvent(SDL_Event& event);
-	static void resume(Game * game);
-	static void toMenu(Game* game);
+	static void resume();
+	static void toMenu();
 };
 

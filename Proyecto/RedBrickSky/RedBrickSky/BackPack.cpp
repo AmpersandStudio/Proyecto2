@@ -3,21 +3,18 @@
 #include "InventBottomsComponent.h"
 #include "InventoryShopFBcomponent.h"
 
-BackPack::BackPack(Game* gamePtr) : GameState (gamePtr)
+BackPack::BackPack()
 {
-
-	game = gamePtr;
-
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
 	cout << invent.size() << endl;
 	//Texturas necesitadas
-	back = gamePtr->getTexture(9);
-	standPoint = gamePtr->getTexture(8);
-	front = gamePtr->getTexture(10);
-	bot = gamePtr->getTexture(3); //Para el botón
-	food = gamePtr->getTexture(4); //Item1
-	food2 = gamePtr->getTexture(5);
+	back = Game::Instance()->getTexture(9);
+	standPoint = Game::Instance()->getTexture(8);
+	front = Game::Instance()->getTexture(10);
+	bot = Game::Instance()->getTexture(3); //Para el botón
+	food = Game::Instance()->getTexture(4); //Item1
+	food2 = Game::Instance()->getTexture(5);
 
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
@@ -49,15 +46,15 @@ bool BackPack::handleEvent(SDL_Event & event)
 		if (event.type == SDL_KEYDOWN)
 		{
 			if (event.key.keysym.sym == SDLK_ESCAPE)
-				toMenu(game);	
+				toMenu();	
 		}
 		// 2) LLama a los input de cada objeto del propio estado
 		return GameState::handleEvent(event);
 }
 
-void BackPack::toMenu(Game* game) {
+void BackPack::toMenu() {
 	
-	StateMachine* sm = game->getStateMachine();
+	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->popState();
 }
 
@@ -119,7 +116,7 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 	matriz[x][y].colFrame = st.colFrame;
 	matriz[x][y].FilFrame = st.FilFrame;
 
-	GameComponent* gc = new GameComponent(game);
+	GameComponent* gc = new GameComponent();
 	Vector2D position0(matriz[x][y].x, matriz[x][y].y);
 
 	gc->setText(matriz[x][y].tx); gc->setPosition(position0); gc->setWidth(matriz[x][y].w); gc->setHeight(matriz[x][y].h);
@@ -160,7 +157,7 @@ void BackPack::creaSP() {
 
 			matriz[i][j].x = position0.getX();
 			matriz[i][j].y = position0.getY();
-			GameComponent* gc = new GameComponent(game);
+			GameComponent* gc = new GameComponent();
 			//InputComponent* auxSCP = new MouseScrollComponent();
 			//InputComponent* mooCP = new MouseOverObjectComponent();
 
@@ -177,20 +174,20 @@ void BackPack::creaSP() {
 	actFilas = 1;
 
 	//Creacion del botón que nos devolverá a los anteriores
-	GameComponent* weapon = new GameComponent(game);
+	GameComponent* weapon = new GameComponent();
 
 	Vector2D positionW(7, 6);
 
-	weapon->setText(game->getTexture(2)); weapon->setPosition(positionW); weapon->setWidth(150); weapon->setHeight(100);
+	weapon->setText(Game::Instance()->getTexture(2)); weapon->setPosition(positionW); weapon->setWidth(150); weapon->setHeight(100);
 	weapon->addRenderComponent(rcF);  weapon->addInputComponent(new InventBottomsComponent(this, Weapons, true));
 
 	stage.push_back(weapon);
 	botones.push_back(weapon);
 
 	//Creamos el elemento que nos permitirá movernos con teclado
-	selector_ = new GameComponent(game);
+	selector_ = new GameComponent();
 
-	selector_->setText(game->getTexture(12)); selector_->setPosition(selecPos);
+	selector_->setText(Game::Instance()->getTexture(12)); selector_->setPosition(selecPos);
 	selector_->setWidth(70); selector_->setHeight(70);
 	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), numRows, numFils, auxD, StandPointsO, this));
 	//selector_->addInputComponent(MSC);
@@ -216,7 +213,7 @@ void BackPack::creaEscena() {
 	creaFondoTienda();
 
 	//Creamos botón para volver al menú principal y los de cada clase
-	Button* bottonBack = new Button(game, toMenu, 0);
+	Button* bottonBack = new Button(toMenu, 0);
 
 	Vector2D position0(7, 0);
 
@@ -245,18 +242,18 @@ void BackPack::creaEscena() {
 void BackPack::creaFondoTienda() {
 
 	//Imagen de fondo de la tienda
-	GameComponent* backShop = new GameComponent(game);
+	GameComponent* backShop = new GameComponent();
 	backShop->setText(back); backShop->addRenderComponent(rc);
 	stage.push_back(backShop);
 }
 
 void BackPack::createButtons(int x, int y, vector<estado> type, int t) {
 
-	GameComponent* GC = new GameComponent(game);
+	GameComponent* GC = new GameComponent();
 
 	Vector2D position(x, y);
 
-	GC->setText(game->getTexture(t)); GC->setPosition(position); GC->setWidth(150); GC->setHeight(100);
+	GC->setText(Game::Instance()->getTexture(t)); GC->setPosition(position); GC->setWidth(150); GC->setHeight(100);
 	GC->addRenderComponent(rcF);  GC->addInputComponent(new InventBottomsComponent(this, type, false));
 
 	stage.push_back(GC);

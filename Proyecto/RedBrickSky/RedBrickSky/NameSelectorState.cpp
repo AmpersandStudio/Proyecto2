@@ -3,20 +3,20 @@
 #include "KeyInputComponent.h"
 #include "GameManager.h"
 
-NameSelectorState::NameSelectorState(Game* gamePtr) : GameState(gamePtr)
+NameSelectorState::NameSelectorState()
 {
-	selector_ = new GameComponent(gamePtr);
-	letters_ = new GameComponent(gamePtr);
+	selector_ = new GameComponent();
+	letters_ = new GameComponent();
 
-	Texture* abcdary_ = gamePtr->getTexture(11); //letras
-	Texture* tx0 = gamePtr->getTexture(12); //selector
+	Texture* abcdary_ = Game::Instance()->getTexture(11); //letras
+	Texture* tx0 = Game::Instance()->getTexture(12); //selector
 
 	Vector2D position0(0, 0);
 
 	int rows = 6;
 	int cols = 9;
-	int selectorWidth = gamePtr->getWinWidth() / cols;
-	int selectorHeight = gamePtr->getWinHeight() / rows;
+	int selectorWidth = Game::Instance()->getWinWidth() / cols;
+	int selectorHeight = Game::Instance()->getWinHeight() / rows;
 
 	RenderComponent* rc = new RenderFrameComponent();
 	RenderComponent* rc2 = new RenderFullComponent();

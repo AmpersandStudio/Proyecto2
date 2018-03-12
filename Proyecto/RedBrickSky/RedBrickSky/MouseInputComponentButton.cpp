@@ -16,7 +16,6 @@ bool MouseInputComponentButton::handleEvent(GameObject* o, const SDL_Event& even
 		int y = 0;
 		SDL_GetMouseState(&x, &y); //comprobamos donde se ha producido el click
 
-		Game* g = o->getGame();
 		Vector2D position = o->getPosition();
 
 		//si el click es dentro de las dimensiones del boton
@@ -27,7 +26,7 @@ bool MouseInputComponentButton::handleEvent(GameObject* o, const SDL_Event& even
 			if (b != nullptr) {
 				TheSoundManager::Instance()->playSound("woah", 0);
 				CallBackOnClick* cboc = b->getCallback();
-				cboc(g); //llamamos a la funcion callback generica que hemos pasado como parametro a la constructora
+				cboc(); //llamamos a la funcion callback generica que hemos pasado como parametro a la constructora
 				handledEvent = true; //marcamos el evento como handleado
 			}
 		}

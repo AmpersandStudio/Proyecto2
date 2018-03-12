@@ -10,18 +10,17 @@ protected:
 
 	// Métodos
 	void initPlayer();
-	static void toBattle(Game * game);
-	static void toMap(Game* game);
-	Game* g = nullptr;
+	static void toBattle();
+	static void toMap();
 
 public:
-	PlayState(Game* gamePtr);
+	PlayState();
 	virtual ~PlayState();
 
 	virtual bool handleEvent(SDL_Event& event);
 	//EL BOTON PARA LA TIENDA
-	static void toGame(Game* game);
-	static void toInventary(Game* game);
-	//static void toTransition(Game* game);
+	static void toGame();
+	static void toInventary();
+
 };
 

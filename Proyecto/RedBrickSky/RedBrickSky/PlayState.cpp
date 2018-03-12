@@ -19,15 +19,13 @@
 //Para probar lo de los dialogos
 #include "Dialogue.h"
 
-PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
+PlayState::PlayState()
 {
 	//ESTO ES DE JAVI, UN BOTON QUE TE LLEVA A LA TIENDA DESDE DENTRO DEL JUEGO PORQUE GAME STATE ES EL QUE TIENE LA INFO DE LA MOCHILA,
 	//MODIFICAD LA POSICION SI QUEREIS PERO DECIDMELO PLS
 
-	g = gamePtr;
-
-	Button* button0 = new Button(gamePtr, toGame, 0);
-	Texture* tx0 = gamePtr->getTexture(2);
+	Button* button0 = new Button(toGame, 0);
+	Texture* tx0 = Game::Instance()->getTexture(2);
 	Vector2D position0(5, 6);
 	double width = 150;
 	double height = 100;
@@ -37,9 +35,9 @@ PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 
 	stage.push_back(button0);
 
-	Button* button1 = new Button(gamePtr, toInventary, 1);
+	Button* button1 = new Button(toInventary, 1);
 
-	Texture* tx1 = gamePtr->getTexture(1);
+	Texture* tx1 = Game::Instance()->getTexture(1);
 
 	Vector2D position1(7, 6);
 
@@ -48,13 +46,13 @@ PlayState::PlayState(Game* gamePtr) : GameState (gamePtr)
 	stage.push_back(button1);
 
 	//ESTO ES DE MARTIN, UN BOTON PARA IR AL BATTLESTATE
-	Button* button2 = new Button(gamePtr, toBattle, 2);
-	Texture* tx2 = gamePtr->getTexture(18);
+	Button* button2 = new Button(toBattle, 2);
+	Texture* tx2 = Game::Instance()->getTexture(18);
 	Vector2D position2(3, 6);
 	button2->setText(tx2); button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(rc); button2->addInputComponent(ic2);
 	stage.push_back(button2);
 
-	Button* button3 = new Button(gamePtr, toMap, 3);
+	Button* button3 = new Button(toMap, 3);
 	Vector2D position3(1, 6);
 	button3->setText(tx2); button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(rc); button3->addInputComponent(ic2);
 	stage.push_back(button3);
@@ -75,16 +73,16 @@ bool PlayState::handleEvent(SDL_Event & event)
 	if (event.type == SDL_KEYDOWN)
 	{
 		if (event.key.keysym.sym == SDLK_ESCAPE)
-			game_->getStateMachine()->pushState(new PauseState(game_));
+			Game::Instance()->getStateMachine()->pushState(new PauseState());
 		else if (event.key.keysym.sym == SDLK_i)
-			game_->getStateMachine()->pushState(new BackPack(game_));
+			Game::Instance()->getStateMachine()->pushState(new BackPack());
 
 		//CERDADA PARA PROBAR LA CLASE DE TEXTOS
 		else if (event.key.keysym.sym == SDLK_t)
 			{
 				int level_dialogues = 1;
 				Dialogue d = Dialogue(level_dialogues);
-				g->textPrinter(d.getText('E', 1), 200, g->getWinWidth() / 3, g->getWinHeight() / 2, g->getBlackColor());
+				Game::Instance()->textPrinter(d.getText('E', 1), 200, Game::Instance()->getWinWidth() / 3, Game::Instance()->getWinHeight() / 2, Game::Instance()->getBlackColor());
 			}
 	}
 	// 2) LLama a los input de cada objeto del propio estado
@@ -92,20 +90,20 @@ bool PlayState::handleEvent(SDL_Event & event)
 }
 
 //PARA JAVI PROBAR LA TIENDA TAMBIEN
-void PlayState::toGame(Game* game) {
-	StateMachine* sm = game->getStateMachine();
-	sm->pushState(new ShopState(game));
+void PlayState::toGame() {
+	StateMachine* sm = Game::Instance()->getStateMachine();
+	sm->pushState(new ShopState());
 }
 
 //PARA JAVI PROBAR LA TIENDA TAMBIEN
-void PlayState::toInventary(Game* game) {
-	StateMachine* sm = game->getStateMachine();
-	sm->pushState(new BackPack(game));
+void PlayState::toInventary() {
+	StateMachine* sm = Game::Instance()->getStateMachine();
+	sm->pushState(new BackPack());
 }
 
 void PlayState::initPlayer()
 {
-	player_ = new GameComponent(game_);
+	player_ = new GameComponent();
 
 	InputComponent* movementComp = new MovementInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d) ; // Para el jugador
 	RenderComponent* rc = new RenderFrameNDComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
@@ -118,7 +116,7 @@ void PlayState::initPlayer()
 
 
 	// Para probar
-	Texture* testTex = game_->getTexture(4);
+	Texture* testTex = Game::Instance()->getTexture(4);
 	player_->setText(testTex);
 	player_->setWidth(70); player_->setHeight(70);
 	player_->setPosition(Vector2D(0, 0));
@@ -129,15 +127,15 @@ void PlayState::initPlayer()
 }
 
 //DE MARTIN PARA PROBAR BATTLESTATE
-void PlayState::toBattle(Game* game) {
-	StateMachine* sm = game->getStateMachine();
-	sm->pushState(new TransitionState(game));
+void PlayState::toBattle() {
+	StateMachine* sm = Game::Instance()->getStateMachine();
+	sm->pushState(new TransitionState());
 }
 
-void PlayState::toMap(Game* game)
+void PlayState::toMap()
 {
-	StateMachine* sm = game->getStateMachine();
-	sm->pushState(new MapState(game));
+	StateMachine* sm = Game::Instance()->getStateMachine();
+	sm->pushState(new MapState());
 }
 
 

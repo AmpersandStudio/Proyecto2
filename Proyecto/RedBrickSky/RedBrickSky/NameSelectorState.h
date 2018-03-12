@@ -12,7 +12,7 @@ private:
 						   { 'A','B','C','D','E','F','G','H','I' },{ 'J','K','L','M','N','Ñ','O','P','Q' },{ 'R','S','T','U','V','W','X','Y','Z' } };
 
 public:
-	NameSelectorState(Game* gamePtr);
+	NameSelectorState();
 	virtual ~NameSelectorState();
 	virtual void render();
 	virtual bool handleEvent(SDL_Event& event);

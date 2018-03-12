@@ -1,7 +1,7 @@
 #pragma once
 #include "GameComponent.h"
 
-typedef void CallBackOnClick(Game* gamePtr);
+typedef void CallBackOnClick();
 
 class Button :
 	public GameComponent
@@ -13,7 +13,7 @@ protected:
 	CallBackOnClick* cboc_; 
 	//funcion callback generica que se llamara cuando haya un click en el boton
 public:
-	Button(Game* gamePtr, CallBackOnClick* cb, int flag);
+	Button(CallBackOnClick* cb, int flag);
 	virtual ~Button();
 	CallBackOnClick* getCallback() { return cboc_; };
 	bool getSelected() { return selected_; };

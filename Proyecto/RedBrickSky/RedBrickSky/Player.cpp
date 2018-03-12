@@ -2,7 +2,7 @@
 #include "TextureManager.h"
 #include "Game.h"
 
-Player::Player(Game* gamePtr, Vector2D position, int width, int height, string textureId, int numFrames, int callbackID, int animSpeed) : GameObject(gamePtr)
+Player::Player(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID, int animSpeed) : GameObject()
 {
 	position_ = position;
 	width_ = width;

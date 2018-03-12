@@ -169,7 +169,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			// al player en el nivel (utilizando un static_cast); ahora ademas tenemos que crearlo
 			if (type == "Player")
 			{
-				Player* pPlayer = new Player(TheGame::Instance(), Vector2D(x, y), width, height, textureID, numFrames, callbackID, animSpeed);
+				Player* pPlayer = new Player(Vector2D(x, y), width, height, textureID, numFrames, callbackID, animSpeed);
 				pLevel->setPlayer(pPlayer);
 				pObjectLayer->getGameObjects()->push_back(pPlayer);
 

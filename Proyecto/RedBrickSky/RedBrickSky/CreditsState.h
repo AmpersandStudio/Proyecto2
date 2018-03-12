@@ -5,7 +5,7 @@ class CreditsState :
 	public GameState
 {
 public:
-	CreditsState(Game* gamePtr);
+	CreditsState();
 	virtual ~CreditsState();
 };
 

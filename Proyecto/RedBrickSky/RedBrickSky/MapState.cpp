@@ -1,6 +1,6 @@
 #include "MapState.h"
 
-MapState::MapState(Game* gamePtr) : GameState(gamePtr)
+MapState::MapState()
 {
 	cout << "Entering Map State" << endl;
 

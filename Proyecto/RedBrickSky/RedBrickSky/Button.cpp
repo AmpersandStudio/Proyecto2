@@ -1,6 +1,6 @@
 #include "Button.h"
 
-Button::Button(Game* gamePtr, CallBackOnClick* cb, int flag) : GameComponent (gamePtr)
+Button::Button(CallBackOnClick* cb, int flag)
 {
 	cboc_ = cb;
 	flag_ = flag;

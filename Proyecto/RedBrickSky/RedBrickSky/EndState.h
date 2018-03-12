@@ -5,7 +5,7 @@ class EndState :
 	public GameState
 {
 public:
-	EndState(Game* gamePtr);
+	EndState();
 	virtual ~EndState();
 };
 

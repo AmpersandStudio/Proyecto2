@@ -12,11 +12,10 @@ using namespace std;
 class GameState
 {
 protected:
-	Game* game_; //puntero a juego
 	vector<GameObject*> stage; //game objects del estado
 
 public:
-	GameState(Game* gamePtr); //constructora
+	GameState(); //constructora
 	virtual ~GameState(); //destructora
 	virtual void render(); //llama al render de cada uno de los go de su lista
 	virtual void update(); //llama al update de cada uno de los go de su lista

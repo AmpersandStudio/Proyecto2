@@ -47,7 +47,7 @@ class BattleState :
 	public GameState
 {
 public:
-	BattleState(Game* gamePtr);
+	BattleState();
 	virtual ~BattleState();
 	virtual void update();
 	virtual void render();
@@ -66,7 +66,6 @@ private:
 	RenderComponent* rcfade;
 	InputComponent* MIC;
 	InputComponent* Info;
-	Game* game;
 
 	GameComponent* fade_;
 	int alpha_;
@@ -85,15 +84,15 @@ private:
 	bool isButton(GameObject* object);
 
 	//Acciones del menu de combate
-	static void buttonsToAttack(Game* gamePtr);
-	static void tryEscape(Game* gamePtr);
-	static void usePotion(Game* gamePtr);
-	static void specialAttack(Game* gamePtr);
+	static void buttonsToAttack();
+	static void tryEscape();
+	static void usePotion();
+	static void specialAttack();
 
 	//Ataques del jugador
-	static void attack1(Game* gamePtr);
-	static void attack2(Game* gamePtr);
-	static void attack3(Game* gamePtr);
-	static void attack4(Game* gamePtr);
+	static void attack1();
+	static void attack2();
+	static void attack3();
+	static void attack4();
 };
 

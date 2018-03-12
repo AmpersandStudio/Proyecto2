@@ -1,10 +1,8 @@
 #include "GameState.h"
 
 
-
-GameState::GameState(Game* gamePtr)
+GameState::GameState()
 {
-	game_ = gamePtr;
 }
 
 GameState::~GameState()
@@ -18,7 +16,7 @@ GameState::~GameState()
 }
 
 void GameState::render() {
-	SDL_RenderClear(game_->getRenderer());
+	SDL_RenderClear(Game::Instance()->getRenderer());
 	for (unsigned int i = 0; i < stage.size(); i++)
 		stage[i]->render();
 }
@@ -39,7 +37,7 @@ bool GameState::handleEvent(SDL_Event& event) {
 		if (!capturedEvent) ++i;
 	}
 	if (event.type == SDL_QUIT) {
-		game_->exitApp();
+		Game::Instance()->exitApp();
 		handledEvent = true;
 	}
 	return handledEvent;

@@ -6,7 +6,7 @@
 class MapState : public GameState
 {
 public:
-	MapState(Game* gamePtr);
+	MapState();
 	virtual ~MapState();
 
 	virtual void update();

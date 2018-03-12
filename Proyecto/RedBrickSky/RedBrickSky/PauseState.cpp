@@ -5,15 +5,15 @@
 #include "KeyInputComponentButton.h"
 #include "MouseInputComponentButton.h"
 
-PauseState::PauseState(Game* gamePtr) : GameState (gamePtr)
+PauseState::PauseState()
 {
 
 	//	TODO ESTÁ DE PRUEBA EN ESTE MOMENTO
-	Button* button0 = new Button(gamePtr, resume, 0);
-	Button* button3 = new Button(gamePtr, toMenu, 3);
+	Button* button0 = new Button(resume, 0);
+	Button* button3 = new Button(toMenu, 3);
 
-	Texture* tx0 = gamePtr->getTexture(0);
-	Texture* tx3 = gamePtr->getTexture(3);
+	Texture* tx0 = Game::Instance()->getTexture(0);
+	Texture* tx3 = Game::Instance()->getTexture(3);
 
 
 	Vector2D position0(1, 1);
@@ -46,7 +46,7 @@ bool PauseState::handleEvent(SDL_Event & event)
 	if (event.type == SDL_KEYDOWN)
 	{
 		if (event.key.keysym.sym == SDLK_ESCAPE)
-			game_->getStateMachine()->popState();
+			Game::Instance()->getStateMachine()->popState();
 
 	}
 	// 2) LLama a los input de cada objeto del propio estado
@@ -54,14 +54,14 @@ bool PauseState::handleEvent(SDL_Event & event)
 }
 
 // Te devuelve a la partida (o al estado anterior, más concretamente)
-void PauseState::resume(Game* game) 
+void PauseState::resume() 
 {
-	game->getStateMachine()->popState();	
+	Game::Instance()->getStateMachine()->popState();
 }
 
 // LLeva al menú principal
-void PauseState::toMenu(Game * game)
+void PauseState::toMenu()
 {
-	while (game->getStateMachine()->size() > 1) // Desapila todos los estados hasta llegar al menú
-		game->getStateMachine()->popState();
+	while (Game::Instance()->getStateMachine()->size() > 1) // Desapila todos los estados hasta llegar al menú
+		Game::Instance()->getStateMachine()->popState();
 }

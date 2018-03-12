@@ -1,27 +1,25 @@
 #include "BattleState.h"
 
-BattleState::BattleState(Game* gamePtr) : GameState(gamePtr)
+BattleState::BattleState()
 {
 
 	//Texturas necesitadas
-	interfaz.cuadro_principal = gamePtr->getTexture(24);
-	interfaz.cuadro_personaje = gamePtr->getTexture(26);
-	interfaz.cuadro_enemigo = gamePtr->getTexture(25);
-	interfaz.cuadro_ataque = gamePtr->getTexture(29);
-	interfaz.Vida = gamePtr->getTexture(28);
-	interfaz.botones = gamePtr->getTexture(28);
-	interfaz.ground = gamePtr->getTexture(27);
+	interfaz.cuadro_principal = Game::Instance()->getTexture(24);
+	interfaz.cuadro_personaje = Game::Instance()->getTexture(26);
+	interfaz.cuadro_enemigo = Game::Instance()->getTexture(25);
+	interfaz.cuadro_ataque = Game::Instance()->getTexture(29);
+	interfaz.Vida = Game::Instance()->getTexture(28);
+	interfaz.botones = Game::Instance()->getTexture(28);
+	interfaz.ground = Game::Instance()->getTexture(27);
 
 	//JR para el inicio
-	Texture* fadeTx = gamePtr->getTexture(23); 
+	Texture* fadeTx = Game::Instance()->getTexture(23);
 	rcfade = new RenderFullComponent();
 	alpha_ = 255;
-	fade_ = new GameComponent(gamePtr);
+	fade_ = new GameComponent();
 	fade_->setText(fadeTx); fade_->addRenderComponent(rcfade);
 	fadeDone_ = false;
 	fade2Done_ = false;
-
-	game = gamePtr;
 
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
@@ -38,27 +36,27 @@ BattleState::~BattleState()
 	SDL_SetTextureAlphaMod(fade_->getText()->getSDLText(), 255); //para restaurar el alpha original
 }
 
-void BattleState::buttonsToAttack(Game* gamePtr) {
+void BattleState::buttonsToAttack() {
 	/*interfaz.button_0 = new Button(game, XXXXXXX, 0);
 	interfaz.button_1 = new Button(game, XXXXXXX, 1);
 	interfaz.button_2 = new Button(game, XXXXXXX, 2);
 	interfaz.button_3 = new Button(game, XXXXXXX, 3);*/
 
 	//totalmente consciente de la guarrada, solo es para probar
-	GameState* gs = gamePtr->getStateMachine()->currentState();
+	GameState* gs = Game::Instance()->getStateMachine()->currentState();
 	BattleState* bs = static_cast<BattleState*>(gs);
 	bs->attackMode = !bs->attackMode;
 }
 
-void BattleState::tryEscape(Game* gamePtr) {
+void BattleState::tryEscape() {
 
 	//Aquí iría la comprobación aleatoria de "Has logrado escapar!" o "Eres un pringado y tienes que luchar!"
 
-	StateMachine* sm = gamePtr->getStateMachine();
+	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->popState();
 }
 
-void BattleState::usePotion(Game* gamePtr) {
+void BattleState::usePotion() {
 	//PSEUDOCODIGO
 	/*if (puntero_a_player->tienePociones && puntero_a_player->getVida != MAXIMA) {
 	puntero_a_player->inventario.pociones -= 1;
@@ -66,23 +64,23 @@ void BattleState::usePotion(Game* gamePtr) {
 	}*/
 }
 
-void BattleState::specialAttack(Game* gamePtr) {
+void BattleState::specialAttack() {
 
 }
 
-void BattleState::attack1(Game * gamePtr)
+void BattleState::attack1()
 {
 }
 
-void BattleState::attack2(Game * gamePtr)
+void BattleState::attack2()
 {
 }
 
-void BattleState::attack3(Game * gamePtr)
+void BattleState::attack3()
 {
 }
 
-void BattleState::attack4(Game * gamePtr)
+void BattleState::attack4()
 {
 }
 
@@ -103,9 +101,9 @@ void BattleState::createUI() {
 
 	//Panel de fondo
 	Vector2D position0(0, 2.6);
-	GameComponent* UI_Background = new GameComponent(game);
+	GameComponent* UI_Background = new GameComponent();
 	UI_Background->setText(interfaz.cuadro_principal);
-	UI_Background->setWidth(game->getWinWidth()); UI_Background->setHeight((200));
+	UI_Background->setWidth(Game::Instance()->getWinWidth()); UI_Background->setHeight((200));
 	UI_Background->setPosition(position0);
 	UI_Background->addRenderComponent(rcF);
 	stage.push_back(UI_Background);
@@ -120,7 +118,7 @@ void BattleState::createUI() {
 	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, "Aquí van los mensajes de batalla", Black);
 	SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);*/
 
-	GameComponent* ground = new GameComponent(game);
+	GameComponent* ground = new GameComponent();
 	ground->setText(interfaz.ground);
 	Vector2D pos(1, 1.5);
 	ground->setPosition(pos);
@@ -129,7 +127,7 @@ void BattleState::createUI() {
 	ground->addRenderComponent(rc);
 	stage.push_back(ground);
 
-	GameComponent* ground2 = new GameComponent(game);
+	GameComponent* ground2 = new GameComponent();
 	ground2->setText(interfaz.ground);
 	Vector2D pos2(4.325, 1.5);
 	ground2->setPosition(pos2);
@@ -147,7 +145,7 @@ void BattleState::createCharacterInfo()
 	Vector2D position0;
 
 	//Cuadro Jugador
-	GameComponent* UI_Player = new GameComponent(game);
+	GameComponent* UI_Player = new GameComponent();
 	position0.setX(0.3); position0.setY(0.5);
 	UI_Player->setText(interfaz.cuadro_personaje);
 	UI_Player->setWidth(340); UI_Player->setHeight((150));
@@ -156,7 +154,7 @@ void BattleState::createCharacterInfo()
 	stage.push_back(UI_Player);
 
 	//Cuadro Enemigo
-	GameComponent* UI_Enemy = new GameComponent(game);
+	GameComponent* UI_Enemy = new GameComponent();
 	position0.setX(2.45); position0.setY(0.5);
 	UI_Enemy->setText(interfaz.cuadro_enemigo);
 	UI_Enemy->setWidth(340); UI_Enemy->setHeight((150));
@@ -174,14 +172,14 @@ void BattleState::createBattleButtons()
 	double buttonHeight = 75;
 
 	//Boton 0
-	interfaz.button_0 = new Button(game, buttonsToAttack, 0);
+	interfaz.button_0 = new Button(buttonsToAttack, 0);
 	position0.setX(3); position0.setY(3.6);
 	interfaz.button_0->setText(interfaz.botones); interfaz.button_0->setPosition(position0); interfaz.button_0->setWidth(buttonWidth); interfaz.button_0->setHeight(buttonHeight*2);
 	interfaz.button_0->addRenderComponent(rcF); interfaz.button_0->addInputComponent(MIC);
 	stage.push_back(interfaz.button_0);
 
 	//Boton 1
-	interfaz.button_1 = new Button(game, usePotion, 1);
+	interfaz.button_1 = new Button(usePotion, 1);
 	position0.setX(4.2); position0.setY(7.2);
 	interfaz.button_1->setText(interfaz.botones); interfaz.button_1->setPosition(position0); interfaz.button_1->setWidth(buttonWidth); interfaz.button_1->setHeight(buttonHeight);
 	interfaz.button_1->addRenderComponent(rcF); interfaz.button_1->addInputComponent(MIC);
@@ -195,7 +193,7 @@ void BattleState::createBattleButtons()
 	//stage.push_back(interfaz.button_2);
 
 	//Boton 3
-	interfaz.button_3 = new Button(game, tryEscape, 3);
+	interfaz.button_3 = new Button(tryEscape, 3);
 	position0.setX(4.2); position0.setY(8.4);
 	interfaz.button_3->setText(interfaz.botones); interfaz.button_3->setPosition(position0); interfaz.button_3->setWidth(buttonWidth); interfaz.button_3->setHeight(buttonHeight);
 	interfaz.button_3->addRenderComponent(rcF); interfaz.button_3->addInputComponent(MIC);
@@ -216,28 +214,28 @@ void BattleState::createAttackButtons()
 	double buttonHeight = 75;
 
 	//Boton 0
-	interfaz.button_0 = new Button(game, attack1, 0);
+	interfaz.button_0 = new Button(attack1, 0);
 	position0.setX(3); position0.setY(7.2);
 	interfaz.button_0->setText(interfaz.botones); interfaz.button_0->setPosition(position0); interfaz.button_0->setWidth(buttonWidth); interfaz.button_0->setHeight(buttonHeight);
 	interfaz.button_0->addRenderComponent(rcF); interfaz.button_0->addInputComponent(MIC);
 	stage.push_back(interfaz.button_0);
 
 	//Boton 1
-	interfaz.button_1 = new Button(game, attack2, 1);
+	interfaz.button_1 = new Button(attack2, 1);
 	position0.setX(4.2); position0.setY(7.2);
 	interfaz.button_1->setText(interfaz.botones); interfaz.button_1->setPosition(position0); interfaz.button_1->setWidth(buttonWidth); interfaz.button_1->setHeight(buttonHeight);
 	interfaz.button_1->addRenderComponent(rcF); interfaz.button_1->addInputComponent(MIC);
 	stage.push_back(interfaz.button_1);
 
 	//Boton 2
-	interfaz.button_2 = new Button(game, attack3, 2);
+	interfaz.button_2 = new Button(attack3, 2);
 	position0.setX(3); position0.setY(8.4);
 	interfaz.button_2->setText(interfaz.botones); interfaz.button_2->setPosition(position0); interfaz.button_2->setWidth(buttonWidth); interfaz.button_2->setHeight(buttonHeight);
 	interfaz.button_2->addRenderComponent(rcF); interfaz.button_2->addInputComponent(MIC);
 	stage.push_back(interfaz.button_2);
 
 	//Boton 3
-	interfaz.button_3 = new Button(game, attack4, 3);
+	interfaz.button_3 = new Button(attack4, 3);
 	position0.setX(4.2); position0.setY(8.4);
 	interfaz.button_3->setText(interfaz.botones); interfaz.button_3->setPosition(position0); interfaz.button_3->setWidth(buttonWidth); interfaz.button_3->setHeight(buttonHeight);
 	interfaz.button_3->addRenderComponent(rcF); interfaz.button_3->addInputComponent(MIC);
@@ -246,8 +244,8 @@ void BattleState::createAttackButtons()
 
 void BattleState::updateVidas()
 {
-	interfaz.UI_Vida_Player = new GameComponent(game);
-	interfaz.UI_Vida_Enemy = new GameComponent(game);
+	interfaz.UI_Vida_Player = new GameComponent();
+	interfaz.UI_Vida_Enemy = new GameComponent();
 
 	Vector2D position0(1.25, 8);
 	interfaz.VPlayer_position = position0;

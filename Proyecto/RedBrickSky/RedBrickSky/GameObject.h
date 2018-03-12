@@ -10,7 +10,6 @@
 class GameObject
 {
 protected:
-	Game* game_ = nullptr; // by cleon, puede que no sea const
 
 	Texture* text_ = nullptr;
 	string textureId_ = "";	// id para TextureManager (key)
@@ -34,14 +33,11 @@ protected:
 	int callbackId_ = 0;
 
 public:
-	GameObject(Game* gamePtr);
+	GameObject();
 	virtual ~GameObject();
 
 	int getCallbackId() const { return callbackId_; };
 	void setCallbackId(int id) { callbackId_ = id; };
-
-	//para poder acceder al juego desde los go
-	Game* getGame() const { return game_; };
 
 	//para poder modificar la textura del go
 	Texture* getText() const { return text_; };

@@ -135,7 +135,7 @@ void Game::handleEvents() {
 }
 
 void Game::begin() {
-	GameState* aux = new MainMenuState(this);
+	GameState* aux = new MainMenuState();
 	stateMachine_->pushState(aux);
 	run();
 }

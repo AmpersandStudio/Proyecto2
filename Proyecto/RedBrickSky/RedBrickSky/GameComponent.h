@@ -16,7 +16,7 @@ private:
 	vector<RenderComponent*> renderComp_;
 
 public:
-	GameComponent(Game* gamePtr);
+	GameComponent();
 	virtual ~GameComponent();
 
 	virtual bool handleEvent(const SDL_Event& event);

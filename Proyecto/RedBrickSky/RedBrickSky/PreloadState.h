@@ -4,7 +4,7 @@ class PreloadState :
 	public GameState
 {
 public:
-	PreloadState(Game* gamePtr);
+	PreloadState();
 	virtual ~PreloadState();
 };
 

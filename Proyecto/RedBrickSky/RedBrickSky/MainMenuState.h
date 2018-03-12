@@ -6,10 +6,10 @@ class MainMenuState :
 	public GameState
 {
 public:
-	MainMenuState(Game* gamePtr);
+	MainMenuState();
 	virtual ~MainMenuState();
-	static void toGame(Game* game);
-	static void exit(Game* game) { game->exitApp(); }; 
-	static void toSelector(Game* game);
+	static void toGame();
+	static void exit() { Game::Instance()->exitApp(); };
+	static void toSelector();
 };
 

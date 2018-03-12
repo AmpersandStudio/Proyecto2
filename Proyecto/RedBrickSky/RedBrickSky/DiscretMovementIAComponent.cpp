@@ -29,11 +29,11 @@ void DiscretMovementIAComponent::update(GameObject * o) {
 }
 
 void DiscretMovementIAComponent::horiz1(GameObject * o) {
-	int screenW = o->getGame()->getWinWidth();
-	int screenH = o->getGame()->getWinHeight();
+	int screenW = Game::Instance()->getWinWidth();
+	int screenH = Game::Instance()->getWinHeight();
 	Vector2D pos = o->getPosition();
 
-	int rows = o->getGame()->getWinHeight() / o->getHeight();
+	int rows = Game::Instance()->getWinHeight() / o->getHeight();
 	if (first)
 		first = false;
 	else {
@@ -49,19 +49,19 @@ void DiscretMovementIAComponent::horiz1(GameObject * o) {
 		else {
 			Vector2D oriPos(0, 0);
 			o->setPosition(oriPos);
-			StateMachine* sm = o->getGame()->getStateMachine();
-			sm->changeState(new BattleState(o->getGame()));
+			StateMachine* sm = Game::Instance()->getStateMachine();
+			sm->changeState(new BattleState());
 		}
 	}
 }
 
 void DiscretMovementIAComponent::horiz2(GameObject * o) {
-	int screenW = o->getGame()->getWinWidth();
-	int screenH = o->getGame()->getWinHeight();
+	int screenW = Game::Instance()->getWinWidth();
+	int screenH = Game::Instance()->getWinHeight();
 	Vector2D pos = o->getPosition();
 
-	int rows = o->getGame()->getWinHeight() / o->getHeight();
-	int cols = o->getGame()->getWinWidth() / o->getWidth();
+	int rows = Game::Instance()->getWinHeight() / o->getHeight();
+	int cols = Game::Instance()->getWinWidth() / o->getWidth();
 
 	pos.setX(pos.getX() - 1);
 
@@ -85,19 +85,19 @@ void DiscretMovementIAComponent::horiz2(GameObject * o) {
 	else {
 		Vector2D oriPos(-1, 0);
 		o->setPosition(oriPos);
-		StateMachine* sm = o->getGame()->getStateMachine();
-		sm->changeState(new BattleState(o->getGame()));
+		StateMachine* sm = Game::Instance()->getStateMachine();
+		sm->changeState(new BattleState());
 	}
 
 }
 
 void DiscretMovementIAComponent::vert1(GameObject * o) {
-	int screenW = o->getGame()->getWinWidth();
-	int screenH = o->getGame()->getWinHeight();
+	int screenW = Game::Instance()->getWinWidth();
+	int screenH = Game::Instance()->getWinHeight();
 	Vector2D pos = o->getPosition();
 
-	int rows = o->getGame()->getWinHeight() / o->getHeight();
-	int cols = o->getGame()->getWinWidth() / o->getWidth();
+	int rows = Game::Instance()->getWinHeight() / o->getHeight();
+	int cols = Game::Instance()->getWinWidth() / o->getWidth();
 
 	if (first)
 		first = false;
@@ -115,18 +115,18 @@ void DiscretMovementIAComponent::vert1(GameObject * o) {
 		else {
 			Vector2D oriPos(0, 0);
 			o->setPosition(oriPos);
-			StateMachine* sm = o->getGame()->getStateMachine();
-			sm->changeState(new BattleState(o->getGame()));
+			StateMachine* sm = Game::Instance()->getStateMachine();
+			sm->changeState(new BattleState());
 		}
 	}
 }
 
 void DiscretMovementIAComponent::alternate(GameObject * o) {
-	int screenW = o->getGame()->getWinWidth();
-	int screenH = o->getGame()->getWinHeight();
+	int screenW = Game::Instance()->getWinWidth();
+	int screenH = Game::Instance()->getWinHeight();
 	Vector2D pos = o->getPosition();
 
-	int rows = o->getGame()->getWinHeight() / o->getHeight();
+	int rows = Game::Instance()->getWinHeight() / o->getHeight();
 	if (first)
 		first = false;
 	else {
@@ -159,8 +159,8 @@ void DiscretMovementIAComponent::alternate(GameObject * o) {
 		else if (altLap) {
 			Vector2D oriPos(0, 0);
 			o->setPosition(oriPos);
-			StateMachine* sm = o->getGame()->getStateMachine();
-			sm->changeState(new BattleState(o->getGame()));
+			StateMachine* sm = Game::Instance()->getStateMachine();
+			sm->changeState(new BattleState());
 		}
 	}
 }

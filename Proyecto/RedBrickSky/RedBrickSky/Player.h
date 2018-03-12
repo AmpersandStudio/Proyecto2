@@ -6,7 +6,7 @@
 class Player : public GameObject
 {
 public:
-	Player(Game* gamePtr, Vector2D position, int width, int height, string textureId, int numFrames, int callbackID = 0, int animSpeed = 0);
+	Player(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID = 0, int animSpeed = 0);
 	virtual ~Player();
 
 	virtual void render();

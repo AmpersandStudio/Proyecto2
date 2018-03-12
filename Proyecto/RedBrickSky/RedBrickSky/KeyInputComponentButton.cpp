@@ -44,7 +44,7 @@ bool KeyInputComponentButton::handleEvent(GameObject* o, const SDL_Event& event)
 			else if (event.key.keysym.sym == enter_) {
 				if (b->getSelected()) {
 					CallBackOnClick* cboc = b->getCallback();
-					cboc(o->getGame());
+					cboc();
 				}
 			}
 			if (b->getSelected())

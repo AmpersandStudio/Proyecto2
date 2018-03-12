@@ -9,20 +9,18 @@ class ShopItems
 {
 private:
 	vector<estado> shopObjects;
-	Game* game;
 
 	Texture* food;
 	Texture* food2;
 	Texture* WP;
 
 public:
-	ShopItems(Game* gameptr) {
-		game = gameptr;
+	ShopItems() {
 		shopObjects.resize(17);
 
-		food = game->getTexture(4); //Item1
-		food2 = game->getTexture(5);
-		WP = game->getTexture(21);
+		food = Game::Instance()->getTexture(4); //Item1
+		food2 = Game::Instance()->getTexture(5);
+		WP = Game::Instance()->getTexture(21);
 
 		int weaponType = 0;
 		int potionType = 1;

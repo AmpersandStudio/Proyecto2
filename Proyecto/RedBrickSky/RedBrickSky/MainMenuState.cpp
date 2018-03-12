@@ -7,15 +7,15 @@
 #include "MouseInputComponentButton.h"
 #include "NameSelectorState.h"
 
-MainMenuState::MainMenuState(Game* gamePtr) : GameState (gamePtr)
+MainMenuState::MainMenuState()
 {
-	Button* button0 = new Button(gamePtr, toGame, 0);
-	Button* button3 = new Button(gamePtr, exit, 3);
-	Button* button2 = new Button(gamePtr, toSelector, 2);
+	Button* button0 = new Button(toGame, 0);
+	Button* button3 = new Button(exit, 3);
+	Button* button2 = new Button(toSelector, 2);
 
-	Texture* tx0 = gamePtr->getTexture(0);
-	Texture* tx3 = gamePtr->getTexture(3);
-	Texture* tx2 = gamePtr->getTexture(13);
+	Texture* tx0 = Game::Instance()->getTexture(0);
+	Texture* tx3 = Game::Instance()->getTexture(3);
+	Texture* tx2 = Game::Instance()->getTexture(13);
 
 	Vector2D position0(1, 1);
 	Vector2D position3(3, 1);
@@ -41,12 +41,12 @@ MainMenuState::~MainMenuState()
 {
 }
 
-void MainMenuState::toGame(Game* game) {
-	StateMachine* sm = game->getStateMachine();
-	sm->pushState(new PlayState(game));
+void MainMenuState::toGame() {
+	StateMachine* sm = Game::Instance()->getStateMachine();
+	sm->pushState(new PlayState());
 }
 
-void MainMenuState::toSelector(Game* game) {
-	StateMachine* sm = game->getStateMachine();
-	sm->pushState(new NameSelectorState(game));
+void MainMenuState::toSelector() {
+	StateMachine* sm = Game::Instance()->getStateMachine();
+	sm->pushState(new NameSelectorState());
 }

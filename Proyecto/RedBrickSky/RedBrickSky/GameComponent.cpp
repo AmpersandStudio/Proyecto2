@@ -1,6 +1,6 @@
 #include "GameComponent.h"
 
-GameComponent::GameComponent(Game* gamePtr) : GameObject (gamePtr)
+GameComponent::GameComponent()
 {
 }
 

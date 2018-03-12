@@ -35,7 +35,6 @@ private:
 	InputComponent* DND;
 	InputComponent* DND2;
 
-	Game* game;
 	ShopItems* items;
 	int money;
 
@@ -62,14 +61,14 @@ private:
 
 
 public:
-	ShopState(Game* gamePtr);
+	ShopState();
 	virtual ~ShopState();
 
 	virtual bool handleEvent(SDL_Event& event);
 
 	int getMoney() { return money; };
 	void setMoney(int d);
-	static void toMenu(Game* game);
+	static void toMenu();
 	//estado** devMat() { return matriz; };
 	vector<estado> getInvent() { return invent; };
 	void setInvent(estado s) { invent.push_back(s); };

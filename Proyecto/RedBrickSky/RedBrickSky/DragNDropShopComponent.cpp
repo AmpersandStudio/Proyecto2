@@ -159,7 +159,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			shop->setInvent(n);
 			GameManager::Instance()->setInventory(n);
 
-			GameComponent* gc2 = new GameComponent(o->getGame());
+			GameComponent* gc2 = new GameComponent();
 			gc2->setText(o->getText()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(70); gc2->setHeight(70);
 			gc2->addRenderComponent(new RenderFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(shop));
 			gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
