@@ -5,7 +5,6 @@
 #include <iostream>
 #include "InventoryShopFBcomponent.h"
 
-
 ShopState::ShopState(Game* gamePtr) : GameState(gamePtr)
 {
 	game = gamePtr;
@@ -149,21 +148,16 @@ void ShopState::createBagItems() {
 	ocupados = 0;
 	for (unsigned int i = 0; i < invent.size(); i++) {
 
-		if (i % 3 == 0) {
-			j++;
-			k = 0;
-		}
-
-		matriz[j][k].ID = invent[i].ID;
-		matriz[j][k].objects++;
-		matriz[j][k].empty = false;
-		matriz[j][k].comprado = true;
-		matriz[j][k].price = invent[i].price;
-		matriz[j][k].tx = invent[i].tx;
-		matriz[j][k].type = invent[i].type;
+		SP[i].ID = invent[i].ID;
+		SP[i].objects++;
+		SP[i].empty = false;
+		SP[i].comprado = true;
+		SP[i].price = invent[i].price;
+		SP[i].tx = invent[i].tx;
+		SP[i].type = invent[i].type;
 
 		GameComponent* gc = new GameComponent(game);
-		Vector2D position0(SP[i].x, SP[i].y);
+		Vector2D position0(SP[i].y, SP[i].x);
 		double width = 70;
 		double height = 70;
 
@@ -182,20 +176,10 @@ void ShopState::createBagItems() {
 
 void ShopState::destroyMatix() {
 
-	for(int i = 0; i < Cols; i++)
-		if(matriz[i])
-			delete matriz[i];
-	delete matriz;
 	SP.clear();
 }
 
 void ShopState::createMatrix() {
-
-	//Creamos la matriz
-	matriz = new estado*[Cols];
-	for (int i = 0; i < Cols; i++) {
-		matriz[i] = new estado[Fils];
-	}
 
 	fillMatrix();
 
@@ -209,19 +193,21 @@ void ShopState::fillMatrix() {
 	numSP = 0;
 	for (int i = 0; i < Cols; i++)
 		for (int j = 0; j < Fils; j++) {
+			estado a;
+
+
 			double width = 70;
 			double height = 70;
-			matriz[i][j].empty = true;
-			matriz[i][j].ID = 0;
-			matriz[i][j].objects = 0;
-			matriz[i][j].w = width;
-			matriz[i][j].h = height;
-			matriz[i][j].mX = i;
-			matriz[i][j].mY = j;
-			matriz[i][j].objectID = auxOID;
-			matriz[i][j].type = -1;
+			a.empty = true;
+			a.ID = 0;
+			a.objects = 0;
+			a.w = width;
+			a.h = height;
+			a.mX = i;
+			a.mY = j;
+			a.objectID = auxOID;
+			a.type = -1;
 
-			//cout << matriz[i][j].mX << "," << matriz[i][j].mY << "," << endl;
 
 			Vector2D position0(2 * i + 2, 2 * j + 2);
 			if (i == 0 && j == 0)
@@ -229,8 +215,8 @@ void ShopState::fillMatrix() {
 			if (i == 1 && j == 0)
 				auxD = position0.getX() - selecPos.getX();
 
-			matriz[i][j].x = position0.getX();
-			matriz[i][j].y = position0.getY();
+			a.x = position0.getX();
+			a.y = position0.getY();
 			GameComponent* gc = new GameComponent(game);
 			InputComponent* auxSCP = new MouseScrollShopComponent(this, auxOID);
 
@@ -238,7 +224,7 @@ void ShopState::fillMatrix() {
 			gc->addRenderComponent(rcF); gc->addInputComponent(auxSCP);//  gc->addInputComponent(InventoryShopFBcomponent());
 
 			stage.push_back(gc);
-			SP.push_back(matriz[i][j]);
+			SP.push_back(a);
 			StandPointsO.push_back(gc);
 
 			numSP++;
@@ -251,7 +237,7 @@ void ShopState::fillMatrix() {
 
 	selector_->setText(game->getTexture(12)); selector_->setPosition(selecPos);
 	selector_->setWidth(70); selector_->setHeight(70);
-	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(),Fils, Cols, auxD, StandPointsO, nullptr, this));
+	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), Fils, Cols, auxD, StandPointsO, nullptr, this));
 	selector_->addInputComponent(MSC);
 
 	stage.push_back(selector_);

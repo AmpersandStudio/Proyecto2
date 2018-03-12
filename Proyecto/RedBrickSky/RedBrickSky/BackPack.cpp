@@ -95,6 +95,7 @@ void BackPack::cargaElementos(vector<estado> l) {
 				int y = i;
 				createItemAtSP(x, y, auxV[p].objectID, auxV[p]);
 				place = true;
+				matriz[i][j].empty == false;
 			}
 			else 
 				j++;

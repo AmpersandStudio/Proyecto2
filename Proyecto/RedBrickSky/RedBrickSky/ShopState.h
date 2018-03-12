@@ -50,7 +50,6 @@ private:
 	vector<estado> Potions; //Vector para las pociones
 	vector<estado> Objects; //Vector para los objetos
 
-	estado** matriz;
 	int ocupados;
 	int numSP; int actFilas;
 	int ultimaFilaY;
