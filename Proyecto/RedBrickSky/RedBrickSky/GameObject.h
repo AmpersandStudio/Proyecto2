@@ -78,5 +78,6 @@ public:
 	virtual bool handleEvent(const SDL_Event& event) = 0;
 	virtual void update() = 0;
 	virtual void render() = 0;
+	virtual void clean() = 0;
 };
 

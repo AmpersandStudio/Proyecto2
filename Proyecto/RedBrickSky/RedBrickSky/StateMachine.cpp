@@ -14,7 +14,6 @@ void StateMachine::pushState(GameState* gs) {
 
 void StateMachine::popState() {
 	if (!gameStates.empty()) {
-		delete gameStates.top();
 		gameStates.pop();
 	}
 }

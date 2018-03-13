@@ -59,7 +59,7 @@ public:
 	virtual ~BackPack();
 
 
-	virtual bool handleEvent(SDL_Event& event);
+	virtual bool handleEvent(const SDL_Event& event);
 
     static void toMenu();
 	vector<estado> getSP() { return SP; };

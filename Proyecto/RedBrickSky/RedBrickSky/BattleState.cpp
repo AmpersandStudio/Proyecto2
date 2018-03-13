@@ -309,7 +309,7 @@ void BattleState::render() {
 		GameState::render();
 }
 
-bool BattleState::handleEvent(SDL_Event& event) {
+bool BattleState::handleEvent(const SDL_Event& event) {
 	bool handledEvent = false;
 
 	if (fade2Done_)

@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "InputHandler.h"
+#include "StateMachine.h"
 
 Player::Player()
 {
@@ -34,7 +35,7 @@ void Player::render()
 void Player::update()
 {
 	// handle input
-	velocity_ = Vector2D(0, 0);
+    velocity_ = Vector2D(0, 0);
 	handleInput();
 
 	// refresh position
@@ -46,30 +47,32 @@ void Player::update()
 
 bool Player::handleEvent(const SDL_Event& event)
 {
-	// reset velocity
-	velocity_ = Vector2D(0, 0);
+	//velocity_ = Vector2D(0, 0);
+	//if (event.type == SDL_KEYDOWN)
+	//{
+	////	if (event.key.keysym.sym == SDLK_LEFT)
+	////	{
+	////		velocity_.set(Vector2D(-m_moveSpeed, 0));
+	////	}
+	//	if (event.key.keysym.sym == SDLK_ESCAPE)
+	//		Game::Instance()->getStateMachine()->popState();
+	//}
+	
+
+	if (event.type == SDL_QUIT) {
+		Game::Instance()->exitApp();
+		return true;
+	}
 
 	if (event.type == SDL_KEYDOWN)
 	{
-		if (event.key.keysym.sym == SDLK_UP)
-		{
-			velocity_.set(Vector2D(0, -m_moveSpeed));
-		}
-		if (event.key.keysym.sym == SDLK_DOWN)
-		{
-			velocity_.set(Vector2D(0, m_moveSpeed));
-		}
-		if (event.key.keysym.sym == SDLK_RIGHT)
-		{
-			velocity_.set(Vector2D(m_moveSpeed, 0));
-		}
-		if (event.key.keysym.sym == SDLK_LEFT)
-		{
-			velocity_.set(Vector2D(-m_moveSpeed, 0));
+		if (event.key.keysym.sym == SDLK_ESCAPE) {
+			Game::Instance()->getStateMachine()->popState();
+			return true;
 		}
 	}
 
-	return true;
+	return false;
 }
 
 void Player::collision()

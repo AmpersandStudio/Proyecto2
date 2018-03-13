@@ -17,7 +17,7 @@ public:
 	PlayState();
 	virtual ~PlayState();
 
-	virtual bool handleEvent(SDL_Event& event);
+	virtual bool handleEvent(const SDL_Event& event);
 	//EL BOTON PARA LA TIENDA
 	static void toGame();
 	static void toInventary();

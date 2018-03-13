@@ -13,6 +13,7 @@ public:
 	virtual bool handleEvent(const SDL_Event& event);
 	virtual void update();
 	virtual void render();
+	virtual void clean() {};
 
 
 	virtual void collision();

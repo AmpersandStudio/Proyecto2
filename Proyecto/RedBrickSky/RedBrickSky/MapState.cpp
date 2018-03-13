@@ -12,6 +12,7 @@ MapState::MapState()
 MapState::~MapState()
 {
 	delete pLevel;
+	GameState::~GameState();
 }
 
 void MapState::update()
@@ -24,7 +25,7 @@ void MapState::render()
 	pLevel->render();
 }
 
-bool MapState::handleEvent(SDL_Event& event)
+bool MapState::handleEvent(const SDL_Event& event)
 {
 	return pLevel->getPlayer()->handleEvent(event);
 }

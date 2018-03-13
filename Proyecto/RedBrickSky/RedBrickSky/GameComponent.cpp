@@ -6,6 +6,7 @@ GameComponent::GameComponent()
 
 GameComponent::~GameComponent()
 {
+	clean();
 }
 
 bool GameComponent::handleEvent(const SDL_Event& event) {
@@ -59,4 +60,17 @@ void GameComponent::delRenderComponent(RenderComponent* rc) {
 		renderComp_.begin(), renderComp_.end(), rc);
 	if (position != renderComp_.end())
 		renderComp_.erase(position);
+}
+
+void GameComponent::clean() {
+	for (InputComponent* ic : inputComp_)
+		if (ic != nullptr) delete ic;
+
+	for (RenderComponent* rc : renderComp_)
+		if (rc != nullptr) delete rc;
+
+	for (PhysicsComponent* pc : physicsComp_)
+		if (pc != nullptr) delete pc;
+
+	inputComp_.clear(); renderComp_.clear(); physicsComp_.clear();
 }

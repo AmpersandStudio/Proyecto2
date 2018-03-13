@@ -58,7 +58,7 @@ public:
 	ShopState();
 	virtual ~ShopState();
 
-	virtual bool handleEvent(SDL_Event& event);
+	virtual bool handleEvent(const SDL_Event& event);
 
 	int getMoney() { return money; };
 	void setMoney(int d);

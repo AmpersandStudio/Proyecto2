@@ -48,6 +48,7 @@ public:
 	void begin(); //mete el estado menu y llama al run
 	void run(); //bucle principal del juego
 	void textPrinter(string text, int destH, int destX, int destY, SDL_Color color);	//Pone un texto en pantalla
+	void clean();
 	//METODOS AUXILIARES
 	Texture* getTexture(int t) { return textures_[t]; }; //para que objetos como los botones accedan a su textura
 	StateMachine* getStateMachine() { return stateMachine_; }; //para poder gestionar estados accediendo a la maquina desde otras clases

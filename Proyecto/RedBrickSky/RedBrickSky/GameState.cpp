@@ -26,7 +26,7 @@ void GameState::update() {
 		stage[i]->update();
 }
 
-bool GameState::handleEvent(SDL_Event& event) {
+bool GameState::handleEvent(const SDL_Event& event) {
 	bool capturedEvent = false;
 	bool handledEvent = false;
 

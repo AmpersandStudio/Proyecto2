@@ -29,7 +29,6 @@ Game::Game()
 	RENDERER_ = SDL_CreateRenderer(WINDOW_, -1, SDL_RENDERER_ACCELERATED);
 	if (WINDOW_ == nullptr || RENDERER_ == nullptr)
 		cout << "Error initializing SDL\n";
-
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
 		cout << "Error initializing SDL_Mixer" << endl;
@@ -38,7 +37,7 @@ Game::Game()
 	srand(time(nullptr)); //semilla de aleatorios
 
 	//Inicializamos los Joysticks
-	TheInputHandler::Instance()->initialiseJoysticks();
+	//TheInputHandler::Instance()->initialiseJoysticks();
 
 	//Creamos maquina de estados
 	stateMachine_ = new StateMachine();
@@ -78,6 +77,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\ground.png", "27", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\buttonArea.png", "28", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\emptyBox.png", "29", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\fondo.png", "30", RENDERER_);
 
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
@@ -95,13 +95,7 @@ Game::Game()
 
 Game::~Game()
 {
-	//borramos memoria dinamica
-	for (int i = 0; i < textures_.size(); i++) {
-		delete textures_[i];
-		textures_[i] = nullptr;
-	}
-	Mix_Quit();
-	delete stateMachine_;
+
 }
 
 void Game::loadTexture(string filename, int rows, int cols) {
@@ -123,27 +117,29 @@ void Game::render() {
 }
 
 void Game::update() {
+	TheInputHandler::Instance()->update();
 	stateMachine_->currentState()->update();
 }
 
 void Game::handleEvents() {
-	//SDL_Event event;
 
-	//bool capturedEvent = false;
-	////en cuanto capturemos un evento, salimos, asi evitamos fallos cuando cambiemos de estado
-	////porque en cuanto cambiemos se dejaran de gestionar mas eventos
+	SDL_Event event;
 
-	//while (SDL_PollEvent(&event) && !exit_ && !capturedEvent) {
-	//	capturedEvent = (stateMachine_->currentState()->handleEvent(event));
-	//}
+	bool capturedEvent = false;
+	//en cuanto capturemos un evento, salimos, asi evitamos fallos cuando cambiemos de estado
+	//porque en cuanto cambiemos se dejaran de gestionar mas eventos
 
-	TheInputHandler::Instance()->update();
+	while (SDL_PollEvent(&event) && !exit_ &&!capturedEvent) {
+		capturedEvent = (stateMachine_->currentState()->handleEvent(event));
+	}
+
+	
 }
 
 void Game::begin() {
 	GameState* aux = new MainMenuState();
 	GameState* ms = new MapState();
-	stateMachine_->pushState(ms);
+	stateMachine_->pushState(aux);
 	run();
 }
 
@@ -181,4 +177,16 @@ void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color c
 	fontTexture->render(font_dest, SDL_FLIP_NONE);
 	SDL_RenderPresent(RENDERER_);
 
+}
+
+void Game::clean()
+{
+	SoundManager::Instance()->clear();
+	TextureManager::Instance()->clearTextureMap();
+	InputHandler::Instance()->clean();
+	delete stateMachine_;
+
+	Mix_Quit();
+	TTF_Quit();
+	SDL_Quit();
 }

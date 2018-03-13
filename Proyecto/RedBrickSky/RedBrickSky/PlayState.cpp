@@ -60,7 +60,7 @@ PlayState::~PlayState()
 }
 
 // Input general del estado: acceso a menús e input de los objetos del estado
-bool PlayState::handleEvent(SDL_Event & event)
+bool PlayState::handleEvent(const SDL_Event & event)
 {
 
 	// 1) Comprueba las teclas de acceso a los distintos menús, etc.

@@ -15,6 +15,6 @@ public:
 	NameSelectorState();
 	virtual ~NameSelectorState();
 	virtual void render();
-	virtual bool handleEvent(SDL_Event& event);
+	virtual bool handleEvent(const SDL_Event& event);
 };
 

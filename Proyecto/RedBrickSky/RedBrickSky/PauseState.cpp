@@ -34,7 +34,7 @@ PauseState::~PauseState()
 {
 }
 
-bool PauseState::handleEvent(SDL_Event & event)
+bool PauseState::handleEvent(const SDL_Event & event)
 {
 	// 1) Comprueba las teclas de acceso a los distintos menús, etc.
 	if (event.type == SDL_KEYDOWN)

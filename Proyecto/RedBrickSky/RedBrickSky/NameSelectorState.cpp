@@ -34,7 +34,7 @@ void NameSelectorState::render() {
 	GameState::render();
 }
 
-bool NameSelectorState::handleEvent(SDL_Event& event) {
+bool NameSelectorState::handleEvent(const SDL_Event& event) {
 	bool handledEvent = false;
 	handledEvent = GameState::handleEvent(event);
 
