@@ -59,6 +59,7 @@
     <ClCompile Include="RenderFrameComponent.cpp" />
     <ClCompile Include="RenderFrameNDComponent.cpp" />
     <ClCompile Include="RenderFullComponent.cpp" />
+    <ClCompile Include="RenderSingleFrameComponent.cpp" />
     <ClCompile Include="ShopState.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="StateMachine.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="RenderFrameComponent.h" />
     <ClInclude Include="RenderFrameNDComponent.h" />
     <ClInclude Include="RenderFullComponent.h" />
+    <ClInclude Include="RenderSingleFrameComponent.h" />
     <ClInclude Include="ShopItems.h" />
     <ClInclude Include="ShopState.h" />
     <ClInclude Include="SoundManager.h" />

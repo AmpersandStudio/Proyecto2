@@ -21,15 +21,6 @@ typedef struct {
 	Button* button_2;
 	Button* button_3;
 
-	//TEXTURAS UI
-	Texture* cuadro_principal;
-	Texture* cuadro_personaje;
-	Texture* cuadro_enemigo;
-	Texture* cuadro_ataque;
-	Texture* ground;
-	Texture* Vida;
-	Texture* botones;
-
 	//TEXTOS
 
 	//BARRAS DE VIDA

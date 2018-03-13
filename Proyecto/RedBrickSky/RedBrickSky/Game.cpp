@@ -6,6 +6,7 @@
 #include "StateMachine.h"
 #include "PlayState.h"
 #include "MainMenuState.h"
+#include "TextureManager.h"
 
 
 Game* Game::s_pInstance = 0;
@@ -41,44 +42,36 @@ Game::Game()
 	fontTexture = new Texture(RENDERER_);
 
 	//Cargamos las texturas
-	loadTexture("..\\images\\play.png", 1, 1);
-	loadTexture("..\\images\\bag.png", 1, 1);
-	loadTexture("..\\images\\shop.png", 1, 1);
-	loadTexture("..\\images\\exit.png", 1, 1);
-	//Para la tienda 4 -> incluido
-	loadTexture("..\\images\\food2.png", 1, 1);
-	loadTexture("..\\images\\fruit.png", 1, 1);
-	loadTexture("..\\images\\invent.png", 1, 1);
-	loadTexture("..\\images\\inventFront.png", 1, 1);
-	loadTexture("..\\images\\keyboard.png", 1, 2);
-	loadTexture("..\\images\\backPack.png", 1, 1); //9
-	loadTexture("..\\images\\backPackBack.png", 1, 1);
-	loadTexture("..\\images\\abc.png", 9, 6);
-	loadTexture("..\\images\\selector.png", 1, 1);
-	loadTexture("..\\images\\name.png", 1, 1);
-	loadTexture("..\\images\\Weapons.png", 1, 1);//14
-	loadTexture("..\\images\\Potions.png", 1, 1);
-	loadTexture("..\\images\\Items.png", 1, 1);
-		//BattleState
-	loadTexture("..\\images\\Battle_UI_Panel.png", 1, 1); //17
-	loadTexture("..\\images\\grey_button.png", 1, 1);
-	loadTexture("..\\images\\Battle_UI_Personajes.png", 1, 1);
-	loadTexture("..\\images\\Battle_UI_Vida.png", 1, 1);
-	//Objeto de tienda
-
-	loadTexture("..\\images\\weaponsSet.png", 8, 8); //21
-
-	//objeto de presentacion
-	loadTexture("..\\images\\transition.png", 1, 1);//22
-	loadTexture("..\\images\\go.png", 1, 1); //23
-
-	//battleState boxes
-	loadTexture("..\\images\\bigbox.png", 1, 1); //24
-	loadTexture("..\\images\\enemyBox.png", 1, 1);
-	loadTexture("..\\images\\playerBox.png", 1, 1);
-	loadTexture("..\\images\\ground.png", 1, 1);
-	loadTexture("..\\images\\buttonArea.png", 1, 1);
-	loadTexture("..\\images\\emptyBox.png", 1, 1);
+	TheTextureManager::Instance()->load("..\\images\\play.png", "0", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\bag.png", "1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\shop.png", "2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\exit.png", "3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\food2.png", "4", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\fruit.png", "5", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\invent.png", "6", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\inventFront.png", "7", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\keyboard.png", "8", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\backPack.png", "9", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\backPackBack.png", "10", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\abc.png", "11", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\selector.png", "12", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\name.png", "13", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\weapons.png", "14", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\potions.png", "15", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\items.png", "16", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\Battle_UI_Panel.png", "17", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\grey_button.png", "18", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\Battle_UI_Personajes.png", "19", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\Battle_UI_Vida.png", "20", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\weaponsSet.png", "21", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\transition.png", "22", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\go.png", "23", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\bigbox.png", "24", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\enemyBox.png", "25", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\playerBox.png", "26", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\ground.png", "27", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\buttonArea.png", "28", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\emptyBox.png", "29", RENDERER_);
 
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);

@@ -1,4 +1,5 @@
 #include "RenderFrameComponent.h"
+#include "TextureManager.h"
 
 RenderFrameComponent::RenderFrameComponent()
 {
@@ -22,7 +23,10 @@ void RenderFrameComponent::render(GameObject* o) {
 	destRect.w = DestCellW / scale;
 	destRect.h = DestCellH / scale;
 
-	//Renderizamos textura del gc
-	o->getText()->renderFrame(destRect, o->getRowFrame(), o->getColFrame());
-	//o->getText()->renderComplete();
+	////Renderizamos textura del gc
+	//o->getText()->renderFrame(destRect, o->getRowFrame(), o->getColFrame());
+	////o->getText()->renderComplete();
+
+	TheTextureManager::Instance()->drawFull(o->getTextureId(), pos.getX() * DestCellW, pos.getY() * DestCellH,
+		DestCellW, DestCellH, TheGame::Instance()->getRenderer(), o->getAngle(), o->getAlpha());
 }

@@ -8,9 +8,6 @@ NameSelectorState::NameSelectorState()
 	selector_ = new GameComponent();
 	letters_ = new GameComponent();
 
-	Texture* abcdary_ = Game::Instance()->getTexture(11); //letras
-	Texture* tx0 = Game::Instance()->getTexture(12); //selector
-
 	Vector2D position0(0, 0);
 
 	int rows = 6;
@@ -22,8 +19,8 @@ NameSelectorState::NameSelectorState()
 	RenderComponent* rc2 = new RenderFullComponent();
 	InputComponent* ic = new KeyInputComponent(SDLK_w, SDLK_s, SDLK_d, SDLK_a, rows, cols);
 
-	selector_->setText(tx0); selector_->setPosition(position0); selector_->setWidth(selectorWidth); selector_->setHeight(selectorHeight); selector_->addRenderComponent(rc); selector_->addInputComponent(ic);
-	letters_->setText(abcdary_); letters_->addRenderComponent(rc2);
+	selector_->setTextureId("12"); selector_->setPosition(position0); selector_->setWidth(selectorWidth); selector_->setHeight(selectorHeight); selector_->addRenderComponent(rc); selector_->addInputComponent(ic);
+	letters_->setTextureId("11"); letters_->addRenderComponent(rc2);
 
 	stage.push_back(letters_);
 	stage.push_back(selector_);

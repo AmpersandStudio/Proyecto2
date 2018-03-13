@@ -3,8 +3,7 @@
 
 typedef void CallBackOnClick();
 
-class Button :
-	public GameComponent
+class Button : public GameComponent
 {
 private:
 	bool selected_;
@@ -13,7 +12,7 @@ protected:
 	CallBackOnClick* cboc_; 
 	//funcion callback generica que se llamara cuando haya un click en el boton
 public:
-	Button(CallBackOnClick* cb, int flag);
+	Button(std::string id, CallBackOnClick* cb, int flag);
 	virtual ~Button();
 	CallBackOnClick* getCallback() { return cboc_; };
 	bool getSelected() { return selected_; };

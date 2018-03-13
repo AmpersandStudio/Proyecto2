@@ -24,37 +24,31 @@ PlayState::PlayState()
 	//ESTO ES DE JAVI, UN BOTON QUE TE LLEVA A LA TIENDA DESDE DENTRO DEL JUEGO PORQUE GAME STATE ES EL QUE TIENE LA INFO DE LA MOCHILA,
 	//MODIFICAD LA POSICION SI QUEREIS PERO DECIDMELO PLS
 
-	Button* button0 = new Button(toGame, 0);
-	Texture* tx0 = Game::Instance()->getTexture(2);
+	Button* button0 = new Button("2", toGame, 0);
 	Vector2D position0(5, 6);
 	double width = 150;
 	double height = 100;
 	RenderComponent* rc = new RenderFrameComponent();
 	InputComponent* ic2 = new MouseInputComponentButton();
-	button0->setText(tx0); button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(rc); button0->addInputComponent(ic2);
+	button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(rc); button0->addInputComponent(ic2);
 
 	stage.push_back(button0);
 
-	Button* button1 = new Button(toInventary, 1);
-
-	Texture* tx1 = Game::Instance()->getTexture(1);
-
+	Button* button1 = new Button("1", toInventary, 1);
 	Vector2D position1(7, 6);
-
-	button1->setText(tx1); button1->setPosition(position1); button1->setWidth(width); button1->setHeight(height); button1->addRenderComponent(rc); button1->addInputComponent(ic2);
+	button1->setPosition(position1); button1->setWidth(width); button1->setHeight(height); button1->addRenderComponent(rc); button1->addInputComponent(ic2);
 	
 	stage.push_back(button1);
 
 	//ESTO ES DE MARTIN, UN BOTON PARA IR AL BATTLESTATE
-	Button* button2 = new Button(toBattle, 2);
-	Texture* tx2 = Game::Instance()->getTexture(18);
+	Button* button2 = new Button("18", toBattle, 2);
 	Vector2D position2(3, 6);
-	button2->setText(tx2); button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(rc); button2->addInputComponent(ic2);
+	button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(rc); button2->addInputComponent(ic2);
 	stage.push_back(button2);
 
-	Button* button3 = new Button(toMap, 3);
+	Button* button3 = new Button("18", toMap, 3);
 	Vector2D position3(1, 6);
-	button3->setText(tx2); button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(rc); button3->addInputComponent(ic2);
+	button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(rc); button3->addInputComponent(ic2);
 	stage.push_back(button3);
 
 	initPlayer();
@@ -106,7 +100,7 @@ void PlayState::initPlayer()
 	player_ = new GameComponent();
 
 	InputComponent* movementComp = new MovementInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d) ; // Para el jugador
-	RenderComponent* rc = new RenderFrameNDComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
+	RenderComponent* rc = new RenderFrameComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
 
 	//DE PABLO PARA PROBAR DIALOGOS
 	KeyInputComponent* KeyComponent = new KeyInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d);
@@ -116,8 +110,7 @@ void PlayState::initPlayer()
 
 
 	// Para probar
-	Texture* testTex = Game::Instance()->getTexture(4);
-	player_->setText(testTex);
+	player_->setTextureId("4");
 	player_->setWidth(70); player_->setHeight(70);
 	player_->setPosition(Vector2D(0, 0));
 	player_->setVel(Vector2D(5, 5));

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <utility>
 
 class TextureManager
 {
@@ -23,18 +24,24 @@ public:
 
 	bool load(std::string fileName, std::string id, SDL_Renderer* pRenderer);
 	
-	void draw(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void draw(std::string id, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void drawFull(std::string id, int destX, int destY, int destW, int destH, SDL_Renderer * pRenderer, double angle, int alpha, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, double angle, int alpha, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawTile(std::string id, int margin, int spacing, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer *pRenderer);
+
+	void drawItem(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, int rows, int cols, SDL_Renderer * pRenderer, double angle, int alpha, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	
 	void clearTextureMap();
 	void clearFromTextureMap(std::string id);
+
+	SDL_Texture* getTexture(std::string id) { return m_textureMap[id]; };
 
 private:
 	TextureManager();
 	~TextureManager();
 
 	std::map<std::string, SDL_Texture*> m_textureMap;
+	std::map<std::string, std::pair<int, int>> m_textureDims;
 	static TextureManager* s_pInstance;
 };
 

@@ -5,7 +5,7 @@
 #include "GameComponent.h"
 
 struct estado {
-	Texture* tx;
+	std::string tx;
 	int price;
 	bool empty,
 	     comprado;

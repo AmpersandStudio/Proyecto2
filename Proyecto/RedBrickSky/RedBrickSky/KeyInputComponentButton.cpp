@@ -47,11 +47,12 @@ bool KeyInputComponentButton::handleEvent(GameObject* o, const SDL_Event& event)
 					cboc();
 				}
 			}
-			if (b->getSelected())
-				SDL_SetTextureAlphaMod(o->getText()->getSDLText(), 100);
-			else
-				SDL_SetTextureAlphaMod(o->getText()->getSDLText(), 255);
+			//if (b->getSelected())
+			//	SDL_SetTextureAlphaMod(o->getText()->getSDLText(), 100);
+			//else
+			//	SDL_SetTextureAlphaMod(o->getText()->getSDLText(), 255);
 		}
 	}
+
 	return handledEvent;
 }

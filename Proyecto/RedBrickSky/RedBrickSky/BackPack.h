@@ -1,6 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "RenderFullComponent.h"
+#include "RenderSingleFrameComponent.h"
 #include "MouseScrollComponent.h"
 #include "MouseOverObjectComponent.h"
 #include "StateMachine.h"
@@ -13,21 +14,14 @@
 
 #include "GameManager.h"
 
-class BackPack :
-	public GameState
+class BackPack : public GameState
 {
 private:
-	//TEXTURAS NECESARIAS
-	Texture* back;
-	Texture* standPoint;
-	Texture* front;
-	Texture* bot;
-	Texture* food;
-	Texture* food2;
 
 	//COMPONENTES NECESARIOS
 	RenderComponent* rcF; //Render Frame
 	RenderComponent* rc; //Render FS
+	RenderComponent* rcSF;
 	InputComponent* MSC;
 	InputComponent* MSOC;
 	InputComponent* MIC;
@@ -76,7 +70,7 @@ public:
 	void creaSP();
 	void creaEscena();
 	void creaFondoTienda();
-	void createButtons(int x, int y, vector<estado> type, int t);
+	void createButtons(int x, int y, vector<estado> type, std::string t);
 	void separateElements();
 	void createItemAtSP(int x, int y, int aux, estado st);
 

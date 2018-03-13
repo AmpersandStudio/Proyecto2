@@ -1,6 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "RenderFullComponent.h"
+#include "RenderSingleFrameComponent.h"
 #include "MouseScrollShopComponent.h"
 #include "StateMachine.h"
 #include "MouseInputComponentButton.h"
@@ -18,17 +19,10 @@ class ShopState :
 	public GameState
 {
 private:
-
-	//TEXTURAS NECESARIAS
-	Texture* back;
-	Texture* standPoint;
-	Texture* front;
-	Texture* bot;
-
-
 	//COMPONENTES NECESARIOS
 	RenderComponent* rcF; //Render Frame
 	RenderComponent* rc; //Render FS
+	RenderComponent* rcSF;
 	InputComponent* MSC;
 	InputComponent* MSOC;
 	InputComponent* MIC;

@@ -64,7 +64,7 @@ bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 		}
 
 		else if (hueco)
-			cout << "Hay ya hay algo!!!" << endl;
+			cout << "Ahi ya hay algo!!!" << endl;
 		else 
 			cout << "Lo has puesto fuera!!!!" << endl;
 
@@ -150,7 +150,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			n.mY = -1;
 			n.w = StandPoints[i].w;
 			n.h = StandPoints[i].h;
-			n.tx = o->getText();
+			n.tx = o->getTextureId();
 			n.type = tipo;
 			n.nombre = name;
 			n.FilFrame = filFrame;
@@ -160,7 +160,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			GameManager::Instance()->setInventory(n);
 
 			GameComponent* gc2 = new GameComponent();
-			gc2->setText(o->getText()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(70); gc2->setHeight(70);
+			gc2->setTextureId(o->getTextureId()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(70); gc2->setHeight(70);
 			gc2->addRenderComponent(new RenderFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(shop));
 			gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
 

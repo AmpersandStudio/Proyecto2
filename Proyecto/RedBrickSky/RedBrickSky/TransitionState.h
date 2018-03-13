@@ -2,8 +2,7 @@
 #include "GameState.h"
 #include "GameComponent.h"
 
-class TransitionState :
-	public GameState
+class TransitionState : public GameState
 {
 private:
 	GameComponent* square;
