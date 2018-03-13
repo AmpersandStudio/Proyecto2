@@ -36,9 +36,6 @@ Game::Game()
 
 	srand(time(nullptr)); //semilla de aleatorios
 
-	//Inicializamos los Joysticks
-	//TheInputHandler::Instance()->initialiseJoysticks();
-
 	//Creamos maquina de estados
 	stateMachine_ = new StateMachine();
 
@@ -96,17 +93,6 @@ Game::Game()
 Game::~Game()
 {
 
-}
-
-void Game::loadTexture(string filename, int rows, int cols) {
-	if (filename == " ") { // WARMIMG!!!!!!!!!!!!!!
-		cout << "Error cargando la textura";
-	}
-	else {
-		Texture* text = new Texture(RENDERER_, filename);
-		text->load(rows, cols);
-		textures_.push_back(text);
-	}
 }
 
 void Game::render() {
@@ -183,7 +169,7 @@ void Game::clean()
 {
 	SoundManager::Instance()->clear();
 	TextureManager::Instance()->clearTextureMap();
-	InputHandler::Instance()->clean();
+
 	delete stateMachine_;
 
 	Mix_Quit();

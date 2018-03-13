@@ -34,10 +34,6 @@ void Player::render()
 
 void Player::update()
 {
-	// handle input
-    velocity_ = Vector2D(0, 0);
-	handleInput();
-
 	// refresh position
 	position_ = position_ + velocity_;
 
@@ -47,29 +43,50 @@ void Player::update()
 
 bool Player::handleEvent(const SDL_Event& event)
 {
-	//velocity_ = Vector2D(0, 0);
-	//if (event.type == SDL_KEYDOWN)
-	//{
-	////	if (event.key.keysym.sym == SDLK_LEFT)
-	////	{
-	////		velocity_.set(Vector2D(-m_moveSpeed, 0));
-	////	}
-	//	if (event.key.keysym.sym == SDLK_ESCAPE)
-	//		Game::Instance()->getStateMachine()->popState();
-	//}
-	
-
-	if (event.type == SDL_QUIT) {
-		Game::Instance()->exitApp();
+	if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
+	{
+		if (event.key.keysym.sym == SDLK_LEFT)
+		{
+			velocity_.set(Vector2D(-m_moveSpeed, 0));
+		}
+		if (event.key.keysym.sym == SDLK_RIGHT)
+		{
+			velocity_.set(Vector2D(m_moveSpeed, 0));
+		}
+		if (event.key.keysym.sym == SDLK_UP)
+		{
+			velocity_.set(Vector2D(0, -m_moveSpeed));
+		}
+		if (event.key.keysym.sym == SDLK_DOWN)
+		{
+			velocity_.set(Vector2D(0, m_moveSpeed));
+		}
+		if (event.key.keysym.sym == SDLK_ESCAPE)
+		{
+			Game::Instance()->getStateMachine()->popState();
+		}
 		return true;
 	}
-
-	if (event.type == SDL_KEYDOWN)
+	else if (event.type == SDL_KEYUP)
 	{
-		if (event.key.keysym.sym == SDLK_ESCAPE) {
-			Game::Instance()->getStateMachine()->popState();
-			return true;
+		switch (event.key.keysym.sym)
+		{
+		case SDLK_LEFT:
+		case SDLK_RIGHT:
+		case SDLK_UP:
+		case SDLK_DOWN:
+			std::cout << "KEYUP" << std::endl;
+			velocity_ = Vector2D(0, 0);
+			break;
+
+		default:
+			break;
 		}
+	}
+	else if (event.type == SDL_QUIT) 
+	{
+		Game::Instance()->exitApp();
+		return true;
 	}
 
 	return false;
@@ -77,70 +94,13 @@ bool Player::handleEvent(const SDL_Event& event)
 
 void Player::collision()
 {
-	position_ = position_ - velocity_;
+	//position_ = position_ - velocity_;
+	velocity_ = Vector2D(0, 0);
 }
 
 void Player::handleAnimation()
 {
 	colFrame_ = int(((SDL_GetTicks() / (100)) % numFrames_));
-}
-
-void Player::handleInput()
-{
-	if (TheInputHandler::Instance()->joystickInitialised())
-	{
-		if (TheInputHandler::Instance()->xvalue(0, 1) > 0 ||
-			TheInputHandler::Instance()->xvalue(0, 1) < 0)
-		{
-			velocity_.setX(m_moveSpeed * TheInputHandler::Instance()->xvalue(0, 1));
-		}
-
-		if (TheInputHandler::Instance()->yvalue(0, 1) > 0 ||
-			TheInputHandler::Instance()->yvalue(0, 1) < 0)
-		{
-			velocity_.setY(m_moveSpeed * TheInputHandler::Instance()->yvalue(0, 1));
-		}
-
-		if (TheInputHandler::Instance()->xvalue(0, 2) > 0 ||
-			TheInputHandler::Instance()->xvalue(0, 2) < 0)
-		{
-			velocity_.setX(m_moveSpeed * TheInputHandler::Instance()->xvalue(0, 2));
-		}
-
-		if (TheInputHandler::Instance()->yvalue(0, 2) > 0 ||
-			TheInputHandler::Instance()->yvalue(0, 2) < 0)
-		{
-			velocity_.setY(m_moveSpeed * TheInputHandler::Instance()->yvalue(0, 2));
-		}
-
-		if (TheInputHandler::Instance()->getButtonState(0, 1))
-		{
-			velocity_.setX(-m_moveSpeed);
-		}
-
-		if (TheInputHandler::Instance()->getButtonState(0, 0))
-		{
-			velocity_.setX(m_moveSpeed);
-		}
-	}
-
-
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
-	{
-		velocity_.setX(m_moveSpeed);
-	}
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
-	{
-		velocity_.setX(-m_moveSpeed);
-	}
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
-	{
-		velocity_.setY(-m_moveSpeed);
-	}
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
-	{
-		velocity_.setY(m_moveSpeed);
-	}
 }
 
 	// FUNCIONALIDAD INTERACTUAR
