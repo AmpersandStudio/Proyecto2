@@ -23,7 +23,10 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	callbackId_ = callbackID;
 	animSpeed_ = animSpeed;
 
+	direction_ = Vector2D(0, -1);
 	m_moveSpeed = 10;
+	interacting_ = false;
+	updateRect();
 }
 
 void Player::render()
@@ -48,22 +51,40 @@ bool Player::handleEvent(const SDL_Event& event)
 		if (event.key.keysym.sym == SDLK_LEFT)
 		{
 			velocity_.set(Vector2D(-m_moveSpeed, 0));
+			direction_.set(-1, 0);
 		}
 		if (event.key.keysym.sym == SDLK_RIGHT)
 		{
 			velocity_.set(Vector2D(m_moveSpeed, 0));
+			direction_.set(1, 0);
 		}
 		if (event.key.keysym.sym == SDLK_UP)
 		{
 			velocity_.set(Vector2D(0, -m_moveSpeed));
+			direction_.set(0, -1);
 		}
 		if (event.key.keysym.sym == SDLK_DOWN)
 		{
 			velocity_.set(Vector2D(0, m_moveSpeed));
+			direction_.set(0, 1);
 		}
 		if (event.key.keysym.sym == SDLK_ESCAPE)
 		{
 			Game::Instance()->getStateMachine()->popState();
+		}
+		if (event.key.keysym.sym == SDLK_SPACE)
+		{
+			updateRect();
+			SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+			SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &actionRect_);
+			SDL_RenderPresent(TheGame::Instance()->getRenderer());
+			setInteracting(true);
+		}
+		if (event.key.keysym.sym == SDLK_f)
+		{
+			int flags = SDL_GetWindowFlags(TheGame::Instance()->getWindow());
+			if (flags & SDL_WINDOW_FULLSCREEN) SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), 0);
+			else SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), SDL_WINDOW_FULLSCREEN);
 		}
 		return true;
 	}
@@ -94,7 +115,6 @@ bool Player::handleEvent(const SDL_Event& event)
 
 void Player::collision()
 {
-	//position_ = position_ - velocity_;
 	velocity_ = Vector2D(0, 0);
 }
 
@@ -103,20 +123,23 @@ void Player::handleAnimation()
 	colFrame_ = int(((SDL_GetTicks() / (100)) % numFrames_));
 }
 
-	// FUNCIONALIDAD INTERACTUAR
-	// Debemos crear una clase Interactuable que herede de GameObject (volvemos a tener el problema de
-	// la GameObjectFactory). Esta clase es abstracta, y sólo contiene un método virtual void Activate();
-	// cada GO creado con este tipo implementa un Activate diferente en función de lo que queramos que haga
-	// (mostrar un cuadro de diálogo, comenzar una batalla, añadir un item, etc.)
-	// Al parsear el nivel (LevelParser) si detectamos uno de estos objetos (parseObjectLayers) debemos
-	// añadirlo a un vector de Interactuable* (en Level). 
-	// Al pulsar SPACE se genera un rectangulo en la dirección que mire el personaje:
-	// case (0, -1): SDL_Rect int_rect RECT(position_.getX(), position_.getY() - height_, width_, height_);
-	// case (1, 0): SDL_Rect int_rect RECT(position_.getX() + width_, position_.getY(), width_, height_);
-	// case (0, 1): SDL_Rect int_rect RECT(position_.getX(), position_.getY() + height_, width_, height_);
-	// case (-1, 0): SDL_Rect int_rect RECT(position_.getX() - width_, position_.getY(), width_, height_);
-	// Después, llamamos a un metodo CheckInteraction(), que recorre el vector<Interactuable*> de Level.
-	// Para cada GO Interactuable, se genera un SDL_Rect y se comprueba si está colisionando con el SDL_Rect
-	// creado por el jugador. Si se produce una colisión, se toma el GO correspondiente y se llama a su
-	// metodo Activate (en cada iteracion hay que hacer delete del SDL_Rect creado para cada Interactuable).
+void Player::updateRect()
+{
+	if (direction_.getX() == -1 && direction_.getY() == 0)
+	{
+		actionRect_ = { (int)(position_.getX() - width_), (int)position_.getY(), (int)width_, (int)height_ };
+	}
+	else if (direction_.getX() == 1 && direction_.getY() == 0)
+	{
+		actionRect_ = { (int)(position_.getX() + width_), (int)position_.getY(), (int)width_, (int)height_ };
+	}
+	else if (direction_.getX() == 0 && direction_.getY() == -1)
+	{
+		actionRect_ = { (int)position_.getX(), (int)(position_.getY() - height_), (int)width_, (int)height_ };
+	}
+	else if (direction_.getX() == 0 && direction_.getY() == 1)
+	{
+		actionRect_ = { (int)position_.getX(), (int)(position_.getY() + height_), (int)width_, (int)height_ };
+	}
+}
 

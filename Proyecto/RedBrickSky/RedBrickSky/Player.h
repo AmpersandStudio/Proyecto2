@@ -15,15 +15,22 @@ public:
 	virtual void render();
 	virtual void clean() {};
 
-
 	virtual void collision();
 	virtual string type() { return "Player"; };
+
+	bool isInteracting() const { return interacting_; }
+	void setInteracting(bool b) { interacting_ = b; }
+
+	SDL_Rect* getRect() { return &actionRect_; }
 	
 private:
 	int m_moveSpeed;
+	bool interacting_;
+
+	SDL_Rect actionRect_;
 
 	void handleAnimation();
-	void handleInput();
+	void updateRect();
 };
 
 class PlayerCreator : public BaseCreator

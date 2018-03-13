@@ -164,6 +164,11 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				pLevel->setPlayer(static_cast<Player*>(pGameObject));
 			}
 
+			if (type == "Interactuable")
+			{
+				pLevel->getInteractions()->push_back(static_cast<Interactuable*>(pGameObject));
+			}
+
 			pObjectLayer->getGameObjects()->push_back(pGameObject);
 		}
 	}

@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 
+#include "Interactuable.h"
+
 class GameObject;
 class TileLayer;
 class Player;
@@ -14,6 +16,10 @@ public:
 	~CollisionManager() {}
 
 	void checkPlayerTileCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers);
+
+	void checkInteractions(Player * pPlayer, const std::vector<Interactuable*>& interactuables);
+
+	bool RectRect(SDL_Rect * A, SDL_Rect * B);
 
 };
 

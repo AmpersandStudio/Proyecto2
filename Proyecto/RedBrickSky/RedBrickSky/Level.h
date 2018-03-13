@@ -7,6 +7,7 @@
 #include "LevelParser.h"
 #include "Player.h"
 #include "CollisionManager.h"
+#include "Interactuable.h"
 
 class TileLayer;
 
@@ -34,6 +35,8 @@ public:
 	std::vector<Layer*>* getLayers() { return &m_layers; }
 	std::vector<TileLayer*>* getCollisionLayers() { return &m_collisionLayers; }
 	const std::vector<TileLayer*>& getCollidableLayers() { return m_collisionLayers; }
+	std::vector<Interactuable*>* getInteractions() { return &m_interactuables; }
+	const std::vector<Interactuable*>& getInteractuables() { return m_interactuables; }
 
 	Player* getPlayer() { return m_pPlayer; }
 	void setPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
@@ -47,6 +50,7 @@ private:
 	std::vector<Tileset> m_tilesets;	// tilesets del nivel
 	std::vector<Layer*> m_layers;	// capas del nivel
 	std::vector<TileLayer*> m_collisionLayers;	//capas de colisiones del nivel
+	std::vector<Interactuable*> m_interactuables;
 
 	int m_tileWidth;	// ancho de tile del nivel
 	int m_tileHeight;	// alto de tile del nivel

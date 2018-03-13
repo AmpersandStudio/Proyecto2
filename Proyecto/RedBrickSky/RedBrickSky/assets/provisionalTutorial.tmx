@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="33">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="34">
  <properties>
+  <property name="31" value="assets/cartel.png"/>
   <property name="helicopter" value="assets/helicopter.png"/>
  </properties>
  <tileset firstgid="1" name="Patrones1" tilewidth="32" tileheight="32" tilecount="168" columns="14">
@@ -11,7 +12,7 @@
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmEESwyAIRb1V7n+zbjstAiYoH/LfjBul6Ksxaq4xxtWkDIAxRIydHvllp8cQckp19Jh7oEKP/zxZeJ/XN3lUgB5YdPOI3v8y+u40H9WhBxb0wIIeWHAfxALZQ7pbzMaK6HHnGUL1WI2hBxb0wIIeWHT0qHxe0fb8t3rsjrdy0eNsvJXLOkNq/UXeo55Q7b00gx5YdFwfHd5XUl567Im3cnU8X3U471aGHljQAwt6YEEPLOiBBT2woMd+pHuEVRDp4HHHAdVjNZ4e+6AHFpkekd/h6IEF5+M50R5Z+7k335247HJ6XL/9af+R1hY5H1YOKacW423ztK/GeX9f1UPKF+mRQfT6OMnOde5pX43z8u3heY9YMV08sujoodVp9Qggj20FemBBDywiPU6e22c5I3PR43nf1enm0aF8AEdHwjk=
+   eJztmEESwyAIRb1V7n+zbjMtAiYoH/rfjBul6Ksxaq4xxtWkDIAxRIydHvllp8cQckp19Jh7oEKP3zxZeJ/XVY/TTpEeFaAHFt08ove/jL47zUd16IEFPbCgBxbcB7FA9pDuFrOxIno8eYZQPVZj6IEFPbCgBxYdPSqfV7Q9/189dsdbuehxNt7KZZ0htf4i71FvqPZemkEPLDqujw7vKykvPfbEW7k6nq86nHcrQw8s6IEFPbCgBxb0wIIeWNBjP9I9wiqIdPB44oDqsRpPj33QA4tMj8jvcPTAgvPxnmiPrP3cm+9JXHY5Pa7v/rT/SGuLnA8rh5RTi/G2edpX47y/r+oh5Yv0yCB6fZxk5zr3tK/Gebl7eN4jVkwXjyw6emh1Wj0CyGNbgR5Y0AOLSI+T5/ZZzshc9Hjfd3W6eXQoH4TcwnA=
   </data>
  </layer>
  <layer name="Floor" width="50" height="100">
@@ -40,6 +41,14 @@
     <property name="numFrames" type="int" value="4"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="helicopter"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="33" name="Interactuable" type="Interactuable" x="353" y="288" width="32" height="32">
+   <properties>
+    <property name="numFrames" type="int" value="1"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="31"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>

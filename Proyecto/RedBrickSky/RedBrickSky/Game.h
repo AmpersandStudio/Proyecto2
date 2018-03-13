@@ -57,6 +57,7 @@ public:
 	void cleanSreen() { SDL_RenderClear(RENDERER_); }; //limpia pantalla
 	void exitApp(); //sale de la aplicacion
 	SDL_Renderer* getRenderer() { return RENDERER_; };
+	SDL_Window* getWindow() { return WINDOW_; };
 	SDL_Color getBlackColor() { return Black; };
 };
 

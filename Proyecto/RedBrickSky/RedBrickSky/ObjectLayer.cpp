@@ -19,6 +19,9 @@ void ObjectLayer::update(Level* pLevel)
 	// COLISIONES
 	m_collisionManager.checkPlayerTileCollision(pLevel->getPlayer(), pLevel->getCollidableLayers());
 
+	//INTERACCIONES
+	if (pLevel->getPlayer()->isInteracting()) m_collisionManager.checkInteractions(pLevel->getPlayer(), pLevel->getInteractuables());
+
 	for (GameObject* go : m_gameObjects)
 	{
 		go->update();

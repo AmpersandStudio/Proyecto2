@@ -1,16 +1,18 @@
-#include "Game.h"
-#include<stdlib.h>
-#include<time.h>
+#include <stdlib.h>
+#include <time.h>
 #include <fstream>
 #include <math.h>
+
+#include "Game.h"
 #include "StateMachine.h"
 #include "PlayState.h"
 #include "MainMenuState.h"
+#include "MapState.h"
+
 #include "TextureManager.h"
 #include "GameObjectFactory.h" 
 #include "Player.h"
-#include "InputHandler.h"
-#include "MapState.h"
+#include "Interactuable.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -81,6 +83,7 @@ Game::Game()
 
 	//Registramos los tipos en la Game Object Factory
 	TheGameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
+	TheGameObjectFactory::Instance()->registerType("Interactuable", new InteractuableCreator());
 
 	//inicializamos booleanos de control
 	exit_ = false; 
@@ -95,20 +98,21 @@ Game::~Game()
 
 }
 
-void Game::render() {
+void Game::render() 
+{
 	//renderizamos los objetos
 	SDL_SetRenderDrawColor(RENDERER_, 0, 255, 255, 255);
 	stateMachine_->currentState()->render();
 	if (!exit_) SDL_RenderPresent(RENDERER_);
 }
 
-void Game::update() {
-	TheInputHandler::Instance()->update();
+void Game::update() 
+{
 	stateMachine_->currentState()->update();
 }
 
-void Game::handleEvents() {
-
+void Game::handleEvents() 
+{
 	SDL_Event event;
 
 	bool capturedEvent = false;
@@ -122,25 +126,29 @@ void Game::handleEvents() {
 	
 }
 
-void Game::begin() {
-	GameState* aux = new MainMenuState();
-	GameState* ms = new MapState();
-	stateMachine_->pushState(aux);
+void Game::begin() 
+{
+	stateMachine_->pushState(new MainMenuState());
 	run();
 }
 
-void Game::exitApp() {
+void Game::exitApp() 
+{
 	exit_ = true;
 }
 
-void Game::run() {
+void Game::run() 
+{
 	int startime, frametime;
-	while (!exit_ && !error_) {
+	while (!exit_ && !error_) 
+	{
 		//flujo natural de bucle
 		startime = SDL_GetTicks();
+
 		handleEvents();
 		update();
 		render();
+
 		frametime = SDL_GetTicks() - startime;
 		if (frametime < FRAME_RATE_)SDL_Delay(FRAME_RATE_ - frametime);
 	}
@@ -148,8 +156,8 @@ void Game::run() {
 	//en cuanto salgamos de la app, limpiamos la maquina de estados (vaciamos la pila y su memoria dinamica)
 }
 
-void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color color) {
-
+void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color color) 
+{
 	SDL_Rect font_dest;
 
 	font_dest.w = destH * text.size();
@@ -162,7 +170,6 @@ void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color c
 	fontTexture->loadFromText(RENDERER_, text, font, color);
 	fontTexture->render(font_dest, SDL_FLIP_NONE);
 	SDL_RenderPresent(RENDERER_);
-
 }
 
 void Game::clean()
