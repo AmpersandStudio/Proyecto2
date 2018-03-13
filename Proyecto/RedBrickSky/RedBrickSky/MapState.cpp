@@ -23,3 +23,8 @@ void MapState::render()
 {
 	pLevel->render();
 }
+
+bool MapState::handleEvent(SDL_Event& event)
+{
+	return pLevel->getPlayer()->handleEvent(event);
+}

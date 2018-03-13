@@ -17,11 +17,7 @@ ObjectLayer::~ObjectLayer()
 void ObjectLayer::update(Level* pLevel)
 {
 	// COLISIONES
-
-	//if (pLevel->getPlayer()->getPosition().getX() + pLevel->getPlayer()->getWidth() < TheGame::Instance()->getGameWidth())
-	//{
-	//	m_collisionManager.checkPlayerTileCollision(pLevel->getPlayer(), pLevel->getCollidableLayers());
-	//}
+	m_collisionManager.checkPlayerTileCollision(pLevel->getPlayer(), pLevel->getCollidableLayers());
 
 	for (GameObject* go : m_gameObjects)
 	{

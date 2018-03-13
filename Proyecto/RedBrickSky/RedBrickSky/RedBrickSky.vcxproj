@@ -34,6 +34,7 @@
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InventBottomsComponent.cpp" />
     <ClCompile Include="InventoryShopFBcomponent.cpp" />
     <ClCompile Include="KeyInputComponent.cpp" />
@@ -97,6 +98,7 @@
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="InventBottomsComponent.h" />
     <ClInclude Include="InventoryShopFBcomponent.h" />
     <ClInclude Include="KeyInputComponent.h" />

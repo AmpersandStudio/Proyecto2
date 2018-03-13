@@ -11,26 +11,25 @@ class GameObject
 {
 protected:
 
-	Texture* text_ = nullptr;
-	string textureId_ = "";	// id para TextureManager (key)
+	string textureId_;	// id para TextureManager (key)
 
 	// NCM: deberiamos inicializar todo en la constructora
-	Vector2D position_ = Vector2D(0,0);
-	Vector2D iniPosition_ = Vector2D(0, 0);
-	Vector2D velocity_ = Vector2D(0, 0);
-	Vector2D direction_ = Vector2D(0, 0);
+	Vector2D position_;
+	Vector2D iniPosition_;
+	Vector2D velocity_;
+	Vector2D direction_;
 
-	double width_ = 0;
-	double height_ = 0;
+	double width_;
+	double height_;
 
-	int colFrame_ = 0;
-	int rowFrame_ = 0;
-	int numFrames_ = 0;
-	int animSpeed_ = 0;
+	int colFrame_;
+	int rowFrame_;
+	int numFrames_;
+	int animSpeed_;
 
-	int alpha_ = 255;
-	double angle_ = 0;
-	int callbackId_ = 0;
+	int alpha_;
+	double angle_;
+	int callbackId_;
 
 public:
 	GameObject();
@@ -40,8 +39,6 @@ public:
 	void setCallbackId(int id) { callbackId_ = id; };
 
 	//para poder modificar la textura del go
-	Texture* getText() const { return text_; };
-	void setText(Texture* t) { text_ = t; };
 	string getTextureId() { return textureId_; };
 	void setTextureId(string s) { textureId_ = s; };
 	int getAlpha() const { return alpha_; };
@@ -77,6 +74,7 @@ public:
 	void setAniMSpeed(int a) { animSpeed_ = a; };
 
 	//metodos abstractos que se redifiniran en clases hijas
+	virtual void load(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID = 0, int animSpeed = 0) = 0;
 	virtual bool handleEvent(const SDL_Event& event) = 0;
 	virtual void update() = 0;
 	virtual void render() = 0;

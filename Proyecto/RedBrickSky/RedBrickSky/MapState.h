@@ -11,6 +11,7 @@ public:
 
 	virtual void update();
 	virtual void render();
+	virtual bool handleEvent(SDL_Event& event);
 
 private:
 	Level* pLevel;

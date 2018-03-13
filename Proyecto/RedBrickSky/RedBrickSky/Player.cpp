@@ -1,8 +1,18 @@
 #include "Player.h"
 #include "TextureManager.h"
 #include "Game.h"
+#include "InputHandler.h"
 
-Player::Player(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID, int animSpeed) : GameObject()
+Player::Player()
+{
+
+}
+
+Player::~Player()
+{
+}
+
+void Player::load(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID, int animSpeed)
 {
 	position_ = position;
 	width_ = width;
@@ -11,10 +21,8 @@ Player::Player(Vector2D position, int width, int height, string textureId, int n
 	numFrames_ = numFrames;
 	callbackId_ = callbackID;
 	animSpeed_ = animSpeed;
-}
 
-Player::~Player()
-{
+	m_moveSpeed = 10;
 }
 
 void Player::render()
@@ -25,10 +33,8 @@ void Player::render()
 
 void Player::update()
 {
-	// reset velocity
-	velocity_ = Vector2D(0, 0);
-
 	// handle input
+	velocity_ = Vector2D(0, 0);
 	handleInput();
 
 	// refresh position
@@ -40,7 +46,30 @@ void Player::update()
 
 bool Player::handleEvent(const SDL_Event& event)
 {
-	return false;
+	// reset velocity
+	velocity_ = Vector2D(0, 0);
+
+	if (event.type == SDL_KEYDOWN)
+	{
+		if (event.key.keysym.sym == SDLK_UP)
+		{
+			velocity_.set(Vector2D(0, -m_moveSpeed));
+		}
+		if (event.key.keysym.sym == SDLK_DOWN)
+		{
+			velocity_.set(Vector2D(0, m_moveSpeed));
+		}
+		if (event.key.keysym.sym == SDLK_RIGHT)
+		{
+			velocity_.set(Vector2D(m_moveSpeed, 0));
+		}
+		if (event.key.keysym.sym == SDLK_LEFT)
+		{
+			velocity_.set(Vector2D(-m_moveSpeed, 0));
+		}
+	}
+
+	return true;
 }
 
 void Player::collision()
@@ -55,12 +84,61 @@ void Player::handleAnimation()
 
 void Player::handleInput()
 {
-	// NCM: hay que introducir el InputHandler para utilizar este metodo.
-	// No hay que confundirlo con handleEvents, ya que de implementar el
-	// mencionado InputHandler, este seria el único en gestionar dicho
-	// metodo. Para cada estado / objeto tendriamos un handleInput llamado
-	// desde el update que utilizaria los recursos de InputHandler y su
-	// handleEvents (que se llamaria desde el bucle principal en Game)
+	if (TheInputHandler::Instance()->joystickInitialised())
+	{
+		if (TheInputHandler::Instance()->xvalue(0, 1) > 0 ||
+			TheInputHandler::Instance()->xvalue(0, 1) < 0)
+		{
+			velocity_.setX(m_moveSpeed * TheInputHandler::Instance()->xvalue(0, 1));
+		}
+
+		if (TheInputHandler::Instance()->yvalue(0, 1) > 0 ||
+			TheInputHandler::Instance()->yvalue(0, 1) < 0)
+		{
+			velocity_.setY(m_moveSpeed * TheInputHandler::Instance()->yvalue(0, 1));
+		}
+
+		if (TheInputHandler::Instance()->xvalue(0, 2) > 0 ||
+			TheInputHandler::Instance()->xvalue(0, 2) < 0)
+		{
+			velocity_.setX(m_moveSpeed * TheInputHandler::Instance()->xvalue(0, 2));
+		}
+
+		if (TheInputHandler::Instance()->yvalue(0, 2) > 0 ||
+			TheInputHandler::Instance()->yvalue(0, 2) < 0)
+		{
+			velocity_.setY(m_moveSpeed * TheInputHandler::Instance()->yvalue(0, 2));
+		}
+
+		if (TheInputHandler::Instance()->getButtonState(0, 1))
+		{
+			velocity_.setX(-m_moveSpeed);
+		}
+
+		if (TheInputHandler::Instance()->getButtonState(0, 0))
+		{
+			velocity_.setX(m_moveSpeed);
+		}
+	}
+
+
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
+	{
+		velocity_.setX(m_moveSpeed);
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
+	{
+		velocity_.setX(-m_moveSpeed);
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
+	{
+		velocity_.setY(-m_moveSpeed);
+	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
+	{
+		velocity_.setY(m_moveSpeed);
+	}
+}
 
 	// FUNCIONALIDAD INTERACTUAR
 	// Debemos crear una clase Interactuable que herede de GameObject (volvemos a tener el problema de
@@ -78,4 +156,4 @@ void Player::handleInput()
 	// Para cada GO Interactuable, se genera un SDL_Rect y se comprueba si está colisionando con el SDL_Rect
 	// creado por el jugador. Si se produce una colisión, se toma el GO correspondiente y se llama a su
 	// metodo Activate (en cada iteracion hay que hacer delete del SDL_Rect creado para cada Interactuable).
-}
+

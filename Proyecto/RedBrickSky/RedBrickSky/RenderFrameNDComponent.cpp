@@ -26,5 +26,5 @@ void RenderFrameNDComponent::render(GameObject * o)
 	destRect.h = DestCellH / scale;
 
 	
-	o->getText()->renderFrame(destRect, o->getRowFrame(), o->getColFrame());
+	// o->getText()->renderFrame(destRect, o->getRowFrame(), o->getColFrame());
 }

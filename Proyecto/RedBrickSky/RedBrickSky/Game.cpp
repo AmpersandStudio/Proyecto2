@@ -7,7 +7,10 @@
 #include "PlayState.h"
 #include "MainMenuState.h"
 #include "TextureManager.h"
-
+#include "GameObjectFactory.h" 
+#include "Player.h"
+#include "InputHandler.h"
+#include "MapState.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -33,6 +36,9 @@ Game::Game()
 	}
 
 	srand(time(nullptr)); //semilla de aleatorios
+
+	//Inicializamos los Joysticks
+	TheInputHandler::Instance()->initialiseJoysticks();
 
 	//Creamos maquina de estados
 	stateMachine_ = new StateMachine();
@@ -76,8 +82,12 @@ Game::Game()
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
 
+	//Registramos los tipos en la Game Object Factory
+	TheGameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
+
 	//inicializamos booleanos de control
-	exit_ = false; error_ = false; 
+	exit_ = false; 
+	error_ = false; 
 
 	// milliseconds per frame -> 16.7 = 60 frames/s - 33.3 = 30 frames/s
 	FRAME_RATE_ = 33.3; // El valor original era 130, por si fuera necesario
@@ -117,19 +127,23 @@ void Game::update() {
 }
 
 void Game::handleEvents() {
-	SDL_Event event;
-	bool capturedEvent = false;
-	//en cuanto capturemos un evento, salimos, asi evitamos fallos cuando cambiemos de estado
-	//porque en cuanto cambiemos se dejaran de gestionar mas eventos
+	//SDL_Event event;
 
-	while (SDL_PollEvent(&event) && !exit_ && !capturedEvent) {
-		capturedEvent = (stateMachine_->currentState()->handleEvent(event));
-	}
+	//bool capturedEvent = false;
+	////en cuanto capturemos un evento, salimos, asi evitamos fallos cuando cambiemos de estado
+	////porque en cuanto cambiemos se dejaran de gestionar mas eventos
+
+	//while (SDL_PollEvent(&event) && !exit_ && !capturedEvent) {
+	//	capturedEvent = (stateMachine_->currentState()->handleEvent(event));
+	//}
+
+	TheInputHandler::Instance()->update();
 }
 
 void Game::begin() {
 	GameState* aux = new MainMenuState();
-	stateMachine_->pushState(aux);
+	GameState* ms = new MapState();
+	stateMachine_->pushState(ms);
 	run();
 }
 

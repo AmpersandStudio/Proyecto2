@@ -9,6 +9,11 @@ GameObject::GameObject()
 	height_ = 0;
 	colFrame_ = 0;
 	rowFrame_ = 0;
+	numFrames_ = 0;
+	animSpeed_ = 0;
+	alpha_ = 255;
+	angle_ = 0;
+	callbackId_ = 0;
 }
 
 GameObject::~GameObject()

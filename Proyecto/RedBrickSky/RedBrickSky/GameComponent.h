@@ -7,8 +7,7 @@
 
 using namespace std;
 
-class GameComponent :
-	public GameObject
+class GameComponent : public GameObject
 {
 private:
 	vector<InputComponent*> inputComp_;
@@ -19,6 +18,7 @@ public:
 	GameComponent();
 	virtual ~GameComponent();
 
+	virtual void load(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID = 0, int animSpeed = 0) {};
 	virtual bool handleEvent(const SDL_Event& event);
 	virtual void update();
 	virtual void render();
