@@ -76,7 +76,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\ground.png", "27", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\buttonArea.png", "28", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\emptyBox.png", "29", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\fondo.png", "30", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\fondo.png", "fondoBatallaTuto", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\MainMenu.png", "MainMenu", RENDERER_);
 
 	//CARGA DE SONIDOS

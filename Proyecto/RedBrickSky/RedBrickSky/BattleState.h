@@ -25,7 +25,7 @@ typedef struct {
 
 	//BARRAS DE VIDA
 	double Vida_Width = 160;
-	double Vida_height = 20;
+	double Vida_height = 9;
 
 	GameComponent* UI_Vida_Player;
 	Vector2D VPlayer_position;
@@ -62,6 +62,8 @@ private:
 	int alpha_;
 	bool fadeDone_;
 	bool fade2Done_;
+
+	GameComponent* fondo_;
 
 	//Creacion de la interfaz
 	void createUI();

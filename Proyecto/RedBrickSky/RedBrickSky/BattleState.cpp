@@ -27,6 +27,10 @@ BattleState::BattleState()
 									//Info = new MouseInfoClickComponent();
 	MIC = new MouseInputComponentButton();
 
+	fondo_ = new GameComponent();
+	fondo_->setTextureId("fondoBatallaTuto");
+	fondo_->addRenderComponent(new RenderFullComponent());
+
 	createUI();
 
 }
@@ -99,6 +103,8 @@ void BattleState::createUI() {
 
 	stage.clear();
 
+	stage.push_back(fondo_);
+
 	//Panel de fondo
 	Vector2D position0(0, 2.6);
 	GameComponent* UI_Background = new GameComponent();
@@ -120,7 +126,7 @@ void BattleState::createUI() {
 
 	GameComponent* ground = new GameComponent();
 	ground->setTextureId("27");
-	Vector2D pos(1, 1.5);
+	Vector2D pos(0.8, 1.7);
 	ground->setPosition(pos);
 	ground->setWidth(200); ground->setHeight(200);
 	RenderComponent* rc = new RenderFrameComponent();
@@ -129,7 +135,7 @@ void BattleState::createUI() {
 
 	GameComponent* ground2 = new GameComponent();
 	ground2->setTextureId("27");
-	Vector2D pos2(4.325, 1.5);
+	Vector2D pos2(4.625, 1.7);
 	ground2->setPosition(pos2);
 	ground2->setWidth(200); ground2->setHeight(200);
 	RenderComponent* rc2 = new RenderFrameComponent();
@@ -146,7 +152,7 @@ void BattleState::createCharacterInfo()
 
 	//Cuadro Jugador
 	GameComponent* UI_Player = new GameComponent();
-	position0.setX(0.3); position0.setY(0.5);
+	position0.setX(0.15); position0.setY(0.2);
 	UI_Player->setTextureId("26");
 	UI_Player->setWidth(340); UI_Player->setHeight((150));
 	UI_Player->setPosition(position0);
@@ -155,7 +161,7 @@ void BattleState::createCharacterInfo()
 
 	//Cuadro Enemigo
 	GameComponent* UI_Enemy = new GameComponent();
-	position0.setX(2.45); position0.setY(0.5);
+	position0.setX(2.6); position0.setY(0.2);
 	UI_Enemy->setTextureId("25");;
 	UI_Enemy->setWidth(340); UI_Enemy->setHeight((150));
 	UI_Enemy->setPosition(position0);
@@ -250,9 +256,9 @@ void BattleState::updateVidas()
 	interfaz.UI_Vida_Player = new GameComponent();
 	interfaz.UI_Vida_Enemy = new GameComponent();
 
-	Vector2D position0(1.25, 8);
+	Vector2D position0(0.86, 13.8);
 	interfaz.VPlayer_position = position0;
-	Vector2D position1(5.65, 8);
+	Vector2D position1(6.07, 13.8);
 	interfaz.VEnemy_position = position1;
 
 	interfaz.UI_Vida_Player->setTextureId("20");
@@ -289,9 +295,9 @@ void BattleState::update() {
 	
 	//para comprobar el cambio de textura
 	if (!attackMode)
-		stage[0]->setTextureId("24"); 
+		stage[1]->setTextureId("24"); 
 	else
-		stage[0]->setTextureId("29");
+		stage[1]->setTextureId("29");
 
 	if (!fade2Done_ && fadeDone_)
 		init();
@@ -305,8 +311,9 @@ void BattleState::render() {
 		stage[stage.size() - 1]->render();
 		fadeDone_ = true;
 	}
-	else
+	else {
 		GameState::render();
+	}
 }
 
 bool BattleState::handleEvent(const SDL_Event& event) {

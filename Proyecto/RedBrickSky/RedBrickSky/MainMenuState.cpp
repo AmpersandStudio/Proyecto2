@@ -23,8 +23,8 @@ MainMenuState::MainMenuState()
 	Button* button2 = new Button("13", toSelector, 2);
 
 	Vector2D position0(0.9, 2);
-	Vector2D position3(0.9, 3.5);
-	Vector2D position2(0.9, 5);
+	Vector2D position2(0.9, 3.5);
+	Vector2D position3(0.9, 5);
 
 	double width = 250;
 	double height = 100;
