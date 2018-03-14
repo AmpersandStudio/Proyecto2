@@ -13,8 +13,6 @@
 #include "TransitionState.h"
 #include "RenderFrameNDComponent.h"
 
-
-
 //Para probar lo de los dialogos
 #include "Dialogue.h"
 
@@ -50,6 +48,7 @@ PlayState::PlayState()
 
 	//initPlayer();
 
+	TheSoundManager::Instance()->playMusic("music", 0);
 }
 
 PlayState::~PlayState()

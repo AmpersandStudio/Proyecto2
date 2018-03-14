@@ -26,6 +26,7 @@ public:
 private:
 	int m_moveSpeed;
 	bool interacting_;
+	bool running_;
 
 	SDL_Rect actionRect_;
 

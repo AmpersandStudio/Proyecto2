@@ -10,8 +10,6 @@ TileLayer::TileLayer(int tileSize, int mapWidth, int mapHeight, const std::vecto
 	m_numRows = mapHeight;
 
 	m_mapWidth = mapWidth;
-
-	TheCamera::Instance()->setMapDims(mapWidth, mapHeight);
 }
 
 void TileLayer::update(Level* pLevel)
@@ -36,6 +34,11 @@ void TileLayer::render()
 			int id = m_tileIDs[i + y][j + x];
 			if (id == 0) continue;
 
+			if (((j * m_tileSize) - x2) - TheCamera::Instance()->getPosition().getX() < -m_tileSize || 
+				((j * m_tileSize) - x2) - TheCamera::Instance()->getPosition().getX() > TheGame::Instance()->getWinWidth())
+			{
+				continue;
+			}
 
 			Tileset tileset = getTilesetByID(id);
 			id--;
