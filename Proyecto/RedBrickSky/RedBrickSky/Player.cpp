@@ -3,6 +3,9 @@
 #include "Game.h"
 #include "InputHandler.h"
 #include "StateMachine.h"
+#include "PauseState.h"
+#include "BackPack.h"
+#include "Dialogue.h"
 
 Player::Player()
 {
@@ -70,9 +73,19 @@ bool Player::handleEvent(const SDL_Event& event)
 		}
 		if (event.key.keysym.sym == SDLK_ESCAPE)
 		{
-			Game::Instance()->getStateMachine()->popState();
+			Game::Instance()->getStateMachine()->pushState(new PauseState());
 		}
-		if (event.key.keysym.sym == SDLK_SPACE)
+		if (event.key.keysym.sym == SDLK_i)
+		{
+			Game::Instance()->getStateMachine()->pushState(new BackPack());
+		}
+		if (event.key.keysym.sym == SDLK_t)
+		{
+			int level_dialogues = 1;
+			Dialogue d = Dialogue(level_dialogues);
+			Game::Instance()->textPrinter(d.getText('E', 1), 200, Game::Instance()->getWinWidth() / 3, Game::Instance()->getWinHeight() / 2, Game::Instance()->getBlackColor());
+		}
+		if (event.key.keysym.sym == SDLK_SPACE)	// interactuar
 		{
 			updateRect();
 			SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
@@ -80,11 +93,12 @@ bool Player::handleEvent(const SDL_Event& event)
 			SDL_RenderPresent(TheGame::Instance()->getRenderer());
 			setInteracting(true);
 		}
-		if (event.key.keysym.sym == SDLK_f)
+		if (event.key.keysym.sym == SDLK_f)	// fullscreen mode
 		{
-			int flags = SDL_GetWindowFlags(TheGame::Instance()->getWindow());
-			if (flags & SDL_WINDOW_FULLSCREEN) SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), 0);
-			else SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), SDL_WINDOW_FULLSCREEN);
+			// Comentando para que los PC dirty peasant no se rompan
+			//int flags = SDL_GetWindowFlags(TheGame::Instance()->getWindow());
+			//if (flags & SDL_WINDOW_FULLSCREEN) SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), 0);
+			//else SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), SDL_WINDOW_FULLSCREEN);
 		}
 		return true;
 	}
@@ -96,7 +110,6 @@ bool Player::handleEvent(const SDL_Event& event)
 		case SDLK_RIGHT:
 		case SDLK_UP:
 		case SDLK_DOWN:
-			std::cout << "KEYUP" << std::endl;
 			velocity_ = Vector2D(0, 0);
 			break;
 

@@ -1,5 +1,5 @@
 #include "Dialogue.h"
-
+#include <iostream>
 
 Dialogue::Dialogue()
 {
@@ -10,6 +10,7 @@ Dialogue::Dialogue(int level_dialogues)
 {
 	level = level_dialogues;
 	filename = "Nivel" + std::to_string(level_dialogues) + ".txt";
+	std::cout << "Reading " << filename << std::endl;
 }
 
 Dialogue::~Dialogue()

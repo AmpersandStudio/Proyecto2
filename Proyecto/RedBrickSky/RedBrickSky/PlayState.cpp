@@ -13,74 +13,68 @@
 #include "TransitionState.h"
 #include "RenderFrameNDComponent.h"
 
-#include "PauseState.h"
-#include "MapState.h"
+
 
 //Para probar lo de los dialogos
 #include "Dialogue.h"
 
 PlayState::PlayState()
 {
+	LevelParser levelParser;
+	pLevel = levelParser.parseLevel("assets/provisionalTutorial.tmx");
+
 	//ESTO ES DE JAVI, UN BOTON QUE TE LLEVA A LA TIENDA DESDE DENTRO DEL JUEGO PORQUE GAME STATE ES EL QUE TIENE LA INFO DE LA MOCHILA,
 	//MODIFICAD LA POSICION SI QUEREIS PERO DECIDMELO PLS
 
-	Button* button0 = new Button("2", toGame, 0);
-	Vector2D position0(5, 6);
+	//Button* button0 = new Button("2", toGame, 0);
+	//Vector2D position0(5, 6);
 	double width = 150;
 	double height = 100;
 	RenderComponent* rc = new RenderFrameComponent();
 	InputComponent* ic2 = new MouseInputComponentButton();
-	button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(rc); button0->addInputComponent(ic2);
+	//button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(rc); button0->addInputComponent(ic2);
 
-	stage.push_back(button0);
+	//stage.push_back(button0);
 
-	Button* button1 = new Button("1", toInventary, 1);
-	Vector2D position1(7, 6);
-	button1->setPosition(position1); button1->setWidth(width); button1->setHeight(height); button1->addRenderComponent(rc); button1->addInputComponent(ic2);
-	
-	stage.push_back(button1);
+	//Button* button1 = new Button("1", toInventary, 1);
+	//Vector2D position1(7, 6);
+	//button1->setPosition(position1); button1->setWidth(width); button1->setHeight(height); button1->addRenderComponent(rc); button1->addInputComponent(ic2);
+	//
+	//stage.push_back(button1);
 
 	//ESTO ES DE MARTIN, UN BOTON PARA IR AL BATTLESTATE
 	Button* button2 = new Button("18", toBattle, 2);
-	Vector2D position2(3, 6);
+	Vector2D position2(7, 6);
 	button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(rc); button2->addInputComponent(ic2);
 	stage.push_back(button2);
 
-	Button* button3 = new Button("18", toMap, 3);
-	Vector2D position3(1, 6);
-	button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(rc); button3->addInputComponent(ic2);
-	stage.push_back(button3);
-
-	initPlayer();
+	//initPlayer();
 
 }
 
 PlayState::~PlayState()
 {
+	delete pLevel;
 }
 
 // Input general del estado: acceso a menús e input de los objetos del estado
 bool PlayState::handleEvent(const SDL_Event & event)
 {
+	if (pLevel->getPlayer()->handleEvent(event)) return true;
 
-	// 1) Comprueba las teclas de acceso a los distintos menús, etc.
-	if (event.type == SDL_KEYDOWN)
-	{
-		if (event.key.keysym.sym == SDLK_ESCAPE)
-			Game::Instance()->getStateMachine()->pushState(new PauseState());
-		else if (event.key.keysym.sym == SDLK_i)
-			Game::Instance()->getStateMachine()->pushState(new BackPack());
-
-		//CERDADA PARA PROBAR LA CLASE DE TEXTOS
-		else if (event.key.keysym.sym == SDLK_t)
-			{
-				int level_dialogues = 1;
-				Dialogue d = Dialogue(level_dialogues);
-				Game::Instance()->textPrinter(d.getText('E', 1), 200, Game::Instance()->getWinWidth() / 3, Game::Instance()->getWinHeight() / 2, Game::Instance()->getBlackColor());
-			}
-	}
-	// 2) LLama a los input de cada objeto del propio estado
 	return GameState::handleEvent(event);
+}
+
+void PlayState::update()
+{
+	pLevel->update();
+	GameState::update();
+}
+
+void PlayState::render()
+{
+	pLevel->render();
+	GameState::render();
 }
 
 //PARA JAVI PROBAR LA TIENDA TAMBIEN
@@ -95,40 +89,34 @@ void PlayState::toInventary() {
 	sm->pushState(new BackPack());
 }
 
-void PlayState::initPlayer()
-{
-	player_ = new GameComponent();
-
-	InputComponent* movementComp = new MovementInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d) ; // Para el jugador
-	RenderComponent* rc = new RenderFrameComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
-
-	//DE PABLO PARA PROBAR DIALOGOS
-	KeyInputComponent* KeyComponent = new KeyInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d);
-	
-	player_->addInputComponent(movementComp);
-	player_->addRenderComponent(rc);
-
-
-	// Para probar
-	player_->setTextureId("4");
-	player_->setWidth(70); player_->setHeight(70);
-	player_->setPosition(Vector2D(0, 0));
-	player_->setVel(Vector2D(5, 5));
-
-	stage.push_back(player_);
-	
-}
+//void PlayState::initPlayer()
+//{
+//	player_ = new GameComponent();
+//
+//	InputComponent* movementComp = new MovementInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d) ; // Para el jugador
+//	RenderComponent* rc = new RenderFrameComponent(); // AVISO: CON ESTE NO SE VE EL MOVIMIENTO
+//
+//	//DE PABLO PARA PROBAR DIALOGOS
+//	KeyInputComponent* KeyComponent = new KeyInputComponent(SDLK_w, SDLK_s, SDLK_a, SDLK_d);
+//	
+//	player_->addInputComponent(movementComp);
+//	player_->addRenderComponent(rc);
+//
+//
+//	// Para probar
+//	player_->setTextureId("4");
+//	player_->setWidth(70); player_->setHeight(70);
+//	player_->setPosition(Vector2D(0, 0));
+//	player_->setVel(Vector2D(5, 5));
+//
+//	stage.push_back(player_);
+//	
+//}
 
 //DE MARTIN PARA PROBAR BATTLESTATE
 void PlayState::toBattle() {
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->pushState(new TransitionState());
-}
-
-void PlayState::toMap()
-{
-	StateMachine* sm = Game::Instance()->getStateMachine();
-	sm->pushState(new MapState());
 }
 
 

@@ -41,7 +41,6 @@ public:
 		return s_pInstance;
 	}
 
-	void loadTexture(string filename, int rows, int cols); //se encarga de cargar las texturas y llamar a su constructora
 	void render(); //recorre la lista de game characters y llama a sus metodos render
 	void update(); //recorre la lista de game characters y llama a sus metodos update
 	void handleEvents(); //gestiona todos los eventos del juego

@@ -1,5 +1,7 @@
 #include "Interactuable.h"
 #include "TextureManager.h"
+#include "StateMachine.h"
+#include "ShopState.h"
 
 Interactuable::Interactuable()
 {
@@ -47,6 +49,7 @@ void Interactuable::clean()
 void Interactuable::activate()
 {
 	std::cout << "Elemento interactuado." << std::endl;
+	TheGame::Instance()->getStateMachine()->pushState(new ShopState());
 }
 
 void Interactuable::generateCollider()

@@ -7,7 +7,7 @@
 #include "StateMachine.h"
 #include "PlayState.h"
 #include "MainMenuState.h"
-#include "MapState.h"
+#include "TransitionState.h"
 
 #include "TextureManager.h"
 #include "GameObjectFactory.h" 
@@ -101,6 +101,8 @@ Game::~Game()
 
 void Game::render() 
 {
+	if(!dynamic_cast<TransitionState*>(stateMachine_->currentState())) SDL_RenderClear(Game::Instance()->getRenderer());
+
 	//renderizamos los objetos
 	SDL_SetRenderDrawColor(RENDERER_, 0, 255, 255, 255);
 	stateMachine_->currentState()->render();
@@ -159,6 +161,8 @@ void Game::run()
 
 void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color color) 
 {
+	std::cout << "Printing text" << std::endl;
+
 	SDL_Rect font_dest;
 
 	font_dest.w = destH * text.size();
