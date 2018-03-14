@@ -1,5 +1,6 @@
 #include "DragNDropShopComponent.h"
 #include "MouseScrollShopComponent.h"
+#include "RenderSingleFrameComponent.h"
 #include <vector>
 #include "GameState.h"
 #include "ShopState.h"
@@ -161,7 +162,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 
 			GameComponent* gc2 = new GameComponent();
 			gc2->setTextureId(o->getTextureId()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(70); gc2->setHeight(70);
-			gc2->addRenderComponent(new RenderFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(shop));
+			gc2->addRenderComponent(new RenderSingleFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(shop));
 			gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
 
 			shop->stageBack(gc2);

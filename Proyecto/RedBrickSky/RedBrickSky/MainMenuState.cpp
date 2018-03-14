@@ -9,16 +9,25 @@
 
 MainMenuState::MainMenuState()
 {
+
+	//Fondo de la tienda
+	GameComponent* gc = new GameComponent();
+	Vector2D positionGC(0, 0);
+	gc->setTextureId("MainMenu");
+	gc->addRenderComponent(new RenderFullComponent());
+	stage.push_back(gc);
+	
+
 	Button* button0 = new Button("0", toGame, 0);
 	Button* button3 = new Button("3", exit, 3);
 	Button* button2 = new Button("13", toSelector, 2);
 
-	Vector2D position0(1, 1);
-	Vector2D position3(3, 1);
-	Vector2D position2(2, 1);
+	Vector2D position0(0.9, 2);
+	Vector2D position3(0.9, 3.5);
+	Vector2D position2(0.9, 5);
 
 	double width = 250;
-	double height = 200;
+	double height = 100;
 
 	RenderComponent* rc = new RenderFrameComponent();
 	InputComponent* ic = new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN);

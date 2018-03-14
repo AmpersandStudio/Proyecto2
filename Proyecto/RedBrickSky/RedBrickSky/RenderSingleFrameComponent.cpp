@@ -18,5 +18,6 @@ void RenderSingleFrameComponent::render(GameObject* o) {
 
 
 	TheTextureManager::Instance()->drawItem(o->getTextureId(), pos.getX() * DestCellW, pos.getY() * DestCellH,
-		DestCellW, DestCellH, o->getRowFrame(), o->getColFrame(), 4, 4, TheGame::Instance()->getRenderer(), o->getAngle(), o->getAlpha());
+		DestCellW, DestCellH, o->getRowFrame(), o->getColFrame(), TheTextureManager::Instance()->getRows(o->getTextureId()), TheTextureManager::Instance()->getCols(o->getTextureId()),
+		TheGame::Instance()->getRenderer(), o->getAngle(), o->getAlpha());
 }

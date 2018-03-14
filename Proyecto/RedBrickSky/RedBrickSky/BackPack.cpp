@@ -2,6 +2,7 @@
 #include "DragNDropComponent.h"
 #include "InventBottomsComponent.h"
 #include "InventoryShopFBcomponent.h"
+#include "RenderSingleFrameComponent.h"
 
 BackPack::BackPack()
 {
@@ -10,7 +11,7 @@ BackPack::BackPack()
 	cout << invent.size() << endl;
 
 	//Componentes necesarios
-	rcF = new RenderFrameComponent(); //Render Frame
+	rcF = new RenderSingleFrameComponent(); //Render Frame
 	rc = new RenderFullComponent(); //Render FS
 	rcSF = new RenderSingleFrameComponent();
 	//MSC = new MouseScrollComponent();

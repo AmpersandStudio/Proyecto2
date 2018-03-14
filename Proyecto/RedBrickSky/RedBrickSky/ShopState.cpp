@@ -220,7 +220,8 @@ void ShopState::fillMatrix() {
 			InputComponent* auxSCP = new MouseScrollShopComponent(this, auxOID);
 
 			gc->setTextureId("8"); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-			gc->addRenderComponent(rcF); gc->addInputComponent(auxSCP);//  gc->addInputComponent(InventoryShopFBcomponent());
+			
+			gc->addRenderComponent(rcSF); gc->addInputComponent(auxSCP);//  gc->addInputComponent(InventoryShopFBcomponent());
 
 			stage.push_back(gc);
 			SP.push_back(a);

@@ -54,7 +54,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\fruit.png", "5", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\invent.png", "6", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\inventFront.png", "7", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\keyboard.png", "8", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\keyboard.png", "8", RENDERER_, 1 ,2);
 	TheTextureManager::Instance()->load("..\\images\\backPack.png", "9", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\backPackBack.png", "10", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\abc.png", "11", RENDERER_);
@@ -67,7 +67,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\grey_button.png", "18", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\Battle_UI_Personajes.png", "19", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\Battle_UI_Vida.png", "20", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\weaponsSet.png", "21", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\weaponsSet.png", "21", RENDERER_, 8,8);
 	TheTextureManager::Instance()->load("..\\images\\transition.png", "22", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\go.png", "23", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\bigbox.png", "24", RENDERER_);
@@ -77,6 +77,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\buttonArea.png", "28", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\emptyBox.png", "29", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\fondo.png", "30", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\MainMenu.png", "MainMenu", RENDERER_);
 
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);

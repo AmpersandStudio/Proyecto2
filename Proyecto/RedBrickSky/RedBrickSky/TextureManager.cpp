@@ -11,7 +11,7 @@ TextureManager::~TextureManager()
 {
 }
 
-bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer)
+bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer, int row, int col)
 {
 	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
 	int w = pTempSurface->w;
@@ -30,6 +30,7 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 		std::cout << "Texture load success!\n";
 		m_textureMap[id] = pTexture;
 		m_textureDims[id] = std::pair<int, int>(w, h);
+		m_textureRows[id] = std::pair<int, int>(row, col);
 		return true;
 	}
 
@@ -113,7 +114,7 @@ void TextureManager::drawItem(std::string id, int x, int y, int width, int heigh
 	SDL_Rect destRect;
 
 	srcRect.x = (m_textureDims[id].first / cols) * currentFrame;
-	srcRect.y = (m_textureDims[id].second / rows) * currentRow;
+	srcRect.y =  (m_textureDims[id].second / rows) * currentRow;
 	srcRect.w = m_textureDims[id].first / cols;	
 	srcRect.h = m_textureDims[id].second / rows;
 

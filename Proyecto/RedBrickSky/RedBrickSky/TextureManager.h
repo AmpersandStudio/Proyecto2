@@ -22,7 +22,7 @@ public:
 		return s_pInstance;
 	}	
 
-	bool load(std::string fileName, std::string id, SDL_Renderer* pRenderer);
+	bool load(std::string fileName, std::string id, SDL_Renderer* pRenderer, int row = 1, int col = 1);
 	
 	void draw(std::string id, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawFull(std::string id, int destX, int destY, int destW, int destH, SDL_Renderer * pRenderer, double angle, int alpha, SDL_RendererFlip flip = SDL_FLIP_NONE);
@@ -35,6 +35,8 @@ public:
 	void clearFromTextureMap(std::string id);
 
 	SDL_Texture* getTexture(std::string id) { return m_textureMap[id]; };
+	int getRows(std::string id) { return m_textureRows[id].first; }
+	int getCols(std::string id) { return m_textureRows[id].second; }
 
 private:
 	TextureManager();
@@ -42,6 +44,8 @@ private:
 
 	std::map<std::string, SDL_Texture*> m_textureMap;
 	std::map<std::string, std::pair<int, int>> m_textureDims;
+	std::map<std::string, std::pair<int, int>> m_textureRows;
+
 	static TextureManager* s_pInstance;
 };
 
