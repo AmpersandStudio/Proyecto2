@@ -30,6 +30,7 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	direction_ = Vector2D(0, -1);
 	m_moveSpeed = 10;
 	interacting_ = false;
+	running_ = false;
 	updateRect();
 
 	TheCamera::Instance()->setTarget(&position_);
@@ -75,6 +76,11 @@ bool Player::handleEvent(const SDL_Event& event)
 		{
 			velocity_.set(Vector2D(0, m_moveSpeed));
 			direction_.set(0, 1);
+		}
+		if (event.key.keysym.sym == SDLK_r)
+		{
+			m_moveSpeed = (running_) ? 10 : 20;
+			running_ = !running_;
 		}
 		if (event.key.keysym.sym == SDLK_ESCAPE)
 		{

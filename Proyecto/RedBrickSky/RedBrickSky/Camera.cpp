@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "Camera.h"
 
-Camera* Camera::s_pCamera = new Camera();
+Camera* Camera::s_pCamera = 0;
 
 Camera::Camera() : m_pTarget(0), m_position(0, 0)
 {
@@ -24,10 +24,18 @@ const Vector2D Camera::getPosition() const
 		{
 			pos.setX(0);
 		}
+		if (pos.getX() > mapWidth - TheGame::Instance()->getWinWidth())
+		{
+			pos.setX(mapWidth - TheGame::Instance()->getWinWidth());
+		}
 
 		if (pos.getY() < 0)
 		{
 			pos.setY(0);
+		}
+		if (pos.getY() > mapHeight - TheGame::Instance()->getWinHeight())
+		{
+			pos.setY(mapHeight - TheGame::Instance()->getWinHeight());
 		}
 
 		return pos;
@@ -38,10 +46,10 @@ const Vector2D Camera::getPosition() const
 
 void Camera::update(Vector2D velocity)
 {
-	m_position = m_position + velocity;
+/*	m_position = m_position + velocity;
 
 	if (m_position.getX() < 0)
 	{
 		m_position.setX(0);
-	}
+	}*/	
 }
