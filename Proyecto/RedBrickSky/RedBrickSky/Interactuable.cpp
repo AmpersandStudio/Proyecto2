@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "StateMachine.h"
 #include "ShopState.h"
+#include "Camera.h"
 
 Interactuable::Interactuable()
 {
@@ -37,7 +38,9 @@ void Interactuable::update()
 
 void Interactuable::render()
 {
-	TextureManager::Instance()->drawFrame(textureId_, (Uint32)position_.getX(), (Uint32)position_.getY(),
+	TextureManager::Instance()->drawFrame(textureId_,
+		(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX(),
+		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
 		width_, height_, rowFrame_, colFrame_, TheGame::Instance()->getRenderer(), angle_, alpha_);
 }
 

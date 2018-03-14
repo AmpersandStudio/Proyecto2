@@ -6,6 +6,7 @@
 #include "PauseState.h"
 #include "BackPack.h"
 #include "Dialogue.h"
+#include "Camera.h"
 
 Player::Player()
 {
@@ -30,11 +31,15 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	m_moveSpeed = 10;
 	interacting_ = false;
 	updateRect();
+
+	TheCamera::Instance()->setTarget(&position_);
 }
 
 void Player::render()
 {
-	TextureManager::Instance()->drawFrame(textureId_, (Uint32)position_.getX(), (Uint32)position_.getY(),
+	TextureManager::Instance()->drawFrame(textureId_, 
+		(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX(), 
+		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
 		width_, height_, rowFrame_, colFrame_, TheGame::Instance()->getRenderer(), angle_, alpha_);
 }
 
