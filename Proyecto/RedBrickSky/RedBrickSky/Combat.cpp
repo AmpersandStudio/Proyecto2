@@ -97,6 +97,9 @@ void Combat::init()
 	float vel_enemy = enemy->getVelocity();
 	// TODO
 	// Definir quién empieza
+
+	std::cout << enemy->getName() << " quiere luchar!" << std::endl;
+
 }
 
 void Combat::displayAttacks()
@@ -121,9 +124,9 @@ void Combat::handleInput()
 	input--;
 }
 
-void Combat::run()
+bool Combat::run()
 {
-	std::cout << enemy->getName() << " quiere luchar!" << std::endl;
+	bool endBattle = false;
 
 	if (player->getHealth() > 0 && enemy->getHealth() > 0)
 	{
@@ -163,10 +166,17 @@ void Combat::run()
 		std::cout << std::endl << "-------------------------------------------------------------" << std::endl;
 	}
 
-	if (player->getHealth() > 0) {
+	if (player->getHealth() > 0 && enemy->getHealth() <= 0) {
 		std::cout << "HAS GANADO!" << std::endl;
+		endBattle = true;
 	}
-	else {
+	else if (player->getHealth() <= 0 && enemy->getHealth() > 0) {
 		std::cout << "HAS PERDIDO!" << std::endl;
+		endBattle = true;
 	}
+	else if (player->getHealth() <= 0 && enemy->getHealth() <= 0) {
+		std::cout << "WTF EMPATE LOCO!" << std::endl;
+		endBattle = true;
+	}
+	return endBattle;
 }

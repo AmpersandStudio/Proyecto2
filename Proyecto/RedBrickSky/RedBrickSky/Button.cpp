@@ -10,3 +10,7 @@ Button::Button(std::string id, CallBackOnClick* cb, int flag)
 Button::~Button()
 {
 }
+
+void Button::changeCallback(CallBackOnClick* cb) {
+	cboc_ = cb;
+}

@@ -48,9 +48,11 @@
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="MouseInfoClickComponent.cpp" />
     <ClCompile Include="MouseInputComponentButton.cpp" />
+    <ClCompile Include="MouseInputForBattleComponent.cpp" />
     <ClCompile Include="MouseScrollComponent.cpp" />
     <ClCompile Include="MouseScrollShopComponent.cpp" />
     <ClCompile Include="MovementInputComponent.cpp" />
+    <ClCompile Include="MoveToThisPosComponent.cpp" />
     <ClCompile Include="NameSelectorState.cpp" />
     <ClCompile Include="ObjectLayer.cpp" />
     <ClCompile Include="PauseState.cpp" />
@@ -114,9 +116,11 @@
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="MouseInfoClickComponent.h" />
     <ClInclude Include="MouseInputComponentButton.h" />
+    <ClInclude Include="MouseInputForBattleComponent.h" />
     <ClInclude Include="MouseScrollComponent.h" />
     <ClInclude Include="MouseScrollShopComponent.h" />
     <ClInclude Include="MovementInputComponent.h" />
+    <ClInclude Include="MoveToThisPosComponent.h" />
     <ClInclude Include="NameSelectorState.h" />
     <ClInclude Include="ObjectLayer.h" />
     <ClInclude Include="PauseState.h" />
