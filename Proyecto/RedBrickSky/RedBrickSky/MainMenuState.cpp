@@ -54,3 +54,7 @@ void MainMenuState::toGame() {
 void MainMenuState::toSelector() {
 	Game::Instance()->getStateMachine()->pushState(new NameSelectorState());
 }
+
+void MainMenuState::update() {
+	;
+}
