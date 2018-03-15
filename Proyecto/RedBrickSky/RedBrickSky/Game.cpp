@@ -92,7 +92,7 @@ Game::Game()
 	error_ = false; 
 
 	// milliseconds per frame -> 16.7 = 60 frames/s - 33.3 = 30 frames/s
-	FRAME_RATE_ = 33.3; // El valor original era 130, por si fuera necesario
+	FRAME_RATE_ = 16.7; // El valor original era 130, por si fuera necesario
 }
 
 Game::~Game()

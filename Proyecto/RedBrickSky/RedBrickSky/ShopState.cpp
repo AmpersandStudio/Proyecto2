@@ -14,18 +14,11 @@ ShopState::ShopState()
 	money = GameManager::Instance()->getMoney();
 	std::cout << "Tu dinero actual es: " << money << std::endl;
 
-	//Texturas necesitadas
-	//back = Game::Instance()->getTexture(6);
-	//standPoint = Game::Instance()->getTexture(8);
-	//front = Game::Instance()->getTexture(7);
-	//bot = Game::Instance()->getTexture(3); //Para el botón
-
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
 	rc = new RenderFullComponent(); //Render FS
 	rcSF = new RenderSingleFrameComponent();
 	MSC = new MouseScrollShopComponent(this);
-	//MSOC = new MouseOverObjectComponent();
 	MIC = new MouseInputComponentButton();
 
 	//Separamos elementos dependiendo de su clase
@@ -71,7 +64,7 @@ ShopState::~ShopState()
 
 void ShopState::setSP(vector<estado> s) {
 
-	SP.clear();
+	destroySP();
 	for (int i = 0; i < s.size(); i++)
 		SP.push_back(s[i]);
 }
@@ -232,7 +225,6 @@ void ShopState::createSP() {
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
 	selector_->setWidth(70); selector_->setHeight(70);
 	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), Fils, Scols_, auxD, StandPointsO, nullptr, this));
-
 
 	stage.push_back(selector_);
 

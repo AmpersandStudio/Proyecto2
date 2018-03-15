@@ -12,9 +12,7 @@ KeyBoardShopComponent::KeyBoardShopComponent(int iniX, int iniY, int col, int fi
 	SP = v;
 	back = b;
 	shop = s;
-
 }
-
 
 KeyBoardShopComponent::~KeyBoardShopComponent()
 {
@@ -80,7 +78,6 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 			o->setPosition(position);
 		}
 
-
 		else if (event.key.keysym.sym == SDLK_SPACE) {
 			invent.clear();
 			if (back != nullptr)
@@ -120,8 +117,6 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
 				}
 			}
-
-
 		}
 
 		//El siguiente bucle Cambia el color del SP en el que estamos y pone los demás normales (CON TECLADO)
