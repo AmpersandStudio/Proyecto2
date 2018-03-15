@@ -65,14 +65,15 @@ void BackPack::cargaElementos(vector<estado> l) {
 			int y = l[i].mY;
 			createItemAtSP(x, y, l[i].objectID, l[i]);
 		}
-
 		else	
 			auxV.push_back(l[i]);
 	}
 
 	//todos aquellos elementos que no hayan sido ordenados previamente, los asignamos a un lugar 
+
 	for (int p = 0; p < auxV.size(); p++)
 	{
+		int aux = 0;
 		int i = 0;
 		int j = 0;
 		bool place = false;
@@ -82,16 +83,49 @@ void BackPack::cargaElementos(vector<estado> l) {
 				j = 0;
 			}
 
-			if (matriz[i][j].empty == true) {
-				int x = j;
-				int y = i;
+			if (SP[aux].empty == true) {
+				int x = SP[aux].mX;
+				int y = SP[aux].mY;
 				createItemAtSP(x, y, auxV[p].objectID, auxV[p]);
+				SP[aux].empty = false;
+				auxV[p].mX = x;
+				auxV[p].mY = y;
+				auxV[p].GC = invent[auxV[p].objectID].GC;
 				place = true;
-				matriz[i][j].empty == false;
 			}
-			else 
+			else {
 				j++;
+				aux++;
+			}
 		}
+	}
+
+	invent.clear();
+	if (auxV.size() != 0) {
+		bool armas = auxV[0].type == 0;
+		bool pociones = auxV[0].type == 1;
+		bool objetos = auxV[0].type == 2;
+
+		if (!armas) { //armas
+
+			for (int i = 0; i < Weapons.size(); i++)
+				invent.push_back(Weapons[i]);
+		}
+
+		else if (!pociones) { //Pociones
+			for (int i = 0; i < Potions.size(); i++)
+				invent.push_back(Potions[i]);
+		}
+
+		else if (!objetos) { //Objetos
+			for (int i = 0; i < Objects.size(); i++)
+				invent.push_back(Objects[i]);
+		}
+
+		for (int i = 0; i < auxV.size(); i++)
+			invent.push_back(auxV[i]);
+
+		separateElements();
 	}
 }
 
@@ -108,16 +142,21 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 	matriz[x][y].objectID = aux;
 	st.mX = matriz[x][y].mX;
 	st.mY = matriz[x][y].mY;
+	st.x = matriz[x][y].x;
+	st.y = matriz[x][y].y;
+
 	matriz[x][y].colFrame = st.colFrame;
 	matriz[x][y].FilFrame = st.FilFrame;
 
 	GameComponent* gc = new GameComponent();
-	Vector2D position0(matriz[x][y].x, matriz[x][y].y);
+	Vector2D position0(st.x, st.y);
 
 	gc->setTextureId(matriz[x][y].tx); gc->setPosition(position0); gc->setWidth(matriz[x][y].w); gc->setHeight(matriz[x][y].h);
 	gc->addRenderComponent(rcSF); gc->addInputComponent(new MouseInfoClickComponent(st)); gc->addInputComponent(new DragNDropComponent(this, aux));
 	gc->setOriPos(position0);
 	gc->setColFrame(matriz[x][y].colFrame); gc->setRowFrame(matriz[x][y].FilFrame);
+	
+	st.GC = gc;
 
 	invent[aux].GC = gc;
 	stage.push_back(gc);

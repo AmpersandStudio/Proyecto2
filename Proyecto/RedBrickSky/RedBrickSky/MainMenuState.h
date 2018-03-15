@@ -11,5 +11,7 @@ public:
 	static void toGame();
 	static void exit() { Game::Instance()->exitApp(); };
 	static void toSelector();
+private:
+	GameComponent* gc;
 };
 

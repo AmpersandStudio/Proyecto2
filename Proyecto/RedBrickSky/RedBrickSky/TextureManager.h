@@ -37,6 +37,9 @@ public:
 	SDL_Texture* getTexture(std::string id) { return m_textureMap[id]; };
 	int getRows(std::string id) { return m_textureRows[id].first; }
 	int getCols(std::string id) { return m_textureRows[id].second; }
+	int getWidth(std::string id) { return m_textureDims[id].first; }
+	int getHeight(std::string id) { return m_textureDims[id].second; }
+
 
 private:
 	TextureManager();

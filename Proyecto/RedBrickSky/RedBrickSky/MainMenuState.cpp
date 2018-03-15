@@ -6,12 +6,13 @@
 #include "KeyInputComponentButton.h"
 #include "MouseInputComponentButton.h"
 #include "NameSelectorState.h"
+#include "TextureManager.h"
 
 MainMenuState::MainMenuState()
 {
 
 	//Fondo de la tienda
-	GameComponent* gc = new GameComponent();
+	gc = new GameComponent();
 	Vector2D positionGC(0, 0);
 	gc->setTextureId("MainMenu");
 	gc->addRenderComponent(new RenderFullComponent());

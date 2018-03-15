@@ -72,7 +72,7 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 				invent = back->getInvent();
 
 			if (selection_) {
-				
+		
 				invent[savedInvent].x = posX - 9;
 				invent[savedInvent].y = posY;
 				invent[savedInvent].mX = i;
@@ -89,19 +89,20 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 			}
 
 			else {
-				int  i = 0;
+				int  p = 0;
 				bool encontrado = false;
-				while (i < invent.size() && !encontrado) {
+				while (p < invent.size() && !encontrado) {
 
-					if (invent[i].x == (posX - 9) && invent[i].y == (posY))
+					if (invent[p].mX == i && invent[p].mY == j)
 						encontrado = true;
 					else
-						i++;
+						p++;
 				}
 
 				if (encontrado) {
-					savedInvent = i;
+					savedInvent = p;
 					selection_ = true;
+				
 				}
 			}
 
