@@ -5,6 +5,7 @@ MouseScrollShopComponent::MouseScrollShopComponent(ShopState* s, int oID)
 {
 	shop = s;
 	objectID = oID;
+	moves_ = 0;
 
 }
 
@@ -21,34 +22,44 @@ bool MouseScrollShopComponent::handleEvent(GameObject* o, const SDL_Event& event
 	int y = 0;
 	SDL_GetMouseState(&x, &y); //comprobamos estado del raton
 	pos = o->getPosition();
+	
+		if (event.wheel.y == 1) // scroll up
+		{
+			if (x < Game::Instance()->getWinWidth() / 2 && pos.getX() * o->getWidth() < Game::Instance()->getWinWidth() / 2) {
 
-	if (event.wheel.y == 1) // scroll up
-	{
-		if (x < Game::Instance()->getWinWidth() / 2 && pos.getX() * o->getWidth() < Game::Instance()->getWinWidth() / 2) {
+				if (moves_ < 3) {
+					move(o, -1);
+					moves_++;
+				}
+				//ultimaFilaY -= 20;
+			}
 
-			move(o, -1);
+			else if (x >= Game::Instance()->getWinWidth() / 2 && pos.getX() * o->getWidth() >= Game::Instance()->getWinWidth() / 2)
+				move(o, -1);
 			//ultimaFilaY -= 20;
 		}
 
-		else if(x >= Game::Instance()->getWinWidth() / 2 && pos.getX() * o->getWidth() >= Game::Instance()->getWinWidth() / 2)
-			move(o, -1);
-			//ultimaFilaY -= 20;
-	}
 
+		else if (event.wheel.y == -1) // scroll down
+		{
+			if (x < Game::Instance()->getWinWidth() / 2 && pos.getX() * o->getWidth() < Game::Instance()->getWinWidth() / 2)
 
-	else if (event.wheel.y == -1) // scroll down
-	{
-		if (x < Game::Instance()->getWinWidth() / 2 && pos.getX() * o->getWidth() < Game::Instance()->getWinWidth() / 2)
-			move(o);
+				if (moves_ > 0) {
+					move(o);
+					moves_--;
+				}
+				
 
 			//ultimaFilaY += 20;
 
-		else if(x >= Game::Instance()->getWinWidth() / 2 && pos.getX() * o->getWidth() >= Game::Instance()->getWinWidth() / 2)
-			move(o);
+			else if (x >= Game::Instance()->getWinWidth() / 2 && pos.getX() * o->getWidth() >= Game::Instance()->getWinWidth() / 2)
+				move(o);
 
 			//ultimaFilaY -= 20;
-	}
+		}
+		//std::cout << moves_ << endl;
 
+	
 	return handledEvent;
 }
 

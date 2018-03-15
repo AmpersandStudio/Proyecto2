@@ -4,7 +4,7 @@
 #include "Button.h"
 #include <iostream>
 #include "InventoryShopFBcomponent.h"
-
+#include "KeyBoardShopComponent.h"
 ShopState::ShopState()
 {
 	ShopItems* items = new ShopItems();
@@ -37,7 +37,7 @@ ShopState::ShopState()
 	stage.push_back(backShop);
 
 	//Creamos la matiz y la llenamos de StandPoints
-	createMatrix();
+	createSP();
 
 	//Creación de los items que tendrá la tienda
 	createShopItems();
@@ -173,18 +173,12 @@ void ShopState::createBagItems() {
 	}
 }
 
-void ShopState::destroyMatix() {
+void ShopState::destroySP() {
 
 	SP.clear();
 }
 
-void ShopState::createMatrix() {
-
-	fillMatrix();
-
-}
-
-void ShopState::fillMatrix() {
+void ShopState::createSP() {
 	//Rellenamos la matriz DE SP
 	Vector2D selecPos;
 	int auxD = 0;
@@ -237,8 +231,8 @@ void ShopState::fillMatrix() {
 
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
 	selector_->setWidth(70); selector_->setHeight(70);
-	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), Fils, Cols, auxD, StandPointsO, nullptr, this));
-	selector_->addInputComponent(MSC);
+	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), Fils, Scols_, auxD, StandPointsO, nullptr, this));
+
 
 	stage.push_back(selector_);
 

@@ -12,6 +12,8 @@ private:
 	vector<estado> states;
 	Vector2D pos;
 	int objectID;
+	int moves_;
+
 public:
 	MouseScrollShopComponent(ShopState* s, int oID = -1);
 	~MouseScrollShopComponent();

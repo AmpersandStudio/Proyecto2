@@ -1,8 +1,8 @@
-#include "InventoryShopFBcomponent.h"
+#include "KeyBoardShopComponent.h"
 
 
 
-KeyBoardBackPackComponent::KeyBoardBackPackComponent(int iniX, int iniY, int col, int fil, int dis, vector<GameObject*> v, BackPack* b, ShopState* s)
+KeyBoardShopComponent::KeyBoardShopComponent(int iniX, int iniY, int col, int fil, int dis, vector<GameObject*> v, BackPack* b, ShopState* s)
 {
 	X_ = iniX;
 	Y_ = iniY;
@@ -16,11 +16,11 @@ KeyBoardBackPackComponent::KeyBoardBackPackComponent(int iniX, int iniY, int col
 }
 
 
-KeyBoardBackPackComponent::~KeyBoardBackPackComponent()
+KeyBoardShopComponent::~KeyBoardShopComponent()
 {
 }
 
-bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& event) {
+bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 	bool handledEvent = false;
 
 
@@ -30,7 +30,7 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 		double posX = position.getX();
 
 		if (event.key.keysym.sym == SDLK_UP) {
-		
+
 			posY -= distance;
 			if (posY >= Y_) {
 				position.setY(posY);
@@ -39,7 +39,7 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 			o->setPosition(position);
 		}
 		else if (event.key.keysym.sym == SDLK_DOWN) {
-			
+
 			posY += distance;
 			if (posY <= col_ * Y_) {
 				position.setY(posY);
@@ -48,9 +48,15 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 			o->setPosition(position);
 		}
 		else if (event.key.keysym.sym == SDLK_RIGHT) {
-			
-			posX += distance;
-			if (posX <= fil_ + X_ + 2) {
+
+			if (posX == fil_ -8 + X_)
+				posX += distance * 2;
+			else if(posX > fil_ -8 + X_)
+				posX += distance / 2;
+			else 
+				posX += distance;
+
+			if (posX <= fil_ + X_  ) {
 				position.setX(posX);
 				i++;
 			}
@@ -58,8 +64,15 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 			o->setPosition(position);
 		}
 		else if (event.key.keysym.sym == SDLK_LEFT) {
+
+			if (posX == fil_ - 8 + X_ + distance * 2)
+				posX -= distance * 2;
+			else if (posX > fil_ - 8 + X_)
+				posX -= distance / 2;
+			else
+				posX -= distance;
+
 			
-			posX -= distance;
 			if (posX >= X_) {
 				position.setX(posX);
 				i--;
@@ -70,23 +83,23 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 
 		else if (event.key.keysym.sym == SDLK_SPACE) {
 			invent.clear();
-			if(back != nullptr)
+			if (back != nullptr)
 				invent = back->getInvent();
 
 			if (selection_) {
-		
+
 				invent[savedInvent].x = posX - 9;
 				invent[savedInvent].y = posY;
 				invent[savedInvent].mX = i;
 				invent[savedInvent].mY = j;
 
-				
+
 				Vector2D pos(posX, posY);
 				invent[savedInvent].GC->setPosition(pos);
 				invent[savedInvent].GC->setOriPos(pos);
 				selection_ = false;
 
-				if(back != nullptr)
+				if (back != nullptr)
 					back->setInvent(invent);
 			}
 
@@ -104,7 +117,7 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 				if (encontrado) {
 					savedInvent = p;
 					selection_ = true;
-				
+
 				}
 			}
 
@@ -124,8 +137,8 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 		}
 	}
 
-	else if (event.type == SDL_MOUSEMOTION){
-	
+	else if (event.type == SDL_MOUSEMOTION) {
+
 		int x = 0;
 		int y = 0;
 		SDL_GetMouseState(&x, &y); //comprobamos estado del raton
@@ -139,7 +152,7 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 		int auxMx;
 		int auxMy;
 
-		for(int i = 0; i < SP.size(); i++) {
+		for (int i = 0; i < SP.size(); i++) {
 			//Busca si el objeto se ha dejado en alguno de los Stand Points
 			{
 				auxX = SP[i]->getPosition().getX() * 70;

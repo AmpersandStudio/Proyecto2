@@ -50,6 +50,8 @@ private:
 
 	int Fils = 4;
 	int Cols = 3;
+	int Scols_ = 12;
+
 	GameComponent* selector_;
 	vector<GameObject*> StandPointsO;
 
@@ -73,8 +75,7 @@ public:
 	void mainMenuBotton();
 	void createShopItems();
 	void createBagItems();
-	void createMatrix();
-	void fillMatrix();
-	void destroyMatix();
+	void destroySP();
+	void createSP();
 };
 
