@@ -14,6 +14,7 @@ protected:
 public:
 	Button(std::string id, CallBackOnClick* cb, int flag);
 	virtual ~Button();
+	void changeCallback(CallBackOnClick * cb);
 	CallBackOnClick* getCallback() { return cboc_; };
 	bool getSelected() { return selected_; };
 	void actSelected() { selected_ = true; };

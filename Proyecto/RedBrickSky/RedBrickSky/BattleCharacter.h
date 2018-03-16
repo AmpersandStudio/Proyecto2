@@ -4,11 +4,14 @@
 #include <string>
 #include <vector>
 
+#include "GameComponent.h"
+
 
 enum Type { Physical, Magical, Ranged, Support };
-const float TYPE_TABLE[3][3] = { { 1, 2, 0.5 },
-{ 2, 0.5, 1 },
-{ 0.5, 1, 2 } };
+const float TYPE_TABLE[3][3] = 
+{ { 1,   2,   0.5 },
+  { 2,   0.5, 1 },
+  { 0.5, 1,   2 } };
 
 struct Attack
 {
@@ -31,7 +34,7 @@ struct Attack
 	float prc_factor;
 };
 
-class BattleCharacter
+class BattleCharacter : public GameComponent
 {
 public:
 	BattleCharacter(std::string n, Type t, float hp, float atk, float def, float prec, float vel) : name(n), type(t),
