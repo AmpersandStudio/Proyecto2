@@ -209,7 +209,6 @@ void ShopState::createSP() {
 
 			stage.push_back(gc);
 			SP.push_back(s);
-			std::cout << SP.size() << endl;
 			StandPointsO.push_back(gc);
 
 			numSP++;

@@ -12,7 +12,7 @@ struct estado {
 	int ID;
 	int objects;
 	int x,
-		y,
+		y, 
 		mX,
 		mY,
 		w, 
@@ -23,6 +23,7 @@ struct estado {
 	GameComponent* GC = nullptr;
 	int colFrame;
 	int FilFrame;
+	bool equiped = false;
 
 };
 

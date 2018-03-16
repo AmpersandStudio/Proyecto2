@@ -41,6 +41,7 @@ private:
 	vector<estado> Weapons; //Vector para las armas
 	vector<estado> Potions; //Vector para las pociones
 	vector<estado> Objects; //Vector para los objetos
+	vector<estado> EquipedItems; //Vector para los objetos equipados
 
 	vector<estado> GCInventV;
 
@@ -51,6 +52,8 @@ private:
 	int ocupados;
 	int numSP; int actFilas;
 	int ultimaFilaY;
+
+	int EItems;
 
 	GameComponent* selector_;
 

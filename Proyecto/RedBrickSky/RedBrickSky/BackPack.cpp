@@ -8,17 +8,13 @@ BackPack::BackPack()
 {
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
-	cout << invent.size() << endl;
+	cout << "Tam Inventario:  " << invent.size() << endl;
 
 	//Componentes necesarios
 	rcF = new RenderSingleFrameComponent(); //Render Frame
 	rc = new RenderFullComponent(); //Render FS
 	rcSF = new RenderSingleFrameComponent();
-	//MSC = new MouseScrollComponent();
-	//MSOC = new MouseOverObjectComponent();
 	MIC = new MouseInputComponentButton();
-	//DND = new DragNDropComponent(this); //this es el puntero a tienda
-	//Info = new MouseInfoClickComponent();
 
 	//Creamos la matriz
 	matriz = new estado*[numFils];
@@ -40,14 +36,17 @@ bool BackPack::handleEvent(const SDL_Event & event)
 		// 1) Comprueba las teclas de acceso a los distintos menús, etc.
 		if (event.type == SDL_KEYDOWN)
 		{
-			if (event.key.keysym.sym == SDLK_ESCAPE)
-				toMenu();	
+			if (event.key.keysym.sym == SDLK_ESCAPE) {
+				GameManager::Instance()->changeInventory(invent);
+				toMenu();
+			}
 		}
 		// 2) LLama a los input de cada objeto del propio estado
 		return GameState::handleEvent(event);
 }
 
 void BackPack::toMenu() {
+	
 	
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->popState();
@@ -65,7 +64,7 @@ void BackPack::cargaElementos(vector<estado> l) {
 			int y = l[i].mY;
 			createItemAtSP(x, y, l[i].objectID, l[i]);
 		}
-		else	
+		else
 			auxV.push_back(l[i]);
 	}
 
@@ -100,8 +99,8 @@ void BackPack::cargaElementos(vector<estado> l) {
 		}
 	}
 
-	invent.clear();
 	if (auxV.size() != 0) {
+		invent.clear();
 		bool armas = auxV[0].type == 0;
 		bool pociones = auxV[0].type == 1;
 		bool objetos = auxV[0].type == 2;
@@ -131,6 +130,7 @@ void BackPack::cargaElementos(vector<estado> l) {
 
 void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 
+	
 	matriz[x][y].ID = st.ID;
 	matriz[x][y].objects++;
 	matriz[x][y].empty = false;
@@ -163,11 +163,13 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 }
 
 void BackPack::creaSP() {
+	
 	//Creamos los SP
 	Vector2D selecPos;
 	int auxD = 0;
 	int aux = 0;
 	
+	//StandPoints para guardar los objetos en el inventario
 	for (int i = 0; i < numFils; i++)
 		for (int j = 0; j < numRows; j++) {
 
@@ -181,7 +183,6 @@ void BackPack::creaSP() {
 			matriz[i][j].mX = i;
 			matriz[i][j].mY = j;
 
-
 			Vector2D position0(2 * i + 11, 2 * j + 2);
 			if (i == 0 && j == 0)
 				selecPos = position0;
@@ -191,20 +192,80 @@ void BackPack::creaSP() {
 			matriz[i][j].x = position0.getX();
 			matriz[i][j].y = position0.getY();
 			GameComponent* gc = new GameComponent();
-			//InputComponent* auxSCP = new MouseScrollComponent();
-			//InputComponent* mooCP = new MouseOverObjectComponent();
 
 			gc->setTextureId("8"); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
 			gc->addRenderComponent(rcF); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
 
 			stage.push_back(gc);
-			SP.push_back(matriz[i][j]); //ESTO NO REALENTIZA NADA
+			SP.push_back(matriz[i][j]); 
 			StandPointsO.push_back(gc);
 			numSP++;
 			aux++;
 		}
+
 	ultimaFilaY = 4;
 	actFilas = 1;
+
+	//StandPoints para EQUIPAR los objetos al personaje
+
+	for (int i = 0; i < 2; i++)
+		for (int p = 0; p < 2; p++) {
+
+		estado s;
+		double width = 70;
+		double height = 70;
+		s.empty = true;
+		s.ID = 0;
+		s.objects = 0;
+		s.w = width;
+		s.h = height;
+		s.mX = i;
+		s.mY = p;
+		s.equiped = true;
+		s.mX = i * -1;
+		s.mY = p * -1;
+
+
+		Vector2D position0(2 * i + 4, 2 * p + 6);
+
+		s.x = position0.getX();
+		s.y = position0.getY();
+		GameComponent* gc = new GameComponent();
+
+		gc->setTextureId("8"); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
+		gc->addRenderComponent(rcF); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
+
+
+		stage.push_back(gc);
+		SP.push_back(s);
+		StandPointsO.push_back(gc);
+
+		if(EItems > 0){
+			EItems--;
+			EquipedItems[EItems].x = position0.getX();
+			EquipedItems[EItems].y = position0.getY();
+
+		}
+	}
+
+	//Ponemos los objetos que tenga el personaje
+	
+	for (int x = 0; x < EquipedItems.size(); x++) {
+
+		GameComponent* gc = new GameComponent();
+		Vector2D position0(EquipedItems[x].x, EquipedItems[x].y);
+
+		gc->setTextureId(EquipedItems[x].tx); gc->setPosition(position0); gc->setWidth(EquipedItems[x].w); gc->setHeight(EquipedItems[x].h);
+		gc->addRenderComponent(rcSF); //gc->addInputComponent(new MouseInfoClickComponent(st)); 
+		gc->setOriPos(position0);
+		gc->setColFrame(EquipedItems[x].colFrame); gc->setRowFrame(EquipedItems[x].FilFrame);
+
+		EquipedItems[x].GC = gc;
+
+		//invent[aux].GC = gc;
+		stage.push_back(gc);
+
+	}
 
 	//Creacion del botón que nos devolverá a los anteriores
 	GameComponent* weapon = new GameComponent();
@@ -226,6 +287,7 @@ void BackPack::creaSP() {
 	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), numRows, numFils, auxD, StandPointsO, this));
 	//selector_->addInputComponent(MSC);
 	stage.push_back(selector_);
+
 }
 
 void BackPack::elimina() {
@@ -266,11 +328,11 @@ void BackPack::creaEscena() {
 	//Boton para las pociones
 	createButtons(6, 4, Potions, "15");
 
-
 	//Boton para los objetos
 	createButtons(6, 6, Objects, "16");
 
 	GameManager::Instance()->changeInventory(invent);
+	
 }
 
 void BackPack::creaFondoTienda() {
@@ -308,15 +370,20 @@ void BackPack::separateElements() {
 	Weapons.clear();
 	Potions.clear();
 	Objects.clear();
+	EItems = 0;
 	for (unsigned int i = 0; i < invent.size(); i++) {
 		invent[i].objectID = i;
-		if (invent[i].type == 0)
-			Weapons.push_back(invent[i]);
-		else if (invent[i].type == 1)
-			Potions.push_back(invent[i]);
-		else if (invent[i].type == 2)
-			Objects.push_back(invent[i]);
-
-		//ocupados++;
+		if (invent[i].equiped == false) {
+			if (invent[i].type == 0)
+				Weapons.push_back(invent[i]);
+			else if (invent[i].type == 1)
+				Potions.push_back(invent[i]);
+			else if (invent[i].type == 2)
+				Objects.push_back(invent[i]);
+		}
+		else {
+			EquipedItems.push_back(invent[i]);
+			EItems++;
+		}
 	}
 }

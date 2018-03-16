@@ -78,19 +78,33 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 		}
 	}
 
-	if (encontrado) {
+	 if (encontrado) {
 	
-		if (StandPoints[i].empty == true) {
+		if (StandPoints[i].empty == true ) {
 
 			StandPoints[i].ID = identifier;
 			StandPoints[i].empty = false;
 			x = auxX + auxW / 2;
 			y = auxY + auxH / 2;
 
+			int c = 0; bool found = false;
+			while(c < StandPoints.size() && !found){
+
+				if (StandPoints[c].mX == Inventary[identifier].mX && StandPoints[c].mY == Inventary[identifier].mY) {
+					StandPoints[c].empty = true;
+					found = true;
+				}
+				else c++;
+			}
+
 			Inventary[identifier].x = x;
 			Inventary[identifier].y = y;
 			Inventary[identifier].mX = auxMx;
 			Inventary[identifier].mY = auxMy;
+
+
+			if(StandPoints[i].equiped)
+				Inventary[identifier].equiped = true;
 
 			bag->setInvent(Inventary);
 			v.set(x / 70, y / 70);
