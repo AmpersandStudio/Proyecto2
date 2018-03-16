@@ -10,6 +10,10 @@
 #include "GameComponent.h"
 #include <vector>
 #include "ShopItems.h"
+#include "Button.h"
+#include <iostream>
+#include "InventoryShopFBcomponent.h"
+#include "KeyBoardShopComponent.h"
 
 #include "GameManager.h"
 
@@ -48,8 +52,8 @@ private:
 	int ultimaFilaY;
 	int auxOID;
 
-	int Fils = 4;
-	int Cols = 3;
+	int Fils = 3;
+	int Cols = 4;
 	int Scols_ = 12;
 
 	GameComponent* selector_;
@@ -67,6 +71,7 @@ public:
 	static void toMenu();
 	//estado** devMat() { return matriz; };
 	vector<estado> getInvent() { return invent; };
+	vector<estado> getShopItems() { return shopObjects; };
 	void setInvent(estado s) { invent.push_back(s); };
 	vector<estado> getSP() { return SP; };
 	void setSP(vector<estado> s);

@@ -171,7 +171,6 @@ void BackPack::creaSP() {
 	for (int i = 0; i < numFils; i++)
 		for (int j = 0; j < numRows; j++) {
 
-			estado s;
 			double width = 70;
 			double height = 70;
 			matriz[i][j].empty = true;
@@ -199,7 +198,7 @@ void BackPack::creaSP() {
 			gc->addRenderComponent(rcF); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
 
 			stage.push_back(gc);
-			SP.push_back(matriz[i][j]);
+			SP.push_back(matriz[i][j]); //ESTO NO REALENTIZA NADA
 			StandPointsO.push_back(gc);
 			numSP++;
 			aux++;
@@ -223,6 +222,7 @@ void BackPack::creaSP() {
 
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
 	selector_->setWidth(70); selector_->setHeight(70);
+	selector_->setColFrame(0); selector_->setRowFrame(0);
 	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), numRows, numFils, auxD, StandPointsO, this));
 	//selector_->addInputComponent(MSC);
 	stage.push_back(selector_);

@@ -2,6 +2,7 @@
 #include "RenderFullComponent.h"
 #include "KeyInputComponent.h"
 #include "GameManager.h"
+#include "RenderSingleFrameComponent.h"
 
 NameSelectorState::NameSelectorState()
 {
@@ -15,11 +16,13 @@ NameSelectorState::NameSelectorState()
 	int selectorWidth = Game::Instance()->getWinWidth() / cols;
 	int selectorHeight = Game::Instance()->getWinHeight() / rows;
 
-	RenderComponent* rc = new RenderFrameComponent();
+	RenderComponent* rc = new RenderSingleFrameComponent();
 	RenderComponent* rc2 = new RenderFullComponent();
 	InputComponent* ic = new KeyInputComponent(SDLK_w, SDLK_s, SDLK_d, SDLK_a, rows, cols);
 
 	selector_->setTextureId("12"); selector_->setPosition(position0); selector_->setWidth(selectorWidth); selector_->setHeight(selectorHeight); selector_->addRenderComponent(rc); selector_->addInputComponent(ic);
+	selector_->setColFrame(0); selector_->setRowFrame(0);
+
 	letters_->setTextureId("11"); letters_->addRenderComponent(rc2);
 
 	stage.push_back(letters_);

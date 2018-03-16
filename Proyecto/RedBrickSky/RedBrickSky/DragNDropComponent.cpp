@@ -17,7 +17,6 @@ DragNDropComponent::~DragNDropComponent()
 
 bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
-	//StandPoints = shop->getSP();
 	bool handledEvent = false;
 	Vector2D position = o->getPosition();
 	int x = 0;
@@ -69,9 +68,6 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			auxH = StandPoints[i].h;
 			auxMx = StandPoints[i].mX;
 			auxMy = StandPoints[i].mY;
-
-		
-			//cout  << auxY << "," << endl;
 
 			if (x > (auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
 				encontrado = true;

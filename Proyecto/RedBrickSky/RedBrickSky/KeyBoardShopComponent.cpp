@@ -1,5 +1,5 @@
 #include "KeyBoardShopComponent.h"
-
+#
 
 
 KeyBoardShopComponent::KeyBoardShopComponent(int iniX, int iniY, int col, int fil, int dis, vector<GameObject*> v, BackPack* b, ShopState* s)
@@ -10,8 +10,10 @@ KeyBoardShopComponent::KeyBoardShopComponent(int iniX, int iniY, int col, int fi
 	fil_ = fil;
 	distance = dis;
 	SP = v;
-	back = b;
-	shop = s;
+
+	ShopItems* items = new ShopItems();
+	shopObjects = items->getItems();
+
 }
 
 KeyBoardShopComponent::~KeyBoardShopComponent()
@@ -79,39 +81,27 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		}
 
 		else if (event.key.keysym.sym == SDLK_SPACE) {
-			invent.clear();
-			if (back != nullptr)
-				invent = back->getInvent();
+
+
 
 			if (selection_) {
-
-				invent[savedInvent].x = posX - 9;
-				invent[savedInvent].y = posY;
-				invent[savedInvent].mX = i;
-				invent[savedInvent].mY = j;
-
-
-				Vector2D pos(posX, posY);
-				invent[savedInvent].GC->setPosition(pos);
-				invent[savedInvent].GC->setOriPos(pos);
-				selection_ = false;
-
-				if (back != nullptr)
-					back->setInvent(invent);
+				o->setColFrame(0);
+				
 			}
 
 			else {
 				int  p = 0;
 				bool encontrado = false;
-				while (p < invent.size() && !encontrado) {
+				while (p < shopObjects.size() && !encontrado) {
 
-					if (invent[p].mX == i && invent[p].mY == j)
+					if (shopObjects[p].x == posX && shopObjects[p].y == posY)
 						encontrado = true;
 					else
 						p++;
 				}
 
 				if (encontrado) {
+					o->setColFrame(1);
 					savedInvent = p;
 					selection_ = true;
 

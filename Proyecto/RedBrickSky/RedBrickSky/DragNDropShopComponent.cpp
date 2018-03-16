@@ -18,6 +18,7 @@ DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy
 	name = n;
 	filFrame = fil;
 	colFrame = col;
+	StandPoints = shop->getSP();
 }
 
 
@@ -27,11 +28,14 @@ DragNDropShopComponent::~DragNDropShopComponent()
 
 bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
-	StandPoints = shop->getSP();
+	
 	bool handledEvent = false;
 	Vector2D position = o->getPosition();
 	int x = 0;
 	int y = 0;
+
+	Vector2D v;
+
 	SDL_GetMouseState(&x, &y); //comprobamos estado del raton
 
 	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT && !comprado) { //si es evento de raton
@@ -43,7 +47,6 @@ bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 
 	else if (event.type == SDL_MOUSEMOTION  && isMouseSelection && !comprado) {
 
-		Vector2D v;
 		v.set((x - 38) / (o->getWidth()), (y - 40) / (o->getHeight()));
 		o->setPosition(v);
 	}
@@ -97,20 +100,11 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			auxH = StandPoints[i].h;
 			auxMx = StandPoints[i].mX;
 			auxMy = StandPoints[i].mY;
-			
-			//cout  << auxY << "," << endl;
 
 	if (x > (auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
 	encontrado = true;
-		x = auxX + auxW / 2;
-		y = auxY + auxH / 2;
 		
-		v.set(x / 70, y / 70);
-		o->setPosition(v);
 
-		//cout << auxMx << "," << auxMy << "," << endl;
-	
-	//cout << x << "," << y << "," << auxX << "," << auxY << "," << auxW << "," << auxH << endl;
 		}
 
 	else 
@@ -128,6 +122,11 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 
 				StandPoints[i].ID = identifier;
 				StandPoints[i].empty = false;
+				x = auxX + auxW / 2;
+				y = auxY + auxH / 2;
+
+				v.set(x / 70, y / 70);
+				o->setPosition(v);
 				//StandPoints[i].x = x;
 				//StandPoints[i].y = y;
 				//ocupados++;
@@ -136,7 +135,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			else {
 
 				StandPoints[i].objects++;
-				cout << "Tienes " << StandPoints[i].objects + 1 << " elementos del tipo " << identifier << " en tu inventario ahora." << endl;
+				cout << "Tienes " << StandPoints[i].objects + 1 << " " << name << " en tu inventario ahora." << endl;
 			}
 
 			estado n;

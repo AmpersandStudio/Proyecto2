@@ -10,7 +10,6 @@
 
 MainMenuState::MainMenuState()
 {
-
 	//Fondo de la tienda
 	gc = new GameComponent();
 	Vector2D positionGC(0, 0);
@@ -18,7 +17,6 @@ MainMenuState::MainMenuState()
 	gc->addRenderComponent(new RenderFullComponent());
 
 	stage.push_back(gc);
-	
 
 	Button* button0 = new Button("0", toGame, 0);
 	Button* button3 = new Button("3", exit, 3);

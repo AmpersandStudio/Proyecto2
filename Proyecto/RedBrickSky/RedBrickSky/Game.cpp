@@ -58,7 +58,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\backPack.png", "9", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\backPackBack.png", "10", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\abc.png", "11", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\selector.png", "12", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\selector.png", "12", RENDERER_, 1,2);
 	TheTextureManager::Instance()->load("..\\images\\name.png", "13", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\weapons.png", "14", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\potions.png", "15", RENDERER_);

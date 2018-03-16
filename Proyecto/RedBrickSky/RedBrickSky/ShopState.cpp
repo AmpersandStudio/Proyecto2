@@ -1,10 +1,7 @@
 #pragma once
 
 #include "ShopState.h"
-#include "Button.h"
-#include <iostream>
-#include "InventoryShopFBcomponent.h"
-#include "KeyBoardShopComponent.h"
+
 ShopState::ShopState()
 {
 	ShopItems* items = new ShopItems();
@@ -172,27 +169,27 @@ void ShopState::destroySP() {
 }
 
 void ShopState::createSP() {
-	//Rellenamos la matriz DE SP
+	//Creamos los SP
+	destroySP();
 	Vector2D selecPos;
 	int auxD = 0;
 	auxOID = 0;
 	numSP = 0;
-	for (int i = 0; i < Cols; i++)
-		for (int j = 0; j < Fils; j++) {
-			estado a;
-
-
+	for (int i = 0; i < Fils; i++)
+		for (int j = 0; j < Cols; j++) {
+			
+			estado s;
 			double width = 70;
 			double height = 70;
-			a.empty = true;
-			a.ID = 0;
-			a.objects = 0;
-			a.w = width;
-			a.h = height;
-			a.mX = i;
-			a.mY = j;
-			a.objectID = auxOID;
-			a.type = -1;
+			s.empty = true;
+			s.ID = 0;
+			s.objects = 0;
+			s.w = width;
+			s.h = height;
+			s.mX = i;
+			s.mY = j;
+			s.objectID = auxOID;
+			s.type = -1;
 
 
 			Vector2D position0(2 * i + 2, 2 * j + 2);
@@ -201,8 +198,8 @@ void ShopState::createSP() {
 			if (i == 1 && j == 0)
 				auxD = position0.getX() - selecPos.getX();
 
-			a.x = position0.getX();
-			a.y = position0.getY();
+			s.x = position0.getX();
+			s.y = position0.getY();
 			GameComponent* gc = new GameComponent();
 			InputComponent* auxSCP = new MouseScrollShopComponent(this, auxOID);
 
@@ -211,7 +208,8 @@ void ShopState::createSP() {
 			gc->addRenderComponent(rcSF); gc->addInputComponent(auxSCP);//  gc->addInputComponent(InventoryShopFBcomponent());
 
 			stage.push_back(gc);
-			SP.push_back(a);
+			SP.push_back(s);
+			std::cout << SP.size() << endl;
 			StandPointsO.push_back(gc);
 
 			numSP++;
@@ -224,7 +222,8 @@ void ShopState::createSP() {
 
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
 	selector_->setWidth(70); selector_->setHeight(70);
-	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), Fils, Scols_, auxD, StandPointsO, nullptr, this));
+	selector_->addRenderComponent(rcSF); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), Fils, Scols_, auxD, StandPointsO, nullptr, this));
+	selector_->setColFrame(0); selector_->setRowFrame(0);
 
 	stage.push_back(selector_);
 
