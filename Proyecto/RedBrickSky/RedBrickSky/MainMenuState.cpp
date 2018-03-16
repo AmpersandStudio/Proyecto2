@@ -16,6 +16,7 @@ MainMenuState::MainMenuState()
 	Vector2D positionGC(0, 0);
 	gc->setTextureId("MainMenu");
 	gc->addRenderComponent(new RenderFullComponent());
+
 	stage.push_back(gc);
 	
 
@@ -56,5 +57,5 @@ void MainMenuState::toSelector() {
 }
 
 void MainMenuState::update() {
-	;
+	
 }
