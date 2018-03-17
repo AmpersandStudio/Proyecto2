@@ -246,42 +246,58 @@ bool BattleState::run()
 
 	if (player->getHealth() > 0 && enemy->getHealth() > 0)
 	{
-		std::cout << std::endl;
+		bool pt = player->getTurn();
+		bool et = enemy->getTurn();
 
-		//handleInput();
-		while (!player->useAttack(input)) {
-			std::cout << "No quedan PP para este ataque!" << std::endl;
+		if (pt && !et) {
+			std::cout << std::endl;
+
+			//handleInput();
+			while (!player->useAttack(input)) {
+				std::cout << "No quedan PP para este ataque!" << std::endl;
+			}
+
+			float dmg = player->combat(input, enemy->getDefense(), enemy->getType());
+			if (player->hasTarget())
+			{
+				enemy->receiveDamage(dmg);
+				Attack temp_a = player->getAttack(input);
+				enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
+			}
+
+			std::cout << std::endl;
+			enemy->setTurn(true);
 		}
 
-		float dmg = player->combat(input, enemy->getDefense(), enemy->getType());
-		if (player->hasTarget())
-		{
-			enemy->receiveDamage(dmg);
-			Attack temp_a = player->getAttack(input);
-			enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
-		}
-
-		std::cout << std::endl;
-
-		if (enemy->getHealth() > 0)
+		if (enemy->getHealth() > 0 && !pt && et)
 		{
 			enemy->useAttack(0);
 			int e_input = enemy->getInput();
-			dmg = enemy->combat(e_input, player->getDefense(), player->getType());
+			float dmg = enemy->combat(e_input, player->getDefense(), player->getType());
+
+			enemy->delPhysicsComponent(mc);
+			Vector2D p = player->getPosition();
+			Vector2D e = enemy->getPosition();
+			mc = new MoveToThisPosComponent(e, p);
+			enemy->addPhysicsComponent(mc);
+
 			if (enemy->hasTarget())
 			{
 				player->receiveDamage(dmg);
 				Attack temp_a = enemy->getAttack(e_input);
 				player->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
 			}
+			enemy->setTurn(false);
 		}
 
-		std::cout << player->getName() << ": " << player->getHealth() << " HP" << std::endl;
-		std::cout << enemy->getName() << ": " << enemy->getHealth() << " HP" << std::endl;
+		if (!pt && !et && Attacking_) {
+			std::cout << player->getName() << ": " << player->getHealth() << " HP" << std::endl;
+			std::cout << enemy->getName() << ": " << enemy->getHealth() << " HP" << std::endl;
 
-		std::cout << std::endl << "-------------------------------------------------------------" << std::endl;
+			std::cout << std::endl << "-------------------------------------------------------------" << std::endl;
 
-		Attacking_ = false;
+			Attacking_ = false;
+		}
 	}
 
 	if (player->getHealth() > 0 && enemy->getHealth() <= 0) {
@@ -477,6 +493,8 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 }
 
 void BattleState::attack(int i) {
+	player->setTurn(true);
+
 	//antes de nada le quitamos el comp
 	//ASEGURA QUE ERASE HACE EL DELETE
 	player->delPhysicsComponent(mc);

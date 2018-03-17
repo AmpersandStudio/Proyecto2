@@ -22,8 +22,9 @@ void MoveToThisPosComponent::update(GameObject* o) {
 	double objectiveX = enemPos.getX();
 	double pixels = 0.7;
 	if (dir == 1 && go_) {
-		if (objectiveX > currentX)
+		if (objectiveX > currentX) {
 			currentX += pixels;
+		}
 		else {
 			back_ = true;
 			go_ = false;
@@ -35,11 +36,14 @@ void MoveToThisPosComponent::update(GameObject* o) {
 		else {
 			back_ = false;
 			o->setPosition(origPos);
+			bc = static_cast<BattleCharacter*>(o);
+			bc->setTurn(false);
 		}
 	}
 	else if (dir == -1 && go_) {
-		if (objectiveX < currentX)
+		if (objectiveX < currentX) {
 			currentX -= pixels;
+		}
 		else {
 			back_ = true;
 			go_ = false;
@@ -50,6 +54,9 @@ void MoveToThisPosComponent::update(GameObject* o) {
 			currentX += pixels;
 		else {
 			back_ = false;
+			o->setPosition(origPos);
+			bc = static_cast<BattleCharacter*>(o);
+			bc->setTurn(false);
 		}
 	}
 

@@ -1,5 +1,7 @@
 #pragma once
 #include "PhysicsComponent.h"
+#include "BattleCharacter.h"
+
 class MoveToThisPosComponent :
 	public PhysicsComponent
 {
@@ -9,6 +11,8 @@ private:
 	int dir;
 	bool go_;
 	bool back_;
+	BattleCharacter* bc;
+
 public:
 	MoveToThisPosComponent(Vector2D myPos, Vector2D hisPos);
 	virtual ~MoveToThisPosComponent();

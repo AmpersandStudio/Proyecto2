@@ -72,6 +72,8 @@ public:
 	float combat(int i, float enemyDef, Type enemyType);
 	void receiveDamage(float dmg);
 	void receiveFactors(float atk, float def, float prc);
+	void setTurn(bool b) { turn_ = b; };
+	bool getTurn() { return turn_; };
 
 protected:
 	std::string name;
@@ -85,5 +87,6 @@ protected:
 	Attack currentAttack;
 	bool support;
 	bool target;
+	bool turn_ = false;
 };
 
