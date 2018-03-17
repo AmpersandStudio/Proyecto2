@@ -99,6 +99,7 @@ bool Player::handleEvent(const SDL_Event& event)
 		}
 		if (event.key.keysym.sym == SDLK_SPACE)	// interactuar
 		{
+			std::cout << "Interacting...\n";
 			updateRect();
 			SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
 			SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &actionRect_);
@@ -150,7 +151,7 @@ void Player::handleAnimation()
 
 void Player::updateRect()
 {
-	if (direction_.getX() == -1 && direction_.getY() == 0)
+	/*if (direction_.getX() == -1 && direction_.getY() == 0)
 	{
 		actionRect_ = { (int)(position_.getX() - width_), (int)position_.getY(), (int)width_, (int)height_ };
 	}
@@ -165,6 +166,8 @@ void Player::updateRect()
 	else if (direction_.getX() == 0 && direction_.getY() == 1)
 	{
 		actionRect_ = { (int)position_.getX(), (int)(position_.getY() + height_), (int)width_, (int)height_ };
-	}
+	}*/
+
+	actionRect_ = { (int)(position_.getX() - width_), (int)(position_.getY() - height_), 3 * (int)width_, 3 * (int)height_ };
 }
 

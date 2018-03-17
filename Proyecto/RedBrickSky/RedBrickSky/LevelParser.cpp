@@ -112,9 +112,9 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 	{
 		if (e->Value() == std::string("object"))
 		{
-			int x, y, width, height, numFrames, callbackID = 0, animSpeed = 0;
-			std::string textureID;
-			std::string type;
+			int x = 0, y = 0, width = 32, height = 32, numFrames = 1, callbackID = 0, animSpeed = 0;
+			std::string textureID = "000";
+			std::string type = "Interactuable";
 
 			// get the initial node values type, x and y
 			e->Attribute("x", &x);
