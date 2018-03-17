@@ -43,7 +43,7 @@ Game::Game()
 
 	//Fuente
 	font = new Font(FONT_PATH + "OpenSans-Regular.ttf", 50);
-	fontTexture = new Texture(RENDERER_);
+	fontTexture = new Texture(RENDERER_); //ESTO CREO QUE HABRIA QUE CAMBIARLO A TEXTURE MANAGER
 
 	//Cargamos las texturas
 	TheTextureManager::Instance()->load("..\\images\\play.png", "0", RENDERER_);
@@ -174,10 +174,9 @@ void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color c
 	font_dest.x = destX;
 	font_dest.y = destY;
 
-	//TTF_OpenFont();
 	fontTexture->loadFromText(RENDERER_, text, font, color);
 	fontTexture->render(font_dest, SDL_FLIP_NONE);
-	SDL_RenderPresent(RENDERER_);
+	SDL_RenderPresent(RENDERER_); //ESTE RENDER PRESENT TIENE QUE DESAPARECER AHHHHHHHHHHHHH
 }
 
 void Game::clean()

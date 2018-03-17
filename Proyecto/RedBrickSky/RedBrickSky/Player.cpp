@@ -94,7 +94,8 @@ bool Player::handleEvent(const SDL_Event& event)
 		{
 			int level_dialogues = 1;
 			Dialogue d = Dialogue(level_dialogues);
-			Game::Instance()->textPrinter(d.getText('E', 1), 200, Game::Instance()->getWinWidth() / 3, Game::Instance()->getWinHeight() / 2, Game::Instance()->getBlackColor());
+			//Game::Instance()->textPrinter(d.getText('E', 1), 200, Game::Instance()->getWinWidth() / 3, Game::Instance()->getWinHeight() / 2, Game::Instance()->getBlackColor());
+			Game::Instance()->textPrinter(d.getText('E', 1), 200, 2, 2, Game::Instance()->getBlackColor()); //El problema del anterior es que se pinta fuera de pantalla
 		}
 		if (event.key.keysym.sym == SDLK_SPACE)	// interactuar
 		{

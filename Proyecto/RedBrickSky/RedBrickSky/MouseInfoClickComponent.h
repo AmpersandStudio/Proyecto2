@@ -8,6 +8,7 @@ class MouseInfoClickComponent :
 
 private:
 	estado st;
+	bool active_;
 public:
 	MouseInfoClickComponent(estado s);
 	~MouseInfoClickComponent();
