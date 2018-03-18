@@ -49,8 +49,8 @@ bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 	bool aceptada = false;
 
-	int auxX;
-	int auxY;
+	double auxX;
+	double auxY;
 	int auxW;
 	int auxH;
 	int auxMx;
@@ -69,7 +69,7 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			auxMx = StandPoints[i].mX;
 			auxMy = StandPoints[i].mY;
 
-			if (x > (auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
+			if (x >(auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
 				encontrado = true;
 			}
 
@@ -101,7 +101,6 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			Inventary[identifier].y = y;
 			Inventary[identifier].mX = auxMx;
 			Inventary[identifier].mY = auxMy;
-
 
 			if(StandPoints[i].equiped)
 				Inventary[identifier].equiped = true;

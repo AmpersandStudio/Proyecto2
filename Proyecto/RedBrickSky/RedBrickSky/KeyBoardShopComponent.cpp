@@ -31,8 +31,10 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
 		if (event.key.keysym.sym == SDLK_UP) {
 
-			posY -= distance;
-			if (posY >= Y_) {
+			if (posY > Y_)
+				posY -= distance;
+
+			if (posX >= Y_) {
 				position.setY(posY);
 				j--;
 			}
@@ -40,8 +42,10 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		}
 		else if (event.key.keysym.sym == SDLK_DOWN) {
 
-			posY += distance;
-			if (posY <= col_ * Y_) {
+			if (posY < Y_ + fil_ - 1)
+				posY += distance;
+
+			if (posY <= Y_ + fil_ ) {
 				position.setY(posY);
 				j++;
 			}
@@ -49,14 +53,10 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		}
 		else if (event.key.keysym.sym == SDLK_RIGHT) {
 
-			if (posX == fil_ -8 + X_)
-				posX += distance * 2;
-			else if(posX > fil_ -8 + X_)
+			 if(posX < X_ + col_ - 1)
 				posX += distance / 2;
-			else 
-				posX += distance;
 
-			if (posX <= fil_ + X_  ) {
+			if (posX <= X_ + col_ - 1) {
 				position.setX(posX);
 				i++;
 			}
@@ -65,18 +65,15 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		}
 		else if (event.key.keysym.sym == SDLK_LEFT) {
 
-			if (posX == fil_ - 8 + X_ + distance * 2)
-				posX -= distance * 2;
-			else if (posX > fil_ - 8 + X_)
-				posX -= distance / 2;
-			else
-				posX -= distance;
 
-			
+			if (posX >= X_)
+				posX -= distance / 2;
+
 			if (posX >= X_) {
 				position.setX(posX);
 				i--;
 			}
+
 			o->setPosition(position);
 		}
 
@@ -149,10 +146,10 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
 				if (x >(auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
 					SP[i]->setColFrame(1);
-					Vector2D pos;
+					/*Vector2D pos;
 					pos.setX(auxX / 70);
 					pos.setY(auxY / 70);
-					o->setPosition(pos);
+					o->setPosition(pos);*/
 				}
 
 				else

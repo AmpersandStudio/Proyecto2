@@ -225,7 +225,6 @@ void BackPack::creaSP() {
 		s.mX = i * -1;
 		s.mY = p * -1;
 
-
 		Vector2D position0(1.5 * i + 1.2, 1.5 * p + 6.5);
 
 		s.x = position0.getX();
@@ -234,7 +233,6 @@ void BackPack::creaSP() {
 
 		gc->setTextureId("8"); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
 		gc->addRenderComponent(rcF); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
-
 
 		stage.push_back(gc);
 		SP.push_back(s);

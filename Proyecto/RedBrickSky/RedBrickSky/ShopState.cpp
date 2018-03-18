@@ -101,18 +101,19 @@ void ShopState::mainMenuBotton() {
 void ShopState::createShopItems() {
 	int j = 0;
 	int k = 0;
+	int shopCols = 9;
 
 	for (int i = 0; i < shopObjects.size(); i++) {
 
-		if (i % 5 == 0) {
+		if (i % shopCols == 0) {
 			j++;
 			k = 0;
 		}
 
 		//Crea los objetos de la tienda que se mueden mover
 		GameComponent* gc = new GameComponent();
-		Vector2D position5(k + 10, 2 * j);
-		Vector2D oriPos(k + 10, 2 * j);
+		Vector2D position5(k + shopCols - 1, 2 * j);
+		Vector2D oriPos(k + shopCols - 1, 2 * j);
 		DragNDropShopComponent* p = new DragNDropShopComponent(this, shopObjects[i].price, false, shopObjects[i].ID, gc, shopObjects[i].type, shopObjects[i].nombre, shopObjects[i].FilFrame, shopObjects[i].colFrame);
 		gc->setTextureId(shopObjects[i].tx); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(70); gc->setHeight(70);
 		gc->addRenderComponent(rcSF); gc->addInputComponent(p); gc->addInputComponent(new MouseInfoClickComponent(shopObjects[i]));	gc->addInputComponent(MSC);
@@ -128,7 +129,20 @@ void ShopState::createShopItems() {
 		stageBack(gc); //Añadimos el objeto
 		GCshopV.push_back(gc); //Añadimos el elemento al vector de Items de la tienda
 		k++;
+
 	}
+
+	//Creamos el elemento que nos permitirá movernos con teclado
+	selector_ = new GameComponent();
+	Vector2D selecPos;
+	selecPos.set(8, 2);
+
+	selector_->setTextureId("12"); selector_->setPosition(selecPos);
+	selector_->setWidth(70); selector_->setHeight(70);
+	selector_->addRenderComponent(rcSF); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), shopCols, j, 2, StandPointsO, nullptr, this));
+	selector_->setColFrame(0); selector_->setRowFrame(0);
+
+	stage.push_back(selector_);
 }
 
 void ShopState::createBagItems() {
@@ -175,12 +189,13 @@ void ShopState::createSP() {
 	int auxD = 0;
 	auxOID = 0;
 	numSP = 0;
+	double width = 70;
+	double height = 70;
 	for (int i = 0; i < Fils; i++)
 		for (int j = 0; j < Cols; j++) {
 			
 			estado s;
-			double width = 70;
-			double height = 70;
+			
 			s.empty = true;
 			s.ID = 0;
 			s.objects = 0;
@@ -215,16 +230,6 @@ void ShopState::createSP() {
 			auxOID++;
 		}
 	ultimaFilaY = Fils;
-
-	//Creamos el elemento que nos permitirá movernos con teclado
-	selector_ = new GameComponent();
-
-	selector_->setTextureId("12"); selector_->setPosition(selecPos);
-	selector_->setWidth(70); selector_->setHeight(70);
-	selector_->addRenderComponent(rcSF); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), Fils, Scols_, auxD, StandPointsO, nullptr, this));
-	selector_->setColFrame(0); selector_->setRowFrame(0);
-
-	stage.push_back(selector_);
 
 	//Creamos los elementos de la mochila
 	createBagItems();

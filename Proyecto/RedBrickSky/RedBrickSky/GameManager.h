@@ -11,9 +11,9 @@ struct estado {
 	     comprado;
 	int ID;
 	int objects;
-	int x,
-		y, 
-		mX,
+	double x,
+		y;
+	int	mX,
 		mY,
 		w, 
 		h;

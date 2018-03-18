@@ -151,10 +151,7 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 
 				if (x >(auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
 					SP[i]->setColFrame(1);
-					Vector2D pos;
-					pos.setX(auxX / auxW);
-					pos.setY(auxY / auxH);
-					o->setPosition(pos);
+
 				}
 
 				else
