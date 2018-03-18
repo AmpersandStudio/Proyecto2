@@ -33,9 +33,9 @@ ShopState::ShopState()
 	createShopItems();
 
 	//Creamos la imagen que va por encima de la mochila para que no se vea al hacer scroll
-	GameComponent* frontShop = new GameComponent();
+	/*GameComponent* frontShop = new GameComponent();
 	frontShop->setTextureId("7"); frontShop->addRenderComponent(rc);
-	stage.push_back(frontShop);
+	stage.push_back(frontShop);*/
 
 	//Creamos botón para volver al menú principal
 	mainMenuBotton();
@@ -192,7 +192,7 @@ void ShopState::createSP() {
 			s.type = -1;
 
 
-			Vector2D position0(2 * i + 2, 2 * j + 2);
+			Vector2D position0(2 * i + 1, 2 * j + 2);
 			if (i == 0 && j == 0)
 				selecPos = position0;
 			if (i == 1 && j == 0)

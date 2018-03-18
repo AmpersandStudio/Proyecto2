@@ -144,18 +144,16 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 		for(int i = 0; i < SP.size(); i++) {
 			//Busca si el objeto se ha dejado en alguno de los Stand Points
 			{
-				auxX = SP[i]->getPosition().getX() * 70;
-				auxY = SP[i]->getPosition().getY() * 70;
 				auxW = SP[i]->getWidth();
-				auxH = SP[i]->getHeight();;
-
-				//cout  << auxY << "," << endl;
+				auxH = SP[i]->getHeight();
+				auxX = SP[i]->getPosition().getX() * auxW;
+				auxY = SP[i]->getPosition().getY() * auxH;
 
 				if (x >(auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
 					SP[i]->setColFrame(1);
 					Vector2D pos;
-					pos.setX(auxX / 70);
-					pos.setY(auxY / 70);
+					pos.setX(auxX / auxW);
+					pos.setY(auxY / auxH);
 					o->setPosition(pos);
 				}
 

@@ -62,10 +62,10 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 	while (i < StandPoints.size() && !encontrado) {
 		//Busca si el objeto se ha dejado en alguno de los Stand Points
 		{
-			auxX = StandPoints[i].x * 70;
-			auxY = StandPoints[i].y * 70;
 			auxW = StandPoints[i].w;
 			auxH = StandPoints[i].h;
+			auxX = StandPoints[i].x * auxW;
+			auxY = StandPoints[i].y * auxH;	
 			auxMx = StandPoints[i].mX;
 			auxMy = StandPoints[i].mY;
 
@@ -107,7 +107,7 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 				Inventary[identifier].equiped = true;
 
 			bag->setInvent(Inventary);
-			v.set(x / 70, y / 70);
+			v.set(x / auxW, y / auxH);
 			o->setPosition(v);
 			o->setOriPos(v);
 			aceptada = true;

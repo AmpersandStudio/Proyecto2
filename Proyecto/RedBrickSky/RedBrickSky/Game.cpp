@@ -53,10 +53,10 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\food2.png", "4", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\fruit.png", "5", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\invent.png", "6", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\inventFront.png", "7", RENDERER_);
+	//TheTextureManager::Instance()->load("..\\images\\inventFront.png", "7", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\keyboard.png", "8", RENDERER_, 1 ,2);
 	TheTextureManager::Instance()->load("..\\images\\backPack.png", "9", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\backPackBack.png", "10", RENDERER_);
+	//TheTextureManager::Instance()->load("..\\images\\backPackBack.png", "10", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\abc.png", "11", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\selector.png", "12", RENDERER_, 1,2);
 	TheTextureManager::Instance()->load("..\\images\\name.png", "13", RENDERER_);

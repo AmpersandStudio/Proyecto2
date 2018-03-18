@@ -212,7 +212,7 @@ void BackPack::creaSP() {
 		for (int p = 0; p < 2; p++) {
 
 		estado s;
-		double width = 70;
+		double width = 150;
 		double height = 70;
 		s.empty = true;
 		s.ID = 0;
@@ -226,7 +226,7 @@ void BackPack::creaSP() {
 		s.mY = p * -1;
 
 
-		Vector2D position0(2 * i + 4, 2 * p + 6);
+		Vector2D position0(1.5 * i + 1.2, 1.5 * p + 6.5);
 
 		s.x = position0.getX();
 		s.y = position0.getY();
