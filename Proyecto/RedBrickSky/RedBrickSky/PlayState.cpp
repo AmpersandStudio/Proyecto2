@@ -49,7 +49,7 @@ PlayState::PlayState()
 
 	//initPlayer();
 
-	//TheSoundManager::Instance()->playMusic("music", 0);
+	TheSoundManager::Instance()->playMusic("music", 0);
 }
 
 PlayState::~PlayState()
@@ -115,6 +115,8 @@ void PlayState::toInventary() {
 
 //DE MARTIN PARA PROBAR BATTLESTATE
 void PlayState::toBattle() {
+	TheSoundManager::Instance()->stopMusic();
+	TheSoundManager::Instance()->playMusic("trans_btl", 0);
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->pushState(new TransitionState());
 }

@@ -27,6 +27,8 @@ public:
 	void playSound(std::string id, int loop);
 	void playMusic(std::string id, int loop);
 	void playSoundFood();
+	int isPlayingMusic();
+	void stopMusic();
 	void clear();
 
 private:
