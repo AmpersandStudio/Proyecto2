@@ -51,6 +51,13 @@ void SoundManager::playSoundFood()
 	if (Mix_Playing(1) == 0) Mix_PlayChannel(1, m_sfxs["food"], 0);
 }
 
+int SoundManager::isPlayingMusic() {
+	return Mix_PlayingMusic();
+}
+
+void SoundManager::stopMusic() {
+	Mix_HaltMusic();
+}
 
 // Metodo para liberar el mapa de musica y sonido
 void SoundManager::clear()

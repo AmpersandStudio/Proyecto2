@@ -83,6 +83,11 @@ Game::Game()
 
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\click.wav", "click", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\punch.wav", "punch", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\punch_alt.wav", "punch_2", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\Battle_transition.wav", "trans_btl", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\music.wav", "music", SOUND_MUSIC);
 
 	//Registramos los tipos en la Game Object Factory

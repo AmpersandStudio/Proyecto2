@@ -427,6 +427,10 @@ bool BattleState::isButton(GameObject * object)
 
 void BattleState::update() {
 
+	if (TheSoundManager::Instance()->isPlayingMusic() == 0) {
+		TheSoundManager::Instance()->playMusic("loop_btl", 0);
+	}
+
 	if (!fade2Done_ && fadeDone_)
 		init();
 	else if (fade2Done_) {
@@ -434,8 +438,12 @@ void BattleState::update() {
 		if (!END_ && Attacking_)
 			END_ = run();
 	}
-	if (END_)
+	if (END_) {
+		TheSoundManager::Instance()->stopMusic();
+		TheSoundManager::Instance()->playMusic("music", 0);
 		Game::Instance()->getStateMachine()->popState();
+	}
+		
 }
 
 void BattleState::render() {
@@ -482,6 +490,8 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 		actButton = interfaz.button_3->handleEvent(event);
 		if (actButton && !attack_) {
 			run_ = true;
+			TheSoundManager::Instance()->stopMusic();
+			TheSoundManager::Instance()->playMusic("music", 0);
 			Game::Instance()->getStateMachine()->popState();
 		}
 		else if (actButton && attack_) {

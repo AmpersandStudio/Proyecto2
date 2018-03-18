@@ -24,7 +24,7 @@ bool MouseInputForBattleComponent::handleEvent(GameObject* o, const SDL_Event& e
 
 			Button* b = dynamic_cast<Button*>(o);
 			if (b != nullptr) {
-				TheSoundManager::Instance()->playSound("woah", 0);
+				TheSoundManager::Instance()->playSound("click", 0);
 				handledEvent = true; //marcamos el evento como handleado
 			}
 		}
