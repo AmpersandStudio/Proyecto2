@@ -5,7 +5,6 @@ DragNDropComponent::DragNDropComponent(BackPack* b, int id)
 	bag = b;
 	isMouseSelection = false;
 	StandPoints = b->getSP();
-	Inventary = b->getInvent();
 	identifier = id;
 
 }
@@ -39,6 +38,7 @@ bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
 	else  if (event.type == SDL_MOUSEBUTTONUP && isMouseSelection) {
 		isMouseSelection = false;
+		Inventary = bag->getInvent();
 
 		if (!devMat(x, y, o))
 			o->setPosition(o->getOriPos());	
@@ -102,10 +102,12 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			Inventary[identifier].mX = auxMx;
 			Inventary[identifier].mY = auxMy;
 
-			if(StandPoints[i].equiped)
+			if (StandPoints[i].equiped) {
 				Inventary[identifier].equiped = true;
+			}
 
 			bag->setInvent(Inventary);
+			bag->setSP(StandPoints);
 			v.set(x / auxW, y / auxH);
 			o->setPosition(v);
 			o->setOriPos(v);

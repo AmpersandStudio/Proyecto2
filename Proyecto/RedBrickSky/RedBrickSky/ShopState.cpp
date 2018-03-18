@@ -160,9 +160,9 @@ void ShopState::createBagItems() {
 		SP[i].type = invent[i].type;
 
 		GameComponent* gc = new GameComponent();
-		Vector2D position0(SP[i].y, SP[i].x);
-		double width = 70;
-		double height = 70;
+		Vector2D position0(SP[i].y - 1, SP[i].x + 1);
+		double width = invent[i].w;
+		double height = invent[i].h;
 
 		gc->setTextureId(invent[i].tx); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
 		gc->addRenderComponent(rcSF); gc->addInputComponent(MSC);  gc->addInputComponent(new MouseInfoClickComponent(invent[i]));

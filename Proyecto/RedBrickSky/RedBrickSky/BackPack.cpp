@@ -58,7 +58,7 @@ void BackPack::cargaElementos(vector<estado> l) {
 	vector<estado> auxV;
 	for (unsigned int i = 0; i < l.size(); i++) {
 
-		if (l[i].mX != -1 && l[i].mY != -1) {
+		if (l[i].mX != -10 && l[i].mY != -10) {
 
 			int x = l[i].mX;
 			int y = l[i].mY;
@@ -137,8 +137,8 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 	matriz[x][y].comprado = true;
 	matriz[x][y].price = st.price;
 	matriz[x][y].tx = st.tx;
-	matriz[x][y].w = 70;
-	matriz[x][y].h = 70;
+	matriz[x][y].w = st.w;
+	matriz[x][y].h = st.h;
 	matriz[x][y].objectID = aux;
 	st.mX = matriz[x][y].mX;
 	st.mY = matriz[x][y].mY;
@@ -361,6 +361,12 @@ void BackPack::setInvent(vector<estado> v) {
 		invent.push_back(v[i]);
 
 	separateElements();
+}
+
+void BackPack::setSP(vector<estado> v) {
+	SP.clear();
+	for (int i = 0; i < v.size(); i++)
+		SP.push_back(v[i]);
 }
 
 void BackPack::separateElements() {

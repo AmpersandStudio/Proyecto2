@@ -68,6 +68,7 @@ public:
 	vector<estado> getSP() { return SP; };
 	vector<estado> getInvent() { return invent; };
 	void setInvent(vector<estado> v);
+	void setSP(vector<estado> v);
 	void cargaElementos(vector<estado> l);
 	void elimina();
 	void creaSP();

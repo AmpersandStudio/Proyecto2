@@ -130,6 +130,35 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 				//StandPoints[i].x = x;
 				//StandPoints[i].y = y;
 				//ocupados++;
+
+				estado n;
+				n.price = price;
+				n.comprado = comprado;
+				n.ID = identifier;
+				n.empty = false;
+				n.objects = StandPoints[i].objects;
+				n.x = StandPoints[i].x;
+				n.y = StandPoints[i].y;
+				n.mX = -10;
+				n.mY = -10;
+				n.w = StandPoints[i].w;
+				n.h = StandPoints[i].h;
+				n.tx = o->getTextureId();
+				n.type = tipo;
+				n.nombre = name;
+				n.FilFrame = filFrame;
+				n.colFrame = colFrame;
+
+				shop->setInvent(n);
+				GameManager::Instance()->setInventory(n);
+
+				GameComponent* gc2 = new GameComponent();
+				gc2->setTextureId(o->getTextureId()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(70); gc2->setHeight(70);
+				gc2->addRenderComponent(new RenderSingleFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(shop));
+				gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
+
+				shop->stageBack(gc2);
+
 			}
 
 			else {
@@ -138,33 +167,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 				cout << "Tienes " << StandPoints[i].objects + 1 << " " << name << " en tu inventario ahora." << endl;
 			}
 
-			estado n;
-			n.price = price;
-			n.comprado = comprado;
-			n.ID = identifier;
-			n.empty = false;
-			n.objects = StandPoints[i].objects;
-			n.x = StandPoints[i].x;
-			n.y = StandPoints[i].y;
-			n.mX = -1;
-			n.mY = -1;
-			n.w = StandPoints[i].w;
-			n.h = StandPoints[i].h;
-			n.tx = o->getTextureId();
-			n.type = tipo;
-			n.nombre = name;
-			n.FilFrame = filFrame;
-			n.colFrame = colFrame;
-
-			shop->setInvent(n);
-			GameManager::Instance()->setInventory(n);
-
-			GameComponent* gc2 = new GameComponent();
-			gc2->setTextureId(o->getTextureId()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(70); gc2->setHeight(70);
-			gc2->addRenderComponent(new RenderSingleFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(shop));
-			gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
-
-			shop->stageBack(gc2);
+		
 
 			aceptada = true;
 
