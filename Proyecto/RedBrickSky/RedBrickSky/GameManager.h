@@ -14,9 +14,9 @@ struct estado {
 	double x,
 		y;
 	int	mX,
-		mY,
-		w, 
-		h;
+		mY;
+	double	w, 
+			h;
 	int objectID;
 	int type; //Arma = 0, pocion = 1, objeto = 2;
 	string nombre;

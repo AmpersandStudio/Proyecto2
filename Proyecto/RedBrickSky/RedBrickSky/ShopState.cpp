@@ -87,10 +87,10 @@ void ShopState::mainMenuBotton() {
 
 	Button* bottonBack = new Button("3", toMenu, 0);
 
-	Vector2D position0(7, 6);
+	Vector2D position0(11, 0.5);
 
-	double width = 150;
-	double height = 100;
+	double width = 100;
+	double height = 60;
 
 	bottonBack->setPosition(position0); bottonBack->setWidth(width); bottonBack->setHeight(height);
 	bottonBack->addRenderComponent(rcF); bottonBack->addInputComponent(MIC);
@@ -139,7 +139,7 @@ void ShopState::createShopItems() {
 
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
 	selector_->setWidth(70); selector_->setHeight(70);
-	selector_->addRenderComponent(rcSF); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), shopCols, j, 2, StandPointsO, nullptr, this));
+	selector_->addRenderComponent(rcSF); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 2, StandPointsO, nullptr, this));
 	selector_->setColFrame(0); selector_->setRowFrame(0);
 
 	stage.push_back(selector_);

@@ -1,5 +1,6 @@
 #include "BattleState.h"
 #include "TextureManager.h"
+#include "RenderSingleFrameComponent.h"
 
 BattleState::BattleState()
 {
@@ -101,12 +102,69 @@ void BattleState::createUI() {
 	//preparamos el combate
 	constructC();
 
-	//fade inicial
-	stage.push_back(fade_);
-
 	Vector2D p = player->getPosition();
 	Vector2D e = enemy->getPosition();
 	mc = new MoveToThisPosComponent(p, e);
+
+	int i = 0;
+	bool found = false;
+	bool first = false;
+
+	vector<estado> items = GameManager::Instance()->copyInventory();
+	estado w1;
+	estado w2;
+	while (i < items.size() && !found) {
+
+		if (items[i].equiped) {
+			if (!first) {
+				w1 = items[i];
+				first = true;
+			}
+			else {
+				w2 = items[i];
+				found = true;
+			}
+		}
+		i++;
+	}
+
+	string text1 = w1.tx;
+	string text2 = w2.tx;
+
+	string name1 = w1.nombre;
+	string name2 = w2.nombre;
+
+	int colF1 = w1.colFrame;
+	int colF2 = w2.colFrame;
+
+	int rowF1 = w1.FilFrame;
+	int rowF2 = w2.FilFrame;
+
+	RenderSingleFrameComponent* rsfc = new RenderSingleFrameComponent();
+	Vector2D posWe(1,1);
+
+	Weapon1 = new GameComponent();
+	Weapon1->addRenderComponent(rsfc);
+	Weapon1->setTextureId(text1);
+	Weapon1->setColFrame(colF1);
+	Weapon1->setRowFrame(rowF1);
+	posWe = interfaz.button_0->getPosition();
+	Weapon1->setPosition(posWe);
+	Weapon1->setWidth(50); Weapon1->setHeight(50);
+	stage.push_back(Weapon1);
+
+	Weapon2 = new GameComponent();
+	Weapon2->addRenderComponent(rsfc);
+	Weapon2->setTextureId(text2);
+	Weapon2->setColFrame(colF2);
+	Weapon2->setRowFrame(rowF2);
+	posWe = interfaz.button_2->getPosition();
+	Weapon2->setPosition(posWe);
+	Weapon2->setWidth(50); Weapon2->setHeight(50);
+	stage.push_back(Weapon2);
+
+	//fade inicial
+	stage.push_back(fade_);
 }
 
 void BattleState::constructC() {
@@ -524,4 +582,6 @@ void BattleState::toAttackMode() {
 	attack_ = true;
 	displayAttacks();
 	stage[1]->setTextureId("29");
+
+
 }

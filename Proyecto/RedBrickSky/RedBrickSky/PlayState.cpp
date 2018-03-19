@@ -49,7 +49,7 @@ PlayState::PlayState()
 
 	//initPlayer();
 
-	//TheSoundManager::Instance()->playMusic("music", 0);
+	TheSoundManager::Instance()->playMusic("music", 0);
 }
 
 PlayState::~PlayState()

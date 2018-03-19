@@ -207,25 +207,25 @@ void BackPack::creaSP() {
 	actFilas = 1;
 
 	//StandPoints para EQUIPAR los objetos al personaje
-
-	for (int i = 0; i < 2; i++)
-		for (int p = 0; p < 2; p++) {
+	int auxP = 1;
+	for (int i = 0; i < 2; i++) {
 
 		estado s;
-		double width = 150;
-		double height = 70;
+		int width = 70;
+		int height = 70;
 		s.empty = true;
 		s.ID = 0;
 		s.objects = 0;
 		s.w = width;
 		s.h = height;
 		s.mX = i;
-		s.mY = p;
+		s.mY = auxP;
+		auxP++;
 		s.equiped = true;
 		s.mX = i * -1;
-		s.mY = p * -1;
+		s.mY = auxP * -1;
 
-		Vector2D position0(1.5 * i + 1.2, 1.5 * p + 6.5);
+		Vector2D position0(3 * i + 3, 8);
 
 		s.x = position0.getX();
 		s.y = position0.getY();
@@ -257,6 +257,7 @@ void BackPack::creaSP() {
 		gc->addRenderComponent(rcSF); //gc->addInputComponent(new MouseInfoClickComponent(st)); 
 		gc->setOriPos(position0);
 		gc->setColFrame(EquipedItems[x].colFrame); gc->setRowFrame(EquipedItems[x].FilFrame);
+		gc->addInputComponent(new DragNDropComponent(this, x * -1));
 
 		EquipedItems[x].GC = gc;
 

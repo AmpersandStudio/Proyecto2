@@ -14,10 +14,12 @@ private:
 	int identifier;
 	vector<estado> StandPoints;
 	vector<estado> Inventary;
+
 public:
 	DragNDropComponent(BackPack* b, int id);
 	~DragNDropComponent();
 	virtual bool handleEvent(GameObject* o, const SDL_Event& event);
 	bool devMat(int x, int y, GameObject* o);
+	void swapElements();
 };
 

@@ -52,6 +52,7 @@ typedef struct {
 	GameComponent* UI_Vida_Enemy;
 	Vector2D VEnemy_position;
 
+
 }battle_UI;
 
 class BattleState :
@@ -90,6 +91,9 @@ private:
 	bool fade2Done_;
 
 	GameComponent* fondo_;
+
+	GameComponent* Weapon1;
+	GameComponent* Weapon2;
 
 	bool END_;
 
