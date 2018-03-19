@@ -49,7 +49,8 @@ PlayState::PlayState()
 
 	//initPlayer();
 
-	TheSoundManager::Instance()->playMusic("music", 0);
+	TheSoundManager::Instance()->playMusic("music", 100);
+
 }
 
 PlayState::~PlayState()
@@ -117,6 +118,7 @@ void PlayState::toInventary() {
 void PlayState::toBattle() {
 	TheSoundManager::Instance()->stopMusic();
 	TheSoundManager::Instance()->playMusic("trans_btl", 0);
+	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->pushState(new TransitionState());
 }

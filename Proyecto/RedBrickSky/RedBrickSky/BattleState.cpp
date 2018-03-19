@@ -486,7 +486,8 @@ bool BattleState::isButton(GameObject * object)
 void BattleState::update() {
 
 	if (TheSoundManager::Instance()->isPlayingMusic() == 0) {
-		TheSoundManager::Instance()->playMusic("loop_btl", 0);
+		TheSoundManager::Instance()->playMusic("loop_btl", 100);
+		TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
 	}
 
 	if (!fade2Done_ && fadeDone_)

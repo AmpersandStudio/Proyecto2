@@ -55,8 +55,21 @@ int SoundManager::isPlayingMusic() {
 	return Mix_PlayingMusic();
 }
 
+//Para la ejecución de TODOS los sonidos, pero no los libera (no los borra)
 void SoundManager::stopMusic() {
 	Mix_HaltMusic();
+}
+
+/*Solo funciona con los SOUND_SFX.
+*Valores sobre el máximo MIX_MAX_VOLUME hacen default a MIX_MAX_VOLUME
+*/
+void SoundManager::setChunkVolume(std::string id, int volume) {
+	Mix_VolumeChunk(m_sfxs[id], volume);
+}
+
+//Volumen general de la música
+void SoundManager::setMusicVolume(int volume) {
+	Mix_VolumeMusic(volume);
 }
 
 // Metodo para liberar el mapa de musica y sonido

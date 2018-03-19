@@ -29,6 +29,8 @@ public:
 	void playSoundFood();
 	int isPlayingMusic();
 	void stopMusic();
+	void setChunkVolume(std::string id, int volume);
+	void setMusicVolume(int volume);
 	void clear();
 
 private:
