@@ -109,9 +109,9 @@ bool Player::handleEvent(const SDL_Event& event)
 		if (event.key.keysym.sym == SDLK_f)	// fullscreen mode
 		{
 			// Comentando para que los PC dirty peasant no se rompan
-			//int flags = SDL_GetWindowFlags(TheGame::Instance()->getWindow());
-			//if (flags & SDL_WINDOW_FULLSCREEN) SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), 0);
-			//else SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), SDL_WINDOW_FULLSCREEN);
+			/*int flags = SDL_GetWindowFlags(TheGame::Instance()->getWindow());
+			if (flags & SDL_WINDOW_FULLSCREEN) SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), 0);
+			else SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), SDL_WINDOW_FULLSCREEN);*/
 		}
 		return true;
 	}
@@ -146,7 +146,27 @@ void Player::collision()
 
 void Player::handleAnimation()
 {
-	colFrame_ = int(((SDL_GetTicks() / (100)) % numFrames_));
+	if (velocity_.getX() == 0 && velocity_.getY() == 0)
+	{
+		colFrame_ = 1;
+	}
+	else
+	{
+		if (velocity_.getY() < 0)
+		{
+			rowFrame_ = 3;
+		}
+		else if (velocity_.getY() > 0)
+		{
+			rowFrame_ = 0;
+		}
+		else if (velocity_.getY() == 0)
+		{
+			rowFrame_ = (velocity_.getX() < 0) ? 1 : 2;
+		}
+		colFrame_ = int(((SDL_GetTicks() / (100)) % numFrames_));
+	}
+	
 }
 
 void Player::updateRect()
