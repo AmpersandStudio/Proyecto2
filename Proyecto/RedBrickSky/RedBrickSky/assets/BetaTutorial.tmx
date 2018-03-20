@@ -46,10 +46,10 @@
    eJzt288RwUAUx/ENoQiMSlABChBRAQcHFzf6UYIGFOGgC8PBmj2bfcjs7ku+n5l3ypvJL4fM/snGGN0WsQMAAACxfewACt1bsr6jsA8A6qQIdJ9doPsAkFvHDgAEUJhwYx0ANM0oM2Zsa5JV0xfL1Oaa2Zp78kn6ymqjfWVpc5W2Vp7nkPYBKWHfFpxnkLu2XWnXy11pd2u70m6YuwKqNMhd/cM3PjB+NE8/dwUAACC1iR0AAAKry3679Fy4tK9JLjVZN3c7sRMAqIMQ/2axT42m2Cr+JnpSnD11T+F8/MG8XQXOi6YltfOin9bfv67L+YceSMvB8y77rqfgPS85e3K+r0vnL9DrBaOeJFo=
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
+ <objectgroup name="Objects">
   <object id="37" name="Player" type="Player" x="778" y="2966" width="32" height="32">
    <properties>
-    <property name="numFrames" type="int" value="4"/>
+    <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="helicopter"/>
     <property name="textureWidth" type="int" value="32"/>
