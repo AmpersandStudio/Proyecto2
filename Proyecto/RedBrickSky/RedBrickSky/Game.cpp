@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "Interactuable.h"
 
+
 Game* Game::s_pInstance = 0;
 
 Game::Game()
@@ -103,6 +104,8 @@ Game::Game()
 
 	// milliseconds per frame -> 16.7 = 60 frames/s - 33.3 = 30 frames/s
 	FRAME_RATE_ = 33.3; // El valor original era 130, por si fuera necesario
+
+
 }
 
 Game::~Game()

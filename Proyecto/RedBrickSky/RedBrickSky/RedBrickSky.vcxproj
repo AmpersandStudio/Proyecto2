@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackPack.cpp" />
+    <ClCompile Include="BagXboxControllerComponent.cpp" />
     <ClCompile Include="base64.cpp" />
     <ClCompile Include="BattleCharacter.cpp" />
     <ClCompile Include="BattleEnemy.cpp" />
@@ -58,6 +59,7 @@
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ShopXboxControllerComponent.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="PreloadState.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
@@ -80,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackPack.h" />
+    <ClInclude Include="BagXboxControllerComponent.h" />
     <ClInclude Include="base64.h" />
     <ClInclude Include="BattleCharacter.h" />
     <ClInclude Include="BattleEnemy.h" />
@@ -126,6 +129,7 @@
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="ShopXboxControllerComponent.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="PreloadState.h" />
     <ClInclude Include="RenderComponent.h" />

@@ -23,6 +23,7 @@ private:
 	int i = 0, j = 0;
 
 	vector<GameObject* > SP;
+	ShopState* shop;
 
 	vector<estado> shopObjects;
 public:

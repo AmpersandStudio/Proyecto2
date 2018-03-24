@@ -10,10 +10,9 @@ KeyBoardShopComponent::KeyBoardShopComponent(int iniX, int iniY, int col, int fi
 	fil_ = fil;
 	distance = dis;
 	SP = v;
-
+	shop = s;
 	ShopItems* items = new ShopItems();
 	shopObjects = items->getItems();
-
 }
 
 KeyBoardShopComponent::~KeyBoardShopComponent()
@@ -157,5 +156,7 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 			}
 		}
 	}
+
+	//else if()
 	return handledEvent;
 }

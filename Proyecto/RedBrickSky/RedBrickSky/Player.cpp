@@ -34,6 +34,8 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	updateRect();
 
 	TheCamera::Instance()->setTarget(&position_);
+	initialiseJoysticks();
+
 }
 
 void Player::render()
@@ -50,7 +52,7 @@ void Player::update()
 	position_ = position_ + velocity_;
 
 	// refresh animation frame
-	handleAnimation();
+	handleAnimation();	
 }
 
 bool Player::handleEvent(const SDL_Event& event)
@@ -99,12 +101,7 @@ bool Player::handleEvent(const SDL_Event& event)
 		}
 		if (event.key.keysym.sym == SDLK_SPACE)	// interactuar
 		{
-			std::cout << "Interacting...\n";
-			updateRect();
-			SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
-			SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &actionRect_);
-			SDL_RenderPresent(TheGame::Instance()->getRenderer());
-			setInteracting(true);
+			interacting();
 		}
 		if (event.key.keysym.sym == SDLK_f)	// fullscreen mode
 		{
@@ -115,6 +112,61 @@ bool Player::handleEvent(const SDL_Event& event)
 		}
 		return true;
 	}
+
+	//CONTROLAR LOS INPUTS MEDIANTE MANDO DE LA XBOX360
+	else if (event.type == SDL_JOYAXISMOTION) {
+		onJoystickAxisMove(event);
+
+		if (xvalue(0, 1) < 0)
+		{
+			velocity_.set(Vector2D(-m_moveSpeed, 0));
+			direction_.set(-1, 0);
+		}
+		else if (xvalue(0,1) > 0)
+		{
+			velocity_.set(Vector2D(m_moveSpeed, 0));
+			direction_.set(1, 0);
+		}
+		else if (yvalue(0, 1) < 0)
+		{
+			velocity_.set(Vector2D(0, -m_moveSpeed));
+			direction_.set(0, -1);
+		}
+		else if (yvalue(0, 1) > 0)
+		{
+			velocity_.set(Vector2D(0, m_moveSpeed));
+			direction_.set(0, 1);
+		}
+		else {
+			velocity_.set(Vector2D(0, 0));
+			direction_.set(0, 0);
+		}
+		
+	}
+	else if (event.type == SDL_JOYBUTTONDOWN)
+	{
+		onJoystickButtonDown(event);
+
+		if (getButtonState(0, 7)) //botón de pausa
+		{
+			Game::Instance()->getStateMachine()->pushState(new PauseState());
+		}
+		if (getButtonState(0, 6)) //botón de back
+		{
+			Game::Instance()->getStateMachine()->pushState(new BackPack());
+		}
+
+		if (getButtonState(0, 0))	// Botón A
+		{
+			interacting();
+		}
+		onJoystickButtonUp(event); //Aseguro que levantamos el botón después de usarlo
+	}
+	if (event.type == SDL_JOYBUTTONUP)
+		onJoystickButtonUp(event);
+
+	//TERMINAMOS DE COMPROBAR CON EL MANDO DE LA XBOX
+
 	else if (event.type == SDL_KEYUP)
 	{
 		switch (event.key.keysym.sym)
@@ -135,8 +187,17 @@ bool Player::handleEvent(const SDL_Event& event)
 		Game::Instance()->exitApp();
 		return true;
 	}
-
+	
 	return false;
+}
+
+void Player::interacting() {
+	std::cout << "Interacting...\n";
+	updateRect();
+	SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &actionRect_);
+	SDL_RenderPresent(TheGame::Instance()->getRenderer());
+	setInteracting(true);
 }
 
 void Player::collision()
@@ -191,3 +252,168 @@ void Player::updateRect()
 	actionRect_ = { (int)(position_.getX() - width_), (int)(position_.getY() - height_), 3 * (int)width_, 3 * (int)height_ };
 }
 
+
+//METODOS PARA EL MANDO DE LA XBOX360
+
+void Player::onJoystickButtonDown(SDL_Event event)
+{
+	int whichOne = event.jaxis.which;
+	std::cout << event.jaxis.which << endl;
+
+	m_buttonStates[whichOne][event.jbutton.button] = true;
+}
+
+void Player::onJoystickButtonUp(SDL_Event event)
+{
+	int whichOne = event.jaxis.which;
+
+	m_buttonStates[whichOne][event.jbutton.button] = false;
+}
+
+void Player::initialiseJoysticks()
+{
+	if (SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
+	{
+		SDL_InitSubSystem(SDL_INIT_JOYSTICK);
+	}
+
+	if (SDL_NumJoysticks() > 0)
+	{
+		for (size_t i = 0; i < SDL_NumJoysticks(); ++i)
+		{
+			SDL_Joystick* joy = SDL_JoystickOpen(i);
+
+			if (joy != NULL)
+			{
+				m_joysticks.push_back(joy);
+
+				m_joystickValues.push_back(std::make_pair(new Vector2D(0, 0), new Vector2D(0, 0)));
+
+				std::vector<bool> tempButtons;
+
+				for (size_t j = 0; j < SDL_JoystickNumButtons(joy); ++j)
+				{
+					tempButtons.push_back(false);
+				}
+
+				m_buttonStates.push_back(tempButtons);
+			}
+			else
+			{
+				std::cout << "Joystick load fail! SDL Error: " << SDL_GetError() << "\n";
+			}
+		}
+		SDL_JoystickEventState(SDL_ENABLE);
+		m_bJoysticksInitialised = true;
+		std::cout << "Initialised " << m_joysticks.size() << " joystick(s)\n";
+	}
+	else
+	{
+		m_bJoysticksInitialised = false;
+	}
+}
+
+int Player::xvalue(int joy, int stick)
+{
+	if (m_joystickValues.size() > 0)
+	{
+		if (stick == 1)
+		{
+			return m_joystickValues[joy].first->getX();
+		}
+		else if (stick == 2)
+		{
+			return m_joystickValues[joy].second->getX();
+		}
+	}
+	return 0;
+}
+
+int Player::yvalue(int joy, int stick)
+{
+	if (m_joystickValues.size() > 0)
+	{
+		if (stick == 1)
+		{
+			return m_joystickValues[joy].first->getY();
+		}
+		else if (stick == 2)
+		{
+			return m_joystickValues[joy].second->getY();
+		}
+	}
+	return 0;
+}
+
+void Player::onJoystickAxisMove(SDL_Event event)
+{
+	int whichOne = event.jaxis.which;
+
+	//Left Stick: left / right
+	if (event.jaxis.axis == 0)
+	{
+		if (event.jaxis.value > m_joystickDeadZone)
+		{
+			m_joystickValues[whichOne].first->setX(1);
+		}
+		else if (event.jaxis.value < -m_joystickDeadZone)
+		{
+			m_joystickValues[whichOne].first->setX(-1);
+		}
+		else
+		{
+			m_joystickValues[whichOne].first->setX(0);
+		}
+	}
+
+	//Left Stick: up / down
+	if (event.jaxis.axis == 1)
+	{
+		if (event.jaxis.value > m_joystickDeadZone)
+		{
+			m_joystickValues[whichOne].first->setY(1);
+		}
+		else if (event.jaxis.value < -m_joystickDeadZone)
+		{
+			m_joystickValues[whichOne].first->setY(-1);
+		}
+		else
+		{
+			m_joystickValues[whichOne].first->setY(0);
+		}
+	}
+
+	//Right Stick: left / right
+	if (event.jaxis.axis == 2)
+	{
+		if (event.jaxis.value > m_joystickDeadZone)
+		{
+			m_joystickValues[whichOne].first->setX(1);
+		}
+		else if (event.jaxis.value < -m_joystickDeadZone)
+		{
+			m_joystickValues[whichOne].first->setX(-1);
+		}
+		else
+		{
+			m_joystickValues[whichOne].first->setX(0);
+		}
+	}
+
+	//Right Stick: up / down
+	if (event.jaxis.axis == 5)
+	{
+		if (event.jaxis.value > m_joystickDeadZone)
+		{
+			m_joystickValues[whichOne].first->setY(1);
+		}
+		else if (event.jaxis.value < -m_joystickDeadZone)
+		{
+			m_joystickValues[whichOne].first->setY(-1);
+		}
+		else
+		{
+			m_joystickValues[whichOne].first->setY(0);
+		}
+	}
+}

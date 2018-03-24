@@ -3,6 +3,7 @@
 #include "InventBottomsComponent.h"
 #include "InventoryShopFBcomponent.h"
 #include "RenderSingleFrameComponent.h"
+#include "BagXboxControllerComponent.h"
 
 BackPack::BackPack()
 {
@@ -284,6 +285,7 @@ void BackPack::creaSP() {
 	selector_->setWidth(70); selector_->setHeight(70);
 	selector_->setColFrame(0); selector_->setRowFrame(0);
 	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), numRows, numFils, auxD, StandPointsO, this));
+	selector_->addInputComponent(new BagXboxControllerComponent(selecPos.getX(), selecPos.getY(), numRows, numFils, auxD, StandPointsO, this));
 	//selector_->addInputComponent(MSC);
 	stage.push_back(selector_);
 

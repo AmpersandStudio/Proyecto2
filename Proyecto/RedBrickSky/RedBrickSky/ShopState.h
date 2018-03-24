@@ -14,6 +14,7 @@
 #include <iostream>
 #include "InventoryShopFBcomponent.h"
 #include "KeyBoardShopComponent.h"
+#include "ShopXboxControllerComponent.h"
 
 #include "GameManager.h"
 
@@ -32,6 +33,7 @@ private:
 	InputComponent* MIC;
 	InputComponent* DND;
 	InputComponent* DND2;
+	InputComponent* xbox;
 
 	ShopItems* items;
 	int money;

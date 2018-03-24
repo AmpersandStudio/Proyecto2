@@ -17,6 +17,7 @@ ShopState::ShopState()
 	rcSF = new RenderSingleFrameComponent();
 	MSC = new MouseScrollShopComponent(this);
 	MIC = new MouseInputComponentButton();
+	
 
 	//Separamos elementos dependiendo de su clase
 	separateElements();
@@ -132,15 +133,19 @@ void ShopState::createShopItems() {
 
 	}
 
-	//Creamos el elemento que nos permitirá movernos con teclado
+	//Creamos el elemento que nos permitirá movernos con teclado y con el mandop
 	selector_ = new GameComponent();
 	Vector2D selecPos;
 	selecPos.set(8, 2);
 
+	
+
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
 	selector_->setWidth(70); selector_->setHeight(70);
 	selector_->addRenderComponent(rcSF); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 2, StandPointsO, nullptr, this));
-	selector_->setColFrame(0); selector_->setRowFrame(0);
+	xbox = new ShopXboxControllerComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 2, StandPointsO, nullptr, this);
+	selector_->setColFrame(0); selector_->setRowFrame(0); 
+	selector_->addInputComponent(xbox);
 
 	stage.push_back(selector_);
 }
