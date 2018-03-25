@@ -2,6 +2,7 @@
 
 #include "GameObject.h"
 #include "GameObjectFactory.h"
+#include "XboxController.h"
 
 class Player : public GameObject
 {
@@ -36,26 +37,6 @@ private:
 
 	void interacting();
 
-	//METODOS Y VARIABLES PARA EL MANDO DE LA XBOX360
-	void onJoystickAxisMove(SDL_Event event);
-	void initialiseJoysticks();
-	void onJoystickButtonDown(SDL_Event event);
-	void onJoystickButtonUp(SDL_Event event);
-	void cleanController();
-
-	bool getButtonState(int joy, int buttonNumber) const { return m_buttonStates[joy][buttonNumber]; }
-
-	std::vector<SDL_Joystick*> m_joysticks;
-	std::vector<std::vector<bool>> m_buttonStates;
-	std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;
-
-	int xvalue(int joy, int stick);
-	int yvalue(int joy, int stick);
-
-	int numControllers;
-
-
-	bool m_bJoysticksInitialised;
 };
 
 class PlayerCreator : public BaseCreator

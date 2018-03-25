@@ -79,6 +79,7 @@
     <ClCompile Include="tinyxmlparser.cpp" />
     <ClCompile Include="TransitionState.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="XboxController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackPack.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="tinyxml.h" />
     <ClInclude Include="TransitionState.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="XboxController.h" />
     <ClInclude Include="zconf.h" />
     <ClInclude Include="zlib.h" />
   </ItemGroup>
