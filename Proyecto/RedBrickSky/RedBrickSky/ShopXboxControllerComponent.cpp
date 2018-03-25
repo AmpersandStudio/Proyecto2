@@ -206,18 +206,6 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 		double posY = position.getY();
 		double posX = position.getX();
 
-		/*	0 -- A
-			1 -- B
-			2 -- X
-			3 -- Y
-			4 -- LB
-			5 -- RB
-			6 -- Back
-			7 -- Start
-			8 -- Left Joystick Click
-			9 -- Right Joystick Click
-		*/
-
 		if (event.jhat.value & SDL_HAT_UP) {
 
 			if (posY > Y_)
@@ -254,7 +242,6 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 		}
 		else if (event.jhat.value & SDL_HAT_LEFT) {
 
-
 			if (posX >= X_)
 				posX -= distance / 2;
 
@@ -268,6 +255,7 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 	}
 
 	else if (event.type == SDL_JOYBUTTONDOWN) {
+
 		Vector2D position = o->getPosition();
 		double posY = position.getY();
 		double posX = position.getX();
@@ -280,7 +268,7 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 			bool encontrado = false;
 			while (p < shopObjects.size() && !encontrado) {
 
-				if (shopObjects[p].x == posX && shopObjects[p].y == posY)
+				if (shopObjects[p].x == posX && shopObjects[p].y == posY )
 					encontrado = true;
 				else
 					p++;
@@ -291,6 +279,12 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 			
 			}
 		}
+
+	 else if (getButtonState(0, 1))
+	 {
+		 StateMachine* sm = Game::Instance()->getStateMachine();
+		 sm->popState();
+	 }
 	}
 	return handledEvent;
 }

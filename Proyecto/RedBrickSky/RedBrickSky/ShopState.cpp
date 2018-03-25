@@ -110,7 +110,7 @@ void ShopState::createShopItems() {
 			j++;
 			k = 0;
 		}
-
+		
 		//Crea los objetos de la tienda que se mueden mover
 		GameComponent* gc = new GameComponent();
 		Vector2D position5(k + shopCols - 1, 2 * j);

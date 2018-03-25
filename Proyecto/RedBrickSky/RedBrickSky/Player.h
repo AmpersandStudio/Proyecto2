@@ -41,6 +41,7 @@ private:
 	void initialiseJoysticks();
 	void onJoystickButtonDown(SDL_Event event);
 	void onJoystickButtonUp(SDL_Event event);
+	void cleanController();
 
 	bool getButtonState(int joy, int buttonNumber) const { return m_buttonStates[joy][buttonNumber]; }
 
@@ -50,6 +51,8 @@ private:
 
 	int xvalue(int joy, int stick);
 	int yvalue(int joy, int stick);
+
+	int numControllers;
 
 
 	bool m_bJoysticksInitialised;

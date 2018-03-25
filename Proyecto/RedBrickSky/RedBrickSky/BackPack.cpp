@@ -23,6 +23,8 @@ BackPack::BackPack()
 		matriz[i] = new estado[numRows];
 	}
 	
+	initialiseJoysticks();
+
 	separateElements();
 
 	creaEscena();
@@ -30,6 +32,7 @@ BackPack::BackPack()
 
 BackPack::~BackPack()
 {
+	clean();
 }
 
 bool BackPack::handleEvent(const SDL_Event & event)
@@ -42,6 +45,39 @@ bool BackPack::handleEvent(const SDL_Event & event)
 				toMenu();
 			}
 		}
+
+		else if (event.type == SDL_JOYBUTTONDOWN) {
+
+			onJoystickButtonDown(event);
+
+			if (getButtonState(0, 6))
+				toMenu();
+
+			if (getButtonState(0, 1) && buttonsCreated)//Si se ha pulsado la B
+				toMenu();
+			else if (getButtonState(0, 0) && buttonsCreated) {
+				elimina();
+				creaSP();
+				cargaElementos(Weapons);
+			}
+
+			else if (getButtonState(0, 2) && buttonsCreated) {
+				elimina();
+				creaSP();
+				cargaElementos(Potions);
+			}
+
+			else if (getButtonState(0, 3) && buttonsCreated) {
+				elimina();
+				creaSP();
+				cargaElementos(Objects);
+			}
+
+			
+		}
+
+		else if (event.type == SDL_JOYBUTTONUP)
+			onJoystickButtonUp(event);
 		// 2) LLama a los input de cada objeto del propio estado
 		return GameState::handleEvent(event);
 }
@@ -165,6 +201,8 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 
 void BackPack::creaSP() {
 	
+	buttonsCreated = false;
+
 	//Creamos los SP
 	Vector2D selecPos;
 	int auxD = 0;
@@ -356,6 +394,8 @@ void BackPack::createButtons(int x, int y, vector<estado> type, std::string t) {
 	stage.push_back(GC);
 	botones.push_back(GC);
 
+	buttonsCreated = true;
+
 }
 
 void BackPack::setInvent(vector<estado> v) {
@@ -391,6 +431,77 @@ void BackPack::separateElements() {
 		else {
 			EquipedItems.push_back(invent[i]);
 			EItems++;
+		}
+	}
+}
+
+
+//Mando de xbox
+
+void BackPack::initialiseJoysticks()
+{
+	if (SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
+	{
+		SDL_InitSubSystem(SDL_INIT_JOYSTICK);
+	}
+
+	if (SDL_NumJoysticks() > 0)
+	{
+		for (size_t i = 0; i < SDL_NumJoysticks(); ++i)
+		{
+			SDL_Joystick* joy = SDL_JoystickOpen(i);
+
+			if (joy != NULL)
+			{
+				m_joysticks.push_back(joy);
+
+				m_joystickValues.push_back(std::make_pair(new Vector2D(0, 0), new Vector2D(0, 0)));
+
+				std::vector<bool> tempButtons;
+
+				for (size_t j = 0; j < SDL_JoystickNumButtons(joy); ++j)
+				{
+					tempButtons.push_back(false);
+				}
+
+				m_buttonStates.push_back(tempButtons);
+			}
+			else
+			{
+				std::cout << "Joystick load fail! SDL Error: " << SDL_GetError() << "\n";
+			}
+		}
+		SDL_JoystickEventState(SDL_ENABLE);
+		m_bJoysticksInitialised = true;
+		std::cout << "Initialised " << m_joysticks.size() << " joystick(s)\n";
+	}
+	else
+	{
+		m_bJoysticksInitialised = false;
+	}
+}
+
+void BackPack::onJoystickButtonDown(SDL_Event event)
+{
+	int whichOne = event.jaxis.which;
+
+	m_buttonStates[whichOne][event.jbutton.button] = true;
+}
+
+void BackPack::onJoystickButtonUp(SDL_Event event)
+{
+	int whichOne = event.jaxis.which;
+
+	m_buttonStates[whichOne][event.jbutton.button] = false;
+}
+
+void BackPack::clean()
+{
+	if (m_bJoysticksInitialised)
+	{
+		for (size_t i = 0; i < SDL_NumJoysticks(); ++i)
+		{
+			SDL_JoystickClose(m_joysticks[i]);
 		}
 	}
 }

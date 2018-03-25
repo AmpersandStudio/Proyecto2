@@ -34,7 +34,11 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	updateRect();
 
 	TheCamera::Instance()->setTarget(&position_);
-	initialiseJoysticks();
+
+	numControllers = 0;
+	
+	if(numControllers == 0) //SOLO UN MANDO
+		initialiseJoysticks();
 
 }
 
@@ -57,6 +61,11 @@ void Player::update()
 
 bool Player::handleEvent(const SDL_Event& event)
 {
+	if (event.type == SDL_JOYDEVICEADDED && numControllers == 0) //SOLO PERMITIMOS QUE HAYA UN MANDO, ES IMPORTANTE A LA HORA DE RECONECTAR EL MANDO EN EJECUCION
+		initialiseJoysticks();
+	else if (event.type == SDL_JOYDEVICEREMOVED)
+		cleanController();
+
 	if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 	{
 		if (event.key.keysym.sym == SDLK_LEFT)
@@ -113,8 +122,9 @@ bool Player::handleEvent(const SDL_Event& event)
 		return true;
 	}
 
-	//CONTROLAR LOS INPUTS MEDIANTE MANDO DE LA XBOX360
-	else if (event.type == SDL_JOYAXISMOTION) {
+	else if (numControllers > 0) { //Primero comprobamos si hay algún mando conectado
+		//CONTROLAR LOS INPUTS MEDIANTE MANDO DE LA XBOX360
+	 if (event.type == SDL_JOYAXISMOTION) {
 		onJoystickAxisMove(event);
 
 		if (xvalue(0, 1) < 0)
@@ -122,7 +132,7 @@ bool Player::handleEvent(const SDL_Event& event)
 			velocity_.set(Vector2D(-m_moveSpeed, 0));
 			direction_.set(-1, 0);
 		}
-		else if (xvalue(0,1) > 0)
+		else if (xvalue(0, 1) > 0)
 		{
 			velocity_.set(Vector2D(m_moveSpeed, 0));
 			direction_.set(1, 0);
@@ -141,7 +151,7 @@ bool Player::handleEvent(const SDL_Event& event)
 			velocity_.set(Vector2D(0, 0));
 			direction_.set(0, 0);
 		}
-		
+
 	}
 	else if (event.type == SDL_JOYBUTTONDOWN)
 	{
@@ -164,7 +174,7 @@ bool Player::handleEvent(const SDL_Event& event)
 	}
 	if (event.type == SDL_JOYBUTTONUP)
 		onJoystickButtonUp(event);
-
+	}
 	//TERMINAMOS DE COMPROBAR CON EL MANDO DE LA XBOX
 
 	else if (event.type == SDL_KEYUP)
@@ -257,15 +267,16 @@ void Player::updateRect()
 
 void Player::onJoystickButtonDown(SDL_Event event)
 {
-	int whichOne = event.jaxis.which;
-	std::cout << event.jaxis.which << endl;
+	//SOLO 1 MANDO
+	int whichOne = 0; // event.jaxis.which;
 
 	m_buttonStates[whichOne][event.jbutton.button] = true;
 }
 
 void Player::onJoystickButtonUp(SDL_Event event)
 {
-	int whichOne = event.jaxis.which;
+	//SOLO UN MANDO
+	int whichOne = 0;//event.jaxis.which;
 
 	m_buttonStates[whichOne][event.jbutton.button] = false;
 }
@@ -279,6 +290,8 @@ void Player::initialiseJoysticks()
 
 	if (SDL_NumJoysticks() > 0)
 	{
+
+		numControllers = SDL_NumJoysticks();
 		for (size_t i = 0; i < SDL_NumJoysticks(); ++i)
 		{
 			SDL_Joystick* joy = SDL_JoystickOpen(i);
@@ -297,6 +310,8 @@ void Player::initialiseJoysticks()
 				}
 
 				m_buttonStates.push_back(tempButtons);
+
+				tempButtons.clear();
 			}
 			else
 			{
@@ -347,7 +362,9 @@ int Player::yvalue(int joy, int stick)
 
 void Player::onJoystickAxisMove(SDL_Event event)
 {
-	int whichOne = event.jaxis.which;
+
+	//SOLO 1 MANDO
+	int whichOne = 0; //event.jaxis.which;
 
 	//Left Stick: left / right
 	if (event.jaxis.axis == 0)
@@ -417,3 +434,22 @@ void Player::onJoystickAxisMove(SDL_Event event)
 		}
 	}
 }
+
+void Player::cleanController()
+{
+	if (m_bJoysticksInitialised)
+	{
+		for (size_t i = 0; i < numControllers; ++i)
+		{
+			SDL_JoystickClose(m_joysticks[i]);
+		}
+
+		numControllers = 0;
+		m_joysticks.clear();
+		m_bJoysticksInitialised = false;
+		m_joystickValues.clear();
+		//SDL_JoystickEventState(SDL_DISABLE);
+		m_buttonStates.clear();
+	}
+}
+

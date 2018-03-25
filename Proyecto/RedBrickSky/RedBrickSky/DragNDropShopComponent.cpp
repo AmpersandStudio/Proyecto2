@@ -103,14 +103,11 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 
 	if (x > (auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
 	encontrado = true;
-		
-
 		}
 
 	else 
 		i++;
-	}
-		
+	}	
 }
 
 	if (encontrado) {
@@ -166,8 +163,6 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 				StandPoints[i].objects++;
 				cout << "Tienes " << StandPoints[i].objects + 1 << " " << name << " en tu inventario ahora." << endl;
 			}
-
-		
 
 			aceptada = true;
 

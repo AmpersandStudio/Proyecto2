@@ -308,8 +308,10 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 			}
 		}
 
-		else if (getButtonState(0, 2))
-			std::cout << "HOLA!" << endl;
+		else if (getButtonState(0, 1)) {
+			back->elimina();
+			back->creaEscena();
+		}
 	}
 	else if (event.type == SDL_JOYBUTTONUP)
 		onJoystickButtonUp(event);
