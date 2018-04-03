@@ -64,12 +64,6 @@ bool MainMenuState::handleEvent(const SDL_Event& event) {
 
 	bool handleEvent = false;
 	
-	if (event.type == SDL_JOYDEVICEADDED && XboxController::Instance()->getNumControllers() == 0) //SOLO PERMITIMOS QUE HAYA UN MANDO, ES IMPORTANTE A LA HORA DE RECONECTAR EL MANDO EN EJECUCION
-		XboxController::Instance()->insertController();
-
-	else if (event.type == SDL_JOYDEVICEREMOVED)
-		XboxController::Instance()->removeController();
-
 	if (event.type == SDL_JOYBUTTONDOWN) {
 
 		XboxController::Instance()->onJoystickButtonDown(event);

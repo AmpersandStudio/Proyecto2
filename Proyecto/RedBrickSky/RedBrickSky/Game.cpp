@@ -140,6 +140,11 @@ void Game::handleEvents()
 		capturedEvent = (stateMachine_->currentState()->handleEvent(event));
 	}
 
+	//Comprobaremos del mismo modo si se ha conectado o desconectado el mando 
+	if (event.type == SDL_JOYDEVICEADDED && XboxController::Instance()->getNumControllers() == 0) 
+		XboxController::Instance()->insertController();
+	else if (event.type == SDL_JOYDEVICEREMOVED)
+		XboxController::Instance()->removeController();
 	
 }
 

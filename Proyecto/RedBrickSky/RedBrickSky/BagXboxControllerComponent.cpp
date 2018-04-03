@@ -13,189 +13,17 @@ BagXboxControllerComponent::BagXboxControllerComponent(int iniX, int iniY, int c
 	back = b;
 	shop = s;
 
-	initialiseJoysticks();
+	if (XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
+		XboxController::Instance()->insertController();
 
 }
 
 
 BagXboxControllerComponent::~BagXboxControllerComponent()
 {
-	clean();
+
 }
 
-
-void BagXboxControllerComponent::initialiseJoysticks()
-{
-	if (SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
-	{
-		SDL_InitSubSystem(SDL_INIT_JOYSTICK);
-	}
-
-	if (SDL_NumJoysticks() > 0)
-	{
-		for (size_t i = 0; i < SDL_NumJoysticks(); ++i)
-		{
-			SDL_Joystick* joy = SDL_JoystickOpen(i);
-
-			if (joy != NULL)
-			{
-				m_joysticks.push_back(joy);
-
-				m_joystickValues.push_back(std::make_pair(new Vector2D(0, 0), new Vector2D(0, 0)));
-
-				std::vector<bool> tempButtons;
-
-				for (size_t j = 0; j < SDL_JoystickNumButtons(joy); ++j)
-				{
-					tempButtons.push_back(false);
-				}
-
-				m_buttonStates.push_back(tempButtons);
-			}
-			else
-			{
-				std::cout << "Joystick load fail! SDL Error: " << SDL_GetError() << "\n";
-			}
-		}
-		SDL_JoystickEventState(SDL_ENABLE);
-		m_bJoysticksInitialised = true;
-		std::cout << "Initialised " << m_joysticks.size() << " joystick(s)\n";
-	}
-	else
-	{
-		m_bJoysticksInitialised = false;
-	}
-}
-
-int BagXboxControllerComponent::xvalue(int joy, int stick)
-{
-	if (m_joystickValues.size() > 0)
-	{
-		if (stick == 1)
-		{
-			return m_joystickValues[joy].first->getX();
-		}
-		else if (stick == 2)
-		{
-			return m_joystickValues[joy].second->getX();
-		}
-	}
-	return 0;
-}
-
-int BagXboxControllerComponent::yvalue(int joy, int stick)
-{
-	if (m_joystickValues.size() > 0)
-	{
-		if (stick == 1)
-		{
-			return m_joystickValues[joy].first->getY();
-		}
-		else if (stick == 2)
-		{
-			return m_joystickValues[joy].second->getY();
-		}
-	}
-	return 0;
-}
-
-void BagXboxControllerComponent::onJoystickAxisMove(SDL_Event event)
-{
-	int whichOne = event.jaxis.which;
-
-	//Left Stick: left / right
-	if (event.jaxis.axis == 0)
-	{
-		if (event.jaxis.value > m_joystickDeadZone)
-		{
-			m_joystickValues[whichOne].first->setX(1);
-		}
-		else if (event.jaxis.value < -m_joystickDeadZone)
-		{
-			m_joystickValues[whichOne].first->setX(-1);
-		}
-		else
-		{
-			m_joystickValues[whichOne].first->setX(0);
-		}
-	}
-
-	//Left Stick: up / down
-	if (event.jaxis.axis == 1)
-	{
-		if (event.jaxis.value > m_joystickDeadZone)
-		{
-			m_joystickValues[whichOne].first->setY(1);
-		}
-		else if (event.jaxis.value < -m_joystickDeadZone)
-		{
-			m_joystickValues[whichOne].first->setY(-1);
-		}
-		else
-		{
-			m_joystickValues[whichOne].first->setY(0);
-		}
-	}
-
-	//Right Stick: left / right
-	if (event.jaxis.axis == 2)
-	{
-		if (event.jaxis.value > m_joystickDeadZone)
-		{
-			m_joystickValues[whichOne].first->setX(1);
-		}
-		else if (event.jaxis.value < -m_joystickDeadZone)
-		{
-			m_joystickValues[whichOne].first->setX(-1);
-		}
-		else
-		{
-			m_joystickValues[whichOne].first->setX(0);
-		}
-	}
-
-	//Right Stick: up / down
-	if (event.jaxis.axis == 5)
-	{
-		if (event.jaxis.value > m_joystickDeadZone)
-		{
-			m_joystickValues[whichOne].first->setY(1);
-		}
-		else if (event.jaxis.value < -m_joystickDeadZone)
-		{
-			m_joystickValues[whichOne].first->setY(-1);
-		}
-		else
-		{
-			m_joystickValues[whichOne].first->setY(0);
-		}
-	}
-}
-
-void BagXboxControllerComponent::onJoystickButtonDown(SDL_Event event)
-{
-	int whichOne = event.jaxis.which;
-	
-	m_buttonStates[whichOne][event.jbutton.button] = true;
-}
-
-void BagXboxControllerComponent::onJoystickButtonUp(SDL_Event event)
-{
-	int whichOne = event.jaxis.which;
-
-	m_buttonStates[whichOne][event.jbutton.button] = false;
-}
-
-void BagXboxControllerComponent::clean()
-{
-	if (m_bJoysticksInitialised)
-	{
-		for (size_t i = 0; i < SDL_NumJoysticks(); ++i)
-		{
-			SDL_JoystickClose(m_joysticks[i]);
-		}
-	}
-}
 
 bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 	bool handledEvent = false;
@@ -250,9 +78,9 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 		double posY = position.getY();
 		double posX = position.getX();
 
-		onJoystickButtonDown(event);
+		XboxController::Instance()->onJoystickButtonDown(event);
 
-		if (getButtonState(0, 0)) { //Si se ha pulsado la A
+		if (XboxController::Instance()->getButtonState(0, 0)) { //Si se ha pulsado la A
 
 			invent.clear();
 			if (back != nullptr)
@@ -308,12 +136,12 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 			}
 		}
 
-		else if (getButtonState(0, 1)) {
+		else if (XboxController::Instance()->getButtonState(0, 1)) {
 			back->elimina();
 			back->creaEscena();
 		}
 	}
 	else if (event.type == SDL_JOYBUTTONUP)
-		onJoystickButtonUp(event);
+		XboxController::Instance()->onJoystickButtonUp(event);
 	return handledEvent;
 }

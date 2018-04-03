@@ -27,6 +27,9 @@ PauseState::PauseState()
 	
 	stage.push_back(button0);
 	stage.push_back(button3);	
+
+	if (XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
+		XboxController::Instance()->insertController();
 }
 
 
@@ -43,6 +46,27 @@ bool PauseState::handleEvent(const SDL_Event & event)
 			Game::Instance()->getStateMachine()->popState();
 
 	}
+
+	else if (event.type == SDL_JOYBUTTONDOWN) {
+
+		XboxController::Instance()->onJoystickButtonDown(event);
+
+		if (XboxController::Instance()->getButtonState(0, 0) || XboxController::Instance()->getButtonState(0, 7)) { //Si se ha pulsado la A o de nuevo Start
+
+			resume();
+		}
+
+		else if (XboxController::Instance()->getButtonState(0, 1))
+		{
+			toMenu();
+		}
+
+		XboxController::Instance()->onJoystickButtonUp(event); //Aseguro que levantamos el botón después de usarlo
+	}
+	
+	if (event.type == SDL_JOYBUTTONUP)
+		XboxController::Instance()->onJoystickButtonUp(event);
+
 	// 2) LLama a los input de cada objeto del propio estado
 	return GameState::handleEvent(event);
 }

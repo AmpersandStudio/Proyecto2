@@ -58,11 +58,6 @@ void Player::update()
 
 bool Player::handleEvent(const SDL_Event& event)
 {
-	if (event.type == SDL_JOYDEVICEADDED && XboxController::Instance()->getNumControllers() == 0) //SOLO PERMITIMOS QUE HAYA UN MANDO, ES IMPORTANTE A LA HORA DE RECONECTAR EL MANDO EN EJECUCION
-		XboxController::Instance()->insertController();
-	else if (event.type == SDL_JOYDEVICEREMOVED)
-		XboxController::Instance()->removeController();
-
 	if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 	{
 		if (event.key.keysym.sym == SDLK_LEFT)
