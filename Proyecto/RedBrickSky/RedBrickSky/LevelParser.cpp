@@ -64,7 +64,7 @@ Level* LevelParser::parseLevel(const char *levelFile)
 			}
 			else if (e->FirstChildElement()->Value() == std::string("data") || (e->FirstChildElement()->NextSiblingElement() != 0 && e->FirstChildElement()->NextSiblingElement()->Value() == std::string("data")))
 			{
-				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets(), pLevel->getCollisionLayers());
+				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets(), pLevel->getCollisionLayers(), pLevel->getGrassLayers());
 			}
 		}
 	}
@@ -180,11 +180,12 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 	pLayers->push_back(pObjectLayer);
 }
 
-void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers, const std::vector<Tileset>* pTilesets, std::vector<TileLayer*> *pCollisionLayers)
+void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers, const std::vector<Tileset>* pTilesets, std::vector<TileLayer*> *pCollisionLayers, std::vector<TileLayer*> *pGrassLayers)
 {
 	TileLayer* pTileLayer = new TileLayer(m_tileSize, m_width, m_height, *pTilesets);
 
 	bool collidable = false;
+	bool grass = false;
 
 	// tile data
 	std::vector<std::vector<int>> data;
@@ -203,6 +204,11 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 					if (property->Attribute("name") == std::string("collidable"))
 					{
 						collidable = true;
+					}
+
+					else if (property->Attribute("name") == std::string("BigGrass"))
+					{
+						grass = true;
 					}
 				}
 			}
@@ -247,6 +253,12 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 	if (collidable)
 	{
 		pCollisionLayers->push_back(pTileLayer);
+	}
+
+	else if (grass)
+	{
+		pGrassLayers->push_back(pTileLayer);
+		
 	}
 
 	pLayers->push_back(pTileLayer);

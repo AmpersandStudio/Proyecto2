@@ -1,8 +1,8 @@
 #include "DragNDropComponent.h"
 
-DragNDropComponent::DragNDropComponent(BackPack* b, int id)
+DragNDropComponent::DragNDropComponent(BackPack* b, int id) : bag(b)
 {
-	bag = b;
+	
 	isMouseSelection = false;
 	StandPoints = b->getSP();
 	identifier = id;
@@ -96,7 +96,7 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 				Inventary[identifier].equiped = true;
 			}
 
-			v.set(x / auxW, y / auxH);
+			v.set(x / auxW - 0.5, y / auxH);
 			o->setPosition(v);
 			o->setOriPos(v);
 			aceptada = true;

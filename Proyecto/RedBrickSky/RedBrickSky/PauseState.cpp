@@ -12,11 +12,11 @@ PauseState::PauseState()
 	Button* button3 = new Button("3", toMenu, 3);
 
 	Vector2D position0(1, 1);
-	Vector2D position3(3, 1);
-	Vector2D position2(2, 1);
+	Vector2D position3(2, 1);
 
-	double width = 250;
-	double height = 200;
+
+	double width = 220;
+	double height = 180;
 
 	RenderComponent* rc = new RenderFrameComponent();
 	InputComponent* ic = new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN);

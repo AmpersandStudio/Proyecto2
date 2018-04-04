@@ -38,6 +38,9 @@ public:
 	std::vector<Interactuable*>* getInteractions() { return &m_interactuables; }
 	const std::vector<Interactuable*>& getInteractuables() { return m_interactuables; }
 
+	std::vector<TileLayer*>* getGrassLayers() { return &m_grassLayer; }
+	const std::vector<TileLayer*>& getGrasseableLayers() { return m_grassLayer; }
+
 	Player* getPlayer() { return m_pPlayer; }
 	void setPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
 	void setTilewidth(int w) { m_tileWidth = w; }
@@ -51,6 +54,7 @@ private:
 	std::vector<Layer*> m_layers;	// capas del nivel
 	std::vector<TileLayer*> m_collisionLayers;	//capas de colisiones del nivel
 	std::vector<Interactuable*> m_interactuables;
+	std::vector<TileLayer*> m_grassLayer; //capa para la hirba alta
 
 	int m_tileWidth;	// ancho de tile del nivel
 	int m_tileHeight;	// alto de tile del nivel

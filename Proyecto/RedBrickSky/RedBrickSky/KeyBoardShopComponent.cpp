@@ -31,7 +31,7 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		if (event.key.keysym.sym == SDLK_UP) {
 
 			if (posY > Y_)
-				posY -= distance;
+				posY -= distance * 1.5;
 
 			if (posX >= Y_) {
 				position.setY(posY);
@@ -42,7 +42,7 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		else if (event.key.keysym.sym == SDLK_DOWN) {
 
 			if (posY < Y_ + fil_ - 1)
-				posY += distance;
+				posY += distance * 1.5;
 
 			if (posY <= Y_ + fil_ ) {
 				position.setY(posY);
@@ -136,8 +136,8 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		for (int i = 0; i < SP.size(); i++) {
 			//Busca si el objeto se ha dejado en alguno de los Stand Points
 			{
-				auxX = SP[i]->getPosition().getX() * 70;
-				auxY = SP[i]->getPosition().getY() * 70;
+				auxX = SP[i]->getPosition().getX() * 50;
+				auxY = SP[i]->getPosition().getY() * 50;
 				auxW = SP[i]->getWidth();
 				auxH = SP[i]->getHeight();;
 

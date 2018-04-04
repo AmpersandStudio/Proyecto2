@@ -36,7 +36,7 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 		if (event.jhat.value & SDL_HAT_UP) {
 
 			if (posY > Y_)
-				posY -= distance;
+				posY -= distance * 1.5;
 
 			if (posX >= Y_) {
 				position.setY(posY);
@@ -47,7 +47,7 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 		else if (event.jhat.value & SDL_HAT_DOWN) {
 
 			if (posY < Y_ + fil_ - 1)
-				posY += distance;
+				posY += distance * 1.5;
 
 			if (posY <= Y_ + fil_) {
 				position.setY(posY);

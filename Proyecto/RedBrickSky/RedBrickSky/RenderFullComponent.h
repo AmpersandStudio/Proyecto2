@@ -5,7 +5,7 @@ class RenderFullComponent :
 {
 public:
 	RenderFullComponent();
-	~RenderFullComponent();
+	~RenderFullComponent(); // SUPERCAQUÍSIMA
 	virtual void render(GameObject* o);
 };
 

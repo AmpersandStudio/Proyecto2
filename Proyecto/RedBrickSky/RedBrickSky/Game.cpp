@@ -21,8 +21,8 @@ Game::Game()
 {
 	int winX, winY;
 	winX = winY = SDL_WINDOWPOS_CENTERED;
-	winWidth_ = 1280;
-	winHeight_ = 720;
+	winWidth_ = 800;
+	winHeight_ = 600;
 	Black.a = 255; Black.b = 0; Black.r = 0; Black.g = 0;	//color negro
 
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -115,7 +115,7 @@ Game::~Game()
 
 void Game::render() 
 {
-	if(!dynamic_cast<TransitionState*>(stateMachine_->currentState())) SDL_RenderClear(Game::Instance()->getRenderer());
+	if(!dynamic_cast<TransitionState*>(stateMachine_->currentState())) SDL_RenderClear(Game::Instance()->getRenderer()); // CACA CACA CACA. MUCHA CACA
 
 	//renderizamos los objetos
 	SDL_SetRenderDrawColor(RENDERER_, 0, 255, 255, 255);

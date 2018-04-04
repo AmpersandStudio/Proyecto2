@@ -102,7 +102,7 @@ void ShopState::mainMenuBotton() {
 void ShopState::createShopItems() {
 	int j = 0;
 	int k = 0;
-	int shopCols = 9;
+	int shopCols = 8;
 
 	for (int i = 0; i < shopObjects.size(); i++) {
 
@@ -111,19 +111,19 @@ void ShopState::createShopItems() {
 			k = 0;
 		}
 
-		Vector2D position5(k + shopCols - 1, 2 * j);
-		Vector2D oriPos(k + shopCols - 1, 2 * j);
+		Vector2D position5(k - 1 + shopCols, 3 * j);
+		Vector2D oriPos(k - 1 + shopCols, 3 * j);
 
 		//Crea objetos debajo de los anteriores que no se moverán, serán solo imagen
 		GameComponent* gc2 = new GameComponent();
-		gc2->setTextureId(shopObjects[i].tx); gc2->setOriPos(oriPos); gc2->setPosition(position5); gc2->setWidth(70); gc2->setHeight(70);
+		gc2->setTextureId(shopObjects[i].tx); gc2->setOriPos(oriPos); gc2->setPosition(position5); gc2->setWidth(50); gc2->setHeight(50);
 		gc2->addRenderComponent(rcSF); gc2->addInputComponent(MSC);
 		gc2->setColFrame(shopObjects[i].colFrame); gc2->setRowFrame(shopObjects[i].FilFrame);
 		
 		//Crea los objetos de la tienda que se mueden mover
 		GameComponent* gc = new GameComponent();
 		DragNDropShopComponent* p = new DragNDropShopComponent(this, shopObjects[i].price, false, shopObjects[i].ID, gc, shopObjects[i].type, shopObjects[i].nombre, shopObjects[i].FilFrame, shopObjects[i].colFrame);
-		gc->setTextureId(shopObjects[i].tx); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(70); gc->setHeight(70);
+		gc->setTextureId(shopObjects[i].tx); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(50); gc->setHeight(50);
 		gc->addRenderComponent(rcSF); gc->addInputComponent(p); gc->addInputComponent(new MouseInfoClickComponent(shopObjects[i]));	gc->addInputComponent(MSC);
 		gc->setColFrame(shopObjects[i].colFrame); gc->setRowFrame(shopObjects[i].FilFrame);
 
@@ -138,12 +138,10 @@ void ShopState::createShopItems() {
 	//Creamos el elemento que nos permitirá movernos con teclado y con el mandop
 	selector_ = new GameComponent();
 	Vector2D selecPos;
-	selecPos.set(8, 2);
-
-	
+	selecPos.set(7, 3);
 
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
-	selector_->setWidth(70); selector_->setHeight(70);
+	selector_->setWidth(50); selector_->setHeight(50);
 	selector_->addRenderComponent(rcSF); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 2, StandPointsO, nullptr, this));
 	xbox = new ShopXboxControllerComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 2, StandPointsO, nullptr, this);
 	selector_->setColFrame(0); selector_->setRowFrame(0); 
@@ -167,7 +165,7 @@ void ShopState::createBagItems() {
 		SP[i].type = invent[i].type;
 
 		GameComponent* gc = new GameComponent();
-		Vector2D position0(SP[i].y - 1, SP[i].x + 1);
+		Vector2D position0(SP[i].y - 2.8, SP[i].x + 2.8 );
 		double width = invent[i].w;
 		double height = invent[i].h;
 
@@ -196,8 +194,8 @@ void ShopState::createSP() {
 	int auxD = 0;
 	auxOID = 0;
 	numSP = 0;
-	double width = 70;
-	double height = 70;
+	double width = 50;
+	double height = 50;
 	for (int i = 0; i < Fils; i++)
 		for (int j = 0; j < Cols; j++) {
 			
@@ -214,7 +212,7 @@ void ShopState::createSP() {
 			s.type = -1;
 
 
-			Vector2D position0(2 * i + 1, 2 * j + 2);
+			Vector2D position0(2 * i + 0.7, 2 * j + 3.5);
 			if (i == 0 && j == 0)
 				selecPos = position0;
 			if (i == 1 && j == 0)

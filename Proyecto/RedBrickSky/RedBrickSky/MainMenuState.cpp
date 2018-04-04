@@ -22,12 +22,12 @@ MainMenuState::MainMenuState()
 	Button* button3 = new Button("3", exit, 3);
 	Button* button2 = new Button("13", toSelector, 2);
 
-	Vector2D position0(0.9, 2);
-	Vector2D position2(0.9, 3.5);
-	Vector2D position3(0.9, 5);
+	Vector2D position0(0.5, 3);
+	Vector2D position2(0.5, 4.5);
+	Vector2D position3(0.5, 6);
 
-	double width = 250;
-	double height = 100;
+	double width = 220;
+	double height = 70;
 
 	RenderComponent* rc = new RenderFrameComponent();
 	InputComponent* ic = new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN);
@@ -89,37 +89,6 @@ bool MainMenuState::handleEvent(const SDL_Event& event) {
 	else if (event.type == SDL_JOYBUTTONUP)
 		XboxController::Instance()->onJoystickButtonUp(event);
 
-
-	//if (event.type == SDL_JOYAXISMOTION) {
-	//	onJoystickAxisMove(event);
-
-	//	int x, y;
-
-	//	SDL_GetMouseState(&x, &y);
-
-
-	//	if (xvalue(0, 1) < 0)
-	//	{
-	//		SDL_WarpMouseInWindow(Game::Instance()->getWindow(), x - 10, y);
-	//	}
-	//	else if (xvalue(0, 1) > 0)
-	//	{
-	//		SDL_WarpMouseInWindow(Game::Instance()->getWindow(), x + 10, y);
-	//	}
-	//	if (yvalue(0, 1) < 0)
-	//	{
-	//		SDL_WarpMouseInWindow(Game::Instance()->getWindow(), x, y - 10);
-	//	}
-	//	else if (yvalue(0, 1) > 0)
-	//	{
-	//		SDL_WarpMouseInWindow(Game::Instance()->getWindow(), x, y + 10);
-	//	}
-
-
-	//}
-
-	////else if (event.type == SDL_JOYBUTTONDOWN)
-	////	ic2->action();
 	 if (event.type == SDL_QUIT)
 	{
 		Game::Instance()->exitApp();

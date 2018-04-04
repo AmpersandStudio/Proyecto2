@@ -1,9 +1,28 @@
 #include "CollisionManager.h"
 #include "Player.h"
 #include "TileLayer.h"
+#include "StateMachine.h"
+#include "PlayState.h"
 
 void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers)
 {
+
+		if (checkCollision(pPlayer, collisionLayers) != 0)
+		{
+			pPlayer->collision();
+		}
+}
+
+void CollisionManager::checkPlayerGrassCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers)
+{
+	if (checkCollision(pPlayer, collisionLayers) != 0 && pPlayer->getMoved()){
+		GameState* p = Game::Instance()->getStateMachine()->currentState();
+		PlayState* play = static_cast<PlayState*>(p);
+		play->actSteps();
+	}
+}
+
+bool CollisionManager::checkCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers) {
 	for (std::vector<TileLayer*>::const_iterator it = collisionLayers.begin(); it != collisionLayers.end(); ++it)
 	{
 		TileLayer* pTileLayer = (*it);
@@ -74,14 +93,11 @@ void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vect
 			}
 		}
 
-		tileid = tiles[tileRow + y][tileColumn + x];
-
-		if (tileid != 0)
-		{
-			pPlayer->collision();
-		}
+		return(tiles[tileRow + y][tileColumn + x]);
 	}
 }
+
+
 
 void CollisionManager::checkInteractions(Player* pPlayer, const std::vector<Interactuable*>& interactuables)
 {

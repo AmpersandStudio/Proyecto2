@@ -78,21 +78,7 @@ public:
 	void creaFondoTienda();
 	void createButtons(int x, int y, vector<estado> type, std::string t);
 	void separateElements();
-	void createItemAtSP(int x, int y, int aux, estado st);
-
-private:
-	//Mando de xbox
-	void initialiseJoysticks();
-	void onJoystickButtonDown(SDL_Event event);
-	void onJoystickButtonUp(SDL_Event event);
-	void clean();
-
-	bool getButtonState(int joy, int buttonNumber) const { return m_buttonStates[joy][buttonNumber]; }
-	
-	std::vector<SDL_Joystick*> m_joysticks;
-	std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;
-	std::vector<std::vector<bool>> m_buttonStates;
-	bool m_bJoysticksInitialised;
+	void createItemAtSP(int x, int y, int aux, estado st);	
 };
 
 

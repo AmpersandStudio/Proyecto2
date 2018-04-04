@@ -23,7 +23,8 @@ BackPack::BackPack()
 		matriz[i] = new estado[numRows];
 	}
 	
-	initialiseJoysticks();
+	if (XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
+		XboxController::Instance()->insertController();
 
 	separateElements();
 
@@ -32,7 +33,7 @@ BackPack::BackPack()
 
 BackPack::~BackPack()
 {
-	clean();
+
 }
 
 bool BackPack::handleEvent(const SDL_Event & event)
@@ -48,26 +49,26 @@ bool BackPack::handleEvent(const SDL_Event & event)
 
 		else if (event.type == SDL_JOYBUTTONDOWN) {
 
-			onJoystickButtonDown(event);
+			XboxController::Instance()->onJoystickButtonDown(event);
 
-			if (getButtonState(0, 6))
+			if (XboxController::Instance()->getButtonState(0, 6))
 				toMenu();
 
-			if (getButtonState(0, 1) && buttonsCreated)//Si se ha pulsado la B
+			if (XboxController::Instance()->getButtonState(0, 1) && buttonsCreated)//Si se ha pulsado la B
 				toMenu();
-			else if (getButtonState(0, 0) && buttonsCreated) {
+			else if (XboxController::Instance()->getButtonState(0, 0) && buttonsCreated) {
 				elimina();
 				creaSP();
 				cargaElementos(Weapons);
 			}
 
-			else if (getButtonState(0, 2) && buttonsCreated) {
+			else if (XboxController::Instance()->getButtonState(0, 2) && buttonsCreated) {
 				elimina();
 				creaSP();
 				cargaElementos(Potions);
 			}
 
-			else if (getButtonState(0, 3) && buttonsCreated) {
+			else if (XboxController::Instance()->getButtonState(0, 3) && buttonsCreated) {
 				elimina();
 				creaSP();
 				cargaElementos(Objects);
@@ -77,7 +78,7 @@ bool BackPack::handleEvent(const SDL_Event & event)
 		}
 
 		else if (event.type == SDL_JOYBUTTONUP)
-			onJoystickButtonUp(event);
+			XboxController::Instance()->onJoystickButtonUp(event);
 		// 2) LLama a los input de cada objeto del propio estado
 		return GameState::handleEvent(event);
 }
@@ -212,8 +213,8 @@ void BackPack::creaSP() {
 	for (int i = 0; i < numFils; i++)
 		for (int j = 0; j < numRows; j++) {
 
-			double width = 70;
-			double height = 70;
+			double width = 50;
+			double height = 50;
 			matriz[i][j].empty = true;
 			matriz[i][j].ID = 0;
 			matriz[i][j].objects = 0;
@@ -222,7 +223,7 @@ void BackPack::creaSP() {
 			matriz[i][j].mX = i;
 			matriz[i][j].mY = j;
 
-			Vector2D position0(2 * i + 11, 2 * j + 2);
+			Vector2D position0(2 * i + 9.5, 2 * j + 3);
 			if (i == 0 && j == 0)
 				selecPos = position0;
 			if (i == 0 && j == 1)
@@ -264,7 +265,7 @@ void BackPack::creaSP() {
 		s.mX = i * -1;
 		s.mY = auxP * -1;
 
-		Vector2D position0(3 * i + 3, 8);
+		Vector2D position0(2 * i + 1.5, 6);
 
 		s.x = position0.getX();
 		s.y = position0.getY();
@@ -290,7 +291,7 @@ void BackPack::creaSP() {
 	for (int x = 0; x < EquipedItems.size(); x++) {
 
 		GameComponent* gc = new GameComponent();
-		Vector2D position0(EquipedItems[x].x, EquipedItems[x].y);
+		Vector2D position0(EquipedItems[x].x + 0.8, EquipedItems[x].y + 2.6);
 
 		gc->setTextureId(EquipedItems[x].tx); gc->setPosition(position0); gc->setWidth(EquipedItems[x].w); gc->setHeight(EquipedItems[x].h);
 		gc->addRenderComponent(rcSF); //gc->addInputComponent(new MouseInfoClickComponent(st)); 
@@ -320,10 +321,10 @@ void BackPack::creaSP() {
 	selector_ = new GameComponent();
 
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
-	selector_->setWidth(70); selector_->setHeight(70);
+	selector_->setWidth(50); selector_->setHeight(50);
 	selector_->setColFrame(0); selector_->setRowFrame(0);
-	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), numRows, numFils, auxD, StandPointsO, this));
-	selector_->addInputComponent(new BagXboxControllerComponent(selecPos.getX(), selecPos.getY(), numRows, numFils, auxD, StandPointsO, this));
+	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), numRows - 1, numFils, auxD, StandPointsO, this));
+	selector_->addInputComponent(new BagXboxControllerComponent(selecPos.getX(), selecPos.getY(), numRows - 1, numFils, auxD, StandPointsO, this));
 	//selector_->addInputComponent(MSC);
 	stage.push_back(selector_);
 
@@ -350,10 +351,10 @@ void BackPack::creaEscena() {
 	//Creamos botón para volver al menú principal y los de cada clase
 	Button* bottonBack = new Button("3", toMenu, 0);
 
-	Vector2D position0(7, 0);
+	Vector2D position0(5, 0.5);
 
-	double width = 150;
-	double height = 100;
+	double width = 120;
+	double height = 60;
 
 	bottonBack->setTextureId("3"); bottonBack->setPosition(position0); bottonBack->setWidth(width); bottonBack->setHeight(height);
 	bottonBack->addRenderComponent(rcF); bottonBack->addInputComponent(MIC);
@@ -362,13 +363,13 @@ void BackPack::creaEscena() {
 
 	//Creacion de los "botones" que nos llevarán a cada tipo de Item del inventario
 	//Boton para las armas
-	createButtons(6, 2, Weapons, "14");
+	createButtons(4, 3, Weapons, "14");
 
 	//Boton para las pociones
-	createButtons(6, 4, Potions, "15");
+	createButtons(4, 5, Potions, "15");
 
 	//Boton para los objetos
-	createButtons(6, 6, Objects, "16");
+	createButtons(4, 7, Objects, "16");
 
 	GameManager::Instance()->changeInventory(invent);
 	
@@ -388,7 +389,7 @@ void BackPack::createButtons(int x, int y, vector<estado> type, std::string t) {
 
 	Vector2D position(x, y);
 
-	GC->setTextureId(t); GC->setPosition(position); GC->setWidth(150); GC->setHeight(100);
+	GC->setTextureId(t); GC->setPosition(position); GC->setWidth(130); GC->setHeight(60);
 	GC->addRenderComponent(rcF);  GC->addInputComponent(new InventBottomsComponent(this, type, false));
 
 	stage.push_back(GC);
@@ -431,77 +432,6 @@ void BackPack::separateElements() {
 		else {
 			EquipedItems.push_back(invent[i]);
 			EItems++;
-		}
-	}
-}
-
-
-//Mando de xbox
-
-void BackPack::initialiseJoysticks()
-{
-	if (SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
-	{
-		SDL_InitSubSystem(SDL_INIT_JOYSTICK);
-	}
-
-	if (SDL_NumJoysticks() > 0)
-	{
-		for (size_t i = 0; i < SDL_NumJoysticks(); ++i)
-		{
-			SDL_Joystick* joy = SDL_JoystickOpen(i);
-
-			if (joy != NULL)
-			{
-				m_joysticks.push_back(joy);
-
-				m_joystickValues.push_back(std::make_pair(new Vector2D(0, 0), new Vector2D(0, 0)));
-
-				std::vector<bool> tempButtons;
-
-				for (size_t j = 0; j < SDL_JoystickNumButtons(joy); ++j)
-				{
-					tempButtons.push_back(false);
-				}
-
-				m_buttonStates.push_back(tempButtons);
-			}
-			else
-			{
-				std::cout << "Joystick load fail! SDL Error: " << SDL_GetError() << "\n";
-			}
-		}
-		SDL_JoystickEventState(SDL_ENABLE);
-		m_bJoysticksInitialised = true;
-		std::cout << "Initialised " << m_joysticks.size() << " joystick(s)\n";
-	}
-	else
-	{
-		m_bJoysticksInitialised = false;
-	}
-}
-
-void BackPack::onJoystickButtonDown(SDL_Event event)
-{
-	int whichOne = event.jaxis.which;
-
-	m_buttonStates[whichOne][event.jbutton.button] = true;
-}
-
-void BackPack::onJoystickButtonUp(SDL_Event event)
-{
-	int whichOne = event.jaxis.which;
-
-	m_buttonStates[whichOne][event.jbutton.button] = false;
-}
-
-void BackPack::clean()
-{
-	if (m_bJoysticksInitialised)
-	{
-		for (size_t i = 0; i < SDL_NumJoysticks(); ++i)
-		{
-			SDL_JoystickClose(m_joysticks[i]);
 		}
 	}
 }

@@ -23,5 +23,9 @@ public:
 	virtual bool handleEvent(const SDL_Event& event);
 	virtual void update();
 	virtual void render();
+	void actSteps();
+
+private:
+	int steps_;
 };
 

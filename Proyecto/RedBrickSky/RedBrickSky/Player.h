@@ -23,6 +23,8 @@ public:
 	bool isInteracting() const { return interacting_; }
 	void setInteracting(bool b) { interacting_ = b; }
 
+	bool getMoved() const { return moved_; }
+
 	SDL_Rect* getRect() { return &actionRect_; }
 	
 private:
@@ -36,6 +38,10 @@ private:
 	void updateRect();
 
 	void interacting();
+
+	bool moved_; //Para saber si el jugador se ha movido o no
+
+	Vector2D previousPos_;
 
 };
 

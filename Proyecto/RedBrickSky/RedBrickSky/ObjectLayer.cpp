@@ -22,6 +22,9 @@ void ObjectLayer::update(Level* pLevel)
 	//INTERACCIONES
 	if (pLevel->getPlayer()->isInteracting()) m_collisionManager.checkInteractions(pLevel->getPlayer(), pLevel->getInteractuables());
 
+	//GRASS
+	m_collisionManager.checkPlayerGrassCollision(pLevel->getPlayer(), pLevel->getGrasseableLayers());
+
 	for (GameObject* go : m_gameObjects)
 	{
 		go->update();

@@ -18,7 +18,6 @@ DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy
 	name = n;
 	filFrame = fil;
 	colFrame = col;
-	StandPoints = shop->getSP();
 }
 
 
@@ -54,23 +53,7 @@ bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 	else  if (event.type == SDL_MOUSEBUTTONUP && isMouseSelection) {
 		isMouseSelection = false;
 
-		bool hueco = devMat(x, y, o);
-
-		if (!comprado && hueco) {
-
-			if (shop->getMoney() >= price) {
-				shop->setMoney(price);
-				cout << "Objeto comprado, tu dinero ahora es: " << shop->getMoney() << endl;
-			}
-
-			else if (shop->getMoney() < price)
-				cout << "No tienes dinero para pagar eso!" << endl;
-		}
-
-		else if (hueco)
-			cout << "Ahi ya hay algo!!!" << endl;
-		else 
-			cout << "Lo has puesto fuera!!!!" << endl;
+		devMat(x, y, o);		
 
 		o->setPosition(o->getOriPos());
 	}
@@ -89,13 +72,13 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 	int auxMy;
 	bool encontrado = false;
 	Vector2D v;
-
+	StandPoints = shop->getSP();
 	unsigned int i = 0;
 	while (i < StandPoints.size() && !encontrado) {
 		//Busca si el objeto se ha dejado en alguno de los Stand Points
 		{
-			auxX = StandPoints[i].x * 70;
-			auxY = StandPoints[i].y * 70;
+			auxX = StandPoints[i].x * 50;
+			auxY = StandPoints[i].y * 50;
 			auxW = StandPoints[i].w;
 			auxH = StandPoints[i].h;
 			auxMx = StandPoints[i].mX;
@@ -115,56 +98,67 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 		if (StandPoints[i].empty == true || StandPoints[i].ID == identifier) {
 			//comprado = true;
 			
-			if (StandPoints[i].empty == true) {
+			if (shop->getMoney() >= price && !comprado) {
 
-				StandPoints[i].ID = identifier;
-				StandPoints[i].empty = false;
-				x = auxX + auxW / 2;
-				y = auxY + auxH / 2;
+				shop->setMoney(price);
+				cout << "Objeto comprado, tu dinero ahora es: " << shop->getMoney() << endl;
 
-				v.set(x / 70, y / 70);
-				o->setPosition(v);
-				//StandPoints[i].x = x;
-				//StandPoints[i].y = y;
-				//ocupados++;
+				if (StandPoints[i].empty == true) {
+					StandPoints[i].ID = identifier;
+					StandPoints[i].empty = false;
+					double posX, posY;
+					posX = auxX + auxW / 2;
+					posY = auxY + auxH / 2;
 
-				estado n;
-				n.price = price;
-				n.comprado = comprado;
-				n.ID = identifier;
-				n.empty = false;
-				n.objects = StandPoints[i].objects;
-				n.x = StandPoints[i].x;
-				n.y = StandPoints[i].y;
-				n.mX = -10;
-				n.mY = -10;
-				n.w = StandPoints[i].w;
-				n.h = StandPoints[i].h;
-				n.tx = o->getTextureId();
-				n.type = tipo;
-				n.nombre = name;
-				n.FilFrame = filFrame;
-				n.colFrame = colFrame;
+					v.set(posX / 50 - 0.5, posY / 50 - 0.5);
+					o->setPosition(v);
+					//StandPoints[i].x = x;
+					//StandPoints[i].y = y;
+					//ocupados++;
+					estado n;
+					n.price = price;
+					n.comprado = comprado;
+					n.ID = identifier;
+					n.empty = false;
+					n.objects = StandPoints[i].objects;
+					n.x = StandPoints[i].x;
+					n.y = StandPoints[i].y;
+					n.mX = -10;
+					n.mY = -10;
+					n.w = StandPoints[i].w;
+					n.h = StandPoints[i].h;
+					n.tx = o->getTextureId();
+					n.type = tipo;
+					n.nombre = name;
+					n.FilFrame = filFrame;
+					n.colFrame = colFrame;
 
-				shop->setInvent(n);
-				GameManager::Instance()->setInventory(n);
+					shop->setInvent(n);
+					GameManager::Instance()->setInventory(n);
 
-				GameComponent* gc2 = new GameComponent();
-				gc2->setTextureId(o->getTextureId()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(70); gc2->setHeight(70);
-				gc2->addRenderComponent(new RenderSingleFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(shop));
-				gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
+					GameComponent* gc2 = new GameComponent();
+					gc2->setTextureId(o->getTextureId()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(50); gc2->setHeight(50);
+					gc2->addRenderComponent(new RenderSingleFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(shop));
+					gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
 
-				shop->stageBack(gc2);
+					shop->stageBack(gc2);
+				}
+				else
+				{
+					StandPoints[i].objects++;
+					cout << "Tienes " << StandPoints[i].objects + 1 << " " << name << " en tu inventario ahora." << endl;
+				}
 
+				shop->setSP(StandPoints);
+				aceptada = true;
 			}
 
-			else {
 
-				StandPoints[i].objects++;
-				cout << "Tienes " << StandPoints[i].objects + 1 << " " << name << " en tu inventario ahora." << endl;
-			}
+			else if (shop->getMoney() < price)
+				cout << "No tienes dinero para pagar eso!" << endl;
 
-			aceptada = true;
+
+			
 
 		/*	if (numSP - ocupados == 1){
 			shop->creaFila();
@@ -172,8 +166,8 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 		}
 	}
 
-	if (aceptada)
-		shop->setSP(StandPoints);
+	else if (!encontrado)
+			cout << "Lo has puesto fuera!!!!" << endl;
 
 	return aceptada;
 }

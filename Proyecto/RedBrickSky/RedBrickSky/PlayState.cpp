@@ -13,6 +13,9 @@
 #include "TransitionState.h"
 #include "RenderFrameNDComponent.h"
 
+#include <stdlib.h>
+#include <time.h>
+
 //Para probar lo de los dialogos
 #include "Dialogue.h"
 
@@ -27,8 +30,8 @@ PlayState::PlayState()
 
 	//Button* button0 = new Button("2", toGame, 0);
 	//Vector2D position0(5, 6);
-	double width = 150;
-	double height = 100;
+	double width = 130;
+	double height = 80;
 	RenderComponent* rc = new RenderFrameComponent();
 	InputComponent* ic2 = new MouseInputComponentButton();
 	//button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(rc); button0->addInputComponent(ic2);
@@ -43,7 +46,7 @@ PlayState::PlayState()
 
 	//ESTO ES DE MARTIN, UN BOTON PARA IR AL BATTLESTATE
 	Button* button2 = new Button("18", toBattle, 2);
-	Vector2D position2(7, 6);
+	Vector2D position2(5, 6);
 	button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(rc); button2->addInputComponent(ic2);
 	stage.push_back(button2);
 
@@ -51,6 +54,8 @@ PlayState::PlayState()
 
 	TheSoundManager::Instance()->playMusic("music", 100);
 
+	steps_ = 0;
+	srand(time(NULL));
 }
 
 PlayState::~PlayState()
@@ -62,6 +67,7 @@ PlayState::~PlayState()
 bool PlayState::handleEvent(const SDL_Event & event)
 {
 	if (pLevel->getPlayer()->handleEvent(event)) return true;
+	
 
 	return GameState::handleEvent(event);
 }
@@ -69,7 +75,19 @@ bool PlayState::handleEvent(const SDL_Event & event)
 void PlayState::update()
 {
 	pLevel->update();
+
 	GameState::update();
+}
+
+void PlayState::actSteps() {
+	steps_++;
+
+	int rnd = rand() % 150 + 1;
+	if (steps_ > 30 && rnd < steps_){
+
+		toBattle();
+		steps_ = 0;
+	}
 }
 
 void PlayState::render()
@@ -78,13 +96,12 @@ void PlayState::render()
 	GameState::render();
 }
 
-//PARA JAVI PROBAR LA TIENDA TAMBIEN
+
 void PlayState::toGame() {
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->pushState(new ShopState());
 }
 
-//PARA JAVI PROBAR LA TIENDA TAMBIEN
 void PlayState::toInventary() {
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->pushState(new BackPack());

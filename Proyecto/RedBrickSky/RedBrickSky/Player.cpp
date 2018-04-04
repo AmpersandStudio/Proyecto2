@@ -31,6 +31,7 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	m_moveSpeed = 10;
 	interacting_ = false;
 	running_ = false;
+	previousPos_ = iniPosition_;
 	updateRect();
 
 	TheCamera::Instance()->setTarget(&position_);
@@ -49,36 +50,47 @@ void Player::render()
 
 void Player::update()
 {
+	moved_ = false; // En el update determinamos que el jugador no se mueve y solo cambiará si se produce un evento
+
 	// refresh position
 	position_ = position_ + velocity_;
 
+	if(previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY())
+		moved_ = true;
+
+	previousPos_ = position_;
 	// refresh animation frame
 	handleAnimation();	
 }
 
 bool Player::handleEvent(const SDL_Event& event)
 {
+	
 	if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 	{
 		if (event.key.keysym.sym == SDLK_LEFT)
 		{
 			velocity_.set(Vector2D(-m_moveSpeed, 0));
 			direction_.set(-1, 0);
+		
 		}
 		if (event.key.keysym.sym == SDLK_RIGHT)
 		{
 			velocity_.set(Vector2D(m_moveSpeed, 0));
 			direction_.set(1, 0);
+			
 		}
 		if (event.key.keysym.sym == SDLK_UP)
 		{
 			velocity_.set(Vector2D(0, -m_moveSpeed));
 			direction_.set(0, -1);
+			
 		}
 		if (event.key.keysym.sym == SDLK_DOWN)
 		{
 			velocity_.set(Vector2D(0, m_moveSpeed));
 			direction_.set(0, 1);
+			
 		}
 		if (event.key.keysym.sym == SDLK_r)
 		{
@@ -107,9 +119,9 @@ bool Player::handleEvent(const SDL_Event& event)
 		if (event.key.keysym.sym == SDLK_f)	// fullscreen mode
 		{
 			// Comentando para que los PC dirty peasant no se rompan
-			/*int flags = SDL_GetWindowFlags(TheGame::Instance()->getWindow());
+			int flags = SDL_GetWindowFlags(TheGame::Instance()->getWindow());
 			if (flags & SDL_WINDOW_FULLSCREEN) SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), 0);
-			else SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), SDL_WINDOW_FULLSCREEN);*/
+			else SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), SDL_WINDOW_FULLSCREEN);
 		}
 		return true;
 	}
@@ -123,25 +135,30 @@ bool Player::handleEvent(const SDL_Event& event)
 		{
 			velocity_.set(Vector2D(-m_moveSpeed, 0));
 			direction_.set(-1, 0);
+			
 		}
 		else if (XboxController::Instance()->xvalue(0, 1) > 0)
 		{
 			velocity_.set(Vector2D(m_moveSpeed, 0));
 			direction_.set(1, 0);
+		
 		}
 		else if (XboxController::Instance()->yvalue(0, 1) < 0)
 		{
 			velocity_.set(Vector2D(0, -m_moveSpeed));
 			direction_.set(0, -1);
+			
 		}
 		else if (XboxController::Instance()->yvalue(0, 1) > 0)
 		{
 			velocity_.set(Vector2D(0, m_moveSpeed));
 			direction_.set(0, 1);
+			
 		}
 		else {
 			velocity_.set(Vector2D(0, 0));
 			direction_.set(0, 0);
+			
 		}
 
 	}
