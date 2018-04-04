@@ -26,7 +26,6 @@ void CollisionManager::checkPlayerGrassCollision(Player* pPlayer, const std::vec
 		PlayState* play = static_cast<PlayState*>(p);
 		play->notOnGrass();
 	}
-
 }
 
 bool CollisionManager::checkCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers) {
