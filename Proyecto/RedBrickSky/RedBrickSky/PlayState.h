@@ -24,6 +24,7 @@ public:
 	virtual void update();
 	virtual void render();
 	void actSteps();
+	void notOnGrass();
 
 private:
 	int steps_;

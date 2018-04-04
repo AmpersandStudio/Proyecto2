@@ -90,6 +90,11 @@ void PlayState::actSteps() {
 	}
 }
 
+void PlayState::notOnGrass() {
+
+	steps_ = 0;
+}
+
 void PlayState::render()
 {
 	pLevel->render();

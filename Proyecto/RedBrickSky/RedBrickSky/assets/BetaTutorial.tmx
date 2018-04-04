@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="38">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="43">
  <properties>
   <property name="000" value="assets/000.png"/>
   <property name="helicopter" value="assets/helicopter.png"/>
  </properties>
- <tileset firstgid="1" name="Patrones1" tilewidth="32" tileheight="32" tilecount="168" columns="14">
-  <image source="LevelDesign/Tileset_1.png" width="448" height="384"/>
- </tileset>
+ <tileset firstgid="1" source="C:/Users/ruide/Desktop/Patrones1.tsx"/>
  <tileset firstgid="169" name="TileSetLevelTutorial" tilewidth="32" tileheight="32" tilecount="272" columns="16">
   <image source="Tileset_1 (1).png" width="512" height="574"/>
  </tileset>
@@ -31,7 +29,7 @@
    <property name="BigGrass" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztz0EJAAAIwMD1r2Ux/zYQ7mABVgAAAAAAAAAAAAA1p698AAAAAAAAAAAAny2Dpgkl
+   eJzt2FEKgzAQRVGX0P0vpasr+QiUYHASE2fmeQ8I/bCa26hVjwMAAACAkm+zZNQ2qLVkpNJR0BGLyrGl0lGodBQqHYVKxw69+wbLsRzp3LXse6TDq2u248487mDtaNeL0mEdx9W4vOditsM6L0+7Ox+9bXmI8puuoNJRZR8/AABYT+k+R+G+LeK99Mz+PTpWPU9ZtrmTdfuj41DpqN/JfFx5aMf66SwZOnpjp+N5dMRydo63nzNer2bf8Xpb1eHdotJRzfyfZ225WjcShfmoVDpGKbUAAAC83egzU1QqHZVKR6HSUcy8Z4hKpaNS6fin0qFIZV5UzhuV69kbOjKhIxaFBmCXH59ATMw=
   </data>
  </layer>
  <layer name="Top" width="50" height="100">
@@ -54,7 +52,7 @@
    eJzt288RwUAUx/ENoQiMSlABChBRAQcHFzf6UYIGFOGgC8PBmj2bfcjs7ku+n5l3ypvJL4fM/snGGN0WsQMAAACxfewACt1bsr6jsA8A6qQIdJ9doPsAkFvHDgAEUJhwYx0ANM0oM2Zsa5JV0xfL1Oaa2Zp78kn6ymqjfWVpc5W2Vp7nkPYBKWHfFpxnkLu2XWnXy11pd2u70m6YuwKqNMhd/cM3PjB+NE8/dwUAACC1iR0AAAKry3679Fy4tK9JLjVZN3c7sRMAqIMQ/2axT42m2Cr+JnpSnD11T+F8/MG8XQXOi6YltfOin9bfv67L+YceSMvB8y77rqfgPS85e3K+r0vnL9DrBaOeJFo=
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
+ <objectgroup name="Objects">
   <object id="37" name="Player" type="Player" x="778" y="2966" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>

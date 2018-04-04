@@ -55,6 +55,7 @@
     <ClCompile Include="MovementInputComponent.cpp" />
     <ClCompile Include="MoveToThisPosComponent.cpp" />
     <ClCompile Include="NameSelectorState.cpp" />
+    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjectLayer.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
@@ -126,6 +127,7 @@
     <ClInclude Include="MovementInputComponent.h" />
     <ClInclude Include="MoveToThisPosComponent.h" />
     <ClInclude Include="NameSelectorState.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="ObjectLayer.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="PhysicsComponent.h" />
