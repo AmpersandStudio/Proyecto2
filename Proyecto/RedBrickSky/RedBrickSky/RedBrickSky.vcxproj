@@ -20,6 +20,7 @@
     <ClCompile Include="BattleState.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Cartel.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Combat.cpp" />
     <ClCompile Include="CreditsState.cpp" />
@@ -55,6 +56,7 @@
     <ClCompile Include="MovementInputComponent.cpp" />
     <ClCompile Include="MoveToThisPosComponent.cpp" />
     <ClCompile Include="NameSelectorState.cpp" />
+    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjectLayer.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
@@ -91,6 +93,7 @@
     <ClInclude Include="BattleState.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cartel.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Combat.h" />
     <ClInclude Include="CreditsState.h" />
@@ -126,6 +129,7 @@
     <ClInclude Include="MovementInputComponent.h" />
     <ClInclude Include="MoveToThisPosComponent.h" />
     <ClInclude Include="NameSelectorState.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="ObjectLayer.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="PhysicsComponent.h" />

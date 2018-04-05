@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "CollisionManager.h"
 #include "Interactuable.h"
+#include "NPC.h"
 
 class TileLayer;
 
@@ -33,10 +34,18 @@ public:
 
 	std::vector<Tileset>* getTilesets() { return &m_tilesets; }
 	std::vector<Layer*>* getLayers() { return &m_layers; }
+
 	std::vector<TileLayer*>* getCollisionLayers() { return &m_collisionLayers; }
 	const std::vector<TileLayer*>& getCollidableLayers() { return m_collisionLayers; }
+
 	std::vector<Interactuable*>* getInteractions() { return &m_interactuables; }
 	const std::vector<Interactuable*>& getInteractuables() { return m_interactuables; }
+
+	std::vector<NPC*>* getNPCs() { return &m_NPCs; }
+	const std::vector<NPC*>& getNPCinteraction() { return m_NPCs; }
+
+	std::vector<Cartel*>* getCarteles() { return &m_Carteles; }
+	const std::vector<Cartel*>& getCartelesinteraction() { return m_Carteles; }
 
 	std::vector<TileLayer*>* getGrassLayers() { return &m_grassLayer; }
 	const std::vector<TileLayer*>& getGrasseableLayers() { return m_grassLayer; }
@@ -55,6 +64,8 @@ private:
 	std::vector<TileLayer*> m_collisionLayers;	//capas de colisiones del nivel
 	std::vector<Interactuable*> m_interactuables;
 	std::vector<TileLayer*> m_grassLayer; //capa para la hirba alta
+	std::vector<NPC*> m_NPCs; //vector de NPC's
+	std::vector<Cartel*> m_Carteles; //vector de carteles
 
 	int m_tileWidth;	// ancho de tile del nivel
 	int m_tileHeight;	// alto de tile del nivel

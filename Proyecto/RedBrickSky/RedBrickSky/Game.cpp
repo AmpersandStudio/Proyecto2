@@ -13,6 +13,7 @@
 #include "GameObjectFactory.h" 
 #include "Player.h"
 #include "Interactuable.h"
+#include "Cartel.h"
 
 
 Game* Game::s_pInstance = 0;
@@ -97,6 +98,8 @@ Game::Game()
 	//Registramos los tipos en la Game Object Factory
 	TheGameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
 	TheGameObjectFactory::Instance()->registerType("Interactuable", new InteractuableCreator());
+	TheGameObjectFactory::Instance()->registerType("NPC", new NPCcreator());
+	TheGameObjectFactory::Instance()->registerType("Cartel", new CartelCreator());
 
 	//inicializamos booleanos de control
 	exit_ = false; 

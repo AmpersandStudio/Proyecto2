@@ -115,6 +115,8 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			int x = 0, y = 0, width = 32, height = 32, numFrames = 1, callbackID = 0, animSpeed = 0;
 			std::string textureID = "000";
 			std::string type = "Interactuable";
+			std::string Message = " ";
+			
 
 			// get the initial node values type, x and y
 			e->Attribute("x", &x);
@@ -156,6 +158,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								property->Attribute("value", &animSpeed);
 							}
+							else if (property->Attribute("name") == std::string("Message"))
+							{
+								Message = property->Attribute("value");
+							}
 						}
 					}
 				}
@@ -171,6 +177,21 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			if (type == "Interactuable")
 			{
 				pLevel->getInteractions()->push_back(static_cast<Interactuable*>(pGameObject));
+			}
+
+			if (type == "NPC")
+			{
+				pLevel->getNPCs()->push_back(static_cast<NPC*>(pGameObject));
+			}
+
+
+			if (type == "Cartel")
+			{
+				pGameObject->setMessage(Message);
+				pLevel->getCarteles()->push_back(static_cast<Cartel*>(pGameObject));
+				
+				
+
 			}
 
 			pObjectLayer->getGameObjects()->push_back(pGameObject);

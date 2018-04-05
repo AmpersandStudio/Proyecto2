@@ -4,6 +4,7 @@
 #include "StateMachine.h"
 #include "PlayState.h"
 
+
 void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers)
 {
 
@@ -121,6 +122,41 @@ void CollisionManager::checkInteractions(Player* pPlayer, const std::vector<Inte
 
 	pPlayer->setInteracting(false);
 }
+
+void CollisionManager::checkNPCInteractions(Player* pPlayer, const std::vector<NPC*>&  NonPC)
+{
+	SDL_Rect* playerRect = pPlayer->getRect();
+
+	for (NPC* i : NonPC)
+	{
+		SDL_Rect* interRect = i->getRect();
+
+		if (RectRect(playerRect, interRect))
+		{
+			i->activate();
+		}
+	}
+
+	pPlayer->setInteracting(false);
+}
+
+void CollisionManager::checkCartelesInteractions(Player* pPlayer, const std::vector<Cartel*>&  c)
+{
+	SDL_Rect* playerRect = pPlayer->getRect();
+
+	for (Cartel* i : c)
+	{
+		SDL_Rect* interRect = i->getRect();
+
+		if (RectRect(playerRect, interRect))
+		{
+			i->activate();
+		}
+	}
+
+	pPlayer->setInteracting(false);
+}
+
 
 bool CollisionManager::RectRect(SDL_Rect* A, SDL_Rect* B)
 {

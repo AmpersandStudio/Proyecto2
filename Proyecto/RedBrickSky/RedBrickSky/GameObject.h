@@ -31,6 +31,7 @@ protected:
 	double angle_;
 	int callbackId_;
 
+	string Message_;
 public:
 	GameObject();
 	virtual ~GameObject();
@@ -62,6 +63,9 @@ public:
 	inline double getHeight() const { return height_; };
 	void setHeight(double height) { height_ = height; };
 	inline void scale(double s) { width_ *= s; height_ *= s; };
+
+	//Para establecer el mensaje si es necesario
+	void setMessage(std::string msg) { Message_ = msg; };
 
 	//para cambiar los frames
 	int getRowFrame() const { return rowFrame_; };

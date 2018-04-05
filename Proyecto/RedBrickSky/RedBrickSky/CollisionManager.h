@@ -4,6 +4,8 @@
 #include <vector>
 
 #include "Interactuable.h"
+#include "NPC.h"
+#include "Cartel.h"
 
 class GameObject;
 class TileLayer;
@@ -19,9 +21,14 @@ public:
 
 	void checkInteractions(Player * pPlayer, const std::vector<Interactuable*>& interactuables);
 
+	void checkNPCInteractions(Player * pPlayer, const std::vector<NPC*>& NonPC);
+
 	bool checkCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers);
 
 	void checkPlayerGrassCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers);
+
+	void checkCartelesInteractions(Player* pPlayer, const std::vector<Cartel*>&  c);
+	
 
 	bool RectRect(SDL_Rect * A, SDL_Rect * B);
 

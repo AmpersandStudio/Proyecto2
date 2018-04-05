@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="38">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="39">
  <properties>
   <property name="000" value="assets/000.png"/>
   <property name="helicopter" value="assets/helicopter.png"/>
@@ -13,17 +13,20 @@
  <tileset firstgid="441" name="TilesetDefinitivo" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
   <image source="TilesetBetaTutorial.png" width="1920" height="1056"/>
  </tileset>
+ <tileset firstgid="2421" name="Personajes_1" tilewidth="32" tileheight="32" tilecount="30" columns="3">
+  <image source="Personajes_1.png" width="126" height="320"/>
+ </tileset>
  <layer name="Collisions" width="50" height="100">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmltuxCAMRaNuqtvpKru0+a5GLSNk2eYaPyBMr4TKJMb2SXgl6eO6rscZ5ev6+5tcXvEAmwuwf6kdK+IIL6dy3LVkc1yKMjme9e+P39Lqvfpz/bH+3LNYOaS4/TErx66K4ljJ+XnZOaT+zf2uuo/o9Uc4NN/0uDVHi50Wj+OazSGLA/UV5e8UjpWqXP+yY5/GYclByqeineYng6Pfr9A9jdbOEz9jrI84olTBwdWjVcVxyv04hYPWo5Uxd0u5c89gq9YOrX9o8y7H0dogcRFl9amnRhwjtbz6HKVcszm4+kgzfWhXDqsN5dDGzMx4an/fkWNGXg7Nvmr96PNA8jqFo53n2kscnnnXoh3nqxntxoE+r1A7ulYia83MPqaag+ZNf8/Mu7RuyQ+1i+Tg9olcXbL3yMKB+JLO3ZkDeV9iSnYQ2zOuaXvkO1Y7rsWe5fD40KSN2cg1JZujSqdxZIwPy3vRyPFxwnzF+X1HDq5voP1K82ctFg6uT0scXL2CAxl73Hnt/zYkDqmN510jl68mpI3n+4c1t8z1w/M8+M8Rr536lWcM7XQ/TuZAY+zUrzwxdrofWruRze73A9Ud7geiu96PmX3iKK9dOFY8f0Rr1fvEaHnGx1MV+3ZUnm+Dqzhm1lPt3Ekco/YejkdX0LykPEY5Iu3752BjfJYjUpacEA7l2os+0diaqjg0nxF2KzmixwfqJ3p8nMIRKct8hdoLPlS/oA/RvmL9mMnLar96Pdf8WuPOsmSU6rxoPO0aIdcPfZeu3Q9N0jWy5Grx77VD29+Vg/N3d47o8VGpzHGOnLfaoeo5kHlkZHMKR9S+3apojlXS1l3ENtqGvu+S3oHR39HX1rIvieDg/s8yQtq+g+5bduZoPkf7q8h4LWZGv6qMmeHzBA50Tm42nxFBldjWuuYrKyatZxWUozKuRcj3Ds83EUk77jFmlHmPq8sP+4Qhvg==
+   eJztmlluwzAMRI1eKtfpKXu0fBdBq0AQSGooLpLZDiDEiSmSz1pt53ld17NG+bx+P4PLOx5gcwH2b7XfkjjcS1WOu5ZojktQJMfr+Ovjp7TjXv25/rf+3KtoObi4/W9ajlPlxbGT83HpObj+TX3Pakf0+iMcku/xd22OGjspHsW1mkMUB+rLy18Vjp3KXP+iY1fj0OTA5ZNRT/ITwdHvV8Y9jVTPEj9irM84vJTB0eJU4KjSHlU4xmNvRczdXO7UPVj02sG1jdQ/pHmX4pDirCiqT70045ip5dXnyOUazUEdz7Tah07kGL/P+v5oI81f2rltdd5F/N+BY0VWDsk+a/3o80DyqsLRzlP1OQ7LvKvRifPVik7jQO9XRrtxrUTWGs18pe1XXhzUp4WDOtbkh9pJexctB7VPpI45e4s0HIgv7tydOZDnJapkJ7Et43qsj7zHar9LsVc5LD4kSWPWc02J5shSNY6I8aF5Luo5PirMV5Tfv8hB9Q20X0n+tEXDQfVpjoM6juSQ+BAO6X8bHAdXx/KskcpXElLH8v5Dm1vk+mG5H/zn8NdJ/coyhk5qj8ocaIyT+pUlxkntIdWb2ZzeHqju0B6I7toeK/vEWV6ncOy4//DWrueJ3rKMj5cy9u2oLO8Gd3GsrKfSuUocs/oWjmdX0Ly4PGY5IvX7+2BlfJLDU5qcEA7h2rM+0diSsjgknx52Ozm8xwfqx3t8VOHwlGa+Qu0ZH6Jf0Adrn7F+rOSltd+9nku+tXFXWaJKZl7jdZCuEXL9+ufm7Tz1LF1qj1lbUbE1uWr8W+3Q+lkcmhgrqsDhPT4yFTnOkfNaO1Q9BzKPzGyqcHjt27Xy5tglbnxQeSL5W23G513cM7Dxu/e1nc0fSL/UcFD/s/SQtO8Y9y0nczSfs/8qrPicnY/oV5kxI3xW4EDn5Gbz8AgqxNYeS76iYo7HUQXlyIyrEfK+w/JOhNOJe4wVRbZxdvkGf1Axxg==
   </data>
  </layer>
  <layer name="Floor" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJztnDtv1TAUgI+TVsAGvYKuLZdKCAYeFRJLW64Yef8HHn+A/1W6slBGptIdiRYYe6E8xAIXOFZiybIS59g5TpyLh08ZEvn4i53Edk6yBQC3kA/IjYHwEfmEHJd1nyBbySN5JA+rx8Uc4Btubw+A7yU/Kjx2MoCfoh3bWVGmC01xq8o8NtA9HmN7PM/a8SR392iKW1dmnUddnNN4Tu7j9oxwr2NbbLFdPeT+jYZjQqFif6nY5+qxgufiOm5Xe2gPl9hNHkOB08O8jzTB7XEPiuupLSDc4YgreYAsCj4eYXkPCeSMMRV3gMYGgQVBh1KeS91OICcbOEX0OIucI7CMHBHKo9RN1Y8Se9nD4xI+i29mBZdzPw+X8xLKY6aNk36JYXusZ/PjIUkeySN58HuMkQsE1iL3uOIAxXmtYw+fMRLVt0sP23iEOkZqA5eHra9T+3gMHra+Tu3jMXhw9PEYPPomecRFLB4zjSF7bCMvkJ2Be7wq47xOHskjkMdvoK+DKVw8ZPkzRvSx5biMd17Q1r9MxoLm4Vu+Derc0RWbRwj0seWojLckaPNJkxGxPXzLt6GPI/Xrw3V+dRXcro93DjFc53lt7lebjh6x3neTBz97yFtkf+AebUgecZE84iJ5xEXyiIvkERfJIy7mxeNuzx6Ud2/UNQu9rl176GVX7fddT+nag/Lujfo+Xq/r0xxgVxQ888y/4oayXmGul9iI+To371dtPRaQRQsvDUJ6XIMiJ3rdw2MJGVWg6q3nAof0kA4qp1vmeOsuvh5VDiE9dAeF7uLj8abGIYTHXo2D6bLv6VGXY87tYXMwXWJuD2rO/8TDw+YyNI+u7lecHivIqoVQz4/PzB59wd0eHMi8BnNM3pTjID3kNzFN37bJ79CE6MajapxEyaejtMmEoX5m/mLdOfbxkA7vgfb8OGQ+z3XvnXw8pshfoPermD0kVd8t6nwtj2vjYc7r6t6fxd6vfNuN6tFVvwrp0WW/Ct0esfWrqvWRpjxm1+d5Fx4+JI+4+F890rg9eXTtMdVwqcOUATmvhYZnoALKeRSlXKqDa45uHX+QXaCNS+Rx3Pm7ai2ZgwOgjUsOGGOqdfB5+e8H1/8y+kT+L+MfbRA1cQ==
+   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
   </data>
  </layer>
  <layer name="Hierbable" width="50" height="100">
@@ -31,7 +34,7 @@
    <property name="BigGrass" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztz0EJAAAIwMD1r2Ux/zYQ7mABVgAAAAAAAAAAAAA1p698AAAAAAAAAAAAny2Dpgkl
+   eJzt2EsKg0AUBVGXkP2vNryBIMFuO4HIu2UdcOKoC+yf2yZJkiRJ514XTwo7eqF07AgNR+njl6REhP2jPK2je+vVmSvp7ELpKJSOYkdPhIaSPn5Jopqtz0nr9qgjbf95SkcKYkfy2bJ7w+rdsHND+bWjm287uqL8c0ga6wyhoZA60udGoc3z5I6VBjvusdpgxz2oHaP33TskSZKkkcRz+gylo9jRS/Ld9ojSsaN0FEpHoXR8onRRvjXK/LejF8oeSdnvKR3SP7wBibEXoQ==
   </data>
  </layer>
  <layer name="Top" width="50" height="100">
@@ -54,7 +57,12 @@
    eJzt288RwUAUx/ENoQiMSlABChBRAQcHFzf6UYIGFOGgC8PBmj2bfcjs7ku+n5l3ypvJL4fM/snGGN0WsQMAAACxfewACt1bsr6jsA8A6qQIdJ9doPsAkFvHDgAEUJhwYx0ANM0oM2Zsa5JV0xfL1Oaa2Zp78kn6ymqjfWVpc5W2Vp7nkPYBKWHfFpxnkLu2XWnXy11pd2u70m6YuwKqNMhd/cM3PjB+NE8/dwUAACC1iR0AAAKry3679Fy4tK9JLjVZN3c7sRMAqIMQ/2axT42m2Cr+JnpSnD11T+F8/MG8XQXOi6YltfOin9bfv67L+YceSMvB8y77rqfgPS85e3K+r0vnL9DrBaOeJFo=
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
+ <layer name="Personajes" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAIA7C9CMY/GrhISKugCQAAAAAAAAAAAAAAAAAAALDRdT0AAADgqwFrmAB/
+  </data>
+ </layer>
+ <objectgroup name="Objects">
   <object id="37" name="Player" type="Player" x="778" y="2966" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
@@ -64,9 +72,13 @@
    </properties>
   </object>
   <object id="2" name="Cofre" type="Interactuable" gid="92" x="126.667" y="1184.33" width="32" height="32"/>
-  <object id="8" name="Cartel1" type="Interactuable" gid="122" x="736" y="2559.67" width="32" height="32"/>
+  <object id="8" name="Cartel1" type="Cartel" gid="122" x="736" y="2559.67" width="32" height="32">
+   <properties>
+    <property name="Message" value="Quiero Nitos"/>
+   </properties>
+  </object>
   <object id="9" name="Cofre" type="Interactuable" gid="108" x="128" y="798.667" width="32" height="32"/>
-  <object id="10" name="Cartel2" type="Interactuable" gid="122" x="1342" y="354" width="32" height="32"/>
+  <object id="10" name="Cartel2" type="Cartel" gid="122" x="1342" y="354" width="32" height="32"/>
   <object id="12" name="Cofre" type="Interactuable" gid="90" x="1536" y="1374" width="32" height="32"/>
   <object id="13" name="Cofre" type="Interactuable" gid="109" x="32" y="2082" width="32" height="32"/>
   <object id="14" name="Cofre" type="Interactuable" gid="90" x="1536" y="2560.67" width="32" height="32"/>
@@ -76,7 +88,8 @@
   <object id="26" name="Cofre" type="Interactuable" gid="91" x="1313.33" y="898" width="32" height="32"/>
   <object id="28" name="Cofre" type="Interactuable" gid="370" x="1533.33" y="1632" width="32" height="32"/>
   <object id="29" name="Cofre" type="Interactuable" gid="370" x="1281.33" y="1633.33" width="32" height="32"/>
-  <object id="32" name="Cartel3" type="Interactuable" gid="924" x="1312" y="2944" width="32" height="32"/>
+  <object id="32" name="Cartel3" type="Cartel" gid="924" x="1312" y="2944" width="32" height="32"/>
   <object id="36" name="Cofre" type="Interactuable" gid="1289" x="765" y="638" width="32" height="32"/>
+  <object id="38" name="Personaje1" type="NPC" x="800.375" y="2591.88" width="31.625" height="32"/>
  </objectgroup>
 </map>
