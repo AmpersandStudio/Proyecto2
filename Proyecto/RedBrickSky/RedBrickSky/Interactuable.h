@@ -18,6 +18,8 @@ public:
 	virtual void activate();
 	void generateCollider();
 
+	void changeColliderPos(Vector2D v) { collider_.x = v.getX(); collider_.y = v.getY(); };
+
 	SDL_Rect* getRect() { return &collider_; }
 
 private:

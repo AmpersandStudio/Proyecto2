@@ -82,6 +82,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\MainMenu.png", "MainMenu", RENDERER_, 1,2);
 	TheTextureManager::Instance()->load("..\\images\\BattlePlayer.png", "BattlePlayer", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\BattleEnemy.png", "BattleEnemy", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\Personajes_1.png", "Personajes1", RENDERER_);
 
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);

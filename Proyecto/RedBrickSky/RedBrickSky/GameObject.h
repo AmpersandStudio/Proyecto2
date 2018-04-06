@@ -80,5 +80,8 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 	virtual void clean() = 0;
+
+	//colisiones
+	void collision() { velocity_ = Vector2D(0, 0); };
 };
 

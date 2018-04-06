@@ -3,6 +3,7 @@
 #include "TileLayer.h"
 #include "StateMachine.h"
 #include "PlayState.h"
+#include "Collisions.h"
 
 
 void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers)
@@ -12,6 +13,15 @@ void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vect
 		{
 			pPlayer->collision();
 		}
+}
+
+void CollisionManager::checkNPCTileCollision(NPC* pNPC, const std::vector<TileLayer*>& collisionLayers) {
+	if (checkCollision(pNPC, collisionLayers) != 0)
+	{
+		pNPC->collision();
+	}
+	else
+		pNPC->incrementMovCont();
 }
 
 void CollisionManager::checkPlayerGrassCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers)
@@ -29,7 +39,7 @@ void CollisionManager::checkPlayerGrassCollision(Player* pPlayer, const std::vec
 	}
 }
 
-bool CollisionManager::checkCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers) {
+bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer*>& collisionLayers) {
 	for (std::vector<TileLayer*>::const_iterator it = collisionLayers.begin(); it != collisionLayers.end(); ++it)
 	{
 		TileLayer* pTileLayer = (*it);
@@ -42,69 +52,67 @@ bool CollisionManager::checkCollision(Player* pPlayer, const std::vector<TileLay
 		x = layerPos.getX() / pTileLayer->getTileSize();
 		y = layerPos.getY() / pTileLayer->getTileSize();
 
-		int pPosX = pPlayer->getPosition().getX();
-		int pPosY = pPlayer->getPosition().getY();
+		int pPosX = o->getPosition().getX();
+		int pPosY = o->getPosition().getY();
 
-		if (pPlayer->getVel().getY() == 0)
+		if (o->getVel().getY() == 0)
 		{
-			tileRow = ((pPosY + pPlayer->getHeight()) / pTileLayer->getTileSize());
+			tileRow = ((pPosY + o->getHeight()) / pTileLayer->getTileSize());
 
-			if (pPlayer->getVel().getX() > 0)
+			if (o->getVel().getX() > 0)
 			{
-				tileColumn = ((pPosX + pPlayer->getWidth()) / pTileLayer->getTileSize());
+				tileColumn = ((pPosX + o->getWidth()) / pTileLayer->getTileSize());
 
 			}
-			else if (pPlayer->getVel().getX() < 0)
+			else if (o->getVel().getX() < 0)
 			{
 				tileColumn = pPosX / pTileLayer->getTileSize();
 			}
-			else if (pPlayer->getVel().getX() == 0)
+			else if (o->getVel().getX() == 0)
 			{
-				tileColumn = ((pPosX + (pPlayer->getWidth() / 2)) / pTileLayer->getTileSize());
+				tileColumn = ((pPosX + (o->getWidth() / 2)) / pTileLayer->getTileSize());
 			}
 		}
-		else if (pPlayer->getVel().getY() > 0)
+		else if (o->getVel().getY() > 0)
 		{
-			tileRow = ((pPosY + pPlayer->getHeight()) / pTileLayer->getTileSize());
+			tileRow = ((pPosY + o->getHeight()) / pTileLayer->getTileSize());
 
-			if (pPlayer->getVel().getX() > 0)
+			if (o->getVel().getX() > 0)
 			{
-				tileColumn = ((pPosX + pPlayer->getWidth()) / pTileLayer->getTileSize());
+				tileColumn = ((pPosX + o->getWidth()) / pTileLayer->getTileSize());
 
 			}
-			else if (pPlayer->getVel().getX() < 0)
+			else if (o->getVel().getX() < 0)
 			{
 				tileColumn = pPosX / pTileLayer->getTileSize();
 			}
-			else if (pPlayer->getVel().getX() == 0)
+			else if (o->getVel().getX() == 0)
 			{
-				tileColumn = ((pPosX + (pPlayer->getWidth() / 2)) / pTileLayer->getTileSize());
+				tileColumn = ((pPosX + (o->getWidth() / 2)) / pTileLayer->getTileSize());
 			}
 		}
-		else if (pPlayer->getVel().getY() < 0)
+		else if (o->getVel().getY() < 0)
 		{
-			tileRow = ((pPosY + (pPlayer->getHeight() / 2)) / pTileLayer->getTileSize());
+			tileRow = ((pPosY + (o->getHeight() / 2)) / pTileLayer->getTileSize());
 
-			if (pPlayer->getVel().getX() > 0)
+			if (o->getVel().getX() > 0)
 			{
-				tileColumn = ((pPosX + pPlayer->getWidth()) / pTileLayer->getTileSize());
+				tileColumn = ((pPosX + o->getWidth()) / pTileLayer->getTileSize());
 
 			}
-			else if (pPlayer->getVel().getX() < 0)
+			else if (o->getVel().getX() < 0)
 			{
 				tileColumn = pPosX / pTileLayer->getTileSize();
 			}
-			else if (pPlayer->getVel().getX() == 0)
+			else if (o->getVel().getX() == 0)
 			{
-				tileColumn = ((pPosX + (pPlayer->getWidth() / 2)) / pTileLayer->getTileSize());
+				tileColumn = ((pPosX + (o->getWidth() / 2)) / pTileLayer->getTileSize());
 			}
 		}
 
 		return(tiles[tileRow + y][tileColumn + x]);
 	}
 }
-
-
 
 void CollisionManager::checkInteractions(Player* pPlayer, const std::vector<Interactuable*>& interactuables)
 {
@@ -122,6 +130,41 @@ void CollisionManager::checkInteractions(Player* pPlayer, const std::vector<Inte
 
 	pPlayer->setInteracting(false);
 }
+
+void CollisionManager::checkPlayerGOinteraction(NPC* o, Player* player) {
+	
+	/*if (Collisions::collides(o, player)) {
+		Vector2D oPos = o->getPosition();
+		Vector2D oDir = o->getDirection();
+		
+		double odirX = -2 * oDir.getX();
+		double odirY = -2 * oDir.getY();
+
+		double ox = odirX + oPos.getX();
+		double oy = odirY + oPos.getY();
+
+		oPos.set(ox, oy);
+
+		Vector2D pPos = player->getPosition();
+		Vector2D pDir = player->getDirection();
+
+		double pdirX = -2 * pDir.getX();
+		double pdirY = -2 * pDir.getY();
+
+		double px = pdirX + pPos.getX();
+		double py = pdirY + pPos.getY();
+
+		pPos.set(px, py);
+
+		player->setPosition(pPos);
+		o->setPosition(oPos);
+
+		player->collision();
+		o->collision();
+	}*/
+
+}
+
 
 void CollisionManager::checkNPCInteractions(Player* pPlayer, const std::vector<NPC*>&  NonPC)
 {

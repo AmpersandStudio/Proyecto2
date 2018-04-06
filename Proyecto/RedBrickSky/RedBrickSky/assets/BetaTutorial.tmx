@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="39">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="44">
  <properties>
   <property name="000" value="assets/000.png"/>
   <property name="helicopter" value="assets/helicopter.png"/>
@@ -21,7 +21,7 @@
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmlluwzAMRI1eKtfpKXu0fBdBq0AQSGooLpLZDiDEiSmSz1pt53ld17NG+bx+P4PLOx5gcwH2b7XfkjjcS1WOu5ZojktQJMfr+Ovjp7TjXv25/rf+3KtoObi4/W9ajlPlxbGT83HpObj+TX3Pakf0+iMcku/xd22OGjspHsW1mkMUB+rLy18Vjp3KXP+iY1fj0OTA5ZNRT/ITwdHvV8Y9jVTPEj9irM84vJTB0eJU4KjSHlU4xmNvRczdXO7UPVj02sG1jdQ/pHmX4pDirCiqT70045ip5dXnyOUazUEdz7Tah07kGL/P+v5oI81f2rltdd5F/N+BY0VWDsk+a/3o80DyqsLRzlP1OQ7LvKvRifPVik7jQO9XRrtxrUTWGs18pe1XXhzUp4WDOtbkh9pJexctB7VPpI45e4s0HIgv7tydOZDnJapkJ7Et43qsj7zHar9LsVc5LD4kSWPWc02J5shSNY6I8aF5Luo5PirMV5Tfv8hB9Q20X0n+tEXDQfVpjoM6juSQ+BAO6X8bHAdXx/KskcpXElLH8v5Dm1vk+mG5H/zn8NdJ/coyhk5qj8ocaIyT+pUlxkntIdWb2ZzeHqju0B6I7toeK/vEWV6ncOy4//DWrueJ3rKMj5cy9u2oLO8Gd3GsrKfSuUocs/oWjmdX0Ly4PGY5IvX7+2BlfJLDU5qcEA7h2rM+0diSsjgknx52Ozm8xwfqx3t8VOHwlGa+Qu0ZH6Jf0Adrn7F+rOSltd+9nku+tXFXWaJKZl7jdZCuEXL9+ufm7Tz1LF1qj1lbUbE1uWr8W+3Q+lkcmhgrqsDhPT4yFTnOkfNaO1Q9BzKPzGyqcHjt27Xy5tglbnxQeSL5W23G513cM7Dxu/e1nc0fSL/UcFD/s/SQtO8Y9y0nczSfs/8qrPicnY/oV5kxI3xW4EDn5Gbz8AgqxNYeS76iYo7HUQXlyIyrEfK+w/JOhNOJe4wVRbZxdvkGf1Axxg==
+   eJztmlluwzAMRI1eKtfpKXu0fBdBq0AQuAzFRbLaAYQ4MUXyWavtPK/rep5RPq/fz+TyjgfYXID9W+23Io7wcirHXUs2xyUok+N1/PXxU9pxr/5c/1t/7lWsHFzc/jcrx66K4ljJ+bjsHFz/pr5XtSN6/REOyff4uzVHi50Uj+KazSGLA/UV5e8UjpWqXP+yY5/GYcmBy6einuQng6Pfr4x7GqmeJ37GWNc4olTB0eKcwHFKe5zCMR5HK2Pu5nKn7sGy1w6ubaT+Ic27FIcUZ0ZZfeoljUNTy6vPkcs1m4M61jTbh3bkGL9rfX+0keYv69w2O+8i/u/AMSMvh2RftX70eSB5ncLRzlP1OQ7PvGvRjvPVjHbjQO9XRrtxrUTWGst8Ze1XURzUp4eDOrbkh9pJexcrB7VPpI45e48sHIgv7tydOZDnJaZkldiecT3WR95jtd+l2LMcHh+SpDEbuaZkc1TpNI6M8WF5Lho5Pk6Yryi/f5GD6htov5L8WYuFg+rTHAd1nMkh8SEc0v82OA6ujudZI5WvJKSO5/2HNbfM9cNzP/jPEa+d+pVnDO3UHidzoDF26leeGDu1h1RPs9m9PVDdoT0Q3bU9ZvaJWl67cKy4/4jWqueJ0fKMj5cq9u2oPO8GV3HMrKfSuZM4tPoejmdX0Ly4PLQckfr9fbAxPskRKUtOCIdw7VmfaGxJVRySzwi7lRzR4wP1Ez0+TuGIlGW+Qu0ZH6Jf0AdrX7F+zORltV+9nku+rXFnWbJKZV7jdZCuEXL9+ufm7Tz1LF1qD62tqNiWXC3+vXZo/btyUP7uzhE9PiqVOc6R81Y7VD0HMo9oNqdwRO3brYrmWCVufFB5Ivl7bcbnXdwzsPF79LXV5g+kX1o4qP9ZRkjad4z7lp05mk/tvwozPrXzGf2qMmaGzxM40Dm52TwiggqxrceSr6yY43FWQTkq41qEvO/wvBPhtOMeY0aZbVxdvgHsli8a
   </data>
  </layer>
  <layer name="Floor" width="50" height="100">
@@ -59,7 +59,7 @@
  </layer>
  <layer name="Personajes" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJztzjENAAAIA7C9CMY/GrhISKugCQAAAAAAAAAAAAAAAAAAALDRdT0AAADgqwFrmAB/
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
   </data>
  </layer>
  <objectgroup name="Objects">
@@ -94,6 +94,32 @@
   <object id="29" name="Cofre" type="Bag" gid="370" x="1281.33" y="1633.33" width="32" height="32"/>
   <object id="32" name="Cartel3" type="Cartel" gid="924" x="1312" y="2944" width="32" height="32"/>
   <object id="36" name="Cofre" type="Bag" gid="1289" x="765" y="638" width="32" height="32"/>
-  <object id="38" name="Personaje1" type="NPC" x="800.375" y="2591.88" width="31.625" height="32"/>
+  <object id="39" name="Personaje1" type="NPC" x="766.833" y="2656.25" width="32" height="32">
+   <properties>
+    <property name="Message" value="Quiero Nitos"/>
+    <property name="numFrames" type="int" value="4"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personajes1"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="42" name="Personaje3" type="NPC" x="1088" y="2590.67" width="32" height="32">
+   <properties>
+    <property name="Message" value="no se tio ahhh"/>
+    <property name="numFrames" type="int" value="4"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personajes1"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="43" name="Personaje2" type="NPC" x="800.667" y="2396.67" width="32" height="32">
+   <properties>
+    <property name="Message" value="Como queman lah zarzisah"/>
+    <property name="numFrames" type="int" value="4"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personajes1"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

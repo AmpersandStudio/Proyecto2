@@ -41,7 +41,7 @@ private:
 
 	GameManager() {
 
-		money = 0;
+		money = 500;
 
 		name = "";
 	}

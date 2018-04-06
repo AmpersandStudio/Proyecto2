@@ -19,6 +19,13 @@ void ObjectLayer::update(Level* pLevel)
 	// COLISIONES
 	m_collisionManager.checkPlayerTileCollision(pLevel->getPlayer(), pLevel->getCollidableLayers());
 
+	for (int i = 0; i < pLevel->getNPCs()->size(); i++) {
+
+		m_collisionManager.checkNPCTileCollision(pLevel->getNPCs()->at(i), pLevel->getCollidableLayers());
+		m_collisionManager.checkPlayerGOinteraction(pLevel->getNPCs()->at(i), pLevel->getPlayer());
+
+	}
+
 	//INTERACCIONES
 	if (pLevel->getPlayer()->isInteracting()) {
 		m_collisionManager.checkInteractions(pLevel->getPlayer(), pLevel->getInteractuables());

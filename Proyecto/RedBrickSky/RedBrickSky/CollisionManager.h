@@ -20,17 +20,21 @@ public:
 
 	void checkPlayerTileCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers);
 
+	void checkNPCTileCollision(NPC* pPlayer, const std::vector<TileLayer*>& collisionLayers);
+
 	void checkInteractions(Player * pPlayer, const std::vector<Interactuable*>& interactuables);
 
 	void checkNPCInteractions(Player * pPlayer, const std::vector<NPC*>& NonPC);
 
 	void checkBagsInteractions(Player* pPlayer, const std::vector<SchoolBag*>&  b);
 
-	bool checkCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers);
+	bool checkCollision(GameObject* pPlayer, const std::vector<TileLayer*>& collisionLayers);
 
 	void checkPlayerGrassCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers);
 
 	void checkCartelesInteractions(Player* pPlayer, const std::vector<Cartel*>&  c);
+
+	void checkPlayerGOinteraction(NPC* o, Player* p);
 	
 
 	bool RectRect(SDL_Rect * A, SDL_Rect * B);

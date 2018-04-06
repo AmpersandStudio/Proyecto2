@@ -186,7 +186,11 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 
 			if (type == "NPC")
 			{
-				pLevel->getNPCs()->push_back(static_cast<NPC*>(pGameObject));
+				NPC* c = static_cast<NPC*>(pGameObject);
+				c->setLevel(pLevel);
+				c->setMSG(Message);
+				pLevel->getNPCs()->push_back(c);	
+				//pLevel->getNPCs()->push_back(static_cast<NPC*>(pGameObject));
 			}
 
 

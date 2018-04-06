@@ -135,7 +135,20 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 					SP[p]->setColFrame(0);
 			}
 		}
+		else if (XboxController::Instance()->getButtonState(0, 2)) { //Si pulsa la X equiparemos el objeto
+		/*	invent.clear();
+			if (back != nullptr)
+				invent = back->getInvent();*/
 
+			if (selection_) {
+
+				std::cout << "Gola cagaroac" << endl;
+			
+
+			/*	if (back != nullptr)
+					back->setInvent(invent);*/
+			}
+		}
 		else if (XboxController::Instance()->getButtonState(0, 1)) {
 			back->elimina();
 			back->creaEscena();
