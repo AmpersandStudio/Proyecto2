@@ -24,6 +24,7 @@ void ObjectLayer::update(Level* pLevel)
 		m_collisionManager.checkInteractions(pLevel->getPlayer(), pLevel->getInteractuables());
 		m_collisionManager.checkNPCInteractions(pLevel->getPlayer(), pLevel->getNPCinteraction());
 		m_collisionManager.checkCartelesInteractions(pLevel->getPlayer(), pLevel->getCartelesinteraction());
+		m_collisionManager.checkBagsInteractions(pLevel->getPlayer(), pLevel->getBagsInteractions());
 	}
 	//GRASS
 	m_collisionManager.checkPlayerGrassCollision(pLevel->getPlayer(), pLevel->getGrasseableLayers());

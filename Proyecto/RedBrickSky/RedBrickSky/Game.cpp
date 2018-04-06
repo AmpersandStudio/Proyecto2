@@ -100,6 +100,7 @@ Game::Game()
 	TheGameObjectFactory::Instance()->registerType("Interactuable", new InteractuableCreator());
 	TheGameObjectFactory::Instance()->registerType("NPC", new NPCcreator());
 	TheGameObjectFactory::Instance()->registerType("Cartel", new CartelCreator());
+	TheGameObjectFactory::Instance()->registerType("Bag", new BagCreator());
 
 	//inicializamos booleanos de control
 	exit_ = false; 

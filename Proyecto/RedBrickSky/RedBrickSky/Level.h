@@ -9,6 +9,7 @@
 #include "CollisionManager.h"
 #include "Interactuable.h"
 #include "NPC.h"
+#include "SchoolBag.h"
 
 class TileLayer;
 
@@ -47,6 +48,9 @@ public:
 	std::vector<Cartel*>* getCarteles() { return &m_Carteles; }
 	const std::vector<Cartel*>& getCartelesinteraction() { return m_Carteles; }
 
+	std::vector<SchoolBag*>* getBags() { return &m_Bags; }
+	const std::vector<SchoolBag*>& getBagsInteractions() { return m_Bags; }
+
 	std::vector<TileLayer*>* getGrassLayers() { return &m_grassLayer; }
 	const std::vector<TileLayer*>& getGrasseableLayers() { return m_grassLayer; }
 
@@ -66,6 +70,7 @@ private:
 	std::vector<TileLayer*> m_grassLayer; //capa para la hirba alta
 	std::vector<NPC*> m_NPCs; //vector de NPC's
 	std::vector<Cartel*> m_Carteles; //vector de carteles
+	std::vector<SchoolBag*> m_Bags; //vector de Mochilas
 
 	int m_tileWidth;	// ancho de tile del nivel
 	int m_tileHeight;	// alto de tile del nivel

@@ -41,7 +41,7 @@ private:
 
 	GameManager() {
 
-		money = 340;
+		money = 0;
 
 		name = "";
 	}
@@ -64,6 +64,7 @@ public:
 	void setInventory(estado t) { inventory.push_back(t); };
 	void changeInventory(vector<estado> v) { inventory.clear(); inventory = v; };
 	int getMoney() { return money; };
+	void addMoney(int m) { money += m; };
 	void setMoney(int m) { money = m; };
 	void setName(string n) { name = n;  };
 

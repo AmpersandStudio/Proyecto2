@@ -71,25 +71,29 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="2" name="Cofre" type="Interactuable" gid="92" x="126.667" y="1184.33" width="32" height="32"/>
+  <object id="2" name="Cofre" type="Bag" gid="92" x="126.667" y="1184.33" width="32" height="32"/>
   <object id="8" name="Cartel1" type="Cartel" gid="122" x="736" y="2559.67" width="32" height="32">
    <properties>
     <property name="Message" value="Quiero Nitos"/>
    </properties>
   </object>
-  <object id="9" name="Cofre" type="Interactuable" gid="108" x="128" y="798.667" width="32" height="32"/>
+  <object id="9" name="Cofre" type="Bag" gid="108" x="128" y="798.667" width="32" height="32"/>
   <object id="10" name="Cartel2" type="Cartel" gid="122" x="1342" y="354" width="32" height="32"/>
-  <object id="12" name="Cofre" type="Interactuable" gid="90" x="1536" y="1374" width="32" height="32"/>
-  <object id="13" name="Cofre" type="Interactuable" gid="109" x="32" y="2082" width="32" height="32"/>
-  <object id="14" name="Cofre" type="Interactuable" gid="90" x="1536" y="2560.67" width="32" height="32"/>
-  <object id="15" name="Cofre" type="Interactuable" gid="90" x="1533" y="610" width="32" height="32"/>
-  <object id="16" name="Cofre" type="Interactuable" gid="90" x="1526.33" y="31.3333" width="32" height="32"/>
-  <object id="25" name="Cofre" type="Interactuable" gid="91" x="1278.67" y="895.333" width="32" height="32"/>
-  <object id="26" name="Cofre" type="Interactuable" gid="91" x="1313.33" y="898" width="32" height="32"/>
-  <object id="28" name="Cofre" type="Interactuable" gid="370" x="1533.33" y="1632" width="32" height="32"/>
-  <object id="29" name="Cofre" type="Interactuable" gid="370" x="1281.33" y="1633.33" width="32" height="32"/>
+  <object id="12" name="Cofre" type="Bag" gid="90" x="1536" y="1374" width="32" height="32"/>
+  <object id="13" name="Cofre" type="Bag" gid="109" x="32" y="2082" width="32" height="32"/>
+  <object id="14" name="Cofre" type="Bag" gid="90" x="1536" y="2560.67" width="32" height="32">
+   <properties>
+    <property name="Sweeties" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="15" name="Cofre" type="Bag" gid="90" x="1533" y="610" width="32" height="32"/>
+  <object id="16" name="Cofre" type="Bag" gid="90" x="1526.33" y="31.3333" width="32" height="32"/>
+  <object id="25" name="Cofre" type="Bag" gid="91" x="1278.67" y="895.333" width="32" height="32"/>
+  <object id="26" name="Cofre" type="Bag" gid="91" x="1313.33" y="898" width="32" height="32"/>
+  <object id="28" name="Cofre" type="Bag" gid="370" x="1533.33" y="1632" width="32" height="32"/>
+  <object id="29" name="Cofre" type="Bag" gid="370" x="1281.33" y="1633.33" width="32" height="32"/>
   <object id="32" name="Cartel3" type="Cartel" gid="924" x="1312" y="2944" width="32" height="32"/>
-  <object id="36" name="Cofre" type="Interactuable" gid="1289" x="765" y="638" width="32" height="32"/>
+  <object id="36" name="Cofre" type="Bag" gid="1289" x="765" y="638" width="32" height="32"/>
   <object id="38" name="Personaje1" type="NPC" x="800.375" y="2591.88" width="31.625" height="32"/>
  </objectgroup>
 </map>

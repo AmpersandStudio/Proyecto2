@@ -140,6 +140,23 @@ void CollisionManager::checkNPCInteractions(Player* pPlayer, const std::vector<N
 	pPlayer->setInteracting(false);
 }
 
+void CollisionManager::checkBagsInteractions(Player* pPlayer, const std::vector<SchoolBag*>&  b)
+{
+	SDL_Rect* playerRect = pPlayer->getRect();
+
+	for (SchoolBag* i : b)
+	{
+		SDL_Rect* interRect = i->getRect();
+
+		if (RectRect(playerRect, interRect))
+		{
+			i->activate();
+		}
+	}
+
+	pPlayer->setInteracting(false);
+}
+
 void CollisionManager::checkCartelesInteractions(Player* pPlayer, const std::vector<Cartel*>&  c)
 {
 	SDL_Rect* playerRect = pPlayer->getRect();

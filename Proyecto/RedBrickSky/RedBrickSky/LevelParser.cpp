@@ -112,7 +112,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 	{
 		if (e->Value() == std::string("object"))
 		{
-			int x = 0, y = 0, width = 32, height = 32, numFrames = 1, callbackID = 0, animSpeed = 0;
+			int x = 0, y = 0, width = 32, height = 32, numFrames = 1, callbackID = 0, animSpeed = 0, Sweeties = 0;
 			std::string textureID = "000";
 			std::string type = "Interactuable";
 			std::string Message = " ";
@@ -162,6 +162,11 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								Message = property->Attribute("value");
 							}
+
+							else if (property->Attribute("name") == std::string("Sweeties"))
+							{
+								property->Attribute("value", &Sweeties);
+							}
 						}
 					}
 				}
@@ -187,10 +192,17 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 
 			if (type == "Cartel")
 			{
-				pGameObject->setMessage(Message);
-				pLevel->getCarteles()->push_back(static_cast<Cartel*>(pGameObject));
-				
-				
+				Cartel* c = static_cast<Cartel*>(pGameObject);
+				c->setMessage(Message);
+				pLevel->getCarteles()->push_back(c);				
+
+			}
+
+			if (type == "Bag")
+			{
+				SchoolBag* c = static_cast<SchoolBag*>(pGameObject);
+				c->setSweeties(Sweeties);
+				pLevel->getBags()->push_back(c);
 
 			}
 

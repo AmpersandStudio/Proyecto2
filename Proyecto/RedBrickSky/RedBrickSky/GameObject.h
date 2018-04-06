@@ -64,9 +64,6 @@ public:
 	void setHeight(double height) { height_ = height; };
 	inline void scale(double s) { width_ *= s; height_ *= s; };
 
-	//Para establecer el mensaje si es necesario
-	void setMessage(std::string msg) { Message_ = msg; };
-
 	//para cambiar los frames
 	int getRowFrame() const { return rowFrame_; };
 	void setRowFrame(int rf) { rowFrame_ = rf; };
