@@ -200,6 +200,21 @@ void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color c
 	SDL_RenderPresent(RENDERER_); //ESTE RENDER PRESENT TIENE QUE DESAPARECER AHHHHHHHHHHHHH
 }
 
+
+bool Game::canActivate(Dialogue* d)
+{
+	bool ret = true;
+
+	/*for (Character* character : characters_)
+	{
+		if (character->isActive())
+			ret = false;
+	}*/
+
+	return ret;
+}
+
+
 void Game::clean()
 {
 	SoundManager::Instance()->clear();

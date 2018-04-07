@@ -7,6 +7,7 @@
 #include <vector>
 #include "SoundManager.h"
 #include "Font.h"
+#include "Dialogue.h"
 
 //para evitar inclusiones circulares
 class StateMachine;
@@ -58,6 +59,7 @@ public:
 	SDL_Renderer* getRenderer() { return RENDERER_; };
 	SDL_Window* getWindow() { return WINDOW_; };
 	SDL_Color getBlackColor() { return Black; };
+	bool canActivate(Dialogue* d);
 };
 
 typedef Game TheGame;

@@ -1,4 +1,5 @@
 #include "Dialogue.h"
+#include "Game.h"
 #include <iostream>
 
 Dialogue::Dialogue()
@@ -6,44 +7,104 @@ Dialogue::Dialogue()
 }
 
 
-Dialogue::Dialogue(int level_dialogues)
+Dialogue::Dialogue(std::string name) : name_(name), active_(false)
 {
-	level = level_dialogues;
-	filename = "Nivel" + std::to_string(level_dialogues) + ".txt";
-	std::cout << "Reading " << filename << std::endl;
+	readFile();
 }
 
 Dialogue::~Dialogue()
 {
 }
 
-//Encuentra el dialogo correspondiente
-std::string Dialogue::findText(char id, int numDialog, std::ifstream& file)
+
+void Dialogue::update()
 {
-	std::string s;
-
-	std::getline(file, s);
-
-	//Se da por hecho que el diálogo introducido va a estar en el archivo, por lo que no genera errores
-	while (s == "" || (s[0] != id) && ((int)s[1] != numDialog))
+	if (!isActive() /*&& Game::Instance()->canActivate(this)*/)
 	{
-		std::getline(file, s);
+		if (dialogueIndex_ >= numDialogues_)
+			dialogueIndex_ = 0;
+
+		splitString(dialogues_.at(dialogueIndex_));
+		setActive(true);
 	}
 
-	std::getline(file, s);
+	if (isActive())
+	{
+		if (!splittedStrings_.empty())
+		{
+			currentLines_[0] = splittedStrings_.front();
+			splittedStrings_.pop();
 
-	return s;
+		}
+
+		if (!splittedStrings_.empty())
+		{
+			currentLines_[1] = splittedStrings_.front();
+			splittedStrings_.pop();
+		}
+		else currentLines_[1] = "";
+	}
 }
 
-//Hace toda la búsqueda del diálogo abriendo y cerrando el archivo
-std::string Dialogue::getText(char id, int numDialog)
+
+void Dialogue::render()
 {
-	std::ifstream file_;
-	file_.open("..\\Dialogues\\" + filename);
+	if (isActive())
+	{
+		Game::Instance()->textPrinter(currentLines_[0], 200, 2, 2, Game::Instance()->getBlackColor());
+		//Game::Instance()->textPrinter(currentLines_[1], 200, 2, 2, Game::Instance()->getBlackColor());
+		
+		/*std::cout << currentLines_[0] << std::endl;
+		std::cout << currentLines_[1] << std::endl;*/
 
-	std::string s = findText(id, numDialog, file_);
+		if (splittedStrings_.empty())
+		{
+			setActive(false);
+			dialogueIndex_++;
+		}
+	}
+}
 
-	file_.close();
 
-	return s;
+void Dialogue::readFile()
+{
+	std::ifstream file;
+	std::string filename = "..\\Dialogues\\" + name_ + ".txt";
+	file.open(filename);
+
+	if (file.is_open())
+	{
+		std::string line;
+		std::getline(file, line);
+		numDialogues_ = std::stoi(line);
+
+		for (int i = 0; i < numDialogues_; i++)
+		{
+			std::getline(file, line);
+			dialogues_.push_back(line);
+		}
+	}
+
+	file.close();
+}
+
+
+void Dialogue::splitString(std::string s)
+{
+	int length = s.size();
+	int lines = length / 20;
+
+	int j = 0;
+	for (int i = 0; i < lines; i++)
+	{
+		std::string substring = s.substr(j, 20);
+		splittedStrings_.push(substring);
+		j += 20;
+	}
+
+	if (length % 20 != 0)
+	{
+		std::string substring = s.substr(j, s.size() - 1);
+		splittedStrings_.push(substring);
+	}
 }
