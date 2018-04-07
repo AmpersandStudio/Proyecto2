@@ -9,7 +9,7 @@ private:
 	TTF_Font* font_ = nullptr;
 public:
 	Font();
-	Font(std::string	filename, int size);
+	Font(std::string filename, int size);
 	~Font();
 	bool load(std::string filename, int size);
 	void free();
