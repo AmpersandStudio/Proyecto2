@@ -82,7 +82,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\MainMenu.png", "MainMenu", RENDERER_, 1,2);
 	TheTextureManager::Instance()->load("..\\images\\BattlePlayer.png", "BattlePlayer", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\BattleEnemy.png", "BattleEnemy", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\Personajes_1.png", "Personajes1", RENDERER_);
+	//TheTextureManager::Instance()->load("..\\RedBrickSky\assets\\Personaje1.png", "Personaje1", RENDERER_);
 
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
@@ -108,7 +108,7 @@ Game::Game()
 	error_ = false; 
 
 	// milliseconds per frame -> 16.7 = 60 frames/s - 33.3 = 30 frames/s
-	FRAME_RATE_ = 33.3; // El valor original era 130, por si fuera necesario
+	FRAME_RATE_ = 16.7; // El valor original era 130, por si fuera necesario
 
 
 }
@@ -177,6 +177,7 @@ void Game::run()
 		render();
 
 		frametime = SDL_GetTicks() - startime;
+
 		if (frametime < FRAME_RATE_)SDL_Delay(FRAME_RATE_ - frametime);
 	}
 	stateMachine_->clearStack(); 

@@ -36,6 +36,8 @@ public:
 
 	void checkPlayerGOinteraction(NPC* o, Player* p);
 	
+	void checkNPCGOinteraction(NPC* NPC1, NPC* NPC2);
+
 
 	bool RectRect(SDL_Rect * A, SDL_Rect * B);
 

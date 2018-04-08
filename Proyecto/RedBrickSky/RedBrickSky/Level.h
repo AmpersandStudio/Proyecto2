@@ -59,6 +59,8 @@ public:
 	void setTilewidth(int w) { m_tileWidth = w; }
 	void setTileheight(int h) { m_tileHeight = h; }
 
+	int getTileWidth() {};
+
 private:
 	friend class LevelParser;	// solo podemos crear un nivel desde LevelParser
 	Level();

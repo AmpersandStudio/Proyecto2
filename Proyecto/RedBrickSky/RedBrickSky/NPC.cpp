@@ -5,17 +5,25 @@
 
 NPC::NPC()
 {
+	srand(time(NULL)); // Semilla de aleatorio
+}
+
+void NPC::load(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID, int animSpeed)
+{
+	position_ = position;
+	width_ = width;
+	height_ = height;
+	textureId_ = textureId;
+	numFrames_ = numFrames;
+	callbackId_ = callbackID;
+	animSpeed_ = animSpeed;
+
 	isInteracting_ = false;
-	
-	facingLeft_ = false;
+
 	this->setColFrame(2);
 	velocity_ = 3;
 
-	srand(time(NULL)); // Semilla de aleatorio
-
 	movementCont_ = rand() % 39;
-
-	Vector2D v; 
 
 	int rnd = rand() % 2;
 	if (rnd == 0)
@@ -23,10 +31,10 @@ NPC::NPC()
 
 	int rnd2 = rand() % 2;
 	if (rnd2 == 0)
-		v.set(velocity_, 0);
-	else 
-		v.set(0, velocity_);
-	setVel(v);
+		vel.set(velocity_, 0);
+	else
+		vel.set(0, velocity_);
+	setVel(vel);
 	stopped_ = false;
 }
 
@@ -49,19 +57,42 @@ void NPC::update() {
 		int rnd = rand() % 100 + 1;
 		stopped_ = false;
 
-		if (rnd < 80)
+		if (rnd < 70)
 			collision();
 		else {
 			stopped_ = true;
 			movementCont_ = 0;
 		}
 	}
+	// refresh animation frame
+	handleAnimation();
 }
 
 void NPC::move() {
 	Vector2D pos = getPosition();
 	pos = pos + getVel();
+	
+	
+	//Para asegurarnos de que no sale por la parte derecha ni inferior de la pantalla produciendo una excepción
+	if (pos.getX() >= tileWidth_ - 30) {
+		pos.setX(tileWidth_ - 35);
+		collision();
+	}
 
+	else if (pos.getX() <= 30) {
+		pos.setX(35);
+		collision();
+	}
+
+	else if (pos.getY() >= tileHeight_ - 40) {
+		pos.setY(tileHeight_ - 45);
+		collision();
+	}
+
+	else if (pos.getY() <= 40) {
+		pos.setY(45);
+		collision();
+	}
 	setPosition(pos);
 	changeColliderPos(pos);
 }
@@ -70,55 +101,79 @@ void NPC::collision()
 {
 	movementCont_ = 0;
 	int rnd = rand() % 2;
-	Vector2D d = getVel();
+	vel = getVel();
 
 	if (rnd == 0) {
 
-		if (d.getX() == 0)
+		if (vel.getX() == 0)
 		{
 			int rnd2 = rand() % 2;
 			if(rnd2 == 0)
-				d.setX(velocity_);
+				vel.setX(velocity_);
 			else 
-				d.setX(-velocity_);
+				vel.setX(-velocity_);
 		}
 			
 		else
-			d.setX(-velocity_);
+			vel.setX(-velocity_);
 
-		if (d.getX() > 0)
-			facingLeft_ = false;
-		else
-			facingLeft_ = true;
-
-		d.setY(0);
+		vel.setY(0);
 	}
 	else if (rnd == 1) {
 
-		if (d.getY() == 0) {
+		if (vel.getY() == 0) {
 			int rnd2 = rand() % 2;
 
 			if (rnd2 == 0)
-				d.setY(velocity_);
+				vel.setY(velocity_);
 			else
-				d.setY(-velocity_);
+				vel.setY(-velocity_);
 		}
 
 		else
-			d.setY(-velocity_);
-
-		//if (d.getY() > 0)
-		//	facingLeft_ = false;
-		//else
-		//	facingLeft_ = true;
-		d.setX(0);
+			vel.setY(-velocity_);
+		vel.setX(0);
 	}
 
-	setVel(d);
+	setVel(vel);
 		
 	
-	if (facingLeft_)
-		this->setColFrame(1);
+}
+
+void NPC::handleAnimation()
+{
+	if (stopped_) {
+		if (vel.getY() < 0)
+		{
+			rowFrame_ = 3;
+		}
+		else if (vel.getY() > 0)
+		{
+			rowFrame_ = 0;
+		}
+		else if (vel.getY() == 0)
+		{
+			rowFrame_ = (vel.getX() < 0) ? 1 : 2;
+		}
+
+		colFrame_ = 1;
+	}
+
 	else
-		this->setColFrame(2);
+	{
+		if (vel.getY() < 0)
+		{
+			rowFrame_ = 3;
+		}
+		else if (vel.getY() > 0)
+		{
+			rowFrame_ = 0;
+		}
+		else if (vel.getY() == 0)
+		{
+			rowFrame_ = (vel.getX() < 0) ? 1 : 2;
+		}
+		colFrame_ = int(((SDL_GetTicks() / (100)) % numFrames_));
+	}
+
 }
