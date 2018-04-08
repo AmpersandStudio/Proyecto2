@@ -6,14 +6,28 @@
 NPC::NPC()
 {
 	isInteracting_ = false;
-	Vector2D v; v.set(3, 0);
-	setVel(v);
+	
 	facingLeft_ = false;
 	this->setColFrame(2);
 	velocity_ = 3;
-	stopped_ = false;
 
 	srand(time(NULL)); // Semilla de aleatorio
+
+	movementCont_ = rand() % 39;
+
+	Vector2D v; 
+
+	int rnd = rand() % 2;
+	if (rnd == 0)
+		velocity_ = -velocity_;
+
+	int rnd2 = rand() % 2;
+	if (rnd2 == 0)
+		v.set(velocity_, 0);
+	else 
+		v.set(0, velocity_);
+	setVel(v);
+	stopped_ = false;
 }
 
 
@@ -35,7 +49,7 @@ void NPC::update() {
 		int rnd = rand() % 100 + 1;
 		stopped_ = false;
 
-		if (rnd < 60)
+		if (rnd < 80)
 			collision();
 		else {
 			stopped_ = true;
@@ -56,7 +70,6 @@ void NPC::collision()
 {
 	movementCont_ = 0;
 	int rnd = rand() % 2;
-	std::cout << "MovingNPC..." << endl;
 	Vector2D d = getVel();
 
 	if (rnd == 0) {

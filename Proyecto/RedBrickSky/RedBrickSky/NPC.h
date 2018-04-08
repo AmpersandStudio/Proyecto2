@@ -15,6 +15,7 @@ public:
 	void collision();
 	void incrementMovCont() { movementCont_++; };
 	void setMSG(std::string m) { Msg_ = m; };
+	bool getState() { return stopped_; };
 
 private:
 	bool isInteracting_;

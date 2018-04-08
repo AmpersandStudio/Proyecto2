@@ -5,25 +5,25 @@
 #include "GameComponent.h"
 
 struct estado {
-	std::string tx;
-	int price;
-	bool empty,
+	std::string tx; //ID de la textura
+	int price; //Precio, si es que se puede comprar este objeto
+	bool empty, //Booleanos de control para la tienda e inventario
 	     comprado;
-	int ID;
-	int objects;
-	double x,
+	int ID; //ID del objeto (Número que se asigna al objeto cuando se crean para que todos sean diferentes)
+	int objects; //control
+	double x, //posiciones
 		y;
-	int	mX,
+	int	mX, //control para las matrices de la tienda y el inventario
 		mY;
-	double	w, 
+	double	w,  //ancho y alto
 			h;
-	int objectID;
-	int type; //Arma = 0, pocion = 1, objeto = 2;
-	string nombre;
-	GameComponent* GC = nullptr;
-	int colFrame;
+	int objectID; //control
+	int type; //Arma = 0, pocion = 1, objeto = 2; Para asignar el tipo de objeto que es
+	string nombre; // nombre del objeto
+	GameComponent* GC = nullptr; //control
+	int colFrame; //FIla y columna del frma
 	int FilFrame;
-	bool equiped = false;
+	bool equiped = false; //Saber si el personaje lo tiene equipado o no
 
 };
 

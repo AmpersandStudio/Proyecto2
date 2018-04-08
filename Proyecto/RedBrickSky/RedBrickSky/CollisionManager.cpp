@@ -16,12 +16,13 @@ void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vect
 }
 
 void CollisionManager::checkNPCTileCollision(NPC* pNPC, const std::vector<TileLayer*>& collisionLayers) {
-	if (checkCollision(pNPC, collisionLayers) != 0)
-	{
-		pNPC->collision();
-	}
-	else
-		pNPC->incrementMovCont();
+
+		if (!pNPC->getState() && checkCollision(pNPC, collisionLayers) != 0)
+		{
+			pNPC->collision();
+		}
+		else
+			pNPC->incrementMovCont();
 }
 
 void CollisionManager::checkPlayerGrassCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers)
