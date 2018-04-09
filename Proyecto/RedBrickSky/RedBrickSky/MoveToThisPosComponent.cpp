@@ -10,6 +10,7 @@ MoveToThisPosComponent::MoveToThisPosComponent(Vector2D myPos, Vector2D hisPos) 
 
 	go_ = true;
 	back_ = false;
+	isMoving_ = false;
 }
 
 MoveToThisPosComponent::~MoveToThisPosComponent()
@@ -20,10 +21,11 @@ void MoveToThisPosComponent::update(GameObject* o) {
 	Vector2D currentPos = o->getPosition();
 	double currentX = currentPos.getX();
 	double objectiveX = enemPos.getX();
-	double pixels = 0.7;
+	double pixels = 0.3;
 	if (dir == 1 && go_) {
 		if (objectiveX > currentX) {
 			currentX += pixels;
+			
 		}
 		else {
 			back_ = true;

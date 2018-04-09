@@ -44,8 +44,8 @@ typedef struct {
 	//TEXTOS
 
 	//BARRAS DE VIDA
-	double Vida_Width = 160;
-	double Vida_height = 9;
+	double Vida_Width = 120;
+	double Vida_height = 8;
 
 	GameComponent* UI_Vida_Player;
 	Vector2D VPlayer_position;
@@ -72,6 +72,7 @@ protected:
 	bool attackMode;
 	int input;
 	bool Attacking_;
+	bool attackAnim_;
 	MoveToThisPosComponent* mc;
 
 private:

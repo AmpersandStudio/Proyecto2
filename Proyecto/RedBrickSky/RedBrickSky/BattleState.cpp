@@ -24,7 +24,7 @@ BattleState::BattleState()
 	fadeDone_ = false;
 	fade2Done_ = false;
 
-	END_ = false; Attacking_ = false;
+	END_ = false; Attacking_ = false; attackAnim_ = false;
 
 	//Componentes necesarios
 	rcF = new RenderFrameComponent(); //Render Frame
@@ -63,10 +63,10 @@ void BattleState::createUI() {
 	stage.push_back(fondo_);
 
 	//Panel de fondo
-	Vector2D position0(0, 2.6);
+	Vector2D position0(0, 2.55);
 	GameComponent* UI_Background = new GameComponent();
 	UI_Background->setTextureId("24");
-	UI_Background->setWidth(Game::Instance()->getWinWidth()); UI_Background->setHeight((200));
+	UI_Background->setWidth(Game::Instance()->getWinWidth()); UI_Background->setHeight((170));
 	UI_Background->setPosition(position0);
 	UI_Background->addRenderComponent(rcF);
 	stage.push_back(UI_Background);
@@ -83,18 +83,18 @@ void BattleState::createUI() {
 
 	GameComponent* ground = new GameComponent();
 	ground->setTextureId("27");
-	Vector2D pos(0.8, 1.7);
+	Vector2D pos(0.6, 1.7);
 	ground->setPosition(pos);
-	ground->setWidth(200); ground->setHeight(200);
+	ground->setWidth(170); ground->setHeight(170);
 	RenderComponent* rc = new RenderFrameComponent();
 	ground->addRenderComponent(rc);
 	stage.push_back(ground);
 
 	GameComponent* ground2 = new GameComponent();
 	ground2->setTextureId("27");
-	Vector2D pos2(4.625, 1.7);
+	Vector2D pos2(3.1, 1.7);
 	ground2->setPosition(pos2);
-	ground2->setWidth(200); ground2->setHeight(200);
+	ground2->setWidth(170); ground2->setHeight(170);
 	RenderComponent* rc2 = new RenderFrameComponent();
 	ground2->addRenderComponent(rc2);
 	stage.push_back(ground2);
@@ -176,18 +176,18 @@ void BattleState::createUI() {
 void BattleState::constructC() {
 	player = new BattlePlayer("Tyler", Physical, 100, 10, 10, 100, 10);
 	player->setTextureId("BattlePlayer");
-	Vector2D pos(0.88, 1.42);
+	Vector2D pos(0.75, 1.42);
 	player->setPosition(pos);
-	player->setWidth(200); player->setHeight(200);
+	player->setWidth(170); player->setHeight(170);
 	RenderComponent* rc = new RenderFrameComponent();
 	player->addRenderComponent(rc);
 	stage.push_back(player);
 
 	enemy = new BattleEnemy("Pajaro", Ranged, 70, 10, 10, 100, 11);
 	enemy->setTextureId("BattleEnemy");
-	Vector2D pos2(4.625, 1.5);
+	Vector2D pos2(3.15, 1.42);
 	enemy->setPosition(pos2);
-	enemy->setWidth(200); enemy->setHeight(200);
+	enemy->setWidth(170); enemy->setHeight(170);
 	RenderComponent* rc2 = new RenderFrameComponent();
 	enemy->addRenderComponent(rc2);
 	stage.push_back(enemy);
@@ -387,16 +387,16 @@ void BattleState::createCharacterInfo()
 	GameComponent* UI_Player = new GameComponent();
 	position0.setX(0.15); position0.setY(0.2);
 	UI_Player->setTextureId("26");
-	UI_Player->setWidth(340); UI_Player->setHeight((150));
+	UI_Player->setWidth(250); UI_Player->setHeight((100));
 	UI_Player->setPosition(position0);
 	UI_Player->addRenderComponent(rcF);
 	stage.push_back(UI_Player);
 
 	//Cuadro Enemigo
 	GameComponent* UI_Enemy = new GameComponent();
-	position0.setX(2.6); position0.setY(0.2);
+	position0.setX(2.05); position0.setY(0.2);
 	UI_Enemy->setTextureId("25");;
-	UI_Enemy->setWidth(340); UI_Enemy->setHeight((150));
+	UI_Enemy->setWidth(250); UI_Enemy->setHeight((100));
 	UI_Enemy->setPosition(position0);
 	UI_Enemy->addRenderComponent(rcF);
 	stage.push_back(UI_Enemy);
@@ -407,12 +407,12 @@ void BattleState::createCharacterInfo()
 void BattleState::createBattleButtons()
 {
 	Vector2D position0;
-	double buttonWidth = 230;
-	double buttonHeight = 75;
+	double buttonWidth = 170;
+	double buttonHeight = 70;
 
 	//Boton 0
 	interfaz.button_0 = new Button("19", nullptr, 0);
-	position0.setX(3); position0.setY(7.2);
+	position0.setX(2.4); position0.setY(6.4);
 	interfaz.button_0->setPosition(position0); interfaz.button_0->setWidth(buttonWidth); interfaz.button_0->setHeight(buttonHeight);
 	//interfaz.button_0->addRenderComponent(rcF);
 	interfaz.button_0->addInputComponent(MIC);
@@ -420,7 +420,7 @@ void BattleState::createBattleButtons()
 
 	//Boton 1
 	interfaz.button_1 = new Button("19", nullptr, 1);
-	position0.setX(4.2); position0.setY(7.2);
+	position0.setX(3.6); position0.setY(6.4);
 	interfaz.button_1->setPosition(position0); interfaz.button_1->setWidth(buttonWidth); interfaz.button_1->setHeight(buttonHeight);
 	//interfaz.button_1->addRenderComponent(rcF); 
 	interfaz.button_1->addInputComponent(MIC);
@@ -428,7 +428,7 @@ void BattleState::createBattleButtons()
 
 	//Boton 2
 	interfaz.button_2 = new Button("19", nullptr, 2);
-	position0.setX(3); position0.setY(8.4);
+	position0.setX(2.4); position0.setY(7.5);
 	//interfaz.button_2->addRenderComponent(rcF);
 	interfaz.button_2->setPosition(position0); interfaz.button_2->setWidth(buttonWidth); interfaz.button_2->setHeight(buttonHeight);
 	interfaz.button_2->addInputComponent(MIC);
@@ -436,7 +436,7 @@ void BattleState::createBattleButtons()
 
 	//Boton 3
 	interfaz.button_3 = new Button("19", nullptr, 3);
-	position0.setX(4.2); position0.setY(8.4);
+	position0.setX(3.6); position0.setY(7.5);
 	interfaz.button_3->setPosition(position0); interfaz.button_3->setWidth(buttonWidth); interfaz.button_3->setHeight(buttonHeight);
 	//interfaz.button_3->addRenderComponent(rcF); 
 	interfaz.button_3->addInputComponent(MIC);
@@ -455,9 +455,9 @@ void BattleState::updateVidas()
 	interfaz.UI_Vida_Player = new GameComponent();
 	interfaz.UI_Vida_Enemy = new GameComponent();
 
-	Vector2D position0(0.86, 13.8);
+	Vector2D position0(0.85, 10);
 	interfaz.VPlayer_position = position0;
-	Vector2D position1(6.07, 13.8);
+	Vector2D position1(4.8, 10);
 	interfaz.VEnemy_position = position1;
 
 	interfaz.UI_Vida_Player->setTextureId("20");
@@ -577,6 +577,7 @@ void BattleState::attack(int i) {
 	stage[1]->setTextureId("24");
 	input = i;
 	Attacking_ = true;
+	attackAnim_ = true;
 	attack_ = false; bag_ = false; run_ = false;
 
 	Vector2D p = player->getPosition();
