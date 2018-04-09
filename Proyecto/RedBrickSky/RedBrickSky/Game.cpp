@@ -83,6 +83,10 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\BattlePlayer.png", "BattlePlayer", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\BattleEnemy.png", "BattleEnemy", RENDERER_);
 	//TheTextureManager::Instance()->load("..\\RedBrickSky\assets\\Personaje1.png", "Personaje1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\ataco.png", "atacoTexto", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\jugadorAtaco.png", "jugAtacoTexto", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\enemigoAtaco.png", "enemAtacoTexto", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\seleccionaOpcion.png", "selOptTexto", RENDERER_);
 
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);

@@ -40,6 +40,7 @@ typedef struct {
 	Button* button_1;
 	Button* button_2;
 	Button* button_3;
+	Button* pruebaTexto_;
 
 	//TEXTOS
 
@@ -74,6 +75,9 @@ protected:
 	int input;
 	bool Attacking_;
 	bool attackAnim_;
+	bool okEnemy_;
+	bool okPlayer_;
+	bool in = false;
 	MoveToThisPosComponent* mc;
 
 private:

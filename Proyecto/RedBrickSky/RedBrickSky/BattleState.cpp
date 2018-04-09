@@ -14,6 +14,7 @@ BattleState::BattleState()
 	//interfaz.ground = Game::Instance()->getTexture(27);
 
 	attack_ = false; bag_ = false; run_ = false;
+	okEnemy_ = false; okPlayer_ = true;
 
 	//JR para el inicio
 	rcfade = new RenderFullComponent();
@@ -333,8 +334,9 @@ bool BattleState::run()
 			enemy->setTurn(true);
 		}
 
-		if (enemy->getHealth() > 0 && !pt && et)
+		if (enemy->getHealth() > 0 && !pt && et && okEnemy_)
 		{
+			interfaz.pruebaTexto_->setTextureId("enemAtacoTexto");
 			enemy->useAttack(0);
 			int e_input = enemy->getInput();
 			float dmg = enemy->combat(e_input, player->getDefense(), player->getType());
@@ -443,6 +445,14 @@ void BattleState::createBattleButtons()
 	interfaz.button_3->addInputComponent(MIC);
 	//stage.push_back(interfaz.button_3);
 
+	//Boton prueba
+	interfaz.pruebaTexto_ = new Button("selOptTexto", nullptr, 4);
+	position0.setX(0.15); position0.setY(4.65);
+	interfaz.pruebaTexto_->setPosition(position0); interfaz.pruebaTexto_->setWidth(300); interfaz.pruebaTexto_->setHeight(100);
+	interfaz.pruebaTexto_->addRenderComponent(rcF);
+	//interfaz.pruebaTexto_->addInputComponent(MIC);
+	stage.push_back(interfaz.pruebaTexto_);
+
 	//Boton Testeo Barra Vida
 	/*Button* test = new Button(game, reduceVida, 4);
 	position0.setX(2); position0.setY(4.4);
@@ -529,36 +539,68 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 	if (fade2Done_) {
 		handledEvent = GameState::handleEvent(event);
 
-		if (!attackAnim_)
+		if (event.type == SDL_KEYDOWN) {
+			if (event.key.keysym.sym == SDLK_RETURN) {
+				if (enemy->getTurn()) {
+					okEnemy_ = true;
+				}
+				else if (!enemy->getTurn() && !attackAnim_) {
+					okPlayer_ = true;
+					okEnemy_ = false;
+					interfaz.pruebaTexto_->setTextureId("selOptTexto");
+				}
+
+				handledEvent = true;
+			}
+		}
+
+		if (!attackAnim_ && okPlayer_)
 			actButton = interfaz.button_0->handleEvent(event);
+		else
+			actButton = false;
+
 		if (actButton && !attack_) {
+			in = true;
 			toAttackMode();
 		}
 		else if (actButton && attack_) {
 			attack(0);
 		}
 		
-		if (!attackAnim_)
+		if (!attackAnim_ && okPlayer_)
 			actButton = interfaz.button_1->handleEvent(event);
+		else
+			actButton = false;
+
 		if (actButton && !attack_) {
+			in = true;
 			bag_ = true;
+			in = false; //habra que desactivarla en algun punto
 		}
 		else if (actButton && attack_) {
 			attack(1);
 		}
 
-		if (!attackAnim_)
+		if (!attackAnim_ && okPlayer_)
 			actButton = interfaz.button_2->handleEvent(event);
+		else
+			actButton = false;
+
 		if (actButton && !attack_) {
+			in = true;
 			toAttackMode();
 		}
 		else if (actButton && attack_) {
 			attack(2);
 		}
 
-		if (!attackAnim_)	
+		if (!attackAnim_ && okPlayer_)
 			actButton = interfaz.button_3->handleEvent(event);
+		else
+			actButton = false;
+
 		if (actButton && !attack_) {
+			in = true;
 			run_ = true;
 			TheSoundManager::Instance()->stopMusic();
 			TheSoundManager::Instance()->playMusic("music", 0);
@@ -583,18 +625,22 @@ void BattleState::attack(int i) {
 	input = i;
 	Attacking_ = true;
 	attackAnim_ = true;
-	attack_ = false; bag_ = false; run_ = false;
+	attack_ = false; bag_ = false; run_ = false; okPlayer_ = false;
 
 	Vector2D p = player->getPosition();
 	Vector2D e = enemy->getPosition();
 	mc = new MoveToThisPosComponent(p, e);
 	player->addPhysicsComponent(mc);
+
+	//texto
+	interfaz.pruebaTexto_->setTextureId("jugAtacoTexto");
+
+	//desactivas flag
+	in = false;
 }
 
 void BattleState::toAttackMode() {
 	attack_ = true;
 	displayAttacks();
 	stage[1]->setTextureId("29");
-
-
 }
