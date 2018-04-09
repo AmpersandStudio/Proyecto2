@@ -16,7 +16,9 @@ public:
 	void incrementMovCont() { movementCont_++; };
 	void setMSG(std::string m) { Msg_ = m; };
 	bool getState() { return stopped_; };
+	void setCollided(bool b) { collided_ = b; stopped_ = true; };
 	void handleAnimation();
+	void handleStoppedAnimation();
 	void invertVel() { velocity_ = -velocity_; };
 
 	void setTileWidth(int t) { tileWidth_ = t; };
@@ -24,6 +26,8 @@ public:
 
 	void load(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID, int animSpeed);
 	
+	void checkMapLimits(Vector2D pos);
+	void checkNPCLimits(Vector2D pos);
 
 private:
 	bool isInteracting_;
@@ -33,6 +37,9 @@ private:
 	bool stopped_;
 	std::string Msg_;
 	Vector2D vel;
+	bool collided_;
+	double oriPosX_;
+	double oriPosY_;
 
 	int tileWidth_;
 	int tileHeight_;

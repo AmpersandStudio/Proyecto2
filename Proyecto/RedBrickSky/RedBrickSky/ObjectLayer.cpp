@@ -17,21 +17,18 @@ ObjectLayer::~ObjectLayer()
 void ObjectLayer::update(Level* pLevel)
 {
 	// COLISIONES
-	m_collisionManager.checkPlayerTileCollision(pLevel->getPlayer(), pLevel->getCollidableLayers());
+	m_collisionManager.checkPlayerTileCollision(pLevel->getPlayer(), pLevel->getCollidableLayers()); //Colisiones del jugador
 	int NPCnumber = pLevel->getNPCs()->size();
 	for (int i = 0; i < NPCnumber; i++) {
 
-		m_collisionManager.checkNPCTileCollision(pLevel->getNPCs()->at(i), pLevel->getCollidableLayers());
-		m_collisionManager.checkPlayerGOinteraction(pLevel->getNPCs()->at(i), pLevel->getPlayer());
+		m_collisionManager.checkNPCTileCollision(pLevel->getNPCs()->at(i), pLevel->getCollidableLayers()); //NPC's con las colisiones
+		m_collisionManager.checkPlayerGOinteraction(pLevel->getNPCs()->at(i), pLevel->getPlayer()); //Npc's con el player
 
 		for (int p = 0; p < NPCnumber; p++) {
 			if(p != i)
-				m_collisionManager.checkNPCGOinteraction(pLevel->getNPCs()->at(i), pLevel->getNPCs()->at(p));
+				m_collisionManager.checkNPCGOinteraction(pLevel->getNPCs()->at(i), pLevel->getNPCs()->at(p)); // NPC's con ellos mismo
 		}
-
 	}
-
-
 
 	//INTERACCIONES
 	if (pLevel->getPlayer()->isInteracting()) {

@@ -5,6 +5,8 @@
   <property name="Personaje1" value="assets/Personaje1.png"/>
   <property name="Personaje2" value="assets/Personaje2.png"/>
   <property name="Personaje3" value="assets/Personaje3.png"/>
+  <property name="Personaje4" value="assets/Personaje4.png"/>
+  <property name="Personaje5" value="assets/Personaje5.png"/>
   <property name="helicopter" value="assets/helicopter.png"/>
  </properties>
  <tileset firstgid="1" name="Patrones1" tilewidth="32" tileheight="32" tilecount="168" columns="14">
@@ -97,7 +99,7 @@
   <object id="29" name="Cofre" type="Bag" gid="370" x="1281.33" y="1633.33" width="32" height="32"/>
   <object id="32" name="Cartel3" type="Cartel" gid="924" x="1312" y="2944" width="32" height="32"/>
   <object id="36" name="Cofre" type="Bag" gid="1289" x="765" y="638" width="32" height="32"/>
-  <object id="39" name="Personaje1" type="NPC" x="704.166" y="2591.58" width="32" height="32">
+  <object id="39" name="Personaje1" type="NPC" x="369.499" y="1932.91" width="32" height="32">
    <properties>
     <property name="Message" value="Quiero Nitos"/>
     <property name="numFrames" type="int" value="3"/>
@@ -106,7 +108,7 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="42" name="Personaje2" type="NPC" x="805.333" y="2587.67" width="32" height="32">
+  <object id="42" name="Personaje2" type="NPC" x="510.666" y="2269" width="32" height="32">
    <properties>
     <property name="Message" value="no se tio ahhh"/>
     <property name="numFrames" type="int" value="3"/>
@@ -115,18 +117,9 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="86" name="Personaje3" type="NPC" x="1128" y="2549" width="32" height="32">
+  <object id="86" name="Personaje3" type="NPC" x="1132" y="1962.33" width="32" height="32">
    <properties>
     <property name="Message" value="Killo dejame tranquilo"/>
-    <property name="numFrames" type="int" value="3"/>
-    <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje3"/>
-    <property name="textureWidth" type="int" value="32"/>
-   </properties>
-  </object>
-  <object id="87" name="Personaje4" type="NPC" x="150.667" y="1897.33" width="32" height="32">
-   <properties>
-    <property name="Message" value="Eucalipto"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje3"/>
@@ -138,7 +131,7 @@
     <property name="Message" value="Me hago caca"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje2"/>
+    <property name="textureID" value="Personaje4"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
@@ -147,7 +140,7 @@
     <property name="Message" value="Tendré 5 años pero Carmena tiene la culpa"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje2"/>
+    <property name="textureID" value="Personaje5"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
@@ -169,7 +162,7 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="92" name="Personaje8" type="NPC" x="132" y="2932" width="32" height="32">
+  <object id="92" name="Personaje8" type="NPC" x="1060" y="2256" width="32" height="32">
    <properties>
     <property name="Message" value="El acho es de Extremadura"/>
     <property name="numFrames" type="int" value="3"/>
