@@ -66,6 +66,7 @@ public:
 	virtual bool handleEvent(const SDL_Event & event);
 	void init();
 	bool run();
+	void setAttackAnim(bool b) { attackAnim_ = b; };
 
 protected:
 	battle_UI interfaz;

@@ -1,4 +1,5 @@
 #include "MoveToThisPosComponent.h"
+#include "BattleState.h"
 
 MoveToThisPosComponent::MoveToThisPosComponent(Vector2D myPos, Vector2D hisPos) : enemPos(hisPos), origPos(myPos)
 {
@@ -65,5 +66,12 @@ void MoveToThisPosComponent::update(GameObject* o) {
 	if (back_ || go_) {
 		Vector2D v(currentX, o->getPosition().getY());
 		o->setPosition(v);
+		BattleState* bs = static_cast<BattleState*>(Game::Instance()->getStateMachine()->currentState());
+		bs->setAttackAnim(true);
+	}
+
+	else {
+		BattleState* bs = static_cast<BattleState*>(Game::Instance()->getStateMachine()->currentState());
+		bs->setAttackAnim(false);
 	}
 }

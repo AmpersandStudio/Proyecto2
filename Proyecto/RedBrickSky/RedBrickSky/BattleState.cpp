@@ -344,6 +344,7 @@ bool BattleState::run()
 			Vector2D e = enemy->getPosition();
 			mc = new MoveToThisPosComponent(e, p);
 			enemy->addPhysicsComponent(mc);
+			attackAnim_ = true;
 
 			if (enemy->hasTarget())
 			{
@@ -528,15 +529,17 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 	if (fade2Done_) {
 		handledEvent = GameState::handleEvent(event);
 
-		actButton = interfaz.button_0->handleEvent(event);
+		if (!attackAnim_)
+			actButton = interfaz.button_0->handleEvent(event);
 		if (actButton && !attack_) {
 			toAttackMode();
 		}
 		else if (actButton && attack_) {
 			attack(0);
 		}
-
-		actButton = interfaz.button_1->handleEvent(event);
+		
+		if (!attackAnim_)
+			actButton = interfaz.button_1->handleEvent(event);
 		if (actButton && !attack_) {
 			bag_ = true;
 		}
@@ -544,7 +547,8 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 			attack(1);
 		}
 
-		actButton = interfaz.button_2->handleEvent(event);
+		if (!attackAnim_)
+			actButton = interfaz.button_2->handleEvent(event);
 		if (actButton && !attack_) {
 			toAttackMode();
 		}
@@ -552,7 +556,8 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 			attack(2);
 		}
 
-		actButton = interfaz.button_3->handleEvent(event);
+		if (!attackAnim_)	
+			actButton = interfaz.button_3->handleEvent(event);
 		if (actButton && !attack_) {
 			run_ = true;
 			TheSoundManager::Instance()->stopMusic();
