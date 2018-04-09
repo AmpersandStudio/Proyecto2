@@ -149,30 +149,63 @@ void CollisionManager::checkNPCGOinteraction(NPC* NPC1, NPC* NPC2) {
 
 		NPC1->setPosition(pPos);
 
+		Vector2D pPos2 = NPC2->getPosition();
+		Vector2D pDir2 = NPC2->getDirection();
+
+		double pdirX2 = -5 * pDir2.getX();
+		double pdirY2 = -5 * pDir2.getY();
+
+		double px2 = pdirX2 + pPos2.getX();
+		double py2 = pdirY2 + pPos2.getY();
+
+		pPos2.set(px2, py2);
+
+		NPC2->setPosition(pPos2);
+
 		NPC1->collision();
 	}
 }
 
 void CollisionManager::checkPlayerGOinteraction(NPC* o, Player* player) {
+
+
+
+	if (Collisions::collides(o, player)) {
+
+		Vector2D pPos = player->getPosition();
+		Vector2D pDir = player->getDirection();
+
+		double pdirX = -5 * pDir.getX();
+		double pdirY = -5 * pDir.getY();
+
+		double px = pdirX + pPos.getX();
+		double py = pdirY + pPos.getY();
+
+		pPos.set(px, py);
+
+		player->setPosition(pPos);		
+		player->collision();
+		o->setCollided(true);
+
 	
-	//if (Collisions::collides(o, player)) {
+			if (pdirY < 0)
+			{
+				o->setRowFrame(3);
+			}
+			else if (pdirY > 0)
+			{
+				o->setRowFrame(0);
+			}
+			else if (pdirY == 0)
+			{
+				if (pdirX < 0)
+					o->setRowFrame(1);
+				else 
+					o->setRowFrame(2);
+			}
 
-	//	Vector2D pPos = player->getPosition();
-	//	Vector2D pDir = player->getDirection();
-
-	//	double pdirX = -5 * pDir.getX();
-	//	double pdirY = -5 * pDir.getY();
-
-	//	double px = pdirX + pPos.getX();
-	//	double py = pdirY + pPos.getY();
-
-	//	pPos.set(px, py);
-
-	//	player->setPosition(pPos);
-	//
-	//	player->collision();
-
-	//}
+			o->setColFrame(1);
+		}
 
 }
 

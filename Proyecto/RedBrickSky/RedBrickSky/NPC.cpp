@@ -17,6 +17,8 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 	numFrames_ = numFrames;
 	callbackId_ = callbackID;
 	animSpeed_ = animSpeed;
+	oriPosX_ = position.getX();
+	oriPosY_ = position.getY();
 
 	isInteracting_ = false;
 
@@ -56,6 +58,7 @@ void NPC::update() {
 	if (movementCont_ > 40) {
 		int rnd = rand() % 100 + 1;
 		stopped_ = false;
+		collided_ = false;
 
 		if (rnd < 70)
 			collision();
@@ -65,14 +68,24 @@ void NPC::update() {
 		}
 	}
 	// refresh animation frame
-	handleAnimation();
+	if (!stopped_)
+		handleAnimation();
+	else if(!collided_)
+		handleStoppedAnimation();
 }
 
 void NPC::move() {
 	Vector2D pos = getPosition();
 	pos = pos + getVel();
 	
-	
+	checkMapLimits(pos);
+	//checkNPCLimits(pos);
+
+	setPosition(pos);
+	changeColliderPos(pos);
+}
+
+void NPC::checkMapLimits(Vector2D pos) {
 	//Para asegurarnos de que no sale por la parte derecha ni inferior de la pantalla produciendo una excepción
 	if (pos.getX() >= tileWidth_ - 30) {
 		pos.setX(tileWidth_ - 35);
@@ -80,7 +93,7 @@ void NPC::move() {
 	}
 
 	else if (pos.getX() <= 30) {
-		pos.setX(35);
+		pos.setX(45);
 		collision();
 	}
 
@@ -93,9 +106,27 @@ void NPC::move() {
 		pos.setY(45);
 		collision();
 	}
-	setPosition(pos);
-	changeColliderPos(pos);
 }
+
+void NPC::checkNPCLimits(Vector2D pos) {
+	//Para asegurarnos de que no sale de un rango de movimiento determinado
+	if (pos.getX() >= oriPosX_ + 300) {
+		collision();
+	}
+
+	else if (pos.getX() <= oriPosX_ - 300) {
+		collision();
+	}
+
+	else if (pos.getY() >= oriPosY_ + 300) {
+		collision();
+	}
+
+	else if (pos.getY() <= oriPosY_ - 300) {
+		collision();
+	}
+}
+
 
 void NPC::collision()
 {
@@ -142,25 +173,7 @@ void NPC::collision()
 
 void NPC::handleAnimation()
 {
-	if (stopped_) {
-		if (vel.getY() < 0)
-		{
-			rowFrame_ = 3;
-		}
-		else if (vel.getY() > 0)
-		{
-			rowFrame_ = 0;
-		}
-		else if (vel.getY() == 0)
-		{
-			rowFrame_ = (vel.getX() < 0) ? 1 : 2;
-		}
-
-		colFrame_ = 1;
-	}
-
-	else
-	{
+	
 		if (vel.getY() < 0)
 		{
 			rowFrame_ = 3;
@@ -174,6 +187,24 @@ void NPC::handleAnimation()
 			rowFrame_ = (vel.getX() < 0) ? 1 : 2;
 		}
 		colFrame_ = int(((SDL_GetTicks() / (100)) % numFrames_));
+	
+
+}
+
+void NPC::handleStoppedAnimation()
+{
+	if (vel.getY() < 0)
+	{
+		rowFrame_ = 3;
+	}
+	else if (vel.getY() > 0)
+	{
+		rowFrame_ = 0;
+	}
+	else if (vel.getY() == 0)
+	{
+		rowFrame_ = (vel.getX() < 0) ? 1 : 2;
 	}
 
+	colFrame_ = 1;
 }

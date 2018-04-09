@@ -214,9 +214,9 @@ bool Player::handleEvent(const SDL_Event& event)
 void Player::interacting() {
 	std::cout << "Interacting...\n";
 	updateRect();
-	SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	/*SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
 	SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &actionRect_);
-	SDL_RenderPresent(TheGame::Instance()->getRenderer());
+	SDL_RenderPresent(TheGame::Instance()->getRenderer());*/
 	setInteracting(true);
 }
 

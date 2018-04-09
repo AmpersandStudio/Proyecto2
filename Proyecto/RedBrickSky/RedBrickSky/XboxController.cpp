@@ -19,7 +19,7 @@ void XboxController::insertController() {
 
 	if (SDL_NumJoysticks() > 0)
 	{
-
+		SDL_ShowCursor(0);
 		numControllers = SDL_NumJoysticks();
 		for (size_t i = 0; i < SDL_NumJoysticks(); ++i)
 		{
@@ -72,6 +72,8 @@ void XboxController::removeController() {
 		//SDL_JoystickEventState(SDL_DISABLE);
 		m_buttonStates.clear();
 	}
+
+	SDL_ShowCursor(1);
 }
 
 void XboxController::onJoystickButtonDown(SDL_Event event)
