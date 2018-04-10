@@ -19,6 +19,8 @@ public:
 	void setTileIDs(const std::vector<std::vector<int>>& data) { m_tileIDs = data; }
 	void setTileSize(int tileSize) { m_tileSize = tileSize; }
 	void setMapWidth(int mapWidth) { m_mapWidth = mapWidth; }
+	int getCols() { return m_numColumns; };
+	int getRows() { return m_numRows; };
 	int getTileSize() { return m_tileSize; }
 	const std::vector<std::vector<int>>& getTileIDs() { return m_tileIDs; }
 	const Vector2D getPosition() { return m_position; }

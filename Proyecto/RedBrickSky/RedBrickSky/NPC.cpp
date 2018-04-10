@@ -89,22 +89,22 @@ void NPC::checkMapLimits(Vector2D pos) {
 	//Para asegurarnos de que no sale por la parte derecha ni inferior de la pantalla produciendo una excepción
 	if (pos.getX() >= tileWidth_ - 30) {
 		pos.setX(tileWidth_ - 35);
-		collision();
+		invertVel();
 	}
 
 	else if (pos.getX() <= 30) {
 		pos.setX(45);
-		collision();
+		invertVel();
 	}
 
 	else if (pos.getY() >= tileHeight_ - 40) {
 		pos.setY(tileHeight_ - 45);
-		collision();
+		invertVel();
 	}
 
 	else if (pos.getY() <= 40) {
 		pos.setY(45);
-		collision();
+		invertVel();
 	}
 }
 

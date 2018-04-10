@@ -17,12 +17,23 @@ void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vect
 
 void CollisionManager::checkNPCTileCollision(NPC* pNPC, const std::vector<TileLayer*>& collisionLayers) {
 
-		if (!pNPC->getState() && checkCollision(pNPC, collisionLayers) != 0)
+
+		Vector2D oriPos = pNPC->getPosition();
+		Vector2D v = oriPos + pNPC->getVel();
+		
+		pNPC->setPosition(v);
+		int aux = checkCollision(pNPC, collisionLayers);
+		if (!pNPC->getState() && aux != 0)
 		{
+			if (aux == -1)
+				pNPC->invertVel();
+			else
 			pNPC->collision();
 		}
 		else
 			pNPC->incrementMovCont();
+
+		pNPC->setPosition(oriPos);
 }
 
 void CollisionManager::checkPlayerGrassCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers)
@@ -45,7 +56,8 @@ bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer
 	{
 		TileLayer* pTileLayer = (*it);
 		std::vector<std::vector<int>> tiles = pTileLayer->getTileIDs();
-
+		int cols = (*it)->getCols();
+		int rows = (*it)->getRows();
 		Vector2D layerPos = pTileLayer->getPosition();
 
 		int x, y, tileColumn, tileRow, tileid = 0;
@@ -110,7 +122,10 @@ bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer
 				tileColumn = ((pPosX + (o->getWidth() / 2)) / pTileLayer->getTileSize());
 			}
 		}
-
+		if (tileRow < 0) { tileRow = 0; return -1; }
+		else if (tileRow > rows - 1) { tileRow = rows - 1; return -1; }
+		if (tileColumn < 0) { tileColumn = 0; return -1;}
+		else if (tileColumn > cols - 1) { tileColumn = cols - 1;  return -1; }
 		return(tiles[tileRow + y][tileColumn + x]);
 	}
 }
@@ -133,6 +148,10 @@ void CollisionManager::checkInteractions(Player* pPlayer, const std::vector<Inte
 }
 
 void CollisionManager::checkNPCGOinteraction(NPC* NPC1, NPC* NPC2) {
+
+	Vector2D oriPos = NPC1->getPosition();
+	Vector2D v = oriPos + NPC1->getVel();
+	NPC1->setPosition(v);
 
 	if (Collisions::collides(NPC1, NPC2)) {
 
@@ -164,11 +183,16 @@ void CollisionManager::checkNPCGOinteraction(NPC* NPC1, NPC* NPC2) {
 
 		NPC1->collision();
 	}
+
+	NPC1->setPosition(oriPos);
 }
 
 void CollisionManager::checkPlayerGOinteraction(NPC* o, Player* player) {
 
-
+	Vector2D oriPos = o->getPosition();
+	Vector2D v = oriPos + o->getVel();
+	
+	o->setPosition(v);
 
 	if (Collisions::collides(o, player)) {
 
@@ -206,9 +230,8 @@ void CollisionManager::checkPlayerGOinteraction(NPC* o, Player* player) {
 
 			o->setColFrame(1);
 		}
-
+	o->setPosition(oriPos);
 }
-
 
 void CollisionManager::checkNPCInteractions(Player* pPlayer, const std::vector<NPC*>&  NonPC)
 {
@@ -260,7 +283,6 @@ void CollisionManager::checkCartelesInteractions(Player* pPlayer, const std::vec
 
 	pPlayer->setInteracting(false);
 }
-
 
 bool CollisionManager::RectRect(SDL_Rect* A, SDL_Rect* B)
 {
