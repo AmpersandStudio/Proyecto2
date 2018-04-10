@@ -22,7 +22,7 @@ void MoveToThisPosComponent::update(GameObject* o) {
 	Vector2D currentPos = o->getPosition();
 	double currentX = currentPos.getX();
 	double objectiveX = enemPos.getX();
-	double pixels = 0.3;
+	double pixels = 0.4;
 	if (dir == 1 && go_) {
 		if (objectiveX > currentX) {
 			currentX += pixels;
