@@ -8,6 +8,7 @@ private:
 	int movement;
 	bool first;
 	bool altLap;
+	bool flag;
 public:
 	DiscretMovementIAComponent();
 	~DiscretMovementIAComponent();

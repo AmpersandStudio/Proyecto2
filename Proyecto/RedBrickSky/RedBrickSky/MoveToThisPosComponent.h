@@ -11,6 +11,7 @@ private:
 	int dir;
 	bool go_;
 	bool back_;
+	bool isMoving_;
 	BattleCharacter* bc;
 
 public:

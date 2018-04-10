@@ -11,6 +11,7 @@ DiscretMovementIAComponent::DiscretMovementIAComponent()
 	movement = rand() % 4 + 1;
 	first = true;
 	altLap = false;
+	flag = true;
 }
 
 DiscretMovementIAComponent::~DiscretMovementIAComponent()
@@ -18,14 +19,19 @@ DiscretMovementIAComponent::~DiscretMovementIAComponent()
 }
 
 void DiscretMovementIAComponent::update(GameObject * o) {
-	if (movement == 1)
+	if (movement == 1 && flag) {
 		horiz1(o);
-	else if (movement == 2)
+	}
+	else if (movement == 2 && flag) {
 		horiz2(o);
-	else if (movement == 3)
+	}
+	else if (movement == 3 && flag) {
 		vert1(o);
-	else if (movement == 4)
+	}
+	else if (movement == 4 && flag) {
 		alternate(o);
+	}
+	flag = !flag;
 }
 
 void DiscretMovementIAComponent::horiz1(GameObject * o) {

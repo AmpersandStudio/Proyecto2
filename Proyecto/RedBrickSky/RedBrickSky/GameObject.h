@@ -31,6 +31,8 @@ protected:
 	double angle_;
 	int callbackId_;
 
+	bool isActive_ = true;
+
 	string Message_;
 public:
 	GameObject();
@@ -83,5 +85,8 @@ public:
 
 	//colisiones
 	void collision() { velocity_ = Vector2D(0, 0); };
+
+	//actividad
+	void setActive(bool b) { isActive_ = b; };
 };
 

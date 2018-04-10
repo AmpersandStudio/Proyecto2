@@ -40,12 +40,13 @@ typedef struct {
 	Button* button_1;
 	Button* button_2;
 	Button* button_3;
+	Button* pruebaTexto_;
 
 	//TEXTOS
 
 	//BARRAS DE VIDA
-	double Vida_Width = 160;
-	double Vida_height = 9;
+	double Vida_Width = 120;
+	double Vida_height = 8;
 
 	GameComponent* UI_Vida_Player;
 	Vector2D VPlayer_position;
@@ -66,12 +67,17 @@ public:
 	virtual bool handleEvent(const SDL_Event & event);
 	void init();
 	bool run();
+	void setAttackAnim(bool b) { attackAnim_ = b; };
 
 protected:
 	battle_UI interfaz;
 	bool attackMode;
 	int input;
 	bool Attacking_;
+	bool attackAnim_;
+	bool okEnemy_;
+	bool okPlayer_;
+	bool in = false;
 	MoveToThisPosComponent* mc;
 
 private:
