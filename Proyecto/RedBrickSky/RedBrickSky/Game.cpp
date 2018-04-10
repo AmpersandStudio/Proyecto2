@@ -87,6 +87,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\jugadorAtaco.png", "jugAtacoTexto", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\enemigoAtaco.png", "enemAtacoTexto", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\seleccionaOpcion.png", "selOptTexto", RENDERER_);
+	TheTextureManager::Instance()->load("assets/BetaTutorial.png", "level0", RENDERER_);
 
 	//CARGA DE SONIDOS
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
@@ -112,7 +113,7 @@ Game::Game()
 	error_ = false; 
 
 	// milliseconds per frame -> 16.7 = 60 frames/s - 33.3 = 30 frames/s
-	FRAME_RATE_ = 16.7; // El valor original era 130, por si fuera necesario
+	FRAME_RATE_ = 33.3; // El valor original era 130, por si fuera necesario
 
 
 }

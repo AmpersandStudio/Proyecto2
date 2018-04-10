@@ -12,6 +12,8 @@
 #include "BackPack.h"
 #include "TransitionState.h"
 #include "RenderFrameNDComponent.h"
+#include "TextureManager.h"
+#include "Camera.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -98,6 +100,7 @@ void PlayState::notOnGrass() {
 
 void PlayState::render()
 {
+	TextureManager::Instance()->drawFullCamera("level0", Game::Instance()->getRenderer());
 	pLevel->render();
 	GameState::render();
 }

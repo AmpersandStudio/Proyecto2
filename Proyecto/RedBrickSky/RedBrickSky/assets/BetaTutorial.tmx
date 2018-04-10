@@ -67,7 +67,7 @@
    eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="37" name="Player" type="Player" x="768" y="2687.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>

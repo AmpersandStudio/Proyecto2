@@ -23,7 +23,7 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 	isInteracting_ = false;
 
 	this->setColFrame(2);
-	velocity_ = 3;
+	velocity_ = 1;
 
 	movementCont_ = rand() % 39;
 

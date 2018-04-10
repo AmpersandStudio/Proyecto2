@@ -28,7 +28,7 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	animSpeed_ = animSpeed;
 
 	direction_ = Vector2D(0, -1);
-	m_moveSpeed = 10;
+	m_moveSpeed = 4;
 	interacting_ = false;
 	running_ = false;
 	previousPos_ = iniPosition_;
