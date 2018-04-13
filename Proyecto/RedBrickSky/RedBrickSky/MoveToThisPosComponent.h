@@ -2,6 +2,8 @@
 #include "PhysicsComponent.h"
 #include "BattleCharacter.h"
 
+#include "checkML.h"
+
 class MoveToThisPosComponent :
 	public PhysicsComponent
 {

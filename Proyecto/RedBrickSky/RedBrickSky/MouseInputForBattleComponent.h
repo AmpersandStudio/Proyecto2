@@ -2,6 +2,8 @@
 #include "InputComponent.h"
 #include "SoundManager.h"
 
+#include "checkML.h"
+
 class MouseInputForBattleComponent :
 	public InputComponent
 {

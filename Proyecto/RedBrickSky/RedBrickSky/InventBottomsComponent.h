@@ -3,6 +3,8 @@
 #include "GameManager.h"
 #include <vector>
 
+#include "checkML.h"
+
 class BackPack;
 class InventBottomsComponent :
 	public InputComponent

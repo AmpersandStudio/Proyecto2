@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-
+#include "checkML.h"
 class InputComponent
 {
 public:

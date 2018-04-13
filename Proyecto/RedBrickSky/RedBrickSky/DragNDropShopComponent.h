@@ -4,6 +4,8 @@
 #include "GameComponent.h"
 #include <iostream>
 
+#include "checkML.h"
+
 class ShopState;
 class DragNDropShopComponent :
 	public InputComponent

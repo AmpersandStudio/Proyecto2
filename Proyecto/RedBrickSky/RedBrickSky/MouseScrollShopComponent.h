@@ -2,6 +2,8 @@
 #include "InputComponent.h"
 #include "GameManager.h"
 
+#include "checkML.h"
+
 class ShopState;
 
 class MouseScrollShopComponent :

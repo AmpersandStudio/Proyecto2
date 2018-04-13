@@ -1,6 +1,7 @@
 #pragma once
 #include "InputComponent.h"
 #include "GameManager.h"
+#include "checkML.h"
 
 class MouseInfoClickComponent :
 	public InputComponent

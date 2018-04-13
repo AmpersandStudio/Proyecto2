@@ -6,6 +6,8 @@
 #include "Layer.h"
 #include "CollisionManager.h"
 
+#include "checkML.h"
+
 class GameObject;
 
 class ObjectLayer :	public Layer

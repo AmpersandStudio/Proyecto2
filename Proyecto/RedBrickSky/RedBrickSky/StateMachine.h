@@ -1,6 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include <stack>
+#include "checkML.h"
 
 class StateMachine
 {

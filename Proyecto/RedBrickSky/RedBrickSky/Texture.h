@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include "Font.h"
+#include "checkML.h"
+
 using namespace std;
 
 class Texture

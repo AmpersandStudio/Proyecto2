@@ -3,6 +3,7 @@
 #include "GameManager.h"
 #include "BackPack.h"
 #include "ShopItems.h"
+#include "checkML.h"
 
 class KeyBoardShopComponent :
 	public InputComponent

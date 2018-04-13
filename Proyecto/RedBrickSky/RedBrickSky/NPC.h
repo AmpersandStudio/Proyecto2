@@ -1,6 +1,8 @@
 #pragma once
 #include "Interactuable.h"
 #include "Game.h"
+
+#include "checkML.h"
 class Level;
 class NPC :
 	public Interactuable

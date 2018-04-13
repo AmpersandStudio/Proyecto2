@@ -1,5 +1,6 @@
 #include "XboxController.h"
 
+
 XboxController* XboxController::s_pInstance = 0;
 
 XboxController::XboxController()

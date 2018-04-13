@@ -3,6 +3,8 @@
 #include "GameManager.h"
 #include "Game.h"
 
+#include "checkML.h"
+
 using namespace std;
 
 class ShopItems

@@ -5,6 +5,8 @@
 #include "RenderComponent.h"
 #include <vector>
 
+#include "checkML.h"
+
 using namespace std;
 
 class GameComponent : public GameObject

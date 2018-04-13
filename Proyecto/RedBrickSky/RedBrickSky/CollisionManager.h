@@ -8,6 +8,8 @@
 #include "Cartel.h"
 #include "SchoolBag.h"
 
+#include "checkML.h"
+
 class GameObject;
 class TileLayer;
 class Player;

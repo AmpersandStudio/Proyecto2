@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Vector2D.h"
-
+#include "checkML.h"
 class Camera
 {
 public:
@@ -38,6 +38,7 @@ private:
 	int mapHeight;
 
 	static Camera* s_pCamera;
+
 };
 
 typedef Camera TheCamera;

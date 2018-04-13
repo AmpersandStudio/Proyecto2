@@ -1,6 +1,8 @@
 #pragma once
 #include "Interactuable.h"
 #include "GameManager.h"
+
+#include "checkML.h"
 class SchoolBag :
 	public Interactuable
 {

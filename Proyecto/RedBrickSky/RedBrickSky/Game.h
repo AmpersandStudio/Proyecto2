@@ -9,6 +9,8 @@
 #include "Font.h"
 #include "Dialogue.h"
 
+#include "checkML.h"
+
 //para evitar inclusiones circulares
 class StateMachine;
 class PlayState;
@@ -18,7 +20,7 @@ class Game
 private:
 	Game();
 	~Game();
-	static Game* s_pInstance;
+	static Game s_pInstance;
 
 	SDL_Window* WINDOW_; //punteros de SDL
 	SDL_Renderer* RENDERER_;
@@ -31,15 +33,11 @@ private:
 	SDL_Color Black;	//Color para la fuente
 	Font* font = nullptr;	//puntero a la fuente
 	Texture* fontTexture = nullptr;	//textura para la fuente
-
+	
 public:
 	static Game* Instance()
 	{
-		if (s_pInstance == 0)
-		{
-			s_pInstance = new Game();
-		}
-		return s_pInstance;
+		return &s_pInstance;
 	}
 
 	void render(); //recorre la lista de game characters y llama a sus metodos render

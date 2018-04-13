@@ -3,6 +3,7 @@
 #include <time.h>
 #include <stdlib.h> 
 
+
 NPC::NPC()
 {
 	srand(time(NULL)); // Semilla de aleatorio

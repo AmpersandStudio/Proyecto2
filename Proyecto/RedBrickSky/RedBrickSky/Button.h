@@ -1,5 +1,6 @@
 #pragma once
 #include "GameComponent.h"
+#include "checkML.h"
 
 typedef void CallBackOnClick();
 

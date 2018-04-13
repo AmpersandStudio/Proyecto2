@@ -29,13 +29,10 @@ MainMenuState::MainMenuState()
 	double width = 220;
 	double height = 70;
 
-	RenderComponent* rc = new RenderFrameComponent();
-	InputComponent* ic = new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN);
-	ic2 = new MouseInputComponentButton(this);
 
-	button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(rc); button0->addInputComponent(ic); button0->addInputComponent(ic2);
-	button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(rc); button3->addInputComponent(ic); button3->addInputComponent(ic2);
-	button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(rc); button2->addInputComponent(ic); button2->addInputComponent(ic2);
+	button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(new RenderFrameComponent()); button0->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button0->addInputComponent(new MouseInputComponentButton(this));
+	button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(new RenderFrameComponent()); button3->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button3->addInputComponent(new MouseInputComponentButton(this));
+	button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(new RenderFrameComponent()); button2->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button2->addInputComponent(new MouseInputComponentButton(this));
 
 	stage.push_back(button0);
 	stage.push_back(button3);

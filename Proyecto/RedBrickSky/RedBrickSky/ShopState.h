@@ -16,6 +16,8 @@
 #include "KeyBoardShopComponent.h"
 #include "ShopXboxControllerComponent.h"
 
+#include "checkML.h"
+
 #include "GameManager.h"
 
 using namespace std;

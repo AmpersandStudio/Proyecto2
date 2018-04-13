@@ -4,6 +4,8 @@
 #include <vector>
 #include <queue>
 
+#include "checkML.h"
+
 class Dialogue
 {
 public:

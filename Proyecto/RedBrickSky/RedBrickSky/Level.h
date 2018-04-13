@@ -11,6 +11,8 @@
 #include "NPC.h"
 #include "SchoolBag.h"
 
+#include "checkML.h"
+
 class TileLayer;
 
 struct Tileset {

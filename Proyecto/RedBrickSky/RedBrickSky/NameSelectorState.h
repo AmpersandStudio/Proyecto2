@@ -2,6 +2,8 @@
 #include "GameState.h"
 #include "GameComponent.h"
 
+#include "checkML.h"
+
 class NameSelectorState : public GameState
 {
 private:

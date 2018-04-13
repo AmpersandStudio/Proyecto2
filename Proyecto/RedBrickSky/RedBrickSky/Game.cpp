@@ -16,7 +16,7 @@
 #include "Cartel.h"
 
 
-Game* Game::s_pInstance = 0;
+Game Game::s_pInstance;
 
 Game::Game()
 {
@@ -31,6 +31,7 @@ Game::Game()
 	WINDOW_ = SDL_CreateWindow("RBS", winX, winY,
 		winWidth_, winHeight_, SDL_WINDOW_SHOWN);
 	RENDERER_ = SDL_CreateRenderer(WINDOW_, -1, SDL_RENDERER_ACCELERATED);
+
 	if (WINDOW_ == nullptr || RENDERER_ == nullptr)
 		cout << "Error initializing SDL\n";
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
@@ -120,7 +121,7 @@ Game::Game()
 
 Game::~Game()
 {
-
+	clean();
 }
 
 void Game::render() 
@@ -185,8 +186,6 @@ void Game::run()
 
 		if (frametime < FRAME_RATE_)SDL_Delay(FRAME_RATE_ - frametime);
 	}
-	stateMachine_->clearStack(); 
-	//en cuanto salgamos de la app, limpiamos la maquina de estados (vaciamos la pila y su memoria dinamica)
 }
 
 void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color color) 

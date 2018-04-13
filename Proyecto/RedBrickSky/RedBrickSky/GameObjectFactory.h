@@ -5,6 +5,8 @@
 #include <string>
 #include <map>
 
+#include "checkML.h"
+
 class BaseCreator
 {
 public:
@@ -54,7 +56,13 @@ public:
 
 private:
 	GameObjectFactory() {}
-	~GameObjectFactory() {}
+	~GameObjectFactory() {
+		std::map<std::string, BaseCreator*>::iterator it = m_creators.begin();
+		for (it; it != m_creators.end(); it++) {
+			if ((*it).second != nullptr)
+				delete ((*it).second);
+		}
+	}
 
 	static GameObjectFactory* s_pInstance;
 

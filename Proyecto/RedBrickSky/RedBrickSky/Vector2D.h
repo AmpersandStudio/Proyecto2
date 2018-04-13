@@ -2,6 +2,7 @@
 #define VECTOR2D_H_
 
 #include <iostream>
+#include "checkML.h"
 
 class Vector2D {
 	double x_;  // first coordinate

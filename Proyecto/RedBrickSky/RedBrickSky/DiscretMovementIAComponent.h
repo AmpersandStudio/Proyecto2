@@ -1,5 +1,6 @@
 #pragma once
 #include "PhysicsComponent.h"
+#include "checkML.h"
 
 class DiscretMovementIAComponent :
 	public PhysicsComponent

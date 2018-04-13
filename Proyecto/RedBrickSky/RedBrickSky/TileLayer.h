@@ -7,6 +7,8 @@
 #include "Level.h"
 #include "Vector2D.h"
 
+#include "checkML.h"
+
 class TileLayer : public Layer
 {
 public:

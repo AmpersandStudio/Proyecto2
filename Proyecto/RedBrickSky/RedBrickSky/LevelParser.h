@@ -4,6 +4,8 @@
 #include <vector>
 #include "tinyxml.h"
 
+#include "checkML.h"
+
 class Level;
 struct Tileset;
 class Layer;

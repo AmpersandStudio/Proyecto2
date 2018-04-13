@@ -6,6 +6,7 @@ StateMachine::StateMachine()
 
 StateMachine::~StateMachine()
 {
+	clearStack();
 }
 
 void StateMachine::pushState(GameState* gs) {
@@ -25,7 +26,10 @@ void StateMachine::changeState(GameState* gs) {
 
 void StateMachine::clearStack() {
 	while (!gameStates.empty()) {
-		popState();
+		if (gameStates.top() != nullptr) {
+			delete gameStates.top();
+			gameStates.pop();
+		}
 	}
 }
 

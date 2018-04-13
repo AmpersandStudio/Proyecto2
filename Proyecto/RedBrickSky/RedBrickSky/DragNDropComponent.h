@@ -4,6 +4,8 @@
 #include "GameComponent.h"
 #include "BackPack.h"
 
+#include "checkML.h"
+
 class DragNDropComponent :
 	public InputComponent
 {

@@ -3,6 +3,8 @@
 #include "ShopState.h"
 #include "XboxController.h"
 
+#include "checkML.h"
+
 class ShopXboxControllerComponent :
 	public InputComponent
 {

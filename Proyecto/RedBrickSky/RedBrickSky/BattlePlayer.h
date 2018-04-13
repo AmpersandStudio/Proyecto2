@@ -1,6 +1,7 @@
 #pragma once
 
 #include "BattleCharacter.h"
+#include "checkML.h"
 
 class BattlePlayer : public BattleCharacter
 {

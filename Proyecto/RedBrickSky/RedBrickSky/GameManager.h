@@ -4,6 +4,8 @@
 #include <iostream>
 #include "GameComponent.h"
 
+#include "checkML.h"
+
 struct estado {
 	std::string tx; //ID de la textura
 	int price; //Precio, si es que se puede comprar este objeto

@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "GameComponent.h"
+#include "checkML.h"
 
 
 enum Type { Physical, Magical, Ranged, Support };

@@ -63,8 +63,8 @@ void TextureManager::draw(std::string id, SDL_Renderer* pRenderer, SDL_RendererF
 void TextureManager::drawFullCamera(std::string id, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
 	SDL_Rect srcRect;
-	SDL_Rect destRect = { 0, 0, 800, 600 };
-	
+	SDL_Rect destRect = { 0, 0, Game::Instance()->getWinWidth(), Game::Instance()->getWinHeight() };
+
 	srcRect.x = Camera::Instance()->getPosition().getX();
 	srcRect.y = Camera::Instance()->getPosition().getY();
 	srcRect.w = Game::Instance()->getWinWidth();
