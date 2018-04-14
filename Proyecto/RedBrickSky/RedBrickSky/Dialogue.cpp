@@ -51,8 +51,6 @@ void Dialogue::render()
 {
 	if (isActive())
 	{
-		Game::Instance()->textPrinter(currentLines_[0], 200, 2, 2, Game::Instance()->getBlackColor());
-		//Game::Instance()->textPrinter(currentLines_[1], 200, 2, 2, Game::Instance()->getBlackColor());
 		
 		/*std::cout << currentLines_[0] << std::endl;
 		std::cout << currentLines_[1] << std::endl;*/

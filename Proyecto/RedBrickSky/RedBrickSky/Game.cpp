@@ -18,37 +18,54 @@
 
 Game Game::s_pInstance;
 
-Game::Game()
+Game::Game() : exit_(false), error_(false), FRAME_RATE_(16.7)
 {
+	srand(static_cast<unsigned int>(time(NULL)));
+
+	initSDL();
+	loadResources();
+	registerTypes();
+}
+
+Game::~Game()
+{
+	
+}
+
+void Game::initSDL()
+{
+	// Init SDL
+	SDL_Init(SDL_INIT_EVERYTHING);
+
+	// SDL Fonts
+	TTF_Init();
+
+	// SDL Mixer (Music, Sound, etc)
+	Mix_Init(MIX_INIT_FLAC | MIX_INIT_MOD | MIX_INIT_MP3 | MIX_INIT_OGG);
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+	// SDL Image
+	IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP);
+
+	// Create window
 	int winX, winY;
 	winX = winY = SDL_WINDOWPOS_CENTERED;
 	winWidth_ = 800;
 	winHeight_ = 600;
-	Black.a = 255; Black.b = 0; Black.r = 0; Black.g = 0;	//color negro
+	WINDOW_ = SDL_CreateWindow("Red Brick Sky", winX, winY, winWidth_, winHeight_, SDL_WINDOW_SHOWN);
 
-	SDL_Init(SDL_INIT_EVERYTHING);
-	TTF_Init();
-	WINDOW_ = SDL_CreateWindow("RBS", winX, winY,
-		winWidth_, winHeight_, SDL_WINDOW_SHOWN);
-	RENDERER_ = SDL_CreateRenderer(WINDOW_, -1, SDL_RENDERER_ACCELERATED);
+	// Create the renderer
+	RENDERER_ = SDL_CreateRenderer(WINDOW_, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-	if (WINDOW_ == nullptr || RENDERER_ == nullptr)
-		cout << "Error initializing SDL\n";
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-	{
-		cout << "Error initializing SDL_Mixer" << endl;
-	}
+	// Clear screen (background color)
+	SDL_SetRenderDrawColor(RENDERER_, 0, 0, 0, 255);
+	SDL_RenderClear(RENDERER_);
+	SDL_RenderPresent(RENDERER_);
+}
 
-	srand(time(nullptr)); //semilla de aleatorios
-
-	//Creamos maquina de estados
-	stateMachine_ = new StateMachine();
-
-	//Fuente
-	font = new Font(FONT_PATH + "OpenSans-Regular.ttf", 50);
-	fontTexture = new Texture(RENDERER_); //ESTO CREO QUE HABRIA QUE CAMBIARLO A TEXTURE MANAGER
-
-	//Cargamos las texturas
+void Game::loadResources()
+{
+	// Load Textures
 	TheTextureManager::Instance()->load("..\\images\\play.png", "0", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\bag.png", "1", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\shop.png", "2", RENDERER_);
@@ -57,11 +74,11 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\fruit.png", "5", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\invent.png", "6", RENDERER_);
 	//TheTextureManager::Instance()->load("..\\images\\inventFront.png", "7", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\keyboard.png", "8", RENDERER_, 1 ,2);
+	TheTextureManager::Instance()->load("..\\images\\keyboard.png", "8", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\backPack.png", "9", RENDERER_);
 	//TheTextureManager::Instance()->load("..\\images\\backPackBack.png", "10", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\abc.png", "11", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\selector.png", "12", RENDERER_, 1,2);
+	TheTextureManager::Instance()->load("..\\images\\selector.png", "12", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\name.png", "13", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\weapons.png", "14", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\potions.png", "15", RENDERER_);
@@ -70,7 +87,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\grey_button.png", "18", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\Battle_UI_Personajes.png", "19", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\Battle_UI_Vida.png", "20", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\weaponsSet.png", "21", RENDERER_, 8,8);
+	TheTextureManager::Instance()->load("..\\images\\weaponsSet.png", "21", RENDERER_, 8, 8);
 	TheTextureManager::Instance()->load("..\\images\\transition.png", "22", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\go.png", "23", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\bigbox.png", "24", RENDERER_);
@@ -80,7 +97,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\buttonArea.png", "28", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\emptyBox.png", "29", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\fondo.png", "fondoBatallaTuto", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\MainMenu.png", "MainMenu", RENDERER_, 1,2);
+	TheTextureManager::Instance()->load("..\\images\\MainMenu.png", "MainMenu", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\BattlePlayer.png", "BattlePlayer", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\BattleEnemy.png", "BattleEnemy", RENDERER_);
 	//TheTextureManager::Instance()->load("..\\RedBrickSky\assets\\Personaje1.png", "Personaje1", RENDERER_);
@@ -90,7 +107,7 @@ Game::Game()
 	TheTextureManager::Instance()->load("..\\images\\seleccionaOpcion.png", "selOptTexto", RENDERER_);
 	TheTextureManager::Instance()->load("assets/BetaTutorial.png", "level0", RENDERER_);
 
-	//CARGA DE SONIDOS
+	// Load Sounds
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\click.wav", "click", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\punch.wav", "punch", SOUND_SFX);
@@ -101,81 +118,30 @@ Game::Game()
 	TheSoundManager::Instance()->load("..\\sounds\\music.wav", "music", SOUND_MUSIC);
 
 	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
+}
 
-	//Registramos los tipos en la Game Object Factory
+void Game::registerTypes()
+{
+	// Register types in Game Object Factory
 	TheGameObjectFactory::Instance()->registerType("Player", new PlayerCreator());
 	TheGameObjectFactory::Instance()->registerType("Interactuable", new InteractuableCreator());
 	TheGameObjectFactory::Instance()->registerType("NPC", new NPCcreator());
 	TheGameObjectFactory::Instance()->registerType("Cartel", new CartelCreator());
 	TheGameObjectFactory::Instance()->registerType("Bag", new BagCreator());
-
-	//inicializamos booleanos de control
-	exit_ = false; 
-	error_ = false; 
-
-	// milliseconds per frame -> 16.7 = 60 frames/s - 33.3 = 30 frames/s
-	FRAME_RATE_ = 33.3; // El valor original era 130, por si fuera necesario
-
-
 }
 
-Game::~Game()
+void Game::begin()
 {
-	clean();
-}
-
-void Game::render() 
-{
-	if(!dynamic_cast<TransitionState*>(stateMachine_->currentState())) SDL_RenderClear(Game::Instance()->getRenderer()); // CACA CACA CACA. MUCHA CACA
-
-	//renderizamos los objetos
-	SDL_SetRenderDrawColor(RENDERER_, 0, 255, 255, 255);
-	stateMachine_->currentState()->render();
-	if (!exit_) SDL_RenderPresent(RENDERER_);
-}
-
-void Game::update() 
-{
-	stateMachine_->currentState()->update();
-}
-
-void Game::handleEvents() 
-{
-	SDL_Event event;
-
-	bool capturedEvent = false;
-	//en cuanto capturemos un evento, salimos, asi evitamos fallos cuando cambiemos de estado
-	//porque en cuanto cambiemos se dejaran de gestionar mas eventos
-
-	while (SDL_PollEvent(&event) && !exit_ &&!capturedEvent) {
-		capturedEvent = (stateMachine_->currentState()->handleEvent(event));
-	}
-
-	//Comprobaremos del mismo modo si se ha conectado o desconectado el mando 
-	if (event.type == SDL_JOYDEVICEADDED && XboxController::Instance()->getNumControllers() == 0) 
-		XboxController::Instance()->insertController();
-	else if (event.type == SDL_JOYDEVICEREMOVED)
-		XboxController::Instance()->removeController();
-	
-}
-
-void Game::begin() 
-{
+	stateMachine_ = new StateMachine();
 	stateMachine_->pushState(new MainMenuState());
 	run();
 }
 
-void Game::exitApp() 
-{
-	exit_ = true;
-}
-
-void Game::run() 
+void Game::run()
 {
 	int startime, frametime;
-	while (!exit_ && !error_) 
+	while (!exit_ && !error_)
 	{
-		//flujo natural de bucle
 		startime = SDL_GetTicks();
 
 		handleEvents();
@@ -184,41 +150,47 @@ void Game::run()
 
 		frametime = SDL_GetTicks() - startime;
 
-		if (frametime < FRAME_RATE_)SDL_Delay(FRAME_RATE_ - frametime);
+		if (frametime < FRAME_RATE_) SDL_Delay(FRAME_RATE_ - frametime);
 	}
+
+	clean();
 }
 
-void Game::textPrinter(string text, int destH, int destX, int destY, SDL_Color color) 
+void Game::handleEvents()
 {
-	std::cout << "Printing text" << std::endl;
+	SDL_Event event;
 
-	SDL_Rect font_dest;
+	bool capturedEvent = false;
+	//en cuanto capturemos un evento, salimos, asi evitamos fallos cuando cambiemos de estado
+	//porque en cuanto cambiemos se dejaran de gestionar mas eventos
 
-	font_dest.w = destH * text.size();
-	font_dest.h = destH;
-	
-	font_dest.x = destX;
-	font_dest.y = destY;
-
-	fontTexture->loadFromText(RENDERER_, text, font, color);
-	fontTexture->render(font_dest, SDL_FLIP_NONE);
-	SDL_RenderPresent(RENDERER_); //ESTE RENDER PRESENT TIENE QUE DESAPARECER AHHHHHHHHHHHHH
-}
-
-
-bool Game::canActivate(Dialogue* d)
-{
-	bool ret = true;
-
-	/*for (Character* character : characters_)
+	while (SDL_PollEvent(&event) && !exit_ && !capturedEvent) 
 	{
-		if (character->isActive())
-			ret = false;
-	}*/
+		capturedEvent = (stateMachine_->currentState()->handleEvent(event));
+	}
 
-	return ret;
+	//Comprobaremos del mismo modo si se ha conectado o desconectado el mando 
+	if (event.type == SDL_JOYDEVICEADDED && XboxController::Instance()->getNumControllers() == 0)
+		XboxController::Instance()->insertController();
+	else if (event.type == SDL_JOYDEVICEREMOVED)
+		XboxController::Instance()->removeController();
+
 }
 
+void Game::update()
+{
+	stateMachine_->currentState()->update();
+}
+
+void Game::render() 
+{
+	if(!static_cast<TransitionState*>(stateMachine_->currentState())) SDL_RenderClear(Game::Instance()->getRenderer());
+
+	//renderizamos los objetos
+	SDL_SetRenderDrawColor(RENDERER_, 0, 255, 255, 255);
+	stateMachine_->currentState()->render();
+	if (!exit_) SDL_RenderPresent(RENDERER_);
+}
 
 void Game::clean()
 {
@@ -227,7 +199,15 @@ void Game::clean()
 
 	delete stateMachine_;
 
+	SDL_DestroyRenderer(RENDERER_);
+	RENDERER_ = nullptr;
+
+	SDL_DestroyWindow(WINDOW_);
+	WINDOW_ = nullptr;
+
 	Mix_Quit();
 	TTF_Quit();
+	IMG_Quit();
+
 	SDL_Quit();
 }

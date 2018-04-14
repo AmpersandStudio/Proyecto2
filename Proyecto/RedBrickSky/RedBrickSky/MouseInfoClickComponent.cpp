@@ -35,8 +35,5 @@ bool MouseInfoClickComponent::handleEvent(GameObject* o, const SDL_Event& event)
 		active_ = false;
 	}
 
-	if(	active_)
-		Game::Instance()->textPrinter("Hola", 50, 2, 2, Game::Instance()->getBlackColor());
-
 	return handledEvent;
 }
