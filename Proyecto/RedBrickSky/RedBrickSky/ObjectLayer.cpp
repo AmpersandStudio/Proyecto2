@@ -40,6 +40,9 @@ void ObjectLayer::update(Level* pLevel)
 	//GRASS
 	m_collisionManager.checkPlayerGrassCollision(pLevel->getPlayer(), pLevel->getGrasseableLayers());
 
+	//DOORS 
+	m_collisionManager.checkPlayerDoorCollision(pLevel->getPlayer(), pLevel->getDoorLayer());
+
 	for (GameObject* go : m_gameObjects)
 	{
 		go->update();

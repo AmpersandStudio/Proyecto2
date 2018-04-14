@@ -37,12 +37,15 @@ private:
 	int money;
 
 	vector<estado> inventory;
+
+	vector<bool> doors;
 	
 
 	string name;
 
 	GameManager() {
 
+		doors = { true, true, false };
 		money = 500;
 
 		name = "";
@@ -62,12 +65,16 @@ public:
 
 	//Metodos para el inventario
 	vector<estado> copyInventory();	
+	vector<bool>& getDoors() { return doors; };
+
 	int inventorySize() { return inventory.size(); };
 	void setInventory(estado t) { inventory.push_back(t); };
 	void changeInventory(vector<estado> v) { inventory.clear(); inventory = v; };
+
 	int getMoney() { return money; };
 	void addMoney(int m) { money += m; };
 	void setMoney(int m) { money = m; };
+
 	void setName(string n) { name = n;  };
 
 };

@@ -51,6 +51,32 @@ void CollisionManager::checkPlayerGrassCollision(Player* pPlayer, const std::vec
 	}
 }
 
+void CollisionManager::checkPlayerDoorCollision(Player* pPlayer, std::vector<TileLayer*>& doorLayer)
+{
+	if (checkCollision(pPlayer, doorLayer) != 0)
+	{
+		int i = 0;
+		std::vector<TileLayer*>::const_iterator it = doorLayer.begin();
+		while (it != doorLayer.end())
+		{
+			if (GameManager::Instance()->getDoors()[(*it)->getDoorID()])
+				doorLayer.erase(doorLayer.begin() + i);
+			else
+			{
+				pPlayer->collision();
+			}
+
+			if (doorLayer.empty())
+				break;
+			else
+			{
+				++it;
+				i++;
+			}
+		}
+	}
+}
+
 bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer*>& collisionLayers) {
 	for (std::vector<TileLayer*>::const_iterator it = collisionLayers.begin(); it != collisionLayers.end(); ++it)
 	{

@@ -34,6 +34,8 @@ public:
 
 	void checkPlayerGrassCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers);
 
+	void checkPlayerDoorCollision(Player * pPlayer, std::vector<TileLayer*>& doorLayer);
+
 	void checkCartelesInteractions(Player* pPlayer, const std::vector<Cartel*>&  c);
 
 	void checkPlayerGOinteraction(NPC* o, Player* p);

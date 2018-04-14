@@ -64,7 +64,7 @@ Level* LevelParser::parseLevel(const char *levelFile)
 			}
 			else if (e->FirstChildElement()->Value() == std::string("data") || (e->FirstChildElement()->NextSiblingElement() != 0 && e->FirstChildElement()->NextSiblingElement()->Value() == std::string("data")))
 			{
-				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets(), pLevel->getCollisionLayers(), pLevel->getGrassLayers());
+				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets(), pLevel->getCollisionLayers(), pLevel->getGrassLayers(), pLevel->getDoorLayers());
 			}
 		}
 	}
@@ -220,12 +220,13 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 	pLayers->push_back(pObjectLayer);
 }
 
-void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers, const std::vector<Tileset>* pTilesets, std::vector<TileLayer*> *pCollisionLayers, std::vector<TileLayer*> *pGrassLayers)
+void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers, const std::vector<Tileset>* pTilesets, std::vector<TileLayer*> *pCollisionLayers, std::vector<TileLayer*> *pGrassLayers, std::vector<TileLayer*> *pDoorLayers)
 {
 	TileLayer* pTileLayer = new TileLayer(m_tileSize, m_width, m_height, *pTilesets);
 
 	bool collidable = false;
 	bool grass = false;
+	bool door = false;
 
 	// tile data
 	std::vector<std::vector<int>> data;
@@ -249,6 +250,17 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 					else if (property->Attribute("name") == std::string("BigGrass"))
 					{
 						grass = true;
+					}
+					else if (property->Attribute("name") == std::string("door"))
+					{
+						door = true;
+					}
+
+					else if (property->Attribute("name") == std::string("doorID"))
+					{
+						int doorID;
+						property->Attribute("value", &doorID);
+						pTileLayer->setDoorID(doorID);
 					}
 				}
 			}
@@ -294,12 +306,15 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 	{
 		pCollisionLayers->push_back(pTileLayer);
 	}
+	if (door)
+		pDoorLayers->push_back(pTileLayer);
 
 	else if (grass)
 	{
 		pGrassLayers->push_back(pTileLayer);
 		
 	}
+
 
 	pLayers->push_back(pTileLayer);
 }

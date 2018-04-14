@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="98">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="98">
  <properties>
   <property name="000" value="assets/000.png"/>
   <property name="Personaje1" value="assets/Personaje1.png"/>
@@ -49,7 +49,17 @@
  </layer>
  <layer name="Top-Top" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt3EFSgzAUgGHSopdox72udem4rAfwIHoNR4/gDezeC6gdj+Ed7FoiZQg2EgLPJoH/m3lDCRBCoDRkQrMMQBevKsvejHhXzfRqfqPqbTaWtIqaldP5bH+Zbbu2vHx8zmW3udyV/8pyHG159CmH6SQvp8u8ma7nbWnmNhL7XQjmOcRXUe9bR913WWesXnbTRRHLkAURclrE2T/v48bzHuO7PvxwPgBA3vnAdmhsLgSPR9eNLb/bA9TZs2Uf65GdKwAAICvFtsJdgmWuHKJNCKBme0ZKUcr3vTEbW99ISL+/q0PrVucn3cbpcj9JsV0FIG59xihMeVwD4sbzMACgC34vEIvU+30kx8BgPJ4c42Jdy2OxdpSzWv4R+N0EKcdHoUsAoK+p3Xdjtiri2jNQu1dl/HzOm/FQxKOZpvYjVra+dPrXAZjop0IKfK7TFMbRTW3cTWr/a9B2vVXvY//Vvor9fW19bLqMrnJ2WQcyQn8/zPPs+zn0/rlGAbdvNpFPKg==
+   eJzt3EFSgzAUgGHSopdox72udem4tAfwAt5Ar+EdvIHdewG14zG8g64L0gjYSBJ4Ngn838wbSoAQAqUhE5plAFy8qCx7bcSbaqfr+Y2qt9kY0jQ1q6bz2f4y03Zdefn4mMtuc7kr/5XhOLry6FOOppO8mi7zdno5b0prbiOx34VgnkN8FvX+Zal7l3XG6nk3XRSxDFkQIadFnP3zPm487zG+68MP5wMA5J0PbIfG5kLweMq6MeV3d4A6ezLsYz2ycwUAAGSl2Fa4T7DM2iHahABqpmekFKV83xuzsfWNhPT7uzq0bsv8pNs4LveTFNtVAOLWZ4zClMc1IG48DwMAXPB7gVik3u8jOQYG4/FoGRdrWx6LtaWcevl74HcTpBwfhS4BgL6mdt+N2XURK89A7UFV8f05b8dtVsVPmtqPWJn60ulfB9BEPxVS4HOdpjCObmrjblL7X4Ou602/j/1X+yr297XLYyvLaCunyzqQEfr70TzPvp9D759rFLDbAvnATss=
+  </data>
+ </layer>
+ <layer name="Door0" width="50" height="100">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+   <property name="door" type="bool" value="true"/>
+   <property name="doorID" type="int" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzkENADAIBLB7IH94xgK/JaRV0AQAAAAAAAAAAAAAAAAAAOCmV0nX7wUAAADA3gBHwQEi
   </data>
  </layer>
  <layer name="Fences&amp;Trees" width="50" height="100">
