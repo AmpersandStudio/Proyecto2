@@ -28,10 +28,6 @@ BattleState::BattleState()
 	END_ = false; Attacking_ = false; attackAnim_ = false;
 
 	//Componentes necesarios
-	rcF = new RenderFrameComponent(); //Render Frame
-	rc = new RenderFullComponent(); //Render FS
-									//Info = new MouseInfoClickComponent();
-	MIC = new MouseInputForBattleComponent();
 
 	fondo_ = new GameComponent();
 	fondo_->setTextureId("fondoBatallaTuto");
@@ -44,6 +40,10 @@ BattleState::BattleState()
 BattleState::~BattleState()
 {
 	SDL_SetTextureAlphaMod(TheTextureManager::Instance()->getTexture("23"), 255); //para restaurar el alpha original
+	if (interfaz.button_0 != 0) delete interfaz.button_0;
+	if (interfaz.button_1 != 0) delete interfaz.button_1;
+	if (interfaz.button_2 != 0) delete interfaz.button_2;
+	if (interfaz.button_3 != 0) delete interfaz.button_3;
 }
 
 void BattleState::init() {
@@ -52,6 +52,8 @@ void BattleState::init() {
 		alpha_ = alpha_ - 20;
 	}
 	else {
+		GameObject* aux = stage.back();
+		if (aux != 0) delete aux;
 		stage.pop_back();
 		fade2Done_ = true;
 	}
@@ -69,7 +71,7 @@ void BattleState::createUI() {
 	UI_Background->setTextureId("24");
 	UI_Background->setWidth(Game::Instance()->getWinWidth()); UI_Background->setHeight((170));
 	UI_Background->setPosition(position0);
-	UI_Background->addRenderComponent(rcF);
+	UI_Background->addRenderComponent(new RenderFrameComponent());
 	stage.push_back(UI_Background);
 
 	createBattleButtons();
@@ -131,7 +133,6 @@ void BattleState::createUI() {
 		i++;
 	}
 
-	RenderSingleFrameComponent* rsfc = new RenderSingleFrameComponent();
 	Vector2D posWe(1, 1);
 
 	if (foundWP1) {
@@ -142,7 +143,7 @@ void BattleState::createUI() {
 		int rowF1 = w1.FilFrame;
 
 		Weapon1 = new GameComponent();
-		Weapon1->addRenderComponent(rsfc);
+		Weapon1->addRenderComponent(new RenderSingleFrameComponent());
 		Weapon1->setTextureId(text1);
 		Weapon1->setColFrame(colF1);
 		Weapon1->setRowFrame(rowF1);
@@ -161,7 +162,7 @@ void BattleState::createUI() {
 		int rowF2 = w2.FilFrame;
 
 		Weapon2 = new GameComponent();
-		Weapon2->addRenderComponent(rsfc);
+		Weapon2->addRenderComponent(new RenderSingleFrameComponent());
 		Weapon2->setTextureId(text2);
 		Weapon2->setColFrame(colF2);
 		Weapon2->setRowFrame(rowF2);
@@ -392,7 +393,7 @@ void BattleState::createCharacterInfo()
 	UI_Player->setTextureId("26");
 	UI_Player->setWidth(250); UI_Player->setHeight((100));
 	UI_Player->setPosition(position0);
-	UI_Player->addRenderComponent(rcF);
+	UI_Player->addRenderComponent(new RenderFrameComponent());
 	stage.push_back(UI_Player);
 
 	//Cuadro Enemigo
@@ -401,7 +402,7 @@ void BattleState::createCharacterInfo()
 	UI_Enemy->setTextureId("25");;
 	UI_Enemy->setWidth(250); UI_Enemy->setHeight((100));
 	UI_Enemy->setPosition(position0);
-	UI_Enemy->addRenderComponent(rcF);
+	UI_Enemy->addRenderComponent(new RenderFrameComponent());
 	stage.push_back(UI_Enemy);
 
 	updateVidas();
@@ -418,7 +419,7 @@ void BattleState::createBattleButtons()
 	position0.setX(2.4); position0.setY(6.4);
 	interfaz.button_0->setPosition(position0); interfaz.button_0->setWidth(buttonWidth); interfaz.button_0->setHeight(buttonHeight);
 	//interfaz.button_0->addRenderComponent(rcF);
-	interfaz.button_0->addInputComponent(MIC);
+	interfaz.button_0->addInputComponent(new MouseInputForBattleComponent());
 	//stage.push_back(interfaz.button_0);
 
 	//Boton 1
@@ -426,7 +427,7 @@ void BattleState::createBattleButtons()
 	position0.setX(3.6); position0.setY(6.4);
 	interfaz.button_1->setPosition(position0); interfaz.button_1->setWidth(buttonWidth); interfaz.button_1->setHeight(buttonHeight);
 	//interfaz.button_1->addRenderComponent(rcF); 
-	interfaz.button_1->addInputComponent(MIC);
+	interfaz.button_1->addInputComponent(new MouseInputForBattleComponent());
 	//stage.push_back(interfaz.button_1);
 
 	//Boton 2
@@ -434,7 +435,7 @@ void BattleState::createBattleButtons()
 	position0.setX(2.4); position0.setY(7.5);
 	//interfaz.button_2->addRenderComponent(rcF);
 	interfaz.button_2->setPosition(position0); interfaz.button_2->setWidth(buttonWidth); interfaz.button_2->setHeight(buttonHeight);
-	interfaz.button_2->addInputComponent(MIC);
+	interfaz.button_2->addInputComponent(new MouseInputForBattleComponent());
 	//stage.push_back(interfaz.button_2);
 
 	//Boton 3
@@ -442,14 +443,14 @@ void BattleState::createBattleButtons()
 	position0.setX(3.6); position0.setY(7.5);
 	interfaz.button_3->setPosition(position0); interfaz.button_3->setWidth(buttonWidth); interfaz.button_3->setHeight(buttonHeight);
 	//interfaz.button_3->addRenderComponent(rcF); 
-	interfaz.button_3->addInputComponent(MIC);
+	interfaz.button_3->addInputComponent(new MouseInputForBattleComponent());
 	//stage.push_back(interfaz.button_3);
 
 	//Boton prueba
 	interfaz.pruebaTexto_ = new Button("selOptTexto", nullptr, 4);
 	position0.setX(0.15); position0.setY(4.65);
 	interfaz.pruebaTexto_->setPosition(position0); interfaz.pruebaTexto_->setWidth(300); interfaz.pruebaTexto_->setHeight(100);
-	interfaz.pruebaTexto_->addRenderComponent(rcF);
+	interfaz.pruebaTexto_->addRenderComponent(new RenderFrameComponent());
 	//interfaz.pruebaTexto_->addInputComponent(MIC);
 	stage.push_back(interfaz.pruebaTexto_);
 
@@ -474,12 +475,12 @@ void BattleState::updateVidas()
 	interfaz.UI_Vida_Player->setTextureId("20");
 	interfaz.UI_Vida_Player->setWidth(interfaz.Vida_Width); interfaz.UI_Vida_Player->setHeight((interfaz.Vida_height));
 	interfaz.UI_Vida_Player->setPosition(interfaz.VPlayer_position);
-	interfaz.UI_Vida_Player->addRenderComponent(rcF);
+	interfaz.UI_Vida_Player->addRenderComponent(new RenderFrameComponent());
 
 	interfaz.UI_Vida_Enemy->setTextureId("20");
 	interfaz.UI_Vida_Enemy->setWidth(interfaz.Vida_Width); interfaz.UI_Vida_Enemy->setHeight((interfaz.Vida_height));
 	interfaz.UI_Vida_Enemy->setPosition(interfaz.VEnemy_position);
-	interfaz.UI_Vida_Enemy->addRenderComponent(rcF);
+	interfaz.UI_Vida_Enemy->addRenderComponent(new RenderFrameComponent());
 
 	stage.push_back(interfaz.UI_Vida_Player);
 	stage.push_back(interfaz.UI_Vida_Enemy);

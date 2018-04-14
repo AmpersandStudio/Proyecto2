@@ -87,11 +87,7 @@ private:
 	bool bag_;
 	bool run_;
 
-	RenderComponent* rcF; //Render Frame
-	RenderComponent* rc; //Render FS
 	RenderComponent* rcfade;
-	InputComponent* MIC;
-	InputComponent* Info;
 
 	GameComponent* fade_;
 	int alpha_;
