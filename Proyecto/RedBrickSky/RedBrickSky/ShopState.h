@@ -26,17 +26,6 @@ class ShopState :
 	public GameState
 {
 private:
-	//COMPONENTES NECESARIOS
-	RenderComponent* rcF; //Render Frame
-	RenderComponent* rc; //Render FS
-	RenderComponent* rcSF;
-	InputComponent* MSC;
-	InputComponent* MSOC;
-	InputComponent* MIC;
-	InputComponent* DND;
-	InputComponent* DND2;
-	InputComponent* xbox;
-
 	ShopItems* items;
 	int money;
 

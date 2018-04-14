@@ -13,6 +13,7 @@ ShopXboxControllerComponent::ShopXboxControllerComponent(int iniX, int iniY, int
 	shop = s;
 	ShopItems* items = new ShopItems();
 	shopObjects = items->getItems();
+	delete items;
 
 	if (XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
 		XboxController::Instance()->insertController();

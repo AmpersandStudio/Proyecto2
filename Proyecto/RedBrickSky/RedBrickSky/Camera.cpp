@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "Camera.h"
 
-Camera* Camera::s_pCamera = 0;
+Camera Camera::s_pCamera;
 
 Camera::Camera() : m_pTarget(0), m_position(0, 0)
 {
@@ -10,7 +10,8 @@ Camera::Camera() : m_pTarget(0), m_position(0, 0)
 
 Camera::~Camera()
 {
-	delete m_pTarget;
+	//if (m_pTarget != nullptr)
+	//	delete m_pTarget;
 }
 
 const Vector2D Camera::getPosition() const

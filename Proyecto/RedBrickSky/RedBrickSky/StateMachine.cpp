@@ -15,7 +15,10 @@ void StateMachine::pushState(GameState* gs) {
 
 void StateMachine::popState() {
 	if (!gameStates.empty()) {
-		gameStates.pop();
+		if (gameStates.top() != nullptr) {
+			delete gameStates.top();
+			gameStates.pop();
+		}
 	}
 }
 

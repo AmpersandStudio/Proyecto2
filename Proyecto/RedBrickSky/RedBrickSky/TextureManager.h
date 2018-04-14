@@ -12,6 +12,8 @@
 class TextureManager
 {
 public:
+	~TextureManager();
+
 	static TextureManager* Instance()
 	{
 		if (s_pInstance == 0)
@@ -45,7 +47,6 @@ public:
 
 private:
 	TextureManager();
-	~TextureManager();
 
 	std::map<std::string, SDL_Texture*> m_textureMap;
 	std::map<std::string, std::pair<int, int>> m_textureDims;

@@ -11,8 +11,10 @@ KeyBoardShopComponent::KeyBoardShopComponent(int iniX, int iniY, int col, int fi
 	distance = dis;
 	SP = v;
 	shop = s;
+
 	ShopItems* items = new ShopItems();
 	shopObjects = items->getItems();
+	delete items;
 }
 
 KeyBoardShopComponent::~KeyBoardShopComponent()

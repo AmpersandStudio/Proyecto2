@@ -47,11 +47,11 @@ private:
 
 		name = "";
 	}
-	~GameManager() {};
 
 	static GameManager* s_pInstance;
 
 public:
+	~GameManager() {};
 	static GameManager* Instance()
 	{
 		if (s_pInstance == 0) {

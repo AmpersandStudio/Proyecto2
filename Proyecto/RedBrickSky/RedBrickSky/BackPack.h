@@ -18,23 +18,12 @@
 class BackPack : public GameState
 {
 private:
-
-	//COMPONENTES NECESARIOS
-	RenderComponent* rcF; //Render Frame
-	RenderComponent* rc; //Render FS
-	RenderComponent* rcSF;
-	InputComponent* MSC;
-	InputComponent* MSOC;
-	InputComponent* MIC;
-	InputComponent* DND;
-	InputComponent* DND2;
-	InputComponent* Info;
-
 	int money;
 
 	vector<estado> invent;
 	vector<estado> SP;
 	vector<GameObject*> StandPointsO;
+	vector<GameObject*> auxGOforDeleting;
 	
 	vector<GameComponent*> botones;
 

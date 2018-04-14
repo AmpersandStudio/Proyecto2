@@ -29,7 +29,7 @@ Game::Game() : exit_(false), error_(false), FRAME_RATE_(16.7)
 
 Game::~Game()
 {
-	
+	clean();
 }
 
 void Game::initSDL()
@@ -152,8 +152,6 @@ void Game::run()
 
 		if (frametime < FRAME_RATE_) SDL_Delay(FRAME_RATE_ - frametime);
 	}
-
-	clean();
 }
 
 void Game::handleEvents()
@@ -210,4 +208,10 @@ void Game::clean()
 	IMG_Quit();
 
 	SDL_Quit();
+
+	//no hay otra manera de borrar esto, gracias Shaun Mitchell!
+	delete TheGameObjectFactory::Instance();
+	delete TheTextureManager::Instance();
+	delete TheSoundManager::Instance();
+	delete GameManager::Instance();
 }

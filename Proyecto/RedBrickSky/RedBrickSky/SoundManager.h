@@ -14,6 +14,7 @@ enum sound_type { SOUND_MUSIC, SOUND_SFX };
 class SoundManager
 {
 public:
+	~SoundManager() {}
 
 	static SoundManager* Instance()
 	{
@@ -39,7 +40,6 @@ private:
 	static SoundManager* s_pInstance;
 
 	SoundManager() {}
-	~SoundManager() {}
 
 	std::map<std::string, Mix_Chunk*> m_sfxs;
 	std::map<std::string, Mix_Music*> m_music;

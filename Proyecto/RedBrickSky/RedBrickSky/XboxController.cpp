@@ -1,15 +1,25 @@
 #include "XboxController.h"
 
+XboxController XboxController::s_pInstance;
 
-XboxController* XboxController::s_pInstance = 0;
-
-XboxController::XboxController()
+XboxController::XboxController() : numControllers(0)
 {
 }
 
 
 XboxController::~XboxController()
 {
+	clearControllerDX();
+}
+
+void XboxController::clearControllerDX() {
+	for (int i = 0; i < m_joystickValues.size(); i++) {
+		if (m_joystickValues[i].first != nullptr)
+			delete m_joystickValues[i].first;
+		if (m_joystickValues[i].second != nullptr)
+			delete m_joystickValues[i].second;
+		m_joystickValues.clear();
+	}
 }
 
 void XboxController::insertController() {
@@ -61,6 +71,8 @@ void XboxController::insertController() {
 void XboxController::removeController() {
 	if (m_bJoysticksInitialised)
 	{
+		clearControllerDX();
+
 		for (size_t i = 0; i < numControllers; ++i)
 		{
 			SDL_JoystickClose(m_joysticks[i]);
@@ -133,7 +145,7 @@ void XboxController::onJoystickAxisMove(SDL_Event event)
 	//SOLO 1 MANDO
 	int whichOne = 0; //event.jaxis.which;
 
-					  //Left Stick: left / right
+	//Left Stick: left / right
 	if (event.jaxis.axis == 0)
 	{
 		if (event.jaxis.value > m_joystickDeadZone)
@@ -168,36 +180,36 @@ void XboxController::onJoystickAxisMove(SDL_Event event)
 	}
 
 	//Right Stick: left / right
-	if (event.jaxis.axis == 2)
+	if (event.jaxis.axis == 3)
 	{
 		if (event.jaxis.value > m_joystickDeadZone)
 		{
-			m_joystickValues[whichOne].first->setX(1);
+			m_joystickValues[whichOne].second->setX(1);
 		}
 		else if (event.jaxis.value < -m_joystickDeadZone)
 		{
-			m_joystickValues[whichOne].first->setX(-1);
+			m_joystickValues[whichOne].second->setX(-1);
 		}
 		else
 		{
-			m_joystickValues[whichOne].first->setX(0);
+			m_joystickValues[whichOne].second->setX(0);
 		}
 	}
 
 	//Right Stick: up / down
-	if (event.jaxis.axis == 5)
+	if (event.jaxis.axis == 4)
 	{
 		if (event.jaxis.value > m_joystickDeadZone)
 		{
-			m_joystickValues[whichOne].first->setY(1);
+			m_joystickValues[whichOne].second->setY(1);
 		}
 		else if (event.jaxis.value < -m_joystickDeadZone)
 		{
-			m_joystickValues[whichOne].first->setY(-1);
+			m_joystickValues[whichOne].second->setY(-1);
 		}
 		else
 		{
-			m_joystickValues[whichOne].first->setY(0);
+			m_joystickValues[whichOne].second->setY(0);
 		}
 	}
 }

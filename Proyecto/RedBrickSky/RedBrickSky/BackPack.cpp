@@ -12,10 +12,7 @@ BackPack::BackPack()
 	cout << "Tam Inventario:  " << invent.size() << endl;
 
 	//Componentes necesarios
-	rcF = new RenderSingleFrameComponent(); //Render Frame
-	rc = new RenderFullComponent(); //Render FS
-	rcSF = new RenderSingleFrameComponent();
-	MIC = new MouseInputComponentButton();
+	
 
 	//Creamos la matriz
 	matriz = new estado*[numFils];
@@ -33,7 +30,22 @@ BackPack::BackPack()
 
 BackPack::~BackPack()
 {
+	if (matriz != nullptr) {
+		for (int i = 0; i < numFils; i++)
+			if (matriz[i] != nullptr)
+				delete[]matriz[i];
+		delete[]matriz;
+	}
+	matriz = nullptr;
 
+	//para borrar la basura de punteros que referencian a nada
+	//he hecho un vector auxiliar que los guarda para borrarlos aqui
+	for (int i = 0; i < auxGOforDeleting.size(); i++) {
+		if (auxGOforDeleting[i] != 0) delete auxGOforDeleting[i];
+	}
+	auxGOforDeleting.clear();
+
+	GameState::~GameState();
 }
 
 bool BackPack::handleEvent(const SDL_Event & event)
@@ -84,8 +96,6 @@ bool BackPack::handleEvent(const SDL_Event & event)
 }
 
 void BackPack::toMenu() {
-	
-	
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->popState();
 }
@@ -190,7 +200,7 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 	Vector2D position0(st.x, st.y);
 
 	gc->setTextureId(matriz[x][y].tx); gc->setPosition(position0); gc->setWidth(matriz[x][y].w); gc->setHeight(matriz[x][y].h);
-	gc->addRenderComponent(rcSF); gc->addInputComponent(new MouseInfoClickComponent(st)); gc->addInputComponent(new DragNDropComponent(this, aux));
+	gc->addRenderComponent(new RenderSingleFrameComponent()); gc->addInputComponent(new MouseInfoClickComponent(st)); gc->addInputComponent(new DragNDropComponent(this, aux));
 	gc->setOriPos(position0);
 	gc->setColFrame(matriz[x][y].colFrame); gc->setRowFrame(matriz[x][y].FilFrame);
 	
@@ -234,7 +244,7 @@ void BackPack::creaSP() {
 			GameComponent* gc = new GameComponent();
 
 			gc->setTextureId("8"); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-			gc->addRenderComponent(rcF); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
+			gc->addRenderComponent(new RenderSingleFrameComponent()); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
 
 			stage.push_back(gc);
 			SP.push_back(matriz[i][j]); 
@@ -272,7 +282,7 @@ void BackPack::creaSP() {
 		GameComponent* gc = new GameComponent();
 
 		gc->setTextureId("8"); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-		gc->addRenderComponent(rcF); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
+		gc->addRenderComponent(new RenderSingleFrameComponent()); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
 
 		stage.push_back(gc);
 		SP.push_back(s);
@@ -294,7 +304,7 @@ void BackPack::creaSP() {
 		Vector2D position0(EquipedItems[x].x + 0.8, EquipedItems[x].y + 2.6);
 
 		gc->setTextureId(EquipedItems[x].tx); gc->setPosition(position0); gc->setWidth(EquipedItems[x].w); gc->setHeight(EquipedItems[x].h);
-		gc->addRenderComponent(rcSF); //gc->addInputComponent(new MouseInfoClickComponent(st)); 
+		gc->addRenderComponent(new RenderSingleFrameComponent()); //gc->addInputComponent(new MouseInfoClickComponent(st)); 
 		gc->setOriPos(position0);
 		gc->setColFrame(EquipedItems[x].colFrame); gc->setRowFrame(EquipedItems[x].FilFrame);
 		gc->addInputComponent(new DragNDropComponent(this, x * -1));
@@ -312,7 +322,7 @@ void BackPack::creaSP() {
 	Vector2D positionW(7, 6);
 
 	weapon->setTextureId("2"); weapon->setPosition(positionW); weapon->setWidth(150); weapon->setHeight(100);
-	weapon->addRenderComponent(rcF);  weapon->addInputComponent(new InventBottomsComponent(this, Weapons, true));
+	weapon->addRenderComponent(new RenderSingleFrameComponent());  weapon->addInputComponent(new InventBottomsComponent(this, Weapons, true));
 
 	stage.push_back(weapon);
 	botones.push_back(weapon);
@@ -323,7 +333,7 @@ void BackPack::creaSP() {
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
 	selector_->setWidth(50); selector_->setHeight(50);
 	selector_->setColFrame(0); selector_->setRowFrame(0);
-	selector_->addRenderComponent(rcF); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), numRows - 1, numFils, auxD, StandPointsO, this));
+	selector_->addRenderComponent(new RenderSingleFrameComponent()); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), numRows - 1, numFils, auxD, StandPointsO, this));
 	selector_->addInputComponent(new BagXboxControllerComponent(selecPos.getX(), selecPos.getY(), numRows - 1, numFils, auxD, StandPointsO, this));
 	//selector_->addInputComponent(MSC);
 	stage.push_back(selector_);
@@ -333,9 +343,12 @@ void BackPack::creaSP() {
 void BackPack::elimina() {
 
 	for (int i = 0; i < stage.size(); i++) {
-
-			stage.erase(stage.begin() + i);
-			i--;
+		GameObject* aux = *(stage.begin() + i);
+		if (aux != nullptr) {
+			auxGOforDeleting.push_back(aux);
+		}
+		stage.erase(stage.begin() + i);
+		i--;
 	}
 
 	SP.clear();
@@ -357,7 +370,7 @@ void BackPack::creaEscena() {
 	double height = 60;
 
 	bottonBack->setTextureId("3"); bottonBack->setPosition(position0); bottonBack->setWidth(width); bottonBack->setHeight(height);
-	bottonBack->addRenderComponent(rcF); bottonBack->addInputComponent(MIC);
+	bottonBack->addRenderComponent(new RenderSingleFrameComponent()); bottonBack->addInputComponent(new MouseScrollComponent());
 
 	stage.push_back(bottonBack);
 
@@ -379,7 +392,7 @@ void BackPack::creaFondoTienda() {
 
 	//Imagen de fondo de la tienda
 	GameComponent* backShop = new GameComponent();
-	backShop->setTextureId("9"); backShop->addRenderComponent(rc);
+	backShop->setTextureId("9"); backShop->addRenderComponent(new RenderFullComponent());
 	stage.push_back(backShop);
 }
 
@@ -390,7 +403,7 @@ void BackPack::createButtons(int x, int y, vector<estado> type, std::string t) {
 	Vector2D position(x, y);
 
 	GC->setTextureId(t); GC->setPosition(position); GC->setWidth(130); GC->setHeight(60);
-	GC->addRenderComponent(rcF);  GC->addInputComponent(new InventBottomsComponent(this, type, false));
+	GC->addRenderComponent(new RenderSingleFrameComponent());  GC->addInputComponent(new InventBottomsComponent(this, type, false));
 
 	stage.push_back(GC);
 	botones.push_back(GC);

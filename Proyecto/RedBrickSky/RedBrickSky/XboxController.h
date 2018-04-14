@@ -2,31 +2,28 @@
 #include <vector>
 #include "Vector2D.h"
 #include "GameObject.h"
-#include "checkML.h"
 class XboxController
 {
-	static XboxController* s_pInstance;
+	static XboxController s_pInstance;
 
 public:
 	static XboxController* Instance()
 	{
-		if (s_pInstance == 0) {
-			s_pInstance = new XboxController();
-		}
-		return s_pInstance;
+		return &s_pInstance;
 	}
 	XboxController();
 	~XboxController();
 
 	void insertController();
 	void removeController();
+	void clearControllerDX();
 	int m_joystickDeadZone = 10000;
 
 	std::vector<SDL_Joystick*> m_joysticks;
 	std::vector<std::vector<bool>> m_buttonStates;
 	std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;
 
-	int numControllers;
+	int numControllers = 0;
 
 
 	bool m_bJoysticksInitialised;

@@ -54,8 +54,6 @@ public:
 		return pCreator->createGameObject();
 	}
 
-private:
-	GameObjectFactory() {}
 	~GameObjectFactory() {
 		std::map<std::string, BaseCreator*>::iterator it = m_creators.begin();
 		for (it; it != m_creators.end(); it++) {
@@ -63,6 +61,9 @@ private:
 				delete ((*it).second);
 		}
 	}
+
+private:
+	GameObjectFactory() {}
 
 	static GameObjectFactory* s_pInstance;
 

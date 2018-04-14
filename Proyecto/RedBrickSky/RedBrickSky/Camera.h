@@ -5,14 +5,10 @@
 class Camera
 {
 public:
+	~Camera();
 	static Camera* Instance()
 	{
-		if (s_pCamera == 0)
-		{
-			s_pCamera = new Camera();
-		}
-
-		return s_pCamera;
+		return &s_pCamera;
 	}
 
 	void update(Vector2D velocity);
@@ -26,7 +22,6 @@ public:
 
 private:
 	Camera();
-	~Camera();
 
 	// the camera's target
 	Vector2D* m_pTarget;
@@ -37,7 +32,7 @@ private:
 	int mapWidth;
 	int mapHeight;
 
-	static Camera* s_pCamera;
+	static Camera s_pCamera;
 
 };
 

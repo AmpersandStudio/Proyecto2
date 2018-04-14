@@ -19,8 +19,6 @@ private:
 
 	int distance;
 
-	ShopItems* items;
-
 	int i = 0, j = 0;
 
 	vector<GameObject* > SP;
