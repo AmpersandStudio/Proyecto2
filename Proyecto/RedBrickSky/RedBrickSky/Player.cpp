@@ -7,6 +7,8 @@
 #include "BackPack.h"
 #include "Camera.h"
 
+
+
 Player::Player()
 {
 
@@ -33,6 +35,10 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	text = false;
 	previousPos_ = iniPosition_;
 	updateRect();
+	
+	
+	d_ = Dialogue("NPC1");
+	d_.update();;
 
 	TheCamera::Instance()->setTarget(&position_);
 
@@ -49,15 +55,18 @@ void Player::render()
 
 	if (text)
 	{
-		
-		TextureManager::Instance()->drawText("Juan cabrón salta una", TextureManager::ARIAL24, { 0,0,0,255 },
-			(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() + width_,
-			(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
+		d_.render();
+		/*TextureManager::Instance()->drawText("Juan cabrón salta una", TextureManager::ARIAL24, { 0,0,0,255 },
+			TheCamera::Instance()->getPosition().getX(),
+			TheCamera::Instance()->getPosition().getY() - 2080,
 			Game::Instance()->getRenderer());
 		TextureManager::Instance()->drawText("excepcion en un delete.", TextureManager::ARIAL24, { 0,0,0,255 },
 			(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() + width_,
-			(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY() + 24,
-			Game::Instance()->getRenderer());
+			(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
+			Game::Instance()->getRenderer());*/
+	
+		cout << TheCamera::Instance()->getPosition().getX() << endl;
+		cout << TheCamera::Instance()->getPosition().getY() << endl;
 	}
 }
 
@@ -81,43 +90,48 @@ bool Player::handleEvent(const SDL_Event& event)
 
 	if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 	{
-		if (event.key.keysym.sym == SDLK_LEFT)
+		if (!text)
 		{
-			velocity_.set(Vector2D(-m_moveSpeed, 0));
-			direction_.set(-1, 0);
+			if (event.key.keysym.sym == SDLK_LEFT)
+			{
+				velocity_.set(Vector2D(-m_moveSpeed, 0));
+				direction_.set(-1, 0);
 
-		}
-		if (event.key.keysym.sym == SDLK_RIGHT)
-		{
-			velocity_.set(Vector2D(m_moveSpeed, 0));
-			direction_.set(1, 0);
+			}
+			if (event.key.keysym.sym == SDLK_RIGHT)
+			{
+				velocity_.set(Vector2D(m_moveSpeed, 0));
+				direction_.set(1, 0);
 
-		}
-		if (event.key.keysym.sym == SDLK_UP)
-		{
-			velocity_.set(Vector2D(0, -m_moveSpeed));
-			direction_.set(0, -1);
+			}
+			if (event.key.keysym.sym == SDLK_UP)
+			{
+				velocity_.set(Vector2D(0, -m_moveSpeed));
+				direction_.set(0, -1);
 
-		}
-		if (event.key.keysym.sym == SDLK_DOWN)
-		{
-			velocity_.set(Vector2D(0, m_moveSpeed));
-			direction_.set(0, 1);
+			}
+			if (event.key.keysym.sym == SDLK_DOWN)
+			{
+				velocity_.set(Vector2D(0, m_moveSpeed));
+				direction_.set(0, 1);
 
+			}
+			if (event.key.keysym.sym == SDLK_r)
+			{
+				m_moveSpeed = (running_) ? 10 : 20;
+				running_ = !running_;
+			}
+			if (event.key.keysym.sym == SDLK_i)
+			{
+				Game::Instance()->getStateMachine()->pushState(new BackPack());
+			}
 		}
-		if (event.key.keysym.sym == SDLK_r)
-		{
-			m_moveSpeed = (running_) ? 10 : 20;
-			running_ = !running_;
-		}
+	
 		if (event.key.keysym.sym == SDLK_ESCAPE)
 		{
 			Game::Instance()->getStateMachine()->pushState(new PauseState());
 		}
-		if (event.key.keysym.sym == SDLK_i)
-		{
-			Game::Instance()->getStateMachine()->pushState(new BackPack());
-		}
+		
 		if (event.key.keysym.sym == SDLK_SPACE)	// interactuar
 		{
 			interacting();
@@ -131,7 +145,10 @@ bool Player::handleEvent(const SDL_Event& event)
 		}
 		if (event.key.keysym.sym == SDLK_t)
 		{
-			std::cout << text << endl;
+			//Dialogue d = Dialogue("NPC1");
+				
+			//std::cout << text << endl;
+
 			text = !text;
 		}
 		return true;

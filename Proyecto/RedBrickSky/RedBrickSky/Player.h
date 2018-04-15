@@ -3,7 +3,7 @@
 #include "GameObject.h"
 #include "GameObjectFactory.h"
 #include "XboxController.h"
-
+#include "Dialogue.h"
 #include "checkML.h"
 
 class Player : public GameObject
@@ -45,6 +45,8 @@ private:
 	bool moved_; //Para saber si el jugador se ha movido o no
 
 	Vector2D previousPos_;
+
+	Dialogue d_;
 
 };
 

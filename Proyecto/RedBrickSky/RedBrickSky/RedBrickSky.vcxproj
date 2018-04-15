@@ -25,6 +25,7 @@
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Combat.cpp" />
     <ClCompile Include="CreditsState.cpp" />
+    <ClCompile Include="Dialogue.cpp" />
     <ClCompile Include="DiscretMovementIAComponent.cpp" />
     <ClCompile Include="DragNDropComponent.cpp" />
     <ClCompile Include="DragNDropShopComponent.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Combat.h" />
     <ClInclude Include="CreditsState.h" />
+    <ClInclude Include="Dialogue.h" />
     <ClInclude Include="DiscretMovementIAComponent.h" />
     <ClInclude Include="DragNDropComponent.h" />
     <ClInclude Include="DragNDropShopComponent.h" />
@@ -163,7 +165,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>RedBrickSky</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
