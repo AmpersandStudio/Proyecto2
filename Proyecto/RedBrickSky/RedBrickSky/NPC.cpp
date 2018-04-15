@@ -4,6 +4,7 @@
 #include <stdlib.h> 
 
 
+
 NPC::NPC()
 {
 	srand(time(NULL)); // Semilla de aleatorio
@@ -20,7 +21,8 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 	animSpeed_ = animSpeed;
 	oriPosX_ = position.getX();
 	oriPosY_ = position.getY();
-
+	
+	dialogueActive = false;
 	isInteracting_ = false;
 
 	this->setColFrame(2);
@@ -48,8 +50,17 @@ NPC::~NPC()
 
 void NPC::activate() {
 	//isInteracting_ = true;
-	std::cout << Msg_ << endl;
+	if (!dialogueActive && !GameManager::Instance()->getDialogueState()) {
+		dialogueActive = true;
+		GameManager::Instance()->setDialogueState(true);
+	}
+	else if(dialogueActive) {
+		dialogueActive = false;
+		GameManager::Instance()->setDialogueState(false);
+	}
+	cout << Msg_ << endl;
 }
+
 
 void NPC::update() {
 
@@ -208,4 +219,12 @@ void NPC::handleStoppedAnimation()
 	}
 
 	colFrame_ = 1;
+}
+
+void NPC::render()
+{
+	Interactuable::render();
+	if (dialogueActive && GameManager::Instance()->getDialogueState()) {
+		text.render();
+	}
 }

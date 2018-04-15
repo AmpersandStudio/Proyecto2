@@ -54,13 +54,13 @@ void Dialogue::render()
 			Game::Instance()->getRenderer());*/
 
 		TheTextureManager::Instance()->drawText(currentLines_[0], TextureManager::ARIAL24, { 0,0,0,255 },
-			0,
-			540,
+			20,
+			515,
 			Game::Instance()->getRenderer());
 
 		TheTextureManager::Instance()->drawText(currentLines_[1], TextureManager::ARIAL24, { 0,0,0,255 },
-			0,
-			565,
+			20,
+			540,
 			Game::Instance()->getRenderer());
 
 		/*cout << TheCamera::Instance()->getPosition().getX() << endl;

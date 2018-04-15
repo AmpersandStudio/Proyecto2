@@ -4,7 +4,7 @@
 #include "StateMachine.h"
 #include "PlayState.h"
 #include "Collisions.h"
-
+#include <typeinfo>
 
 void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers)
 {

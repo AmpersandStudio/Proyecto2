@@ -1,6 +1,7 @@
 #pragma once
 #include "Interactuable.h"
 #include "Game.h"
+#include "Dialogue.h"
 
 #include "checkML.h"
 class Level;
@@ -16,12 +17,13 @@ public:
 	void setLevel(Level* l) { level_ = l; };
 	void collision();
 	void incrementMovCont() { movementCont_++; };
-	void setMSG(std::string m) { Msg_ = m; };
+	void setMSG(std::string m) { Msg_ = m; text = Dialogue(m); };
 	bool getState() { return stopped_; };
 	void setCollided(bool b) { collided_ = b; stopped_ = true; };
 	void handleAnimation();
 	void handleStoppedAnimation();
 	void invertVel() { velocity_ = -velocity_; };
+	void render();
 
 	void setTileWidth(int t) { tileWidth_ = t; };
 	void setTileHeight(int t) { tileHeight_ = t; };
@@ -45,6 +47,9 @@ private:
 
 	int tileWidth_;
 	int tileHeight_;
+
+	Dialogue text;
+	bool dialogueActive;
 };
 
 

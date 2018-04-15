@@ -38,7 +38,7 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	
 	
 	d_ = Dialogue("NPC1");
-	d_.update();;
+	d_.update();
 
 	TheCamera::Instance()->setTarget(&position_);
 
@@ -90,7 +90,7 @@ bool Player::handleEvent(const SDL_Event& event)
 
 	if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 	{
-		if (!text)
+		if (!GameManager::Instance()->getDialogueState())
 		{
 			if (event.key.keysym.sym == SDLK_LEFT)
 			{
@@ -145,9 +145,7 @@ bool Player::handleEvent(const SDL_Event& event)
 		}
 		if (event.key.keysym.sym == SDLK_t)
 		{
-			//Dialogue d = Dialogue("NPC1");
-				
-			//std::cout << text << endl;
+			//METODO DE PRUEBA SOLAMENTE
 
 			text = !text;
 		}

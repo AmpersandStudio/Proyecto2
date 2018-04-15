@@ -43,10 +43,13 @@ private:
 
 	string name;
 
+	bool dialogueActive;
+
 	GameManager() {
 
-		doors = { false, true, false };
+		doors = { true, true, false };
 		money = 500;
+		dialogueActive = false;
 
 		name = "";
 	}
@@ -74,6 +77,9 @@ public:
 	int getMoney() { return money; };
 	void addMoney(int m) { money += m; };
 	void setMoney(int m) { money = m; };
+
+	bool getDialogueState() { return dialogueActive; };
+	void setDialogueState(bool set) { dialogueActive = set; };
 
 	void setName(string n) { name = n;  };
 
