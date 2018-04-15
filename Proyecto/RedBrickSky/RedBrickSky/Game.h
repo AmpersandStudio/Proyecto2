@@ -9,7 +9,6 @@
 #include "Texture.h"
 #include "SoundManager.h"
 #include "Font.h"
-#include "Dialogue.h"
 
 #include "checkML.h"
 

@@ -1,34 +1,35 @@
 #include "Font.h"
 
-
-Font::Font()
+Font::Font() : font_(nullptr) 
 {
 }
 
-Font::Font(std::string filename, int size)
+Font::Font(std::string fileName, int size) 
 {
-	load(filename, size);
+	load(fileName, size);
 }
 
-Font::~Font()
+Font::~Font() 
 {
-	free();
+	close();
 }
 
-bool Font::load(std::string filename, int size)
+bool Font::load(std::string fileName, int size) 
 {
-	font_ = TTF_OpenFont(filename.c_str(), size);
+	font_ = TTF_OpenFont(fileName.c_str(), size);
 	return font_ != nullptr;
 }
 
-void Font::free()
+void Font::close() 
 {
-	if (font_ != nullptr) TTF_CloseFont(font_);
-	font_ = nullptr;
+	if (font_)
+	{
+		TTF_CloseFont(font_);
+		font_ = nullptr;
+	}
 }
 
-SDL_Surface* Font::generateSurface(std::string text, SDL_Color color) const
+SDL_Surface* Font::renderText(std::string text, SDL_Color color) const 
 {
-		return TTF_RenderText_Solid(font_, text.c_str(), color);
-	
+	return (font_) ? TTF_RenderText_Solid(font_, text.c_str(), color) : nullptr;
 }

@@ -1,5 +1,4 @@
 #include "KeyInputComponent.h"
-#include "Dialogue.h"
 
 
 KeyInputComponent::KeyInputComponent(SDL_Keycode up, SDL_Keycode down, SDL_Keycode right, SDL_Keycode left, int rows, int cols)

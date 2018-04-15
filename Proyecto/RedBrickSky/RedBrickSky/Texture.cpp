@@ -12,7 +12,6 @@ Texture::Texture(SDL_Renderer* renderer, string filename) {
 
 Texture::~Texture()
 {
-	free();
 }
 
 void Texture::load(int rows, int cols) {
@@ -53,29 +52,4 @@ void Texture::renderFrame(SDL_Rect& destRect, int row, int col, SDL_RendererFlip
 	rect.h = FH;
 
 	SDL_RenderCopy(RENDERER, TEXTURE, &rect, &destRect);
-}
-
-bool Texture::loadFromText(SDL_Renderer* renderer, string text, Font* font, SDL_Color color)
-{
-	SDL_Surface* textSurface = font->generateSurface(text, color);
-	if (textSurface != nullptr) {
-		free();
-		TEXTURE = SDL_CreateTextureFromSurface(renderer, textSurface);
-		if (TEXTURE != nullptr) {
-			W = textSurface->w;
-			H = textSurface->h;
-		}
-		SDL_FreeSurface(textSurface);
-	}
-	return TEXTURE != nullptr;
-
-}
-
-
-void Texture::free() {
-	//Liberacion de memoria adicional
-	
-	SDL_DestroyTexture(TEXTURE);
-	TEXTURE = nullptr;
-	W = H = 0;
 }

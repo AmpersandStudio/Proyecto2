@@ -33,6 +33,7 @@ private:
 	int m_moveSpeed;
 	bool interacting_;
 	bool running_;
+	bool text;
 
 	SDL_Rect actionRect_;
 

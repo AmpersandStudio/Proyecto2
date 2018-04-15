@@ -18,9 +18,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-//Para probar lo de los dialogos
-#include "Dialogue.h"
-
 PlayState::PlayState()
 {
 	LevelParser levelParser;

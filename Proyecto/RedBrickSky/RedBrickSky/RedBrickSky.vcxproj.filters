@@ -150,9 +150,6 @@
     <ClCompile Include="Font.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="Dialogue.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
     <ClCompile Include="base64.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
@@ -369,9 +366,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Dialogue.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="base64.h">

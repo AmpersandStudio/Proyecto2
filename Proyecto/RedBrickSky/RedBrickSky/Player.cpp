@@ -5,7 +5,6 @@
 #include "StateMachine.h"
 #include "PauseState.h"
 #include "BackPack.h"
-#include "Dialogue.h"
 #include "Camera.h"
 
 Player::Player()
@@ -31,21 +30,35 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	m_moveSpeed = 4;
 	interacting_ = false;
 	running_ = false;
+	text = false;
 	previousPos_ = iniPosition_;
 	updateRect();
 
 	TheCamera::Instance()->setTarget(&position_);
 
-	if(XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
+	if (XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
 		XboxController::Instance()->insertController();
 }
 
 void Player::render()
 {
-	TextureManager::Instance()->drawFrame(textureId_, 
-		(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX(), 
+	TextureManager::Instance()->drawFrame(textureId_,
+		(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX(),
 		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
 		width_, height_, rowFrame_, colFrame_, TheGame::Instance()->getRenderer(), angle_, alpha_);
+
+	if (text)
+	{
+		
+		TextureManager::Instance()->drawText("Juan cabrón salta una", TextureManager::ARIAL24, { 0,0,0,255 },
+			(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() + width_,
+			(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
+			Game::Instance()->getRenderer());
+		TextureManager::Instance()->drawText("excepcion en un delete.", TextureManager::ARIAL24, { 0,0,0,255 },
+			(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() + width_,
+			(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY() + 24,
+			Game::Instance()->getRenderer());
+	}
 }
 
 void Player::update()
@@ -55,42 +68,42 @@ void Player::update()
 	// refresh position
 	position_ = position_ + velocity_;
 
-	if(previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY())
+	if (previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY())
 		moved_ = true;
 
 	previousPos_ = position_;
 	// refresh animation frame
-	handleAnimation();	
+	handleAnimation();
 }
 
 bool Player::handleEvent(const SDL_Event& event)
 {
-	
+
 	if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 	{
 		if (event.key.keysym.sym == SDLK_LEFT)
 		{
 			velocity_.set(Vector2D(-m_moveSpeed, 0));
 			direction_.set(-1, 0);
-		
+
 		}
 		if (event.key.keysym.sym == SDLK_RIGHT)
 		{
 			velocity_.set(Vector2D(m_moveSpeed, 0));
 			direction_.set(1, 0);
-			
+
 		}
 		if (event.key.keysym.sym == SDLK_UP)
 		{
 			velocity_.set(Vector2D(0, -m_moveSpeed));
 			direction_.set(0, -1);
-			
+
 		}
 		if (event.key.keysym.sym == SDLK_DOWN)
 		{
 			velocity_.set(Vector2D(0, m_moveSpeed));
 			direction_.set(0, 1);
-			
+
 		}
 		if (event.key.keysym.sym == SDLK_r)
 		{
@@ -105,14 +118,6 @@ bool Player::handleEvent(const SDL_Event& event)
 		{
 			Game::Instance()->getStateMachine()->pushState(new BackPack());
 		}
-		if (event.key.keysym.sym == SDLK_t)
-		{
-			int level_dialogues = 1;
-			Dialogue d = Dialogue("NPC1");
-			d.update();
-			d.render();
-			//Game::Instance()->textPrinter(d.getText('E', 1), 200, 2, 2, Game::Instance()->getBlackColor()); //El problema del anterior es que se pinta fuera de pantalla
-		}
 		if (event.key.keysym.sym == SDLK_SPACE)	// interactuar
 		{
 			interacting();
@@ -124,66 +129,71 @@ bool Player::handleEvent(const SDL_Event& event)
 			if (flags & SDL_WINDOW_FULLSCREEN) SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), 0);
 			else SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), SDL_WINDOW_FULLSCREEN);
 		}
+		if (event.key.keysym.sym == SDLK_t)
+		{
+			std::cout << text << endl;
+			text = !text;
+		}
 		return true;
 	}
 
 	else if (XboxController::Instance()->getNumControllers() > 0) { //Primero comprobamos si hay algún mando conectado
 		//CONTROLAR LOS INPUTS MEDIANTE MANDO DE LA XBOX360
-	 if (event.type == SDL_JOYAXISMOTION) {
-		 XboxController::Instance()->onJoystickAxisMove(event);
+		if (event.type == SDL_JOYAXISMOTION) {
+			XboxController::Instance()->onJoystickAxisMove(event);
 
-		if (XboxController::Instance()->xvalue(0, 1) < 0)
-		{
-			velocity_.set(Vector2D(-m_moveSpeed, 0));
-			direction_.set(-1, 0);
-			
-		}
-		else if (XboxController::Instance()->xvalue(0, 1) > 0)
-		{
-			velocity_.set(Vector2D(m_moveSpeed, 0));
-			direction_.set(1, 0);
-		
-		}
-		else if (XboxController::Instance()->yvalue(0, 1) < 0)
-		{
-			velocity_.set(Vector2D(0, -m_moveSpeed));
-			direction_.set(0, -1);
-			
-		}
-		else if (XboxController::Instance()->yvalue(0, 1) > 0)
-		{
-			velocity_.set(Vector2D(0, m_moveSpeed));
-			direction_.set(0, 1);
-			
-		}
-		else {
-			velocity_.set(Vector2D(0, 0));
-			direction_.set(0, 0);
-			
-		}
+			if (XboxController::Instance()->xvalue(0, 1) < 0)
+			{
+				velocity_.set(Vector2D(-m_moveSpeed, 0));
+				direction_.set(-1, 0);
 
-	}
-	else if (event.type == SDL_JOYBUTTONDOWN)
-	{
-		XboxController::Instance()->onJoystickButtonDown(event);
+			}
+			else if (XboxController::Instance()->xvalue(0, 1) > 0)
+			{
+				velocity_.set(Vector2D(m_moveSpeed, 0));
+				direction_.set(1, 0);
 
-		if (XboxController::Instance()->getButtonState(0, 7)) //botón de pausa
-		{
-			Game::Instance()->getStateMachine()->pushState(new PauseState());
-		}
-		if (XboxController::Instance()->getButtonState(0, 6)) //botón de back
-		{
-			Game::Instance()->getStateMachine()->pushState(new BackPack());
-		}
+			}
+			else if (XboxController::Instance()->yvalue(0, 1) < 0)
+			{
+				velocity_.set(Vector2D(0, -m_moveSpeed));
+				direction_.set(0, -1);
 
-		if (XboxController::Instance()->getButtonState(0, 0))	// Botón A
-		{
-			interacting();
+			}
+			else if (XboxController::Instance()->yvalue(0, 1) > 0)
+			{
+				velocity_.set(Vector2D(0, m_moveSpeed));
+				direction_.set(0, 1);
+
+			}
+			else {
+				velocity_.set(Vector2D(0, 0));
+				direction_.set(0, 0);
+
+			}
+
 		}
-		XboxController::Instance()->onJoystickButtonUp(event); //Aseguro que levantamos el botón después de usarlo
-	}
-	if (event.type == SDL_JOYBUTTONUP)
-		XboxController::Instance()->onJoystickButtonUp(event);
+		else if (event.type == SDL_JOYBUTTONDOWN)
+		{
+			XboxController::Instance()->onJoystickButtonDown(event);
+
+			if (XboxController::Instance()->getButtonState(0, 7)) //botón de pausa
+			{
+				Game::Instance()->getStateMachine()->pushState(new PauseState());
+			}
+			if (XboxController::Instance()->getButtonState(0, 6)) //botón de back
+			{
+				Game::Instance()->getStateMachine()->pushState(new BackPack());
+			}
+
+			if (XboxController::Instance()->getButtonState(0, 0))	// Botón A
+			{
+				interacting();
+			}
+			XboxController::Instance()->onJoystickButtonUp(event); //Aseguro que levantamos el botón después de usarlo
+		}
+		if (event.type == SDL_JOYBUTTONUP)
+			XboxController::Instance()->onJoystickButtonUp(event);
 	}
 	//TERMINAMOS DE COMPROBAR CON EL MANDO DE LA XBOX
 
@@ -202,12 +212,12 @@ bool Player::handleEvent(const SDL_Event& event)
 			break;
 		}
 	}
-	else if (event.type == SDL_QUIT) 
+	else if (event.type == SDL_QUIT)
 	{
 		Game::Instance()->exitApp();
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -247,7 +257,7 @@ void Player::handleAnimation()
 		}
 		colFrame_ = int(((SDL_GetTicks() / (100)) % numFrames_));
 	}
-	
+
 }
 
 void Player::updateRect()

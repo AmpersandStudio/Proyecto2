@@ -2,16 +2,21 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
+#include "checkML.h"
+#include "Font.h"
 
 #include <iostream>
 #include <string>
 #include <map>
 #include <utility>
-#include "checkML.h"
+
 
 class TextureManager
 {
 public:
+
+	enum FontId { ARIAL16, ARIAL24, NESChimera16, NESChimera24, CaptureIt16, CaptureIt24 };
+
 	~TextureManager();
 
 	static TextureManager* Instance()
@@ -32,27 +37,35 @@ public:
 	void drawFull(std::string id, int destX, int destY, int destW, int destH, SDL_Renderer * pRenderer, double angle, int alpha, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, double angle, int alpha, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawTile(std::string id, int margin, int spacing, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer *pRenderer);
-
+	void drawText(std::string text, FontId id, const SDL_Color color, int x, int y, SDL_Renderer * pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawItem(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, int rows, int cols, SDL_Renderer * pRenderer, double angle, int alpha, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	
 	void clearTextureMap();
 	void clearFromTextureMap(std::string id);
 
-	SDL_Texture* getTexture(std::string id) { return m_textureMap[id]; };
-	int getRows(std::string id) { return m_textureRows[id].first; }
-	int getCols(std::string id) { return m_textureRows[id].second; }
-	int getWidth(std::string id) { return m_textureDims[id].first; }
-	int getHeight(std::string id) { return m_textureDims[id].second; }
-
+	inline SDL_Texture* getTexture(std::string id) { return m_textureMap[id]; }
+	inline int getRows(std::string id) { return m_textureRows[id].first; }
+	inline int getCols(std::string id) { return m_textureRows[id].second; }
+	inline int getWidth(std::string id) { return m_textureDims[id].first; }
+	inline int getHeight(std::string id) { return m_textureDims[id].second; }
 
 private:
 	TextureManager();
 
+	struct FontInfo
+	{
+		std::string fileName;
+		int size;
+	};
+
 	std::map<std::string, SDL_Texture*> m_textureMap;
 	std::map<std::string, std::pair<int, int>> m_textureDims;
 	std::map<std::string, std::pair<int, int>> m_textureRows;
+	std::map<FontId, FontInfo> m_Fonts;
 
 	static TextureManager* s_pInstance;
+
+	
 };
 
 typedef TextureManager TheTextureManager;

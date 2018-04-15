@@ -6,6 +6,12 @@ TextureManager* TextureManager::s_pInstance = 0;
 
 TextureManager::TextureManager()
 {
+	m_Fonts[ARIAL16] = { "fonts/ARIAL.ttf", 16 };
+	m_Fonts[ARIAL24] = { "fonts/ARIAL.ttf", 24 };
+	m_Fonts[NESChimera16] = { "fonts/NES-Chimera.ttf", 16 };
+	m_Fonts[NESChimera24] = { "fonts/NES-Chimera.ttf", 24 };
+	m_Fonts[CaptureIt16] = { "fonts/Capture_it.ttf", 16 };
+	m_Fonts[CaptureIt24] = { "fonts/Capture_it.ttf", 24 };
 }
 
 TextureManager::~TextureManager()
@@ -28,17 +34,14 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 
 	if (pTexture != NULL)
 	{
-		std::cout << "Texture load success!\n";
 		m_textureMap[id] = pTexture;
 		m_textureDims[id] = std::pair<int, int>(w, h);
 		m_textureRows[id] = std::pair<int, int>(row, col);
 		return true;
 	}
 
-	std::cout << "Texture load fail!\n";
 	return false;
 }
-
 
 void TextureManager::draw(std::string id, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
@@ -123,6 +126,36 @@ void TextureManager::drawTile(std::string id, int margin, int spacing, int x, in
 	destRect.y = y;
 
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, SDL_FLIP_NONE);
+}
+
+void TextureManager::drawText(std::string text, FontId id, const SDL_Color color, int x, int y, SDL_Renderer * pRenderer, SDL_RendererFlip flip)
+{
+	Font* font = new Font(m_Fonts[id].fileName, m_Fonts[id].size);
+
+	if (font != nullptr)
+	{
+		SDL_Surface* textSurface = font->renderText(text, color);
+
+		if (textSurface != nullptr)
+		{
+			int w = textSurface->w;
+			int h = textSurface->h;
+
+			SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer, textSurface);
+			SDL_FreeSurface(textSurface);
+
+			if (pTexture != nullptr)
+			{
+				SDL_Rect destRect = { x, y, w, h };
+
+				SDL_RenderCopyEx(pRenderer, pTexture, NULL, &destRect, 0, 0, SDL_FLIP_NONE);
+				font->close();
+				return;
+			}
+		}
+	}
+
+	std::cout << "Algo no ha salido bien.\n";
 }
 
 void TextureManager::drawItem(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, int rows, int cols, SDL_Renderer *pRenderer, double angle, int alpha, SDL_RendererFlip flip)

@@ -1,20 +1,23 @@
 #pragma once
-#include "SDL_ttf.h"
+
 #include <string>
 
+#include "SDL_ttf.h"
 #include "checkML.h"
 
-class Font
+class Font 
 {
-private:
-	TTF_Font* font_ = nullptr;
 public:
 	Font();
-	Font(std::string filename, int size);
-	~Font();
-	bool load(std::string filename, int size);
-	void free();
-	SDL_Surface* generateSurface(std::string text, SDL_Color color) const;
+	Font(std::string fileName, int size);
+	virtual ~Font();
 
+	bool load(std::string fileName, int size);
+	void close();
+
+	SDL_Surface* renderText(std::string text, SDL_Color color) const;
+
+private:
+	TTF_Font* font_;
 };
 

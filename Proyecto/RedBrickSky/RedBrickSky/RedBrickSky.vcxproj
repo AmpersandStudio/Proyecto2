@@ -25,7 +25,6 @@
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Combat.cpp" />
     <ClCompile Include="CreditsState.cpp" />
-    <ClCompile Include="Dialogue.cpp" />
     <ClCompile Include="DiscretMovementIAComponent.cpp" />
     <ClCompile Include="DragNDropComponent.cpp" />
     <ClCompile Include="DragNDropShopComponent.cpp" />
@@ -101,7 +100,6 @@
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Combat.h" />
     <ClInclude Include="CreditsState.h" />
-    <ClInclude Include="Dialogue.h" />
     <ClInclude Include="DiscretMovementIAComponent.h" />
     <ClInclude Include="DragNDropComponent.h" />
     <ClInclude Include="DragNDropShopComponent.h" />
