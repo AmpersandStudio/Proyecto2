@@ -262,8 +262,6 @@ void CollisionManager::checkNPCInteractions(Player* pPlayer, const std::vector<N
 	for (NPC* i : NonPC)
 	{
 		SDL_Rect* interRect = i->getRect();
-		interRect->w = 32;
-		interRect->h = 32;
 
 		if (RectRect(playerRect, interRect))
 		{

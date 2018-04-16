@@ -41,6 +41,7 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 		vel.set(0, velocity_);
 	setVel(vel);
 	stopped_ = false;
+	generateCollider();
 }
 
 
