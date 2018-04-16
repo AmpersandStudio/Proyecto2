@@ -45,7 +45,9 @@ public:
 	const std::vector<Interactuable*>& getInteractuables() { return m_interactuables; }
 
 	std::vector<NPC*>* getNPCs() { return &m_NPCs; }
-	const std::vector<NPC*>& getNPCinteraction() { return m_NPCs; }
+	const std::vector<NPC*>& getNPCinteraction() {
+		return m_NPCs; 
+	}
 
 	std::vector<Cartel*>* getCarteles() { return &m_Carteles; }
 	const std::vector<Cartel*>& getCartelesinteraction() { return m_Carteles; }

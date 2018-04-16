@@ -35,8 +35,8 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	text = false;
 	previousPos_ = iniPosition_;
 	updateRect();
-	
-	
+
+
 	d_ = Dialogue("NPC1");
 	d_.update();
 
@@ -48,25 +48,27 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 
 void Player::render()
 {
+	SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), width_, height_ };
+	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0x00, 0xFF, 0xFF);
+	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
+
 	TextureManager::Instance()->drawFrame(textureId_,
 		(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX(),
 		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
 		width_, height_, rowFrame_, colFrame_, TheGame::Instance()->getRenderer(), angle_, alpha_);
 
+	SDL_Rect fillRect2 = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() - width_,
+		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY() - height_,
+		3 * width_, 3 * height_ };
+
+
+	SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &fillRect2);
+
+
 	if (text)
 	{
 		d_.render();
-		/*TextureManager::Instance()->drawText("Juan cabrón salta una", TextureManager::ARIAL24, { 0,0,0,255 },
-			TheCamera::Instance()->getPosition().getX(),
-			TheCamera::Instance()->getPosition().getY() - 2080,
-			Game::Instance()->getRenderer());
-		TextureManager::Instance()->drawText("excepcion en un delete.", TextureManager::ARIAL24, { 0,0,0,255 },
-			(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() + width_,
-			(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
-			Game::Instance()->getRenderer());*/
-	
-		cout << TheCamera::Instance()->getPosition().getX() << endl;
-		cout << TheCamera::Instance()->getPosition().getY() << endl;
 	}
 }
 
@@ -74,7 +76,7 @@ void Player::update()
 {
 	moved_ = false; // En el update determinamos que el jugador no se mueve y solo cambiará si se produce un evento
 
-	// refresh position
+					// refresh position
 	position_ = position_ + velocity_;
 
 	if (previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY())
@@ -83,6 +85,11 @@ void Player::update()
 	previousPos_ = position_;
 	// refresh animation frame
 	handleAnimation();
+
+	if (text) {
+		d_.setX(position_.getX());
+		d_.setY(position_.getY());
+	}
 }
 
 bool Player::handleEvent(const SDL_Event& event)
@@ -126,14 +133,15 @@ bool Player::handleEvent(const SDL_Event& event)
 				Game::Instance()->getStateMachine()->pushState(new BackPack());
 			}
 		}
-	
+
 		if (event.key.keysym.sym == SDLK_ESCAPE)
 		{
 			Game::Instance()->getStateMachine()->pushState(new PauseState());
 		}
-		
+
 		if (event.key.keysym.sym == SDLK_SPACE)	// interactuar
 		{
+			updateRect();
 			interacting();
 		}
 		if (event.key.keysym.sym == SDLK_f)	// fullscreen mode
@@ -146,14 +154,19 @@ bool Player::handleEvent(const SDL_Event& event)
 		if (event.key.keysym.sym == SDLK_t)
 		{
 			//METODO DE PRUEBA SOLAMENTE
-
 			text = !text;
+			/*if (!text) {
+				text = true;
+			}
+			else {
+				text = d_.nextDialogue();
+			}*/
 		}
 		return true;
 	}
 
 	else if (XboxController::Instance()->getNumControllers() > 0) { //Primero comprobamos si hay algún mando conectado
-		//CONTROLAR LOS INPUTS MEDIANTE MANDO DE LA XBOX360
+																	//CONTROLAR LOS INPUTS MEDIANTE MANDO DE LA XBOX360
 		if (event.type == SDL_JOYAXISMOTION) {
 			XboxController::Instance()->onJoystickAxisMove(event);
 
@@ -239,9 +252,7 @@ bool Player::handleEvent(const SDL_Event& event)
 void Player::interacting() {
 	std::cout << "Interacting...\n";
 	updateRect();
-	/*SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
-	SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &actionRect_);
-	SDL_RenderPresent(TheGame::Instance()->getRenderer());*/
+
 	setInteracting(true);
 }
 
@@ -279,19 +290,19 @@ void Player::updateRect()
 {
 	/*if (direction_.getX() == -1 && direction_.getY() == 0)
 	{
-		actionRect_ = { (int)(position_.getX() - width_), (int)position_.getY(), (int)width_, (int)height_ };
+	actionRect_ = { (int)(position_.getX() - width_), (int)position_.getY(), (int)width_, (int)height_ };
 	}
 	else if (direction_.getX() == 1 && direction_.getY() == 0)
 	{
-		actionRect_ = { (int)(position_.getX() + width_), (int)position_.getY(), (int)width_, (int)height_ };
+	actionRect_ = { (int)(position_.getX() + width_), (int)position_.getY(), (int)width_, (int)height_ };
 	}
 	else if (direction_.getX() == 0 && direction_.getY() == -1)
 	{
-		actionRect_ = { (int)position_.getX(), (int)(position_.getY() - height_), (int)width_, (int)height_ };
+	actionRect_ = { (int)position_.getX(), (int)(position_.getY() - height_), (int)width_, (int)height_ };
 	}
 	else if (direction_.getX() == 0 && direction_.getY() == 1)
 	{
-		actionRect_ = { (int)position_.getX(), (int)(position_.getY() + height_), (int)width_, (int)height_ };
+	actionRect_ = { (int)position_.getX(), (int)(position_.getY() + height_), (int)width_, (int)height_ };
 	}*/
 
 	actionRect_ = { (int)(position_.getX() - width_), (int)(position_.getY() - height_), 3 * (int)width_, 3 * (int)height_ };

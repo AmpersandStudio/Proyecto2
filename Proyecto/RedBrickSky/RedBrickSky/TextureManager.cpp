@@ -13,7 +13,6 @@ TextureManager::TextureManager()
 	m_Fonts[CaptureIt16] = { "fonts/Capture_it.ttf", 16 };
 	m_Fonts[CaptureIt24] = { "fonts/Capture_it.ttf", 24 };
 
-	zoom_ = Game::Instance()->getZoom();
 }
 
 TextureManager::~TextureManager()
@@ -67,9 +66,8 @@ void TextureManager::draw(std::string id, SDL_Renderer* pRenderer, SDL_RendererF
 
 void TextureManager::drawFullCamera(std::string id, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
-	int zoom = Game::Instance()->getZoom();
 	SDL_Rect srcRect;
-	SDL_Rect destRect = { 0, 0, Game::Instance()->getWinWidth() * zoom , Game::Instance()->getWinHeight() * zoom};
+	SDL_Rect destRect = { 0, 0, Game::Instance()->getWinWidth() , Game::Instance()->getWinHeight()};
 
 	srcRect.x = Camera::Instance()->getPosition().getX();
 	srcRect.y = Camera::Instance()->getPosition().getY();
@@ -130,8 +128,8 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 
 	srcRect.x = width * currentFrame;
 	srcRect.y = height * currentRow;
-	srcRect.w = width; destRect.w = width * zoom_;
-	srcRect.h = height; destRect.h = height * zoom_;
+	srcRect.w = width; destRect.w = width;
+	srcRect.h = height; destRect.h = height;
 	destRect.x = x;
 	destRect.y = y;
 
@@ -146,8 +144,8 @@ void TextureManager::drawTile(std::string id, int margin, int spacing, int x, in
 
 	srcRect.x = margin + (spacing + width) * currentFrame;
 	srcRect.y = margin + (spacing + height) * currentRow;
-	srcRect.w = destRect.w = width;
-	srcRect.h = destRect.h = height;
+	srcRect.w = width; destRect.w = width;
+	srcRect.h = height;  destRect.h = height;
 	destRect.x = x;
 	destRect.y = y;
 
@@ -196,8 +194,8 @@ void TextureManager::drawItem(std::string id, int x, int y, int width, int heigh
 
 	destRect.x = x;
 	destRect.y = y;
-	destRect.w = width * zoom_;
-	destRect.h = height * zoom_;
+	destRect.w = width;
+	destRect.h = height;
 
 	SDL_SetTextureAlphaMod(m_textureMap[id], alpha);
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, angle, 0, flip);

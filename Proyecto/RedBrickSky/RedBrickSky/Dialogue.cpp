@@ -28,55 +28,44 @@ void Dialogue::update()
 
 	if (isActive())
 	{
-		if (!splittedString_.empty())
-		{
-			currentLines_[0] = splittedString_.front();
-			splittedString_.pop();
-
+		for (int i = 0; i < 3; i++) {
+			if (!splittedString_.empty())
+			{
+				currentLines_[i] = splittedString_.front();
+				splittedString_.pop();
+			}
+			else {
+				currentLines_[i] = " ";
+			}
 		}
-
-		if (!splittedString_.empty())
-		{
-			currentLines_[1] = splittedString_.front();
-			splittedString_.pop();
-		}
-		else currentLines_[1] = "";
 	}
+}
+
+bool Dialogue::nextDialogue() {
+	//setActive(false);
+	dialogueIndex_++;
+	if (dialogueIndex_ >= numDialogues_) {
+		dialogueIndex_ = 0;
+		return false;
+	}
+
+	setActive(false);
+	/*splitString(dialogues_.at(dialogueIndex_));*/
+	cout << "El index es " << dialogueIndex_ << endl;
+	return true;
 }
 
 void Dialogue::render()
 {
 	if (isActive())
 	{
-	/*	TheTextureManager::Instance()->drawText(currentLines_[0], TextureManager::ARIAL24, { 0,0,0,255 },
-			TheCamera::Instance()->getPosition().getX(),
-			TheCamera::Instance()->getPosition().getY() - 2087,
-			Game::Instance()->getRenderer());*/
-
-		TheTextureManager::Instance()->drawText(currentLines_[0], TextureManager::ARIAL24, { 0,0,0,255 },
-			20,
-			515,
-			Game::Instance()->getRenderer());
-
-		TheTextureManager::Instance()->drawText(currentLines_[1], TextureManager::ARIAL24, { 0,0,0,255 },
-			20,
-			540,
-			Game::Instance()->getRenderer());
-
-		/*cout << TheCamera::Instance()->getPosition().getX() << endl;
-		cout << TheCamera::Instance()->getPosition().getY() - 2080 << endl;*/
-
-	/*	TheTextureManager::Instance()->drawText(currentLines_[1], TextureManager::ARIAL24, { 0,0,0,255 },
-			TheCamera::Instance()->getPosition().getX(),
-			TheCamera::Instance()->getPosition().getY() - 2064,
-			Game::Instance()->getRenderer());*/
-
-
-		/*if (splittedString_.empty())
-		{
-			setActive(false);
-			dialogueIndex_++;
-		}*/
+		//RENDERIZO EL BOCADILLO
+		for (int i = 0; i < 3;i++) {
+			TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::ARIAL24, { 0,0,0,255 },
+				posX_ - TheCamera::Instance()->getPosition().getX(),
+				posY_ + i * 15 - TheCamera::Instance()->getPosition().getY(),
+				Game::Instance()->getRenderer());
+		}
 	}
 }
 
@@ -105,17 +94,20 @@ void Dialogue::readFile()
 void Dialogue::splitString(std::string s)
 {
 	int length = s.size();
-	int lines = length / 20;
+	int lines = length / 24;
 
 	int j = 0;
 	for (int i = 0; i < lines; i++)
 	{
-		std::string substring = s.substr(j, 20);
+		std::string substring = s.substr(j, 24);
+		if (substring[23] != ' ') {
+			substring.append("-");
+		}
 		splittedString_.push(substring);
-		j += 20;
+		j += 24;
 	}
 
-	if (length % 20 != 0)
+	if (length % 24 != 0)
 	{
 		std::string substring = s.substr(j, s.size() - 1);
 		splittedString_.push(substring);

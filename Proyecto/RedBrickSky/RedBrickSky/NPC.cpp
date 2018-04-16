@@ -2,7 +2,7 @@
 #include "Level.h"
 #include <time.h>
 #include <stdlib.h> 
-
+#include "Camera.h"
 
 
 NPC::NPC()
@@ -41,6 +41,9 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 		vel.set(0, velocity_);
 	setVel(vel);
 	stopped_ = false;
+	generateCollider(); 
+
+	text = Dialogue("NPC1"); //PARA TESTEO
 }
 
 
@@ -52,7 +55,9 @@ void NPC::activate() {
 	//isInteracting_ = true;
 	if (!dialogueActive && !GameManager::Instance()->getDialogueState()) {
 		dialogueActive = true;
-		GameManager::Instance()->setDialogueState(true);
+		cout << Msg_ << endl;
+		/*GameManager::Instance()->setDialogueState(true);*/
+		//DESCOMENTAR ESTO CUANDO SE VUELVA A PODER PARAR A LOS NPCs TETES 
 	}
 	else if(dialogueActive) {
 		dialogueActive = false;
@@ -64,7 +69,7 @@ void NPC::activate() {
 
 void NPC::update() {
 
-	if(!isInteracting_ && !stopped_)
+	if(/*!dialogueActive &&*/ !stopped_)
 	move();
 
 	if (movementCont_ > 40) {
@@ -84,6 +89,11 @@ void NPC::update() {
 		handleAnimation();
 	else if(!collided_)
 		handleStoppedAnimation();
+
+	if (dialogueActive) {
+		text.setX(position_.getX());
+		text.setY(position_.getY());
+	}
 }
 
 void NPC::move() {
@@ -223,8 +233,13 @@ void NPC::handleStoppedAnimation()
 
 void NPC::render()
 {
-	Interactuable::render();
-	if (dialogueActive && GameManager::Instance()->getDialogueState()) {
+	if (dialogueActive /*&& GameManager::Instance()->getDialogueState()*/) {
 		text.render();
 	}
+	SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), width_, height_ };
+	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
+	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
+	//SDL_RenderPresent(Game::Instance()->getRenderer());
+
+	Interactuable::render();
 }
