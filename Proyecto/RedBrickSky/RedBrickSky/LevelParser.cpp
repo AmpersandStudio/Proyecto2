@@ -25,6 +25,7 @@ Level* LevelParser::parseLevel(const char *levelFile)
 	std::cout << "Width:" << pRoot->Attribute("width") << " - Height:" << pRoot->Attribute("height") << "\n";
 	std::cout << "Tile Width:" << pRoot->Attribute("tilewidth") << " - Tile Height:" << pRoot->Attribute("tileheight") << "\n";
 
+
 	pRoot->Attribute("tilewidth", &m_tileSize);
 	pRoot->Attribute("width", &m_width);
 	pRoot->Attribute("height", &m_height);

@@ -37,6 +37,8 @@ private:
 	void initSDL();
 	void loadResources();
 	void registerTypes();
+
+	int zoom_;
 	
 public:
 	static Game* Instance()	{ return &s_pInstance; }
@@ -55,6 +57,7 @@ public:
 	inline int getWinWidth() { return winWidth_; }
 	inline int getWinHeight() { return winHeight_; }
 	inline void exitApp() { exit_ = true; }
+	int getZoom() { return zoom_; };
 };
 
 typedef Game TheGame;
