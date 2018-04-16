@@ -69,17 +69,6 @@ void Player::render()
 	if (text)
 	{
 		d_.render();
-		/*TextureManager::Instance()->drawText("Juan cabrón salta una", TextureManager::ARIAL24, { 0,0,0,255 },
-			TheCamera::Instance()->getPosition().getX(),
-			TheCamera::Instance()->getPosition().getY() - 2080,
-			Game::Instance()->getRenderer());
-		TextureManager::Instance()->drawText("excepcion en un delete.", TextureManager::ARIAL24, { 0,0,0,255 },
-			(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() + width_,
-			(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
-			Game::Instance()->getRenderer());*/
-
-		cout << TheCamera::Instance()->getPosition().getX() << endl;
-		cout << TheCamera::Instance()->getPosition().getY() << endl;
 	}
 }
 
@@ -87,7 +76,7 @@ void Player::update()
 {
 	moved_ = false; // En el update determinamos que el jugador no se mueve y solo cambiará si se produce un evento
 
-	// refresh position
+					// refresh position
 	position_ = position_ + velocity_;
 
 	if (previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY())
@@ -96,6 +85,11 @@ void Player::update()
 	previousPos_ = position_;
 	// refresh animation frame
 	handleAnimation();
+
+	if (text) {
+		d_.setX(position_.getX());
+		d_.setY(position_.getY());
+	}
 }
 
 bool Player::handleEvent(const SDL_Event& event)
@@ -160,14 +154,19 @@ bool Player::handleEvent(const SDL_Event& event)
 		if (event.key.keysym.sym == SDLK_t)
 		{
 			//METODO DE PRUEBA SOLAMENTE
-
 			text = !text;
+			/*if (!text) {
+				text = true;
+			}
+			else {
+				text = d_.nextDialogue();
+			}*/
 		}
 		return true;
 	}
 
 	else if (XboxController::Instance()->getNumControllers() > 0) { //Primero comprobamos si hay algún mando conectado
-		//CONTROLAR LOS INPUTS MEDIANTE MANDO DE LA XBOX360
+																	//CONTROLAR LOS INPUTS MEDIANTE MANDO DE LA XBOX360
 		if (event.type == SDL_JOYAXISMOTION) {
 			XboxController::Instance()->onJoystickAxisMove(event);
 
@@ -291,19 +290,19 @@ void Player::updateRect()
 {
 	/*if (direction_.getX() == -1 && direction_.getY() == 0)
 	{
-		actionRect_ = { (int)(position_.getX() - width_), (int)position_.getY(), (int)width_, (int)height_ };
+	actionRect_ = { (int)(position_.getX() - width_), (int)position_.getY(), (int)width_, (int)height_ };
 	}
 	else if (direction_.getX() == 1 && direction_.getY() == 0)
 	{
-		actionRect_ = { (int)(position_.getX() + width_), (int)position_.getY(), (int)width_, (int)height_ };
+	actionRect_ = { (int)(position_.getX() + width_), (int)position_.getY(), (int)width_, (int)height_ };
 	}
 	else if (direction_.getX() == 0 && direction_.getY() == -1)
 	{
-		actionRect_ = { (int)position_.getX(), (int)(position_.getY() - height_), (int)width_, (int)height_ };
+	actionRect_ = { (int)position_.getX(), (int)(position_.getY() - height_), (int)width_, (int)height_ };
 	}
 	else if (direction_.getX() == 0 && direction_.getY() == 1)
 	{
-		actionRect_ = { (int)position_.getX(), (int)(position_.getY() + height_), (int)width_, (int)height_ };
+	actionRect_ = { (int)position_.getX(), (int)(position_.getY() + height_), (int)width_, (int)height_ };
 	}*/
 
 	actionRect_ = { (int)(position_.getX() - width_), (int)(position_.getY() - height_), 3 * (int)width_, 3 * (int)height_ };
