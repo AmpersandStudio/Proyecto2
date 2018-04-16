@@ -65,7 +65,7 @@ private:
 
 	static TextureManager* s_pInstance;
 
-	
+	int zoom_;
 };
 
 typedef TextureManager TheTextureManager;

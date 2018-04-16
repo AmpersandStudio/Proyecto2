@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="98">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="102">
  <properties>
   <property name="000" value="assets/000.png"/>
   <property name="Personaje1" value="assets/Personaje1.png"/>
+  <property name="Personaje10" value="assets/Personaje10.png"/>
+  <property name="Personaje11" value="assets/Personaje11.png"/>
+  <property name="Personaje12" value="assets/Personaje12.png"/>
+  <property name="Personaje13" value="assets/Personaje13.png"/>
+  <property name="Personaje14" value="assets/Personaje14.png"/>
+  <property name="Personaje15" value="assets/Personaje15.png"/>
   <property name="Personaje2" value="assets/Personaje2.png"/>
   <property name="Personaje3" value="assets/Personaje3.png"/>
   <property name="Personaje4" value="assets/Personaje4.png"/>
   <property name="Personaje5" value="assets/Personaje5.png"/>
+  <property name="Personaje6" value="assets/Personaje6.png"/>
+  <property name="Personaje7" value="assets/Personaje7.png"/>
+  <property name="Personaje8" value="assets/Personaje8.png"/>
   <property name="helicopter" value="assets/helicopter.png"/>
+  <property name="personaje9" value="assets/Personaje9.png"/>
  </properties>
  <tileset firstgid="1" name="Patrones1" tilewidth="32" tileheight="32" tilecount="168" columns="14">
   <image source="LevelDesign/Tileset_1.png" width="448" height="384"/>
@@ -21,12 +31,12 @@
  <tileset firstgid="2421" name="Personajes_1" tilewidth="32" tileheight="32" tilecount="30" columns="3">
   <image source="Personajes_1.png" width="126" height="320"/>
  </tileset>
- <layer name="Collisions" width="50" height="100" visible="0">
+ <layer name="Collisions" width="50" height="100">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmmlqxDAMhYdeqtfpKXu0+V1CMRghS0+bN+aBwZnIkr54iZPM+/X6eZ9ZXqSszsfN0VQZ5zUhzgyOGeXDsTZfOlYpx1P//fovrd6rP9f/1p97ihSXu3ajuP1vVo5dlcWxkpP2Ha1TO65NbyP5rpQ2r7ljND+UF8nRYifF47i8OVRxoL6y/N3CsVIz7lezYt/GYclhlM+MdpKfCo5+v0L3NFK7SPyKua5xZGkGR4tzA8ct/XELB61nq2LtHuXOPYNV3ztGfaONj9G6y3FIcTyqGlOPNA5NLa8+x1Gu1RxcXZN3DO3IQY+1sU9tpPXLurZ5113E/wkcHkU5JPtZ948+DySvWzjaea79iCOy7lq043rl0W4c6PMKtbNweNYr67jK5NDu/dZ1l9Yt+aF2mf3B7RO5+sg+ImkPZo0j2Z/MgbwvMSWrxNb2kFI82h75jtV+l2J7OSI+JElzNvOeUs0xS7dxVMwPy3vRzPlxw3rF+T2VI9sPOq4kf9biyZl7bqEcXL2SI7rPkv63MeIYtYm8a0TypyyaTeT7h/fa2qJgijwPfjjytdO4isyhnfrjZg40xk7jKhJjp/6Q2mk2u/cHqhP6A9Gp/eHZJ2p57cJx2vMHp1XvE7MVmR+PZuzbUUW+Da7i8NxPpXM3cWjtIxzvrqB5jfLQckTa98/BxvgsR6YsOSEcwrUf+kRjS5rFIfnMsFvJkT0/UD/Z8+MWjkxZ1ivUfuBD9Av6GNrPuH948rLar76fS76tcb0sVWVmXvQ6SNcIuX79e/N2nnuXLvWH1ldcbEuuFv9RO7T9qRycv9M5sufHTFXOc+S81Q5Vz4GsI5rNLRxZ+3arsjlWaTQ/uDyR/KM29H3X6B0YPc6+ttr6gYxLC4fnf5aIpH0H3bfszNF8av9V8PjUzleMq5kxK3zewIGuyc3mOyOoENtal3xVxaT1qoJyzIxrEfK9I/JNZKQd9xgeVfbx7PIHerkesQ==
+   eJztmmuq4zAMhctsarZzVzlL6++hXAxG6HH0cmzTAwankSV98SNO0vfr9fM+s7xIeTqfMMfQBrmkypdjr3Iax4sRx/Gp//vzW0Z91nxu/m0+9ylaXO7aSXHn37wcu6qK40lO2ne0Tu24NrON5rtT1rzmjtH8UF4kR4+dFo/jiubQxYH6qvJ3C8eTWnG/WhX7Ng5PDlI+K9ppfjo45v0K3dNo7TLxO+a6xVGlFRwjzg0ct/THLRy0Xq2OtVvKnXsG6753SH1jjQ9p3eU4tDgRdY2pjywOSyOvOUcp124Orm4pOoZ25KDH1tinNtr65V3bousu4v8EjoiyHJr9qvvHnAeS1y0c4zzXXuLIrLse7bheRbQbB/q8Qu08HJH1yjuuKjmse7933aV1T36oXWV/cPtEri7ZZ6TtwbxxNPuTOZD3Ja5kjdjWHlKLR9sj37HG71rsKEfGhyZtzlbeU7o5Vuk2jo754XkvWjk/blivOL+nclT7QceV5s9bIjlzzy2Ug6t3cmT3Wdr/NiQOqU3mXSOSP2WxbDLfP6LX1hcFU+Z58MtRr53GVWYO7dQfN3OgMXYaV5kYO/WH1s6y2b0/UJ3QH4hO7Y/IPtHKaxeO054/OD31PrFamfnx0Yp9O6rMt8GnOCL3U+3cTRxW+wzHeypoXlIeVo5I+/k52Bmf5aiUJyeEQ7n2ok80tqZVHJrPCrsnOarnB+qnen7cwlEpz3qF2gs+VL+gD9F+xf0jkpfX/un7uebbGzfK0lVW5kWvg3aNkOs3vzcf57l36Vp/WH3Fxfbk6vGftUPbn8rB+Tudo3p+rFTnPEfOe+1QzRzIOmLZ3MJRtW/3qprjKUnzg8sTyT9rQ993Se/A6HH1tbXWD2Rcejgi/7NEpO076L5lZ47h0/qvQsSndb5jXK2M2eHzBg50TR42fyuCKrG9dc1XV0xa7yoox8q4HiHfOzLfRCTtuMeIqLOPV5f/8aAisw==
   </data>
  </layer>
  <layer name="Floor" width="50" height="100" visible="0">
@@ -159,7 +169,7 @@
     <property name="Message" value="Una lasagna para cenar?"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje1"/>
+    <property name="textureID" value="Personaje6"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
@@ -168,7 +178,7 @@
     <property name="Message" value="NPC1"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje1"/>
+    <property name="textureID" value="Personaje7"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
@@ -177,7 +187,7 @@
     <property name="Message" value="NPC1"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje1"/>
+    <property name="textureID" value="Personaje8"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
@@ -186,7 +196,7 @@
     <property name="Message" value="Me voy a sacar el Master como Cifuentes!!!"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje1"/>
+    <property name="textureID" value="Personaje9"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
@@ -195,7 +205,7 @@
     <property name="Message" value="Madre con la de geografía, qué pesada"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje3"/>
+    <property name="textureID" value="Personaje10"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
@@ -204,7 +214,7 @@
     <property name="Message" value="Mi madre ha comprado una lavadora"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje1"/>
+    <property name="textureID" value="Personaje11"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
@@ -213,7 +223,7 @@
     <property name="Message" value="Hoy bottellona"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje2"/>
+    <property name="textureID" value="Personaje12"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
@@ -222,7 +232,25 @@
     <property name="Message" value="Te reviento payaso"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje2"/>
+    <property name="textureID" value="Personaje13"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="100" name="Personaje14" type="NPC" x="142" y="1668" width="32" height="32">
+   <properties>
+    <property name="Message" value="Regalate un trago de optimismo"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje14"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="101" name="Personaje15" type="NPC" x="774.909" y="2290.06" width="32" height="32">
+   <properties>
+    <property name="Message" value="El que dice Regalate un trago de optimismo  es idiota"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje15"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
