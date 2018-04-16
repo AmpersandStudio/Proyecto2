@@ -18,12 +18,18 @@ PauseState::PauseState()
 	double width = 220;
 	double height = 180;
 
-	RenderComponent* rc = new RenderFrameComponent();
-	InputComponent* ic = new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN);
-	InputComponent* ic2 = new MouseInputComponentButton();
+	button0->setPosition(position0); button0->setWidth(width); 
+	button0->setHeight(height); 
+	button0->addRenderComponent(new RenderFrameComponent()); 
+	button0->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); 
+	button0->addInputComponent(new MouseInputComponentButton());
 
-	button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(rc); button0->addInputComponent(ic); button0->addInputComponent(ic2);
-	button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(rc); button3->addInputComponent(ic); button3->addInputComponent(ic2);
+	button3->setPosition(position3); 
+	button3->setWidth(width); 
+	button3->setHeight(height); 
+	button3->addRenderComponent(new RenderFrameComponent()); 
+	button3->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); 
+	button3->addInputComponent(new MouseInputComponentButton());
 	
 	stage.push_back(button0);
 	stage.push_back(button3);	

@@ -100,6 +100,29 @@ void TextureManager::drawFull(std::string id, int destX, int destY, int destW, i
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, angle, 0, flip);
 }
 
+void TextureManager::drawF(std::string id, int destX, int destY, int destW, int destH, SDL_Renderer *pRenderer, double angle, int alpha, SDL_RendererFlip flip, 
+	int row, int col)
+{
+	SDL_Rect destRect;
+	SDL_Rect rect;
+
+	int FW = m_textureDims[id].first / m_textureRows[id].second;
+	int FH = m_textureDims[id].second / m_textureRows[id].first;
+	
+	rect.x = col * FW;
+	rect.y = row * FH;
+	rect.w = FW;
+	rect.h = FH;
+
+	destRect.x = destX;
+	destRect.y = destY;
+	destRect.w = destW;
+	destRect.h = destH;
+
+	SDL_SetTextureAlphaMod(m_textureMap[id], alpha);
+	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &rect, &destRect, angle, 0, flip);
+}
+
 void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer *pRenderer, double angle, int alpha, SDL_RendererFlip flip)
 {
 	SDL_Rect srcRect;

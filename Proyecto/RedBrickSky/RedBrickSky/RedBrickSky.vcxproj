@@ -62,6 +62,7 @@
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RenderFraemeComponent2.cpp" />
     <ClCompile Include="SchoolBag.cpp" />
     <ClCompile Include="ShopXboxControllerComponent.cpp" />
     <ClCompile Include="PlayState.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RenderFraemeComponent2.h" />
     <ClInclude Include="SchoolBag.h" />
     <ClInclude Include="ShopXboxControllerComponent.h" />
     <ClInclude Include="PlayState.h" />

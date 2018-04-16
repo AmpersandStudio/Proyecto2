@@ -80,6 +80,9 @@ protected:
 	bool okEnemy_;
 	bool okPlayer_;
 	bool in = false;
+	bool stopPunch = false;
+	bool gotchaAnim = false;
+	Vector2D iniPos;
 	MoveToThisPosComponent* mc;
 
 private:

@@ -64,13 +64,13 @@ void GameComponent::delRenderComponent(RenderComponent* rc) {
 
 void GameComponent::clean() {
 	for (InputComponent* ic : inputComp_)
-		if (ic != nullptr) delete ic;
+		if (ic != nullptr) { delete ic; ic = nullptr; }
 
 	for (RenderComponent* rc : renderComp_)
-		if (rc != nullptr) delete rc;
+		if (rc != nullptr) { delete rc; rc = nullptr; }
 
 	for (PhysicsComponent* pc : physicsComp_)
-		if (pc != nullptr) delete pc;
+		if (pc != nullptr) { delete pc; pc = nullptr; }
 
 	inputComp_.clear(); renderComp_.clear(); physicsComp_.clear();
 }

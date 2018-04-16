@@ -1,6 +1,7 @@
 #include "BattleState.h"
 #include "TextureManager.h"
 #include "RenderSingleFrameComponent.h"
+#include "RenderFraemeComponent2.h"
 
 BattleState::BattleState()
 {
@@ -105,10 +106,6 @@ void BattleState::createUI() {
 	//preparamos el combate
 	constructC();
 
-	Vector2D p = player->getPosition();
-	Vector2D e = enemy->getPosition();
-	mc = new MoveToThisPosComponent(p, e);
-
 	int i = 0;
 	bool foundWP1 = false;
 	bool foundWP2 = false;
@@ -177,11 +174,13 @@ void BattleState::createUI() {
 
 void BattleState::constructC() {
 	player = new BattlePlayer("Tyler", Physical, 100, 10, 10, 100, 10);
-	player->setTextureId("BattlePlayer");
-	Vector2D pos(0.75, 1.42);
+	player->setTextureId("tylerSS");
+	Vector2D pos(0.85, 0.7);
+	iniPos = pos;
 	player->setPosition(pos);
-	player->setWidth(170); player->setHeight(170);
-	RenderComponent* rc = new RenderFrameComponent();
+	player->setWidth(138); player->setHeight(256);
+	player->setRowFrame(0); player->setColFrame(0);
+	RenderComponent* rc = new RenderFraemeComponent2();
 	player->addRenderComponent(rc);
 	stage.push_back(player);
 
@@ -511,6 +510,15 @@ void BattleState::update() {
 	if (!fade2Done_ && fadeDone_)
 		init();
 	else if (fade2Done_) {
+		if (iniPos.getX() != player->getPosition().getX())
+		{
+			int frame = int(((SDL_GetTicks() / (100)) % 8)) + 4;
+			player->setColFrame(frame);
+		}
+		else {
+			player->setColFrame(int(((SDL_GetTicks() / (200)) % 4)));
+		}
+		
 		GameState::update();
 		if (!END_ && Attacking_)
 			END_ = run();
@@ -520,7 +528,6 @@ void BattleState::update() {
 		TheSoundManager::Instance()->playMusic("music", 0);
 		Game::Instance()->getStateMachine()->popState();
 	}
-		
 }
 
 void BattleState::render() {
@@ -557,7 +564,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 
 		if (!attackAnim_ && okPlayer_)
 			actButton = interfaz.button_0->handleEvent(event);
-		else
+		else 
 			actButton = false;
 
 		if (actButton && !attack_) {
@@ -619,7 +626,6 @@ void BattleState::attack(int i) {
 	player->setTurn(true);
 
 	//antes de nada le quitamos el comp
-	//ASEGURA QUE ERASE HACE EL DELETE
 	player->delPhysicsComponent(mc);
 
 	stage[1]->setTextureId("24");
