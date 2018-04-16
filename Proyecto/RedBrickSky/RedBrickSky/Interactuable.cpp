@@ -59,6 +59,6 @@ void Interactuable::generateCollider()
 {
 	collider_.x = position_.getX();
 	collider_.y = position_.getY();
-	collider_.w = width_;
-	collider_.h = height_;
+	collider_.w = 32;
+	collider_.h = 32;
 }

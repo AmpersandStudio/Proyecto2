@@ -2,7 +2,7 @@
 #include "Level.h"
 #include <time.h>
 #include <stdlib.h> 
-
+#include "Camera.h"
 
 
 NPC::NPC()
@@ -223,6 +223,12 @@ void NPC::handleStoppedAnimation()
 
 void NPC::render()
 {
+
+	SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), width_, height_ };
+	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
+	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
+	//SDL_RenderPresent(Game::Instance()->getRenderer());
+
 	Interactuable::render();
 	if (dialogueActive && GameManager::Instance()->getDialogueState()) {
 		text.render();

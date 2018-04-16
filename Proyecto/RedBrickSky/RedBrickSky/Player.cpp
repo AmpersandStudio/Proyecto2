@@ -35,8 +35,8 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	text = false;
 	previousPos_ = iniPosition_;
 	updateRect();
-	
-	
+
+
 	d_ = Dialogue("NPC1");
 	d_.update();
 
@@ -48,10 +48,23 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 
 void Player::render()
 {
+	SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), width_, height_ };
+	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0x00, 0xFF, 0xFF);
+	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
+
 	TextureManager::Instance()->drawFrame(textureId_,
 		(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX(),
 		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
 		width_, height_, rowFrame_, colFrame_, TheGame::Instance()->getRenderer(), angle_, alpha_);
+
+	SDL_Rect fillRect2 = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() - width_,
+		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY() - height_,
+		3 * width_, 3 * height_ };
+
+
+	SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &fillRect2);
+
 
 	if (text)
 	{
@@ -64,7 +77,7 @@ void Player::render()
 			(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() + width_,
 			(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
 			Game::Instance()->getRenderer());*/
-	
+
 		cout << TheCamera::Instance()->getPosition().getX() << endl;
 		cout << TheCamera::Instance()->getPosition().getY() << endl;
 	}
@@ -126,14 +139,15 @@ bool Player::handleEvent(const SDL_Event& event)
 				Game::Instance()->getStateMachine()->pushState(new BackPack());
 			}
 		}
-	
+
 		if (event.key.keysym.sym == SDLK_ESCAPE)
 		{
 			Game::Instance()->getStateMachine()->pushState(new PauseState());
 		}
-		
+
 		if (event.key.keysym.sym == SDLK_SPACE)	// interactuar
 		{
+			updateRect();
 			interacting();
 		}
 		if (event.key.keysym.sym == SDLK_f)	// fullscreen mode
@@ -239,9 +253,7 @@ bool Player::handleEvent(const SDL_Event& event)
 void Player::interacting() {
 	std::cout << "Interacting...\n";
 	updateRect();
-	/*SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
-	SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &actionRect_);
-	SDL_RenderPresent(TheGame::Instance()->getRenderer());*/
+
 	setInteracting(true);
 }
 
