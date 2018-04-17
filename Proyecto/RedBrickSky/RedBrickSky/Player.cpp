@@ -48,22 +48,22 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 
 void Player::render()
 {
-	SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), width_, height_ };
-	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0x00, 0xFF, 0xFF);
-	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
+	//SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), width_, height_ };
+	//SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0x00, 0xFF, 0xFF);
+	//SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
 
 	TextureManager::Instance()->drawFrame(textureId_,
 		(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX(),
 		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
 		width_, height_, rowFrame_, colFrame_, TheGame::Instance()->getRenderer(), angle_, alpha_);
 
-	SDL_Rect fillRect2 = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() - width_,
-		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY() - height_,
-		3 * width_, 3 * height_ };
+	//SDL_Rect fillRect2 = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() - width_,
+	//	(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY() - height_,
+	//	3 * width_, 3 * height_ };
 
 
-	SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
-	SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &fillRect2);
+	//SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	//SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &fillRect2);
 
 
 	if (text)
@@ -76,8 +76,10 @@ void Player::update()
 {
 	moved_ = false; // En el update determinamos que el jugador no se mueve y solo cambiará si se produce un evento
 
-					// refresh position
-	position_ = position_ + velocity_;
+
+	if (!GameManager::Instance()->getDialogueState()) { //Para evitar que se mueva si otro NPC le empuja al hablar, lo cual bloquearía el juego
+		position_ = position_ + velocity_; // refresh position
+	}
 
 	if (previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY()) {
 		TheCamera::Instance()->setTarget(&position_);
@@ -91,6 +93,9 @@ void Player::update()
 	if (text) {
 		d_.setX(position_.getX());
 		d_.setY(position_.getY());
+		if (!d_.isActive()) {
+			d_.update();
+		}
 	}
 }
 
@@ -155,14 +160,12 @@ bool Player::handleEvent(const SDL_Event& event)
 		}
 		if (event.key.keysym.sym == SDLK_t)
 		{
-			//METODO DE PRUEBA SOLAMENTE
-			text = !text;
-			/*if (!text) {
+			if (!text) {
 				text = true;
 			}
 			else {
 				text = d_.nextDialogue();
-			}*/
+			}
 		}
 		return true;
 	}

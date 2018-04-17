@@ -39,7 +39,10 @@ class BattleCharacter : public GameComponent
 {
 public:
 	BattleCharacter(std::string n, Type t, float hp, float atk, float def, float prec, float vel) : name(n), type(t),
-		health(hp), attack(atk), defense(def), precision(prec), velocity(vel), support(false), maxHealth(hp) {}
+		health(hp), attack(atk), defense(def), precision(prec), velocity(vel), support(false), maxHealth(hp), attackIndex(0)
+	{
+		attacks.resize(4);
+	}
 	BattleCharacter() {}
 	virtual ~BattleCharacter() {}
 
@@ -60,7 +63,7 @@ public:
 	void setPrecision(float p) { precision = p; }
 	void setVelocity(float v) { velocity = v; }
 
-	void addAttack(Attack a, unsigned int max);
+	void addAttack(Attack a);
 	int checkAttacks();
 
 	virtual bool useAttack(int i);
@@ -91,5 +94,6 @@ protected:
 	bool support;
 	bool target;
 	bool turn_ = false;
+	int attackIndex;
 };
 
