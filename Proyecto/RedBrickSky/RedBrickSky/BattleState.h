@@ -44,18 +44,6 @@ typedef struct {
 	Button* button_3;
 	Button* pruebaTexto_;
 
-	//TEXTOS
-
-	//BARRAS DE VIDA
-	double Vida_Width = 120;
-	double Vida_height = 8;
-
-	GameComponent* UI_Vida_Player;
-	Vector2D VPlayer_position;
-	GameComponent* UI_Vida_Enemy;
-	Vector2D VEnemy_position;
-
-
 }battle_UI;
 
 class BattleState :
@@ -101,6 +89,8 @@ private:
 
 	GameComponent* Weapon1;
 	GameComponent* Weapon2;
+	GameComponent* Weapon11;
+	GameComponent* Weapon22;
 
 	bool END_;
 
