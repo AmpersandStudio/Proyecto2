@@ -38,6 +38,7 @@ bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
 	else  if (event.type == SDL_MOUSEBUTTONUP && isMouseSelection) {
 		isMouseSelection = false;
+		Inventary.clear();
 		Inventary = bag->getInvent();
 
 		if (!devMat(x, y, o))
@@ -48,7 +49,7 @@ bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
 bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 	bool aceptada = false;
-
+	std::cout << Inventary.size() << endl;
 	int auxX;
 	int auxY;
 	int auxW;

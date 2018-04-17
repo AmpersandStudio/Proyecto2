@@ -317,8 +317,8 @@ void CollisionManager::checkKeysInteractions(Player* pPlayer, std::vector<Key*>&
 			n.y = 0;
 			n.mX = -10;
 			n.mY = -10;
-			n.w = 32;
-			n.h = 32;
+			n.w = 64;
+			n.h = 64;
 			n.tx = "Key";
 			n.type = 2;
 			n.nombre = "LLave";

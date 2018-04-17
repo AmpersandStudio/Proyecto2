@@ -96,6 +96,8 @@ bool BackPack::handleEvent(const SDL_Event & event)
 }
 
 void BackPack::toMenu() {
+
+
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->popState();
 }
