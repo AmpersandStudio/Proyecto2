@@ -91,6 +91,9 @@ void Player::update()
 	if (text) {
 		d_.setX(position_.getX());
 		d_.setY(position_.getY());
+		if (!d_.isActive()) {
+			d_.update();
+		}
 	}
 }
 
@@ -155,14 +158,12 @@ bool Player::handleEvent(const SDL_Event& event)
 		}
 		if (event.key.keysym.sym == SDLK_t)
 		{
-			//METODO DE PRUEBA SOLAMENTE
-			text = !text;
-			/*if (!text) {
+			if (!text) {
 				text = true;
 			}
 			else {
 				text = d_.nextDialogue();
-			}*/
+			}
 		}
 		return true;
 	}

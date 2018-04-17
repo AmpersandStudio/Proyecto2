@@ -21,7 +21,7 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 	animSpeed_ = animSpeed;
 	oriPosX_ = position.getX();
 	oriPosY_ = position.getY();
-	
+
 	dialogueActive = false;
 	isInteracting_ = false;
 
@@ -41,9 +41,8 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 		vel.set(0, velocity_);
 	setVel(vel);
 	stopped_ = false;
-	generateCollider(); 
+	generateCollider();
 
-	text = Dialogue("NPC1"); //PARA TESTEO
 }
 
 
@@ -52,16 +51,17 @@ NPC::~NPC()
 }
 
 void NPC::activate() {
-	//isInteracting_ = true;
+	isInteracting_ = true;
 	if (!dialogueActive && !GameManager::Instance()->getDialogueState()) {
 		dialogueActive = true;
-		cout << Msg_ << endl;
-		/*GameManager::Instance()->setDialogueState(true);*/
+		GameManager::Instance()->setDialogueState(true);
 		//DESCOMENTAR ESTO CUANDO SE VUELVA A PODER PARAR A LOS NPCs TETES 
 	}
-	else if(dialogueActive) {
-		dialogueActive = false;
-		GameManager::Instance()->setDialogueState(false);
+	else if (dialogueActive) {
+		dialogueActive = text.nextDialogue();
+		if (!dialogueActive) {
+			GameManager::Instance()->setDialogueState(false);
+		}
 	}
 	cout << Msg_ << endl;
 }
@@ -69,8 +69,8 @@ void NPC::activate() {
 
 void NPC::update() {
 
-	if(/*!dialogueActive &&*/ !stopped_)
-	move();
+	if (!dialogueActive && !stopped_)
+		move();
 
 	if (movementCont_ > 40) {
 		int rnd = rand() % 100 + 1;
@@ -87,19 +87,22 @@ void NPC::update() {
 	// refresh animation frame
 	if (!stopped_)
 		handleAnimation();
-	else if(!collided_)
+	else if (!collided_)
 		handleStoppedAnimation();
 
 	if (dialogueActive) {
 		text.setX(position_.getX());
 		text.setY(position_.getY());
+		if (!text.isActive()) {
+			text.update();
+		}
 	}
 }
 
 void NPC::move() {
 	Vector2D pos = getPosition();
 	pos = pos + getVel();
-	
+
 	checkMapLimits(pos);
 	//checkNPCLimits(pos);
 
@@ -161,12 +164,12 @@ void NPC::collision()
 		if (vel.getX() == 0)
 		{
 			int rnd2 = rand() % 2;
-			if(rnd2 == 0)
+			if (rnd2 == 0)
 				vel.setX(velocity_);
-			else 
+			else
 				vel.setX(-velocity_);
 		}
-			
+
 		else
 			vel.setX(-velocity_);
 
@@ -189,27 +192,27 @@ void NPC::collision()
 	}
 
 	setVel(vel);
-		
-	
+
+
 }
 
 void NPC::handleAnimation()
 {
-	
-		if (vel.getY() < 0)
-		{
-			rowFrame_ = 3;
-		}
-		else if (vel.getY() > 0)
-		{
-			rowFrame_ = 0;
-		}
-		else if (vel.getY() == 0)
-		{
-			rowFrame_ = (vel.getX() < 0) ? 1 : 2;
-		}
-		colFrame_ = int(((SDL_GetTicks() / (100)) % numFrames_));
-	
+
+	if (vel.getY() < 0)
+	{
+		rowFrame_ = 3;
+	}
+	else if (vel.getY() > 0)
+	{
+		rowFrame_ = 0;
+	}
+	else if (vel.getY() == 0)
+	{
+		rowFrame_ = (vel.getX() < 0) ? 1 : 2;
+	}
+	colFrame_ = int(((SDL_GetTicks() / (100)) % numFrames_));
+
 
 }
 
@@ -233,7 +236,7 @@ void NPC::handleStoppedAnimation()
 
 void NPC::render()
 {
-	if (dialogueActive /*&& GameManager::Instance()->getDialogueState()*/) {
+	if (dialogueActive && GameManager::Instance()->getDialogueState()) {
 		text.render();
 	}
 	//SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), width_, height_ };

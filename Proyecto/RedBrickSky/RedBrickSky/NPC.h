@@ -25,10 +25,11 @@ public:
 	void invertVel() { velocity_ = -velocity_; };
 	void render();
 
-
+	void setTileWidth(int t) { tileWidth_ = t; };
+	void setTileHeight(int t) { tileHeight_ = t; };
 
 	void load(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID, int animSpeed);
-	
+
 	void checkMapLimits(Vector2D pos);
 	void checkNPCLimits(Vector2D pos);
 
@@ -44,7 +45,8 @@ private:
 	double oriPosX_;
 	double oriPosY_;
 
-
+	int tileWidth_;
+	int tileHeight_;
 
 	Dialogue text;
 	bool dialogueActive;

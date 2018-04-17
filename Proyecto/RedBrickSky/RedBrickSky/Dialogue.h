@@ -37,6 +37,7 @@ private:
 
 	bool active_;
 
+
 	void readFile();
 	void splitString(std::string s);
 };
