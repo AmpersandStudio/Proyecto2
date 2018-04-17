@@ -224,7 +224,7 @@ void BattleState::constructC() {
 	player->addRenderComponent(rc);
 	stage.push_back(player);
 
-	enemy = new BattleEnemy("Pajaro", Ranged, 70, 10, 10, 100, 11);
+	enemy = new BattleEnemy("Pajaro", Ranged, 300, 10, 10, 100, 11);
 	enemy->setTextureId("arbolSS");
 	Vector2D pos2(3.3, 0.62);
 	enemy->setPosition(pos2);
