@@ -174,9 +174,12 @@ void TextureManager::drawText(std::string text, FontId id, const SDL_Color color
 
 				SDL_RenderCopyEx(pRenderer, pTexture, NULL, &destRect, 0, 0, SDL_FLIP_NONE);
 				font->close();
+				delete font;
 				return;
 			}
 		}
+		else
+			delete font;
 	}
 
 	std::cout << "Algo no ha salido bien.\n";
