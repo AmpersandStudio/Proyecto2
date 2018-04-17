@@ -47,7 +47,7 @@ private:
 
 	GameManager() {
 
-		doors = { true, true, false };
+		doors = { false, true, false };
 		money = 500;
 		dialogueActive = false;
 

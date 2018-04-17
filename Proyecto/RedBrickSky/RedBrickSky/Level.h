@@ -10,6 +10,7 @@
 #include "Interactuable.h"
 #include "NPC.h"
 #include "SchoolBag.h"
+#include "Key.h"
 
 #include "checkML.h"
 
@@ -55,11 +56,17 @@ public:
 	std::vector<SchoolBag*>* getBags() { return &m_Bags; }
 	const std::vector<SchoolBag*>& getBagsInteractions() { return m_Bags; }
 
+	std::vector<Key*>* getKeys() { return &m_Keys; }
+	std::vector<Key*>& getKeysInteractions() { return m_Keys; }
+
+
 	std::vector<TileLayer*>* getGrassLayers() { return &m_grassLayer; }
 	const std::vector<TileLayer*>& getGrasseableLayers() { return m_grassLayer; }
 
 	std::vector<TileLayer*>* getDoorLayers() { return &m_doorLayer; }
 	std::vector<TileLayer*>& getDoorLayer() { return m_doorLayer; }
+
+
 
 	Player* getPlayer() { return m_pPlayer; }
 	void setPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
@@ -81,6 +88,7 @@ private:
 	std::vector<NPC*> m_NPCs; //vector de NPC's
 	std::vector<Cartel*> m_Carteles; //vector de carteles
 	std::vector<SchoolBag*> m_Bags; //vector de Mochilas
+	std::vector<Key*> m_Keys; //vector de llaves
 
 	int m_tileWidth;	// ancho de tile del nivel
 	int m_tileHeight;	// alto de tile del nivel

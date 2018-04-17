@@ -19,12 +19,19 @@ public:
 	virtual void activate();
 	void generateCollider();
 
+	void setTileWidth(int t) { tileWidth_ = t; };
+	void setTileHeight(int t) { tileHeight_ = t; };
+
 	void changeColliderPos(Vector2D v) { collider_.x = v.getX(); collider_.y = v.getY(); };
 
 	SDL_Rect* getRect() { return &collider_; }
 
 private:
 	SDL_Rect collider_;
+
+protected:
+	int tileWidth_;
+	int tileHeight_;
 };
 
 class InteractuableCreator : public BaseCreator
