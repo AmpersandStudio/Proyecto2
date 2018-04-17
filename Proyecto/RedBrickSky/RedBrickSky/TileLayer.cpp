@@ -31,7 +31,7 @@ void TileLayer::render()
 		for (int j = 0; j < m_numColumns; j++)
 		{
 			// obtenemos la ID del tile que queremos renderizar
-			int id = 0;// m_tileIDs[i + y][j + x];
+			int id = 0;// m_tileIDs[i + y][j + x];//0
 			if (id == 0) continue;
 
 			if (((j * m_tileSize) - x2) - TheCamera::Instance()->getPosition().getX() < -m_tileSize || 
