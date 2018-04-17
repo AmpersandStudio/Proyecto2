@@ -70,6 +70,9 @@ protected:
 	bool in = false;
 	bool stopPunch = false;
 	bool gotchaAnim = false;
+	bool lastTurn = false;
+	bool foundWP1 = false;
+	bool foundWP2 = false;
 	Vector2D iniPos;
 	MoveToThisPosComponent* mc;
 
@@ -119,5 +122,26 @@ private:
 
 	void attack(int i);
 	void toAttackMode();
+
+	void enableWapons() {
+		if (foundWP1) {
+			Weapon1->setActive(true);
+			Weapon11->setActive(true);
+		}
+		if (foundWP2) {
+			Weapon2->setActive(true);
+			Weapon22->setActive(true);
+		}
+	}
+	void disableWapons() {
+		if (foundWP1) {
+			Weapon1->setActive(false);
+			Weapon11->setActive(false);
+		}
+		if (foundWP2) {
+			Weapon2->setActive(false);
+			Weapon22->setActive(false);
+		}
+	}
 };
 

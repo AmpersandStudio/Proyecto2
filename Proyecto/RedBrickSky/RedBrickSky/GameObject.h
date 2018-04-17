@@ -90,5 +90,6 @@ public:
 
 	//actividad
 	void setActive(bool b) { isActive_ = b; };
+	bool getActive() { return isActive_; };
 };
 

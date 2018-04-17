@@ -18,12 +18,14 @@ GameState::~GameState()
 void GameState::render() {
 	
 	for (unsigned int i = 0; i < stage.size(); i++)
-		stage[i]->render();
+		if (stage[i]->getActive())
+			stage[i]->render();
 }
 
 void GameState::update() {
 	for (unsigned int i = 0; i < stage.size(); i++)
-		stage[i]->update();
+		if (stage[i]->getActive())
+			stage[i]->update();
 }
 
 bool GameState::handleEvent(const SDL_Event& event) {
