@@ -48,22 +48,22 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 
 void Player::render()
 {
-	SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), width_, height_ };
-	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0x00, 0xFF, 0xFF);
-	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
+	//SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), width_, height_ };
+	//SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0x00, 0xFF, 0xFF);
+	//SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
 
 	TextureManager::Instance()->drawFrame(textureId_,
 		(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX(),
 		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
 		width_, height_, rowFrame_, colFrame_, TheGame::Instance()->getRenderer(), angle_, alpha_);
 
-	SDL_Rect fillRect2 = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() - width_,
-		(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY() - height_,
-		3 * width_, 3 * height_ };
+	//SDL_Rect fillRect2 = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() - width_,
+	//	(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY() - height_,
+	//	3 * width_, 3 * height_ };
 
 
-	SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
-	SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &fillRect2);
+	//SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	//SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &fillRect2);
 
 
 	if (text)

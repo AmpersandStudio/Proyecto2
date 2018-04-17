@@ -207,18 +207,18 @@ void BattleState::constructC() {
 	Vector2D pos(0.85, 0.7);
 	iniPos = pos;
 	player->setPosition(pos);
-	player->setWidth(138); player->setHeight(256);
+	player->setWidth(128); player->setHeight(256);
 	player->setRowFrame(0); player->setColFrame(0);
 	RenderComponent* rc = new RenderFraemeComponent2();
 	player->addRenderComponent(rc);
 	stage.push_back(player);
 
 	enemy = new BattleEnemy("Pajaro", Ranged, 70, 10, 10, 100, 11);
-	enemy->setTextureId("BattleEnemy");
-	Vector2D pos2(3.15, 1.42);
+	enemy->setTextureId("arbolSS");
+	Vector2D pos2(3.3, 0.62);
 	enemy->setPosition(pos2);
-	enemy->setWidth(170); enemy->setHeight(170);
-	RenderComponent* rc2 = new RenderFrameComponent();
+	enemy->setWidth(160); enemy->setHeight(260);
+	RenderComponent* rc2 = new RenderFraemeComponent2();
 	enemy->addRenderComponent(rc2);
 	stage.push_back(enemy);
 
@@ -555,6 +555,7 @@ void BattleState::update() {
 		else {
 			player->setColFrame(int(((SDL_GetTicks() / (200)) % 4)));
 		}
+		enemy->setColFrame(int(((SDL_GetTicks() / (400)) % 2)));
 		GameState::update();
 		if (!END_ && Attacking_) {
 			END_ = run();
