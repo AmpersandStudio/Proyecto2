@@ -107,8 +107,8 @@ void BattleState::createUI() {
 	constructC();
 
 	int i = 0;
-	bool foundWP1 = false;
-	bool foundWP2 = false;
+	foundWP1 = false;
+	foundWP2 = false;
 	bool first = false;
 
 	vector<estado> items = GameManager::Instance()->copyInventory();
@@ -150,6 +150,7 @@ void BattleState::createUI() {
 		Weapon1->setWidth(w); Weapon1->setHeight(h);
 		posWe = interfaz.button_0->getPosition();
 		Weapon1->setPosition(posWe);
+		Weapon1->setActive(false);
 		stage.push_back(Weapon1);
 
 		Weapon11 = new GameComponent();
@@ -158,8 +159,9 @@ void BattleState::createUI() {
 		Weapon11->setColFrame(colF1);
 		Weapon11->setRowFrame(rowF1);
 		Weapon11->setWidth(w); Weapon11->setHeight(h);
-		posWe = interfaz.button_1->getPosition();
+		posWe = interfaz.button_2->getPosition();
 		Weapon11->setPosition(posWe);
+		Weapon11->setActive(false);
 		stage.push_back(Weapon11);
 	}
 
@@ -179,8 +181,9 @@ void BattleState::createUI() {
 		Weapon2->setColFrame(colF2);
 		Weapon2->setRowFrame(rowF2);
 		Weapon2->setWidth(w); Weapon2->setHeight(h);
-		posWe = interfaz.button_2->getPosition();
+		posWe = interfaz.button_1->getPosition();
 		Weapon2->setPosition(posWe);
+		Weapon2->setActive(false);
 		stage.push_back(Weapon2);
 
 		Weapon22 = new GameComponent();
@@ -191,6 +194,7 @@ void BattleState::createUI() {
 		Weapon22->setWidth(w); Weapon22->setHeight(h);
 		posWe = interfaz.button_3->getPosition();
 		Weapon22->setPosition(posWe);
+		Weapon22->setActive(false);
 		stage.push_back(Weapon22);
 	}
 	//fade inicial
@@ -332,9 +336,10 @@ void BattleState::handleInput()
 
 bool BattleState::run()
 {
-	bool endBattle = false;
+	if (lastTurn)
+		return true;
 
-	if (player->getHealth() > 0 && enemy->getHealth() > 0)
+	else if ((player->getHealth() > 0 && enemy->getHealth() > 0) || !lastTurn)
 	{
 		bool pt = player->getTurn();
 		bool et = enemy->getTurn();
@@ -394,17 +399,17 @@ bool BattleState::run()
 
 	if (player->getHealth() > 0 && enemy->getHealth() <= 0) {
 		std::cout << "HAS GANADO!" << std::endl;
-		endBattle = true;
+		lastTurn = true;
 	}
 	else if (player->getHealth() <= 0 && enemy->getHealth() > 0) {
 		std::cout << "HAS PERDIDO!" << std::endl;
-		endBattle = true;
+		lastTurn = true;
 	}
 	else if (player->getHealth() <= 0 && enemy->getHealth() <= 0) {
 		std::cout << "WTF EMPATE LOCO!" << std::endl;
-		endBattle = true;
+		lastTurn = true;
 	}
-	return endBattle;
+	return false;
 }
 
 void BattleState::createCharacterInfo()
@@ -487,21 +492,33 @@ void BattleState::createBattleButtons()
 void BattleState::updateVidas()
 {
 	Vector2D position0(102, 81);
-	Vector2D position1(578, 81);
+	Vector2D position1(576, 81);
 
 	int iniwidth = 120;
 	int height = 8;
 
 	int width = (player->getHealth() < player->getMaxHealth()) ? (player->getHealth() * iniwidth / player->getMaxHealth()) : iniwidth;
+	if (width < 0) width = 0;
 
 	SDL_Rect fillRect = { (Uint32)position0.getX(), (Uint32)position0.getY() , width, height};
-	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	if (width > iniwidth / 2)
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	else if (width > iniwidth / 3)
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0xFF, 0x00, 0xFF);
+	else
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
 	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
 
 	width = (enemy->getHealth() < enemy->getMaxHealth()) ? (enemy->getHealth() * iniwidth / enemy->getMaxHealth()) : iniwidth;
+	if (width < 0) width = 0;
 
 	SDL_Rect fillRect2 = { (Uint32)position1.getX(), (Uint32)position1.getY() , width, height };
-	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	if (width > iniwidth / 2)
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	else if (width > iniwidth / 3)
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0xFF, 0x00, 0xFF);
+	else
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
 	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect2);
 }
 
@@ -539,13 +556,13 @@ void BattleState::update() {
 			player->setColFrame(int(((SDL_GetTicks() / (200)) % 4)));
 		}
 		GameState::update();
-		if (!END_ && Attacking_)
+		if (!END_ && Attacking_) {
 			END_ = run();
+		}
 	}
 	if (END_) {
 		TheSoundManager::Instance()->stopMusic();
 		TheSoundManager::Instance()->playMusic("music", 0);
-		Game::Instance()->getStateMachine()->popState();
 	}
 }
 
@@ -578,8 +595,27 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 					interfaz.pruebaTexto_->setTextureId("selOptTexto");
 				}
 
+				if (END_)
+					Game::Instance()->getStateMachine()->popState();
+
 				handledEvent = true;
 			}
+		}
+
+		if (event.type == SDL_MOUSEBUTTONDOWN) {
+			if (enemy->getTurn()) {
+				okEnemy_ = true;
+			}
+			else if (!enemy->getTurn() && !attackAnim_) {
+				okPlayer_ = true;
+				okEnemy_ = false;
+				interfaz.pruebaTexto_->setTextureId("selOptTexto");
+			}
+
+			if (END_)
+				Game::Instance()->getStateMachine()->popState();
+
+			handledEvent = true;
 		}
 
 		if (!attackAnim_ && okPlayer_)
@@ -593,6 +629,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 		}
 		else if (actButton && attack_) {
 			attack(0);
+			disableWapons();
 		}
 		
 		if (!attackAnim_ && okPlayer_)
@@ -607,6 +644,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 		}
 		else if (actButton && attack_) {
 			attack(1);
+			disableWapons();
 		}
 
 		if (!attackAnim_ && okPlayer_)
@@ -620,6 +658,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 		}
 		else if (actButton && attack_) {
 			attack(2);
+			disableWapons();
 		}
 
 		if (!attackAnim_ && okPlayer_)
@@ -636,6 +675,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 		}
 		else if (actButton && attack_) {
 			attack(3);
+			disableWapons();
 		}
 	}
 
@@ -670,4 +710,5 @@ void BattleState::toAttackMode() {
 	attack_ = true;
 	displayAttacks();
 	stage[1]->setTextureId("29");
+	enableWapons();
 }
