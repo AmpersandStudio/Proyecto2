@@ -42,6 +42,7 @@
     <ClCompile Include="Interactuable.cpp" />
     <ClCompile Include="InventBottomsComponent.cpp" />
     <ClCompile Include="InventoryShopFBcomponent.cpp" />
+    <ClCompile Include="Key.cpp" />
     <ClCompile Include="KeyBoardShopComponent.cpp" />
     <ClCompile Include="KeyInputComponent.cpp" />
     <ClCompile Include="KeyInputComponentButton.cpp" />
@@ -119,6 +120,7 @@
     <ClInclude Include="Interactuable.h" />
     <ClInclude Include="InventBottomsComponent.h" />
     <ClInclude Include="InventoryShopFBcomponent.h" />
+    <ClInclude Include="Key.h" />
     <ClInclude Include="KeyBoardShopComponent.h" />
     <ClInclude Include="KeyInputComponent.h" />
     <ClInclude Include="KeyInputComponentButton.h" />
@@ -167,7 +169,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>RedBrickSky</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

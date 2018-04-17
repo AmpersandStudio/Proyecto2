@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "Interactuable.h"
 #include "Cartel.h"
+#include "Key.h"
 
 
 Game Game::s_pInstance;
@@ -109,6 +110,7 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\seleccionaOpcion.png", "selOptTexto", RENDERER_);
 	TheTextureManager::Instance()->load("assets/BetaTutorial.png", "level0", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\tylerSS1.png", "tylerSS", RENDERER_, 1, 13);
+	TheTextureManager::Instance()->load("..\\images\\fruit.png", "Key", RENDERER_);
 
 	// Load Sounds
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
@@ -119,6 +121,7 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop_new.wav", "test", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_transition.wav", "trans_btl", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\music.wav", "music", SOUND_MUSIC);
+
 
 	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
 }
@@ -131,6 +134,7 @@ void Game::registerTypes()
 	TheGameObjectFactory::Instance()->registerType("NPC", new NPCcreator());
 	TheGameObjectFactory::Instance()->registerType("Cartel", new CartelCreator());
 	TheGameObjectFactory::Instance()->registerType("Bag", new BagCreator());
+	TheGameObjectFactory::Instance()->registerType("Key", new KeyCreator());
 }
 
 void Game::begin()

@@ -9,6 +9,7 @@
 #include "zlib.h"
 #include "Level.h"
 #include "Camera.h"
+#include "Key.h"
 
 Level* LevelParser::parseLevel(const char *levelFile)
 {
@@ -117,7 +118,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 	{
 		if (e->Value() == std::string("object"))
 		{
-			int x = 0, y = 0, width = 32, height = 32, numFrames = 1, callbackID = 0, animSpeed = 0, Sweeties = 0;
+			int x = 0, y = 0, width = 32, height = 32, numFrames = 1, callbackID = 0, animSpeed = 0, Sweeties = 0, keyID = 0;
 			std::string textureID = "000";
 			std::string type = "Interactuable";
 			std::string Message = " ";
@@ -172,6 +173,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								property->Attribute("value", &Sweeties);
 							}
+							else if (property->Attribute("name") == std::string("keyID"))
+							{
+								property->Attribute("value", &keyID);
+							}
 						}
 					}
 				}
@@ -215,6 +220,15 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				SchoolBag* c = static_cast<SchoolBag*>(pGameObject);
 				c->setSweeties(Sweeties);
 				pLevel->getBags()->push_back(c);
+
+			}
+			if (type == "Key")
+			{
+				Key* k = static_cast<Key*>(pGameObject);
+				k->setKeyID(keyID);
+				k->setTileWidth(m_tileSize * m_width);
+				k->setTileHeight(m_tileSize * m_height);
+				pLevel->getKeys()->push_back(k);
 
 			}
 

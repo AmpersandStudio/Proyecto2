@@ -7,6 +7,7 @@
 #include "NPC.h"
 #include "Cartel.h"
 #include "SchoolBag.h"
+#include"Key.h"
 
 #include "checkML.h"
 
@@ -29,6 +30,8 @@ public:
 	void checkNPCInteractions(Player * pPlayer, const std::vector<NPC*>& NonPC);
 
 	void checkBagsInteractions(Player* pPlayer, const std::vector<SchoolBag*>&  b);
+
+	void checkKeysInteractions(Player* pPlayer, std::vector<Key*>&  k);
 
 	bool checkCollision(GameObject* pPlayer, const std::vector<TileLayer*>& collisionLayers);
 

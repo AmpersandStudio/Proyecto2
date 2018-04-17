@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="102">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="111">
  <properties>
   <property name="000" value="assets/000.png"/>
   <property name="Personaje1" value="assets/Personaje1.png"/>
@@ -17,6 +17,7 @@
   <property name="Personaje7" value="assets/Personaje7.png"/>
   <property name="Personaje8" value="assets/Personaje8.png"/>
   <property name="helicopter" value="assets/helicopter.png"/>
+  <property name="key" value="assets/fruit.png"/>
   <property name="personaje9" value="assets/Personaje9.png"/>
  </properties>
  <tileset firstgid="1" name="Patrones1" tilewidth="32" tileheight="32" tilecount="168" columns="14">
@@ -36,7 +37,7 @@
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmlmqIzEMRUNvqrfzVtlLy3cTHgYjNFxNLtvkgsFJyZJOeSiXk/fr9fM+s7xIeTqfMMfQBrmkypdjr3Iax4sRx/Gp//vzW0Z91nxt/m6+9ilaXO7eSXHn77wcu6qK40lO2ne0Tu24NrON5rtT1rzmPqP5obxIjh47LR7HFc2hiwP1VeXvFo4nteJ5tSr2bRyeHKR8VrTT/HRwzPsVuqfR2mXid8x1i6NKKzhGnBs4bumPWzhovVoda7eUO/cO1v3skPrGGh/SustxaHEi6hpTH1kclkZec45Srt0cXN1SdAztyEE/W2Of2mjrl3dti667iP8TOCLKcmj2q54fcx5IXrdwjOtce4kjs+56tON6FdFuHOj7CrXzcETWK++4quSwnv3edZfWPfmhdpX9we0Tubpkn5G2B/PG0exP5kDOS1zJGrGtPaQWj7ZHfsca32uxoxwZH5q0OVv5TOnmWKXbODrmh+dctHJ+3LBecX5P5aj2g44rzZ+3RHLm3lsoB1fv5Mjus7T/bUgcUpvMWSOSP2WxbDK/f0TvrS8Kpsz74JejXjuNq8wc2qk/buZAY+w0rjIxduoPrZ1ls3t/oDqhPxCd2h+RfaKV1y4cp71/cHrqPLFamfnx0Yp9O6rMb4NPcUSep9q1mzis9hmO91TQvKQ8rByR9vN7sDM+y1EpT04Ih3LvRZ9obE2rODSfFXZPclTPD9RP9fy4haNSnvUKtRd8qH5BH6L9iudHJC+v/dPPc823N26UpauszIveB+0eIfdvPjcf17mzdK0/rL7iYnty9fjP2qHtT+Xg/J3OUT0/VqpzniPXvXaoZg5kHbFsbuGo2rd7Vc3xlKT5weWJ5J+1oedd0hkY/Vx9b631AxmXHo7I/ywRafsOum/ZmWP45M4RM3OrYjx7462O2eHzBg503AybvxVBldjeuuarKyatdxWUY2Vcj5DfOzK/iUjacY8RUWcfry7/ARrzI+8=
+   eJztmmuq4zAMhctsarZzVzlL6++hXAxG6HH0cmzTAwankSV98SNO0vfr9fM+s7xIeTqfMMfQBrmkypdjr3Iax4sRx/Gp//vzW0Z91nxu/m0+9ylaXO7aSXHn37wcu6qK40lO2ne0Tu24NrON5rtT1rzmjtH8UF4kR4+dFo/jiubQxYH6qvJ3C8eTWnG/WhX7Ng5PDlI+K9ppfjo45v0K3dNo7TLxO+a6xVGlFRwjzg0ct/THLRy0Xq2OtVvKnXsG6753SH1jjQ9p3eU4tDgRdY2pjywOSyOvOUcp124Orm4pOoZ25KDH1tinNtr65V3bousu4v8EjoiyHJr9qvvHnAeS1y0c4zzXXuLIrLse7bheRbQbB/q8Qu08HJH1yjuuKjmse7933aV1T36oXWV/cPtEri7ZZ6TtwbxxNPuTOZD3Ja5kjdjWHlKLR9sj37HG71rsKEfGhyZtzlbeU7o5Vuk2jo754XkvWjk/blivOL+nclT7QceV5s9bIjlzzy2Ug6t3cmT3Wdr/NiQOqU3mXSOSP2WxbDLfP6LX1hcFU+Z58MtRr53GVWYO7dQfN3OgMXYaV5kYO/WH1s6y2b0/UJ3QH4hO7Y/IPtHKaxeO054/OD31PrFamfnx0Yp9O6rMt8GnOCL3U+3cTRxW+wzHeypoXlIeVo5I+/k52Bmf5aiUJyeEQ7n2ok80tqZVHJrPCrsnOarnB+qnen7cwlEpz3qF2gs+VL+gD9F+xf0jkpfX/un7uebbGzfK0lVW5kWvg3aNkOs3vzcf57l36Vp/WH3Fxfbk6vGftUPbn8rB+Tudo3p+rFTnPEfOe+1QzRzIOmLZ3MJRtW/3qprjKUnzg8sTyT9rQ993Se/A6HH1tbXWD2Rcejgi/7NEpO076L5lZ47h0/qvQsSndb5jXK2M2eHzBg50TR42fyuCKrG9dc1XV0xa7yoox8q4HiHfOzLfRCTtuMeIqLOPV5f/8aAisw==
   </data>
  </layer>
  <layer name="Floor" width="50" height="100">
@@ -251,6 +252,15 @@
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje15"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="109" name="DoorKey1" type="Key" x="766.667" y="2590.67" width="32" height="32">
+   <properties>
+    <property name="keyID" type="int" value="0"/>
+    <property name="numFrames" type="int" value="1"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="key"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
