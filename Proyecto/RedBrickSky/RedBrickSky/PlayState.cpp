@@ -140,7 +140,8 @@ void PlayState::toInventary() {
 //DE MARTIN PARA PROBAR BATTLESTATE
 void PlayState::toBattle() {
 	TheSoundManager::Instance()->stopMusic();
-	TheSoundManager::Instance()->playMusic("trans_btl", 0);
+	/*TheSoundManager::Instance()->playMusic("trans_btl", 0);*/
+	TheSoundManager::Instance()->playMusic("battle", 0);
 	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->pushState(new TransitionState());
