@@ -57,15 +57,23 @@ void Dialogue::render()
 {
 	if (isActive())
 	{
-		TheTextureManager::Instance()->drawFull("viñeta", posX_ - TheCamera::Instance()->getPosition().getX() - 20, posY_ - TheCamera::Instance()->getPosition().getY() - 20, 335, 125,
-			Game::Instance()->getRenderer(), 0, 255);
-		//RENDERIZO EL BOCADILLO
-		for (int i = 0; i < 3; i++) {
-			TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::ARIAL24, { 0,0,0,255 },
-				posX_ - TheCamera::Instance()->getPosition().getX(),
-				posY_ + i * 15 - TheCamera::Instance()->getPosition().getY(),
-				Game::Instance()->getRenderer());
+		if(posX_ - TheCamera::Instance()->getPosition().getX() > (Game::Instance()->getWinWidth() / 2) + offsetX_) {
+			posX_ += (-2 * offsetX_) - dBoxWidth_;
 		}
+	else {
+		posX_ += 10;
+	}
+
+	TheTextureManager::Instance()->drawFull("viñeta", posX_ - TheCamera::Instance()->getPosition().getX() - offsetX_, posY_ - TheCamera::Instance()->getPosition().getY() - offsetY_,
+		dBoxWidth_, dBoxHeight_, Game::Instance()->getRenderer(), 0, 255);
+
+	//RENDERIZO EL BOCADILLO
+	for (int i = 0; i < 3; i++) {
+		TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::ARIAL24, { 0,0,0,255 },
+			posX_ - TheCamera::Instance()->getPosition().getX(),
+			posY_ + i * lineSpace_ - TheCamera::Instance()->getPosition().getY(),
+			Game::Instance()->getRenderer());
+	}
 	}
 }
 
@@ -94,23 +102,79 @@ void Dialogue::readFile()
 void Dialogue::splitString(std::string s)
 {
 	int length = s.size();
-	int lines = length / 24;
+	int lines = length / lineLength_;
 
 	int j = 0;
 	for (int i = 0; i < lines; i++)
 	{
-		std::string substring = s.substr(j, 24);
-		if (substring[23] != ' ' && substring[23] != ',' && substring[23] != '.') {
-			substring.append("-");
+		std::string substring = s.substr(j, lineLength_ + 1);
+		/*if ( isVowel(substring[23]) && (substring[24] != ' '||','||'.') &&  isConsonant(substring[24]) && substring.length() > 24) {
+		substring.erase(24, 1);
+		substring.append("-");
 		}
-		splittedString_.push(substring);
-		j += 24;
+		else if(substring.length() > 24) {
+		substring.erase(24, 1);
+		}*/
+
+		if (substring.size() > lineLength_
+			&& (isVowel(substring[substring.size() - 1]) || isConsonant(substring[substring.size() - 1]) || isDots(substring))
+			&& substring[substring.size() - 2] != ' ') {
+			int temp = 0;
+			int pos = 0;
+			while ((temp = substring.find(' ', temp)) != std::string::npos) {
+				pos = temp;
+				temp++;
+			};
+			substring.erase(pos, (substring.size() - pos));
+			splittedString_.push(substring);
+			j += (pos + 1);
+		}
+		else {
+			if (substring.size() > lineLength_) {
+				substring.erase(lineLength_, 1);
+			}
+			splittedString_.push(substring);
+			j += lineLength_;
+		}
 	}
 
-	if (length % 24 != 0)
+	if (length % lineLength_ != 0)
 	{
 		std::string substring = s.substr(j, s.size() - 1);
 		splittedString_.push(substring);
 	}
 }
 
+
+bool Dialogue::isConsonant(char c)
+{
+	std::string consonantes = "bBcCdDfFgGhHjJkKlLmMnNñÑpPqQrRsStTvVwWxXyYzZ";
+	if (consonantes.find(c) != std::string::npos) {
+		return true;
+	}
+	return false;
+}
+
+bool Dialogue::isVowel(char c)
+{
+	std::string vocales = "aAáÁeéEÉiíIÍoóOÓuúUÚ";
+	if (vocales.find(c) != std::string::npos) {
+		return true;
+	}
+	return false;
+}
+
+bool Dialogue::isDots(std::string s) {
+	if (s.find("...", (s.size() - 4)) != std::string::npos) {
+		return true;
+	}
+	return false;
+}
+
+bool Dialogue::isPunctuation(char c) {
+	std::string signos = "¿?¡!,.;:";
+	if (signos.find(c) != std::string::npos) {
+		return true;
+	}
+	return false;
+}

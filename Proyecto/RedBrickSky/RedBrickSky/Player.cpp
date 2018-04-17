@@ -76,8 +76,10 @@ void Player::update()
 {
 	moved_ = false; // En el update determinamos que el jugador no se mueve y solo cambiará si se produce un evento
 
-					// refresh position
-	position_ = position_ + velocity_;
+
+	if (!GameManager::Instance()->getDialogueState()) { //Para evitar que se mueva si otro NPC le empuja al hablar, lo cual bloquearía el juego
+		position_ = position_ + velocity_; // refresh position
+	}
 
 	if (previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY()) {
 		TheCamera::Instance()->setTarget(&position_);

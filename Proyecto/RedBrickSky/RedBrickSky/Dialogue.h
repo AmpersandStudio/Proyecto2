@@ -30,6 +30,13 @@ private:
 
 	int posX_;
 	int posY_;
+	int offsetX_ = 25;
+	int offsetY_ = 20;
+	int dBoxWidth_ = 345;
+	int dBoxHeight_ = 135;
+	int lineSpace_ = 25;
+	int lineLength_ = 24;
+	/*int lines_ = 0;*/
 
 	std::vector<std::string> dialogues_;
 	std::queue<std::string> splittedString_;
@@ -40,4 +47,8 @@ private:
 
 	void readFile();
 	void splitString(std::string s);
+	bool isConsonant(char c);
+	bool isVowel(char c);
+	bool isDots(std::string s);
+	bool isPunctuation(char c);
 };
