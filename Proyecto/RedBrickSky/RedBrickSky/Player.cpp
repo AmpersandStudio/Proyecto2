@@ -79,8 +79,10 @@ void Player::update()
 					// refresh position
 	position_ = position_ + velocity_;
 
-	if (previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY())
+	if (previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY()) {
+		TheCamera::Instance()->setTarget(&position_);
 		moved_ = true;
+	}
 
 	previousPos_ = position_;
 	// refresh animation frame

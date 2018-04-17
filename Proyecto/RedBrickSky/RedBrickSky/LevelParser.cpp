@@ -30,7 +30,9 @@ Level* LevelParser::parseLevel(const char *levelFile)
 	pRoot->Attribute("width", &m_width);
 	pRoot->Attribute("height", &m_height);
 
-
+	//m_width = 64;
+	//m_height = 64;
+	m_tileSize = 64;
 
 	// set the camera limits
 	TheCamera::Instance()->setMapDims(m_tileSize * m_width, m_tileSize * m_height);

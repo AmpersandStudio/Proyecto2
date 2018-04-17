@@ -18,7 +18,7 @@ public:
 
 	const Vector2D getPosition() const;
 
-	void setMapDims(int w, int h) { mapWidth = w; mapHeight = h; }
+	void setMapDims(int w, int h) { mapWidth = w; mapHeight = h ; }
 
 private:
 	Camera();
