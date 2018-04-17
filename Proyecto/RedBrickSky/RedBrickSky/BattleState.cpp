@@ -134,6 +134,9 @@ void BattleState::createUI() {
 
 	if (foundWP1) {
 
+		int w = interfaz.button_0->getWidth();
+		int h = interfaz.button_0->getHeight();
+
 		string text1 = w1.tx;
 		string name1 = w1.nombre;
 		int colF1 = w1.colFrame;
@@ -144,11 +147,20 @@ void BattleState::createUI() {
 		Weapon1->setTextureId(text1);
 		Weapon1->setColFrame(colF1);
 		Weapon1->setRowFrame(rowF1);
+		Weapon1->setWidth(w); Weapon1->setHeight(h);
 		posWe = interfaz.button_0->getPosition();
 		Weapon1->setPosition(posWe);
-		Weapon1->setWidth(50); Weapon1->setHeight(50);
 		stage.push_back(Weapon1);
 
+		Weapon11 = new GameComponent();
+		Weapon11->addRenderComponent(new RenderSingleFrameComponent());
+		Weapon11->setTextureId(text1);
+		Weapon11->setColFrame(colF1);
+		Weapon11->setRowFrame(rowF1);
+		Weapon11->setWidth(w); Weapon11->setHeight(h);
+		posWe = interfaz.button_1->getPosition();
+		Weapon11->setPosition(posWe);
+		stage.push_back(Weapon11);
 	}
 
 	if (foundWP2) {
@@ -158,15 +170,28 @@ void BattleState::createUI() {
 		int colF2 = w2.colFrame;
 		int rowF2 = w2.FilFrame;
 
+		int w = interfaz.button_0->getWidth();
+		int h = interfaz.button_0->getHeight();
+
 		Weapon2 = new GameComponent();
 		Weapon2->addRenderComponent(new RenderSingleFrameComponent());
 		Weapon2->setTextureId(text2);
 		Weapon2->setColFrame(colF2);
 		Weapon2->setRowFrame(rowF2);
+		Weapon2->setWidth(w); Weapon2->setHeight(h);
 		posWe = interfaz.button_2->getPosition();
 		Weapon2->setPosition(posWe);
-		Weapon2->setWidth(50); Weapon2->setHeight(50);
 		stage.push_back(Weapon2);
+
+		Weapon22 = new GameComponent();
+		Weapon22->addRenderComponent(new RenderSingleFrameComponent());
+		Weapon22->setTextureId(text2);
+		Weapon22->setColFrame(colF2);
+		Weapon22->setRowFrame(rowF2);
+		Weapon22->setWidth(w); Weapon22->setHeight(h);
+		posWe = interfaz.button_3->getPosition();
+		Weapon22->setPosition(posWe);
+		stage.push_back(Weapon22);
 	}
 	//fade inicial
 	stage.push_back(fade_);
@@ -403,8 +428,6 @@ void BattleState::createCharacterInfo()
 	UI_Enemy->setPosition(position0);
 	UI_Enemy->addRenderComponent(new RenderFrameComponent());
 	stage.push_back(UI_Enemy);
-
-	updateVidas();
 }
 
 void BattleState::createBattleButtons()
@@ -463,26 +486,23 @@ void BattleState::createBattleButtons()
 
 void BattleState::updateVidas()
 {
-	interfaz.UI_Vida_Player = new GameComponent();
-	interfaz.UI_Vida_Enemy = new GameComponent();
+	Vector2D position0(102, 81);
+	Vector2D position1(578, 81);
 
-	Vector2D position0(0.85, 10);
-	interfaz.VPlayer_position = position0;
-	Vector2D position1(4.8, 10);
-	interfaz.VEnemy_position = position1;
+	int iniwidth = 120;
+	int height = 8;
 
-	interfaz.UI_Vida_Player->setTextureId("20");
-	interfaz.UI_Vida_Player->setWidth(interfaz.Vida_Width); interfaz.UI_Vida_Player->setHeight((interfaz.Vida_height));
-	interfaz.UI_Vida_Player->setPosition(interfaz.VPlayer_position);
-	interfaz.UI_Vida_Player->addRenderComponent(new RenderFrameComponent());
+	int width = (player->getHealth() < player->getMaxHealth()) ? (player->getHealth() * iniwidth / player->getMaxHealth()) : iniwidth;
 
-	interfaz.UI_Vida_Enemy->setTextureId("20");
-	interfaz.UI_Vida_Enemy->setWidth(interfaz.Vida_Width); interfaz.UI_Vida_Enemy->setHeight((interfaz.Vida_height));
-	interfaz.UI_Vida_Enemy->setPosition(interfaz.VEnemy_position);
-	interfaz.UI_Vida_Enemy->addRenderComponent(new RenderFrameComponent());
+	SDL_Rect fillRect = { (Uint32)position0.getX(), (Uint32)position0.getY() , width, height};
+	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
 
-	stage.push_back(interfaz.UI_Vida_Player);
-	stage.push_back(interfaz.UI_Vida_Enemy);
+	width = (enemy->getHealth() < enemy->getMaxHealth()) ? (enemy->getHealth() * iniwidth / enemy->getMaxHealth()) : iniwidth;
+
+	SDL_Rect fillRect2 = { (Uint32)position1.getX(), (Uint32)position1.getY() , width, height };
+	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect2);
 }
 
 void BattleState::updateVida(GameComponent* barraVida, double variacion)
@@ -512,13 +532,12 @@ void BattleState::update() {
 	else if (fade2Done_) {
 		if (iniPos.getX() != player->getPosition().getX())
 		{
-			int frame = int(((SDL_GetTicks() / (100)) % 8)) + 4;
+			int frame = int(((SDL_GetTicks() / (75)) % 8)) + 4;
 			player->setColFrame(frame);
 		}
 		else {
 			player->setColFrame(int(((SDL_GetTicks() / (200)) % 4)));
 		}
-		
 		GameState::update();
 		if (!END_ && Attacking_)
 			END_ = run();
@@ -537,6 +556,7 @@ void BattleState::render() {
 	}
 	else {
 		GameState::render();
+		updateVidas();
 	}
 }
 

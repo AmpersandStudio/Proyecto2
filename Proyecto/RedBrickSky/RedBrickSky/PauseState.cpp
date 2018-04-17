@@ -48,8 +48,10 @@ bool PauseState::handleEvent(const SDL_Event & event)
 	// 1) Comprueba las teclas de acceso a los distintos menús, etc.
 	if (event.type == SDL_KEYDOWN)
 	{
-		if (event.key.keysym.sym == SDLK_ESCAPE)
-			Game::Instance()->getStateMachine()->popState();
+		if (event.key.keysym.sym == SDLK_RETURN)
+			resume();
+		else if (event.key.keysym.sym == SDLK_ESCAPE)
+			toMenu();
 
 	}
 

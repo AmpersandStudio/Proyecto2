@@ -39,7 +39,7 @@ class BattleCharacter : public GameComponent
 {
 public:
 	BattleCharacter(std::string n, Type t, float hp, float atk, float def, float prec, float vel) : name(n), type(t),
-		health(hp), attack(atk), defense(def), precision(prec), velocity(vel), support(false) {}
+		health(hp), attack(atk), defense(def), precision(prec), velocity(vel), support(false), maxHealth(hp) {}
 	BattleCharacter() {}
 	virtual ~BattleCharacter() {}
 
@@ -75,11 +75,13 @@ public:
 	void receiveFactors(float atk, float def, float prc);
 	void setTurn(bool b) { turn_ = b; };
 	bool getTurn() { return turn_; };
+	float getMaxHealth() const { return maxHealth; }
 
 protected:
 	std::string name;
 	Type type;
 	float health;
+	float maxHealth;
 	float attack;
 	float defense;
 	float precision;
