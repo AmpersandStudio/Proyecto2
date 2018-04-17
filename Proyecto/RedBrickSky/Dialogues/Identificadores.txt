@@ -1,6 +1,13 @@
-Esto es la guía con los símbolos que identifican a cada personaje para escribir su diálogo
-(Estos son unos ejemplos, nada definitivo).
+﻿Esto es la guía de estilo para los diálogos
 
+
+Nombres de archivo:
 P = Player
 D = Director
 ~ = Jefe Final
+NPC = Personaje del nivel
+
+Contenido del .txt:
+Primera línea = número de líneas de diálogo
+Tamaño máximo por línea = 72 caractéres
+Exclamaciones españolas (no inglesas), tildes y acentos, restringir las palabras soeces

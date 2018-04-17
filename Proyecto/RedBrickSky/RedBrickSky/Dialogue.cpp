@@ -42,25 +42,25 @@ void Dialogue::update()
 }
 
 bool Dialogue::nextDialogue() {
-	//setActive(false);
 	dialogueIndex_++;
+	setActive(false);
 	if (dialogueIndex_ >= numDialogues_) {
-		dialogueIndex_ = 0;
+		update();
 		return false;
 	}
-
-	setActive(false);
-	/*splitString(dialogues_.at(dialogueIndex_));*/
-	cout << "El index es " << dialogueIndex_ << endl;
-	return true;
+	else {
+		return true;
+	}
 }
 
 void Dialogue::render()
 {
 	if (isActive())
 	{
+		TheTextureManager::Instance()->drawFull("viñeta", posX_ - TheCamera::Instance()->getPosition().getX() - 20, posY_ - TheCamera::Instance()->getPosition().getY() - 20, 335, 125,
+			Game::Instance()->getRenderer(), 0, 255);
 		//RENDERIZO EL BOCADILLO
-		for (int i = 0; i < 3;i++) {
+		for (int i = 0; i < 3; i++) {
 			TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::ARIAL24, { 0,0,0,255 },
 				posX_ - TheCamera::Instance()->getPosition().getX(),
 				posY_ + i * 15 - TheCamera::Instance()->getPosition().getY(),
@@ -100,7 +100,7 @@ void Dialogue::splitString(std::string s)
 	for (int i = 0; i < lines; i++)
 	{
 		std::string substring = s.substr(j, 24);
-		if (substring[23] != ' ') {
+		if (substring[23] != ' ' && substring[23] != ',' && substring[23] != '.') {
 			substring.append("-");
 		}
 		splittedString_.push(substring);

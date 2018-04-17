@@ -112,6 +112,12 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\tylerSS1.png", "tylerSS", RENDERER_, 1, 13);
 	TheTextureManager::Instance()->load("..\\images\\arbolSS.png", "arbolSS", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\fruit.png", "Key", RENDERER_);
+<<<<<<< HEAD
+=======
+
+	//Bocata de dialogo
+	TheTextureManager::Instance()->load("..\\images\\bubble_speech.png", "viñeta", Game::Instance()->getRenderer());
+>>>>>>> d569e59282c814fa20a506d5cb78e3df72b1587a
 
 	// Load Sounds
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
