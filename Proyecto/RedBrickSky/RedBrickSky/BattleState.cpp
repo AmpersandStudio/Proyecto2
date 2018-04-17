@@ -121,10 +121,12 @@ void BattleState::createUI() {
 				w1 = items[i];
 				first = true;
 				foundWP1 = true;
+				W1id = w1.ID;
 			}
 			else {
 				w2 = items[i];
 				foundWP2 = true;
+				W2id = w2.ID;
 			}
 		}
 		i++;
@@ -153,6 +155,8 @@ void BattleState::createUI() {
 		Weapon1->setActive(false);
 		stage.push_back(Weapon1);
 
+		player->addAttack(ataques[W1id*2]);
+
 		Weapon11 = new GameComponent();
 		Weapon11->addRenderComponent(new RenderSingleFrameComponent());
 		Weapon11->setTextureId(text1);
@@ -163,6 +167,8 @@ void BattleState::createUI() {
 		Weapon11->setPosition(posWe);
 		Weapon11->setActive(false);
 		stage.push_back(Weapon11);
+
+		player->addAttack(ataques[(W1id * 2) + 1]);
 	}
 
 	if (foundWP2) {
@@ -186,6 +192,8 @@ void BattleState::createUI() {
 		Weapon2->setActive(false);
 		stage.push_back(Weapon2);
 
+		player->addAttack(ataques[W2id * 2]);
+
 		Weapon22 = new GameComponent();
 		Weapon22->addRenderComponent(new RenderSingleFrameComponent());
 		Weapon22->setTextureId(text2);
@@ -196,13 +204,15 @@ void BattleState::createUI() {
 		Weapon22->setPosition(posWe);
 		Weapon22->setActive(false);
 		stage.push_back(Weapon22);
+
+		player->addAttack(ataques[(W2id * 2) + 1]);
 	}
 	//fade inicial
 	stage.push_back(fade_);
 }
 
 void BattleState::constructC() {
-	player = new BattlePlayer("Tyler", Physical, 100, 10, 10, 100, 10);
+	player = new BattlePlayer("Tyler", Physical, 1000, 10, 10, 100, 10);
 	player->setTextureId("tylerSS");
 	Vector2D pos(0.85, 0.7);
 	iniPos = pos;
@@ -222,47 +232,67 @@ void BattleState::constructC() {
 	enemy->addRenderComponent(rc2);
 	stage.push_back(enemy);
 
-	ataques.resize(32);
+	ataques.resize(33);
 
 	// Ataques de Armas Fisicas
-	ataques[0] = Attack("Punta Afilada", Physical, 20, 20, 15, 75, 1, 1, 1);
-	ataques[1] = Attack("Golpe de Goma", Physical, 20, 20, 20, 80, 1, 0.8f, 1);
+	//compas
+	ataques[0] = Attack("360 No Scope", Physical, 20, 20, 65, 70, 1, 1, 0.8f);
+	ataques[1] = Attack("¡Pasalo a Radianes!", Physical, 15, 15, 55, 85, 0.9f, 0.9f, 0.9f);
+	//escobilla
 	ataques[2] = Attack("Eso No Es Chocolate", Physical, 15, 15, 40, 75, 0.9f, 1, 0.9f);
 	ataques[3] = Attack("Limpieza a Fondo", Physical, 15, 15, 35, 80, 0.9f, 0.9f, 1);
-	ataques[4] = Attack("360 No Scope", Physical, 20, 20, 65, 70, 1, 1, 0.8f);
-	ataques[5] = Attack("¡Pasalo a Radianes!", Physical, 15, 15, 55, 85, 0.9f, 0.9f, 0.9f);
-	ataques[6] = Attack("Tajo Recto", Physical, 10, 10, 95, 80, 1, 1, 1);
-	ataques[7] = Attack("Golpe de Remo", Physical, 15, 15, 80, 90, 1, 1, 1);
+	//menstruacion
+	ataques[4] = Attack("Tajo Recto", Physical, 10, 10, 95, 80, 1, 1, 1);
+	ataques[5] = Attack("Golpe de Remo", Physical, 15, 15, 80, 90, 1, 1, 1);
+	//lapiz
+	ataques[6] = Attack("Punta Afilada", Physical, 20, 20, 15, 75, 1, 1, 1);
+	ataques[7] = Attack("Golpe de Goma", Physical, 20, 20, 20, 80, 1, 0.8f, 1);
 
 	// Ataques de Armas Magicas
+	//insulto
 	ataques[8] = Attack("Hijo de Fruta", Magical, 20, 20, 20, 75, 0.9f, 0.9f, 1);
 	ataques[9] = Attack("Dedo Mágico", Magical, 20, 20, 15, 80, 1, 1, 0.8f);
-	ataques[10] = Attack("Comida Sorpresa", Magical, 20, 20, 30, 80, 1, 0.8f, 1);
-	ataques[11] = Attack("Hoy Toca Lentejas", Magical, 20, 20, 45, 75, 1, 1, 1);
+	//libro
+	ataques[10] = Attack("Indice Confuso", Magical, 10, 10, 85, 95, 1, 1, 1);
+	ataques[11] = Attack("Lectura Ligera", Magical, 10, 10, 95, 80, 1, 1, 1);
+	//pegamento
 	ataques[12] = Attack("Esto No Pega", Magical, 15, 15, 60, 90, 1, 0.9f, 1);
 	ataques[13] = Attack("Metamaterial", Magical, 15, 15, 75, 80, 0.9f, 0.9f, 0.9f);
-	ataques[14] = Attack("Indice Confuso", Magical, 10, 10, 85, 95, 1, 1, 1);
-	ataques[15] = Attack("Lectura Ligera", Magical, 10, 10, 95, 80, 1, 1, 1);
 
+	//tartera
+	ataques[14] = Attack("Comida Sorpresa", Magical, 20, 20, 30, 80, 1, 0.8f, 1);
+	ataques[15] = Attack("Hoy Toca Lentejas", Magical, 20, 20, 45, 75, 1, 1, 1);
+	
 	// Ataques de Armas con Proyectiles
+	//cerbatana
 	ataques[16] = Attack("Proyectil Humedo", Ranged, 30, 30, 15, 90, 1, 1, 0.8f);
 	ataques[17] = Attack("Escupitajo Supersonico", Ranged, 30, 30, 25, 80, 1, 1, 0.9f);
-	ataques[22] = Attack("Grapas Atómicas", Ranged, 25, 25, 30, 90, 1, 1, 1);
-	ataques[23] = Attack("Corchograpa", Ranged, 25, 25, 45, 75, 1, 0.9f, 0.9f);
-	ataques[19] = Attack("Eso no era Agua", Ranged, 15, 15, 65, 85, 1, 1, 0.8f);
-	ataques[18] = Attack("Eso Tampoco", Ranged, 15, 15, 75, 75, 1, 0.8f, 0.9f);
+	//globo
+	ataques[18] = Attack("Eso no era Agua", Ranged, 15, 15, 65, 85, 1, 1, 0.8f);
+	ataques[19] = Attack("Eso Tampoco", Ranged, 15, 15, 75, 75, 1, 0.8f, 0.9f);
+	//tirachinas
 	ataques[20] = Attack("¡ZAS! En Toda la Boca", Ranged, 5, 5, 85, 100, 1, 1, 1);
 	ataques[21] = Attack("Meteorito Hentai", Ranged, 5, 5, 95, 90, 1, 1, 1);
-
+	//grapadora
+	ataques[22] = Attack("Grapas Atómicas", Ranged, 25, 25, 30, 90, 1, 1, 1);
+	ataques[23] = Attack("Corchograpa", Ranged, 25, 25, 45, 75, 1, 0.9f, 0.9f);
+	
 	// Ataques de Armas de Apoyo
+	//sacapuntas
 	ataques[24] = Attack("Afilador", Support, 20, 20, 0, 100, 1.2f, 1, 1);
 	ataques[25] = Attack("Trazado Fino", Support, 20, 0, 100, 20, 1, 1, 1.2f);
+	//calculadora
 	ataques[26] = Attack("Calculo Algebraico Complejo", Support, 20, 20, 0, 100, 1.2f, 1, 1.1f);
 	ataques[27] = Attack("Stack Overflow", Support, 5, 5, 0, 100, 1.5f, 1, 1);
+	//bandeja
 	ataques[28] = Attack("Reflejo Fidedigno", Support, 10, 10, 0, 100, 1, 1, 1.5f);
 	ataques[29] = Attack("Escudo de Adamantium", Support, 5, 5, 0, 100, 1, 1.5f, 1);
+	//borrador
 	ataques[30] = Attack("Polvos de Tiza", Support, 20, 20, 0, 100, 1, 1.2f, 2);
 	ataques[31] = Attack("Empezamos Tema Nuevo", Support, 5, 5, 0, 100, 1.4f, 1, 1.1f);
+
+	//genericone
+	ataques[32] = Attack("Golpe", Physical, 5, 5, 10, 100, 1.4f, 1, 1.1f);
 
 	e_ataques.resize(12);
 	e_ataques[0] = Attack("Placaje", Physical, 20, 20, 20, 90, 1, 1, 1);
@@ -284,10 +314,14 @@ void BattleState::constructC() {
 }
 
 void BattleState::initC() {
-	player->addAttack(ataques[PINCHO_ELIPTICO], 4);
-	player->addAttack(ataques[CIRCULO_PERFECTO], 4);
-	player->addAttack(ataques[ALUSIONES_FAMILIARES], 4);
-	player->addAttack(ataques[EXPLORAR_LUGARES], 4);
+	if (!foundWP1) {
+		player->addAttack(ataques[GOLPE]);
+		player->addAttack(ataques[GOLPE]);
+	}
+	if (!foundWP2) {
+		player->addAttack(ataques[GOLPE]);
+		player->addAttack(ataques[GOLPE]);
+	}
 
 	std::vector<bool> ea;
 	for (int i = 0; i < e_ataques.size(); i++) ea.push_back(true);
@@ -300,7 +334,7 @@ void BattleState::initC() {
 		{
 			ea[rnd] = false;
 			count++;
-			enemy->addAttack(e_ataques[rnd], 2);
+			enemy->addAttack(e_ataques[rnd]);
 		}
 	}
 
@@ -348,18 +382,19 @@ bool BattleState::run()
 			std::cout << std::endl;
 
 			//handleInput();
-			while (!player->useAttack(input)) {
+			if (!player->useAttack(input)) {
 				std::cout << "No quedan PP para este ataque!" << std::endl;
 			}
+			else {
 
-			float dmg = player->combat(input, enemy->getDefense(), enemy->getType());
-			if (player->hasTarget())
-			{
-				enemy->receiveDamage(dmg);
-				Attack temp_a = player->getAttack(input);
-				enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
+				float dmg = player->combat(input, enemy->getDefense(), enemy->getType());
+				if (player->hasTarget())
+				{
+					enemy->receiveDamage(dmg);
+					Attack temp_a = player->getAttack(input);
+					enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
+				}
 			}
-
 			std::cout << std::endl;
 			enemy->setTurn(true);
 		}

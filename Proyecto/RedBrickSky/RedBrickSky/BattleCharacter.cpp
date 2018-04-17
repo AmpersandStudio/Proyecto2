@@ -1,9 +1,18 @@
 #include "BattleCharacter.h"
 
-void BattleCharacter::addAttack(Attack a, unsigned int max)
+void BattleCharacter::addAttack(Attack a)
 {
-	if (attacks.size() >= max) return;
-	attacks.push_back(a);
+	if (attackIndex > 3) {
+		attackIndex = 0;
+		attacks.at(attackIndex) = a;
+		attackIndex++;
+	}
+	else
+	{
+		attacks.at(attackIndex) = a;
+		attackIndex++;
+	}
+	
 }
 
 int BattleCharacter::checkAttacks()

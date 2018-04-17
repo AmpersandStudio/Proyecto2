@@ -73,10 +73,10 @@ Combat::~Combat()
 
 void Combat::init()
 {
-	player->addAttack(ataques[PINCHO_ELIPTICO], 4);
-	player->addAttack(ataques[CIRCULO_PERFECTO], 4);
-	player->addAttack(ataques[ALUSIONES_FAMILIARES], 4);
-	player->addAttack(ataques[EXPLORAR_LUGARES], 4);
+	player->addAttack(ataques[PINCHO_ELIPTICO]);
+	player->addAttack(ataques[CIRCULO_PERFECTO]);
+	player->addAttack(ataques[ALUSIONES_FAMILIARES]);
+	player->addAttack(ataques[EXPLORAR_LUGARES]);
 
 	std::vector<bool> ea;
 	for (int i = 0; i < e_ataques.size(); i++) ea.push_back(true);
@@ -89,7 +89,7 @@ void Combat::init()
 		{
 			ea[rnd] = false;
 			count++;
-			enemy->addAttack(e_ataques[rnd], 2);
+			enemy->addAttack(e_ataques[rnd]);
 		}
 	}
 

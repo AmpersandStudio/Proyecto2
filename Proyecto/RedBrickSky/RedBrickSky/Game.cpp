@@ -110,11 +110,8 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\seleccionaOpcion.png", "selOptTexto", RENDERER_);
 	TheTextureManager::Instance()->load("assets/BetaTutorial.png", "level0", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\tylerSS1.png", "tylerSS", RENDERER_, 1, 13);
-<<<<<<< HEAD
 	TheTextureManager::Instance()->load("..\\images\\arbolSS.png", "arbolSS", RENDERER_, 1, 2);
-=======
 	TheTextureManager::Instance()->load("..\\images\\fruit.png", "Key", RENDERER_);
->>>>>>> a6974c78f4fc7e8867bb80b3613d3b1a12d4d60e
 
 	// Load Sounds
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
