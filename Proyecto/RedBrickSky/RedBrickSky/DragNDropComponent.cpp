@@ -2,13 +2,10 @@
 
 DragNDropComponent::DragNDropComponent(BackPack* b, int id) : bag(b)
 {
-	
 	isMouseSelection = false;
 	StandPoints = b->getSP();
 	identifier = id;
-
 }
-
 
 DragNDropComponent::~DragNDropComponent()
 {
@@ -38,8 +35,6 @@ bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
 	else  if (event.type == SDL_MOUSEBUTTONUP && isMouseSelection) {
 		isMouseSelection = false;
-		Inventary.clear();
-		Inventary = bag->getInvent();
 
 		if (!devMat(x, y, o))
 			o->setPosition(o->getOriPos());	
@@ -49,7 +44,7 @@ bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
 bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 	bool aceptada = false;
-	std::cout << Inventary.size() << endl;
+	
 	int auxX;
 	int auxY;
 	int auxW;
@@ -58,6 +53,9 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 	int auxMy;
 	bool encontrado = false;
 	Vector2D v;
+
+	Inventary.clear();
+	Inventary = GameManager::Instance()->copyInventory();
 
 	unsigned int i = 0;
 	while (i < StandPoints.size() && !encontrado) {
@@ -85,28 +83,42 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 
 			StandPoints[i].ID = identifier;
 			StandPoints[i].empty = false;
+
 			x = auxX + auxW / 2;
 			y = auxY + auxH / 2;
 
-			Inventary[identifier].x = x;
-			Inventary[identifier].y = y;
-			Inventary[identifier].mX = auxMx;
-			Inventary[identifier].mY = auxMy;
+			bool found = false;
+			for (int i = 0; i < Inventary.size() && !found; i++) {
+				if (Inventary[i].ID == identifier) {
+					found = true;
+					Inventary[identifier].x = x;
+					Inventary[identifier].y = y;
+					Inventary[identifier].mX = auxMx;
+					Inventary[identifier].mY = auxMy;
+				}
+			}
+
+			
 
 			if (StandPoints[i].equiped) {
 				Inventary[identifier].equiped = true;
-			}
 
-			v.set(x / auxW - 0.5, y / auxH);
+				if (auxMy == -1) 
+					v.set(x / auxW + 0.3, y / auxH + 2.6);
+				else 
+					v.set(x / auxW + 1.1, y / auxH + 2.6);
+			}
+			else {
+				v.set(x / auxW - 0.5, y / auxH);
+				Inventary[identifier].equiped = false;
+			}
 			o->setPosition(v);
 			o->setOriPos(v);
 			aceptada = true;
 
-			bag->setInvent(Inventary);
-			bag->setSP(StandPoints);
-
 			for (int p = 0; p < StandPoints.size(); p++)
 				StandPoints[p].empty = true;
+
 			for (int x = 0; x < Inventary.size(); x++) {
 				int c = 0;
 				bool found = false;
@@ -127,6 +139,10 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			std::cout << "Hey! que pasa!" << endl;
 
 		}
+
+		bag->setInvent(Inventary);
+		GameManager::Instance()->changeInventory(Inventary);
+		bag->setSP(StandPoints);
 	}
 
 	return aceptada;

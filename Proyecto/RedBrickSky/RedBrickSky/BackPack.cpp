@@ -63,11 +63,15 @@ bool BackPack::handleEvent(const SDL_Event & event)
 
 			XboxController::Instance()->onJoystickButtonDown(event);
 
-			if (XboxController::Instance()->getButtonState(0, 6))
+			if (XboxController::Instance()->getButtonState(0, 6)) {
+				GameManager::Instance()->changeInventory(invent);
 				toMenu();
+			}
 
-			if (XboxController::Instance()->getButtonState(0, 1) && buttonsCreated)//Si se ha pulsado la B
+			if (XboxController::Instance()->getButtonState(0, 1) && buttonsCreated) {//Si se ha pulsado la B
+				GameManager::Instance()->changeInventory(invent);
 				toMenu();
+			}
 			else if (XboxController::Instance()->getButtonState(0, 0) && buttonsCreated) {
 				elimina();
 				creaSP();
@@ -97,7 +101,6 @@ bool BackPack::handleEvent(const SDL_Event & event)
 
 void BackPack::toMenu() {
 
-
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->popState();
 }
@@ -113,6 +116,14 @@ void BackPack::cargaElementos(vector<estado> l) {
 			int x = l[i].mX;
 			int y = l[i].mY;
 			createItemAtSP(x, y, l[i].objectID, l[i]);
+
+			bool found = false;
+			for (int i = 0; i < SP.size() && !found; i++) {
+				if (SP[i].mX == x && SP[i].mY == y) {
+					found = true;
+					SP[i].empty = false;
+				}
+			}
 		}
 		else
 			auxV.push_back(l[i]);
@@ -148,6 +159,9 @@ void BackPack::cargaElementos(vector<estado> l) {
 			}
 		}
 	}
+
+	vector<estado> auxSP = SP;
+	setSP(auxSP);
 
 	if (auxV.size() != 0) {
 		invent.clear();
@@ -270,12 +284,10 @@ void BackPack::creaSP() {
 		s.objects = 0;
 		s.w = width;
 		s.h = height;
-		s.mX = i;
-		s.mY = auxP;
 		auxP++;
 		s.equiped = true;
-		s.mX = i * -1;
-		s.mY = auxP * -1;
+		s.mX = 0;
+		s.mY = (i + 1) * -1;
 
 		Vector2D position0(2 * i + 1.5, 6);
 
@@ -301,13 +313,21 @@ void BackPack::creaSP() {
 	//Ponemos los objetos que tenga el personaje
 	
 	for (int x = 0; x < EquipedItems.size(); x++) {
-
 		GameComponent* gc = new GameComponent();
-		Vector2D position0(EquipedItems[x].x + 0.8, EquipedItems[x].y + 2.6);
+		if (x == 0) {
+			Vector2D position0(EquipedItems[x].x + 0.8, EquipedItems[x].y + 2.6);
+			gc->setPosition(position0);
+			gc->setOriPos(position0);
+		}
+		else {
+			Vector2D position1(EquipedItems[x].x + 1.1, EquipedItems[x].y + 2.6);
+			gc->setPosition(position1);
+			gc->setOriPos(position1);
+		}
 
-		gc->setTextureId(EquipedItems[x].tx); gc->setPosition(position0); gc->setWidth(EquipedItems[x].w); gc->setHeight(EquipedItems[x].h);
+		gc->setTextureId(EquipedItems[x].tx);  gc->setWidth(EquipedItems[x].w); gc->setHeight(EquipedItems[x].h);
 		gc->addRenderComponent(new RenderSingleFrameComponent()); //gc->addInputComponent(new MouseInfoClickComponent(st)); 
-		gc->setOriPos(position0);
+
 		gc->setColFrame(EquipedItems[x].colFrame); gc->setRowFrame(EquipedItems[x].FilFrame);
 		gc->addInputComponent(new DragNDropComponent(this, x * -1));
 
