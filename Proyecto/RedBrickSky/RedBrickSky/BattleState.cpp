@@ -31,7 +31,8 @@ BattleState::BattleState()
 	//Componentes necesarios
 
 	fondo_ = new GameComponent();
-	fondo_->setTextureId("fondoBatallaTuto");
+	//fondo_->setTextureId("fondoBatallaTuto");
+	fondo_->setTextureId("battlebg");
 	fondo_->addRenderComponent(new RenderFullComponent());
 
 	createUI();
@@ -223,7 +224,7 @@ void BattleState::constructC() {
 	player->addRenderComponent(rc);
 	stage.push_back(player);
 
-	enemy = new BattleEnemy("Pajaro", Ranged, 70, 10, 10, 100, 11);
+	enemy = new BattleEnemy("Pajaro", Ranged, 300, 10, 10, 100, 11);
 	enemy->setTextureId("arbolSS");
 	Vector2D pos2(3.3, 0.62);
 	enemy->setPosition(pos2);
@@ -574,10 +575,10 @@ bool BattleState::isButton(GameObject * object)
 
 void BattleState::update() {
 
-	if (TheSoundManager::Instance()->isPlayingMusic() == 0) {
+	/*if (TheSoundManager::Instance()->isPlayingMusic() == 0) {
 		TheSoundManager::Instance()->playMusic("loop_btl", 100);
 		TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
-	}
+	}*/
 
 	if (!fade2Done_ && fadeDone_)
 		init();

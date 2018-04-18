@@ -111,9 +111,12 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("assets/BetaTutorial.png", "level0", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\tylerSS1.png", "tylerSS", RENDERER_, 1, 13);
 	TheTextureManager::Instance()->load("..\\images\\arbolSS.png", "arbolSS", RENDERER_, 1, 2);
-	TheTextureManager::Instance()->load("..\\images\\fruit.png", "Key", RENDERER_);
-	//Bocata de dialogo
+	TheTextureManager::Instance()->load("..\\images\\key.png", "Key", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\bubble_speech.png", "viñeta", Game::Instance()->getRenderer());
+	TheTextureManager::Instance()->load("..\\images\\bg.png", "bgmm", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\newbutton.png", "nbutton", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\exitbutton.png", "ebutton", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg.png", "battlebg", RENDERER_);
 
 
 	// Load Sounds
@@ -125,7 +128,8 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop_new.wav", "test", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_transition.wav", "trans_btl", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\music.wav", "music", SOUND_MUSIC);
-
+	TheSoundManager::Instance()->load("..\\sounds\\theme.ogg", "menu", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\Battle1.ogg", "battle", SOUND_MUSIC);
 
 	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
 }
@@ -175,6 +179,18 @@ void Game::handleEvents()
 
 	while (SDL_PollEvent(&event) && !exit_ && !capturedEvent) 
 	{
+		if (event.type == SDL_KEYDOWN) 
+		{
+			if (event.key.keysym.sym == SDLK_f)	// fullscreen mode
+			{
+				// Comentando para que los PC dirty peasant no se rompan
+				int flags = SDL_GetWindowFlags(TheGame::Instance()->getWindow());
+				if (flags & SDL_WINDOW_FULLSCREEN) SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), 0);
+				else SDL_SetWindowFullscreen(TheGame::Instance()->getWindow(), SDL_WINDOW_FULLSCREEN);
+				break;
+			}
+		}
+
 		capturedEvent = (stateMachine_->currentState()->handleEvent(event));
 	}
 

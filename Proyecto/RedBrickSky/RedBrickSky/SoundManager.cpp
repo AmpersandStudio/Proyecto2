@@ -14,7 +14,6 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 			return false;
 		}
 
-		std::cout << "Music load success!\n";
 		m_music[id] = pMusic;
 		return true;
 	}
@@ -27,7 +26,6 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 			return false;
 		}
 
-		std::cout << "Sound load success!\n";
 		m_sfxs[id] = pChunk;
 		return true;
 	}

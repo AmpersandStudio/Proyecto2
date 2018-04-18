@@ -7,6 +7,7 @@
 #include "MouseInputComponentButton.h"
 #include "NameSelectorState.h"
 #include "TextureManager.h"
+#include "SoundManager.h"
 
 MainMenuState::MainMenuState()
 {
@@ -14,6 +15,9 @@ MainMenuState::MainMenuState()
 	gc = new GameComponent();
 	Vector2D positionGC(0, 0);
 	gc->setTextureId("MainMenu");
+	
+	//// New Main Menu
+	//gc->setTextureId("bgmm");
 	gc->addRenderComponent(new RenderFullComponent());
 
 	stage.push_back(gc);
@@ -21,6 +25,10 @@ MainMenuState::MainMenuState()
 	Button* button0 = new Button("0", toGame, 0);
 	Button* button3 = new Button("3", exit, 3);
 	Button* button2 = new Button("13", toSelector, 2);
+
+	//// New Main Menu
+	//Button* button3 = new Button("ebutton", exit, 3);
+	//Button* button2 = new Button("nbutton", toGame, 0);
 
 	Vector2D position0(0.5, 3);
 	Vector2D position2(0.5, 4.5);
@@ -39,6 +47,7 @@ MainMenuState::MainMenuState()
 	stage.push_back(button2);
 
 	XboxController::Instance()->insertController();
+	SoundManager::Instance()->playMusic("menu", -1);
 }
 
 MainMenuState::~MainMenuState()
@@ -46,6 +55,7 @@ MainMenuState::~MainMenuState()
 }
 
 void MainMenuState::toGame() {
+	SoundManager::Instance()->stopMusic();
 	Game::Instance()->getStateMachine()->pushState(new PlayState());
 }
 
