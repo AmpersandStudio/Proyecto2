@@ -12,7 +12,7 @@ BackPack::BackPack()
 	cout << "Tam Inventario:  " << invent.size() << endl;
 
 	//Componentes necesarios
-	
+	actualState_ = 0;
 
 	//Creamos la matriz
 	matriz = new estado*[numFils];
@@ -328,7 +328,9 @@ void BackPack::creaSP() {
 		gc->addRenderComponent(new RenderSingleFrameComponent()); //gc->addInputComponent(new MouseInfoClickComponent(st)); 
 
 		gc->setColFrame(EquipedItems[x].colFrame); gc->setRowFrame(EquipedItems[x].FilFrame);
-		gc->addInputComponent(new DragNDropComponent(this, x * -1));
+	
+		if(actualState_ == 0)
+			gc->addInputComponent(new DragNDropComponent(this, x * -1));
 
 		EquipedItems[x].GC = gc;
 
@@ -343,7 +345,7 @@ void BackPack::creaSP() {
 	Vector2D positionW(5, 0.5);
 
 	weapon->setTextureId("2"); weapon->setPosition(positionW); weapon->setWidth(120); weapon->setHeight(60);
-	weapon->addRenderComponent(new RenderSingleFrameComponent());  weapon->addInputComponent(new InventBottomsComponent(this, Weapons, true));
+	weapon->addRenderComponent(new RenderSingleFrameComponent());  weapon->addInputComponent(new InventBottomsComponent(this, Weapons, true, 0));
 
 	stage.push_back(weapon);
 	botones.push_back(weapon);
@@ -402,13 +404,13 @@ void BackPack::creaEscena() {
 
 	//Creacion de los "botones" que nos llevarán a cada tipo de Item del inventario
 	//Boton para las armas
-	createButtons(4, 3, Weapons, "14");
+	createButtons(4, 3, Weapons, "14", 0);
 
 	//Boton para las pociones
-	createButtons(4, 5, Potions, "15");
+	createButtons(4, 5, Potions, "15", 1);
 
 	//Boton para los objetos
-	createButtons(4, 7, Objects, "16");	
+	createButtons(4, 7, Objects, "16",2);	
 }
 
 void BackPack::creaFondoTienda() {
@@ -419,14 +421,14 @@ void BackPack::creaFondoTienda() {
 	stage.push_back(backShop);
 }
 
-void BackPack::createButtons(int x, int y, vector<estado> type, std::string t) {
+void BackPack::createButtons(int x, int y, vector<estado> type, std::string t, int st) {
 
 	GameComponent* GC = new GameComponent();
 
 	Vector2D position(x, y);
 
 	GC->setTextureId(t); GC->setPosition(position); GC->setWidth(130); GC->setHeight(60);
-	GC->addRenderComponent(new RenderSingleFrameComponent());  GC->addInputComponent(new InventBottomsComponent(this, type, false));
+	GC->addRenderComponent(new RenderSingleFrameComponent());  GC->addInputComponent(new InventBottomsComponent(this, type, false, st));
 
 	stage.push_back(GC);
 	botones.push_back(GC);

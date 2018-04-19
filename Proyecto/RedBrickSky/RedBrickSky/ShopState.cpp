@@ -13,7 +13,8 @@ ShopState::ShopState()
 	std::cout << "Tu dinero actual es: " << money << std::endl;
 
 	//Componentes necesarios
-
+	messaging_ = false;
+	msgCont_ = 0;
 	//Separamos elementos dependiendo de su clase
 	separateElements();
 
@@ -35,6 +36,7 @@ ShopState::ShopState()
 
 	//Creamos botón para volver al menú principal
 	mainMenuBotton();
+
 
 }
 
@@ -119,7 +121,7 @@ void ShopState::createShopItems() {
 		GameComponent* gc = new GameComponent();
 		DragNDropShopComponent* p = new DragNDropShopComponent(this, shopObjects[i].price, false, shopObjects[i].ID, gc, shopObjects[i].type, shopObjects[i].nombre, shopObjects[i].FilFrame, shopObjects[i].colFrame);
 		gc->setTextureId(shopObjects[i].tx); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(50); gc->setHeight(50);
-		gc->addRenderComponent(new RenderSingleFrameComponent()); gc->addInputComponent(p); gc->addInputComponent(new MouseInfoClickComponent(shopObjects[i]));	gc->addInputComponent(new MouseScrollShopComponent(this));
+		gc->addRenderComponent(new RenderSingleFrameComponent()); gc->addInputComponent(p); gc->addInputComponent(new MouseInfoClickComponent(shopObjects[i], this));	gc->addInputComponent(new MouseScrollShopComponent(this));
 		gc->setColFrame(shopObjects[i].colFrame); gc->setRowFrame(shopObjects[i].FilFrame);
 
 
@@ -166,7 +168,7 @@ void ShopState::createBagItems() {
 			double height = invent[i].h;
 
 			gc->setTextureId(invent[i].tx); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-			gc->addRenderComponent(new RenderSingleFrameComponent); gc->addInputComponent(new MouseScrollShopComponent(this));  gc->addInputComponent(new MouseInfoClickComponent(invent[i]));
+			gc->addRenderComponent(new RenderSingleFrameComponent); gc->addInputComponent(new MouseScrollShopComponent(this));  gc->addInputComponent(new MouseInfoClickComponent(invent[i], this));
 			gc->setColFrame(invent[i].colFrame); gc->setRowFrame(invent[i].FilFrame);
 
 			stage.push_back(gc);
@@ -248,3 +250,36 @@ bool ShopState::handleEvent(const SDL_Event & event)
 		// 2) LLama a los input de cada objeto del propio estado
 		return GameState::handleEvent(event);
 	}
+
+void ShopState::render() {
+
+	GameState::render();
+	if (messaging_) {
+		msgCont_++;
+		renderMessage();
+
+		if (msgCont_ == 100) {
+			msgCont_ = 0;
+			messaging_ = false;
+		}
+	}
+	
+}
+
+void ShopState::renderMessage() {
+	TheTextureManager::Instance()->drawText(message_, TextureManager::NESChimera16, { 0,0,0,255 },
+		xMessage,
+		yMessage,
+		Game::Instance()->getRenderer());
+}
+
+void ShopState::setMessage(std::string s, int x, int y) {
+	message_ = s;
+	xMessage = x;
+	yMessage = y;
+}
+
+void ShopState::startMessagin() {
+	msgCont_ = 0;
+	messaging_ = true;
+}

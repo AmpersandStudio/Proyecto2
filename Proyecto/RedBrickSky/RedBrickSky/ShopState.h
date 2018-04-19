@@ -15,6 +15,8 @@
 #include "InventoryShopFBcomponent.h"
 #include "KeyBoardShopComponent.h"
 #include "ShopXboxControllerComponent.h"
+#include "TextureManager.h"
+
 
 #include "checkML.h"
 
@@ -52,6 +54,11 @@ private:
 	GameComponent* selector_;
 	vector<GameObject*> StandPointsO;
 
+	std::string message_;
+	int xMessage;
+	int yMessage;
+	bool messaging_;
+	int msgCont_;
 
 public:
 	ShopState();
@@ -62,6 +69,7 @@ public:
 	int getMoney() { return money; };
 	void setMoney(int d);
 	static void toMenu();
+	virtual void render();
 	//estado** devMat() { return matriz; };
 	vector<estado> getInvent() { return invent; };
 	vector<estado> getShopItems() { return shopObjects; };
@@ -75,5 +83,9 @@ public:
 	void createBagItems();
 	void destroySP();
 	void createSP();
+
+	void renderMessage();
+	void setMessage(std::string s, int x, int y);
+	void startMessagin();
 };
 

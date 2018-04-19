@@ -102,7 +102,8 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			if (shop->getMoney() >= price && !comprado) {
 
 				shop->setMoney(price);
-				cout << "Objeto comprado, tu dinero ahora es: " << shop->getMoney() << endl;
+				shop->setMessage("Objeto comprado, tu dinero ahora es: " + std::to_string(shop->getMoney()), x, y - 20);
+				shop->startMessagin();
 
 				if (StandPoints[i].empty == true) {
 					StandPoints[i].ID = identifier;
@@ -155,8 +156,11 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			}
 
 
-			else if (shop->getMoney() < price)
-				cout << "No tienes dinero para pagar eso!" << endl;
+			else if (shop->getMoney() < price) {
+				shop->setMessage("No tienes dinero para pagar eso!", x, y - 20);
+				shop->startMessagin();
+			}
+				
 
 
 			
@@ -169,11 +173,9 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 
 	else if (!encontrado)
 	{
-		cout << "Lo has puesto fuera!!!!" << endl;
-		TheTextureManager::Instance()->drawText("Lo has puesto fuera!!!!", TextureManager::ARIAL24, { 0,0,0,255 },
-			10,
-			10,
-			Game::Instance()->getRenderer());
+
+		shop->setMessage("Lo has puesto fuera!!", x, y - 20);
+		shop->startMessagin();
 
 	}
 

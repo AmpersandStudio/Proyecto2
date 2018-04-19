@@ -65,7 +65,6 @@ void Player::render()
 	//SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
 	//SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &fillRect2);
 
-
 	if (text)
 	{
 		d_.render();

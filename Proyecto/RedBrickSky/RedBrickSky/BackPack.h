@@ -49,6 +49,8 @@ private:
 
 	GameComponent* selector_;
 
+	int actualState_;
+
 public:
 	BackPack();
 	virtual ~BackPack();
@@ -66,9 +68,10 @@ public:
 	void creaSP();
 	void creaEscena();
 	void creaFondoTienda();
-	void createButtons(int x, int y, vector<estado> type, std::string t);
+	void createButtons(int x, int y, vector<estado> type, std::string t, int st);
 	void separateElements();
 	void createItemAtSP(int x, int y, int aux, estado st);	
+	void setActualState(int i) { actualState_ = i; };
 };
 
 

@@ -3,7 +3,7 @@
 
 
 
-InventBottomsComponent::InventBottomsComponent(BackPack* b, vector<estado> v, bool vuelta)
+InventBottomsComponent::InventBottomsComponent(BackPack* b, vector<estado> v, bool vuelta, int state) : state_(state)
 {
 	back = b;
 	tipo = v;
@@ -28,6 +28,7 @@ bool InventBottomsComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 		if (x > (position.getX()*o->getWidth()) && x < ((position.getX()*o->getWidth()) + o->getWidth())
 			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight())) {
 			if (!goingBack) {
+				back->setActualState(state_);
 				back->elimina();
 				back->creaSP();
 				back->cargaElementos(tipo);

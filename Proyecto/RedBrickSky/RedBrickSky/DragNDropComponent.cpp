@@ -107,9 +107,9 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 				else
 					v.set(x / auxW + 1.1, y / auxH + 2.6);
 			}
-				else if (!StandPoints[i].equiped) {
-					v.set(x / auxW - 0.5, y / auxH);
-					Inventary[identifier].equiped = false;
+			else if (!StandPoints[i].equiped) {
+				v.set(x / auxW - 0.5, y / auxH);
+				Inventary[identifier].equiped = false;
 			}
 
 

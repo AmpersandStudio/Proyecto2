@@ -1,8 +1,8 @@
 #include "MouseInfoClickComponent.h"
+#include "ShopState.h"
 
 
-
-MouseInfoClickComponent::MouseInfoClickComponent(estado s)
+MouseInfoClickComponent::MouseInfoClickComponent(estado s, ShopState* shop) : shop_(shop)
 {
 	st = s;
 	active_ = false;
@@ -26,7 +26,9 @@ bool MouseInfoClickComponent::handleEvent(GameObject* o, const SDL_Event& event)
 		if (event.button.button == SDL_BUTTON_RIGHT && (x > (position.getX()*o->getWidth()) && x < ((position.getX()*o->getWidth()) + o->getWidth())
 			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight()))) {
 			active_ = true;
-			cout << "Informacion sobre el objeto:\n" << "   Nombre: " << st.nombre << "\n   Precio: " << st.price << endl;
+
+			shop_->setMessage("Nombre: " + st.nombre + "\n   Precio: " + std::to_string(st.price), x, y - 20);
+			shop_->startMessagin();
 		
 		}
 	}
