@@ -44,10 +44,10 @@ PlayState::PlayState()
 	//stage.push_back(button1);
 
 	//ESTO ES DE MARTIN, UN BOTON PARA IR AL BATTLESTATE
-	Button* button2 = new Button("18", toBattle, 2);
+	/*Button* button2 = new Button("18", toBattle, 2);
 	Vector2D position2(5, 6);
 	button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(rc); button2->addInputComponent(ic2);
-	stage.push_back(button2);
+	stage.push_back(button2);*/
 
 	//initPlayer();
 

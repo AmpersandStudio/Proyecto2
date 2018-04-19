@@ -26,6 +26,7 @@ private:
 	float speed_;
 	Uint8 alpha_;
 	int alphaFactor_;
+
 	std::queue<std::string> names_;
 
 	bool displayShown_;

@@ -33,11 +33,12 @@ public:
 	bool load(std::string fileName, std::string id, SDL_Renderer* pRenderer, int row = 1, int col = 1);
 
 	void draw(std::string id, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void drawScroll(std::string id, int scroll, SDL_Renderer * pRenderer, SDL_RendererFlip flip);
 	void drawFullCamera(std::string id, SDL_Renderer * pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawFull(std::string id, int destX, int destY, int destW, int destH, SDL_Renderer * pRenderer, double angle, int alpha, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, double angle, int alpha, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawTile(std::string id, int margin, int spacing, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer *pRenderer);
-	void drawText(std::string text, FontId id, const SDL_Color color, int x, int y, SDL_Renderer * pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void drawText(std::string text, FontId id, const SDL_Color color, int x, int y, SDL_Renderer * pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE, int alpha = 255);
 	void drawItem(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, int rows, int cols, SDL_Renderer * pRenderer, double angle, int alpha, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawF(std::string id, int destX, int destY, int destW, int destH, SDL_Renderer *pRenderer, double angle, int alpha, SDL_RendererFlip flip,
 		int row, int col);

@@ -65,6 +65,29 @@ void TextureManager::draw(std::string id, SDL_Renderer* pRenderer, SDL_RendererF
 	
 }
 
+void TextureManager::drawScroll(std::string id, int scroll, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
+{
+	SDL_Rect srcRect;
+	SDL_Rect destRect;
+
+	srcRect.x = 0;
+	srcRect.y = scroll;
+	srcRect.w = m_textureDims[id].first;
+	srcRect.h = 586;
+
+
+	destRect.x = 0;
+	destRect.y = 0;
+	destRect.w = TheGame::Instance()->getWinWidth();
+	destRect.h = TheGame::Instance()->getWinHeight();
+
+	SDL_SetTextureAlphaMod(m_textureMap[id], 150);
+
+
+	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
+
+}
+
 void TextureManager::drawFullCamera(std::string id, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
 	SDL_Rect srcRect;
@@ -153,7 +176,7 @@ void TextureManager::drawTile(std::string id, int margin, int spacing, int x, in
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, SDL_FLIP_NONE);
 }
 
-void TextureManager::drawText(std::string text, FontId id, const SDL_Color color, int x, int y, SDL_Renderer * pRenderer, SDL_RendererFlip flip)
+void TextureManager::drawText(std::string text, FontId id, const SDL_Color color, int x, int y, SDL_Renderer * pRenderer, SDL_RendererFlip flip, int alpha)
 {
 	Font* font = new Font(m_Fonts[id].fileName, m_Fonts[id].size);
 
@@ -173,6 +196,7 @@ void TextureManager::drawText(std::string text, FontId id, const SDL_Color color
 			{
 				SDL_Rect destRect = { x, y, w, h };
 
+				SDL_SetTextureAlphaMod(pTexture, alpha);
 				SDL_RenderCopyEx(pRenderer, pTexture, NULL, &destRect, 0, 0, SDL_FLIP_NONE);
 				font->close();
 				delete font;
