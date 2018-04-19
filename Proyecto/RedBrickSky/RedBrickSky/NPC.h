@@ -50,6 +50,8 @@ private:
 
 	Dialogue text;
 	bool dialogueActive;
+
+	int collisionCounter_;
 };
 
 

@@ -151,29 +151,31 @@ void ShopState::createBagItems() {
 	ocupados = 0;
 	for (unsigned int i = 0; i < invent.size(); i++) {
 
-		SP[i].ID = invent[i].ID;
-		SP[i].objects++;
-		SP[i].empty = false;
-		SP[i].comprado = true;
-		SP[i].price = invent[i].price;
-		SP[i].tx = invent[i].tx;
-		SP[i].type = invent[i].type;
+		if (invent[i].type != 2) {
+			SP[i].ID = invent[i].ID;
+			SP[i].objects++;
+			SP[i].empty = false;
+			SP[i].comprado = true;
+			SP[i].price = invent[i].price;
+			SP[i].tx = invent[i].tx;
+			SP[i].type = invent[i].type;
 
-		GameComponent* gc = new GameComponent();
-		Vector2D position0(SP[i].y - 2.8, SP[i].x + 2.8 );
-		double width = invent[i].w;
-		double height = invent[i].h;
+			GameComponent* gc = new GameComponent();
+			Vector2D position0(SP[i].y - 2.8, SP[i].x + 2.8);
+			double width = invent[i].w;
+			double height = invent[i].h;
 
-		gc->setTextureId(invent[i].tx); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-		gc->addRenderComponent(new RenderSingleFrameComponent); gc->addInputComponent(new MouseScrollShopComponent(this));  gc->addInputComponent(new MouseInfoClickComponent(invent[i]));
-		gc->setColFrame(invent[i].colFrame); gc->setRowFrame(invent[i].FilFrame);
+			gc->setTextureId(invent[i].tx); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
+			gc->addRenderComponent(new RenderSingleFrameComponent); gc->addInputComponent(new MouseScrollShopComponent(this));  gc->addInputComponent(new MouseInfoClickComponent(invent[i]));
+			gc->setColFrame(invent[i].colFrame); gc->setRowFrame(invent[i].FilFrame);
 
-		stage.push_back(gc);
-		GCInventV.push_back(gc);
+			stage.push_back(gc);
+			GCInventV.push_back(gc);
 
-		ocupados++;
+			ocupados++;
 
-		k++;
+			k++;
+		}
 	}
 }
 

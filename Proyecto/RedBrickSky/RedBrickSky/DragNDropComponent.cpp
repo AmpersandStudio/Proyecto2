@@ -3,7 +3,6 @@
 DragNDropComponent::DragNDropComponent(BackPack* b, int id) : bag(b)
 {
 	isMouseSelection = false;
-	StandPoints = b->getSP();
 	identifier = id;
 }
 
@@ -56,7 +55,7 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 
 	Inventary.clear();
 	Inventary = GameManager::Instance()->copyInventory();
-
+	StandPoints = bag->getSP();
 	unsigned int i = 0;
 	while (i < StandPoints.size() && !encontrado) {
 		//Busca si el objeto se ha dejado en alguno de los Stand Points
@@ -98,20 +97,25 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 				}
 			}
 
-			
+			v.set(o->getOriPos().getX() , o->getOriPos().getY());
 
-			if (StandPoints[i].equiped) {
+			if (StandPoints[i].equiped && Inventary[identifier].type == 0) {
 				Inventary[identifier].equiped = true;
 
-				if (auxMy == -1) 
+				if (auxMy == -1)
 					v.set(x / auxW + 0.3, y / auxH + 2.6);
-				else 
+				else
 					v.set(x / auxW + 1.1, y / auxH + 2.6);
 			}
-			else {
-				v.set(x / auxW - 0.5, y / auxH);
-				Inventary[identifier].equiped = false;
+				else if (!StandPoints[i].equiped) {
+					v.set(x / auxW - 0.5, y / auxH);
+					Inventary[identifier].equiped = false;
 			}
+
+
+			else
+				std::cout << "NO PUEDES EQUIPARTE ESO!!" << endl;
+
 			o->setPosition(v);
 			o->setOriPos(v);
 			aceptada = true;
@@ -125,7 +129,7 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 				while (c < StandPoints.size() && !found)
 				{
 
-					if (Inventary[x].x == StandPoints[c].x && Inventary[x].y == StandPoints[c].y) {
+					if (Inventary[x].mX == StandPoints[c].mX && Inventary[x].mY == StandPoints[c].mY) {
 						StandPoints[c].empty = false;
 						found = true;
 					}
@@ -134,10 +138,9 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 				}
 			}
 		}
-		else if (!StandPoints[i].empty && StandPoints[i].equiped)
+		else if (!StandPoints[i].empty && StandPoints[i].equiped && Inventary[identifier].type == 0)
 		{
-			std::cout << "Hey! que pasa!" << endl;
-
+			swapElements();
 		}
 
 		bag->setInvent(Inventary);
@@ -149,5 +152,6 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 }
 
 void DragNDropComponent::swapElements() {
-
+	std::cout << "Pero hombre que ahi ya tienes un arma..." << endl;
+	
 }

@@ -153,7 +153,7 @@ void Game::begin()
 {
 	stateMachine_ = new StateMachine();
 	//stateMachine_->pushState(new MainMenuState());
-	stateMachine_->pushState(new CreditsState());
+	stateMachine_->pushState(new MainMenuState());
 	run();
 }
 

@@ -7,8 +7,8 @@
 
 BackPack::BackPack()
 {
-	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
+	invent = GameManager::Instance()->copyInventory();
 	cout << "Tam Inventario:  " << invent.size() << endl;
 
 	//Componentes necesarios
@@ -194,7 +194,6 @@ void BackPack::cargaElementos(vector<estado> l) {
 
 void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 
-	
 	matriz[x][y].ID = st.ID;
 	matriz[x][y].objects++;
 	matriz[x][y].empty = false;
@@ -341,9 +340,9 @@ void BackPack::creaSP() {
 	//Creacion del botón que nos devolverá a los anteriores
 	GameComponent* weapon = new GameComponent();
 
-	Vector2D positionW(7, 6);
+	Vector2D positionW(5, 0.5);
 
-	weapon->setTextureId("2"); weapon->setPosition(positionW); weapon->setWidth(150); weapon->setHeight(100);
+	weapon->setTextureId("2"); weapon->setPosition(positionW); weapon->setWidth(120); weapon->setHeight(60);
 	weapon->addRenderComponent(new RenderSingleFrameComponent());  weapon->addInputComponent(new InventBottomsComponent(this, Weapons, true));
 
 	stage.push_back(weapon);
@@ -360,6 +359,7 @@ void BackPack::creaSP() {
 	//selector_->addInputComponent(MSC);
 	stage.push_back(selector_);
 
+	GameManager::Instance()->changeInventory(invent);
 }
 
 void BackPack::elimina() {
@@ -381,6 +381,10 @@ void BackPack::elimina() {
 
 void BackPack::creaEscena() {
 	
+	invent.clear();
+	invent = GameManager::Instance()->copyInventory();
+	separateElements();
+
 	creaFondoTienda();
 
 	//Creamos botón para volver al menú principal y los de cada clase
@@ -404,10 +408,7 @@ void BackPack::creaEscena() {
 	createButtons(4, 5, Potions, "15");
 
 	//Boton para los objetos
-	createButtons(4, 7, Objects, "16");
-
-	GameManager::Instance()->changeInventory(invent);
-	
+	createButtons(4, 7, Objects, "16");	
 }
 
 void BackPack::creaFondoTienda() {
@@ -453,6 +454,7 @@ void BackPack::separateElements() {
 	Weapons.clear();
 	Potions.clear();
 	Objects.clear();
+	EquipedItems.clear();
 	EItems = 0;
 	for (unsigned int i = 0; i < invent.size(); i++) {
 		invent[i].objectID = i;

@@ -42,6 +42,7 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 	setVel(vel);
 	stopped_ = false;
 	generateCollider();
+	collisionCounter_ = 0;
 
 }
 
@@ -155,9 +156,15 @@ void NPC::checkNPCLimits(Vector2D pos) {
 
 void NPC::collision()
 {
+	collisionCounter_++;
 	movementCont_ = 0;
 	int rnd = rand() % 2;
 	vel = getVel();
+
+	if (collisionCounter_ == 6) {
+		collisionCounter_ = 0;
+		stopped_ = true;
+	}
 
 	if (rnd == 0) {
 

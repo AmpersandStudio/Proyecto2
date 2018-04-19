@@ -307,6 +307,7 @@ void CollisionManager::checkKeysInteractions(Player* pPlayer, std::vector<Key*>&
 			aux = i;
 
 			std::cout << "HYEYO YOAJYSIJ " << std::endl;
+
 			estado n;
 			n.price = 0;
 			n.comprado = false;
@@ -317,8 +318,8 @@ void CollisionManager::checkKeysInteractions(Player* pPlayer, std::vector<Key*>&
 			n.y = 0;
 			n.mX = -10;
 			n.mY = -10;
-			n.w = 64;
-			n.h = 64;
+			n.w = 50;
+			n.h = 50;
 			n.tx = "Key";
 			n.type = 2;
 			n.nombre = "LLave";

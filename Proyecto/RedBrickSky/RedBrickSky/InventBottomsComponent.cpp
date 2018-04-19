@@ -28,13 +28,11 @@ bool InventBottomsComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 		if (x > (position.getX()*o->getWidth()) && x < ((position.getX()*o->getWidth()) + o->getWidth())
 			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight())) {
 			if (!goingBack) {
-				
 				back->elimina();
 				back->creaSP();
 				back->cargaElementos(tipo);
 			}
 			else {
-				
 				back->elimina();
 				back->creaEscena();
 				
