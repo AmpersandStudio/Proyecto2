@@ -9,6 +9,7 @@
 #include "MainMenuState.h"
 #include "TransitionState.h"
 #include "CreditsState.h"
+#include "PreloadState.h"
 
 #include "TextureManager.h"
 #include "GameObjectFactory.h" 
@@ -120,7 +121,10 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\battlebg.png", "battlebg", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\blackboard.jpg", "blackboard", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\logo.png", "logo", RENDERER_);
-
+	TheTextureManager::Instance()->load("..\\images\\blue.png", "blue", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\sky.jpg", "sky", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\amplogo.png", "amplogo", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\frase.png", "frase", RENDERER_);
 
 	// Load Sounds
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
@@ -133,7 +137,8 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\music.wav", "music", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\theme.ogg", "menu", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\Battle1.ogg", "battle", SOUND_MUSIC);
-	TheSoundManager::Instance()->load("..\\sounds\\credits.ogg", "credits", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\credits.ogg", "credits", SOUND_MUSIC);	
+	TheSoundManager::Instance()->load("..\\sounds\\departure.ogg", "departure", SOUND_MUSIC);
 
 	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
 }
@@ -152,7 +157,6 @@ void Game::registerTypes()
 void Game::begin()
 {
 	stateMachine_ = new StateMachine();
-	//stateMachine_->pushState(new MainMenuState());
 	stateMachine_->pushState(new MainMenuState());
 	run();
 }
