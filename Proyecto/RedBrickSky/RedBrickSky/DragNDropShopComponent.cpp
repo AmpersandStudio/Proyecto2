@@ -4,6 +4,7 @@
 #include <vector>
 #include "GameState.h"
 #include "ShopState.h"
+#include "TextureManager.h"
 
 
 DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy, int iden, GameComponent* comp, int type, string n, int fil, int col)
@@ -167,7 +168,14 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 	}
 
 	else if (!encontrado)
-			cout << "Lo has puesto fuera!!!!" << endl;
+	{
+		cout << "Lo has puesto fuera!!!!" << endl;
+		TheTextureManager::Instance()->drawText("Lo has puesto fuera!!!!", TextureManager::ARIAL24, { 0,0,0,255 },
+			10,
+			10,
+			Game::Instance()->getRenderer());
+
+	}
 
 	return aceptada;
 }
