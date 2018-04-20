@@ -29,10 +29,10 @@ PlayState::PlayState()
 
 	//Button* button0 = new Button("2", toGame, 0);
 	//Vector2D position0(5, 6);
-	double width = 130;
-	double height = 80;
-	RenderComponent* rc = new RenderFrameComponent();
-	InputComponent* ic2 = new MouseInputComponentButton();
+	//double width = 130;
+	//double height = 80;
+	//RenderComponent* rc = new RenderFrameComponent();
+	//InputComponent* ic2 = new MouseInputComponentButton();
 	//button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(rc); button0->addInputComponent(ic2);
 
 	//stage.push_back(button0);
@@ -82,8 +82,9 @@ void PlayState::actSteps() {
 	steps_++;
 
 	int rnd = rand() % 150 + 1;
-	if (steps_ > 30 && rnd < steps_){
-
+	if (steps_ > 30 && rnd < steps_)
+	{
+		pLevel->getPlayer()->setVel(Vector2D(0, 0));
 		toBattle();
 		steps_ = 0;
 	}
@@ -138,7 +139,8 @@ void PlayState::toInventary() {
 //}
 
 //DE MARTIN PARA PROBAR BATTLESTATE
-void PlayState::toBattle() {
+void PlayState::toBattle() 
+{
 	TheSoundManager::Instance()->stopMusic();
 	/*TheSoundManager::Instance()->playMusic("trans_btl", 0);*/
 	TheSoundManager::Instance()->playMusic("battle", 0);

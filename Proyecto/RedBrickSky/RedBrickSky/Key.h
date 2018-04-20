@@ -11,6 +11,7 @@ public:
 	Key();
 	~Key();
 
+	virtual void render();
 	virtual void activate();
 	//Para establecer el mensaje si es necesario
 	void setKeyID(int id) { keyID = id; };

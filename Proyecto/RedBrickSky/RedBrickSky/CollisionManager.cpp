@@ -60,7 +60,10 @@ void CollisionManager::checkPlayerDoorCollision(Player* pPlayer, std::vector<Til
 		while (i < doorLayer.size())
 		{
 			if (GameManager::Instance()->getDoors()[(*it)->getDoorID()])
+			{
+				(*it)->setActive(false);
 				doorLayer.erase(doorLayer.begin() + i);
+			}
 			else
 				pPlayer->collision();
 
