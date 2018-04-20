@@ -16,6 +16,7 @@
 #include "KeyBoardShopComponent.h"
 #include "ShopXboxControllerComponent.h"
 #include "TextureManager.h"
+#include <queue>
 
 
 #include "checkML.h"
@@ -54,11 +55,21 @@ private:
 	GameComponent* selector_;
 	vector<GameObject*> StandPointsO;
 
-	std::string message_;
-	int xMessage;
-	int yMessage;
 	bool messaging_;
 	int msgCont_;
+
+	std::queue<std::string> splittedString_;
+	std::string currentLines_[3];
+
+	int posX_;
+	int posY_;
+	int offsetX_ = 25;
+	int offsetY_ = 20;
+	int dBoxWidth_ = 450;
+	int dBoxHeight_ = 135;
+	int lineSpace_ = 30;
+	int lineLength_ = 24;
+
 
 public:
 	ShopState();
@@ -70,6 +81,7 @@ public:
 	void setMoney(int d);
 	static void toMenu();
 	virtual void render();
+	virtual void update();
 	//estado** devMat() { return matriz; };
 	vector<estado> getInvent() { return invent; };
 	vector<estado> getShopItems() { return shopObjects; };
@@ -85,7 +97,14 @@ public:
 	void createSP();
 
 	void renderMessage();
-	void setMessage(std::string s, int x, int y);
+	void setMessage(std::string s);
 	void startMessagin();
+
+	void splitString(std::string s);
+	bool isConsonant(char c);
+	bool isVowel(char c);
+	bool isDots(std::string s);
+	bool isPunctuation(char c);
+
 };
 

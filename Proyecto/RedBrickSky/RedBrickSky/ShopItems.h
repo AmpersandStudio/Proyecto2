@@ -26,7 +26,7 @@ public:
 		shopObjects[0].comprado = true;
 		shopObjects[0].ID = 0;
 		shopObjects[0].objects = 1;
-		shopObjects[0].price = 50;
+		shopObjects[0].price = 800;
 		shopObjects[0].tx = "21";
 		shopObjects[0].type = weaponType; //Es un arma
 		shopObjects[0].nombre = "Compas";
@@ -37,7 +37,7 @@ public:
 		shopObjects[1].comprado = true;
 		shopObjects[1].ID = 1;
 		shopObjects[1].objects = 1;
-		shopObjects[1].price = 50;
+		shopObjects[1].price = 75;
 		shopObjects[1].tx = "21";
 		shopObjects[1].type = weaponType; //Es un arma
 		shopObjects[1].nombre = "Escobilla";

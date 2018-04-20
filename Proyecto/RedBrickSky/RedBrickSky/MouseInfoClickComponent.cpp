@@ -27,7 +27,7 @@ bool MouseInfoClickComponent::handleEvent(GameObject* o, const SDL_Event& event)
 			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight()))) {
 			active_ = true;
 
-			shop_->setMessage("Nombre: " + st.nombre + "\n   Precio: " + std::to_string(st.price), x, y - 20);
+			shop_->setMessage("Nombre: " + st.nombre + " " + "\n   Precio: " + std::to_string(st.price));
 			shop_->startMessagin();
 		
 		}
