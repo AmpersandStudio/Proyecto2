@@ -10,6 +10,8 @@ TileLayer::TileLayer(int tileSize, int mapWidth, int mapHeight, const std::vecto
 	m_numRows = mapHeight;
 
 	m_mapWidth = mapWidth;
+
+	active_ = false;
 }
 
 void TileLayer::update(Level* pLevel)
@@ -18,6 +20,8 @@ void TileLayer::update(Level* pLevel)
 
 void TileLayer::render()
 {
+	if (!active_) return;
+
 	// calculamos la posición relativa de la capa
 	int x, y, x2, y2 = 0;
 	x = m_position.getX() / m_tileSize;
@@ -31,7 +35,7 @@ void TileLayer::render()
 		for (int j = 0; j < m_numColumns; j++)
 		{
 			// obtenemos la ID del tile que queremos renderizar
-			int id = 0;// m_tileIDs[i + y][j + x];//0
+			int id = m_tileIDs[i + y][j + x];//0
 			if (id == 0) continue;
 
 			if (((j * m_tileSize) - x2) - TheCamera::Instance()->getPosition().getX() < -m_tileSize || 

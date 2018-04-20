@@ -322,9 +322,12 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 		pCollisionLayers->push_back(pTileLayer);
 	}
 	if (door)
+	{
+		pTileLayer->setActive(true);
 		pDoorLayers->push_back(pTileLayer);
+	}
 
-	else if (grass)
+	if (grass)
 	{
 		pGrassLayers->push_back(pTileLayer);
 		

@@ -10,5 +10,10 @@ public:
 	virtual void update(Level* pLevel) = 0;
 
 	virtual ~Layer() {}
+
+	inline void setActive(bool b) { active_ = b; }
+
+protected:
+	bool active_;
 };
 
