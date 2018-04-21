@@ -35,8 +35,6 @@ ShopState::ShopState()
 
 	//Creamos botón para volver al menú principal
 	mainMenuBotton();
-
-
 }
 
 void ShopState::setMoney(int n) {

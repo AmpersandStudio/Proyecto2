@@ -18,6 +18,8 @@
 #include "Cartel.h"
 #include "Key.h"
 
+#include "StringToScreen.h"
+
 
 Game Game::s_pInstance;
 
@@ -79,7 +81,7 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\exit.png", "3", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\food2.png", "4", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\fruit.png", "5", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\invent.png", "6", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\shop1.png", "6", RENDERER_);
 	//TheTextureManager::Instance()->load("..\\images\\inventFront.png", "7", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\keyboard.png", "8", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\backPack.png", "9", RENDERER_);
@@ -254,4 +256,5 @@ void Game::clean()
 	delete TheTextureManager::Instance();
 	delete TheSoundManager::Instance();
 	delete GameManager::Instance();
+	delete StringToScreen::Instance();
 }
