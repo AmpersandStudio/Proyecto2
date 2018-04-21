@@ -1,5 +1,6 @@
 #include "MouseInfoClickComponent.h"
 #include "ShopState.h"
+#include "StringToScreen.h"
 
 
 MouseInfoClickComponent::MouseInfoClickComponent(estado s, ShopState* shop) : shop_(shop)
@@ -27,8 +28,8 @@ bool MouseInfoClickComponent::handleEvent(GameObject* o, const SDL_Event& event)
 			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight()))) {
 			active_ = true;
 
-			shop_->setMessage("Nombre: " + st.nombre + " " + "\n   Precio: " + std::to_string(st.price));
-			shop_->startMessagin();
+			StringToScreen::Instance()->setMessage("Nombre: " + st.nombre + " " + "\n   Precio: " + std::to_string(st.price));
+			StringToScreen::Instance()->startMessagin();
 		
 		}
 	}

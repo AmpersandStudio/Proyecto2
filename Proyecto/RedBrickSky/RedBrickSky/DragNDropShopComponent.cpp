@@ -5,6 +5,7 @@
 #include "GameState.h"
 #include "ShopState.h"
 #include "TextureManager.h"
+#include "StringToScreen.h"
 
 
 DragNDropShopComponent::DragNDropShopComponent(ShopState* s, int money, bool buy, int iden, GameComponent* comp, int type, string n, int fil, int col)
@@ -102,8 +103,8 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			if (shop->getMoney() >= price && !comprado) {
 
 				shop->setMoney(price);
-				shop->setMessage("Objeto comprado, tu dinero ahora es: " + std::to_string(shop->getMoney()));
-				shop->startMessagin();
+				StringToScreen::Instance()->setMessage("Objeto comprado, tu dinero ahora es: " + std::to_string(shop->getMoney()));
+				StringToScreen::Instance()->startMessagin();
 
 				if (StandPoints[i].empty == true) {
 					StandPoints[i].ID = identifier;
@@ -157,8 +158,8 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 
 
 			else if (shop->getMoney() < price) {
-				shop->setMessage("No tienes dinero para pagar eso!");
-				shop->startMessagin();
+				StringToScreen::Instance()->setMessage("No tienes dinero para pagar eso!");
+				StringToScreen::Instance()->startMessagin();
 			}
 				
 
@@ -174,8 +175,8 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 	else if (!encontrado)
 	{
 
-		shop->setMessage("Lo has puesto fuera!!");
-		shop->startMessagin();
+		StringToScreen::Instance()->setMessage("Lo has puesto fuera!!");
+		StringToScreen::Instance()->startMessagin();
 
 	}
 

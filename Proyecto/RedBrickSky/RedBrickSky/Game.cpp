@@ -66,6 +66,8 @@ void Game::initSDL()
 	SDL_RenderPresent(RENDERER_);
 
 	zoom_ = 1;
+
+	strings =	StringToScreen::Instance();
 }
 
 void Game::loadResources()
@@ -223,6 +225,8 @@ void Game::render()
 	//renderizamos los objetos
 	SDL_SetRenderDrawColor(RENDERER_, 0, 255, 255, 255);
 	stateMachine_->currentState()->render();
+
+	strings->render();
 	if (!exit_) SDL_RenderPresent(RENDERER_);
 }
 

@@ -12,6 +12,8 @@
 
 #include "checkML.h"
 
+#include "StringToScreen.h"
+
 class StateMachine;
 class PlayState;
 
@@ -39,6 +41,8 @@ private:
 	void registerTypes();
 
 	int zoom_;
+
+	StringToScreen* strings;
 	
 public:
 	static Game* Instance()	{ return &s_pInstance; }
