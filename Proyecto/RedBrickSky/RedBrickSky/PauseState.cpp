@@ -11,12 +11,12 @@ PauseState::PauseState()
 	Button* button0 = new Button("0", resume, 0);
 	Button* button3 = new Button("3", toMenu, 3);
 
-	Vector2D position0(1, 1);
-	Vector2D position3(2, 1);
+	Vector2D position0(0.85, 2.25);
+	Vector2D position3(2.25, 2.25);
 
 
-	double width = 220;
-	double height = 180;
+	double width = 200;
+	double height = 100;
 
 	button0->setPosition(position0); button0->setWidth(width); 
 	button0->setHeight(height); 

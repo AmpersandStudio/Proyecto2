@@ -53,6 +53,9 @@ private:
 	int actualState_;
 
 	BattlePlayer* player;
+	Vector2D pos1, pos2;
+	double width1, width2;
+	double height1, height2;
 
 public:
 	BackPack();
