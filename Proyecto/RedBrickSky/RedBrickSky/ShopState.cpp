@@ -10,7 +10,8 @@ ShopState::ShopState()
 
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
-	std::cout << "Tu dinero actual es: " << money << std::endl;
+
+	StringToScreen::Instance()->pushInfinite("Caramelos: " + std::to_string(money), 320,400);
 
 	//Componentes necesarios
 
@@ -51,7 +52,8 @@ void ShopState::toMenu() {
 
 ShopState::~ShopState()
 {
-
+	StringToScreen::Instance()->clearInfinite();
+	StringToScreen::Instance()->stopRendering();
 }
 
 void ShopState::setSP(vector<estado> s) {

@@ -105,6 +105,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 				shop->setMoney(price);
 				StringToScreen::Instance()->setMessage("Objeto comprado, tu dinero ahora es: " + std::to_string(shop->getMoney()));
 				StringToScreen::Instance()->startMessagin();
+				StringToScreen::Instance()->changeInfinite(0, "Caramelos: " + std::to_string(shop->getMoney()));
 
 				if (StandPoints[i].empty == true) {
 					StandPoints[i].ID = identifier;

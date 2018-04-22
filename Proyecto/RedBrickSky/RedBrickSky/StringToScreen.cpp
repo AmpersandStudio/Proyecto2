@@ -15,8 +15,7 @@ StringToScreen::~StringToScreen()
 
 
 void StringToScreen::renderMessage() {
-	TheTextureManager::Instance()->drawFull("viñeta", posX_, posY_ - offsetY_,
-		dBoxWidth_, dBoxHeight_, Game::Instance()->getRenderer(), 0, 255);
+
 	for (int i = 0; i < 3; i++) {
 		TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::NESChimera16, { 0,0,0,255 },
 			posX_ + offsetX_,
@@ -134,6 +133,7 @@ bool StringToScreen::isPunctuation(char c) {
 }
 
 void StringToScreen::render() {
+	renderinfinite();
 	if (messaging_) {
 		msgCont_++;
 		renderMessage();
@@ -143,4 +143,38 @@ void StringToScreen::render() {
 			messaging_ = false;
 		}
 	}
+}
+
+void StringToScreen::pushInfinite(std::string m, int x, int y) {
+
+	inf a;
+	a.InfMSG_ = m;
+	a.x = x;
+	a.y = y;
+
+	infiniteMsg.push_back(a);
+}
+
+void StringToScreen::renderinfinite() {
+
+	for (int p = 0; p < infiniteMsg.size(); p++)
+	{
+
+		TheTextureManager::Instance()->drawText(infiniteMsg[p].InfMSG_, TextureManager::NESChimera16, { 0,0,0,255 },
+			infiniteMsg[p].x + offsetX_,
+			infiniteMsg[p].y + offsetY_ * p,
+			Game::Instance()->getRenderer());
+	}
+}
+
+void StringToScreen::changeInfinite(int i, std::string m) {
+	infiniteMsg[i].InfMSG_ = m;
+}
+
+void StringToScreen::clearInfinite() {
+	infiniteMsg.clear();
+}
+
+void StringToScreen::stopRendering() {
+	messaging_ = false;
 }

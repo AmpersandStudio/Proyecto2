@@ -15,8 +15,8 @@ private:
 	std::queue<std::string> splittedString_;
 	std::string currentLines_[3];
 
-	int posX_ = 20;
-	int posY_ = 20;
+	int posX_ = 350;
+	int posY_ = 450;
 	int offsetX_ = 25;
 	int offsetY_ = 20;
 	int dBoxWidth_ = 450;
@@ -26,6 +26,13 @@ private:
 
 	bool messaging_ = false;
 	int msgCont_ = 0;
+
+	struct inf {
+		std::string InfMSG_;
+		int x; int y;
+	};
+
+	std::vector<inf> infiniteMsg;
 
 public:
 	~StringToScreen();
@@ -49,5 +56,11 @@ public:
 	void setMessage(std::string s);
 	void setMessageAt(std::string s, int x, int y);
 	void startMessagin();
+
+	void pushInfinite(std::string m, int x, int y);
+	void renderinfinite();
+	void changeInfinite(int i, std::string m);
+	void clearInfinite();
+	void stopRendering();
 };
 
