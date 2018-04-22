@@ -4,6 +4,7 @@
 #include "InventoryShopFBcomponent.h"
 #include "RenderSingleFrameComponent.h"
 #include "BagXboxControllerComponent.h"
+#include "RenderFraemeComponent2.h"
 
 BackPack::BackPack()
 {
@@ -22,6 +23,12 @@ BackPack::BackPack()
 	
 	if (XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
 		XboxController::Instance()->insertController();
+
+	Vector2D v(0.35, 0.12);
+	Vector2D v2(0.75, 0.25);
+	pos1 = v; pos2 = v2;
+	width1 = 256; width2 = 171;
+	height1 = 512; height2 = 341;
 
 	separateElements();
 
@@ -229,6 +236,10 @@ void BackPack::creaSP() {
 	
 	buttonsCreated = false;
 
+	player->setPosition(pos2);
+	player->setWidth(width2);
+	player->setHeight(height2);
+
 	//Creamos los SP
 	Vector2D selecPos;
 	int auxD = 0;
@@ -342,9 +353,9 @@ void BackPack::creaSP() {
 	//Creacion del botón que nos devolverá a los anteriores
 	GameComponent* weapon = new GameComponent();
 
-	Vector2D positionW(5, 0.5);
+	Vector2D positionW(5.25, 0.5);
 
-	weapon->setTextureId("2"); weapon->setPosition(positionW); weapon->setWidth(120); weapon->setHeight(60);
+	weapon->setTextureId("3"); weapon->setPosition(positionW); weapon->setWidth(120); weapon->setHeight(60);
 	weapon->addRenderComponent(new RenderSingleFrameComponent());  weapon->addInputComponent(new InventBottomsComponent(this, Weapons, true, 0));
 
 	stage.push_back(weapon);
@@ -392,13 +403,14 @@ void BackPack::creaEscena() {
 	//Creamos botón para volver al menú principal y los de cada clase
 	Button* bottonBack = new Button("3", toMenu, 0);
 
-	Vector2D position0(5, 0.5);
+	Vector2D position0(5.25, 0.5);
 
 	double width = 120;
 	double height = 60;
 
 	bottonBack->setTextureId("3"); bottonBack->setPosition(position0); bottonBack->setWidth(width); bottonBack->setHeight(height);
 	bottonBack->addRenderComponent(new RenderSingleFrameComponent()); bottonBack->addInputComponent(new MouseScrollComponent());
+	bottonBack->addInputComponent(new MouseInputComponentButton());
 
 	stage.push_back(bottonBack);
 
@@ -419,6 +431,15 @@ void BackPack::creaFondoTienda() {
 	GameComponent* backShop = new GameComponent();
 	backShop->setTextureId("9"); backShop->addRenderComponent(new RenderFullComponent());
 	stage.push_back(backShop);
+
+	player = new BattlePlayer("Tyler", Physical, 1000, 10, 10, 100, 10);
+	player->setTextureId("tylerSS");
+	player->setPosition(pos1);
+	player->setWidth(width1); player->setHeight(height1);
+	player->setRowFrame(0); player->setColFrame(0);
+	RenderComponent* rc = new RenderFraemeComponent2();
+	player->addRenderComponent(rc);
+	stage.push_back(player);
 }
 
 void BackPack::createButtons(int x, int y, vector<estado> type, std::string t, int st) {
@@ -473,4 +494,9 @@ void BackPack::separateElements() {
 			EItems++;
 		}
 	}
+}
+
+void BackPack::update() {
+	player->setColFrame(int(((SDL_GetTicks() / (200)) % 4)));
+	GameState::update();
 }

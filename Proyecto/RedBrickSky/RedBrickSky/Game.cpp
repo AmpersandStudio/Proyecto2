@@ -75,23 +75,23 @@ void Game::initSDL()
 void Game::loadResources()
 {
 	// Load Textures
-	TheTextureManager::Instance()->load("..\\images\\play.png", "0", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\jugarButton.png", "0", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\bag.png", "1", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\shop.png", "2", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\exit.png", "3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\tiendaButton.png", "2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\salirButton.png", "3", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\food2.png", "4", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\fruit.png", "5", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\shop1.png", "6", RENDERER_);
 	//TheTextureManager::Instance()->load("..\\images\\inventFront.png", "7", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\keyboard.png", "8", RENDERER_, 1, 2);
-	TheTextureManager::Instance()->load("..\\images\\backPack.png", "9", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\BackPack.png", "9", RENDERER_);
 	//TheTextureManager::Instance()->load("..\\images\\backPackBack.png", "10", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\abc.png", "11", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\selector.png", "12", RENDERER_, 1, 2);
-	TheTextureManager::Instance()->load("..\\images\\name.png", "13", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\weapons.png", "14", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\potions.png", "15", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\items.png", "16", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\nombreButton.png", "13", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\armasButton.png", "14", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\pocionesButton.png", "15", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\objetosButton.png", "16", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\Battle_UI_Panel.png", "17", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\grey_button.png", "18", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\Battle_UI_Personajes.png", "19", RENDERER_);
@@ -120,8 +120,8 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\key.png", "Key", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\bubble_speech.png", "viñeta", Game::Instance()->getRenderer());
 	TheTextureManager::Instance()->load("..\\images\\bg.png", "bgmm", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\newbutton.png", "nbutton", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\exitbutton.png", "ebutton", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\jugarButton.png", "nbutton", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\salirButton.png", "ebutton", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\battlebg.png", "battlebg", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\blackboard.jpg", "blackboard", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\logo.png", "logo", RENDERER_);

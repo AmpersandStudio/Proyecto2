@@ -8,7 +8,7 @@ TextureManager::TextureManager()
 {
 	m_Fonts[ARIAL16] = { "fonts/ARIAL.ttf", 16 };
 	m_Fonts[ARIAL24] = { "fonts/ARIAL.ttf", 24 };
-	m_Fonts[NESChimera16] = { "fonts/NES-Chimera.ttf", 16 };
+	m_Fonts[NESChimera16] = { "fonts/NES-Chimera.ttf", 12 };
 	m_Fonts[NESChimera24] = { "fonts/NES-Chimera.ttf", 24 };
 	m_Fonts[CaptureIt16] = { "fonts/Capture_it.ttf", 16 };
 	m_Fonts[CaptureIt24] = { "fonts/Capture_it.ttf", 24 };
