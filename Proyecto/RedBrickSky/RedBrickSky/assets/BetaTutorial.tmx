@@ -98,7 +98,7 @@
   </data>
  </layer>
  <objectgroup name="Objects">
-  <object id="37" name="Player" type="Player" x="2816" y="6527.3" width="32" height="32">
+  <object id="37" name="Player" type="Player" x="3712" y="5175.3" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
