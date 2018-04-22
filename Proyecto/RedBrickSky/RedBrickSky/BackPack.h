@@ -11,6 +11,7 @@
 #include "GameComponent.h"
 #include "Button.h"
 #include <vector>
+#include "BattlePlayer.h"
 
 #include "GameManager.h"
 #include "checkML.h"
@@ -51,11 +52,13 @@ private:
 
 	int actualState_;
 
+	BattlePlayer* player;
+
 public:
 	BackPack();
 	virtual ~BackPack();
 
-
+	virtual void update();
 	virtual bool handleEvent(const SDL_Event& event);
 
     static void toMenu();

@@ -4,6 +4,7 @@
 #include "InventoryShopFBcomponent.h"
 #include "RenderSingleFrameComponent.h"
 #include "BagXboxControllerComponent.h"
+#include "RenderFraemeComponent2.h"
 
 BackPack::BackPack()
 {
@@ -226,6 +227,7 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 }
 
 void BackPack::creaSP() {
+	player->setActive(false);
 	
 	buttonsCreated = false;
 
@@ -419,6 +421,16 @@ void BackPack::creaFondoTienda() {
 	GameComponent* backShop = new GameComponent();
 	backShop->setTextureId("9"); backShop->addRenderComponent(new RenderFullComponent());
 	stage.push_back(backShop);
+
+	player = new BattlePlayer("Tyler", Physical, 1000, 10, 10, 100, 10);
+	player->setTextureId("tylerSS");
+	Vector2D pos(0.35, 0.12);
+	player->setPosition(pos);
+	player->setWidth(256); player->setHeight(512);
+	player->setRowFrame(0); player->setColFrame(0);
+	RenderComponent* rc = new RenderFraemeComponent2();
+	player->addRenderComponent(rc);
+	stage.push_back(player);
 }
 
 void BackPack::createButtons(int x, int y, vector<estado> type, std::string t, int st) {
@@ -473,4 +485,9 @@ void BackPack::separateElements() {
 			EItems++;
 		}
 	}
+}
+
+void BackPack::update() {
+	player->setColFrame(int(((SDL_GetTicks() / (200)) % 4)));
+	GameState::update();
 }
