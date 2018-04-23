@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 #include "GameComponent.h"
+#include "NPC.h"
+#include "Game.h"
 
 #include "checkML.h"
 
@@ -45,6 +47,8 @@ private:
 
 	bool dialogueActive;
 
+	NPC* currentNPC;
+
 	GameManager() {
 
 		doors = { false, true, false };
@@ -52,6 +56,8 @@ private:
 		dialogueActive = false;
 
 		name = "";
+
+		currentNPC = nullptr;
 	}
 
 	static GameManager* s_pInstance;
@@ -83,4 +89,8 @@ public:
 
 	void setName(string n) { name = n;  };
 
+	void toBattle();
+
+	void getNPC(NPC* n) { currentNPC = n; }
+	void exitBattle();
 };

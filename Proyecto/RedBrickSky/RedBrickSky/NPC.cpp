@@ -21,6 +21,7 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 	animSpeed_ = animSpeed;
 	oriPosX_ = position.getX();
 	oriPosY_ = position.getY();
+	isFighter_ = true;
 
 	dialogueActive = false;
 	isInteracting_ = false;
@@ -62,6 +63,10 @@ void NPC::activate() {
 		dialogueActive = text.nextDialogue();
 		if (!dialogueActive) {
 			GameManager::Instance()->setDialogueState(false);
+			if (isFighter_) {
+				GameManager::Instance()->getNPC(this);
+				GameManager::Instance()->toBattle();
+			}
 		}
 	}
 	cout << Msg_ << endl;
@@ -151,6 +156,15 @@ void NPC::checkNPCLimits(Vector2D pos) {
 	else if (pos.getY() <= oriPosY_ - 300) {
 		collision();
 	}
+}
+
+void NPC::isDefeated()
+{
+	isFighter_ = false;
+
+	//HAY QUE CREAR DESTRUCTORA DE DIALOGUES Y RECARGAR LA VERSION B DE CADA DIALOGO CUANDO HAYA
+	/*Message_.append("B");*/
+	/*text = Dialogue(Message_);*/
 }
 
 

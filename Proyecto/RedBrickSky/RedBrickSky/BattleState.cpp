@@ -649,8 +649,10 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 				interfaz.pruebaTexto_->setTextureId("selOptTexto");
 			}
 
-			if (END_)
+			if (END_) {
+				GameManager::Instance()->exitBattle();
 				Game::Instance()->getStateMachine()->popState();
+			}
 
 			handledEvent = true;
 		}

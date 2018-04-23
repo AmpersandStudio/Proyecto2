@@ -64,7 +64,7 @@ void Dialogue::render()
 		posX_ += 10;
 	}
 
-	TheTextureManager::Instance()->drawFull("viñeta", posX_ - TheCamera::Instance()->getPosition().getX() - offsetX_, posY_ - TheCamera::Instance()->getPosition().getY() - offsetY_,
+	TheTextureManager::Instance()->drawFull("viñeta", posX_ - TheCamera::Instance()->getPosition().getX() - offsetX_, posY_ - TheCamera::Instance()->getPosition().getY() - offsetY_ - 10,
 		dBoxWidth_, dBoxHeight_, Game::Instance()->getRenderer(), 0, 255);
 
 	//RENDERIZO EL BOCADILLO

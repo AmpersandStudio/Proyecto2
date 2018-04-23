@@ -115,7 +115,7 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\jugadorAtaco.png", "jugAtacoTexto", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\enemigoAtaco.png", "enemAtacoTexto", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\seleccionaOpcion.png", "selOptTexto", RENDERER_);
-	TheTextureManager::Instance()->load("assets/Nivel1.png", "level0", RENDERER_);
+	TheTextureManager::Instance()->load("assets/Nivel1.png", "level1", RENDERER_);
 	TheTextureManager::Instance()->load("assets/Nivel2.png", "level2", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\tylerSS1.png", "tylerSS", RENDERER_, 1, 13);
 	TheTextureManager::Instance()->load("..\\images\\arbolSS.png", "arbolSS", RENDERER_, 1, 2);

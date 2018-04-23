@@ -33,6 +33,10 @@ public:
 	void checkMapLimits(Vector2D pos);
 	void checkNPCLimits(Vector2D pos);
 
+	bool getFighter() { return isFighter_; }
+	void setFighter(bool set) { isFighter_ = set; }
+	void isDefeated();
+
 private:
 	bool isInteracting_;
 	Level* level_;
@@ -50,6 +54,8 @@ private:
 
 	Dialogue text;
 	bool dialogueActive;
+
+	bool isFighter_;
 
 	int collisionCounter_;
 };
