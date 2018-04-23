@@ -36,6 +36,7 @@ private:
 	int dBoxHeight_ = 135;
 	int lineSpace_ = 25;
 	int lineLength_ = 24;
+	double tolerance = 0.7;
 	/*int lines_ = 0;*/
 
 	std::vector<std::string> dialogues_;

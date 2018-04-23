@@ -101,11 +101,21 @@ void Dialogue::readFile()
 
 void Dialogue::splitString(std::string s)
 {
-	int length = s.size();
-	int lines = length / lineLength_;
+	//Usamos variables de tipo double porque hay veces que la division da valores muy cercanos al siguiente dígito
+	//y si no se lo sumamos no nos va a separar el diálogo en diferentes líneas
+
+	double length_ = s.size();
+	int lines_ = length_ / lineLength_;
+	double lines = lines_;
+
+	lines += tolerance;
+
+
+	if (length_ / lineLength_ > lines)
+		lines_++;
 
 	int j = 0;
-	for (int i = 0; i < lines; i++)
+	for (int i = 0; i < lines_; i++)
 	{
 		std::string substring = s.substr(j, lineLength_ + 1);
 		/*if ( isVowel(substring[23]) && (substring[24] != ' '||','||'.') &&  isConsonant(substring[24]) && substring.length() > 24) {
@@ -138,7 +148,8 @@ void Dialogue::splitString(std::string s)
 		}
 	}
 
-	if (length % lineLength_ != 0)
+
+	if ((int)length_ % (int)lineLength_ != 0 && j < s.size())
 	{
 		std::string substring = s.substr(j, s.size() - 1);
 		splittedString_.push(substring);
