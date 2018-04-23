@@ -227,7 +227,7 @@ void Game::render()
 	if(!static_cast<TransitionState*>(stateMachine_->currentState())) SDL_RenderClear(Game::Instance()->getRenderer());
 
 	//renderizamos los objetos
-	SDL_SetRenderDrawColor(RENDERER_, 0, 255, 255, 255);
+	SDL_SetRenderDrawColor(RENDERER_, 255, 255, 255, 255);
 	stateMachine_->currentState()->render();
 
 	strings->render();

@@ -286,3 +286,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 Proyecto/RedBrickSky/bin/RedBrickSkyDebug.exe
+*.exe
