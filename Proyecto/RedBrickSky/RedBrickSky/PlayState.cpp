@@ -22,8 +22,8 @@ PlayState::PlayState()
 {
 	LevelParser levelParser;
 	//pLevel = levelParser.parseLevel("assets/provisionalTutorial.tmx");
-	//JAVI CABRON
-	pLevel = levelParser.parseLevel("assets/Nivel1.tmx");
+	//pLevel = levelParser.parseLevel("assets/Nivel1.tmx");
+	pLevel = levelParser.parseLevel("assets/Nivel2.tmx");
 
 	//ESTO ES DE JAVI, UN BOTON QUE TE LLEVA A LA TIENDA DESDE DENTRO DEL JUEGO PORQUE GAME STATE ES EL QUE TIENE LA INFO DE LA MOCHILA,
 	//MODIFICAD LA POSICION SI QUEREIS PERO DECIDMELO PLS
@@ -99,7 +99,7 @@ void PlayState::notOnGrass() {
 
 void PlayState::render()
 {
-	TextureManager::Instance()->drawFullCamera("level0", Game::Instance()->getRenderer());
+	TextureManager::Instance()->drawFullCamera("level2", Game::Instance()->getRenderer());
 	pLevel->render();
 	GameState::render();
 }
