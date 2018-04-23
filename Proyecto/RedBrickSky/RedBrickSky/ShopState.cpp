@@ -20,7 +20,7 @@ ShopState::ShopState()
 
 	//Imagen de fondo de la tienda
 	GameComponent* backShop = new GameComponent();
-	backShop->setTextureId("6"); backShop->addRenderComponent(new RenderFullComponent());
+	backShop->setTextureId("shop1"); backShop->addRenderComponent(new RenderFullComponent());
 	stage.push_back(backShop);
 
 	//Creamos la matiz y la llenamos de StandPoints
@@ -28,6 +28,10 @@ ShopState::ShopState()
 
 	//Creación de los items que tendrá la tienda
 	createShopItems();
+
+	GameComponent* frontShop = new GameComponent();
+	frontShop->setTextureId("shop2"); frontShop->addRenderComponent(new RenderFullComponent());
+	stage.push_back(frontShop);
 
 	//Creamos la imagen que va por encima de la mochila para que no se vea al hacer scroll
 	/*GameComponent* frontShop = new GameComponent();

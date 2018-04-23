@@ -81,7 +81,8 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\salirButton.png", "3", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\food2.png", "4", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\fruit.png", "5", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\shop1.png", "6", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\shop1.png", "shop1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\shop2.png", "shop2", RENDERER_);
 	//TheTextureManager::Instance()->load("..\\images\\inventFront.png", "7", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\keyboard.png", "8", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\BackPack.png", "9", RENDERER_);
