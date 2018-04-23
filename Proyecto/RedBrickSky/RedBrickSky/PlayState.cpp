@@ -22,6 +22,7 @@ PlayState::PlayState()
 {
 	LevelParser levelParser;
 	//pLevel = levelParser.parseLevel("assets/provisionalTutorial.tmx");
+	//JAVI CABRON
 	pLevel = levelParser.parseLevel("assets/Nivel1.tmx");
 
 	//ESTO ES DE JAVI, UN BOTON QUE TE LLEVA A LA TIENDA DESDE DENTRO DEL JUEGO PORQUE GAME STATE ES EL QUE TIENE LA INFO DE LA MOCHILA,
