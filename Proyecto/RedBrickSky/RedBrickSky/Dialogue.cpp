@@ -69,7 +69,7 @@ void Dialogue::render()
 
 	//RENDERIZO EL BOCADILLO
 	for (int i = 0; i < 3; i++) {
-		TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::NESChimera16, { 0,0,0,255 },
+		TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::Pixel16, { 0,0,0,255 },
 			posX_ - TheCamera::Instance()->getPosition().getX(),
 			posY_ + i * lineSpace_ - TheCamera::Instance()->getPosition().getY(),
 			Game::Instance()->getRenderer());

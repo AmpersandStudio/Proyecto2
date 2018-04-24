@@ -35,7 +35,7 @@ private:
 	int dBoxWidth_ = 345;
 	int dBoxHeight_ = 135;
 	int lineSpace_ = 25;
-	int lineLength_ = 24;
+	int lineLength_ = 22;
 	double tolerance = 0.7;
 	/*int lines_ = 0;*/
 
