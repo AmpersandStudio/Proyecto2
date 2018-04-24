@@ -17,7 +17,7 @@ MainMenuState::MainMenuState()
 	//gc->setTextureId("MainMenu");
 	
 	//// New Main Menu
-	gc->setTextureId("bgmm");
+	gc->setTextureId("MainMenu");
 	gc->addRenderComponent(new RenderFullComponent());
 
 	stage.push_back(gc);
@@ -31,9 +31,9 @@ MainMenuState::MainMenuState()
 	Button* button3 = new Button("ebutton", exit, 3);
 	Button* button2 = new Button("nbutton", toGame2, 0);
 
-	Vector2D position0(0.5, 3);
-	Vector2D position2(0.5, 4.5);
-	Vector2D position3(0.5, 6);
+	Vector2D position0(0.4, 3);
+	Vector2D position2(0.4, 4.5);
+	Vector2D position3(0.4, 6);
 
 	double width = 220;
 	double height = 70;
