@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "RenderSingleFrameComponent.h"
 #include "RenderFraemeComponent2.h"
+#include "BattleCharacter.h"
 
 //bloque 0 (constructoras y destructoras) ---------------------------------------------------------------------------------
 BattleState::BattleState()
@@ -28,6 +29,9 @@ BattleState::~BattleState()
 	if (interfaz.button_1 != 0) delete interfaz.button_1;
 	if (interfaz.button_2 != 0) delete interfaz.button_2;
 	if (interfaz.button_3 != 0) delete interfaz.button_3;
+
+	player->clearPhysicscomp();
+	enemy->clearPhysicscomp();
 }
 
 //bloque 1 (constriccion del fade inicial) --------------------------------------------------------------------------------
@@ -61,11 +65,11 @@ void BattleState::createUI() {
 	//stands de los personajes
 	createStands();
 
-	//equipamos las armas
-	pickArmors();
-
 	//preparamos el combate
 	constructC();
+
+	//equipamos las armas
+	pickArmors();
 
 	//fade inicial
 	stage.push_back(fade_);
@@ -700,12 +704,22 @@ bool BattleState::run()
 			int e_input = enemy->getInput();
 			float dmg = enemy->combat(e_input, player->getDefense(), player->getType());
 
-			enemy->delPhysicsComponent(mc);
-			Vector2D p = player->getPosition();
-			Vector2D e = enemy->getPosition();
-			mc = new MoveToThisPosComponent(e, p);
-			enemy->addPhysicsComponent(mc);
-			attackAnim_ = true;
+			enemy->delPhysicsComponent(&mce);
+			enemy->delPhysicsComponent(&mae);
+			Attack a = enemy->getAttack(e_input);
+			if (a.type == Physical) {
+				Vector2D p = player->getPosition();
+				Vector2D e = enemy->getPosition();
+				mce = MoveToThisPosComponent(e, p);
+				enemy->addPhysicsComponent(&mce);
+				attackAnim_ = true;
+			}
+			else if (a.type == Magical || a.type == Support || a.type == Ranged) {
+				Vector2D e = enemy->getPosition();
+				mae = MagicAttackComponent(e, 0.3);
+				enemy->addPhysicsComponent(&mae);
+				attackAnim_ = true;
+			}
 
 			if (enemy->hasTarget())
 			{
@@ -794,9 +808,6 @@ void BattleState::displayAttacks()
 void BattleState::attack(int i) {
 	player->setTurn(true);
 
-	//antes de nada le quitamos el comp
-	player->delPhysicsComponent(mc);
-
 	stage[1]->setTextureId("24");
 	input = i;
 	Attacking_ = true;
@@ -805,8 +816,19 @@ void BattleState::attack(int i) {
 
 	Vector2D p = player->getPosition();
 	Vector2D e = enemy->getPosition();
-	mc = new MoveToThisPosComponent(p, e);
-	player->addPhysicsComponent(mc);
+
+	Attack a = player->getAttack(input);
+
+	player->delPhysicsComponent(&mcp);
+	player->delPhysicsComponent(&map);
+	if (a.type == Physical || a.type == Ranged) {
+		mcp = MoveToThisPosComponent(p, e);
+		player->addPhysicsComponent(&mcp);
+	}
+	else if (a.type == Magical || a.type == Support) {
+		map = MagicAttackComponent(p, 0.3);
+		player->addPhysicsComponent(&map);
+	}
 
 	//texto
 	interfaz.pruebaTexto_->setTextureId("jugAtacoTexto");

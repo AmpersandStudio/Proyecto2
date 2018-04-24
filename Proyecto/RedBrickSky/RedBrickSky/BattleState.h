@@ -17,6 +17,7 @@
 #include "BattleCharacter.h"
 #include "MouseInputForBattleComponent.h"
 #include "MoveToThisPosComponent.h"
+#include "MagicAttackComponent.h"
 
 #include "checkML.h"
 
@@ -74,7 +75,10 @@ protected:
 	Vector2D iniPos;
 
 	RenderComponent* rcfade;
-	MoveToThisPosComponent* mc;
+	MoveToThisPosComponent mcp;
+	MagicAttackComponent map;
+	MoveToThisPosComponent mce;
+	MagicAttackComponent mae;
 
 	GameComponent* fade_;
 	GameComponent* fondo_;

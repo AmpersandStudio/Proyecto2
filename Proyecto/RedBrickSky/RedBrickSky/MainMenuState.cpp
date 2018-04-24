@@ -45,7 +45,8 @@ MainMenuState::MainMenuState()
 
 	stage.push_back(button0);
 	stage.push_back(button3);
-	//stage.push_back(button2);
+	stage.push_back(button2);
+	button2->setActive(false);
 
 	XboxController::Instance()->insertController();
 	SoundManager::Instance()->playMusic("menu", -1);

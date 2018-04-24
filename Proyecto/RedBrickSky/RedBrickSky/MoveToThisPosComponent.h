@@ -17,6 +17,7 @@ private:
 	BattleCharacter* bc;
 
 public:
+	MoveToThisPosComponent() {};
 	MoveToThisPosComponent(Vector2D myPos, Vector2D hisPos);
 	virtual ~MoveToThisPosComponent();
 	virtual void update(GameObject* o);

@@ -51,8 +51,9 @@ void GameComponent::delInputComponent(InputComponent* ic) {
 void GameComponent::delPhysicsComponent(PhysicsComponent* pc) {
 	std::vector<PhysicsComponent*>::iterator position = std::find(
 		physicsComp_.begin(), physicsComp_.end(), pc);
-	if (position != physicsComp_.end())
+	if (position != physicsComp_.end()) {
 		physicsComp_.erase(position);
+	}
 }
 
 void GameComponent::delRenderComponent(RenderComponent* rc) {

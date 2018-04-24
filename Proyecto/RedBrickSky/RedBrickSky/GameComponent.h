@@ -33,5 +33,7 @@ public:
 	virtual void delInputComponent(InputComponent* ic);
 	virtual void delPhysicsComponent(PhysicsComponent* pc);
 	virtual void delRenderComponent(RenderComponent* rc);
+
+	void clearPhysicscomp() { physicsComp_.clear(); }
 };
 
