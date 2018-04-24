@@ -34,7 +34,6 @@ enum EnemyAttack {
 };
 
 typedef struct {
-	//BOTONES
 	Button* button_0;
 	Button* button_1;
 	Button* button_2;
@@ -45,19 +44,6 @@ typedef struct {
 
 class BattleState : public GameState
 {
-public:
-	//constructora y destructora
-	BattleState();
-	virtual ~BattleState();
-
-	//metodos virtuales de gamestate
-	virtual void update();
-	virtual void render();
-	virtual bool handleEvent(const SDL_Event & event);
-
-	//metodos necesariamente publicos
-	void setAttackAnim(bool b) { attackAnim_ = b; };
-
 protected:
 	battle_UI interfaz;
 
@@ -65,6 +51,7 @@ protected:
 	int alpha_;
 	int W1id = 0;
 	int W2id = 0;
+	int turno;
 
 	bool attack_;
 	bool bag_;
@@ -96,59 +83,60 @@ protected:
 	GameComponent* Weapon11;
 	GameComponent* Weapon22;
 
-	//primeros metodos
-	void init();
-	bool run();
-	
-
-	//metodos aux
-	void pickBackground();
-
-	//Creacion de la interfaz
-	void createUI();
-	void createCharacterInfo();
-	void createBattleButtons();
-	void updateVidas();
-
-	//Actualizacion de la interfaz
-	void updateVida(GameComponent* barraVida, double variacion); //Variación es el porcentaje que varía la vida en decimal (Ej: 75% es 0.75), para que la posición sea constante
-	bool isButton(GameObject* object);
-
-	//para el combate
 	BattlePlayer* player = nullptr;
 	BattleEnemy* enemy = nullptr;
 
-	void constructC();
-	void initC();
-	void displayAttacks();
-	void handleInput();
-
 	std::vector<Attack> ataques;
 	std::vector<Attack> e_ataques;
-	int turno;
 
-	void attack(int i);
+	//BLOQUES DE METODOS
+	//bloque 1 (constriccion del fade inicial)
+	void makeFade();
+
+	//bloque 2 (construccion del HUD del bs)
+	void createUI();
+	void pickBackground();
+	void createPanel();
+	void createBattleButtons();
+	void createCharacterInfo();
+	void createStands();
+	void pickArmors();
+
+	//bloque 3 (construccion de los personajes del bs)
+	void constructC();
+	void createPlayer();
+	void createEnemy();
+	void createAttacks();
+	void initC();
+
+	//bloque 5 (auxiliares de update)
+	void controlFade();
+	bool run();
+
+	//bloque 6 (auxiliares de render)
+	void updateVidas();
+
+	//bloque 7 (auxiliares de handle events)
 	void toAttackMode();
+	void displayAttacks();
+	void attack(int i);
+	void enableWapons();
+	void disableWapons();
 
-	void enableWapons() {
-		if (foundWP1) {
-			Weapon1->setActive(true);
-			Weapon11->setActive(true);
-		}
-		if (foundWP2) {
-			Weapon2->setActive(true);
-			Weapon22->setActive(true);
-		}
-	}
-	void disableWapons() {
-		if (foundWP1) {
-			Weapon1->setActive(false);
-			Weapon11->setActive(false);
-		}
-		if (foundWP2) {
-			Weapon2->setActive(false);
-			Weapon22->setActive(false);
-		}
-	}
+public:
+	//constructora y destructora
+	//bloque 0 (constructoras y destructoras)
+	BattleState();
+	virtual ~BattleState();
+
+	//metodos virtuales de gamestate
+	//bloque 4 (metodos del polimorfismo)
+	virtual void update();
+	virtual void render();
+	virtual bool handleEvent(const SDL_Event & event);
+
+	//metodos necesariamente publicos
+	//bloque 8 (metodo para la animacion)
+	void setAttackAnim(bool b) { attackAnim_ = b; };
 };
 
