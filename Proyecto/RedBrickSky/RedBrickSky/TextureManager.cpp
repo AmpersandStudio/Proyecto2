@@ -24,20 +24,26 @@ TextureManager::~TextureManager()
 
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer, int row, int col)
 {
+
 	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
 	int w = pTempSurface->w;
 	int h = pTempSurface->h;
 
-	if (pTempSurface == NULL)
+	if (pTempSurface == nullptr)
 	{
 		std::cout << "Cant open " << fileName << std::endl;
 		return false;
 	}
 
 	SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
+
+	if (nullptr == pTexture) {
+		cout << SDL_GetError() << endl;
+	}
 	SDL_FreeSurface(pTempSurface);
 
-	if (pTexture != NULL)
+
+	if (pTexture != nullptr)
 	{
 		m_textureMap[id] = pTexture;
 		m_textureDims[id] = std::pair<int, int>(w, h);
@@ -45,8 +51,10 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 		return true;
 	}
 
-	std::cout << "Cant load texture " << fileName << std::endl;
-	return false;
+	else {
+		std::cout << "Cant load texture " << fileName << std::endl;
+		return false;
+	}
 }
 
 void TextureManager::draw(std::string id, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
