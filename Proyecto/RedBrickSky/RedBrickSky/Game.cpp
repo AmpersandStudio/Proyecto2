@@ -115,22 +115,34 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\jugadorAtaco.png", "jugAtacoTexto", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\enemigoAtaco.png", "enemAtacoTexto", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\seleccionaOpcion.png", "selOptTexto", RENDERER_);
-	TheTextureManager::Instance()->load("assets/Nivel1.png", "level1", RENDERER_);
-	TheTextureManager::Instance()->load("assets/Nivel2.png", "level2", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\tylerSS1.png", "tylerSS", RENDERER_, 1, 13);
 	TheTextureManager::Instance()->load("..\\images\\arbolSS.png", "arbolSS", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\escoba.png", "escoba", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\pelotas.png", "pelotas", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\basura.png", "basura", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\bocata.png", "bocata", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\key.png", "Key", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\bubble_speech.png", "viñeta", Game::Instance()->getRenderer());
 	TheTextureManager::Instance()->load("..\\images\\bg.png", "bgmm", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\jugarButton.png", "nbutton", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\salirButton.png", "ebutton", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\battlebg.png", "battlebg", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg1.png", "battlebg1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg2.png", "battlebg2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg3.png", "battlebg3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg4.png", "battlebg4", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg5.png", "battlebg5", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg6.png", "battlebg6", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg7.png", "battlebg7", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\blackboard.jpg", "blackboard", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\logo.png", "logo", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\blue.png", "blue", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\sky.jpg", "sky", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\amplogo.png", "amplogo", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\frase.png", "frase", RENDERER_);
+
+	TheTextureManager::Instance()->load("..\\assets\\Nivel0.png", "level0", RENDERER_);
+	TheTextureManager::Instance()->load("..\\assets\\Nivel1.png", "level1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\assets\\Nivel2.png", "level2", RENDERER_);
 
 	// Load Sounds
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);

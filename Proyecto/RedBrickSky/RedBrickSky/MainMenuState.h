@@ -11,6 +11,7 @@ public:
 	MainMenuState();
 	virtual ~MainMenuState();
 	static void toGame();
+	static void toGame2();
 	bool handleEvent(const SDL_Event& event);
 	static void exit() { Game::Instance()->exitApp(); };
 	static void toSelector();

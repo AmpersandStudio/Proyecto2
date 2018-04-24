@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="left-up" width="350" height="150" tilewidth="32" tileheight="32" backgroundcolor="#000000" nextobjectid="3">
  <properties>
-  <property name="000" value="assets/000.png"/>
-  <property name="Personaje1" value="assets/Personaje1.png"/>
-  <property name="Personaje10" value="assets/Personaje10.png"/>
-  <property name="Personaje11" value="assets/Personaje11.png"/>
-  <property name="Personaje12" value="assets/Personaje12.png"/>
-  <property name="Personaje13" value="assets/Personaje13.png"/>
-  <property name="Personaje14" value="assets/Personaje14.png"/>
-  <property name="Personaje15" value="assets/Personaje15.png"/>
-  <property name="Personaje2" value="assets/Personaje2.png"/>
-  <property name="Personaje3" value="assets/Personaje3.png"/>
-  <property name="Personaje4" value="assets/Personaje4.png"/>
-  <property name="Personaje5" value="assets/Personaje5.png"/>
-  <property name="Personaje6" value="assets/Personaje6.png"/>
-  <property name="Personaje7" value="assets/Personaje7.png"/>
-  <property name="Personaje8" value="assets/Personaje8.png"/>
-  <property name="helicopter" value="assets/helicopter.png"/>
-  <property name="key" value="assets/key.png"/>
-  <property name="personaje9" value="assets/Personaje9.png"/>
+  <property name="000" value="..\assets\000.png"/>
+  <property name="Personaje1" value="..\assets\Personaje1.png"/>
+  <property name="Personaje10" value="..\assets\Personaje10.png"/>
+  <property name="Personaje11" value="..\assets\Personaje11.png"/>
+  <property name="Personaje12" value="..\assets\Personaje12.png"/>
+  <property name="Personaje13" value="..\assets\Personaje13.png"/>
+  <property name="Personaje14" value="..\assets\Personaje14.png"/>
+  <property name="Personaje15" value="..\assets\Personaje15.png"/>
+  <property name="Personaje2" value="..\assets\Personaje2.png"/>
+  <property name="Personaje3" value="..\assets\Personaje3.png"/>
+  <property name="Personaje4" value="..\assets\Personaje4.png"/>
+  <property name="Personaje5" value="..\assets\Personaje5.png"/>
+  <property name="Personaje6" value="..\assets\Personaje6.png"/>
+  <property name="Personaje7" value="..\assets\Personaje7.png"/>
+  <property name="Personaje8" value="..\assets\Personaje8.png"/>
+  <property name="helicopter" value="..\assets\helicopter.png"/>
+  <property name="key" value="..\assets\key.png"/>
+  <property name="personaje9" value="..\assets\Personaje9.png"/>
  </properties>
  <tileset firstgid="1" name="2ckdj8" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="2ckdj8.png" width="512" height="512"/>

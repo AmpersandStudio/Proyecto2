@@ -9,17 +9,14 @@
 class PlayState : public GameState
 {
 protected:
-	//GameComponent* player_;
 	Level * pLevel;
 
-	// Métodos
-	//void initPlayer();
 	static void toGame();
 	static void toInventary();
 	static void toBattle();
 
 public:
-	PlayState();
+	PlayState(int level_);
 	virtual ~PlayState();
 
 	virtual bool handleEvent(const SDL_Event& event);
@@ -30,5 +27,6 @@ public:
 
 private:
 	int steps_;
+	int level_;
 };
 

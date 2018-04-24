@@ -27,8 +27,9 @@ MainMenuState::MainMenuState()
 	Button* button2 = new Button("13", toSelector, 2);*/
 
 	// New Main Menu
+	Button* button0 = new Button("nbutton", toGame, 0);
 	Button* button3 = new Button("ebutton", exit, 3);
-	Button* button2 = new Button("nbutton", toGame, 0);
+	Button* button2 = new Button("nbutton", toGame2, 0);
 
 	Vector2D position0(0.5, 3);
 	Vector2D position2(0.5, 4.5);
@@ -38,11 +39,11 @@ MainMenuState::MainMenuState()
 	double height = 70;
 
 
-	//button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(new RenderFrameComponent()); button0->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button0->addInputComponent(new MouseInputComponentButton(this));
+	button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(new RenderFrameComponent()); button0->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button0->addInputComponent(new MouseInputComponentButton(this));
 	button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(new RenderFrameComponent()); button3->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button3->addInputComponent(new MouseInputComponentButton(this));
 	button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(new RenderFrameComponent()); button2->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button2->addInputComponent(new MouseInputComponentButton(this));
 
-	//stage.push_back(button0);
+	stage.push_back(button0);
 	stage.push_back(button3);
 	stage.push_back(button2);
 
@@ -54,9 +55,16 @@ MainMenuState::~MainMenuState()
 {
 }
 
-void MainMenuState::toGame() {
+void MainMenuState::toGame() 
+{
 	SoundManager::Instance()->stopMusic();
-	Game::Instance()->getStateMachine()->pushState(new PlayState());
+	Game::Instance()->getStateMachine()->pushState(new PlayState(0));
+}
+
+void MainMenuState::toGame2()
+{
+	SoundManager::Instance()->stopMusic();
+	Game::Instance()->getStateMachine()->pushState(new PlayState(2));
 }
 
 void MainMenuState::toSelector() {

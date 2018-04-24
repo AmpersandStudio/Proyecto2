@@ -6,13 +6,13 @@ TextureManager* TextureManager::s_pInstance = 0;
 
 TextureManager::TextureManager()
 {
-	m_Fonts[ARIAL16] = { "fonts/ARIAL.ttf", 16 };
-	m_Fonts[ARIAL24] = { "fonts/ARIAL.ttf", 24 };
-	m_Fonts[NESChimera16] = { "fonts/NES-Chimera.ttf", 12 };
-	m_Fonts[NESChimera24] = { "fonts/NES-Chimera.ttf", 24 };
-	m_Fonts[CaptureIt16] = { "fonts/Capture_it.ttf", 16 };
-	m_Fonts[CaptureIt24] = { "fonts/Capture_it.ttf", 24 };
-	m_Fonts[CHALK24] = { "fonts/Right Chalk.ttf", 32 };
+	m_Fonts[ARIAL16] = { "..\\fonts\\ARIAL.ttf", 16 };
+	m_Fonts[ARIAL24] = { "..\\fonts\\ARIAL.ttf", 24 };
+	m_Fonts[NESChimera16] = { "..\\fonts\\NES-Chimera.ttf", 12 };
+	m_Fonts[NESChimera24] = { "NES-Chimera.ttf", 24 };
+	m_Fonts[CaptureIt16] = { "..\\fonts\\Capture_it.ttf", 16 };
+	m_Fonts[CaptureIt24] = { "..\\fonts\\Capture_it.ttf", 24 };
+	m_Fonts[CHALK24] = { "..\\fonts\\Right Chalk.ttf", 32 };
 
 }
 
@@ -28,6 +28,7 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 
 	if (pTempSurface == NULL)
 	{
+		std::cout << "Cant open " << fileName << std::endl;
 		return false;
 	}
 
@@ -42,6 +43,7 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 		return true;
 	}
 
+	std::cout << "Cant load texture " << fileName << std::endl;
 	return false;
 }
 

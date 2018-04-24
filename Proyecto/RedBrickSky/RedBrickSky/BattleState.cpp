@@ -31,8 +31,37 @@ BattleState::BattleState()
 	//Componentes necesarios
 
 	fondo_ = new GameComponent();
-	//fondo_->setTextureId("fondoBatallaTuto");
-	fondo_->setTextureId("battlebg");
+
+	int rnd = rand() % 7;
+	switch (rnd)
+	{
+	case 0:
+		fondo_->setTextureId("battlebg1");
+		break;
+	case 1:
+		fondo_->setTextureId("battlebg2");
+		break;
+	case 2:
+		fondo_->setTextureId("battlebg3");
+		break;
+	case 3:
+		fondo_->setTextureId("battlebg4");
+		break;
+	case 4:
+		fondo_->setTextureId("battlebg5");
+		break;
+	case 5:
+		fondo_->setTextureId("battlebg6");
+		break;
+	case 6:
+		fondo_->setTextureId("battlebg7");
+		break;
+
+	default:
+		fondo_->setTextureId("battlebg4");
+		break;
+	}
+	
 	fondo_->addRenderComponent(new RenderFullComponent());
 
 	createUI();
@@ -224,8 +253,37 @@ void BattleState::constructC() {
 	player->addRenderComponent(rc);
 	stage.push_back(player);
 
-	enemy = new BattleEnemy("Pajaro", Ranged, 300, 10, 10, 100, 11);
-	enemy->setTextureId("arbolSS");
+	int rnd = rand() % 5;
+
+	switch (rnd)
+	{
+	case 0:
+		enemy = new BattleEnemy("Arbol", Ranged, 300, 10, 10, 100, 11);
+		enemy->setTextureId("arbolSS");
+		break;
+
+	case 1:
+		enemy = new BattleEnemy("Escoba", Ranged, 300, 10, 10, 100, 11);
+		enemy->setTextureId("escoba");
+		break;
+
+	case 2:
+		enemy = new BattleEnemy("Pelotas", Ranged, 300, 10, 10, 100, 11);
+		enemy->setTextureId("pelotas");
+		break;
+
+	case 3:
+		enemy = new BattleEnemy("Basura", Ranged, 300, 10, 10, 100, 11);
+		enemy->setTextureId("basura");
+		break;
+
+	case 4:
+		enemy = new BattleEnemy("Bocata", Ranged, 300, 10, 10, 100, 11);
+		enemy->setTextureId("bocata");
+		break;
+	}
+
+	
 	Vector2D pos2(3.3, 0.62);
 	enemy->setPosition(pos2);
 	enemy->setWidth(160); enemy->setHeight(260);
