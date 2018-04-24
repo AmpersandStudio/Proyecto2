@@ -144,7 +144,10 @@ float BattleCharacter::combat(int i, float enemyDef, Type enemyType)
 
 void BattleCharacter::receiveDamage(float dmg)
 {
-	health -= (int)dmg;
+	float h = GameManager::Instance()->getHealth();
+	h = h - (int)dmg;
+	GameManager::Instance()->setHealth(h);
+
 	std::cout << name << " pierde " << (int)dmg << " HP!" << std::endl;
 }
 

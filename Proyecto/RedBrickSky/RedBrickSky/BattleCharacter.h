@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 
+#include "GameManager.h"
 #include "GameComponent.h"
 #include "checkML.h"
 

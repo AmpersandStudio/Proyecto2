@@ -349,7 +349,7 @@ void BattleState::constructC() {
 }
 
 void BattleState::createPlayer() {
-	player = new BattlePlayer("Tyler", Physical, 1000, 10, 10, 100, 10);
+	player = new BattlePlayer("Tyler", Physical, GameManager::Instance()->getHealth(), 10, 10, 100, 10);
 	player->setTextureId("tylerSS");
 	Vector2D pos(0.85, 0.7);
 	iniPos = pos;
@@ -672,7 +672,7 @@ bool BattleState::run()
 	if (lastTurn)
 		return true;
 
-	else if ((player->getHealth() > 0 && enemy->getHealth() > 0) || !lastTurn)
+	else if ((GameManager::Instance()->getHealth() > 0 && enemy->getHealth() > 0) || !lastTurn)
 	{
 		bool pt = player->getTurn();
 		bool et = enemy->getTurn();
@@ -731,7 +731,7 @@ bool BattleState::run()
 		}
 
 		if (!pt && !et && Attacking_) {
-			std::cout << player->getName() << ": " << player->getHealth() << " HP" << std::endl;
+			std::cout << player->getName() << ": " << GameManager::Instance()->getHealth() << " HP" << std::endl;
 			std::cout << enemy->getName() << ": " << enemy->getHealth() << " HP" << std::endl;
 
 			std::cout << std::endl << "-------------------------------------------------------------" << std::endl;
@@ -740,15 +740,15 @@ bool BattleState::run()
 		}
 	}
 
-	if (player->getHealth() > 0 && enemy->getHealth() <= 0) {
+	if (GameManager::Instance()->getHealth() > 0 && enemy->getHealth() <= 0) {
 		std::cout << "HAS GANADO!" << std::endl;
 		lastTurn = true;
 	}
-	else if (player->getHealth() <= 0 && enemy->getHealth() > 0) {
+	else if (GameManager::Instance()->getHealth() <= 0 && enemy->getHealth() > 0) {
 		std::cout << "HAS PERDIDO!" << std::endl;
 		lastTurn = true;
 	}
-	else if (player->getHealth() <= 0 && enemy->getHealth() <= 0) {
+	else if (GameManager::Instance()->getHealth() <= 0 && enemy->getHealth() <= 0) {
 		std::cout << "WTF EMPATE LOCO!" << std::endl;
 		lastTurn = true;
 	}
@@ -764,7 +764,7 @@ void BattleState::updateVidas()
 	int iniwidth = 120;
 	int height = 8;
 
-	int width = (player->getHealth() < player->getMaxHealth()) ? (player->getHealth() * iniwidth / player->getMaxHealth()) : iniwidth;
+	int width = (GameManager::Instance()->getHealth() < GameManager::Instance()->getMaxHealth()) ? (GameManager::Instance()->getHealth() * iniwidth / GameManager::Instance()->getMaxHealth()) : iniwidth;
 	if (width < 0) width = 0;
 
 	SDL_Rect fillRect = { (Uint32)position0.getX(), (Uint32)position0.getY() , width, height };

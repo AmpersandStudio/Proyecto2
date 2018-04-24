@@ -11,7 +11,7 @@ BackPack::BackPack()
 	money = GameManager::Instance()->getMoney();
 	invent = GameManager::Instance()->copyInventory();
 	cout << "Tam Inventario:  " << invent.size() << endl;
-	StringToScreen::Instance()->pushInfinite("VIDA: " + std::to_string(100), 210, 130);
+	StringToScreen::Instance()->pushInfinite("VIDA: " + std::to_string(GameManager::Instance()->getHealth()), 210, 130);
 	//Componentes necesarios
 	actualState_ = 0;
 

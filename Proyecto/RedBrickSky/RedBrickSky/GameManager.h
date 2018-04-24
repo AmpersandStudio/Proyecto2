@@ -62,8 +62,8 @@ private:
 
 	static GameManager* s_pInstance;
 
-	float playerHP;
-	float playerMaxHP;
+	float playerHP = 1000;
+	float playerMaxHP = 1000;
 
 public:
 	~GameManager() {};
@@ -99,4 +99,8 @@ public:
 
 	int askAboutLevel() { return level; }
 	void setLevel(int l) { level = l; }
+
+	float getHealth() { return playerHP; };
+	float getMaxHealth() { return playerMaxHP; };
+	void setHealth(int h) { playerHP = h; };
 };
