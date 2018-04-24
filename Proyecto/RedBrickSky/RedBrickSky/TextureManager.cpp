@@ -37,9 +37,6 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 
 	SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
 
-	if (nullptr == pTexture) {
-		cout << SDL_GetError() << endl;
-	}
 	SDL_FreeSurface(pTempSurface);
 
 
@@ -52,7 +49,8 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 	}
 
 	else {
-		std::cout << "Cant load texture " << fileName << std::endl;
+		std::cout << "Cant open " << fileName << " REASON:  ";
+		cout << SDL_GetError() << endl;
 		return false;
 	}
 }

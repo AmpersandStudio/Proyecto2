@@ -11,7 +11,7 @@ BackPack::BackPack()
 	money = GameManager::Instance()->getMoney();
 	invent = GameManager::Instance()->copyInventory();
 	cout << "Tam Inventario:  " << invent.size() << endl;
-
+	StringToScreen::Instance()->pushInfinite("VIDA: " + std::to_string(100), 210, 130);
 	//Componentes necesarios
 	actualState_ = 0;
 
@@ -37,6 +37,9 @@ BackPack::BackPack()
 
 BackPack::~BackPack()
 {
+	StringToScreen::Instance()->clearInfinite();
+	StringToScreen::Instance()->stopRendering();
+
 	if (matriz != nullptr) {
 		for (int i = 0; i < numFils; i++)
 			if (matriz[i] != nullptr)

@@ -103,7 +103,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			if (shop->getMoney() >= price && !comprado) {
 
 				shop->setMoney(price);
-				StringToScreen::Instance()->setMessage("Objeto comprado, tu dinero ahora es: " + std::to_string(shop->getMoney()));
+				StringToScreen::Instance()->setMessage("¡Objeto comprado!");
 				StringToScreen::Instance()->startMessagin();
 				StringToScreen::Instance()->changeInfinite(0, "Caramelos: " + std::to_string(shop->getMoney()));
 

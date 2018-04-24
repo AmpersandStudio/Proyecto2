@@ -62,6 +62,9 @@ private:
 
 	static GameManager* s_pInstance;
 
+	float playerHP;
+	float playerMaxHP;
+
 public:
 	~GameManager() {};
 	static GameManager* Instance()
