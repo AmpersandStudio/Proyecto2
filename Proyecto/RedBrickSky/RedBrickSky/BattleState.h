@@ -34,9 +34,6 @@ enum EnemyAttack {
 };
 
 typedef struct {
-	//puntero a jugador
-	//puntero a enemigo
-
 	//BOTONES
 	Button* button_0;
 	Button* button_1;
@@ -44,25 +41,35 @@ typedef struct {
 	Button* button_3;
 	Button* pruebaTexto_;
 
-}battle_UI;
+} battle_UI;
 
-class BattleState :
-	public GameState
+class BattleState : public GameState
 {
 public:
+	//constructora y destructora
 	BattleState();
 	virtual ~BattleState();
+
+	//metodos virtuales de gamestate
 	virtual void update();
 	virtual void render();
 	virtual bool handleEvent(const SDL_Event & event);
-	void init();
-	bool run();
+
+	//metodos necesariamente publicos
 	void setAttackAnim(bool b) { attackAnim_ = b; };
 
 protected:
 	battle_UI interfaz;
-	bool attackMode;
+
 	int input;
+	int alpha_;
+	int W1id = 0;
+	int W2id = 0;
+
+	bool attack_;
+	bool bag_;
+	bool run_;
+	bool attackMode;
 	bool Attacking_;
 	bool attackAnim_;
 	bool okEnemy_;
@@ -73,32 +80,29 @@ protected:
 	bool lastTurn = false;
 	bool foundWP1 = false;
 	bool foundWP2 = false;
-	Vector2D iniPos;
-	MoveToThisPosComponent* mc;
-
-private:
-	bool attack_;
-	bool bag_;
-	bool run_;
-
-	RenderComponent* rcfade;
-
-	GameComponent* fade_;
-	int alpha_;
 	bool fadeDone_;
 	bool fade2Done_;
+	bool END_;
 
+	Vector2D iniPos;
+
+	RenderComponent* rcfade;
+	MoveToThisPosComponent* mc;
+
+	GameComponent* fade_;
 	GameComponent* fondo_;
-
 	GameComponent* Weapon1;
 	GameComponent* Weapon2;
 	GameComponent* Weapon11;
 	GameComponent* Weapon22;
 
-	int W1id = 0;
-	int W2id = 0;
+	//primeros metodos
+	void init();
+	bool run();
+	
 
-	bool END_;
+	//metodos aux
+	void pickBackground();
 
 	//Creacion de la interfaz
 	void createUI();

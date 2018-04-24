@@ -5,15 +5,6 @@
 
 BattleState::BattleState()
 {
-	//Texturas necesitadas
-	//interfaz.cuadro_principal = Game::Instance()->getTexture(24);
-	//interfaz.cuadro_personaje = Game::Instance()->getTexture(26);
-	//interfaz.cuadro_enemigo = Game::Instance()->getTexture(25);
-	//interfaz.cuadro_ataque = Game::Instance()->getTexture(29);
-	//interfaz.Vida = Game::Instance()->getTexture(20);
-	//interfaz.botones = Game::Instance()->getTexture(28);
-	//interfaz.ground = Game::Instance()->getTexture(27);
-
 	attack_ = false; bag_ = false; run_ = false;
 	okEnemy_ = false; okPlayer_ = true;
 
@@ -27,42 +18,6 @@ BattleState::BattleState()
 	fade2Done_ = false;
 
 	END_ = false; Attacking_ = false; attackAnim_ = false;
-
-	//Componentes necesarios
-
-	fondo_ = new GameComponent();
-
-	int rnd = rand() % 7;
-	switch (rnd)
-	{
-	case 0:
-		fondo_->setTextureId("battlebg1");
-		break;
-	case 1:
-		fondo_->setTextureId("battlebg2");
-		break;
-	case 2:
-		fondo_->setTextureId("battlebg3");
-		break;
-	case 3:
-		fondo_->setTextureId("battlebg4");
-		break;
-	case 4:
-		fondo_->setTextureId("battlebg5");
-		break;
-	case 5:
-		fondo_->setTextureId("battlebg6");
-		break;
-	case 6:
-		fondo_->setTextureId("battlebg7");
-		break;
-
-	default:
-		fondo_->setTextureId("battlebg4");
-		break;
-	}
-	
-	fondo_->addRenderComponent(new RenderFullComponent());
 
 	createUI();
 
@@ -92,8 +47,11 @@ void BattleState::init() {
 
 void BattleState::createUI() {
 
+	//aseguramos vector limpio
 	stage.clear();
 
+	//tomamos fondo
+	pickBackground();
 	stage.push_back(fondo_);
 
 	//Panel de fondo
@@ -808,4 +766,55 @@ void BattleState::toAttackMode() {
 	displayAttacks();
 	stage[1]->setTextureId("29");
 	enableWapons();
+}
+
+void BattleState::pickBackground() {
+	fondo_ = new GameComponent();
+
+	GameManager::Instance()->setLevel(0);
+	int currLevel = GameManager::Instance()->askAboutLevel();
+
+	if (currLevel == 0) {
+		int rnd = rand() % 2;
+		switch (rnd)
+		{
+		case 0:
+			fondo_->setTextureId("battlebg1");
+			break;
+		case 1:
+			fondo_->setTextureId("battlebg4");
+			break;
+
+		default:
+			fondo_->setTextureId("battlebg4");
+			break;
+		}
+	}
+
+	else if (currLevel == 1) {
+		int rnd = rand() % 5;
+		switch (rnd)
+		{
+		case 0:
+			fondo_->setTextureId("battlebg2");
+			break;
+		case 1:
+			fondo_->setTextureId("battlebg3");
+			break;
+		case 2:
+			fondo_->setTextureId("battlebg5");
+			break;
+		case 3:
+			fondo_->setTextureId("battlebg6");
+			break;
+		case 4:
+			fondo_->setTextureId("battlebg7");
+			break;
+		default:
+			fondo_->setTextureId("battlebg2");
+			break;
+		}
+	}
+
+	fondo_->addRenderComponent(new RenderFullComponent());
 }

@@ -28,7 +28,6 @@ struct estado {
 	int colFrame; //FIla y columna del frma
 	int FilFrame;
 	bool equiped = false; //Saber si el personaje lo tiene equipado o no
-
 };
 
 using namespace std;
@@ -42,6 +41,7 @@ private:
 
 	vector<bool> doors;
 	
+	int level = 0;
 
 	string name;
 
@@ -93,4 +93,7 @@ public:
 
 	void getNPC(NPC* n) { currentNPC = n; }
 	void exitBattle();
+
+	int askAboutLevel() { return level; }
+	void setLevel(int l) { level = l; }
 };

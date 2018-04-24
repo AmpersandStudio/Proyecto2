@@ -24,6 +24,7 @@ public:
 	virtual void render();
 	void actSteps();
 	void notOnGrass();
+	int getLevel() { return level_; }
 
 private:
 	int steps_;
