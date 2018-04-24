@@ -6,6 +6,7 @@ MagicAttackComponent::MagicAttackComponent(Vector2D position, double range) : po
 {
 	maxX = position.getX() + range;
 	minX = position.getX() - range;
+	flag = false;
 }
 
 MagicAttackComponent::~MagicAttackComponent()
@@ -39,14 +40,17 @@ void MagicAttackComponent::update(GameObject* o) {
 	}
 
 	else {
-		bc = static_cast<BattleCharacter*>(o);
-		bc->setTurn(false);
 		isMoving = false;
 	}
 	
 	if (!isMoving) {
 		BattleState* bs = static_cast<BattleState*>(Game::Instance()->getStateMachine()->currentState());
 		bs->setAttackAnim(false);
+		if (!flag) {
+			bc = static_cast<BattleCharacter*>(o);
+			bc->setTurn(false);
+			flag = true;
+		}
 		o->setPosition(origPosition_);
 	}
 	else {

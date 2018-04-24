@@ -366,27 +366,27 @@ void BattleState::createEnemy() {
 	switch (rnd)
 	{
 	case 0:
-		enemy = new BattleEnemy("Arbol", Ranged, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Arbol", Physical, 300, 10, 10, 100, 11);
 		enemy->setTextureId("arbolSS");
 		break;
 
 	case 1:
-		enemy = new BattleEnemy("Escoba", Ranged, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Escoba", Physical, 300, 10, 10, 100, 11);
 		enemy->setTextureId("escoba");
 		break;
 
 	case 2:
-		enemy = new BattleEnemy("Pelotas", Ranged, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Pelotas", Physical, 300, 10, 10, 100, 11);
 		enemy->setTextureId("pelotas");
 		break;
 
 	case 3:
-		enemy = new BattleEnemy("Basura", Ranged, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Basura", Magical, 300, 10, 10, 100, 11);
 		enemy->setTextureId("basura");
 		break;
 
 	case 4:
-		enemy = new BattleEnemy("Bocata", Ranged, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Bocata", Magical, 300, 10, 10, 100, 11);
 		enemy->setTextureId("bocata");
 		break;
 	}
@@ -707,14 +707,14 @@ bool BattleState::run()
 			enemy->delPhysicsComponent(&mce);
 			enemy->delPhysicsComponent(&mae);
 			Attack a = enemy->getAttack(e_input);
-			if (a.type == Physical) {
+			if (a.type == Physical || a.type == Ranged) {
 				Vector2D p = player->getPosition();
 				Vector2D e = enemy->getPosition();
 				mce = MoveToThisPosComponent(e, p);
 				enemy->addPhysicsComponent(&mce);
 				attackAnim_ = true;
 			}
-			else if (a.type == Magical || a.type == Support || a.type == Ranged) {
+			else if (a.type == Magical || a.type == Support ) {
 				Vector2D e = enemy->getPosition();
 				mae = MagicAttackComponent(e, 0.3);
 				enemy->addPhysicsComponent(&mae);

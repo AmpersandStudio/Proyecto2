@@ -13,6 +13,7 @@ private:
 	Vector2D origPosition_;
 	int counter = 0;
 	double maxX, minX;
+	bool flag;
 
 public:
 	MagicAttackComponent() {}
