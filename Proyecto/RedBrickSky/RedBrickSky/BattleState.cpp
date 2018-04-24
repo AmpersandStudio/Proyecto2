@@ -3,24 +3,22 @@
 #include "RenderSingleFrameComponent.h"
 #include "RenderFraemeComponent2.h"
 
+//bloque 0 (constructoras y destructoras) ---------------------------------------------------------------------------------
 BattleState::BattleState()
 {
-	attack_ = false; bag_ = false; run_ = false;
-	okEnemy_ = false; okPlayer_ = true;
+	attack_ = false; 
+	bag_ = false; 
+	run_ = false;
+	okEnemy_ = false; 
+	okPlayer_ = true;
+	END_ = false;
+	Attacking_ = false;
+	attackAnim_ = false;
 
-	//JR para el inicio
-	rcfade = new RenderFullComponent();
-	alpha_ = 255;
-	fade_ = new GameComponent();
-	fade_->setTextureId("23");
-	fade_->addRenderComponent(rcfade);
-	fadeDone_ = false;
-	fade2Done_ = false;
-
-	END_ = false; Attacking_ = false; attackAnim_ = false;
-
+	//fade inicial
+	makeFade();
+	//creamos el hud
 	createUI();
-
 }
 
 BattleState::~BattleState()
@@ -32,29 +30,99 @@ BattleState::~BattleState()
 	if (interfaz.button_3 != 0) delete interfaz.button_3;
 }
 
-void BattleState::init() {
-	if (alpha_ > 0) {
-		SDL_SetTextureAlphaMod(TheTextureManager::Instance()->getTexture("23"), alpha_);
-		alpha_ = alpha_ - 20;
-	}
-	else {
-		GameObject* aux = stage.back();
-		if (aux != 0) delete aux;
-		stage.pop_back();
-		fade2Done_ = true;
-	}
+//bloque 1 (constriccion del fade inicial) --------------------------------------------------------------------------------
+void BattleState::makeFade() {
+	rcfade = new RenderFullComponent();
+	alpha_ = 255;
+	fade_ = new GameComponent();
+	fade_->setTextureId("23");
+	fade_->addRenderComponent(rcfade);
+	fadeDone_ = false;
+	fade2Done_ = false;
 }
 
+//bloque 2 (construccion del HUD del bs) ----------------------------------------------------------------------------------
 void BattleState::createUI() {
-
 	//aseguramos vector limpio
 	stage.clear();
 
 	//tomamos fondo
 	pickBackground();
-	stage.push_back(fondo_);
 
-	//Panel de fondo
+	//panel de ataques
+	createPanel();
+
+	//botones de interaccion
+	createBattleButtons();
+
+	//cuadros de vida
+	createCharacterInfo();
+
+	//stands de los personajes
+	createStands();
+
+	//equipamos las armas
+	pickArmors();
+
+	//preparamos el combate
+	constructC();
+
+	//fade inicial
+	stage.push_back(fade_);
+}
+
+void BattleState::pickBackground() {
+	fondo_ = new GameComponent();
+
+	GameManager::Instance()->setLevel(0);
+	int currLevel = GameManager::Instance()->askAboutLevel();
+
+	if (currLevel == 0) {
+		int rnd = rand() % 2;
+		switch (rnd)
+		{
+		case 0:
+			fondo_->setTextureId("battlebg1");
+			break;
+		case 1:
+			fondo_->setTextureId("battlebg4");
+			break;
+
+		default:
+			fondo_->setTextureId("battlebg4");
+			break;
+		}
+	}
+
+	else if (currLevel == 1) {
+		int rnd = rand() % 5;
+		switch (rnd)
+		{
+		case 0:
+			fondo_->setTextureId("battlebg2");
+			break;
+		case 1:
+			fondo_->setTextureId("battlebg3");
+			break;
+		case 2:
+			fondo_->setTextureId("battlebg5");
+			break;
+		case 3:
+			fondo_->setTextureId("battlebg6");
+			break;
+		case 4:
+			fondo_->setTextureId("battlebg7");
+			break;
+		default:
+			fondo_->setTextureId("battlebg2");
+			break;
+		}
+	}
+	fondo_->addRenderComponent(new RenderFullComponent());
+	stage.push_back(fondo_);
+}
+
+void BattleState::createPanel() {
 	Vector2D position0(0, 2.55);
 	GameComponent* UI_Background = new GameComponent();
 	UI_Background->setTextureId("24");
@@ -62,429 +130,6 @@ void BattleState::createUI() {
 	UI_Background->setPosition(position0);
 	UI_Background->addRenderComponent(new RenderFrameComponent());
 	stage.push_back(UI_Background);
-
-	createBattleButtons();
-	createCharacterInfo();
-	
-
-	/*GameComponent* UI_Text = new GameComponent(game);
-	TTF_Font* Sans = TTF_OpenFont("Sans.ttf", 24);
-	SDL_Color Black = { 0, 0, 0 };
-	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, "Aquí van los mensajes de batalla", Black);
-	SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);*/
-
-	GameComponent* ground = new GameComponent();
-	ground->setTextureId("27");
-	Vector2D pos(0.6, 1.7);
-	ground->setPosition(pos);
-	ground->setWidth(170); ground->setHeight(170);
-	RenderComponent* rc = new RenderFrameComponent();
-	ground->addRenderComponent(rc);
-	stage.push_back(ground);
-
-	GameComponent* ground2 = new GameComponent();
-	ground2->setTextureId("27");
-	Vector2D pos2(3.1, 1.7);
-	ground2->setPosition(pos2);
-	ground2->setWidth(170); ground2->setHeight(170);
-	RenderComponent* rc2 = new RenderFrameComponent();
-	ground2->addRenderComponent(rc2);
-	stage.push_back(ground2);
-
-	//preparamos el combate
-	constructC();
-
-	int i = 0;
-	foundWP1 = false;
-	foundWP2 = false;
-	bool first = false;
-
-	vector<estado> items = GameManager::Instance()->copyInventory();
-	estado w1;
-	estado w2;
-	while (i < items.size() && !foundWP2) {
-
-		if (items[i].equiped) {
-			if (!first) {
-				w1 = items[i];
-				first = true;
-				foundWP1 = true;
-				W1id = w1.ID;
-			}
-			else {
-				w2 = items[i];
-				foundWP2 = true;
-				W2id = w2.ID;
-			}
-		}
-		i++;
-	}
-
-	Vector2D posWe(1, 1);
-
-	if (foundWP1) {
-
-		int w = interfaz.button_0->getWidth();
-		int h = interfaz.button_0->getHeight();
-
-		string text1 = w1.tx;
-		string name1 = w1.nombre;
-		int colF1 = w1.colFrame;
-		int rowF1 = w1.FilFrame;
-
-		Weapon1 = new GameComponent();
-		Weapon1->addRenderComponent(new RenderSingleFrameComponent());
-		Weapon1->setTextureId(text1);
-		Weapon1->setColFrame(colF1);
-		Weapon1->setRowFrame(rowF1);
-		Weapon1->setWidth(w); Weapon1->setHeight(h);
-		posWe = interfaz.button_0->getPosition();
-		Weapon1->setPosition(posWe);
-		Weapon1->setActive(false);
-		stage.push_back(Weapon1);
-
-		player->addAttack(ataques[W1id*2]);
-
-		Weapon11 = new GameComponent();
-		Weapon11->addRenderComponent(new RenderSingleFrameComponent());
-		Weapon11->setTextureId(text1);
-		Weapon11->setColFrame(colF1);
-		Weapon11->setRowFrame(rowF1);
-		Weapon11->setWidth(w); Weapon11->setHeight(h);
-		posWe = interfaz.button_2->getPosition();
-		Weapon11->setPosition(posWe);
-		Weapon11->setActive(false);
-		stage.push_back(Weapon11);
-
-		player->addAttack(ataques[(W1id * 2) + 1]);
-	}
-
-	if (foundWP2) {
-
-		string text2 = w2.tx;
-		string name2 = w2.nombre;
-		int colF2 = w2.colFrame;
-		int rowF2 = w2.FilFrame;
-
-		int w = interfaz.button_0->getWidth();
-		int h = interfaz.button_0->getHeight();
-
-		Weapon2 = new GameComponent();
-		Weapon2->addRenderComponent(new RenderSingleFrameComponent());
-		Weapon2->setTextureId(text2);
-		Weapon2->setColFrame(colF2);
-		Weapon2->setRowFrame(rowF2);
-		Weapon2->setWidth(w); Weapon2->setHeight(h);
-		posWe = interfaz.button_1->getPosition();
-		Weapon2->setPosition(posWe);
-		Weapon2->setActive(false);
-		stage.push_back(Weapon2);
-
-		player->addAttack(ataques[W2id * 2]);
-
-		Weapon22 = new GameComponent();
-		Weapon22->addRenderComponent(new RenderSingleFrameComponent());
-		Weapon22->setTextureId(text2);
-		Weapon22->setColFrame(colF2);
-		Weapon22->setRowFrame(rowF2);
-		Weapon22->setWidth(w); Weapon22->setHeight(h);
-		posWe = interfaz.button_3->getPosition();
-		Weapon22->setPosition(posWe);
-		Weapon22->setActive(false);
-		stage.push_back(Weapon22);
-
-		player->addAttack(ataques[(W2id * 2) + 1]);
-	}
-	//fade inicial
-	stage.push_back(fade_);
-}
-
-void BattleState::constructC() {
-	player = new BattlePlayer("Tyler", Physical, 1000, 10, 10, 100, 10);
-	player->setTextureId("tylerSS");
-	Vector2D pos(0.85, 0.7);
-	iniPos = pos;
-	player->setPosition(pos);
-	player->setWidth(128); player->setHeight(256);
-	player->setRowFrame(0); player->setColFrame(0);
-	RenderComponent* rc = new RenderFraemeComponent2();
-	player->addRenderComponent(rc);
-	stage.push_back(player);
-
-	int rnd = rand() % 5;
-
-	switch (rnd)
-	{
-	case 0:
-		enemy = new BattleEnemy("Arbol", Ranged, 300, 10, 10, 100, 11);
-		enemy->setTextureId("arbolSS");
-		break;
-
-	case 1:
-		enemy = new BattleEnemy("Escoba", Ranged, 300, 10, 10, 100, 11);
-		enemy->setTextureId("escoba");
-		break;
-
-	case 2:
-		enemy = new BattleEnemy("Pelotas", Ranged, 300, 10, 10, 100, 11);
-		enemy->setTextureId("pelotas");
-		break;
-
-	case 3:
-		enemy = new BattleEnemy("Basura", Ranged, 300, 10, 10, 100, 11);
-		enemy->setTextureId("basura");
-		break;
-
-	case 4:
-		enemy = new BattleEnemy("Bocata", Ranged, 300, 10, 10, 100, 11);
-		enemy->setTextureId("bocata");
-		break;
-	}
-
-	
-	Vector2D pos2(3.3, 0.62);
-	enemy->setPosition(pos2);
-	enemy->setWidth(160); enemy->setHeight(260);
-	RenderComponent* rc2 = new RenderFraemeComponent2();
-	enemy->addRenderComponent(rc2);
-	stage.push_back(enemy);
-
-	ataques.resize(33);
-
-	// Ataques de Armas Fisicas
-	//compas
-	ataques[0] = Attack("360 No Scope", Physical, 20, 20, 65, 70, 1, 1, 0.8f);
-	ataques[1] = Attack("¡Pasalo a Radianes!", Physical, 15, 15, 55, 85, 0.9f, 0.9f, 0.9f);
-	//escobilla
-	ataques[2] = Attack("Eso No Es Chocolate", Physical, 15, 15, 40, 75, 0.9f, 1, 0.9f);
-	ataques[3] = Attack("Limpieza a Fondo", Physical, 15, 15, 35, 80, 0.9f, 0.9f, 1);
-	//menstruacion
-	ataques[4] = Attack("Tajo Recto", Physical, 10, 10, 95, 80, 1, 1, 1);
-	ataques[5] = Attack("Golpe de Remo", Physical, 15, 15, 80, 90, 1, 1, 1);
-	//lapiz
-	ataques[6] = Attack("Punta Afilada", Physical, 20, 20, 15, 75, 1, 1, 1);
-	ataques[7] = Attack("Golpe de Goma", Physical, 20, 20, 20, 80, 1, 0.8f, 1);
-
-	// Ataques de Armas Magicas
-	//insulto
-	ataques[8] = Attack("Hijo de Fruta", Magical, 20, 20, 20, 75, 0.9f, 0.9f, 1);
-	ataques[9] = Attack("Dedo Mágico", Magical, 20, 20, 15, 80, 1, 1, 0.8f);
-	//libro
-	ataques[10] = Attack("Indice Confuso", Magical, 10, 10, 85, 95, 1, 1, 1);
-	ataques[11] = Attack("Lectura Ligera", Magical, 10, 10, 95, 80, 1, 1, 1);
-	//pegamento
-	ataques[12] = Attack("Esto No Pega", Magical, 15, 15, 60, 90, 1, 0.9f, 1);
-	ataques[13] = Attack("Metamaterial", Magical, 15, 15, 75, 80, 0.9f, 0.9f, 0.9f);
-
-	//tartera
-	ataques[14] = Attack("Comida Sorpresa", Magical, 20, 20, 30, 80, 1, 0.8f, 1);
-	ataques[15] = Attack("Hoy Toca Lentejas", Magical, 20, 20, 45, 75, 1, 1, 1);
-	
-	// Ataques de Armas con Proyectiles
-	//cerbatana
-	ataques[16] = Attack("Proyectil Humedo", Ranged, 30, 30, 15, 90, 1, 1, 0.8f);
-	ataques[17] = Attack("Escupitajo Supersonico", Ranged, 30, 30, 25, 80, 1, 1, 0.9f);
-	//globo
-	ataques[18] = Attack("Eso no era Agua", Ranged, 15, 15, 65, 85, 1, 1, 0.8f);
-	ataques[19] = Attack("Eso Tampoco", Ranged, 15, 15, 75, 75, 1, 0.8f, 0.9f);
-	//tirachinas
-	ataques[20] = Attack("¡ZAS! En Toda la Boca", Ranged, 5, 5, 85, 100, 1, 1, 1);
-	ataques[21] = Attack("Meteorito Hentai", Ranged, 5, 5, 95, 90, 1, 1, 1);
-	//grapadora
-	ataques[22] = Attack("Grapas Atómicas", Ranged, 25, 25, 30, 90, 1, 1, 1);
-	ataques[23] = Attack("Corchograpa", Ranged, 25, 25, 45, 75, 1, 0.9f, 0.9f);
-	
-	// Ataques de Armas de Apoyo
-	//sacapuntas
-	ataques[24] = Attack("Afilador", Support, 20, 20, 0, 100, 1.2f, 1, 1);
-	ataques[25] = Attack("Trazado Fino", Support, 20, 0, 100, 20, 1, 1, 1.2f);
-	//calculadora
-	ataques[26] = Attack("Calculo Algebraico Complejo", Support, 20, 20, 0, 100, 1.2f, 1, 1.1f);
-	ataques[27] = Attack("Stack Overflow", Support, 5, 5, 0, 100, 1.5f, 1, 1);
-	//bandeja
-	ataques[28] = Attack("Reflejo Fidedigno", Support, 10, 10, 0, 100, 1, 1, 1.5f);
-	ataques[29] = Attack("Escudo de Adamantium", Support, 5, 5, 0, 100, 1, 1.5f, 1);
-	//borrador
-	ataques[30] = Attack("Polvos de Tiza", Support, 20, 20, 0, 100, 1, 1.2f, 2);
-	ataques[31] = Attack("Empezamos Tema Nuevo", Support, 5, 5, 0, 100, 1.4f, 1, 1.1f);
-
-	//genericone
-	ataques[32] = Attack("Golpe", Physical, 5, 5, 10, 100, 1.4f, 1, 1.1f);
-
-	e_ataques.resize(12);
-	e_ataques[0] = Attack("Placaje", Physical, 20, 20, 20, 90, 1, 1, 1);
-	e_ataques[1] = Attack("Finta Lateral", Physical, 15, 15, 15, 80, 1, 1, 0.9f);
-	e_ataques[2] = Attack("Golpe Bajo", Physical, 10, 10, 15, 30, 1, 0.8f, 1);
-	e_ataques[3] = Attack("Aturdir", Physical, 15, 15, 35, 25, 0.9f, 1, 1);
-
-	e_ataques[4] = Attack("Soplo", Ranged, 20, 20, 30, 90, 1, 0.9f, 1);
-	e_ataques[5] = Attack("Vendaval", Ranged, 10, 10, 45, 90, 1, 1, 1);
-	e_ataques[6] = Attack("Caida Libre", Ranged, 10, 10, 60, 50, 1, 1, 1);
-	e_ataques[7] = Attack("Polvareda", Ranged, 15, 15, 15, 90, 1, 1, 0.8f);
-
-	e_ataques[8] = Attack("Conjuro", Magical, 15, 15, 70, 90, 0.8f, 1, 1);
-	e_ataques[9] = Attack("Maldición", Magical, 10, 10, 80, 90, 1, 0.8f, 1);
-	e_ataques[10] = Attack("As Oculto", Magical, 5, 5, 90, 90, 0.9f, 0.9f, 1);
-	e_ataques[11] = Attack("Psicosis", Magical, 5, 5, 35, 90, 0.9f, 0.9f, 0.9f);
-
-	initC();
-}
-
-void BattleState::initC() {
-	if (!foundWP1) {
-		player->addAttack(ataques[GOLPE]);
-		player->addAttack(ataques[GOLPE]);
-	}
-	if (!foundWP2) {
-		player->addAttack(ataques[GOLPE]);
-		player->addAttack(ataques[GOLPE]);
-	}
-
-	std::vector<bool> ea;
-	for (int i = 0; i < e_ataques.size(); i++) ea.push_back(true);
-	Type aux_type = enemy->getType();
-	int count = 0;
-	while (count < 2)
-	{
-		int rnd = rand() % e_ataques.size();
-		if (e_ataques[rnd].type == aux_type && ea[rnd])
-		{
-			ea[rnd] = false;
-			count++;
-			enemy->addAttack(e_ataques[rnd]);
-		}
-	}
-
-	float vel_player = player->getVelocity();
-	float vel_enemy = enemy->getVelocity();
-	// TODO
-	// Definir quién empieza
-
-	std::cout << std::endl << enemy->getName() << " quiere luchar!" << std::endl;
-}
-
-void BattleState::displayAttacks()
-{
-	for (int i = 0; i < 4; i++) {
-		Attack temp_a = player->getAttack(i);
-		std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;
-	}
-}
-
-void BattleState::handleInput()
-{
-	displayAttacks();
-	input = 0;
-	do {
-		std::cout << "Que quieres hacer? ";
-		std::cin >> input;
-	} while (input < 1 || input > 4);
-
-	std::cout << std::endl;
-
-	input--;
-}
-
-bool BattleState::run()
-{
-	if (lastTurn)
-		return true;
-
-	else if ((player->getHealth() > 0 && enemy->getHealth() > 0) || !lastTurn)
-	{
-		bool pt = player->getTurn();
-		bool et = enemy->getTurn();
-
-		if (pt && !et) {
-			std::cout << std::endl;
-
-			//handleInput();
-			if (!player->useAttack(input)) {
-				std::cout << "No quedan PP para este ataque!" << std::endl;
-			}
-			else {
-
-				float dmg = player->combat(input, enemy->getDefense(), enemy->getType());
-				if (player->hasTarget())
-				{
-					enemy->receiveDamage(dmg);
-					Attack temp_a = player->getAttack(input);
-					enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
-				}
-			}
-			std::cout << std::endl;
-			enemy->setTurn(true);
-		}
-
-		if (enemy->getHealth() > 0 && !pt && et && okEnemy_)
-		{
-			interfaz.pruebaTexto_->setTextureId("enemAtacoTexto");
-			enemy->useAttack(0);
-			int e_input = enemy->getInput();
-			float dmg = enemy->combat(e_input, player->getDefense(), player->getType());
-
-			enemy->delPhysicsComponent(mc);
-			Vector2D p = player->getPosition();
-			Vector2D e = enemy->getPosition();
-			mc = new MoveToThisPosComponent(e, p);
-			enemy->addPhysicsComponent(mc);
-			attackAnim_ = true;
-
-			if (enemy->hasTarget())
-			{
-				player->receiveDamage(dmg);
-				Attack temp_a = enemy->getAttack(e_input);
-				player->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
-			}
-			enemy->setTurn(false);
-		}
-
-		if (!pt && !et && Attacking_) {
-			std::cout << player->getName() << ": " << player->getHealth() << " HP" << std::endl;
-			std::cout << enemy->getName() << ": " << enemy->getHealth() << " HP" << std::endl;
-
-			std::cout << std::endl << "-------------------------------------------------------------" << std::endl;
-
-			Attacking_ = false;
-		}
-	}
-
-	if (player->getHealth() > 0 && enemy->getHealth() <= 0) {
-		std::cout << "HAS GANADO!" << std::endl;
-		lastTurn = true;
-	}
-	else if (player->getHealth() <= 0 && enemy->getHealth() > 0) {
-		std::cout << "HAS PERDIDO!" << std::endl;
-		lastTurn = true;
-	}
-	else if (player->getHealth() <= 0 && enemy->getHealth() <= 0) {
-		std::cout << "WTF EMPATE LOCO!" << std::endl;
-		lastTurn = true;
-	}
-	return false;
-}
-
-void BattleState::createCharacterInfo()
-{
-	Vector2D position0;
-
-	//Cuadro Jugador
-	GameComponent* UI_Player = new GameComponent();
-	position0.setX(0.15); position0.setY(0.2);
-	UI_Player->setTextureId("26");
-	UI_Player->setWidth(250); UI_Player->setHeight((100));
-	UI_Player->setPosition(position0);
-	UI_Player->addRenderComponent(new RenderFrameComponent());
-	stage.push_back(UI_Player);
-
-	//Cuadro Enemigo
-	GameComponent* UI_Enemy = new GameComponent();
-	position0.setX(2.05); position0.setY(0.2);
-	UI_Enemy->setTextureId("25");;
-	UI_Enemy->setWidth(250); UI_Enemy->setHeight((100));
-	UI_Enemy->setPosition(position0);
-	UI_Enemy->addRenderComponent(new RenderFrameComponent());
-	stage.push_back(UI_Enemy);
 }
 
 void BattleState::createBattleButtons()
@@ -541,63 +186,330 @@ void BattleState::createBattleButtons()
 	stage.push_back(test);*/
 }
 
-void BattleState::updateVidas()
+void BattleState::createCharacterInfo()
 {
-	Vector2D position0(102, 81);
-	Vector2D position1(576, 81);
+	Vector2D position0;
 
-	int iniwidth = 120;
-	int height = 8;
+	//Cuadro Jugador
+	GameComponent* UI_Player = new GameComponent();
+	position0.setX(0.15); position0.setY(0.2);
+	UI_Player->setTextureId("26");
+	UI_Player->setWidth(250); UI_Player->setHeight((100));
+	UI_Player->setPosition(position0);
+	UI_Player->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(UI_Player);
 
-	int width = (player->getHealth() < player->getMaxHealth()) ? (player->getHealth() * iniwidth / player->getMaxHealth()) : iniwidth;
-	if (width < 0) width = 0;
-
-	SDL_Rect fillRect = { (Uint32)position0.getX(), (Uint32)position0.getY() , width, height};
-	if (width > iniwidth / 2)
-		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
-	else if (width > iniwidth / 3)
-		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0xFF, 0x00, 0xFF);
-	else
-		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
-	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
-
-	width = (enemy->getHealth() < enemy->getMaxHealth()) ? (enemy->getHealth() * iniwidth / enemy->getMaxHealth()) : iniwidth;
-	if (width < 0) width = 0;
-
-	SDL_Rect fillRect2 = { (Uint32)position1.getX(), (Uint32)position1.getY() , width, height };
-	if (width > iniwidth / 2)
-		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
-	else if (width > iniwidth / 3)
-		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0xFF, 0x00, 0xFF);
-	else
-		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
-	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect2);
+	//Cuadro Enemigo
+	GameComponent* UI_Enemy = new GameComponent();
+	position0.setX(2.05); position0.setY(0.2);
+	UI_Enemy->setTextureId("25");;
+	UI_Enemy->setWidth(250); UI_Enemy->setHeight((100));
+	UI_Enemy->setPosition(position0);
+	UI_Enemy->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(UI_Enemy);
 }
 
-void BattleState::updateVida(GameComponent* barraVida, double variacion)
-{
-	barraVida->setWidth(barraVida->getWidth()*variacion);
-	Vector2D positionNew(barraVida->getPosition().getX() * (1 / variacion), barraVida->getPosition().getY());
-	stage.push_back(barraVida);
+void BattleState::createStands() {
+	GameComponent* ground = new GameComponent();
+	ground->setTextureId("27");
+	Vector2D pos(0.6, 1.7);
+	ground->setPosition(pos);
+	ground->setWidth(170); ground->setHeight(170);
+	RenderComponent* rc = new RenderFrameComponent();
+	ground->addRenderComponent(rc);
+	stage.push_back(ground);
+
+	GameComponent* ground2 = new GameComponent();
+	ground2->setTextureId("27");
+	Vector2D pos2(3.1, 1.7);
+	ground2->setPosition(pos2);
+	ground2->setWidth(170); ground2->setHeight(170);
+	RenderComponent* rc2 = new RenderFrameComponent();
+	ground2->addRenderComponent(rc2);
+	stage.push_back(ground2);
 }
 
-bool BattleState::isButton(GameObject * object)
-{
-	if (typeid(object) == typeid(Button())) {
-		return true;
+void BattleState::pickArmors() {
+	int i = 0;
+	foundWP1 = false;
+	foundWP2 = false;
+	bool first = false;
+
+	vector<estado> items = GameManager::Instance()->copyInventory();
+	estado w1;
+	estado w2;
+	while (i < items.size() && !foundWP2) {
+
+		if (items[i].equiped) {
+			if (!first) {
+				w1 = items[i];
+				first = true;
+				foundWP1 = true;
+				W1id = w1.ID;
+			}
+			else {
+				w2 = items[i];
+				foundWP2 = true;
+				W2id = w2.ID;
+			}
+		}
+		i++;
 	}
-	return false;
+
+	Vector2D posWe(1, 1);
+
+	if (foundWP1) {
+
+		int w = interfaz.button_0->getWidth();
+		int h = interfaz.button_0->getHeight();
+
+		string text1 = w1.tx;
+		string name1 = w1.nombre;
+		int colF1 = w1.colFrame;
+		int rowF1 = w1.FilFrame;
+
+		Weapon1 = new GameComponent();
+		Weapon1->addRenderComponent(new RenderSingleFrameComponent());
+		Weapon1->setTextureId(text1);
+		Weapon1->setColFrame(colF1);
+		Weapon1->setRowFrame(rowF1);
+		Weapon1->setWidth(w); Weapon1->setHeight(h);
+		posWe = interfaz.button_0->getPosition();
+		Weapon1->setPosition(posWe);
+		Weapon1->setActive(false);
+		stage.push_back(Weapon1);
+
+		player->addAttack(ataques[W1id * 2]);
+
+		Weapon11 = new GameComponent();
+		Weapon11->addRenderComponent(new RenderSingleFrameComponent());
+		Weapon11->setTextureId(text1);
+		Weapon11->setColFrame(colF1);
+		Weapon11->setRowFrame(rowF1);
+		Weapon11->setWidth(w); Weapon11->setHeight(h);
+		posWe = interfaz.button_2->getPosition();
+		Weapon11->setPosition(posWe);
+		Weapon11->setActive(false);
+		stage.push_back(Weapon11);
+
+		player->addAttack(ataques[(W1id * 2) + 1]);
+	}
+
+	if (foundWP2) {
+
+		string text2 = w2.tx;
+		string name2 = w2.nombre;
+		int colF2 = w2.colFrame;
+		int rowF2 = w2.FilFrame;
+
+		int w = interfaz.button_0->getWidth();
+		int h = interfaz.button_0->getHeight();
+
+		Weapon2 = new GameComponent();
+		Weapon2->addRenderComponent(new RenderSingleFrameComponent());
+		Weapon2->setTextureId(text2);
+		Weapon2->setColFrame(colF2);
+		Weapon2->setRowFrame(rowF2);
+		Weapon2->setWidth(w); Weapon2->setHeight(h);
+		posWe = interfaz.button_1->getPosition();
+		Weapon2->setPosition(posWe);
+		Weapon2->setActive(false);
+		stage.push_back(Weapon2);
+
+		player->addAttack(ataques[W2id * 2]);
+
+		Weapon22 = new GameComponent();
+		Weapon22->addRenderComponent(new RenderSingleFrameComponent());
+		Weapon22->setTextureId(text2);
+		Weapon22->setColFrame(colF2);
+		Weapon22->setRowFrame(rowF2);
+		Weapon22->setWidth(w); Weapon22->setHeight(h);
+		posWe = interfaz.button_3->getPosition();
+		Weapon22->setPosition(posWe);
+		Weapon22->setActive(false);
+		stage.push_back(Weapon22);
+
+		player->addAttack(ataques[(W2id * 2) + 1]);
+	}
 }
 
+//bloque 3 (construccion de los personajes del bs) ------------------------------------------------------------------------
+void BattleState::constructC() {
+	//creamos contenido
+	createPlayer();
+	createEnemy();
+	createAttacks();
+
+	//iniciamos combate
+	initC();
+}
+
+void BattleState::createPlayer() {
+	player = new BattlePlayer("Tyler", Physical, 1000, 10, 10, 100, 10);
+	player->setTextureId("tylerSS");
+	Vector2D pos(0.85, 0.7);
+	iniPos = pos;
+	player->setPosition(pos);
+	player->setWidth(128); player->setHeight(256);
+	player->setRowFrame(0); player->setColFrame(0);
+	RenderComponent* rc = new RenderFraemeComponent2();
+	player->addRenderComponent(rc);
+	stage.push_back(player);
+}
+
+void BattleState::createEnemy() {
+	int rnd = rand() % 5;
+	switch (rnd)
+	{
+	case 0:
+		enemy = new BattleEnemy("Arbol", Ranged, 300, 10, 10, 100, 11);
+		enemy->setTextureId("arbolSS");
+		break;
+
+	case 1:
+		enemy = new BattleEnemy("Escoba", Ranged, 300, 10, 10, 100, 11);
+		enemy->setTextureId("escoba");
+		break;
+
+	case 2:
+		enemy = new BattleEnemy("Pelotas", Ranged, 300, 10, 10, 100, 11);
+		enemy->setTextureId("pelotas");
+		break;
+
+	case 3:
+		enemy = new BattleEnemy("Basura", Ranged, 300, 10, 10, 100, 11);
+		enemy->setTextureId("basura");
+		break;
+
+	case 4:
+		enemy = new BattleEnemy("Bocata", Ranged, 300, 10, 10, 100, 11);
+		enemy->setTextureId("bocata");
+		break;
+	}
+
+
+	Vector2D pos2(3.3, 0.62);
+	enemy->setPosition(pos2);
+	enemy->setWidth(160); enemy->setHeight(260);
+	RenderComponent* rc2 = new RenderFraemeComponent2();
+	enemy->addRenderComponent(rc2);
+	stage.push_back(enemy);
+}
+
+void BattleState::createAttacks() {
+	ataques.resize(33);
+	// Ataques de Armas Fisicas
+	//compas
+	ataques[0] = Attack("360 No Scope", Physical, 20, 20, 65, 70, 1, 1, 0.8f);
+	ataques[1] = Attack("¡Pasalo a Radianes!", Physical, 15, 15, 55, 85, 0.9f, 0.9f, 0.9f);
+	//escobilla
+	ataques[2] = Attack("Eso No Es Chocolate", Physical, 15, 15, 40, 75, 0.9f, 1, 0.9f);
+	ataques[3] = Attack("Limpieza a Fondo", Physical, 15, 15, 35, 80, 0.9f, 0.9f, 1);
+	//menstruacion
+	ataques[4] = Attack("Tajo Recto", Physical, 10, 10, 95, 80, 1, 1, 1);
+	ataques[5] = Attack("Golpe de Remo", Physical, 15, 15, 80, 90, 1, 1, 1);
+	//lapiz
+	ataques[6] = Attack("Punta Afilada", Physical, 20, 20, 15, 75, 1, 1, 1);
+	ataques[7] = Attack("Golpe de Goma", Physical, 20, 20, 20, 80, 1, 0.8f, 1);
+
+	// Ataques de Armas Magicas
+	//insulto
+	ataques[8] = Attack("Hijo de Fruta", Magical, 20, 20, 20, 75, 0.9f, 0.9f, 1);
+	ataques[9] = Attack("Dedo Mágico", Magical, 20, 20, 15, 80, 1, 1, 0.8f);
+	//libro
+	ataques[10] = Attack("Indice Confuso", Magical, 10, 10, 85, 95, 1, 1, 1);
+	ataques[11] = Attack("Lectura Ligera", Magical, 10, 10, 95, 80, 1, 1, 1);
+	//pegamento
+	ataques[12] = Attack("Esto No Pega", Magical, 15, 15, 60, 90, 1, 0.9f, 1);
+	ataques[13] = Attack("Metamaterial", Magical, 15, 15, 75, 80, 0.9f, 0.9f, 0.9f);
+
+	//tartera
+	ataques[14] = Attack("Comida Sorpresa", Magical, 20, 20, 30, 80, 1, 0.8f, 1);
+	ataques[15] = Attack("Hoy Toca Lentejas", Magical, 20, 20, 45, 75, 1, 1, 1);
+
+	// Ataques de Armas con Proyectiles
+	//cerbatana
+	ataques[16] = Attack("Proyectil Humedo", Ranged, 30, 30, 15, 90, 1, 1, 0.8f);
+	ataques[17] = Attack("Escupitajo Supersonico", Ranged, 30, 30, 25, 80, 1, 1, 0.9f);
+	//globo
+	ataques[18] = Attack("Eso no era Agua", Ranged, 15, 15, 65, 85, 1, 1, 0.8f);
+	ataques[19] = Attack("Eso Tampoco", Ranged, 15, 15, 75, 75, 1, 0.8f, 0.9f);
+	//tirachinas
+	ataques[20] = Attack("¡ZAS! En Toda la Boca", Ranged, 5, 5, 85, 100, 1, 1, 1);
+	ataques[21] = Attack("Meteorito Hentai", Ranged, 5, 5, 95, 90, 1, 1, 1);
+	//grapadora
+	ataques[22] = Attack("Grapas Atómicas", Ranged, 25, 25, 30, 90, 1, 1, 1);
+	ataques[23] = Attack("Corchograpa", Ranged, 25, 25, 45, 75, 1, 0.9f, 0.9f);
+
+	// Ataques de Armas de Apoyo
+	//sacapuntas
+	ataques[24] = Attack("Afilador", Support, 20, 20, 0, 100, 1.2f, 1, 1);
+	ataques[25] = Attack("Trazado Fino", Support, 20, 0, 100, 20, 1, 1, 1.2f);
+	//calculadora
+	ataques[26] = Attack("Calculo Algebraico Complejo", Support, 20, 20, 0, 100, 1.2f, 1, 1.1f);
+	ataques[27] = Attack("Stack Overflow", Support, 5, 5, 0, 100, 1.5f, 1, 1);
+	//bandeja
+	ataques[28] = Attack("Reflejo Fidedigno", Support, 10, 10, 0, 100, 1, 1, 1.5f);
+	ataques[29] = Attack("Escudo de Adamantium", Support, 5, 5, 0, 100, 1, 1.5f, 1);
+	//borrador
+	ataques[30] = Attack("Polvos de Tiza", Support, 20, 20, 0, 100, 1, 1.2f, 2);
+	ataques[31] = Attack("Empezamos Tema Nuevo", Support, 5, 5, 0, 100, 1.4f, 1, 1.1f);
+
+	//genericone
+	ataques[32] = Attack("Golpe", Physical, 5, 5, 10, 100, 1.4f, 1, 1.1f);
+
+	e_ataques.resize(12);
+	e_ataques[0] = Attack("Placaje", Physical, 20, 20, 20, 90, 1, 1, 1);
+	e_ataques[1] = Attack("Finta Lateral", Physical, 15, 15, 15, 80, 1, 1, 0.9f);
+	e_ataques[2] = Attack("Golpe Bajo", Physical, 10, 10, 15, 30, 1, 0.8f, 1);
+	e_ataques[3] = Attack("Aturdir", Physical, 15, 15, 35, 25, 0.9f, 1, 1);
+
+	e_ataques[4] = Attack("Soplo", Ranged, 20, 20, 30, 90, 1, 0.9f, 1);
+	e_ataques[5] = Attack("Vendaval", Ranged, 10, 10, 45, 90, 1, 1, 1);
+	e_ataques[6] = Attack("Caida Libre", Ranged, 10, 10, 60, 50, 1, 1, 1);
+	e_ataques[7] = Attack("Polvareda", Ranged, 15, 15, 15, 90, 1, 1, 0.8f);
+
+	e_ataques[8] = Attack("Conjuro", Magical, 15, 15, 70, 90, 0.8f, 1, 1);
+	e_ataques[9] = Attack("Maldición", Magical, 10, 10, 80, 90, 1, 0.8f, 1);
+	e_ataques[10] = Attack("As Oculto", Magical, 5, 5, 90, 90, 0.9f, 0.9f, 1);
+	e_ataques[11] = Attack("Psicosis", Magical, 5, 5, 35, 90, 0.9f, 0.9f, 0.9f);
+}
+
+void BattleState::initC() {
+	if (!foundWP1) {
+		player->addAttack(ataques[GOLPE]);
+		player->addAttack(ataques[GOLPE]);
+	}
+	if (!foundWP2) {
+		player->addAttack(ataques[GOLPE]);
+		player->addAttack(ataques[GOLPE]);
+	}
+
+	std::vector<bool> ea;
+	for (int i = 0; i < e_ataques.size(); i++) ea.push_back(true);
+	Type aux_type = enemy->getType();
+	int count = 0;
+	while (count < 2)
+	{
+		int rnd = rand() % e_ataques.size();
+		if (e_ataques[rnd].type == aux_type && ea[rnd])
+		{
+			ea[rnd] = false;
+			count++;
+			enemy->addAttack(e_ataques[rnd]);
+		}
+	}
+
+	float vel_player = player->getVelocity();
+	float vel_enemy = enemy->getVelocity();
+
+	std::cout << std::endl << enemy->getName() << " quiere luchar!" << std::endl;
+}
+
+//bloque 4 (metodos del polimorfismo) -------------------------------------------------------------------------------------
 void BattleState::update() {
-
-	/*if (TheSoundManager::Instance()->isPlayingMusic() == 0) {
-		TheSoundManager::Instance()->playMusic("loop_btl", 100);
-		TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
-	}*/
-
 	if (!fade2Done_ && fadeDone_)
-		init();
+		controlFade();
 	else if (fade2Done_) {
 		if (iniPos.getX() != player->getPosition().getX())
 		{
@@ -675,7 +587,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 
 		if (!attackAnim_ && okPlayer_)
 			actButton = interfaz.button_0->handleEvent(event);
-		else 
+		else
 			actButton = false;
 
 		if (actButton && !attack_) {
@@ -686,7 +598,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 			attack(0);
 			disableWapons();
 		}
-		
+
 		if (!attackAnim_ && okPlayer_)
 			actButton = interfaz.button_1->handleEvent(event);
 		else
@@ -737,6 +649,148 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 	return handledEvent || actButton;
 }
 
+//bloque 5 (auxiliares de update) -----------------------------------------------------------------------------------------
+void BattleState::controlFade() {
+	if (alpha_ > 0) {
+		SDL_SetTextureAlphaMod(TheTextureManager::Instance()->getTexture("23"), alpha_);
+		alpha_ = alpha_ - 20;
+	}
+	else {
+		GameObject* aux = stage.back();
+		if (aux != 0) delete aux;
+		stage.pop_back();
+		fade2Done_ = true;
+	}
+}
+
+bool BattleState::run()
+{
+	if (lastTurn)
+		return true;
+
+	else if ((player->getHealth() > 0 && enemy->getHealth() > 0) || !lastTurn)
+	{
+		bool pt = player->getTurn();
+		bool et = enemy->getTurn();
+
+		if (pt && !et) {
+			std::cout << std::endl;
+
+			if (!player->useAttack(input)) {
+				std::cout << "No quedan PP para este ataque!" << std::endl;
+			}
+			else {
+
+				float dmg = player->combat(input, enemy->getDefense(), enemy->getType());
+				if (player->hasTarget())
+				{
+					enemy->receiveDamage(dmg);
+					Attack temp_a = player->getAttack(input);
+					enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
+				}
+			}
+			std::cout << std::endl;
+			enemy->setTurn(true);
+		}
+
+		if (enemy->getHealth() > 0 && !pt && et && okEnemy_)
+		{
+			interfaz.pruebaTexto_->setTextureId("enemAtacoTexto");
+			enemy->useAttack(0);
+			int e_input = enemy->getInput();
+			float dmg = enemy->combat(e_input, player->getDefense(), player->getType());
+
+			enemy->delPhysicsComponent(mc);
+			Vector2D p = player->getPosition();
+			Vector2D e = enemy->getPosition();
+			mc = new MoveToThisPosComponent(e, p);
+			enemy->addPhysicsComponent(mc);
+			attackAnim_ = true;
+
+			if (enemy->hasTarget())
+			{
+				player->receiveDamage(dmg);
+				Attack temp_a = enemy->getAttack(e_input);
+				player->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
+			}
+			enemy->setTurn(false);
+		}
+
+		if (!pt && !et && Attacking_) {
+			std::cout << player->getName() << ": " << player->getHealth() << " HP" << std::endl;
+			std::cout << enemy->getName() << ": " << enemy->getHealth() << " HP" << std::endl;
+
+			std::cout << std::endl << "-------------------------------------------------------------" << std::endl;
+
+			Attacking_ = false;
+		}
+	}
+
+	if (player->getHealth() > 0 && enemy->getHealth() <= 0) {
+		std::cout << "HAS GANADO!" << std::endl;
+		lastTurn = true;
+	}
+	else if (player->getHealth() <= 0 && enemy->getHealth() > 0) {
+		std::cout << "HAS PERDIDO!" << std::endl;
+		lastTurn = true;
+	}
+	else if (player->getHealth() <= 0 && enemy->getHealth() <= 0) {
+		std::cout << "WTF EMPATE LOCO!" << std::endl;
+		lastTurn = true;
+	}
+	return false;
+}
+
+//bloque 6 (auxiliares de render) -----------------------------------------------------------------------------------------
+void BattleState::updateVidas()
+{
+	Vector2D position0(102, 81);
+	Vector2D position1(576, 81);
+
+	int iniwidth = 120;
+	int height = 8;
+
+	int width = (player->getHealth() < player->getMaxHealth()) ? (player->getHealth() * iniwidth / player->getMaxHealth()) : iniwidth;
+	if (width < 0) width = 0;
+
+	SDL_Rect fillRect = { (Uint32)position0.getX(), (Uint32)position0.getY() , width, height };
+	if (width > iniwidth / 2)
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	else if (width > iniwidth / 3)
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0xFF, 0x00, 0xFF);
+	else
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
+	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
+
+	width = (enemy->getHealth() < enemy->getMaxHealth()) ? (enemy->getHealth() * iniwidth / enemy->getMaxHealth()) : iniwidth;
+	if (width < 0) width = 0;
+
+	SDL_Rect fillRect2 = { (Uint32)position1.getX(), (Uint32)position1.getY() , width, height };
+	if (width > iniwidth / 2)
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	else if (width > iniwidth / 3)
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0xFF, 0x00, 0xFF);
+	else
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
+	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect2);
+}
+
+//bloque 7 (auxiliares de handle events) ----------------------------------------------------------------------------------
+void BattleState::toAttackMode() {
+	attack_ = true;
+	displayAttacks();
+	stage[1]->setTextureId("29");
+	enableWapons();
+}
+
+void BattleState::displayAttacks()
+{
+	for (int i = 0; i < 4; i++) {
+		Attack temp_a = player->getAttack(i);
+		std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;
+	}
+}
+
 void BattleState::attack(int i) {
 	player->setTurn(true);
 
@@ -761,60 +815,24 @@ void BattleState::attack(int i) {
 	in = false;
 }
 
-void BattleState::toAttackMode() {
-	attack_ = true;
-	displayAttacks();
-	stage[1]->setTextureId("29");
-	enableWapons();
+void BattleState::enableWapons() {
+	if (foundWP1) {
+		Weapon1->setActive(true);
+		Weapon11->setActive(true);
+	}
+	if (foundWP2) {
+		Weapon2->setActive(true);
+		Weapon22->setActive(true);
+	}
 }
 
-void BattleState::pickBackground() {
-	fondo_ = new GameComponent();
-
-	GameManager::Instance()->setLevel(0);
-	int currLevel = GameManager::Instance()->askAboutLevel();
-
-	if (currLevel == 0) {
-		int rnd = rand() % 2;
-		switch (rnd)
-		{
-		case 0:
-			fondo_->setTextureId("battlebg1");
-			break;
-		case 1:
-			fondo_->setTextureId("battlebg4");
-			break;
-
-		default:
-			fondo_->setTextureId("battlebg4");
-			break;
-		}
+void BattleState::disableWapons() {
+	if (foundWP1) {
+		Weapon1->setActive(false);
+		Weapon11->setActive(false);
 	}
-
-	else if (currLevel == 1) {
-		int rnd = rand() % 5;
-		switch (rnd)
-		{
-		case 0:
-			fondo_->setTextureId("battlebg2");
-			break;
-		case 1:
-			fondo_->setTextureId("battlebg3");
-			break;
-		case 2:
-			fondo_->setTextureId("battlebg5");
-			break;
-		case 3:
-			fondo_->setTextureId("battlebg6");
-			break;
-		case 4:
-			fondo_->setTextureId("battlebg7");
-			break;
-		default:
-			fondo_->setTextureId("battlebg2");
-			break;
-		}
+	if (foundWP2) {
+		Weapon2->setActive(false);
+		Weapon22->setActive(false);
 	}
-
-	fondo_->addRenderComponent(new RenderFullComponent());
 }
