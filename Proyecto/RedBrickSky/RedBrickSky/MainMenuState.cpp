@@ -17,7 +17,7 @@ MainMenuState::MainMenuState()
 	//gc->setTextureId("MainMenu");
 	
 	//// New Main Menu
-	gc->setTextureId("MainMenu");
+	gc->setTextureId("bgmm");
 	gc->addRenderComponent(new RenderFullComponent());
 
 	stage.push_back(gc);
@@ -45,7 +45,7 @@ MainMenuState::MainMenuState()
 
 	stage.push_back(button0);
 	stage.push_back(button3);
-	stage.push_back(button2);
+	//stage.push_back(button2);
 
 	XboxController::Instance()->insertController();
 	SoundManager::Instance()->playMusic("menu", -1);
