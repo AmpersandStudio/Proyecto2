@@ -75,7 +75,7 @@ public:
 	void typeRatio(float& dmg, int i, Type enemyType);
 	void finalDamage(float& dmg, int i);
 	float combat(int i, float enemyDef, Type enemyType);
-	void receiveDamage(float dmg);
+	virtual void receiveDamage(float dmg);
 	void receiveFactors(float atk, float def, float prc);
 	void setTurn(bool b) { turn_ = b; };
 	bool getTurn() { return turn_; };
