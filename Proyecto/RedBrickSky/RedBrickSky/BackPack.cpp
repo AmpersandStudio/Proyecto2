@@ -11,10 +11,10 @@ BackPack::BackPack()
 	money = GameManager::Instance()->getMoney();
 	invent = GameManager::Instance()->copyInventory();
 	cout << "Tam Inventario:  " << invent.size() << endl;
-	StringToScreen::Instance()->pushInfinite("VIDA: " + std::to_string(GameManager::Instance()->getHealth()), 210, 130);
+	StringToScreen::Instance()->pushInfinite("VIDA: " + std::to_string(GameManager::Instance()->getHealth() / 10), 210, 130);
 	//Componentes necesarios
 	actualState_ = 0;
-
+	SDL_ShowCursor(1);
 	//Creamos la matriz
 	matriz = new estado*[numFils];
 	for (int i = 0; i < numFils; i++) {
@@ -37,6 +37,7 @@ BackPack::BackPack()
 
 BackPack::~BackPack()
 {
+	SDL_ShowCursor(0);
 	StringToScreen::Instance()->clearInfinite();
 	StringToScreen::Instance()->stopRendering();
 
@@ -181,21 +182,21 @@ void BackPack::cargaElementos(vector<estado> l) {
 
 		if (!armas) { //armas
 
-			for (int i = 0; i < Weapons.size(); i++)
+			for (unsigned int i = 0; i < Weapons.size(); i++)
 				invent.push_back(Weapons[i]);
 		}
 
 		else if (!pociones) { //Pociones
-			for (int i = 0; i < Potions.size(); i++)
+			for (unsigned int i = 0; i < Potions.size(); i++)
 				invent.push_back(Potions[i]);
 		}
 
 		else if (!objetos) { //Objetos
-			for (int i = 0; i < Objects.size(); i++)
+			for (unsigned int i = 0; i < Objects.size(); i++)
 				invent.push_back(Objects[i]);
 		}
 
-		for (int i = 0; i < auxV.size(); i++)
+		for (unsigned int i = 0; i < auxV.size(); i++)
 			invent.push_back(auxV[i]);
 
 		separateElements();

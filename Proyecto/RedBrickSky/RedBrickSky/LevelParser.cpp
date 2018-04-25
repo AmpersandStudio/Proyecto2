@@ -16,7 +16,7 @@ Level* LevelParser::parseLevel(const char *levelFile)
 	// create a tinyXML document and load the map xml
 	TiXmlDocument levelDocument;
 	levelDocument.LoadFile(levelFile);
-
+	
 	// create the level object
 	Level* pLevel = new Level();
 
@@ -118,6 +118,8 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			std::string textureID = "000";
 			std::string type = "Interactuable";
 			std::string Message = " ";
+			int toShop = 0;
+			bool tendero = false;
 			
 
 			// get the initial node values type, x and y
@@ -173,6 +175,14 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								property->Attribute("value", &keyID);
 							}
+							else if (property->Attribute("name") == std::string("shopping"))
+							{
+								property->Attribute("value", &toShop);
+							}
+							else if (property->Attribute("name") == std::string("tendero"))
+							{
+								tendero = property->Attribute("value");
+							}
 						}
 					}
 				}
@@ -207,6 +217,8 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			{
 				Cartel* c = static_cast<Cartel*>(pGameObject);
 				c->setMessage(Message);
+				c->setShopState(toShop);
+				c->setTenderMan(tendero);
 				pLevel->getCarteles()->push_back(c);				
 
 			}
@@ -330,9 +342,7 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 	if (grass)
 	{
 		pGrassLayers->push_back(pTileLayer);
-		
 	}
-
 
 	pLayers->push_back(pTileLayer);
 }

@@ -92,7 +92,7 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 
 	 if (XboxController::Instance()->getButtonState(0,0)) { //Si se ha pulsado la A
 		
-			int  p = 0;
+			unsigned int  p = 0;
 			bool encontrado = false;
 			while (p < shopObjects.size() && !encontrado) {
 

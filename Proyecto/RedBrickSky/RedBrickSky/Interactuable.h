@@ -22,12 +22,12 @@ public:
 	void setTileWidth(int t) { tileWidth_ = t; };
 	void setTileHeight(int t) { tileHeight_ = t; };
 
-	void changeColliderPos(Vector2D v) { collider_.x = v.getX(); collider_.y = v.getY(); };
+	void changeColliderPos(Vector2D v) { collider_.x = (int)v.getX(); collider_.y = (int)v.getY(); };
 
 	SDL_Rect* getRect() { return &collider_; }
 
 private:
-	SDL_Rect collider_;
+	SDL_Rect collider_; 
 
 protected:
 	int tileWidth_;

@@ -143,6 +143,7 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\assets\\Nivel0.png", "level0", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Nivel1.png", "level1", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Nivel2.png", "level2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\assets\\Tienda.png", "tiendaLevel", RENDERER_);
 
 	// Load Sounds
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);

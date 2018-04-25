@@ -153,6 +153,8 @@ bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer
 		else if (tileColumn > cols - 1) { tileColumn = cols - 1;  return -1; }
 		return(tiles[tileRow + y][tileColumn + x]);
 	}
+
+	return false;
 }
 
 void CollisionManager::checkInteractions(Player* pPlayer, const std::vector<Interactuable*>& interactuables)

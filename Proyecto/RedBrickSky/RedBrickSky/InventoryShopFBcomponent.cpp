@@ -114,7 +114,7 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 		}
 
 		//El siguiente bucle Cambia el color del SP en el que estamos y pone los demás normales (CON TECLADO)
-		for (int p = 0; p < SP.size(); p++)
+		for (unsigned int p = 0; p < SP.size(); p++)
 		{
 			if (SP[p]->getPosition().getX() == o->getPosition().getX() &&
 				SP[p]->getPosition().getY() == o->getPosition().getY()) {
@@ -141,7 +141,7 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 		int auxMx;
 		int auxMy;
 
-		for(int i = 0; i < SP.size(); i++) {
+		for(unsigned int i = 0; i < SP.size(); i++) {
 			//Busca si el objeto se ha dejado en alguno de los Stand Points
 			{
 				auxW = SP[i]->getWidth();

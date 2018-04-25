@@ -15,7 +15,7 @@ MainMenuState::MainMenuState()
 	gc = new GameComponent();
 	Vector2D positionGC(0, 0);
 	//gc->setTextureId("MainMenu");
-	
+	SDL_ShowCursor(1);
 	//// New Main Menu
 	gc->setTextureId("bgmm");
 	gc->addRenderComponent(new RenderFullComponent());
@@ -59,7 +59,7 @@ MainMenuState::~MainMenuState()
 void MainMenuState::toGame() 
 {
 	SoundManager::Instance()->stopMusic();
-	Game::Instance()->getStateMachine()->pushState(new PlayState(0));
+	Game::Instance()->getStateMachine()->pushState(new PlayState(3));
 }
 
 void MainMenuState::toGame2()

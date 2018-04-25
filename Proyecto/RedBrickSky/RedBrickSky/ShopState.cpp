@@ -8,6 +8,8 @@ ShopState::ShopState()
 	shopObjects = items->getItems();
 	delete items;
 
+	SDL_ShowCursor(1);
+
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
 
@@ -56,6 +58,7 @@ void ShopState::toMenu() {
 
 ShopState::~ShopState()
 {
+	SDL_ShowCursor(0);
 	StringToScreen::Instance()->clearInfinite();
 	StringToScreen::Instance()->stopRendering();
 }
@@ -104,7 +107,7 @@ void ShopState::createShopItems() {
 	int k = 0;
 	int shopCols = 8;
 
-	for (int i = 0; i < shopObjects.size(); i++) {
+	for (unsigned int i = 0; i < shopObjects.size(); i++) {
 
 		if (i % shopCols == 0) {
 			j++;

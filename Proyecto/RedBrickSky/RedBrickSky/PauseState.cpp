@@ -14,6 +14,7 @@ PauseState::PauseState()
 	Vector2D position0(0.85, 2.25);
 	Vector2D position3(2.25, 2.25);
 
+	SDL_ShowCursor(1);
 
 	double width = 200;
 	double height = 100;

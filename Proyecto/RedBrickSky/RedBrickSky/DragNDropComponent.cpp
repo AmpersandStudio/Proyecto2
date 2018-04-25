@@ -87,7 +87,7 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			y = auxY + auxH / 2;
 
 			bool found = false;
-			for (int i = 0; i < Inventary.size() && !found; i++) {
+			for (unsigned int i = 0; i < Inventary.size() && !found; i++) {
 				if (Inventary[i].ID == identifier) {
 					found = true;
 					Inventary[identifier].x = x;
@@ -120,10 +120,10 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			o->setOriPos(v);
 			aceptada = true;
 
-			for (int p = 0; p < StandPoints.size(); p++)
+			for (unsigned int p = 0; p < StandPoints.size(); p++)
 				StandPoints[p].empty = true;
 
-			for (int x = 0; x < Inventary.size(); x++) {
+			for (unsigned int x = 0; x < Inventary.size(); x++) {
 				int c = 0;
 				bool found = false;
 				while (c < StandPoints.size() && !found)

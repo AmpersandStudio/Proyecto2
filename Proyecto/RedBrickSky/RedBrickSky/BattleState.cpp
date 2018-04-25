@@ -7,6 +7,9 @@
 //bloque 0 (constructoras y destructoras) ---------------------------------------------------------------------------------
 BattleState::BattleState()
 {
+
+	SDL_ShowCursor(1);
+
 	attack_ = false; 
 	bag_ = false; 
 	run_ = false;
@@ -24,6 +27,7 @@ BattleState::BattleState()
 
 BattleState::~BattleState()
 {
+	SDL_ShowCursor(0);
 	SDL_SetTextureAlphaMod(TheTextureManager::Instance()->getTexture("23"), 255); //para restaurar el alpha original
 	if (interfaz.button_0 != 0) delete interfaz.button_0;
 	if (interfaz.button_1 != 0) delete interfaz.button_1;
@@ -234,7 +238,7 @@ void BattleState::createStands() {
 }
 
 void BattleState::pickArmors() {
-	int i = 0;
+	unsigned int i = 0;
 	foundWP1 = false;
 	foundWP2 = false;
 	bool first = false;
@@ -264,8 +268,8 @@ void BattleState::pickArmors() {
 
 	if (foundWP1) {
 
-		int w = interfaz.button_0->getWidth();
-		int h = interfaz.button_0->getHeight();
+		double w = interfaz.button_0->getWidth();
+		double h = interfaz.button_0->getHeight();
 
 		string text1 = w1.tx;
 		string name1 = w1.nombre;
@@ -306,8 +310,8 @@ void BattleState::pickArmors() {
 		int colF2 = w2.colFrame;
 		int rowF2 = w2.FilFrame;
 
-		int w = interfaz.button_0->getWidth();
-		int h = interfaz.button_0->getHeight();
+		double w = interfaz.button_0->getWidth();
+		double h = interfaz.button_0->getHeight();
 
 		Weapon2 = new GameComponent();
 		Weapon2->addRenderComponent(new RenderSingleFrameComponent());
@@ -490,7 +494,7 @@ void BattleState::initC() {
 	}
 
 	std::vector<bool> ea;
-	for (int i = 0; i < e_ataques.size(); i++) ea.push_back(true);
+	for (unsigned int i = 0; i < e_ataques.size(); i++) ea.push_back(true);
 	Type aux_type = enemy->getType();
 	int count = 0;
 	while (count < 2)
@@ -767,7 +771,7 @@ void BattleState::updateVidas()
 	int width = (GameManager::Instance()->getHealth() < GameManager::Instance()->getMaxHealth()) ? (GameManager::Instance()->getHealth() * iniwidth / GameManager::Instance()->getMaxHealth()) : iniwidth;
 	if (width < 0) width = 0;
 
-	SDL_Rect fillRect = { (Uint32)position0.getX(), (Uint32)position0.getY() , width, height };
+	SDL_Rect fillRect = { (int)position0.getX(), (int)position0.getY() , width, height };
 	if (width > iniwidth / 2)
 		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
 	else if (width > iniwidth / 3)

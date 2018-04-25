@@ -21,10 +21,13 @@ PlayState::PlayState(int level)
 {
 	level_ = level;
 
+	SDL_ShowCursor(0);
+
 	LevelParser levelParser;
 
 	switch (level_)
 	{
+
 	case 0:
 		pLevel = levelParser.parseLevel("..\\assets\\BetaTutorial.tmx");
 		break;
@@ -36,6 +39,11 @@ PlayState::PlayState(int level)
 	case 2:
 		pLevel = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
 		break;
+
+	case 3:
+		pLevel = levelParser.parseLevel("..\\assets\\Tienda.tmx");
+		break;
+
 	}
 
 	TheSoundManager::Instance()->playMusic("music", 100);
@@ -97,6 +105,9 @@ void PlayState::render()
 
 	case 2:
 		TextureManager::Instance()->drawFullCamera("level2", Game::Instance()->getRenderer());
+		break;
+	case 3:
+		TextureManager::Instance()->drawFullCamera("tiendaLevel", Game::Instance()->getRenderer());
 		break;
 	}
 
