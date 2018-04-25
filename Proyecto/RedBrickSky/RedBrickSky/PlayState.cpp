@@ -17,15 +17,21 @@
 #include <stdlib.h>
 #include <time.h>
 
-PlayState::PlayState(int level)
+PlayState::PlayState()
 {
-	level_ = level;
-
 	SDL_ShowCursor(0);
 
 	LevelParser levelParser;
+	currentLevel_ = GameManager::Instance()->getLevel();
+	lastLevel_ = currentLevel_;
+	pLevels.resize(4);
+	
+	pLevels[3] = levelParser.parseLevel("..\\assets\\Tienda.tmx");
+	pLevels[0] = levelParser.parseLevel("..\\assets\\BetaTutorial.tmx");
 
-	switch (level_)
+	//pLevel = levelParser.parseLevel("..\\assets\\BetaTutorial.tmx");
+
+	/*switch (level_)
 	{
 
 	case 0:
@@ -44,7 +50,7 @@ PlayState::PlayState(int level)
 		pLevel = levelParser.parseLevel("..\\assets\\Tienda.tmx");
 		break;
 
-	}
+	}*/
 
 	TheSoundManager::Instance()->playMusic("music", 100);
 
@@ -54,12 +60,15 @@ PlayState::PlayState(int level)
 
 PlayState::~PlayState()
 {
-	delete pLevel;
+	for (Level* level : pLevels)
+	{
+		delete level;
+	}
 }
 
 bool PlayState::handleEvent(const SDL_Event & event)
 {
-	if (pLevel->getPlayer()->handleEvent(event)) return true;
+	if (pLevels[currentLevel_]->getPlayer()->handleEvent(event)) return true;
 	
 
 	return GameState::handleEvent(event);
@@ -67,9 +76,26 @@ bool PlayState::handleEvent(const SDL_Event & event)
 
 void PlayState::update()
 {
-	pLevel->update();
+	currentLevel_ = GameManager::Instance()->getLevel();
+
+	if (currentLevel_ != lastLevel_) {
+		changeLevel();
+	}
+	pLevels[currentLevel_]->update();
 
 	GameState::update();
+}
+
+void PlayState::changeLevel() {
+
+	lastLevel_ = currentLevel_;
+
+	TheCamera::Instance()->setMapDims(pLevels[currentLevel_]->getMapWidth(), pLevels[currentLevel_]->getMapheight());
+
+	Vector2D p = pLevels.at(currentLevel_)->getPlayer()->getPosition();
+
+	TheCamera::Instance()->setTarget(&p);
+	TheCamera::Instance()->setPosition(p);
 }
 
 void PlayState::actSteps() {
@@ -78,7 +104,7 @@ void PlayState::actSteps() {
 	int rnd = rand() % 150 + 1;
 	if (steps_ > 30 && rnd < steps_)
 	{
-		pLevel->getPlayer()->setVel(Vector2D(0, 0));
+		pLevels.at(currentLevel_)->getPlayer()->setVel(Vector2D(0, 0));
 		toBattle();
 		steps_ = 0;
 	}
@@ -93,7 +119,7 @@ void PlayState::notOnGrass() {
 void PlayState::render()
 {
 
-	switch (level_)
+	switch (currentLevel_)
 	{
 	case 0:
 		TextureManager::Instance()->drawFullCamera("level0", Game::Instance()->getRenderer());
@@ -111,7 +137,7 @@ void PlayState::render()
 		break;
 	}
 
-	pLevel->render();
+	pLevels.at(GameManager::Instance()->getLevel())->render();
 	GameState::render();
 }
 

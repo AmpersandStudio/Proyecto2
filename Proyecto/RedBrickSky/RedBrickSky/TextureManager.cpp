@@ -108,8 +108,6 @@ void TextureManager::drawFullCamera(std::string id, SDL_Renderer* pRenderer, SDL
 	srcRect.w = Game::Instance()->getWinWidth();
 	srcRect.h = Game::Instance()->getWinHeight();
 
-
-
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 

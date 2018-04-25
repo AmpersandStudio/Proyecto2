@@ -42,6 +42,7 @@ private:
 	vector<bool> doors;
 	
 	int level = 0;
+	int level_;
 
 	string name;
 
@@ -58,6 +59,7 @@ private:
 		name = "";
 
 		currentNPC = nullptr;
+		level_ = 0;
 	}
 
 	static GameManager* s_pInstance;
@@ -103,4 +105,8 @@ public:
 	int getHealth() { return playerHP; };
 	int getMaxHealth() { return playerMaxHP; };
 	void setHealth(int h) { playerHP = h; };
+
+	int getLevel() { return level_; }
+	void setCurrentLevel(int l) { level_ = l; }
+
 };

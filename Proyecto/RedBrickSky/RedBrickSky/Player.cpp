@@ -60,8 +60,6 @@ void Player::render()
 	//SDL_Rect fillRect2 = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() - width_,
 	//	(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY() - height_,
 	//	3 * width_, 3 * height_ };
-
-
 	//SDL_SetRenderDrawColor(TheGame::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
 	//SDL_RenderDrawRect(TheGame::Instance()->getRenderer(), &fillRect2);
 

@@ -12,11 +12,16 @@ public:
 	void setMessage(std::string msg) { Message_ = msg; };
 	void setShopState(int s) { toShop = s; };
 	void setTenderMan(bool s) { tenderMan = s; };
+	void setToPlay(bool s) { toPlayGround = s; };
+
+	virtual void render();
+	virtual void generateCollider();
 
 private:
 	std::string Message;
 	int toShop;
 	bool tenderMan;
+	bool toPlayGround;
 };
 
 class CartelCreator : public BaseCreator

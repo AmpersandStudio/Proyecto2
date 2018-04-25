@@ -26,6 +26,9 @@ private:
 	int m_width;
 	int m_height;
 
+	int mapFullWidth_;
+	int mapFullHeight_;
+
 	int zoom;
 };
 

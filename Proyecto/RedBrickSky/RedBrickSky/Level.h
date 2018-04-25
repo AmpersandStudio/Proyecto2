@@ -31,6 +31,7 @@ struct Tileset {
 class Level
 {
 public:
+	Level();
 	~Level();
 
 	void update();
@@ -75,9 +76,13 @@ public:
 
 	int getTileWidth() {};
 
+	void setMapWidth(int w) { mapWidth = w;};
+	void setMapHeight(int h) { mapHeight = h; };
+	int getMapWidth() { return mapWidth; };
+	int getMapheight() { return mapHeight; };
+
 private:
 	friend class LevelParser;	// solo podemos crear un nivel desde LevelParser
-	Level();
 
 	std::vector<Tileset> m_tilesets;	// tilesets del nivel
 	std::vector<Layer*> m_layers;	// capas del nivel
@@ -92,6 +97,9 @@ private:
 
 	int m_tileWidth;	// ancho de tile del nivel
 	int m_tileHeight;	// alto de tile del nivel
+
+	int mapHeight; //Ancho TOTAL del mapa (este tiled)
+	int mapWidth;
 
 	Player* m_pPlayer;
 };

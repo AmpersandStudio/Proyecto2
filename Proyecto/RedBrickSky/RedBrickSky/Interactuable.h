@@ -17,7 +17,7 @@ public:
 	virtual void clean();
 
 	virtual void activate();
-	void generateCollider();
+	virtual void generateCollider();
 
 	void setTileWidth(int t) { tileWidth_ = t; };
 	void setTileHeight(int t) { tileHeight_ = t; };
@@ -26,10 +26,8 @@ public:
 
 	SDL_Rect* getRect() { return &collider_; }
 
-private:
-	SDL_Rect collider_; 
-
 protected:
+	SDL_Rect collider_;
 	int tileWidth_;
 	int tileHeight_;
 };

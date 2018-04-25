@@ -31,8 +31,14 @@ Level* LevelParser::parseLevel(const char *levelFile)
 	pRoot->Attribute("width", &m_width);
 	pRoot->Attribute("height", &m_height);
 
+	mapFullWidth_ = m_tileSize * m_width;
+	mapFullHeight_ = m_tileSize * m_height;
+
+	pLevel->setMapHeight(mapFullHeight_);
+	pLevel->setMapWidth(mapFullWidth_);
+
 	// set the camera limits
-	TheCamera::Instance()->setMapDims(m_tileSize * m_width, m_tileSize * m_height);
+	TheCamera::Instance()->setMapDims(mapFullWidth_, mapFullHeight_);
 
 	//we know that properties is the first child of the root
 	TiXmlElement* pProperties = pRoot->FirstChildElement();
@@ -120,7 +126,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			std::string Message = " ";
 			int toShop = 0;
 			bool tendero = false;
-			
+			bool toPlayGround = false;
 
 			// get the initial node values type, x and y
 			e->Attribute("x", &x);
@@ -183,6 +189,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								tendero = property->Attribute("value");
 							}
+							else if (property->Attribute("name") == std::string("goingToPlay"))
+							{
+								toPlayGround = property->Attribute("value");
+							}
 						}
 					}
 				}
@@ -219,6 +229,8 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				c->setMessage(Message);
 				c->setShopState(toShop);
 				c->setTenderMan(tendero);
+				c->setToPlay(toPlayGround);
+				c->setPosition(Vector2D(c->getPosition().getX(), c->getPosition().getY() - 32));
 				pLevel->getCarteles()->push_back(c);				
 
 			}

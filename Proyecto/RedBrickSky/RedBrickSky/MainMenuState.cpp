@@ -59,13 +59,13 @@ MainMenuState::~MainMenuState()
 void MainMenuState::toGame() 
 {
 	SoundManager::Instance()->stopMusic();
-	Game::Instance()->getStateMachine()->pushState(new PlayState(0));
+	Game::Instance()->getStateMachine()->pushState(new PlayState());
 }
 
 void MainMenuState::toGame2()
 {
 	SoundManager::Instance()->stopMusic();
-	Game::Instance()->getStateMachine()->pushState(new PlayState(2));
+	Game::Instance()->getStateMachine()->pushState(new PlayState());
 }
 
 void MainMenuState::toSelector() {

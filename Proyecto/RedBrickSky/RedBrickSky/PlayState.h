@@ -9,14 +9,16 @@
 class PlayState : public GameState
 {
 protected:
-	Level * pLevel;
+	std::vector<Level*> pLevels;
+	int currentLevel_;
+	int lastLevel_;
 
 	static void toGame();
 	static void toInventary();
 	static void toBattle();
 
 public:
-	PlayState(int level_);
+	PlayState();
 	virtual ~PlayState();
 
 	virtual bool handleEvent(const SDL_Event& event);
@@ -24,10 +26,10 @@ public:
 	virtual void render();
 	void actSteps();
 	void notOnGrass();
-	int getLevel() { return level_; }
+	
 
 private:
 	int steps_;
-	int level_;
+	void changeLevel();
 };
 
