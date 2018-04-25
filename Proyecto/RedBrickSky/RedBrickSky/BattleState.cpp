@@ -185,13 +185,6 @@ void BattleState::createBattleButtons()
 	interfaz.pruebaTexto_->addRenderComponent(new RenderFrameComponent());
 	//interfaz.pruebaTexto_->addInputComponent(MIC);
 	stage.push_back(interfaz.pruebaTexto_);
-
-	//Boton Testeo Barra Vida
-	/*Button* test = new Button(game, reduceVida, 4);
-	position0.setX(2); position0.setY(4.4);
-	test->setText(interfaz.botones); test->setPosition(position0); test->setWidth(buttonWidth); test->setHeight(buttonHeight);
-	test->addRenderComponent(rcF); test->addInputComponent(MIC);
-	stage.push_back(test);*/
 }
 
 void BattleState::createCharacterInfo()
@@ -267,9 +260,18 @@ void BattleState::pickArmors() {
 	Vector2D posWe(1, 1);
 
 	if (foundWP1) {
+		double scale = 2.5;
 
-		double w = interfaz.button_0->getWidth();
-		double h = interfaz.button_0->getHeight();
+		double w = interfaz.button_0->getWidth() / scale;
+		double h = interfaz.button_0->getHeight() / scale;
+
+		Vector2D positionW1(0, 0);
+		positionW1.setX(interfaz.button_0->getPosition().getX() * scale);
+		positionW1.setY(interfaz.button_0->getPosition().getY() * scale);
+
+		Vector2D positionW11(0, 0);
+		positionW11.setX(interfaz.button_2->getPosition().getX() * scale);
+		positionW11.setY(interfaz.button_2->getPosition().getY() * scale);
 
 		string text1 = w1.tx;
 		string name1 = w1.nombre;
@@ -282,8 +284,7 @@ void BattleState::pickArmors() {
 		Weapon1->setColFrame(colF1);
 		Weapon1->setRowFrame(rowF1);
 		Weapon1->setWidth(w); Weapon1->setHeight(h);
-		posWe = interfaz.button_0->getPosition();
-		Weapon1->setPosition(posWe);
+		Weapon1->setPosition(positionW1);
 		Weapon1->setActive(false);
 		stage.push_back(Weapon1);
 
@@ -295,8 +296,7 @@ void BattleState::pickArmors() {
 		Weapon11->setColFrame(colF1);
 		Weapon11->setRowFrame(rowF1);
 		Weapon11->setWidth(w); Weapon11->setHeight(h);
-		posWe = interfaz.button_2->getPosition();
-		Weapon11->setPosition(posWe);
+		Weapon11->setPosition(positionW11);
 		Weapon11->setActive(false);
 		stage.push_back(Weapon11);
 
@@ -304,14 +304,23 @@ void BattleState::pickArmors() {
 	}
 
 	if (foundWP2) {
+		double scale = 2.5;
 
 		string text2 = w2.tx;
 		string name2 = w2.nombre;
 		int colF2 = w2.colFrame;
 		int rowF2 = w2.FilFrame;
 
-		double w = interfaz.button_0->getWidth();
-		double h = interfaz.button_0->getHeight();
+		double w = interfaz.button_0->getWidth() / scale;
+		double h = interfaz.button_0->getHeight() / scale;
+
+		Vector2D positionW2(0, 0);
+		positionW2.setX(interfaz.button_1->getPosition().getX() * scale);
+		positionW2.setY(interfaz.button_1->getPosition().getY() * scale);
+
+		Vector2D positionW22(0, 0);
+		positionW22.setX(interfaz.button_3->getPosition().getX() * scale);
+		positionW22.setY(interfaz.button_3->getPosition().getY() * scale);
 
 		Weapon2 = new GameComponent();
 		Weapon2->addRenderComponent(new RenderSingleFrameComponent());
@@ -319,8 +328,7 @@ void BattleState::pickArmors() {
 		Weapon2->setColFrame(colF2);
 		Weapon2->setRowFrame(rowF2);
 		Weapon2->setWidth(w); Weapon2->setHeight(h);
-		posWe = interfaz.button_1->getPosition();
-		Weapon2->setPosition(posWe);
+		Weapon2->setPosition(positionW2);
 		Weapon2->setActive(false);
 		stage.push_back(Weapon2);
 
@@ -332,8 +340,7 @@ void BattleState::pickArmors() {
 		Weapon22->setColFrame(colF2);
 		Weapon22->setRowFrame(rowF2);
 		Weapon22->setWidth(w); Weapon22->setHeight(h);
-		posWe = interfaz.button_3->getPosition();
-		Weapon22->setPosition(posWe);
+		Weapon22->setPosition(positionW22);
 		Weapon22->setActive(false);
 		stage.push_back(Weapon22);
 
@@ -618,7 +625,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 			in = false; //habra que desactivarla en algun punto
 		}
 		else if (actButton && attack_) {
-			attack(1);
+			attack(2);
 			disableWapons();
 		}
 
@@ -632,7 +639,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 			toAttackMode();
 		}
 		else if (actButton && attack_) {
-			attack(2);
+			attack(1);
 			disableWapons();
 		}
 

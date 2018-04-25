@@ -13,3 +13,12 @@ bool BattlePlayer::useAttack(int i)
 
 	return BattleCharacter::useAttack(i);
 }
+
+void BattlePlayer::receiveDamage(float dmg)
+{
+	float h = GameManager::Instance()->getHealth();
+	h = h - (int)dmg;
+	GameManager::Instance()->setHealth(h);
+
+	std::cout << name << " pierde " << (int)dmg << " HP!" << std::endl;
+}

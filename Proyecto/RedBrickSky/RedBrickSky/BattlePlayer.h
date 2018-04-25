@@ -11,4 +11,5 @@ public:
 	virtual ~BattlePlayer();
 
 	virtual bool useAttack(int i);
+	virtual void receiveDamage(float dmg);
 };
