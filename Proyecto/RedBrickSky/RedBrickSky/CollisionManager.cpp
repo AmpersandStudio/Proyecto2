@@ -307,31 +307,31 @@ void CollisionManager::checkKeysInteractions(Player* pPlayer, std::vector<Key*>&
 
 		if (RectRect(playerRect, interRect))
 		{
-			key->activate();
-			activated = true;
-			aux = i;
+				key->activate();
+				activated = true;
+				aux = i;
 
-			std::cout << "HYEYO YOAJYSIJ " << std::endl;
+				std::cout << "HYEYO YOAJYSIJ " << std::endl;
 
-			estado n;
-			n.price = 0;
-			n.comprado = false;
-			n.ID = 0;
-			n.empty = false;
-			n.objects = 0;
-			n.x = 0;
-			n.y = 0;
-			n.mX = -10;
-			n.mY = -10;
-			n.w = 50;
-			n.h = 50;
-			n.tx = "Key";
-			n.type = 2;
-			n.nombre = "LLave";
-			n.FilFrame = 0;
-			n.colFrame = 0;
+				estado n;
+				n.price = 0;
+				n.comprado = false;
+				n.ID = 0;
+				n.empty = false;
+				n.objects = 0;
+				n.x = 0;
+				n.y = 0;
+				n.mX = -10;
+				n.mY = -10;
+				n.w = 50;
+				n.h = 50;
+				n.tx = "Key";
+				n.type = 2;
+				n.nombre = "LLave";
+				n.FilFrame = 0;
+				n.colFrame = 0;
 
-			GameManager::Instance()->setInventory(n);
+				GameManager::Instance()->setInventory(n);
 		}
 		i++;
 	}
@@ -352,7 +352,7 @@ void CollisionManager::checkCartelesInteractions(Player* pPlayer, const std::vec
 
 		if (RectRect(playerRect, interRect))
 		{
-			i->activate();
+				i->activate();
 		}
 	}
 

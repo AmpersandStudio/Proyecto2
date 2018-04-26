@@ -13,14 +13,11 @@ public:
 	~NPC();
 	void update();
 	void activate();
-	void move();
 	void setLevel(Level* l) { level_ = l; };
-	void collision();
 	void incrementMovCont() { movementCont_++; };
 	void setMSG(std::string m) { Msg_ = m; text = Dialogue(m); };
 	bool getState() { return stopped_; };
 	void setCollided(bool b) { collided_ = b; stopped_ = true; };
-	void handleAnimation();
 	void handleStoppedAnimation();
 	void invertVel() { velocity_ = -velocity_; };
 	void render();
@@ -29,9 +26,6 @@ public:
 	void setTileHeight(int t) { tileHeight_ = t; };
 
 	void load(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID, int animSpeed);
-
-	void checkMapLimits(Vector2D pos);
-	void checkNPCLimits(Vector2D pos);
 
 	bool getFighter() { return isFighter_; }
 	void setFighter(bool set) { isFighter_ = set; }

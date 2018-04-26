@@ -20,21 +20,14 @@ void ObjectLayer::update(Level* pLevel)
 	m_collisionManager.checkPlayerTileCollision(pLevel->getPlayer(), pLevel->getCollidableLayers()); //Colisiones del jugador
 	int NPCnumber = pLevel->getNPCs()->size();
 	for (int i = 0; i < NPCnumber; i++) {
-
-		m_collisionManager.checkNPCTileCollision(pLevel->getNPCs()->at(i), pLevel->getCollidableLayers()); //NPC's con las colisiones
 		m_collisionManager.checkPlayerGOinteraction(pLevel->getNPCs()->at(i), pLevel->getPlayer()); //Npc's con el player
-
-		for (int p = 0; p < NPCnumber; p++) {
-			if(p != i)
-				m_collisionManager.checkNPCGOinteraction(pLevel->getNPCs()->at(i), pLevel->getNPCs()->at(p)); // NPC's con ellos mismo
-		}
 	}
 
 	//INTERACCIONES
 	if (pLevel->getPlayer()->isInteracting()) {
+		m_collisionManager.checkCartelesInteractions(pLevel->getPlayer(), pLevel->getCartelesinteraction());
 		m_collisionManager.checkInteractions(pLevel->getPlayer(), pLevel->getInteractuables());
 		m_collisionManager.checkNPCInteractions(pLevel->getPlayer(), pLevel->getNPCinteraction());
-		m_collisionManager.checkCartelesInteractions(pLevel->getPlayer(), pLevel->getCartelesinteraction());
 		m_collisionManager.checkBagsInteractions(pLevel->getPlayer(), pLevel->getBagsInteractions());
 		m_collisionManager.checkKeysInteractions(pLevel->getPlayer(), pLevel->getKeysInteractions());
 	}

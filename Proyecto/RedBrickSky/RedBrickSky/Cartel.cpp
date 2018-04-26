@@ -20,6 +20,8 @@ void Cartel::activate() {
 	/*StringToScreen::Instance()->setMessageAt(Message_, position_.getX(), position_.getY());
 	StringToScreen::Instance()->startMessagin();*/
 
+	std::cout << "Hola me has interactuado" << endl;
+
 	if (toShop == 1) {
 		SoundManager::Instance()->stopMusic();
 		GameManager::Instance()->setCurrentLevel(3);
