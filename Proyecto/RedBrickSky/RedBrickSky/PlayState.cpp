@@ -28,6 +28,7 @@ PlayState::PlayState()
 	
 	pLevels[3] = levelParser.parseLevel("..\\assets\\Tienda.tmx");
 	pLevels[0] = levelParser.parseLevel("..\\assets\\BetaTutorial.tmx");
+	pLevels[2] = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
 
 	//pLevel = levelParser.parseLevel("..\\assets\\BetaTutorial.tmx");
 

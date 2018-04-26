@@ -59,7 +59,8 @@ private:
 		name = "";
 
 		currentNPC = nullptr;
-		level_ = 0;
+		//level_ = 0;
+		level_ = 2;
 	}
 
 	static GameManager* s_pInstance;
