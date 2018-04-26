@@ -35,25 +35,10 @@ void Cartel::activate() {
 
 void Cartel::render()
 {
-	//if (tenderMan)
-	//{
-	//	SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), 110, 160 };
-	//	SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0x00, 0xFF, 0xFF);
-	//	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
-	//}
+
 }
 
 void Cartel::generateCollider()
 {
-	if (tenderMan)
-	{
-		collider_.x = position_.getX();
-		collider_.y = position_.getY();
-		collider_.w = 110;
-		collider_.h = 160;
-	}
-	else
-	{
-		Interactuable::generateCollider();
-	}
+Interactuable::generateCollider();
 }

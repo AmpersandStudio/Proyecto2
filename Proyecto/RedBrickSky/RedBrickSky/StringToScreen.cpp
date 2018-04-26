@@ -16,6 +16,10 @@ StringToScreen::~StringToScreen()
 
 void StringToScreen::renderMessage() {
 
+	if(renderBack)
+		TheTextureManager::Instance()->drawFull("viñeta", posX_ - offsetX_, posY_ - offsetY_,
+		300, 100, Game::Instance()->getRenderer(), 0, 255);
+
 	for (int i = 0; i < 3; i++) {
 		TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::NESChimera16, { 0,0,0,255 },
 			posX_ + offsetX_,
@@ -51,7 +55,9 @@ void StringToScreen::startMessagin() {
 	messaging_ = true;
 }
 
-
+void StringToScreen::renderBackGround() {
+	renderBack = true;
+}
 void StringToScreen::splitString(std::string s)
 {
 	int length = s.size();
@@ -141,6 +147,7 @@ void StringToScreen::render() {
 		if (msgCont_ == 100) {
 			msgCont_ = 0;
 			messaging_ = false;
+			renderBack = false;
 		}
 	}
 }

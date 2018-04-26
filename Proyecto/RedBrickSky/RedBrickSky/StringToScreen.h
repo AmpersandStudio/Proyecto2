@@ -26,6 +26,7 @@ private:
 
 	bool messaging_ = false;
 	int msgCont_ = 0;
+	bool renderBack = false;
 
 	struct inf {
 		std::string InfMSG_;
@@ -62,5 +63,6 @@ public:
 	void changeInfinite(int i, std::string m);
 	void clearInfinite();
 	void stopRendering();
+	void renderBackGround();
 };
 

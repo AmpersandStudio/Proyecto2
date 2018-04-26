@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="111">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="115">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -100,8 +100,7 @@
   <object id="2" name="Cofre" type="Bag" gid="92" x="126.667" y="1184.33" width="32" height="32"/>
   <object id="8" name="Cartel1" type="Cartel" gid="122" x="736" y="2559.67" width="32" height="32">
    <properties>
-    <property name="Message" value="¡A la tienda!"/>
-    <property name="shopping" type="int" value="1"/>
+    <property name="Message" value="NITOSSSS"/>
    </properties>
   </object>
   <object id="9" name="Cofre" type="Bag" gid="108" x="128" y="798.667" width="32" height="32"/>
@@ -263,6 +262,16 @@
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="key"/>
     <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="111" name="Tienda" type="Cartel" x="1379.33" y="286.667" width="30.6667" height="31.3333">
+   <properties>
+    <property name="shopping" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="114" name="Tienda" type="Cartel" x="1410" y="288.333" width="30.6667" height="31.3333">
+   <properties>
+    <property name="shopping" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="25" height="19" tilewidth="32" tileheight="32" infinite="0" nextobjectid="15">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="25" height="19" tilewidth="32" tileheight="32" infinite="0" nextobjectid="17">
  <properties>
   <property name="helicopter" value="..\assets\helicopter.png"/>
  </properties>
@@ -20,7 +20,7 @@
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJz7x8DA8G8Uj0jMgMYmBxBjB7UBJf4dLHbQI6wGyg5q2zNqB2V2UBsM9nyOz330LF/RMQBdHwEK
+   eJz7x8DA8G8Uj0jMgMYmBxBjBy59tLKTVLcMhB2Uum8w20Fte0btoMwOagN62IHLHkrzJb3KVmwYAEeCAgg=
   </data>
  </layer>
  <layer name="Suelo" width="25" height="19">
@@ -43,8 +43,8 @@
    eJxjYBgFlAAbTgi25USwQcAKSFujiUVxkGa2AScEw4AvJ6q8F5DvjSaGDngZ8cs7cEIwucADaL4n1A4XAnYhg30khgU+wAc0i58Dk37HzsDwnh1BUwLkgObJc2DS/4Dm/mdH0IMJxFIxjAcSFA8Tf6TRwR/0sGOwpXN84B8U4+JT0w4vKMZlBwCVpBsb
   </data>
  </layer>
- <objectgroup name="Tendero" visible="0">
-  <object id="5" name="Tendero" type="Cartel" x="218" y="192.5" width="107.167" height="156.667">
+ <objectgroup name="Tendero">
+  <object id="5" name="Tendero" type="Cartel" x="256" y="193.5" width="32" height="32">
    <properties>
     <property name="Message " value="¡HOLA CARACOLA!"/>
     <property name="tendero" type="bool" value="true"/>
@@ -66,6 +66,12 @@
   <object id="14" name="PuertaTienda1" type="Cartel" x="576.5" y="544.5" width="32" height="32">
    <properties>
     <property name="goingToPlay" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="15" name="Tendero" type="Cartel" x="256" y="270" width="32" height="32">
+   <properties>
+    <property name="Message " value="¡HOLA CARACOLA!"/>
+    <property name="tendero" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
