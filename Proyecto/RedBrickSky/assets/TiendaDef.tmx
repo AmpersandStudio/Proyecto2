@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="left-up" width="20" height="15" tilewidth="32" tileheight="32" infinite="0" nextobjectid="6">
+ <properties>
+  <property name="helicopter" value="..\assets\helicopter.png"/>
+ </properties>
+ <tileset firstgid="1" name="Tileset_Tutorial_NIVEL_Beta1_NURIA" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="Tileset_Tutorial_NIVEL_Beta1_NURIA.png" width="1920" height="1056"/>
+ </tileset>
+ <tileset firstgid="1981" name="Tileset_1 (1)" tilewidth="32" tileheight="32" tilecount="272" columns="16">
+  <image source="Tileset_1 (1).png" width="512" height="574"/>
+ </tileset>
+ <tileset firstgid="2253" name="Tileset_Tutorial_NIVEL_Beta1_AARON" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="Tileset_Tutorial_NIVEL_Beta1_AARON.png" width="1920" height="1056"/>
+ </tileset>
+ <tileset firstgid="4233" name="TilesetDefinitivo" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="TilesetBetaTutorial.png" width="1920" height="1056"/>
+ </tileset>
+ <tileset firstgid="6213" name="2ckdj8" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="2ckdj8.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="6469" name="Personaje9" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje9.png" width="96" height="128"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJz7x8DA8I/KeCErA8MiCvFiVoR5d4HsexTi+0jmSbIxMEhRiKXZEObJsFEHj5o3MswjFePTT2peA+UrmHnoekFypOY1UL66xQ7B6HpBcqTmNVC+esUOweh6QXIATFyKXQ==
+  </data>
+ </layer>
+ <layer name="Capa de patrones 2" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQw2kSTAwTCcC4wNukgh2GVDtciIwDFBqNzogxe5RMLIBAFczGyg=
+  </data>
+ </layer>
+ <layer name="Capa de patrones 3" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg+wIaFgWEPN4J/SQK7up1ANbuw4N3c2NVjA8qSCPZXoL5vWPB3EswzliSsBgb2Y/HXXhx+JQY8pUCvJJK7l5JgTjSSWmUS/E6MeaSEJTHmjXRwhn2gXYAAALoRFTA=
+  </data>
+ </layer>
+ <layer name="Collidable" width="20" height="15" visible="0">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzj4mBg4BrFNMOkAGL1UNsNA+FvWoQjOWE+EOaR63dqx81A5w1yMAAVsw8x
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1" visible="0">
+  <object id="1" name="Tendero" type="Cartel" x="191" y="190" width="32" height="32">
+   <properties>
+    <property name="Message " value="¡HOLA CARACOLA!"/>
+    <property name="tendero" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="2" name="Tendero" type="Cartel" x="192" y="288" width="32" height="32">
+   <properties>
+    <property name="Message " value="¡HOLA CARACOLA!"/>
+    <property name="tendero" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="3" name="PuertaTienda1" type="Cartel" x="416" y="382" width="32" height="32">
+   <properties>
+    <property name="goingToPlay" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="4" name="PuertaTienda1" type="Cartel" x="450" y="382" width="32" height="32">
+   <properties>
+    <property name="goingToPlay" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="5" name="Tyler" type="Player" x="432.333" y="335.333" width="30.6667" height="33.3333">
+   <properties>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="helicopter"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
