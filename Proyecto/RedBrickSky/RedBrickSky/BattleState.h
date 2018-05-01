@@ -71,8 +71,13 @@ protected:
 	bool fadeDone_;
 	bool fade2Done_;
 	bool END_;
+	bool weaponsEnabled_ = false;
 
 	Vector2D iniPos;
+	Vector2D positionW1;
+	Vector2D positionW11;
+	Vector2D positionW2;
+	Vector2D positionW22;
 
 	RenderComponent* rcfade;
 	MoveToThisPosComponent mcp;
