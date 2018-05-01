@@ -164,7 +164,7 @@ void BattleState::createBattleButtons()
 
 	//Boton 2
 	interfaz.button_2 = new Button("19", nullptr, 2);
-	position0.setX(2.4); position0.setY(7.5);
+	position0.setX(2.4); position0.setY(7.6);
 	//interfaz.button_2->addRenderComponent(rcF);
 	interfaz.button_2->setPosition(position0); interfaz.button_2->setWidth(buttonWidth); interfaz.button_2->setHeight(buttonHeight);
 	interfaz.button_2->addInputComponent(new MouseInputForBattleComponent());
@@ -265,11 +265,9 @@ void BattleState::pickArmors() {
 		double w = interfaz.button_0->getWidth() / scale;
 		double h = interfaz.button_0->getHeight() / scale;
 
-		Vector2D positionW1(0, 0);
 		positionW1.setX(interfaz.button_0->getPosition().getX() * scale);
 		positionW1.setY(interfaz.button_0->getPosition().getY() * scale);
 
-		Vector2D positionW11(0, 0);
 		positionW11.setX(interfaz.button_2->getPosition().getX() * scale);
 		positionW11.setY(interfaz.button_2->getPosition().getY() * scale);
 
@@ -314,11 +312,9 @@ void BattleState::pickArmors() {
 		double w = interfaz.button_0->getWidth() / scale;
 		double h = interfaz.button_0->getHeight() / scale;
 
-		Vector2D positionW2(0, 0);
 		positionW2.setX(interfaz.button_1->getPosition().getX() * scale);
 		positionW2.setY(interfaz.button_1->getPosition().getY() * scale);
 
-		Vector2D positionW22(0, 0);
 		positionW22.setX(interfaz.button_3->getPosition().getX() * scale);
 		positionW22.setY(interfaz.button_3->getPosition().getY() * scale);
 
@@ -554,6 +550,28 @@ void BattleState::render() {
 	else {
 		GameState::render();
 		updateVidas();
+		
+		if (weaponsEnabled_)
+		{
+			Attack temp_a;
+			temp_a = player->getAttack(0);
+			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel16, { 0,0,0,255 }, 460, 450, TheGame::Instance()->getRenderer());
+			std::string temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
+			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, 460, 470, TheGame::Instance()->getRenderer());
+			temp_a = player->getAttack(1);
+			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel16, { 0,0,0,255 }, 460, 540, TheGame::Instance()->getRenderer());
+			temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
+			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, 460, 560, TheGame::Instance()->getRenderer());
+			temp_a = player->getAttack(2);
+			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel16, { 0,0,0,255 }, 660, 450, TheGame::Instance()->getRenderer());
+			temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
+			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, 660, 470, TheGame::Instance()->getRenderer());
+			temp_a = player->getAttack(3);
+			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel16, { 0,0,0,255 }, 660, 540, TheGame::Instance()->getRenderer());
+			temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
+			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, 660, 560, TheGame::Instance()->getRenderer());
+
+		}
 	}
 }
 
@@ -812,11 +830,10 @@ void BattleState::displayAttacks()
 {
 	for (int i = 0; i < 4; i++) {
 		Attack temp_a = player->getAttack(i);
-		std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;
-
-		StringToScreen::Instance()->pushInfinite(temp_a.name + " ", 450, 450);
-	
+		std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;		
 	}
+
+	
 }
 
 void BattleState::attack(int i) {
@@ -852,6 +869,7 @@ void BattleState::attack(int i) {
 }
 
 void BattleState::enableWapons() {
+	weaponsEnabled_ = true;
 	if (foundWP1) {
 		Weapon1->setActive(true);
 		Weapon11->setActive(true);
@@ -863,6 +881,7 @@ void BattleState::enableWapons() {
 }
 
 void BattleState::disableWapons() {
+	weaponsEnabled_ = false;
 	if (foundWP1) {
 		Weapon1->setActive(false);
 		Weapon11->setActive(false);
