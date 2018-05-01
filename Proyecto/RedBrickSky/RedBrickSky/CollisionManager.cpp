@@ -17,18 +17,20 @@ void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vect
 
 void CollisionManager::checkNPCTileCollision(NPC* pNPC, const std::vector<TileLayer*>& collisionLayers) {
 
-
 		Vector2D oriPos = pNPC->getPosition();
 		Vector2D v = oriPos + pNPC->getVel();
+		v.setX(v.getX() + 2);
+		v.setY(v.getY() + 2);
 		
 		pNPC->setPosition(v);
+
 		int aux = checkCollision(pNPC, collisionLayers);
 		if (!pNPC->getState() && aux != 0)
 		{
 			if (aux == -1)
 				pNPC->invertVel();
 			else
-			pNPC->collision();
+				pNPC->collision();
 		}
 		else
 			pNPC->incrementMovCont();
@@ -77,6 +79,7 @@ void CollisionManager::checkPlayerDoorCollision(Player* pPlayer, std::vector<Til
 }
 
 bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer*>& collisionLayers) {
+	
 	for (std::vector<TileLayer*>::const_iterator it = collisionLayers.begin(); it != collisionLayers.end(); ++it)
 	{
 		TileLayer* pTileLayer = (*it);
@@ -147,6 +150,7 @@ bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer
 				tileColumn = ((pPosX + (o->getWidth() / 2)) / pTileLayer->getTileSize());
 			}
 		}
+
 		if (tileRow < 0) { tileRow = 0; return -1; }
 		else if (tileRow > rows - 1) { tileRow = rows - 1; return -1; }
 		if (tileColumn < 0) { tileColumn = 0; return -1;}
@@ -178,6 +182,8 @@ void CollisionManager::checkNPCGOinteraction(NPC* NPC1, NPC* NPC2) {
 
 	Vector2D oriPos = NPC1->getPosition();
 	Vector2D v = oriPos + NPC1->getVel();
+	v.setX(v.getX() + 2);
+	v.setY(v.getY() + 2);
 	NPC1->setPosition(v);
 
 	if (Collisions::collides(NPC1, NPC2)) {
@@ -189,28 +195,17 @@ void CollisionManager::checkNPCGOinteraction(NPC* NPC1, NPC* NPC2) {
 		double pdirY = -5 * pDir.getY();
 
 		double px = pdirX + pPos.getX();
+		px -= NPC1->getVel().getX();
 		double py = pdirY + pPos.getY();
+		py = NPC1->getVel().getY();
 
 		pPos.set(px, py);
 
 		NPC1->setPosition(pPos);
-
-		Vector2D pPos2 = NPC2->getPosition();
-		Vector2D pDir2 = NPC2->getDirection();
-
-		double pdirX2 = -5 * pDir2.getX();
-		double pdirY2 = -5 * pDir2.getY();
-
-		double px2 = pdirX2 + pPos2.getX();
-		double py2 = pdirY2 + pPos2.getY();
-
-		pPos2.set(px2, py2);
-
-		NPC2->setPosition(pPos2);
-
 		NPC1->collision();
-	}
+		NPC2->setCollided(true);
 
+	}
 	NPC1->setPosition(oriPos);
 }
 

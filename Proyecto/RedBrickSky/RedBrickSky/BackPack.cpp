@@ -65,7 +65,6 @@ bool BackPack::handleEvent(const SDL_Event & event)
 		if (event.type == SDL_KEYDOWN)
 		{
 			if (event.key.keysym.sym == SDLK_ESCAPE) {
-				GameManager::Instance()->changeInventory(invent);
 				toMenu();
 			}
 		}
@@ -75,12 +74,10 @@ bool BackPack::handleEvent(const SDL_Event & event)
 			XboxController::Instance()->onJoystickButtonDown(event);
 
 			if (XboxController::Instance()->getButtonState(0, 6)) {
-				GameManager::Instance()->changeInventory(invent);
 				toMenu();
 			}
 
 			if (XboxController::Instance()->getButtonState(0, 1) && buttonsCreated) {//Si se ha pulsado la B
-				GameManager::Instance()->changeInventory(invent);
 				toMenu();
 			}
 			else if (XboxController::Instance()->getButtonState(0, 0) && buttonsCreated) {
@@ -375,8 +372,6 @@ void BackPack::creaSP() {
 	selector_->addInputComponent(new BagXboxControllerComponent(selecPos.getX(), selecPos.getY(), numRows - 1, numFils, auxD, StandPointsO, this));
 	//selector_->addInputComponent(MSC);
 	stage.push_back(selector_);
-
-	GameManager::Instance()->changeInventory(invent);
 }
 
 void BackPack::elimina() {
