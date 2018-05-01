@@ -74,8 +74,12 @@ void StringToScreen::splitString(std::string s)
 		else if(substring.length() > 24) {
 		substring.erase(24, 1);
 		}*/
-
-		if (substring.size() > lineLength_
+		if (int tempPos = findEnter(substring) > 0) {
+			substring.erase(tempPos, substring.size() - tempPos);
+			splittedString_.push(substring);
+			j += (tempPos + 1);
+		}
+		else if (substring.size() > lineLength_
 			&& (isVowel(substring[substring.size() - 1]) || isConsonant(substring[substring.size() - 1]) || isDots(substring))
 			&& substring[substring.size() - 2] != ' ') {
 			int temp = 0;
@@ -138,6 +142,11 @@ bool StringToScreen::isPunctuation(char c) {
 	return false;
 }
 
+int StringToScreen::findEnter(std::string s) {
+	int pos = s.find("\n", 0);
+	return pos; //quiero nitos
+}
+
 void StringToScreen::render() {
 	renderinfinite();
 	if (messaging_) {
@@ -166,8 +175,7 @@ void StringToScreen::renderinfinite() {
 
 	for (int p = 0; p < infiniteMsg.size(); p++)
 	{
-
-		TheTextureManager::Instance()->drawText(infiniteMsg[p].InfMSG_, TextureManager::NESChimera16, { 0,0,0,255 },
+		TheTextureManager::Instance()->drawText(infiniteMsg[p].InfMSG_, TextureManager::Pixel16, { 0,0,0,255 },
 			infiniteMsg[p].x + offsetX_,
 			infiniteMsg[p].y + offsetY_ * p,
 			Game::Instance()->getRenderer());

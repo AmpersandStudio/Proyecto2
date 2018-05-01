@@ -418,7 +418,7 @@ void BattleState::createAttacks() {
 	ataques[0] = Attack("360 No Scope", Physical, 20, 20, 65, 70, 1, 1, 0.8f);
 	ataques[1] = Attack("¡Pasalo a Radianes!", Physical, 15, 15, 55, 85, 0.9f, 0.9f, 0.9f);
 	//escobilla
-	ataques[2] = Attack("Eso No Es Chocolate", Physical, 15, 15, 40, 75, 0.9f, 1, 0.9f);
+	ataques[2] = Attack("Eso No Es\nChocolate", Physical, 15, 15, 40, 75, 0.9f, 1, 0.9f);
 	ataques[3] = Attack("Limpieza a Fondo", Physical, 15, 15, 35, 80, 0.9f, 0.9f, 1);
 	//menstruacion
 	ataques[4] = Attack("Tajo Recto", Physical, 10, 10, 95, 80, 1, 1, 1);
@@ -471,7 +471,7 @@ void BattleState::createAttacks() {
 	ataques[31] = Attack("Empezamos Tema Nuevo", Support, 5, 5, 0, 100, 1.4f, 1, 1.1f);
 
 	//genericone
-	ataques[32] = Attack("Golpe", Physical, 5, 5, 10, 100, 1.4f, 1, 1.1f);
+	ataques[32] = Attack("Sin Arma", Physical, 5, 5, 10, 100, 1.4f, 1, 1.1f);
 
 	e_ataques.resize(12);
 	e_ataques[0] = Attack("Placaje", Physical, 20, 20, 20, 90, 1, 1, 1);
@@ -813,6 +813,9 @@ void BattleState::displayAttacks()
 	for (int i = 0; i < 4; i++) {
 		Attack temp_a = player->getAttack(i);
 		std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;
+
+		StringToScreen::Instance()->pushInfinite(temp_a.name + " ", 450, 450);
+	
 	}
 }
 

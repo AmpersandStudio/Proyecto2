@@ -63,6 +63,7 @@ public:
 	void changeInfinite(int i, std::string m);
 	void clearInfinite();
 	void stopRendering();
+	int findEnter(std::string s);
 	void renderBackGround();
 };
 
