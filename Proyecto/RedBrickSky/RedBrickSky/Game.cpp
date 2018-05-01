@@ -140,6 +140,7 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\sky.jpg", "sky", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\amplogo.png", "amplogo", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\frase.png", "frase", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\candy.png", "sweet", RENDERER_,1,2);
 
 	TheTextureManager::Instance()->load("..\\assets\\Nivel0.png", "level0", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Nivel1.png", "level1", RENDERER_);

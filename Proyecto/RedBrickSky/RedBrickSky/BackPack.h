@@ -63,6 +63,7 @@ public:
 
 	virtual void update();
 	virtual bool handleEvent(const SDL_Event& event);
+	virtual void render();
 
     static void toMenu();
 	vector<estado> getSP() { return SP; };

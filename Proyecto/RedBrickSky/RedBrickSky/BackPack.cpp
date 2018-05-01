@@ -11,7 +11,10 @@ BackPack::BackPack()
 	money = GameManager::Instance()->getMoney();
 	invent = GameManager::Instance()->copyInventory();
 	cout << "Tam Inventario:  " << invent.size() << endl;
-	StringToScreen::Instance()->pushInfinite("VIDA: " + std::to_string(GameManager::Instance()->getHealth() / 10), 210, 130);
+	StringToScreen::Instance()->pushInfinite("VIDA: " + std::to_string(GameManager::Instance()->getHealth() / 10), 205, 130);
+
+	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 283, 145);
+
 	//Componentes necesarios
 	actualState_ = 0;
 	SDL_ShowCursor(1);
@@ -431,6 +434,14 @@ void BackPack::creaFondoTienda() {
 	backShop->setTextureId("9"); backShop->addRenderComponent(new RenderFullComponent());
 	stage.push_back(backShop);
 
+	//GameComponent* sweet = new GameComponent();
+	//Vector2D p; p.set(100, 100);
+	//sweet->setWidth(10);
+	//sweet->setHeight(10);
+	//sweet->setPosition(p);
+	//sweet->setTextureId("candy"); sweet->addRenderComponent(new RenderFrame());
+	//stage.push_back(sweet);
+
 	player = new BattlePlayer("Tyler", Physical, 1000, 10, 10, 100, 10);
 	player->setTextureId("tylerSS");
 	player->setPosition(pos1);
@@ -498,4 +509,14 @@ void BackPack::separateElements() {
 void BackPack::update() {
 	player->setColFrame(int(((SDL_GetTicks() / (200)) % 4)));
 	GameState::update();
+}
+
+void BackPack::render() {
+
+	GameState::render();
+
+	TheTextureManager::Instance()->drawItem("sweet", 235, 160,
+		50, 30, 0,0, 1,2, Game::Instance()->getRenderer(), 0, 255);
+	
+	
 }
