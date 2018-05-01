@@ -83,6 +83,8 @@ void PlayState::update()
 	}
 	pLevels[currentLevel_]->update();
 
+	
+
 	GameState::update();
 }
 
@@ -92,10 +94,7 @@ void PlayState::changeLevel() {
 
 	TheCamera::Instance()->setMapDims(pLevels[currentLevel_]->getMapWidth(), pLevels[currentLevel_]->getMapheight());
 
-	Vector2D p = pLevels.at(currentLevel_)->getPlayer()->getPosition();
-
-	TheCamera::Instance()->setTarget(&p);
-	TheCamera::Instance()->setPosition(p);
+	pLevels.at(currentLevel_)->getPlayer()->changedlevel();
 }
 
 void PlayState::actSteps() {

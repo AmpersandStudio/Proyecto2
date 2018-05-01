@@ -27,12 +27,14 @@ void Player::load(Vector2D position, int width, int height, string textureId, in
 	numFrames_ = numFrames;
 	callbackId_ = callbackID;
 	animSpeed_ = animSpeed;
+	
 
 	direction_ = Vector2D(0, -1);
 	m_moveSpeed = 4;
 	interacting_ = false;
 	running_ = false;
 	text = false;
+	levelHasChanged_ = false;
 	previousPos_ = iniPosition_;
 	updateRect();
 
@@ -78,9 +80,10 @@ void Player::update()
 		position_ = position_ + velocity_; // refresh position
 	}
 
-	if (previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY()) {
+	if ((previousPos_.getX() != position_.getX() || previousPos_.getY() != position_.getY()) || levelHasChanged_) {
 		TheCamera::Instance()->setTarget(&position_);
 		moved_ = true;
+		changedlevel();
 	}
 
 	previousPos_ = position_;

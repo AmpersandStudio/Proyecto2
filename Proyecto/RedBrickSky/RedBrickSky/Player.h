@@ -28,6 +28,8 @@ public:
 	bool getMoved() const { return moved_; }
 
 	SDL_Rect* getRect() { return &actionRect_; }
+
+	void changedlevel() { levelHasChanged_ = !levelHasChanged_; };
 	
 private:
 	int m_moveSpeed;
@@ -47,6 +49,8 @@ private:
 	Vector2D previousPos_;
 
 	Dialogue d_;
+
+	bool levelHasChanged_;
 
 };
 

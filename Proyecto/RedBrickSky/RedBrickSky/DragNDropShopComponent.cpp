@@ -162,14 +162,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 				StringToScreen::Instance()->setMessage("¡No tienes dinero para pagar eso!");
 				StringToScreen::Instance()->startMessagin();
 			}
-				
-
-
 			
-
-		/*	if (numSP - ocupados == 1){
-			shop->creaFila();
-			}*/
 		}
 	}
 

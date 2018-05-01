@@ -5,7 +5,6 @@ Camera Camera::s_pCamera;
 
 Camera::Camera() : m_pTarget(0), m_position(0, 0)
 {
-
 }
 
 Camera::~Camera()
