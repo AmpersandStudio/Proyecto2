@@ -32,6 +32,8 @@ public:
 
 	void checkBagsInteractions(Player* pPlayer, const std::vector<SchoolBag*>&  b);
 
+	void checkDoorsInteractions(Player * pPlayer, const std::vector<Door*>& d);
+
 	void checkKeysInteractions(Player* pPlayer, std::vector<Key*>&  k);
 
 	bool checkCollision(GameObject* pPlayer, const std::vector<TileLayer*>& collisionLayers);
@@ -45,6 +47,8 @@ public:
 	void checkPlayerGOinteraction(NPC* o, Player* p);
 	
 	void checkNPCGOinteraction(NPC* NPC1, NPC* NPC2);
+
+	void checkNPCDoorCollision(NPC* NPC, std::vector<Door*>& d);
 
 
 	bool RectRect(SDL_Rect * A, SDL_Rect * B);

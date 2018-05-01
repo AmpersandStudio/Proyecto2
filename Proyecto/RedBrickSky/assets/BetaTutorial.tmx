@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="117">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="120">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -16,6 +16,7 @@
   <property name="Personaje6" value="..\assets\Personaje6.png"/>
   <property name="Personaje7" value="..\assets\Personaje7.png"/>
   <property name="Personaje8" value="..\assets\Personaje8.png"/>
+  <property name="cartel" value="..\assets\cartel.png"/>
   <property name="door" value="..\assets\door.png"/>
   <property name="helicopter" value="..\assets\helicopter.png"/>
   <property name="key" value="..\assets\key.png"/>
@@ -71,7 +72,7 @@
  </layer>
  <layer name="TopFences&amp;Trees" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt288NAUEUx/HBUgSiElSAAvyrgIODixv9KEEDinDQhXAwMjeJzMNmZt7s95O8075kf3tg/uysMbpNYwcAAABiu9gBFLrVZX0HYR8A5GQW6D7bQPcBILeKHQAIYGbCjXUAUDX9mjEDW8NaOX2xjGyusa2JJ5+kb1FutK/Mba6FraXnOaR9yNO14Uob9m3BeQa5S8OVdu3ClXZa/3ff9QpXQJm6hat/+MYHxo/q6RSuAAAApNaxAwBAYLnst0vPhUv7quScybq51YydAEAOQnybxT41qmKj+J3oUXH21D2E8/E783YVOC+altTOi35af/+6LucbeiAte89v2Xc9Ba95ycmT83VdOn+BXk9C9yYk
+   eJzt2s8RwUAUx/GNhCIwKkEFKABRAQcHBdCPEjSgCAddGA7W7M2M2WfEbt7m+5l5p7yZ/HJI9k/WGN3msQMAAAD80a0l6zsI+wAgJYtA99kFug8AuXXsAEAACxNurAOAphlmxoxsjbNq+mKZ2FxTWzNPPklfWW20ryxtrtLWyvMc0j6k6Zq70oZ9W3CeQe6Su9KuW7jSTut3992gcAVUqV+4+oVvfGD8aJ5e4QoAAEBqEzsAAASWyn679Fy4tK9Jzomsmzvt2AkAQIZ9ajTFVvE/0aPi7HX3EM7H78zbVeC8aL3U7bzop/U363IgDXvPu+y7XgevecnJk/N1XTp/gV5PXPMktg==
   </data>
  </layer>
  <layer name="Personajes" width="50" height="100" visible="0">
@@ -89,13 +90,7 @@
    </properties>
   </object>
   <object id="2" name="Cofre" type="Bag" gid="92" x="126.667" y="1184.33" width="32" height="32"/>
-  <object id="8" name="Cartel1" type="Cartel" gid="122" x="736" y="2559.67" width="32" height="32">
-   <properties>
-    <property name="Message" value="NITOSSSS"/>
-   </properties>
-  </object>
   <object id="9" name="Cofre" type="Bag" gid="108" x="128" y="798.667" width="32" height="32"/>
-  <object id="10" name="Cartel2" type="Cartel" gid="122" x="1342" y="354" width="32" height="32"/>
   <object id="12" name="Cofre" type="Bag" gid="90" x="1536" y="1374" width="32" height="32"/>
   <object id="13" name="Cofre" type="Bag" gid="109" x="32" y="2082" width="32" height="32"/>
   <object id="14" name="Cofre" type="Bag" gid="90" x="1536" y="2560.67" width="32" height="32">
@@ -109,7 +104,6 @@
   <object id="26" name="Cofre" type="Bag" gid="91" x="1313.33" y="898" width="32" height="32"/>
   <object id="28" name="Cofre" type="Bag" gid="370" x="1533.33" y="1632" width="32" height="32"/>
   <object id="29" name="Cofre" type="Bag" gid="370" x="1281.33" y="1633.33" width="32" height="32"/>
-  <object id="32" name="Cartel3" type="Cartel" gid="924" x="1312" y="2944" width="32" height="32"/>
   <object id="36" name="Cofre" type="Bag" gid="1289" x="765" y="638" width="32" height="32"/>
   <object id="39" name="Personaje1" type="NPC" x="369.499" y="1932.91" width="32" height="32">
    <properties>
@@ -249,7 +243,7 @@
   <object id="109" name="DoorKey1" type="Key" x="766.667" y="2590.67" width="32" height="32">
    <properties>
     <property name="keyID" type="int" value="0"/>
-    <property name="numFrames" type="int" value="1"/>
+    <property name="numFrames" type="int" value="2"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="key"/>
     <property name="textureWidth" type="int" value="32"/>
@@ -272,6 +266,33 @@
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="door1"/>
     <property name="textureWidth" type="int" value="64"/>
+   </properties>
+  </object>
+  <object id="117" name="Cartel1" type="Cartel" x="735.5" y="2560.17" width="32" height="32">
+   <properties>
+    <property name="Message" value="Buenos días caballero"/>
+    <property name="numFrames" type="int" value="2"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="cartel"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="118" name="Cartel3" type="Cartel" x="1312.67" y="2944.67" width="32" height="32">
+   <properties>
+    <property name="keyID" type="int" value="0"/>
+    <property name="numFrames" type="int" value="2"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="cartel"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="119" name="Cartel2" type="Cartel" x="1343.22" y="352.061" width="32" height="32">
+   <properties>
+    <property name="keyID" type="int" value="0"/>
+    <property name="numFrames" type="int" value="2"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="cartel"/>
+    <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
  </objectgroup>

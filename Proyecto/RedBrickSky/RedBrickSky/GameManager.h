@@ -39,8 +39,6 @@ private:
 
 	vector<estado> inventory;
 
-	vector<bool> doors;
-	
 	int level = 0;
 	int level_;
 
@@ -50,9 +48,10 @@ private:
 
 	NPC* currentNPC;
 
-	GameManager() {
+	GameManager() 
+	{
+		keys.resize(30);
 
-		doors = { false, true, false };
 		money = 500;
 		dialogueActive = false;
 
@@ -68,6 +67,8 @@ private:
 	int playerHP = 1000;
 	int playerMaxHP = 1000;
 
+	std::vector<bool> keys;
+
 public:
 	~GameManager() {};
 	static GameManager* Instance()
@@ -80,7 +81,6 @@ public:
 
 	//Metodos para el inventario
 	vector<estado> copyInventory();	
-	vector<bool>& getDoors() { return doors; };
 
 	int inventorySize() { return inventory.size(); };
 	void setInventory(estado t) { inventory.push_back(t); };
@@ -109,5 +109,8 @@ public:
 
 	int getLevel() { return level_; }
 	void setCurrentLevel(int l) { level_ = l; }
+
+	void setKey(int keyId) { keys[keyId] = true; }
+	bool getKey(int keyId) { return keys[keyId]; }
 
 };

@@ -26,6 +26,8 @@ public:
 
 	SDL_Rect* getRect() { return &collider_; }
 
+	void setColFrame(int f) { colFrame_ = f; };
+
 protected:
 	SDL_Rect collider_;
 	int tileWidth_;

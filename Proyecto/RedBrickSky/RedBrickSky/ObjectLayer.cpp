@@ -23,7 +23,7 @@ void ObjectLayer::update(Level* pLevel)
 		//GRASS
 		m_collisionManager.checkPlayerGrassCollision(pLevel->getPlayer(), pLevel->getGrasseableLayers());
 		//DOORS
-
+		m_collisionManager.checkPlayerDoorCollision(pLevel->getPlayer(), pLevel->getDoorsInteractions());
 	}
 
 	int NPCnumber = pLevel->getNPCs()->size();
@@ -57,6 +57,7 @@ void ObjectLayer::update(Level* pLevel)
 		m_collisionManager.checkNPCInteractions(pLevel->getPlayer(), pLevel->getNPCinteraction());
 		m_collisionManager.checkBagsInteractions(pLevel->getPlayer(), pLevel->getBagsInteractions());
 		m_collisionManager.checkKeysInteractions(pLevel->getPlayer(), pLevel->getKeysInteractions());
+		m_collisionManager.checkDoorsInteractions(pLevel->getPlayer(), pLevel->getDoorsInteractions());
 	}
 
 	for (GameObject* go : m_gameObjects)

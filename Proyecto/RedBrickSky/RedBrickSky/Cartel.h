@@ -13,15 +13,24 @@ public:
 	void setShopState(int s) { toShop = s; };
 	void setTenderMan(bool s) { tenderMan = s; };
 	void setToPlay(bool s) { toPlayGround = s; };
+	virtual void update();
 
 	virtual void render();
 	virtual void generateCollider();
+	void change();
 
 private:
 	std::string Message;
 	int toShop;
 	bool tenderMan;
 	bool toPlayGround;
+	int col_;
+	bool changed_;
+
+	Uint32 timeStart_;
+	Uint32 timeNameInterval_;
+	Uint32 timeDisplayInterval_;
+	Uint32 timeTitleInterval_;
 };
 
 class CartelCreator : public BaseCreator

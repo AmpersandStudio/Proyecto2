@@ -5,7 +5,7 @@
 class Door : public Interactuable
 {
 public:
-	Door() {}
+	Door() : active_(false) {}
 	virtual ~Door() {}
 
 	inline int getId() const { return id_; }
@@ -15,8 +15,11 @@ public:
 	virtual void activate();
 	virtual string type() { return "Door"; }
 
+	inline bool isActive() const { return active_; }
+
 private:	
 	int id_; 
+	bool active_;
 };
 
 class DoorCreator : public BaseCreator

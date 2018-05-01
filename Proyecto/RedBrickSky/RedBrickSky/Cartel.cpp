@@ -7,7 +7,10 @@
 
 Cartel::Cartel()
 {
-
+	timeStart_ = SDL_GetTicks();
+	timeDisplayInterval_ = 700;
+	col_ = 0;
+	changed_ = true;
 }
 
 
@@ -19,6 +22,8 @@ void Cartel::activate() {
 
 	/*StringToScreen::Instance()->setMessageAt(Message_, position_.getX(), position_.getY());
 	StringToScreen::Instance()->startMessagin();*/
+
+	std::cout << Message_ << endl;
 
 	std::cout << "Hola me has interactuado" << endl;
 
@@ -37,10 +42,27 @@ void Cartel::activate() {
 
 void Cartel::render()
 {
+	if (isActive_) Interactuable::render();
+}
+
+void Cartel::update() {
+	if (((timeStart_ + timeDisplayInterval_) <= SDL_GetTicks()))
+	{
+		setColFrame(col_);
+		change();
+		timeStart_ = SDL_GetTicks();
+	}
+}
+
+void Cartel::change() {
+
+	changed_ = !changed_;
+	if (changed_) col_ = 0;
+	else col_ = 1;
 
 }
 
 void Cartel::generateCollider()
 {
-Interactuable::generateCollider();
+	Interactuable::generateCollider();
 }

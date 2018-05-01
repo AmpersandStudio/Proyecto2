@@ -11,18 +11,23 @@ void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vect
 
 		if (checkCollision(pPlayer, collisionLayers) != 0)
 		{
+			Vector2D pPos = pPlayer->getPosition();
+			Vector2D pDir = pPlayer->getDirection();
+
+			double pdirX = -5 * pDir.getX();
+			double pdirY = -5 * pDir.getY();
+
+			double px = pdirX + pPos.getX();
+			double py = pdirY + pPos.getY();
+
+			pPos.set(px, py);
+
+			pPlayer->setPosition(pPos);
 			pPlayer->collision();
 		}
 }
 
 void CollisionManager::checkNPCTileCollision(NPC* pNPC, const std::vector<TileLayer*>& collisionLayers) {
-
-		Vector2D oriPos = pNPC->getPosition();
-		Vector2D v = oriPos + pNPC->getVel();
-		v.setX(v.getX() + 2);
-		v.setY(v.getY() + 2);
-		
-		pNPC->setPosition(v);
 
 		int aux = checkCollision(pNPC, collisionLayers);
 		if (!pNPC->getState() && aux != 0)
@@ -34,8 +39,7 @@ void CollisionManager::checkNPCTileCollision(NPC* pNPC, const std::vector<TileLa
 		}
 		else
 			pNPC->incrementMovCont();
-
-		pNPC->setPosition(oriPos);
+				
 }
 
 void CollisionManager::checkPlayerGrassCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers)
@@ -57,50 +61,79 @@ void CollisionManager::checkPlayerDoorCollision(Player * pPlayer, std::vector<Do
 {
 	SDL_Rect* playerRect = pPlayer->getRect();
 
-	int i = 0;
-	int aux;
 	bool activated = false;
 	for (Door* door : d)
 	{
+		if (door->isActive()) continue;
+
 		SDL_Rect* interRect = door->getRect();
 
-		if (RectRect(playerRect, interRect))
+		if (Collisions::collides(pPlayer, door))
 		{
-			door->activate();
-			activated = true;
-			aux = i;
 
-			estado n;
-			n.price = 0;
-			n.comprado = false;
-			n.ID = 0;
-			n.empty = false;
-			n.objects = 0;
-			n.x = 0;
-			n.y = 0;
-			n.mX = -10;
-			n.mY = -10;
-			n.w = 50;
-			n.h = 50;
-			n.tx = "Door";
-			n.type = 2;
-			n.nombre = "Door";
-			n.FilFrame = 0;
-			n.colFrame = 0;
+			Vector2D pPos = pPlayer->getPosition();
+			Vector2D pDir = pPlayer->getDirection();
 
-			GameManager::Instance()->setInventory(n);
+			double pdirX = -5 * pDir.getX();
+			double pdirY = -5 * pDir.getY();
+
+			double px = pdirX + pPos.getX();
+			double py = pdirY + pPos.getY();
+
+			pPos.set(px, py);
+
+			pPlayer->setPosition(pPos);
+			pPlayer->collision();
+		
 		}
-		i++;
 	}
-
-	if (activated)
-		d.erase(d.begin() + aux);
 
 	pPlayer->setInteracting(false);
 }
 
+void CollisionManager::checkNPCDoorCollision(NPC * NPC, std::vector<Door*>& d)
+{
+	Vector2D oriPos = NPC->getPosition();
+	Vector2D v = oriPos + NPC->getVel();
+	v.setX(v.getX() + 2);
+	v.setY(v.getY() + 2);
+	NPC->setPosition(v);
+
+	for (Door* door : d)
+	{
+
+		if (Collisions::collides(NPC, door)) {
+
+			Vector2D pPos = NPC->getPosition();
+			Vector2D pDir = NPC->getDirection();
+
+			double pdirX = -5 * pDir.getX();
+			double pdirY = -5 * pDir.getY();
+
+			double px = pdirX + pPos.getX();
+			px -= NPC->getVel().getX();
+			double py = pdirY + pPos.getY();
+			py = NPC->getVel().getY();
+
+			pPos.set(px, py);
+
+			NPC->setPosition(pPos);
+			NPC->collision();
+		}
+	}
+	NPC->setPosition(oriPos);
+}
+
+
 bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer*>& collisionLayers) {
 	
+	Vector2D oriPos = o->getPosition();
+	Vector2D v = oriPos + o->getVel();
+	v.setX(v.getX() + 2);
+	v.setY(v.getY() + 2);
+
+	o->setPosition(v);
+
 	for (std::vector<TileLayer*>::const_iterator it = collisionLayers.begin(); it != collisionLayers.end(); ++it)
 	{
 		TileLayer* pTileLayer = (*it);
@@ -171,6 +204,8 @@ bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer
 				tileColumn = ((pPosX + (o->getWidth() / 2)) / pTileLayer->getTileSize());
 			}
 		}
+
+		o->setPosition(oriPos);
 
 		if (tileRow < 0) { tileRow = 0; return -1; }
 		else if (tileRow > rows - 1) { tileRow = rows - 1; return -1; }
@@ -298,6 +333,23 @@ void CollisionManager::checkBagsInteractions(Player* pPlayer, const std::vector<
 	SDL_Rect* playerRect = pPlayer->getRect();
 
 	for (SchoolBag* i : b)
+	{
+		SDL_Rect* interRect = i->getRect();
+
+		if (RectRect(playerRect, interRect))
+		{
+			i->activate();
+		}
+	}
+
+	pPlayer->setInteracting(false);
+}
+
+void CollisionManager::checkDoorsInteractions(Player* pPlayer, const std::vector<Door*>&  d)
+{
+	SDL_Rect* playerRect = pPlayer->getRect();
+
+	for (Door* i : d)
 	{
 		SDL_Rect* interRect = i->getRect();
 
