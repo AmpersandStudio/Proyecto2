@@ -12,7 +12,7 @@
 class TileLayer : public Layer
 {
 public:
-	TileLayer(int tileSize, int mapWidth, int mapHeight, const std::vector<Tileset> &tilesets, int dID = -1);
+	TileLayer(int tileSize, int mapWidth, int mapHeight, const std::vector<Tileset> &tilesets);
 	virtual ~TileLayer() {}
 
 	virtual void update(Level* pLevel);
@@ -21,9 +21,6 @@ public:
 	void setTileIDs(const std::vector<std::vector<int>>& data) { m_tileIDs = data; }
 	int getTileSize() { return m_tileSize; }
 	void setTileSize(int tileSize) { m_tileSize = tileSize; }
-
-	int getDoorID() const { return doorID; };
-	void setDoorID(int id) { doorID = id; };
 
 	void setMapWidth(int mapWidth) { m_mapWidth = mapWidth; }
 
@@ -40,8 +37,6 @@ private:
 	int m_numRows;		// num fils de la capa
 	int m_tileSize;		// tamaño de los tiles
 	int m_mapWidth;		// ancho de la capa
-
-	int doorID;
 
 	Vector2D m_position;	// posicion de la capa
 

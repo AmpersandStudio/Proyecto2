@@ -17,6 +17,7 @@
 #include "Interactuable.h"
 #include "Cartel.h"
 #include "Key.h"
+#include "Door.h"
 
 #include "StringToScreen.h"
 
@@ -171,6 +172,7 @@ void Game::registerTypes()
 	TheGameObjectFactory::Instance()->registerType("Cartel", new CartelCreator());
 	TheGameObjectFactory::Instance()->registerType("Bag", new BagCreator());
 	TheGameObjectFactory::Instance()->registerType("Key", new KeyCreator());
+	TheGameObjectFactory::Instance()->registerType("Door", new DoorCreator());
 }
 
 void Game::begin()

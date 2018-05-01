@@ -11,6 +11,7 @@
 #include "NPC.h"
 #include "SchoolBag.h"
 #include "Key.h"
+#include "Door.h"
 
 #include "checkML.h"
 
@@ -64,9 +65,8 @@ public:
 	std::vector<TileLayer*>* getGrassLayers() { return &m_grassLayer; }
 	const std::vector<TileLayer*>& getGrasseableLayers() { return m_grassLayer; }
 
-	std::vector<TileLayer*>* getDoorLayers() { return &m_doorLayer; }
-	std::vector<TileLayer*>& getDoorLayer() { return m_doorLayer; }
-
+	std::vector<Door*>* getDoors() { return &m_Doors; }
+	std::vector<Door*>& getDoorsInteractions() { return m_Doors; }
 
 
 	Player* getPlayer() { return m_pPlayer; }
@@ -94,6 +94,7 @@ private:
 	std::vector<Cartel*> m_Carteles; //vector de carteles
 	std::vector<SchoolBag*> m_Bags; //vector de Mochilas
 	std::vector<Key*> m_Keys; //vector de llaves
+	std::vector<Door*> m_Doors;
 
 	int m_tileWidth;	// ancho de tile del nivel
 	int m_tileHeight;	// alto de tile del nivel

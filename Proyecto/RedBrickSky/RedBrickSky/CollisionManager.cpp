@@ -53,29 +53,50 @@ void CollisionManager::checkPlayerGrassCollision(Player* pPlayer, const std::vec
 	}
 }
 
-void CollisionManager::checkPlayerDoorCollision(Player* pPlayer, std::vector<TileLayer*>& doorLayer)
+void CollisionManager::checkPlayerDoorCollision(Player * pPlayer, std::vector<Door*>& d)
 {
-	if (checkCollision(pPlayer, doorLayer) != 0)
-	{
-		int i = 0;
-		std::vector<TileLayer*>::const_iterator it = doorLayer.begin();
-		while (i < doorLayer.size())
-		{
-			if (GameManager::Instance()->getDoors()[(*it)->getDoorID()])
-			{
-				(*it)->setActive(false);
-				doorLayer.erase(doorLayer.begin() + i);
-			}
-			else
-				pPlayer->collision();
+	SDL_Rect* playerRect = pPlayer->getRect();
 
-			if (!doorLayer.empty())
-			{
-				++it;
-				i++;
-			}
+	int i = 0;
+	int aux;
+	bool activated = false;
+	for (Door* door : d)
+	{
+		SDL_Rect* interRect = door->getRect();
+
+		if (RectRect(playerRect, interRect))
+		{
+			door->activate();
+			activated = true;
+			aux = i;
+
+			estado n;
+			n.price = 0;
+			n.comprado = false;
+			n.ID = 0;
+			n.empty = false;
+			n.objects = 0;
+			n.x = 0;
+			n.y = 0;
+			n.mX = -10;
+			n.mY = -10;
+			n.w = 50;
+			n.h = 50;
+			n.tx = "Door";
+			n.type = 2;
+			n.nombre = "Door";
+			n.FilFrame = 0;
+			n.colFrame = 0;
+
+			GameManager::Instance()->setInventory(n);
 		}
+		i++;
 	}
+
+	if (activated)
+		d.erase(d.begin() + aux);
+
+	pPlayer->setInteracting(false);
 }
 
 bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer*>& collisionLayers) {

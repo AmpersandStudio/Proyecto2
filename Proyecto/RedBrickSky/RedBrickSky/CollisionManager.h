@@ -7,7 +7,8 @@
 #include "NPC.h"
 #include "Cartel.h"
 #include "SchoolBag.h"
-#include"Key.h"
+#include "Key.h"
+#include "Door.h"
 
 #include "checkML.h"
 
@@ -37,7 +38,7 @@ public:
 
 	void checkPlayerGrassCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers);
 
-	void checkPlayerDoorCollision(Player * pPlayer, std::vector<TileLayer*>& doorLayer);
+	void checkPlayerDoorCollision(Player * pPlayer, std::vector<Door*>& d);
 
 	void checkCartelesInteractions(Player* pPlayer, const std::vector<Cartel*>&  c);
 

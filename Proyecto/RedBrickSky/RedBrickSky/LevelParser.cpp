@@ -72,7 +72,7 @@ Level* LevelParser::parseLevel(const char *levelFile)
 			}
 			else if (e->FirstChildElement()->Value() == std::string("data") || (e->FirstChildElement()->NextSiblingElement() != 0 && e->FirstChildElement()->NextSiblingElement()->Value() == std::string("data")))
 			{
-				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets(), pLevel->getCollisionLayers(), pLevel->getGrassLayers(), pLevel->getDoorLayers());
+				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets(), pLevel->getCollisionLayers(), pLevel->getGrassLayers());
 			}
 		}
 	}
@@ -252,6 +252,13 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 
 			}
 
+			if (type == "Door")
+			{
+				Door* d = static_cast<Door*>(pGameObject);
+				d->setId(keyID);
+				pLevel->getDoors()->push_back(d);
+			}
+
 			pObjectLayer->getGameObjects()->push_back(pGameObject);
 		}
 	}
@@ -259,7 +266,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 	pLayers->push_back(pObjectLayer);
 }
 
-void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers, const std::vector<Tileset>* pTilesets, std::vector<TileLayer*> *pCollisionLayers, std::vector<TileLayer*> *pGrassLayers, std::vector<TileLayer*> *pDoorLayers)
+void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*> *pLayers, const std::vector<Tileset>* pTilesets, std::vector<TileLayer*> *pCollisionLayers, std::vector<TileLayer*> *pGrassLayers)
 {
 	TileLayer* pTileLayer = new TileLayer(m_tileSize, m_width, m_height, *pTilesets);
 
@@ -289,17 +296,6 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 					else if (property->Attribute("name") == std::string("BigGrass"))
 					{
 						grass = true;
-					}
-					else if (property->Attribute("name") == std::string("door"))
-					{
-						door = true;
-					}
-
-					else if (property->Attribute("name") == std::string("doorID"))
-					{
-						int doorID;
-						property->Attribute("value", &doorID);
-						pTileLayer->setDoorID(doorID);
 					}
 				}
 			}
@@ -344,11 +340,6 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 	if (collidable)
 	{
 		pCollisionLayers->push_back(pTileLayer);
-	}
-	if (door)
-	{
-		pTileLayer->setActive(true);
-		pDoorLayers->push_back(pTileLayer);
 	}
 
 	if (grass)
