@@ -53,12 +53,13 @@ private:
 		keys.resize(30);
 
 		money = 500;
+
 		dialogueActive = false;
 
 		name = "";
 
 		currentNPC = nullptr;
-		//level_ = 0;
+
 		level_ = 0;
 	}
 
@@ -113,4 +114,5 @@ public:
 	void setKey(int keyId) { keys[keyId] = true; }
 	bool getKey(int keyId) { return keys[keyId]; }
 
+	int getEnemy();
 };
