@@ -103,7 +103,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 			if (shop->getMoney() >= price && !comprado) {
 
 				shop->setMoney(price);
-				StringToScreen::Instance()->setMessage("¡Objeto comprado!");
+				StringToScreen::Instance()->setMessage("¡Objeto comprado! ");
 				StringToScreen::Instance()->startMessagin();
 				StringToScreen::Instance()->changeInfinite(0, "Caramelos: " + std::to_string(shop->getMoney()));
 
@@ -159,7 +159,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 
 
 			else if (shop->getMoney() < price) {
-				StringToScreen::Instance()->setMessage("No tienes dinero para pagar eso!");
+				StringToScreen::Instance()->setMessage("¡No tienes dinero para pagar eso!");
 				StringToScreen::Instance()->startMessagin();
 			}
 				
@@ -176,7 +176,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 	else if (!encontrado)
 	{
 
-		StringToScreen::Instance()->setMessage("Lo has puesto fuera!!");
+		StringToScreen::Instance()->setMessage("¡Lo has puesto fuera!!");
 		StringToScreen::Instance()->startMessagin();
 
 	}

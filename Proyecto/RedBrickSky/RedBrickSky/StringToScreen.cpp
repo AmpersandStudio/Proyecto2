@@ -21,7 +21,7 @@ void StringToScreen::renderMessage() {
 		300, 100, Game::Instance()->getRenderer(), 0, 255);
 
 	for (int i = 0; i < 3; i++) {
-		TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::NESChimera16, { 0,0,0,255 },
+		TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::Pixel16, { 0,0,0,255 },
 			posX_ + offsetX_,
 			posY_ + offsetY_ * i,
 			Game::Instance()->getRenderer());
