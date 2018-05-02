@@ -25,3 +25,107 @@ void GameManager::exitBattle()
 		currentNPC = nullptr;
 	}
 }
+
+int GameManager::getEnemy()
+{
+	int rnd;
+
+	switch (level_)
+	{
+	case 0:
+		rnd = rand() % 2;
+		if (rnd == 0)
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+		break;
+
+	case 1:
+		rnd = rand() % 2;
+		if (rnd == 0)
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+		break;
+
+	case 2:
+		rnd = rand() % 3;
+		if (rnd == 0)
+		{
+			return 2;
+		}
+		else if (rnd == 1)
+		{
+			return 3;
+		}
+		else
+		{
+			return 4;
+		}
+		break;
+
+	case 3:
+		rnd = rand() % 3;
+		if (rnd == 0)
+		{
+			return 0;
+		}
+		else if (rnd == 1)
+		{
+			return 1;
+		}
+		else
+		{
+			return 5;
+		}
+		break;
+
+	case 4:
+		rnd = rand() % 2;
+		if (rnd == 0)
+		{
+			return 4;
+		}
+		else
+		{
+			return 5;
+		}
+		break;
+
+	case 5:
+		rnd = rand() % 6;
+		if (rnd == 0)
+		{
+			return 3;
+		}
+		else if (rnd == 1)
+		{
+			return 4;
+		}
+		else if (rnd == 2)
+		{
+			return 6;
+		}
+		else if (rnd == 3)
+		{
+			return 7;
+		}
+		else if (rnd == 4)
+		{
+			return 8;
+		}
+		else
+		{
+			return 9;
+		}
+		break;
+	}	
+}

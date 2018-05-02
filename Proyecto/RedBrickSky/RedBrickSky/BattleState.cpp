@@ -3,6 +3,7 @@
 #include "RenderSingleFrameComponent.h"
 #include "RenderFraemeComponent2.h"
 #include "BattleCharacter.h"
+#include "GameManager.h"
 
 //bloque 0 (constructoras y destructoras) ---------------------------------------------------------------------------------
 BattleState::BattleState()
@@ -368,8 +369,11 @@ void BattleState::createPlayer() {
 	stage.push_back(player);
 }
 
-void BattleState::createEnemy() {
-	int rnd = rand() % 5;
+void BattleState::createEnemy() 
+{
+	int rnd = GameManager::Instance()->getEnemy();
+	int lv = GameManager::Instance()->getLevel();
+
 	switch (rnd)
 	{
 	case 0:
@@ -378,32 +382,35 @@ void BattleState::createEnemy() {
 		break;
 
 	case 1:
-		enemy = new BattleEnemy("Escoba", Physical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("escoba");
-		break;
-
-	case 2:
-		enemy = new BattleEnemy("Pelotas", Physical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("pelotas");
-		break;
-
-	case 3:
 		enemy = new BattleEnemy("Basura", Magical, 300, 10, 10, 100, 11);
 		enemy->setTextureId("basura");
 		break;
 
-	case 4:
+	case 2:
 		enemy = new BattleEnemy("Bocata", Magical, 300, 10, 10, 100, 11);
 		enemy->setTextureId("bocata");
+		break;
+
+	case 4:
+		enemy = new BattleEnemy("Escoba", Physical, 300, 10, 10, 100, 11);
+		enemy->setTextureId("escoba");
+		break;
+
+	case 5:
+		enemy = new BattleEnemy("Pelotas", Physical, 300, 10, 10, 100, 11);
+		enemy->setTextureId("pelotas");
 		break;
 	}
 
 
 	Vector2D pos2(3.3, 0.62);
 	enemy->setPosition(pos2);
-	enemy->setWidth(160); enemy->setHeight(260);
+	enemy->setWidth(160); 
+	enemy->setHeight(260);
+
 	RenderComponent* rc2 = new RenderFraemeComponent2();
 	enemy->addRenderComponent(rc2);
+
 	stage.push_back(enemy);
 }
 
@@ -570,7 +577,6 @@ void BattleState::render() {
 			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel16, { 0,0,0,255 }, 660, 540, TheGame::Instance()->getRenderer());
 			temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
 			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, 660, 560, TheGame::Instance()->getRenderer());
-
 		}
 	}
 }
