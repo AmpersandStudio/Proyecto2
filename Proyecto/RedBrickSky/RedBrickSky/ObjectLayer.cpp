@@ -16,7 +16,6 @@ ObjectLayer::~ObjectLayer()
 
 void ObjectLayer::update(Level* pLevel)
 {
-	
 	// COLISIONES
 	if (pLevel->getPlayer()->getMoved()) {
 		m_collisionManager.checkPlayerTileCollision(pLevel->getPlayer(), pLevel->getCollidableLayers()); //Colisiones del jugador

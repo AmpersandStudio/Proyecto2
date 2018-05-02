@@ -21,9 +21,9 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 	animSpeed_ = animSpeed;
 	oriPosX_ = position.getX();
 	oriPosY_ = position.getY();
-	isFighter_ = true;
+	isFighter_ = false;
 
-	dialogueActive = false;
+	dialogueActive_ = false;
 	isInteracting_ = false;
 	
 		this->setColFrame(2);
@@ -54,14 +54,14 @@ NPC::~NPC()
 
 void NPC::activate() {
 	isInteracting_ = true;
-	if (!dialogueActive && !GameManager::Instance()->getDialogueState()) {
-		dialogueActive = true;
+	if (!dialogueActive_ && !GameManager::Instance()->getDialogueState()) {
+		dialogueActive_ = true;
 		GameManager::Instance()->setDialogueState(true);
 		//DESCOMENTAR ESTO CUANDO SE VUELVA A PODER PARAR A LOS NPCs TETES 
 	}
-	else if (dialogueActive) {
-		dialogueActive = text.nextDialogue();
-		if (!dialogueActive) {
+	else if (dialogueActive_) {
+		dialogueActive_ = text.nextDialogue();
+		if (!dialogueActive_) {
 			GameManager::Instance()->setDialogueState(false);
 			if (isFighter_) {
 				GameManager::Instance()->getNPC(this);
@@ -74,7 +74,7 @@ void NPC::activate() {
 
 void NPC::update() {
 
-	if (!dialogueActive && !stopped_)
+	if (!dialogueActive_ && !stopped_)
 		 move();
 	
 	if (movementCont_ > 35) {
@@ -96,7 +96,7 @@ void NPC::update() {
 	else if (!collided_)
 		 handleStoppedAnimation();
 	
-		if (dialogueActive) {
+		if (dialogueActive_) {
 			text.setX(position_.getX());
 			text.setY(position_.getY());
 			if (!text.isActive()) {
@@ -135,15 +135,17 @@ void NPC::handleStoppedAnimation()
 
 void NPC::render()
 {
-	if (dialogueActive && GameManager::Instance()->getDialogueState()) {
-		text.render();
-	}
+
 	//SDL_Rect fillRect = { (Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX() , (Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(), width_, height_ };
 	//SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
 	//SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
 	////SDL_RenderPresent(Game::Instance()->getRenderer());
 
 	Interactuable::render();
+
+	if (dialogueActive_ && GameManager::Instance()->getDialogueState()) {
+		text.render();
+	}
 }
 
 void NPC::move() {
@@ -153,7 +155,7 @@ void NPC::move() {
 		checkMapLimits(pos);
 		//checkNPCLimits(pos);
 		
-		setPosition(pos);
+	setPosition(pos);
 	changeColliderPos(pos);
 	
 }

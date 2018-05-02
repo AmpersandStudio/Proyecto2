@@ -136,8 +136,10 @@ void PlayState::render()
 		break;
 	}
 
-	pLevels.at(GameManager::Instance()->getLevel())->render();
 	GameState::render();
+
+	pLevels.at(GameManager::Instance()->getLevel())->render();
+
 }
 
 

@@ -1,6 +1,6 @@
 #include "GameState.h"
 #include "TextureManager.h"
-
+#include "NPC.h"
 GameState::GameState()
 {
 }
@@ -17,9 +17,10 @@ GameState::~GameState()
 
 void GameState::render() {
 	
-	for (unsigned int i = 0; i < stage.size(); i++)
+	for (unsigned int i = 0; i < stage.size(); i++) {
 		if (stage[i]->getActive())
 			stage[i]->render();
+	}
 }
 
 void GameState::update() {

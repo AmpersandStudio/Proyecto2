@@ -1,77 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="25" height="19" tilewidth="32" tileheight="32" infinite="0" nextobjectid="17">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="left-up" width="25" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="6">
  <properties>
   <property name="helicopter" value="..\assets\helicopter.png"/>
  </properties>
  <tileset firstgid="1" name="Tileset_Tutorial_NIVEL_Beta1_NURIA" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
   <image source="Tileset_Tutorial_NIVEL_Beta1_NURIA.png" width="1920" height="1056"/>
  </tileset>
- <tileset firstgid="1981" name="2ckdj8" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+ <tileset firstgid="1981" name="Tileset_1 (1)" tilewidth="32" tileheight="32" tilecount="272" columns="16">
+  <image source="Tileset_1 (1).png" width="512" height="574"/>
+ </tileset>
+ <tileset firstgid="2253" name="Tileset_Tutorial_NIVEL_Beta1_AARON" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="Tileset_Tutorial_NIVEL_Beta1_AARON.png" width="1920" height="1056"/>
+ </tileset>
+ <tileset firstgid="4233" name="TilesetDefinitivo" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="TilesetBetaTutorial.png" width="1920" height="1056"/>
+ </tileset>
+ <tileset firstgid="6213" name="2ckdj8" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="2ckdj8.png" width="512" height="512"/>
  </tileset>
- <tileset firstgid="2237" name="Personaje9" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+ <tileset firstgid="6469" name="Personaje9" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje9.png" width="96" height="128"/>
  </tileset>
- <tileset firstgid="2249" name="2ckdj8" tilewidth="32" tileheight="32" tilecount="256" columns="16">
-  <image source="2ckdj8.png" width="512" height="512"/>
- </tileset>
- <layer name="Colisiones" width="25" height="19">
+ <layer name="Capa de Patrones 1" width="25" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzj4mBg4BoGeCErA8MiGuLFQHwXiO/REN8HYkk2BgYpGmJpIJYZxaN4FI9iKmBY+fuPgXQMMwObHDXKdlCZDbMDnxmUlO2gMvsWOwTjM4OSsh1UZr9ih2B8ZoDUAQBnTI5N
+  </data>
+ </layer>
+ <layer name="Capa de patrones 2" width="25" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2D4gTQJBobpBDA5wE0S1Y7lBDAxgBbuRAfUcOcoGAWjYHADAFcFGDw=
+  </data>
+ </layer>
+ <layer name="Capa de patrones 3" width="25" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYKA94OIY+naAzCfHDhsWBoY93Aj+JQnCdvhI4MeUAJgdMRL4MTXsoCUgZMd+ND/sJdFPypKE7XhKYTgZo9khKYmQW0qh2chgMMQHpSBagr52KEsSVk+pHcY0sgME6BXntAb0sIMQOMM+0C4gHgAAkY8Rog==
+  </data>
+ </layer>
+ <layer name="Collidable" width="25" height="20" visible="0">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJz7x8DA8G8Uj0jMgMYmBxBjBy59tLKTVLcMhB2Uum8w20Fte0btoMwOagN62IHLHkrzJb3KVmwYAEeCAgg=
+   eJxjYIAALg5MTE2AzXxSMa3MHcXUjXtapB9S7aDUj7jUIfOpaQet4oIa7iTFDloBarqVGDtoZQ897EC2h5aAWmUMPcqxgShDBwIDAIsIEqM=
   </data>
  </layer>
- <layer name="Suelo" width="25" height="19">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2B4Ahk23JiaZlHD/FEwCkbB8AYA45gChw==
-  </data>
- </layer>
- <layer name="Capa de Patrones 1" width="25" height="19">
-  <data encoding="base64" compression="zlib">
-   eJz7x8DA8G8Y4UWs1MfodtxjpT5Gt0OKjfoY3Q4ZNurjgbCDj4OBgZ8Dk37HzsDwnh1BwwA5dsgBzZPnwKT/Ac39z46gKbFjuMTHqB2jdtDCDnIwLc0m1Q4ACl3fBQ==
-  </data>
- </layer>
- <layer name="Perchas" width="25" height="19">
-  <data encoding="base64" compression="zlib">
-   eJxjYBheYBEr9TE6uMdKfYwOpNioj7EBB04IJhfIsKHigQD/iMSUAHR/wjC5dvzmoNBBg9iO81S29z77qB3EgvdY7BgFgwMAAKiYPMo=
-  </data>
- </layer>
- <layer name="Objetos del entorno" width="25" height="19">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFlAAbTgi25USwQcAKSFujiUVxkGa2AScEw4AvJ6q8F5DvjSaGDngZ8cs7cEIwucADaL4n1A4XAnYhg30khgU+wAc0i58Dk37HzsDwnh1BUwLkgObJc2DS/4Dm/mdH0IMJxFIxjAcSFA8Tf6TRwR/0sGOwpXN84B8U4+JT0w4vKMZlBwCVpBsb
-  </data>
- </layer>
- <objectgroup name="Tendero">
-  <object id="5" name="Tendero" type="Cartel" x="256" y="193.5" width="32" height="32">
+ <objectgroup name="Capa de Objetos 1" visible="0">
+  <object id="1" name="Tendero" type="Cartel" x="130" y="257" width="32" height="32">
    <properties>
     <property name="Message " value="¡HOLA CARACOLA!"/>
     <property name="tendero" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="7" name="Tyler" type="Player" x="542.667" y="477.333" width="30.6667" height="33.3333">
+  <object id="2" name="Tendero" type="Cartel" x="129" y="323" width="32" height="32">
+   <properties>
+    <property name="Message " value="¡HOLA CARACOLA!"/>
+    <property name="tendero" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="3" name="PuertaTienda1" type="Cartel" x="480" y="542" width="32" height="32">
+   <properties>
+    <property name="goingToPlay" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="4" name="PuertaTienda1" type="Cartel" x="514" y="542" width="32" height="32">
+   <properties>
+    <property name="goingToPlay" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="5" name="Player" type="Player" x="494.333" y="475.333" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="helicopter"/>
     <property name="textureWidth" type="int" value="32"/>
-   </properties>
-  </object>
-  <object id="12" name="PuertaTienda1" type="Cartel" x="545" y="545" width="32" height="32">
-   <properties>
-    <property name="goingToPlay" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="14" name="PuertaTienda1" type="Cartel" x="576.5" y="544.5" width="32" height="32">
-   <properties>
-    <property name="goingToPlay" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="15" name="Tendero" type="Cartel" x="256" y="270" width="32" height="32">
-   <properties>
-    <property name="Message " value="¡HOLA CARACOLA!"/>
-    <property name="tendero" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

@@ -127,12 +127,12 @@ void CollisionManager::checkNPCDoorCollision(NPC * NPC, std::vector<Door*>& d)
 
 bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer*>& collisionLayers) {
 	
-	Vector2D oriPos = o->getPosition();
+	/*Vector2D oriPos = o->getPosition();
 	Vector2D v = oriPos + o->getVel();
 	v.setX(v.getX() + 2);
 	v.setY(v.getY() + 2);
 
-	o->setPosition(v);
+	o->setPosition(v);*/
 
 	for (std::vector<TileLayer*>::const_iterator it = collisionLayers.begin(); it != collisionLayers.end(); ++it)
 	{
@@ -205,7 +205,7 @@ bool CollisionManager::checkCollision(GameObject* o, const std::vector<TileLayer
 			}
 		}
 
-		o->setPosition(oriPos);
+		/*o->setPosition(oriPos);*/
 
 		if (tileRow < 0) { tileRow = 0; return -1; }
 		else if (tileRow > rows - 1) { tileRow = rows - 1; return -1; }

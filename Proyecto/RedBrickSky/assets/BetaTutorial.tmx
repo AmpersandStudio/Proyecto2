@@ -80,8 +80,8 @@
    eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
-  <object id="37" name="Player" type="Player" x="768" y="2687.33" width="32" height="32">
+ <objectgroup name="Objects">
+  <object id="37" name="Player" type="Player" x="1081.33" y="375.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -279,7 +279,6 @@
   </object>
   <object id="118" name="Cartel3" type="Cartel" x="1312.67" y="2944.67" width="32" height="32">
    <properties>
-    <property name="keyID" type="int" value="0"/>
     <property name="numFrames" type="int" value="2"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="cartel"/>
@@ -288,7 +287,6 @@
   </object>
   <object id="119" name="Cartel2" type="Cartel" x="1343.22" y="352.061" width="32" height="32">
    <properties>
-    <property name="keyID" type="int" value="0"/>
     <property name="numFrames" type="int" value="2"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="cartel"/>

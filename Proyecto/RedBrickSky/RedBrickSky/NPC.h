@@ -4,6 +4,7 @@
 #include "Dialogue.h"
 
 #include "checkML.h"
+
 class Level;
 class NPC :
 	public Interactuable
@@ -37,6 +38,10 @@ public:
 	void setFighter(bool set) { isFighter_ = set; }
 	void isDefeated();
 
+	bool dialogueActive() { return dialogueActive_; };
+
+	Dialogue getDialogue() { return text; };
+
 private:
 	bool isInteracting_;
 	Level* level_;
@@ -53,7 +58,7 @@ private:
 	int tileHeight_;
 
 	Dialogue text;
-	bool dialogueActive;
+	bool dialogueActive_;
 
 	bool isFighter_;
 
