@@ -43,7 +43,7 @@ void Key::activate()
 {
 	if (isActive_)
 	{
-		GameManager::Instance()->setKey(keyID);
+		GameManager::Instance()->setDoor(keyID);
 		setActive(false);
 	}
 }

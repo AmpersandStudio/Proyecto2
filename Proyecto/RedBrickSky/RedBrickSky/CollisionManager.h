@@ -34,7 +34,7 @@ public:
 
 	void checkDoorsInteractions(Player * pPlayer, const std::vector<Door*>& d);
 
-	void checkKeysInteractions(Player* pPlayer, std::vector<Key*>&  k);
+//	void checkKeysInteractions(Player* pPlayer, std::vector<Key*>&  k);
 
 	bool checkCollision(GameObject* pPlayer, const std::vector<TileLayer*>& collisionLayers);
 

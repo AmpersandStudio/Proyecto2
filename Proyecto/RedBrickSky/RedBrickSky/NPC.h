@@ -42,6 +42,10 @@ public:
 
 	Dialogue getDialogue() { return text; };
 
+
+	inline void setKeyID(int id) { keyID_ = id; }
+	inline void setKey(bool key) { hasKey_ = key; }
+
 private:
 	bool isInteracting_;
 	Level* level_;
@@ -63,6 +67,10 @@ private:
 	bool isFighter_;
 
 	int collisionCounter_;
+
+
+	bool hasKey_;
+	int keyID_;
 };
 
 

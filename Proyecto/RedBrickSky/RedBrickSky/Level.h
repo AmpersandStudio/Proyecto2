@@ -58,8 +58,8 @@ public:
 	std::vector<SchoolBag*>* getBags() { return &m_Bags; }
 	const std::vector<SchoolBag*>& getBagsInteractions() { return m_Bags; }
 
-	std::vector<Key*>* getKeys() { return &m_Keys; }
-	std::vector<Key*>& getKeysInteractions() { return m_Keys; }
+	//std::vector<Key*>* getKeys() { return &m_Keys; }
+	//std::vector<Key*>& getKeysInteractions() { return m_Keys; }
 
 
 	std::vector<TileLayer*>* getGrassLayers() { return &m_grassLayer; }
@@ -93,7 +93,7 @@ private:
 	std::vector<NPC*> m_NPCs; //vector de NPC's
 	std::vector<Cartel*> m_Carteles; //vector de carteles
 	std::vector<SchoolBag*> m_Bags; //vector de Mochilas
-	std::vector<Key*> m_Keys; //vector de llaves
+//	std::vector<Key*> m_Keys; //vector de llaves
 	std::vector<Door*> m_Doors;
 
 	int m_tileWidth;	// ancho de tile del nivel

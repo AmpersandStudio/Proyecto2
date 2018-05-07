@@ -127,6 +127,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			int toShop = 0;
 			bool tendero = false;
 			bool toPlayGround = false;
+			bool hasKey = false;
 
 			// get the initial node values type, x and y
 			e->Attribute("x", &x);
@@ -193,6 +194,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								toPlayGround = property->Attribute("value");
 							}
+							else if (property->Attribute("name") == std::string("hasKey"))
+							{
+								hasKey = property->Attribute("value");
+							}
 						}
 					}
 				}
@@ -217,6 +222,8 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				c->setMSG(Message);
 				c->setTileWidth(m_tileSize * m_width);
 				c->setTileHeight(m_tileSize * m_height);
+				c->setKeyID(keyID);
+				c->setKey(hasKey);
 
 				pLevel->getNPCs()->push_back(c);	
 				//pLevel->getNPCs()->push_back(static_cast<NPC*>(pGameObject));
@@ -242,20 +249,23 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				pLevel->getBags()->push_back(c);
 
 			}
-			if (type == "Key")
+			/*if (type == "Key")
 			{
 				Key* k = static_cast<Key*>(pGameObject);
 				k->setKeyID(keyID);
 				k->setTileWidth(m_tileSize * m_width);
 				k->setTileHeight(m_tileSize * m_height);
+
 				pLevel->getKeys()->push_back(k);
 
-			}
+			}*/
 
 			if (type == "Door")
 			{
 				Door* d = static_cast<Door*>(pGameObject);
-				d->setId(keyID);
+				d->setKeyID(keyID);
+				d->setMSG(Message);
+
 				pLevel->getDoors()->push_back(d);
 			}
 

@@ -63,10 +63,13 @@ void NPC::activate() {
 		dialogueActive_ = text.nextDialogue();
 		if (!dialogueActive_) {
 			GameManager::Instance()->setDialogueState(false);
-			if (isFighter_) {
+			if (isFighter_)
+			{
 				GameManager::Instance()->getNPC(this);
 				GameManager::Instance()->toBattle();
 			}
+			else if (hasKey_)
+				GameManager::Instance()->setDoor(keyID_);
 		}
 	}
 }

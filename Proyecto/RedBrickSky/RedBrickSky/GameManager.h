@@ -49,7 +49,7 @@ private:
 
 	GameManager() 
 	{
-		keys.resize(30);
+		doors.resize(30);
 
 		money = 500;
 
@@ -67,7 +67,7 @@ private:
 	int playerHP = 1000;
 	int playerMaxHP = 1000;
 
-	std::vector<bool> keys;
+	std::vector<bool> doors;
 
 public:
 	~GameManager() {};
@@ -107,8 +107,8 @@ public:
 	int getLevel() { return level_; }
 	void setCurrentLevel(int l) { level_ = l; }
 
-	void setKey(int keyId) { keys[keyId] = true; }
-	bool getKey(int keyId) { return keys[keyId]; }
+	void setDoor(int keyId) { doors[keyId] = true; }
+    bool getDoor(int keyId) const { return doors[keyId]; }
 
 	int getEnemy();
 };

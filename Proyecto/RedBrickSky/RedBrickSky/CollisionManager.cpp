@@ -366,7 +366,7 @@ void CollisionManager::checkDoorsInteractions(Player* pPlayer, const std::vector
 	pPlayer->setInteracting(false);
 }
 
-void CollisionManager::checkKeysInteractions(Player* pPlayer, std::vector<Key*>&  k)
+/*void CollisionManager::checkKeysInteractions(Player* pPlayer, std::vector<Key*>&  k)
 {
 	SDL_Rect* playerRect = pPlayer->getRect();
 
@@ -412,7 +412,7 @@ void CollisionManager::checkKeysInteractions(Player* pPlayer, std::vector<Key*>&
 		k.erase(k.begin() + aux);
 
 	pPlayer->setInteracting(false);
-}
+}*/
 
 void CollisionManager::checkCartelesInteractions(Player* pPlayer, const std::vector<Cartel*>&  c)
 {

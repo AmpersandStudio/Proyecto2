@@ -55,7 +55,7 @@ void ObjectLayer::update(Level* pLevel)
 		m_collisionManager.checkInteractions(pLevel->getPlayer(), pLevel->getInteractuables());
 		m_collisionManager.checkNPCInteractions(pLevel->getPlayer(), pLevel->getNPCinteraction());
 		m_collisionManager.checkBagsInteractions(pLevel->getPlayer(), pLevel->getBagsInteractions());
-		m_collisionManager.checkKeysInteractions(pLevel->getPlayer(), pLevel->getKeysInteractions());
+	//	m_collisionManager.checkKeysInteractions(pLevel->getPlayer(), pLevel->getKeysInteractions());
 		m_collisionManager.checkDoorsInteractions(pLevel->getPlayer(), pLevel->getDoorsInteractions());
 	}
 
