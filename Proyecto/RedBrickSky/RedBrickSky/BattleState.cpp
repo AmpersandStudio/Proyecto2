@@ -83,9 +83,8 @@ void BattleState::createUI() {
 void BattleState::pickBackground() {
 	fondo_ = new GameComponent();
 
-	GameManager::Instance()->setLevel(0);
-	int currLevel = GameManager::Instance()->askAboutLevel();
-
+	/*GameManager::Instance()->setLevel();
+	
 	if (currLevel == 0) {
 		int rnd = rand() % 2;
 		switch (rnd)
@@ -128,7 +127,7 @@ void BattleState::pickBackground() {
 		}
 	}
 	fondo_->addRenderComponent(new RenderFullComponent());
-	stage.push_back(fondo_);
+	stage.push_back(fondo_);*/
 }
 
 void BattleState::createPanel() {

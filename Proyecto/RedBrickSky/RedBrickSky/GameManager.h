@@ -39,7 +39,6 @@ private:
 
 	vector<estado> inventory;
 
-	int level = 0;
 	int level_;
 
 	string name;
@@ -100,9 +99,6 @@ public:
 
 	void getNPC(NPC* n) { currentNPC = n; }
 	void exitBattle();
-
-	int askAboutLevel() { return level; }
-	void setLevel(int l) { level = l; }
 
 	int getHealth() { return playerHP; };
 	int getMaxHealth() { return playerMaxHP; };
