@@ -735,19 +735,13 @@ bool BattleState::run()
 				fail = true;
 			}
 			else {
-
+				fail = false;
 				float dmg = player->combat(input, enemy->getDefense(), enemy->getType(), damagedE);
 				if (player->hasTarget())
 				{
 					enemy->receiveDamage(dmg);
 					Attack temp_a = player->getAttack(input);
 					enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
-				}
-				if (!damagedE) 
-				{
-					player->delPhysicsComponent(&map);
-					player->delPhysicsComponent(&mcp);
-					fail = false;
 				}
 			}
 			std::cout << std::endl;
@@ -786,10 +780,10 @@ bool BattleState::run()
 				player->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
 			}
 
-			if (!damagedP) {
+			/*if (!damagedP) {
 				enemy->delPhysicsComponent(&mce);
 				enemy->delPhysicsComponent(&mae);
-			}
+			}*/
 
 			enemy->setTurn(false);
 		}
