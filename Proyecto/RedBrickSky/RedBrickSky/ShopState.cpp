@@ -31,15 +31,6 @@ ShopState::ShopState()
 	//Creación de los items que tendrá la tienda
 	createShopItems();
 
-	GameComponent* frontShop = new GameComponent();
-	frontShop->setTextureId("shop2"); frontShop->addRenderComponent(new RenderFullComponent());
-	stage.push_back(frontShop);
-
-	//Creamos la imagen que va por encima de la mochila para que no se vea al hacer scroll
-	/*GameComponent* frontShop = new GameComponent();
-	frontShop->setTextureId("7"); frontShop->addRenderComponent(rc);
-	stage.push_back(frontShop);*/
-
 	//Creamos botón para volver al menú principal
 	mainMenuBotton();
 }
@@ -120,14 +111,14 @@ void ShopState::createShopItems() {
 		//Crea objetos debajo de los anteriores que no se moverán, serán solo imagen
 		GameComponent* gc2 = new GameComponent();
 		gc2->setTextureId(shopObjects[i].tx); gc2->setOriPos(oriPos); gc2->setPosition(position5); gc2->setWidth(50); gc2->setHeight(50);
-		gc2->addRenderComponent(new RenderSingleFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(this));
+		gc2->addRenderComponent(new RenderSingleFrameComponent());
 		gc2->setColFrame(shopObjects[i].colFrame); gc2->setRowFrame(shopObjects[i].FilFrame);
 		
 		//Crea los objetos de la tienda que se mueden mover
 		GameComponent* gc = new GameComponent();
 		DragNDropShopComponent* p = new DragNDropShopComponent(this, shopObjects[i].price, false, shopObjects[i].ID, gc, shopObjects[i].type, shopObjects[i].nombre, shopObjects[i].FilFrame, shopObjects[i].colFrame);
 		gc->setTextureId(shopObjects[i].tx); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(50); gc->setHeight(50);
-		gc->addRenderComponent(new RenderSingleFrameComponent()); gc->addInputComponent(p); gc->addInputComponent(new MouseInfoClickComponent(shopObjects[i], this));	gc->addInputComponent(new MouseScrollShopComponent(this));
+		gc->addRenderComponent(new RenderSingleFrameComponent()); gc->addInputComponent(p); gc->addInputComponent(new MouseInfoClickComponent(shopObjects[i], this));
 		gc->setColFrame(shopObjects[i].colFrame); gc->setRowFrame(shopObjects[i].FilFrame);
 
 
@@ -174,7 +165,7 @@ void ShopState::createBagItems() {
 			double height = invent[i].h;
 
 			gc->setTextureId(invent[i].tx); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-			gc->addRenderComponent(new RenderSingleFrameComponent); gc->addInputComponent(new MouseScrollShopComponent(this));  gc->addInputComponent(new MouseInfoClickComponent(invent[i], this));
+			gc->addRenderComponent(new RenderSingleFrameComponent); gc->addInputComponent(new MouseInfoClickComponent(invent[i], this));
 			gc->setColFrame(invent[i].colFrame); gc->setRowFrame(invent[i].FilFrame);
 
 			stage.push_back(gc);
@@ -226,11 +217,10 @@ void ShopState::createSP() {
 			s.x = position0.getX();
 			s.y = position0.getY();
 			GameComponent* gc = new GameComponent();
-			InputComponent* auxSCP = new MouseScrollShopComponent(this, auxOID);
 
 			gc->setTextureId("8"); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
 			
-			gc->addRenderComponent(new RenderSingleFrameComponent()); gc->addInputComponent(auxSCP);//  gc->addInputComponent(InventoryShopFBcomponent());
+			gc->addRenderComponent(new RenderSingleFrameComponent()); 
 
 			stage.push_back(gc);
 			SP.push_back(s);
