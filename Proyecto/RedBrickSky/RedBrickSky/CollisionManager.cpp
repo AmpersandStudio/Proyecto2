@@ -103,6 +103,7 @@ void CollisionManager::checkNPCDoorCollision(NPC * NPC, std::vector<Door*>& d)
 
 	for (Door* door : d)
 	{
+		if (door->isActive()) continue;
 
 		if (Collisions::collides(NPC, door)) {
 

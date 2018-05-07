@@ -81,7 +81,7 @@
   </data>
  </layer>
  <objectgroup name="Objects">
-  <object id="37" name="Player" type="Player" x="831.33" y="2719.33" width="32" height="32">
+  <object id="37" name="Player" type="Player" x="813.33" y="2595.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -114,9 +114,9 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="42" name="Personaje2" type="NPC" x="701.666" y="2688" width="32" height="32">
+  <object id="42" name="Personaje2" type="NPC" x="716.666" y="2737" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC2"/>
+    <property name="Message" value="NPC2Test"/>
     <property name="hasKey" type="bool" value="true"/>
     <property name="keyID" type="int" value="0"/>
     <property name="numFrames" type="int" value="3"/>
@@ -263,7 +263,7 @@
   </object>
   <object id="115" name="Door" type="Door" x="768" y="2496" width="64" height="32">
    <properties>
-    <property name="Message" value="NPC2"/>
+    <property name="Message" value="Door - Verja"/>
     <property name="keyID" type="int" value="0"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="32"/>
