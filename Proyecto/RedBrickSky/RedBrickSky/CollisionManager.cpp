@@ -11,6 +11,8 @@ void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vect
 
 		if (checkCollision(pPlayer, collisionLayers) != 0)
 		{
+			TheSoundManager::Instance()->playSound("rebote", 0);
+
 			Vector2D pPos = pPlayer->getPosition();
 			Vector2D pDir = pPlayer->getDirection();
 
@@ -273,6 +275,8 @@ void CollisionManager::checkPlayerGOinteraction(NPC* o, Player* player) {
 	o->setPosition(v);
 
 	if (Collisions::collides(o, player)) {
+
+		TheSoundManager::Instance()->playSound("rebote", 0);
 
 		Vector2D pPos = player->getPosition();
 		Vector2D pDir = player->getDirection();
