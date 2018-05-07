@@ -148,19 +148,39 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\assets\\Nivel2.png", "level2", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Tienda.png", "tiendaLevel", RENDERER_);
 
-	// Load Sounds
-	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
-	TheSoundManager::Instance()->load("..\\sounds\\click.wav", "click", SOUND_SFX);
-	TheSoundManager::Instance()->load("..\\sounds\\punch.wav", "punch", SOUND_SFX);
-	TheSoundManager::Instance()->load("..\\sounds\\punch_alt.wav", "punch_2", SOUND_SFX);
+	// Load Music
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop_new.wav", "test", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_transition.wav", "trans_btl", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\music.wav", "music", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\theme.ogg", "menu", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\Battle1.ogg", "battle", SOUND_MUSIC);
-	TheSoundManager::Instance()->load("..\\sounds\\credits.ogg", "credits", SOUND_MUSIC);	
+	TheSoundManager::Instance()->load("..\\sounds\\credits.ogg", "credits", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\departure.ogg", "departure", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_exterior.wav", "exteriores", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_interior.wav", "interiores", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\boss_battle_loop.wav", "BossMusic", SOUND_MUSIC);
+
+	//Load SFX
+	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\click.wav", "click", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\punch.wav", "punch", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\punch_alt.wav", "punch_2", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\pasos.wav", "piedra", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\hierba.wav", "hierba", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\Censor_Beep.wav", "censura", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\coins.wav", "monedas", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\Collision.wav", "rebote", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\compra_tienda.wav", "compra", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\cremallera.wav", "cremallera", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\dialogue_sound.wav", "dialogo", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\door_close.wav", "Puerta_cerrar", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\door_open.wav", "Puerta_abrir", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\hit.ogg", "golpe", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\pick_up.wav", "recoger", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\reglazo.wav", "reglazo", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\School_ring.wav", "timbre", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\tirachinas.mp3", "Tirachinas", SOUND_SFX);
 
 	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
 }
