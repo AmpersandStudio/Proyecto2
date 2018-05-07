@@ -55,7 +55,8 @@ bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 	else  if (event.type == SDL_MOUSEBUTTONUP && isMouseSelection) {
 		isMouseSelection = false;
 
-		devMat(x, y, o);		
+		if(devMat(x, y, o))
+			TheSoundManager::Instance()->playSound("compra", 0);
 
 		o->setPosition(o->getOriPos());
 	}

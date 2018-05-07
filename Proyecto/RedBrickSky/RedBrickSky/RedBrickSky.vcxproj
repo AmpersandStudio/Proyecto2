@@ -41,7 +41,6 @@
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Interactuable.cpp" />
-    <ClCompile Include="InventBottomsComponent.cpp" />
     <ClCompile Include="InventoryShopFBcomponent.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="KeyBoardShopComponent.cpp" />
@@ -122,7 +121,6 @@
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Interactuable.h" />
-    <ClInclude Include="InventBottomsComponent.h" />
     <ClInclude Include="InventoryShopFBcomponent.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="KeyBoardShopComponent.h" />
