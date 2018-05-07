@@ -72,6 +72,9 @@ protected:
 	bool fade2Done_;
 	bool END_;
 	bool weaponsEnabled_ = false;
+	bool damagedE = true;
+	bool damagedP = true;
+	bool fail = false;
 
 	Vector2D iniPos;
 	Vector2D positionW1;

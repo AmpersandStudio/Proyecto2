@@ -83,9 +83,21 @@ void BattleState::createUI() {
 void BattleState::pickBackground() {
 	fondo_ = new GameComponent();
 
-	/*GameManager::Instance()->setLevel();
+	int currLevel = GameManager::Instance()->getLevel();
 	
 	if (currLevel == 0) {
+		fondo_->setTextureId("battlebg1");
+	}
+
+	else if (currLevel == 1) {
+		fondo_->setTextureId("battlebg4");
+	}
+
+	else if (currLevel == 2) {
+		fondo_->setTextureId("battlebg3");
+	}
+
+	else if (currLevel == 3) {
 		int rnd = rand() % 2;
 		switch (rnd)
 		{
@@ -102,32 +114,36 @@ void BattleState::pickBackground() {
 		}
 	}
 
-	else if (currLevel == 1) {
-		int rnd = rand() % 5;
+	else if (currLevel == 4) {
+		fondo_->setTextureId("battlebg2");
+	}
+
+	else if (currLevel == 5) {
+		int rnd = rand() % 3;
 		switch (rnd)
 		{
 		case 0:
-			fondo_->setTextureId("battlebg2");
-			break;
-		case 1:
 			fondo_->setTextureId("battlebg3");
 			break;
-		case 2:
-			fondo_->setTextureId("battlebg5");
-			break;
-		case 3:
+		case 1:
 			fondo_->setTextureId("battlebg6");
 			break;
-		case 4:
+		case 2:
 			fondo_->setTextureId("battlebg7");
 			break;
+
 		default:
-			fondo_->setTextureId("battlebg2");
+			fondo_->setTextureId("battlebg3");
 			break;
 		}
 	}
+
+	else {
+		fondo_->setTextureId("battlebg4");
+	}
+
 	fondo_->addRenderComponent(new RenderFullComponent());
-	stage.push_back(fondo_);*/
+	stage.push_back(fondo_);
 }
 
 void BattleState::createPanel() {
@@ -716,15 +732,23 @@ bool BattleState::run()
 
 			if (!player->useAttack(input)) {
 				std::cout << "No quedan PP para este ataque!" << std::endl;
+				fail = true;
 			}
 			else {
 
-				float dmg = player->combat(input, enemy->getDefense(), enemy->getType());
+				float dmg = player->combat(input, enemy->getDefense(), enemy->getType(), damagedE);
 				if (player->hasTarget())
 				{
 					enemy->receiveDamage(dmg);
 					Attack temp_a = player->getAttack(input);
 					enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
+				}
+				if (!damagedE) 
+				{
+					player->delPhysicsComponent(&map);
+					player->delPhysicsComponent(&mcp);
+					fail = false;
+					attackAnim_ = false;
 				}
 			}
 			std::cout << std::endl;
@@ -736,19 +760,20 @@ bool BattleState::run()
 			interfaz.pruebaTexto_->setTextureId("enemAtacoTexto");
 			enemy->useAttack(0);
 			int e_input = enemy->getInput();
-			float dmg = enemy->combat(e_input, player->getDefense(), player->getType());
+
+			float dmg = enemy->combat(e_input, player->getDefense(), player->getType(), damagedP);
 
 			enemy->delPhysicsComponent(&mce);
 			enemy->delPhysicsComponent(&mae);
 			Attack a = enemy->getAttack(e_input);
-			if (a.type == Physical || a.type == Ranged) {
+			if ((a.type == Physical || a.type == Ranged)) {
 				Vector2D p = player->getPosition();
 				Vector2D e = enemy->getPosition();
 				mce = MoveToThisPosComponent(e, p);
 				enemy->addPhysicsComponent(&mce);
 				attackAnim_ = true;
 			}
-			else if (a.type == Magical || a.type == Support ) {
+			else if ((a.type == Magical || a.type == Support)) {
 				Vector2D e = enemy->getPosition();
 				mae = MagicAttackComponent(e, 0.3);
 				enemy->addPhysicsComponent(&mae);
@@ -761,6 +786,12 @@ bool BattleState::run()
 				Attack temp_a = enemy->getAttack(e_input);
 				player->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
 			}
+
+			if (!damagedP) {
+				enemy->delPhysicsComponent(&mce);
+				enemy->delPhysicsComponent(&mae);
+			}
+
 			enemy->setTurn(false);
 		}
 
@@ -857,11 +888,11 @@ void BattleState::attack(int i) {
 
 	player->delPhysicsComponent(&mcp);
 	player->delPhysicsComponent(&map);
-	if (a.type == Physical || a.type == Ranged) {
+	if ((a.type == Physical || a.type == Ranged)) {
 		mcp = MoveToThisPosComponent(p, e);
 		player->addPhysicsComponent(&mcp);
 	}
-	else if (a.type == Magical || a.type == Support) {
+	else if ((a.type == Magical || a.type == Support)) {
 		map = MagicAttackComponent(p, 0.3);
 		player->addPhysicsComponent(&map);
 	}

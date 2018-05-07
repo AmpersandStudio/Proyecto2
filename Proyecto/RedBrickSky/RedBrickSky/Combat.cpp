@@ -137,7 +137,8 @@ bool Combat::run()
 			std::cout << "No quedan PP para este ataque!" << std::endl;
 		}
 
-		float dmg = player->combat(input, enemy->getDefense(), enemy->getType());
+		bool b;
+		float dmg = player->combat(input, enemy->getDefense(), enemy->getType(), b);
 		if (player->hasTarget())
 		{
 			enemy->receiveDamage(dmg);
@@ -151,7 +152,8 @@ bool Combat::run()
 		{
 			enemy->useAttack(0);
 			int e_input = enemy->getInput();
-			dmg = enemy->combat(e_input, player->getDefense(), player->getType());
+			bool b;
+			dmg = enemy->combat(e_input, player->getDefense(), player->getType(),b );
 			if (enemy->hasTarget())
 			{
 				player->receiveDamage(dmg);

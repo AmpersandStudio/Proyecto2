@@ -117,9 +117,10 @@ void BattleCharacter::finalDamage(float & dmg, int i)
 	dmg *= attacks[i].strength;
 }
 
-float BattleCharacter::combat(int i, float enemyDef, Type enemyType)
+float BattleCharacter::combat(int i, float enemyDef, Type enemyType, bool& damaged)
 {
 	float dmg = 0;
+	damaged = true;
 
 	target = precisionRatio(i);
 
@@ -137,6 +138,7 @@ float BattleCharacter::combat(int i, float enemyDef, Type enemyType)
 	else
 	{
 		std::cout << "Pero fallo!" << std::endl;
+		damaged = false;
 	}
 
 	return dmg;
