@@ -1,6 +1,5 @@
 #include "BackPack.h"
 #include "DragNDropComponent.h"
-#include "InventBottomsComponent.h"
 #include "InventoryShopFBcomponent.h"
 #include "RenderSingleFrameComponent.h"
 #include "BagXboxControllerComponent.h"
@@ -10,10 +9,8 @@ BackPack::BackPack()
 {
 	money = GameManager::Instance()->getMoney();
 	invent = GameManager::Instance()->copyInventory();
-	cout << "Tam Inventario:  " << invent.size() << endl;
-	StringToScreen::Instance()->pushInfinite("VIDA: " + std::to_string(GameManager::Instance()->getHealth() / 10), 205, 130);
 
-	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 283, 145);
+	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 130, 515);
 
 	//Componentes necesarios
 	actualState_ = 0;
@@ -28,7 +25,7 @@ BackPack::BackPack()
 		XboxController::Instance()->insertController();
 
 	Vector2D v(0.35, 0.12);
-	Vector2D v2(0.75, 0.25);
+	Vector2D v2(0.75, 0.3);
 	pos1 = v; pos2 = v2;
 	width1 = 256; width2 = 171;
 	height1 = 512; height2 = 341;
@@ -83,25 +80,7 @@ bool BackPack::handleEvent(const SDL_Event & event)
 			if (XboxController::Instance()->getButtonState(0, 1) && buttonsCreated) {//Si se ha pulsado la B
 				toMenu();
 			}
-			else if (XboxController::Instance()->getButtonState(0, 0) && buttonsCreated) {
-				elimina();
-				creaSP();
-				cargaElementos(Weapons);
-			}
-
-			else if (XboxController::Instance()->getButtonState(0, 2) && buttonsCreated) {
-				elimina();
-				creaSP();
-				cargaElementos(Potions);
-			}
-
-			else if (XboxController::Instance()->getButtonState(0, 3) && buttonsCreated) {
-				elimina();
-				creaSP();
-				cargaElementos(Objects);
-			}
-
-			
+						
 		}
 
 		else if (event.type == SDL_JOYBUTTONUP)
@@ -116,17 +95,17 @@ void BackPack::toMenu() {
 	sm->popState();
 }
 
-void BackPack::cargaElementos(vector<estado> l) {
+void BackPack::cargaElementos() {
 
 	//Asginamos los elementos dentro del vector de la mochila a cada casilla
 	vector<estado> auxV;
-	for (unsigned int i = 0; i < l.size(); i++) {
+	for (unsigned int i = 0; i < invent.size(); i++) {
 
-		if (l[i].mX != -10 && l[i].mY != -10) {
+		if (invent[i].mX != -10 && invent[i].mY != -10) {
 
-			int x = l[i].mX;
-			int y = l[i].mY;
-			createItemAtSP(x, y, l[i].objectID, l[i]);
+			int x = invent[i].mX;
+			int y = invent[i].mY;
+			createItemAtSP(x, y, invent[i].objectID, invent[i]);
 
 			bool found = false;
 			for (int i = 0; i < SP.size() && !found; i++) {
@@ -137,7 +116,7 @@ void BackPack::cargaElementos(vector<estado> l) {
 			}
 		}
 		else
-			auxV.push_back(l[i]);
+			auxV.push_back(invent[i]);
 	}
 
 	//todos aquellos elementos que no hayan sido ordenados previamente, los asignamos a un lugar 
@@ -353,18 +332,6 @@ void BackPack::creaSP() {
 		stage.push_back(gc);
 
 	}
-
-	//Creacion del botón que nos devolverá a los anteriores
-	GameComponent* weapon = new GameComponent();
-
-	Vector2D positionW(5.25, 0.5);
-
-	weapon->setTextureId("3"); weapon->setPosition(positionW); weapon->setWidth(120); weapon->setHeight(60);
-	weapon->addRenderComponent(new RenderSingleFrameComponent());  weapon->addInputComponent(new InventBottomsComponent(this, Weapons, true, 0));
-
-	stage.push_back(weapon);
-	botones.push_back(weapon);
-
 	//Creamos el elemento que nos permitirá movernos con teclado
 	selector_ = new GameComponent();
 
@@ -411,20 +378,13 @@ void BackPack::creaEscena() {
 	double height = 60;
 
 	bottonBack->setTextureId("3"); bottonBack->setPosition(position0); bottonBack->setWidth(width); bottonBack->setHeight(height);
-	bottonBack->addRenderComponent(new RenderSingleFrameComponent()); bottonBack->addInputComponent(new MouseScrollComponent());
+	bottonBack->addRenderComponent(new RenderSingleFrameComponent());// bottonBack->addInputComponent(new MouseScrollComponent());
 	bottonBack->addInputComponent(new MouseInputComponentButton());
 
 	stage.push_back(bottonBack);
 
-	//Creacion de los "botones" que nos llevarán a cada tipo de Item del inventario
-	//Boton para las armas
-	createButtons(4, 3, Weapons, "14", 0);
-
-	//Boton para las pociones
-	createButtons(4, 5, Potions, "15", 1);
-
-	//Boton para los objetos
-	createButtons(4, 7, Objects, "16",2);	
+	creaSP();
+	cargaElementos();
 }
 
 void BackPack::creaFondoTienda() {
@@ -459,7 +419,7 @@ void BackPack::createButtons(int x, int y, vector<estado> type, std::string t, i
 	Vector2D position(x, y);
 
 	GC->setTextureId(t); GC->setPosition(position); GC->setWidth(130); GC->setHeight(60);
-	GC->addRenderComponent(new RenderSingleFrameComponent());  GC->addInputComponent(new InventBottomsComponent(this, type, false, st));
+	GC->addRenderComponent(new RenderSingleFrameComponent());  
 
 	stage.push_back(GC);
 	botones.push_back(GC);
@@ -515,7 +475,32 @@ void BackPack::render() {
 
 	GameState::render();
 
-	TheTextureManager::Instance()->drawItem("sweet", 235, 160,
+
+	//BARRA DE VIDA
+
+	TheTextureManager::Instance()->drawFull("inventHP", 142, 122,
+		180, 30 ,Game::Instance()->getRenderer(), 0, 255);
+
+	Vector2D position0(172, 138);
+
+	int iniwidth = 120;
+	int height = 8;
+
+	int width = (GameManager::Instance()->getHealth() < GameManager::Instance()->getMaxHealth()) ? (GameManager::Instance()->getHealth() * iniwidth / GameManager::Instance()->getMaxHealth()) : iniwidth;
+	if (width < 0) width = 0;
+
+	SDL_Rect fillRect = { (int)position0.getX(), (int)position0.getY() , width, height };
+	if (width > iniwidth / 2)
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0x00, 0xFF, 0x00, 0xFF);
+	else if (width > iniwidth / 3)
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0xFF, 0x00, 0xFF);
+	else
+		SDL_SetRenderDrawColor(Game::Instance()->getRenderer(), 0xFF, 0x00, 0x00, 0xFF);
+	SDL_RenderFillRect(Game::Instance()->getRenderer(), &fillRect);
+
+
+	//Sweeties
+	TheTextureManager::Instance()->drawItem("sweet", 90, 510,
 		50, 30, 0,0, 1,2, Game::Instance()->getRenderer(), 0, 255);
 	
 	

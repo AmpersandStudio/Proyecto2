@@ -70,7 +70,7 @@ public:
 	vector<estado> getInvent() { return invent; };
 	void setInvent(vector<estado> v);
 	void setSP(vector<estado> v);
-	void cargaElementos(vector<estado> l);
+	void cargaElementos();
 	void elimina();
 	void creaSP();
 	void creaEscena();
