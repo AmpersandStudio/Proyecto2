@@ -748,7 +748,6 @@ bool BattleState::run()
 					player->delPhysicsComponent(&map);
 					player->delPhysicsComponent(&mcp);
 					fail = false;
-					attackAnim_ = false;
 				}
 			}
 			std::cout << std::endl;

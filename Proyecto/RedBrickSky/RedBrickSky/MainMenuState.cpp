@@ -8,6 +8,7 @@
 #include "NameSelectorState.h"
 #include "TextureManager.h"
 #include "SoundManager.h"
+#include "CreditsState.h"
 
 MainMenuState::MainMenuState()
 {
@@ -30,6 +31,7 @@ MainMenuState::MainMenuState()
 	Button* button0 = new Button("nbutton", toGame, 0);
 	Button* button3 = new Button("ebutton", exit, 3);
 	Button* button2 = new Button("nbutton", toGame2, 0);
+	Button* button4 = new Button("credits", toCredits, 0);
 
 	Vector2D position0(0.4, 3);
 	Vector2D position2(0.4, 4.5);
@@ -42,10 +44,12 @@ MainMenuState::MainMenuState()
 	button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(new RenderFrameComponent()); button0->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button0->addInputComponent(new MouseInputComponentButton(this));
 	button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(new RenderFrameComponent()); button3->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button3->addInputComponent(new MouseInputComponentButton(this));
 	button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(new RenderFrameComponent()); button2->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button2->addInputComponent(new MouseInputComponentButton(this));
+	button4->setPosition(position2); button4->setWidth(width); button4->setHeight(height); button4->addRenderComponent(new RenderFrameComponent()); button4->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button4->addInputComponent(new MouseInputComponentButton(this));
 
 	stage.push_back(button0);
 	stage.push_back(button3);
 	stage.push_back(button2);
+	stage.push_back(button4);
 	button2->setActive(false);
 
 	XboxController::Instance()->insertController();
@@ -70,6 +74,10 @@ void MainMenuState::toGame2()
 
 void MainMenuState::toSelector() {
 	Game::Instance()->getStateMachine()->pushState(new NameSelectorState());
+}
+
+void MainMenuState::toCredits() {
+	Game::Instance()->getStateMachine()->pushState(new CreditsState());
 }
 
 void MainMenuState::update() {
