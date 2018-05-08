@@ -11,15 +11,7 @@ void BattleCharacter::addAttack(Attack a)
 	{
 		attacks.at(attackIndex) = a;
 		attackIndex++;
-	}
-	
-}
-
-int BattleCharacter::checkAttacks()
-{
-	int sum = 0;
-	for (Attack a : attacks) sum += a.pp;
-	return sum;
+	}	
 }
 
 bool BattleCharacter::useAttack(int i)
@@ -38,13 +30,15 @@ void BattleCharacter::supportAttack(int i)
 
 		if (attack > 2)
 		{
-			std::cout << "El ataque no bajara mas!" << std::endl;
+			std::cout << "El ataque no subira mas!" << std::endl;
 			attack = 2;
 		}
 		else
 		{
-			std::cout << "Bajo el ataque!" << std::endl;
+			std::cout << "Subio el ataque!" << std::endl;
 		}
+
+		atkFactor = attacks[i].atk_factor;
 	}
 
 	if (attacks[i].def_factor != 1)
@@ -53,13 +47,15 @@ void BattleCharacter::supportAttack(int i)
 
 		if (defense > 2)
 		{
-			std::cout << "La defensa no bajara mas!" << std::endl;
+			std::cout << "La defensa no subira mas!" << std::endl;
 			defense = 2;
 		}
 		else
 		{
-			std::cout << "Bajo la defensa!" << std::endl;
+			std::cout << "Subio la defensa!" << std::endl;
 		}
+
+		defFactor = attacks[i].def_factor;
 	}
 
 	if (attacks[i].prc_factor != 1)
@@ -68,13 +64,15 @@ void BattleCharacter::supportAttack(int i)
 
 		if (precision > 2)
 		{
-			std::cout << "La precision no bajara mas!" << std::endl;
+			std::cout << "La precision no subira mas!" << std::endl;
 			precision = 2;
 		}
 		else
 		{
-			std::cout << "Bajo la precision!" << std::endl;
+			std::cout << "Subio la precision!" << std::endl;
 		}
+
+		prcFactor = attacks[i].prc_factor;
 	}
 
 	support = false;
@@ -126,7 +124,8 @@ float BattleCharacter::combat(int i, float enemyDef, Type enemyType, bool& damag
 
 	if (target)
 	{
-		if (support) supportAttack(i);
+		if (support) 
+			supportAttack(i);
 		else
 		{
 			dmg = defenseRatio(enemyDef);
@@ -166,6 +165,8 @@ void BattleCharacter::receiveFactors(float atk, float def, float prc)
 		{
 			std::cout << "Bajo el ataque!" << std::endl;
 		}
+
+		atkFactor = atk;
 	}
 
 	if (def != 1)
@@ -181,6 +182,8 @@ void BattleCharacter::receiveFactors(float atk, float def, float prc)
 		{
 			std::cout << "Bajo la defensa!" << std::endl;
 		}
+
+		defFactor = def;
 	}
 
 	if (prc != 1)
@@ -196,5 +199,7 @@ void BattleCharacter::receiveFactors(float atk, float def, float prc)
 		{
 			std::cout << "Bajo la precision!" << std::endl;
 		}
+
+		prcFactor = prc;
 	}
 }

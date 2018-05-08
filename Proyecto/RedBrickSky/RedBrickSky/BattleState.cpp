@@ -102,14 +102,14 @@ void BattleState::pickBackground() {
 		switch (rnd)
 		{
 		case 0:
-			fondo_->setTextureId("battlebg1");
+			fondo_->setTextureId("battlebg11");
 			break;
 		case 1:
-			fondo_->setTextureId("battlebg4");
+			fondo_->setTextureId("battlebg8");
 			break;
 
 		default:
-			fondo_->setTextureId("battlebg4");
+			fondo_->setTextureId("battlebg8");
 			break;
 		}
 	}
@@ -119,11 +119,11 @@ void BattleState::pickBackground() {
 	}
 
 	else if (currLevel == 5) {
-		int rnd = rand() % 3;
+		int rnd = rand() % 4;
 		switch (rnd)
 		{
 		case 0:
-			fondo_->setTextureId("battlebg3");
+			fondo_->setTextureId("battlebg9");
 			break;
 		case 1:
 			fondo_->setTextureId("battlebg6");
@@ -131,9 +131,12 @@ void BattleState::pickBackground() {
 		case 2:
 			fondo_->setTextureId("battlebg7");
 			break;
+		case 3:
+			fondo_->setTextureId("battlebg10");
+			break;
 
 		default:
-			fondo_->setTextureId("battlebg3");
+			fondo_->setTextureId("battlebg10");
 			break;
 		}
 	}
@@ -365,6 +368,7 @@ void BattleState::constructC() {
 	//creamos contenido
 	createPlayer();
 	createEnemy();
+	createStatus();
 	createAttacks();
 
 	//iniciamos combate
@@ -429,6 +433,109 @@ void BattleState::createEnemy()
 	stage.push_back(enemy);
 }
 
+void BattleState::createStatus() 
+{
+	Vector2D pos(0, 0);
+
+	//PLAYER
+	atqPP = new GameComponent();
+	pos.setX(1); pos.setY(3);
+	atqPP->setTextureId("ATQ+");
+	atqPP->setWidth(60); atqPP->setHeight((60));
+	atqPP->setPosition(pos);
+	atqPP->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(atqPP);
+
+	atqMP = new GameComponent();
+	pos.setX(0.5); pos.setY(3);
+	atqMP->setTextureId("ATQ-");
+	atqMP->setWidth(60); atqMP->setHeight((60));
+	atqMP->setPosition(pos);
+	atqMP->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(atqMP);
+
+	defPP = new GameComponent();
+	pos.setX(1); pos.setY(4);
+	defPP->setTextureId("DEF+");
+	defPP->setWidth(60); defPP->setHeight((60));
+	defPP->setPosition(pos);
+	defPP->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(defPP);
+
+	defMP = new GameComponent();
+	pos.setX(0.5); pos.setY(4);
+	defMP->setTextureId("DEF-");
+	defMP->setWidth(60); defMP->setHeight((60));
+	defMP->setPosition(pos);
+	defMP->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(defMP);
+
+	prcPP = new GameComponent();
+	pos.setX(1); pos.setY(5);
+	prcPP->setTextureId("PRC+");
+	prcPP->setWidth(60); prcPP->setHeight((60));
+	prcPP->setPosition(pos);
+	prcPP->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(prcPP);
+
+	prcMP = new GameComponent();
+	pos.setX(0.5); pos.setY(5);
+	prcMP->setTextureId("PRC-");
+	prcMP->setWidth(60); prcMP->setHeight((60));
+	prcMP->setPosition(pos);
+	prcMP->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(prcMP);
+
+	//ENEMY
+	atqPE = new GameComponent();
+	pos.setX(11.5); pos.setY(3);
+	atqPE->setTextureId("ATQ+");
+	atqPE->setWidth(60); atqPE->setHeight((60));
+	atqPE->setPosition(pos);
+	atqPE->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(atqPE);
+
+	atqME = new GameComponent();
+	pos.setX(12); pos.setY(3);
+	atqME->setTextureId("ATQ-");
+	atqME->setWidth(60); atqME->setHeight((60));
+	atqME->setPosition(pos);
+	atqME->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(atqME);
+
+	defPE = new GameComponent();
+	pos.setX(11.5); pos.setY(4);
+	defPE->setTextureId("DEF+");
+	defPE->setWidth(60); defPE->setHeight((60));
+	defPE->setPosition(pos);
+	defPE->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(defPE);
+
+	defME = new GameComponent();
+	pos.setX(12); pos.setY(4);
+	defME->setTextureId("DEF-");
+	defME->setWidth(60); defME->setHeight((60));
+	defME->setPosition(pos);
+	defME->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(defME);
+
+	prcPE = new GameComponent();
+	pos.setX(11.5); pos.setY(5);
+	prcPE->setTextureId("PRC+");
+	prcPE->setWidth(60); prcPE->setHeight((60));
+	prcPE->setPosition(pos);
+	prcPE->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(prcPE);
+
+	prcME = new GameComponent();
+	pos.setX(12); pos.setY(5);
+	prcME->setTextureId("PRC-");
+	prcME->setWidth(60); prcME->setHeight((60));
+	prcME->setPosition(pos);
+	prcME->addRenderComponent(new RenderFrameComponent());
+	stage.push_back(prcME);
+}
+
 void BattleState::createAttacks() {
 	ataques.resize(33);
 	// Ataques de Armas Fisicas
@@ -477,7 +584,7 @@ void BattleState::createAttacks() {
 	// Ataques de Armas de Apoyo
 	//sacapuntas
 	ataques[24] = Attack("Afilador", Support, 20, 20, 0, 100, 1.2f, 1, 1);
-	ataques[25] = Attack("Trazado Fino", Support, 20, 0, 100, 20, 1, 1, 1.2f);
+	ataques[25] = Attack("Trazado Fino", Support, 20, 20, 100, 70, 1, 1, 1.2f);
 	//calculadora
 	ataques[26] = Attack("Calculo Algebraico Complejo", Support, 20, 20, 0, 100, 1.2f, 1, 1.1f);
 	ataques[27] = Attack("Stack Overflow", Support, 5, 5, 0, 100, 1.5f, 1, 1);
@@ -489,7 +596,7 @@ void BattleState::createAttacks() {
 	ataques[31] = Attack("Empezamos Tema Nuevo", Support, 5, 5, 0, 100, 1.4f, 1, 1.1f);
 
 	//genericone
-	ataques[32] = Attack("Sin Arma", Physical, 5, 5, 10, 100, 1.4f, 1, 1.1f);
+	ataques[32] = Attack("Sin Arma", Physical, 5, 5, 10, 100, 1, 1, 1);
 
 	e_ataques.resize(12);
 	e_ataques[0] = Attack("Placaje", Physical, 20, 20, 20, 90, 1, 1, 1);
@@ -557,6 +664,13 @@ void BattleState::update() {
 		if (!END_ && Attacking_) {
 			END_ = run();
 		}
+		if (!damagedE || !damagedP || fail) contText++;
+		else contText = 0;
+		if (contText > 50) { keepText = false; fail = false; damagedE = true; damagedP = true; }
+		else keepText = true;
+
+		//controlamos status
+		controlStatus();
 	}
 	if (END_) {
 		TheSoundManager::Instance()->stopMusic();
@@ -592,6 +706,10 @@ void BattleState::render() {
 			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel16, { 0,0,0,255 }, 660, 540, TheGame::Instance()->getRenderer());
 			temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
 			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, 660, 560, TheGame::Instance()->getRenderer());
+		}
+
+		if ((!damagedP || !damagedE || fail) && keepText) {
+			TheTextureManager::Instance()->drawText("FALLO!", TextureManager::Pixel32, { 255,0,0,255 }, 330, 200, TheGame::Instance()->getRenderer());
 		}
 	}
 }
@@ -741,7 +859,8 @@ bool BattleState::run()
 				{
 					enemy->receiveDamage(dmg);
 					Attack temp_a = player->getAttack(input);
-					enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
+					if (temp_a.type != Support)
+						enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
 				}
 			}
 			std::cout << std::endl;
@@ -777,13 +896,9 @@ bool BattleState::run()
 			{
 				player->receiveDamage(dmg);
 				Attack temp_a = enemy->getAttack(e_input);
-				player->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
+				if (temp_a.type != Support)
+					player->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
 			}
-
-			/*if (!damagedP) {
-				enemy->delPhysicsComponent(&mce);
-				enemy->delPhysicsComponent(&mae);
-			}*/
 
 			enemy->setTurn(false);
 		}
@@ -811,6 +926,88 @@ bool BattleState::run()
 		lastTurn = true;
 	}
 	return false;
+}
+
+void BattleState::controlStatus() {
+	//player attack
+	if (player->getAtkFactor() > 1) {
+		atqPP->setActive(true);
+		atqMP->setActive(false);
+	}
+	else if (player->getAtkFactor() < 1) {
+		atqMP->setActive(true);
+		atqPP->setActive(false);
+	}
+	else {
+		atqPP->setActive(false);
+		atqMP->setActive(false);
+	}
+	//player defense
+	if (player->getDefFactor() > 1) {
+		defPP->setActive(true);
+		defMP->setActive(false);
+	}
+	else if (player->getDefFactor() < 1) {
+		defMP->setActive(true);
+		defPP->setActive(false);
+	}
+	else {
+		defPP->setActive(false);
+		defMP->setActive(false);
+	}
+	//player precition
+	if (player->getPrcFactor() > 1) {
+		prcPP->setActive(true);
+		prcMP->setActive(false);
+	}
+	else if (player->getPrcFactor() < 1) {
+		prcMP->setActive(true);
+		prcPP->setActive(false);
+	}
+	else {
+		prcPP->setActive(false);
+		prcMP->setActive(false);
+	}
+
+	//enemy attack
+	if (enemy->getAtkFactor() > 1) {
+		atqPE->setActive(true);
+		atqME->setActive(false);
+	}
+	else if (enemy->getAtkFactor() < 1) {
+		atqME->setActive(true);
+		atqPE->setActive(false);
+	}
+	else {
+		atqPE->setActive(false);
+		atqME->setActive(false);
+	}
+	//enemy defense
+	if (enemy->getDefFactor() > 1) {
+		defPE->setActive(true);
+		defME->setActive(false);
+	}
+	else if (enemy->getDefFactor() < 1) {
+		defME->setActive(true);
+		defPE->setActive(false);
+	}
+	else {
+		defPE->setActive(false);
+		defME->setActive(false);
+	}
+	//enemy precition
+	if (enemy->getPrcFactor() > 1) {
+		prcPE->setActive(true);
+		prcME->setActive(false);
+	}
+	else if (enemy->getPrcFactor() < 1) {
+		prcME->setActive(true);
+		prcPE->setActive(false);
+	}
+	else {
+		prcPE->setActive(false);
+		prcME->setActive(false);
+	}
 }
 
 //bloque 6 (auxiliares de render) -----------------------------------------------------------------------------------------

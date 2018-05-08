@@ -14,7 +14,7 @@ TextureManager::TextureManager()
 	m_Fonts[CaptureIt24] = { "..\\fonts\\Capture_it.ttf", 24 };
 	m_Fonts[CHALK24] = { "..\\fonts\\Right Chalk.ttf", 32 };
 	m_Fonts[Pixel16] = { "..\\fonts\\FreePixel.ttf", 25 };
-	
+	m_Fonts[Pixel32] = { "..\\fonts\\FreePixel.ttf", 50 };
 
 }
 

@@ -53,6 +53,13 @@ protected:
 	int W1id = 0;
 	int W2id = 0;
 	int turno;
+	int contText = 0;
+	int attackPlayer = 0;
+	int defensePlayer = 0;
+	int precitionPlayer = 0;
+	int attackEnemy = 0;
+	int defenseEnemy = 0;
+	int precitionEnemy = 0;
 
 	bool attack_;
 	bool bag_;
@@ -75,6 +82,7 @@ protected:
 	bool damagedE = true;
 	bool damagedP = true;
 	bool fail = false;
+	bool keepText = false;
 
 	Vector2D iniPos;
 	Vector2D positionW1;
@@ -94,6 +102,20 @@ protected:
 	GameComponent* Weapon2;
 	GameComponent* Weapon11;
 	GameComponent* Weapon22;
+
+	GameComponent* atqPP;
+	GameComponent* atqMP;
+	GameComponent* defPP;
+	GameComponent* defMP;
+	GameComponent* prcPP;
+	GameComponent* prcMP;
+
+	GameComponent* atqPE;
+	GameComponent* atqME;
+	GameComponent* defPE;
+	GameComponent* defME;
+	GameComponent* prcPE;
+	GameComponent* prcME;
 
 	BattlePlayer* player = nullptr;
 	BattleEnemy* enemy = nullptr;
@@ -118,12 +140,14 @@ protected:
 	void constructC();
 	void createPlayer();
 	void createEnemy();
+	void createStatus();
 	void createAttacks();
 	void initC();
 
 	//bloque 5 (auxiliares de update)
 	void controlFade();
 	bool run();
+	void controlStatus();
 
 	//bloque 6 (auxiliares de render)
 	void updateVidas();

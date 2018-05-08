@@ -50,11 +50,13 @@ public:
 	Attack getAttack(int i) const { return attacks[i]; }
 	std::string getName() const { return name; }
 	Type getType() const { return type; }
+
 	float getHealth() const { return health; }
 	float getAttack() const { return attack; }
 	float getDefense() const { return defense; }
 	float getPrecision() const { return precision; }
 	float getVelocity() const { return velocity; }
+
 	bool isSupport() const { return support; }
 	bool hasTarget() const { return target; }
 
@@ -65,35 +67,48 @@ public:
 	void setVelocity(float v) { velocity = v; }
 
 	void addAttack(Attack a);
-	int checkAttacks();
 
 	virtual bool useAttack(int i);
 	void supportAttack(int i);
+
 	bool precisionRatio(int i);
 	float defenseRatio(float enemyDef);
 	void criticalRatio(float& dmg);
 	void typeRatio(float& dmg, int i, Type enemyType);
 	void finalDamage(float& dmg, int i);
 	float combat(int i, float enemyDef, Type enemyType, bool& damaged);
+
 	virtual void receiveDamage(float dmg);
 	void receiveFactors(float atk, float def, float prc);
 	void setTurn(bool b) { turn_ = b; };
 	bool getTurn() { return turn_; };
 	float getMaxHealth() const { return maxHealth; }
 
+	float getAtkFactor() { return atkFactor; }
+	float getDefFactor() { return defFactor; }
+	float getPrcFactor() { return prcFactor; }
+
 protected:
 	std::string name;
 	Type type;
+
 	float health;
 	float maxHealth;
 	float attack;
 	float defense;
 	float precision;
 	float velocity;
+
+	float atkFactor = 1;
+	float defFactor = 1;
+	float prcFactor = 1;
+
 	std::vector<Attack> attacks;
 	Attack currentAttack;
+
 	bool support;
 	bool target;
+
 	bool turn_ = false;
 	int attackIndex;
 };

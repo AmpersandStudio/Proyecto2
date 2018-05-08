@@ -133,6 +133,10 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\battlebg5.png", "battlebg5", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\battlebg6.png", "battlebg6", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\battlebg7.png", "battlebg7", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg8.png", "battlebg8", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg9.png", "battlebg9", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg10.jpg", "battlebg10", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\battlebg11.jpg", "battlebg11", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\blackboard.jpg", "blackboard", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\logo.png", "logo", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\blue.png", "blue", RENDERER_);
@@ -142,6 +146,12 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\candy.png", "sweet", RENDERER_,1,2); 
 	TheTextureManager::Instance()->load("..\\images\\playerInventBox.png", "inventHP", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\creditosButton.png", "credits", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\ATQ+.png", "ATQ+", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\ATQ-.png", "ATQ-", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\DEF+.png", "DEF+", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\DEF-.png", "DEF-", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\PRC+.png", "PRC+", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\PRC-.png", "PRC-", RENDERER_);
 
 	TheTextureManager::Instance()->load("..\\assets\\Nivel0.png", "level0", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Nivel1.png", "level1", RENDERER_);
