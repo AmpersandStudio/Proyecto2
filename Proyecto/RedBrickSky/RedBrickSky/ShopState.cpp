@@ -12,7 +12,7 @@ ShopState::ShopState()
 
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
-	StringToScreen::Instance()->pushInfinite("Caramelos: " + std::to_string(money), 320, 400);
+	StringToScreen::Instance()->pushInfinite("Caramelos: " + std::to_string(money), 350, 395);
 
 	StringToScreen::Instance()->pushInfinite("Comprar pociones      x" + std::to_string(GameManager::Instance()->getPotions()), 350, 320);
 	
@@ -175,7 +175,8 @@ void ShopState::createBagItems() {
 	ocupados = 0;
 	for (unsigned int i = 0; i < invent.size(); i++) {
 
-		if (invent[i].type != 2) {
+		if (j == 3) { j = 0; k++; }
+		if (invent[i].type != 2 && invent[i].type != 1) {
 			SP[i].ID = invent[i].ID;
 			SP[i].objects++;
 			SP[i].empty = false;
@@ -185,7 +186,8 @@ void ShopState::createBagItems() {
 			SP[i].type = invent[i].type;
 
 			GameComponent* gc = new GameComponent();
-			Vector2D position0(SP[i].y * 0.5 + 2 , SP[i].x * 0.5);
+			Vector2D position0(2 * j + 1.2, 1.7 * k + 2.5);
+			j++;
 			double width = invent[i].w;
 			double height = invent[i].h;
 
@@ -197,8 +199,6 @@ void ShopState::createBagItems() {
 			GCInventV.push_back(gc);
 
 			ocupados++;
-
-			k++;
 		}
 	}
 }

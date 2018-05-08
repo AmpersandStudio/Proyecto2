@@ -81,7 +81,7 @@
   </data>
  </layer>
  <objectgroup name="Objects">
-  <object id="37" name="Player" type="Player" x="1212" y="384.663" width="32" height="32">
+  <object id="37" name="Player" type="Player" x="826.667" y="2609.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -239,15 +239,6 @@
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje15"/>
-    <property name="textureWidth" type="int" value="32"/>
-   </properties>
-  </object>
-  <object id="109" name="DoorKey1" type="Key" x="1055.67" y="2559.67" width="32" height="32">
-   <properties>
-    <property name="keyID" type="int" value="0"/>
-    <property name="numFrames" type="int" value="2"/>
-    <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="key"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>

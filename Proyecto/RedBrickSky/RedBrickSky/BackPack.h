@@ -38,7 +38,7 @@ private:
 
 	estado** matriz;
 	int numFils = 3;
-	int numRows = 4;
+	int numRows = 6;
 
 	int ocupados;
 	int numSP; int actFilas;
