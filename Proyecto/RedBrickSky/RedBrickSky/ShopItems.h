@@ -14,7 +14,7 @@ private:
 
 public:
 	ShopItems() {
-		shopObjects.resize(17);
+		shopObjects.resize(16);
 
 		//food = Game::Instance()->getTexture(4); //Item1
 
@@ -197,15 +197,6 @@ public:
 		shopObjects[15].nombre = "Borrador";
 		shopObjects[15].colFrame = 3;
 		shopObjects[15].FilFrame = 2;
-
-		shopObjects[16].empty = false;
-		shopObjects[16].comprado = true;
-		shopObjects[16].ID = 15;
-		shopObjects[16].objects = 1;
-		shopObjects[16].price = 100;
-		shopObjects[16].tx = "5";
-		shopObjects[16].type = potionType; //Es una pocion
-		shopObjects[16].nombre = "Pocion de vida";
 	};
 
 	virtual ~ShopItems() {};

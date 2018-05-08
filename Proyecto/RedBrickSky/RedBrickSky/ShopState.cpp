@@ -12,8 +12,10 @@ ShopState::ShopState()
 
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
+	StringToScreen::Instance()->pushInfinite("Caramelos: " + std::to_string(money), 320, 400);
 
-	StringToScreen::Instance()->pushInfinite("Caramelos: " + std::to_string(money), 320,400);
+	StringToScreen::Instance()->pushInfinite("Comprar pociones      x" + std::to_string(GameManager::Instance()->getPotions()), 350, 320);
+	
 
 	//Componentes necesarios
 
@@ -105,8 +107,8 @@ void ShopState::createShopItems() {
 			k = 0;
 		}
 
-		Vector2D position5(k - 1 + shopCols, 3 * j);
-		Vector2D oriPos(k - 1 + shopCols, 3 * j);
+		Vector2D position5(k - 1 + shopCols, 1.5 * j + 1);
+		Vector2D oriPos(k - 1 + shopCols, 1.5 * j + 1);
 
 		//Crea objetos debajo de los anteriores que no se moverán, serán solo imagen
 		GameComponent* gc2 = new GameComponent();
@@ -129,14 +131,37 @@ void ShopState::createShopItems() {
 
 	}
 
+
+	estado s;
+	s.empty = false;
+	s.comprado = true;
+	s.ID = 15;
+	s.objects = 1;
+	s.price = 100;
+	s.tx = "21";
+	s.type = 1; //Es una pocion
+	s.nombre = "Pocion de vida";
+	s.colFrame = 0;
+	s.FilFrame = 4;
+
+	Vector2D v; v.set(12, 6.5);
+	//Crea los objetos de la tienda que se mueden mover
+	GameComponent* gc = new GameComponent();
+	ShopState* shopit = this;
+	
+	gc->setTextureId(s.tx); gc->setOriPos(v); gc->setPosition(v); gc->setWidth(50); gc->setHeight(50);
+	gc->addRenderComponent(new RenderSingleFrameComponent()); gc->addInputComponent(new MouseInfoClickComponent(s, shopit));
+	gc->setColFrame(s.colFrame); gc->setRowFrame(s.FilFrame);
+	stageBack(gc); //Añadimos el objeto
+
 	//Creamos el elemento que nos permitirá movernos con teclado y con el mandop
 	selector_ = new GameComponent();
 	Vector2D selecPos;
-	selecPos.set(7, 3);
+	selecPos.set(7, 2.5);
 
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
 	selector_->setWidth(50); selector_->setHeight(50);
-	selector_->addRenderComponent(new RenderSingleFrameComponent()); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 2, StandPointsO, nullptr, this));
+	selector_->addRenderComponent(new RenderSingleFrameComponent()); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 1, StandPointsO, nullptr, this));
 	InputComponent* xbox = new ShopXboxControllerComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 2, StandPointsO, nullptr, this);
 	selector_->setColFrame(0); selector_->setRowFrame(0); 
 	selector_->addInputComponent(xbox);
@@ -160,7 +185,7 @@ void ShopState::createBagItems() {
 			SP[i].type = invent[i].type;
 
 			GameComponent* gc = new GameComponent();
-			Vector2D position0(SP[i].y - 2.8, SP[i].x + 2.8);
+			Vector2D position0(SP[i].y * 0.5 + 2 , SP[i].x * 0.5);
 			double width = invent[i].w;
 			double height = invent[i].h;
 
@@ -190,8 +215,8 @@ void ShopState::createSP() {
 	int auxD = 0;
 	auxOID = 0;
 	numSP = 0;
-	double width = 50;
-	double height = 50;
+	double width = 45;
+	double height = 45;
 	for (int i = 0; i < Fils; i++)
 		for (int j = 0; j < Cols; j++) {
 			
@@ -208,7 +233,7 @@ void ShopState::createSP() {
 			s.type = -1;
 
 
-			Vector2D position0(2 * i + 0.7, 2 * j + 3.5);
+			Vector2D position0(2 * i + 1.2, 1.7 * j + 2.5);
 			if (i == 0 && j == 0)
 				selecPos = position0;
 			if (i == 1 && j == 0)
@@ -246,5 +271,4 @@ bool ShopState::handleEvent(const SDL_Event & event)
 		// 2) LLama a los input de cada objeto del propio estado
 		return GameState::handleEvent(event);
 	}
-
 

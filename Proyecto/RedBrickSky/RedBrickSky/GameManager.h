@@ -69,6 +69,8 @@ private:
 
 	std::vector<bool> doors;
 
+	int potions_ = 0;
+
 public:
 	~GameManager() {};
 	static GameManager* Instance()
@@ -111,4 +113,8 @@ public:
     bool getDoor(int keyId) const { return doors[keyId]; }
 
 	int getEnemy();
+
+	void addPotion() { potions_++; }
+
+	int getPotions() { return potions_; }
 };

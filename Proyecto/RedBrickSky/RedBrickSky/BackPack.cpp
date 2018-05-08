@@ -13,6 +13,7 @@ BackPack::BackPack()
 	invent = GameManager::Instance()->copyInventory();
 
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 130, 515);
+	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getPotions()), 280, 495);
 
 	//Componentes necesarios
 	actualState_ = 0;
@@ -504,6 +505,9 @@ void BackPack::render() {
 	//Sweeties
 	TheTextureManager::Instance()->drawItem("sweet", 90, 510,
 		50, 30, 0,0, 1,2, Game::Instance()->getRenderer(), 0, 255);
+	//Potions
+	TheTextureManager::Instance()->drawItem("21", 260, 510,
+		32, 32, 4, 0, 8, 8, Game::Instance()->getRenderer(), 0, 255);
 	
 	
 }

@@ -49,7 +49,7 @@ private:
 	int auxOID;
 
 	int Fils = 3;
-	int Cols = 4;
+	int Cols = 6;
 	int Scols_ = 12;
 
 	GameComponent* selector_;
@@ -61,7 +61,7 @@ public:
 	virtual ~ShopState();
 
 	virtual bool handleEvent(const SDL_Event& event);
-
+	
 	int getMoney() { return money; };
 	void setMoney(int d);
 	static void toMenu();
