@@ -15,7 +15,6 @@ void Door::activate()
 		}
 		else
 		{
-			isInteracting_ = true;
 			if (!dialogueActive_ && !GameManager::Instance()->getDialogueState())
 			{
 				dialogueActive_ = true;

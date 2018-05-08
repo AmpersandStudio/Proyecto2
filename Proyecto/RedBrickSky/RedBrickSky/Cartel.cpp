@@ -5,7 +5,7 @@
 #include "playState.h"
 #include "Camera.h"
 
-Cartel::Cartel(): dialogueActive_(false),isFighter_(false)
+Cartel::Cartel() : dialogueActive_(false), isFighter_(false), keyID_(0)
 {
 	timeStart_ = SDL_GetTicks();
 	timeDisplayInterval_ = 700;
