@@ -33,7 +33,7 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 		
 			posY -= distance;
 			if (posY >= Y_) {
-				position.setY(posY);
+				position.setY(posY - 0.7);
 				j--;
 			}
 			o->setPosition(position);
@@ -41,8 +41,8 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 		else if (event.key.keysym.sym == SDLK_DOWN) {
 			
 			posY += distance;
-			if (posY <= col_ * Y_) {
-				position.setY(posY);
+			if (posY <= col_ * Y_ + 1) {
+				position.setY(posY + 0.7);
 				j++;
 			}
 			o->setPosition(position);
@@ -50,8 +50,8 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 		else if (event.key.keysym.sym == SDLK_RIGHT) {
 			
 			posX += distance;
-			if (posX <= fil_ + X_ + 2) {
-				position.setX(posX);
+			if (posX <= fil_ + X_ + 1) {
+				position.setX(posX + 0.7);
 				i++;
 			}
 
@@ -61,7 +61,7 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 			
 			posX -= distance;
 			if (posX >= X_) {
-				position.setX(posX);
+				position.setX(posX - 0.7);
 				i--;
 			}
 			o->setPosition(position);
@@ -113,17 +113,6 @@ bool KeyBoardBackPackComponent::handleEvent(GameObject* o, const SDL_Event& even
 
 		}
 
-		//El siguiente bucle Cambia el color del SP en el que estamos y pone los demás normales (CON TECLADO)
-		for (unsigned int p = 0; p < SP.size(); p++)
-		{
-			if (SP[p]->getPosition().getX() == o->getPosition().getX() &&
-				SP[p]->getPosition().getY() == o->getPosition().getY()) {
-
-				SP[p]->setColFrame(1);
-			}
-			else
-				SP[p]->setColFrame(0);
-		}
 	}
 
 	else if (event.type == SDL_MOUSEMOTION){

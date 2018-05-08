@@ -28,6 +28,8 @@ public:
 
 	void setColFrame(int f) { colFrame_ = f; };
 
+	virtual void isDefeated() {};
+
 protected:
 	SDL_Rect collider_;
 	int tileWidth_;

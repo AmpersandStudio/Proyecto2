@@ -42,10 +42,6 @@ public:
 
 	Dialogue getDialogue() { return text; };
 
-
-	inline void setKeyID(int id) { keyID_ = id; }
-	inline void setKey(bool key) { hasKey_ = key; }
-
 private:
 	bool isInteracting_;
 	Level* level_;
@@ -62,15 +58,11 @@ private:
 	int tileHeight_;
 
 	Dialogue text;
-	bool dialogueActive_;
+	bool dialogueActive_ = false;
 
-	bool isFighter_;
+	bool isFighter_ = false;
 
 	int collisionCounter_;
-
-
-	bool hasKey_;
-	int keyID_;
 };
 
 

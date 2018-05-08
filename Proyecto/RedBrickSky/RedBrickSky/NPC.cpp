@@ -5,7 +5,7 @@
 #include "Camera.h"
 
 
-NPC::NPC()
+NPC::NPC() : isFighter_(false)
 {
 	srand(time(NULL)); // Semilla de aleatorio
 }
@@ -21,7 +21,6 @@ void NPC::load(Vector2D position, int width, int height, string textureId, int n
 	animSpeed_ = animSpeed;
 	oriPosX_ = position.getX();
 	oriPosY_ = position.getY();
-	isFighter_ = false;
 
 	dialogueActive_ = false;
 	isInteracting_ = false;
@@ -53,7 +52,6 @@ NPC::~NPC()
 }
 
 void NPC::activate() {
-	isInteracting_ = true;
 	if (!dialogueActive_ && !GameManager::Instance()->getDialogueState()) {
 		dialogueActive_ = true;
 		GameManager::Instance()->setDialogueState(true);
@@ -63,13 +61,11 @@ void NPC::activate() {
 		dialogueActive_ = text.nextDialogue();
 		if (!dialogueActive_) {
 			GameManager::Instance()->setDialogueState(false);
-			if (isFighter_)
+ 			if (isFighter_)
 			{
-				GameManager::Instance()->getNPC(this);
+				GameManager::Instance()->getInteractuable(this);
 				GameManager::Instance()->toBattle();
 			}
-			else if (hasKey_)
-				GameManager::Instance()->setDoor(keyID_);
 		}
 	}
 }
@@ -113,8 +109,8 @@ void NPC::isDefeated()
 	isFighter_ = false;
 
 	//HAY QUE CREAR DESTRUCTORA DE DIALOGUES Y RECARGAR LA VERSION B DE CADA DIALOGO CUANDO HAYA
-	/*Message_.append("B");*/
-	/*text = Dialogue(Message_);*/
+	Msg_.append("B");
+	text = Dialogue(Msg_);
 }
 
 

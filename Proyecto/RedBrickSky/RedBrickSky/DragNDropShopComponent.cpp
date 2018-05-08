@@ -115,7 +115,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 					posX = auxX + auxW / 2;
 					posY = auxY + auxH / 2;
 
-					v.set(posX / 50 - 0.5, posY / 50 - 0.5);
+					v.set(posX / 55 - 0.5, posY / 55 - 0.5);
 					o->setPosition(v);
 					//StandPoints[i].x = x;
 					//StandPoints[i].y = y;

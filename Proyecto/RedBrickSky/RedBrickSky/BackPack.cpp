@@ -13,6 +13,7 @@ BackPack::BackPack()
 	invent = GameManager::Instance()->copyInventory();
 
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 130, 515);
+	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getPotions()), 280, 495);
 
 	//Componentes necesarios
 	actualState_ = 0;
@@ -32,7 +33,7 @@ BackPack::BackPack()
 	width1 = 256; width2 = 171;
 	height1 = 512; height2 = 341;
 
-	separateElements();
+	//separateElements();
 
 	creaEscena();
 }
@@ -234,8 +235,8 @@ void BackPack::creaSP() {
 	for (int i = 0; i < numFils; i++)
 		for (int j = 0; j < numRows; j++) {
 
-			double width = 50;
-			double height = 50;
+			double width = 45;
+			double height = 45;
 			matriz[i][j].empty = true;
 			matriz[i][j].ID = 0;
 			matriz[i][j].objects = 0;
@@ -244,7 +245,7 @@ void BackPack::creaSP() {
 			matriz[i][j].mX = i;
 			matriz[i][j].mY = j;
 
-			Vector2D position0(2 * i + 9.5, 2 * j + 3);
+			Vector2D position0(1.7 * i + 11, 1.7 * j + 2.8);
 			if (i == 0 && j == 0)
 				selecPos = position0;
 			if (i == 0 && j == 1)
@@ -338,7 +339,7 @@ void BackPack::creaSP() {
 	selector_ = new GameComponent();
 
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
-	selector_->setWidth(50); selector_->setHeight(50);
+	selector_->setWidth(45); selector_->setHeight(45);
 	selector_->setColFrame(0); selector_->setRowFrame(0);
 	selector_->addRenderComponent(new RenderSingleFrameComponent()); selector_->addInputComponent(new KeyBoardBackPackComponent(selecPos.getX(), selecPos.getY(), numRows - 1, numFils, auxD, StandPointsO, this));
 	selector_->addInputComponent(new BagXboxControllerComponent(selecPos.getX(), selecPos.getY(), numRows - 1, numFils, auxD, StandPointsO, this));
@@ -504,6 +505,9 @@ void BackPack::render() {
 	//Sweeties
 	TheTextureManager::Instance()->drawItem("sweet", 90, 510,
 		50, 30, 0,0, 1,2, Game::Instance()->getRenderer(), 0, 255);
+	//Potions
+	TheTextureManager::Instance()->drawItem("21", 260, 510,
+		32, 32, 4, 0, 8, 8, Game::Instance()->getRenderer(), 0, 255);
 	
 	
 }
