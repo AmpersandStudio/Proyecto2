@@ -9,6 +9,7 @@ void Door::activate()
 	{
 		GameManager::Instance()->setDoor(keyID_);
 		active_ = true;
+		TheSoundManager::Instance()->playSound("Puerta_abrir", 0);
 	}
 	else
 	{

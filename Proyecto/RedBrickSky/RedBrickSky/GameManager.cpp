@@ -20,9 +20,9 @@ void GameManager::toBattle()
 
 void GameManager::exitBattle()
 {
-	if (currentNPC != nullptr) {
-		currentNPC->isDefeated();
-		currentNPC = nullptr;
+	if (currentInter != nullptr) {
+		currentInter->isDefeated();
+		currentInter = nullptr;
 	}
 }
 

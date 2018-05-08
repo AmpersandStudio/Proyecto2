@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="left-up" width="25" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="6">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="25" height="20" tilewidth="32" tileheight="32" nextobjectid="6">
  <properties>
   <property name="helicopter" value="..\assets\helicopter.png"/>
  </properties>
@@ -44,7 +44,7 @@
    eJxjYIAALg5MTE2AzXxSMa3MHcXUjXtapB9S7aDUj7jUIfOpaQet4oIa7iTFDloBarqVGDtoZQ897EC2h5aAWmUMPcqxgShDBwIDAIsIEqM=
   </data>
  </layer>
- <objectgroup name="Capa de Objetos 1" visible="0">
+ <objectgroup name="Capa de Objetos 1">
   <object id="1" name="Tendero" type="Cartel" x="130" y="257" width="32" height="32">
    <properties>
     <property name="Message " value="¡HOLA CARACOLA!"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="120">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="120">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -81,7 +81,7 @@
   </data>
  </layer>
  <objectgroup name="Objects">
-  <object id="37" name="Player" type="Player" x="1212" y="384.663" width="32" height="32">
+  <object id="37" name="Player" type="Player" x="798" y="2664.66" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -114,10 +114,10 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="42" name="Personaje2" type="NPC" x="716.666" y="2737" width="32" height="32">
+  <object id="42" name="Personaje2" type="NPC" x="882.666" y="2584" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC2Test"/>
-    <property name="hasKey" type="bool" value="true"/>
+    <property name="Message" value="NPC2"/>
+    <property name="isFighter" type="bool" value="false"/>
     <property name="keyID" type="int" value="0"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -273,7 +273,10 @@
   </object>
   <object id="117" name="Cartel1" type="Cartel" x="735.5" y="2560.17" width="32" height="32">
    <properties>
-    <property name="Message" value="Buenos días caballero"/>
+    <property name="Message" value="NPC2Test"/>
+    <property name="hasKey" type="bool" value="true"/>
+    <property name="isFighter" type="bool" value="false"/>
+    <property name="keyID" type="int" value="0"/>
     <property name="numFrames" type="int" value="2"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="cartel"/>
