@@ -810,7 +810,11 @@ public:
 	}
 
 	const char*		Name()  const		{ return name.c_str(); }		///< Return the name of this attribute.
-	const char*		Value() const		{ return value.c_str(); }		///< Return the value of this attribute.
+	const char*		Value() const		{
+		int i = 0; 
+		return value.c_str();
+	
+	}		///< Return the value of this attribute.
 	#ifdef TIXML_USE_STL
 	const std::string& ValueStr() const	{ return value; }				///< Return the value of this attribute.
 	#endif

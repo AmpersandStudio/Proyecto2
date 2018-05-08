@@ -5,27 +5,30 @@
 void Door::activate()
 {
 
-	if (GameManager::Instance()->getDoor(keyID_))
+	if (!active_)
 	{
-		GameManager::Instance()->setDoor(keyID_);
-		active_ = true;
-		TheSoundManager::Instance()->playSound("Puerta_abrir", 0);
-	}
-	else
-	{
-		isInteracting_ = true;
-		if (!dialogueActive_ && !GameManager::Instance()->getDialogueState()) 
+		if (GameManager::Instance()->getDoor(keyID_))
 		{
-			dialogueActive_ = true;
-			GameManager::Instance()->setDialogueState(true);
-			//DESCOMENTAR ESTO CUANDO SE VUELVA A PODER PARAR A LOS NPCs TETES 
+			GameManager::Instance()->setDoor(keyID_);
+			TheSoundManager::Instance()->playSound("Puerta_abrir", 0);
+			active_ = true;
 		}
-		else if (dialogueActive_)
+		else
 		{
-			dialogueActive_ = text.nextDialogue();
-			if (!dialogueActive_)
+			isInteracting_ = true;
+			if (!dialogueActive_ && !GameManager::Instance()->getDialogueState())
 			{
-				GameManager::Instance()->setDialogueState(false);
+				dialogueActive_ = true;
+				GameManager::Instance()->setDialogueState(true);
+				//DESCOMENTAR ESTO CUANDO SE VUELVA A PODER PARAR A LOS NPCs TETES 
+			}
+			else if (dialogueActive_)
+			{
+				dialogueActive_ = text.nextDialogue();
+				if (!dialogueActive_)
+				{
+					GameManager::Instance()->setDialogueState(false);
+				}
 			}
 		}
 	}

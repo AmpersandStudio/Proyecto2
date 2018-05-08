@@ -24,7 +24,6 @@ public:
 	void isDefeated();
 
 	inline void setKeyID(int id) { keyID_ = id; }
-	inline void setKey(bool key) { hasKey_ = key; }
 	inline int getKeyID() { return keyID_; };
 
 private:
@@ -44,7 +43,6 @@ private:
 	Uint32 timeDisplayInterval_;
 	Uint32 timeTitleInterval_;
 
-	bool hasKey_;
 	int keyID_;
 };
 

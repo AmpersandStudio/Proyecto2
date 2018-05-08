@@ -5,7 +5,7 @@
 #include "playState.h"
 #include "Camera.h"
 
-Cartel::Cartel(): dialogueActive_(false), hasKey_(false),isFighter_(false)
+Cartel::Cartel(): dialogueActive_(false),isFighter_(false)
 {
 	timeStart_ = SDL_GetTicks();
 	timeDisplayInterval_ = 700;
@@ -50,7 +50,7 @@ void Cartel::activate() {
 			else if (toPlayGround) {
 				GameManager::Instance()->setCurrentLevel(0);
 			}
-			else if (!isFighter_ && hasKey_)
+			else if (!isFighter_ && keyID_!= 0)
 				GameManager::Instance()->setDoor(keyID_);
 		}
 	}
@@ -95,7 +95,6 @@ void Cartel::isDefeated()
 	text = Dialogue(Msg_);
 
 	GameManager::Instance()->setDoor(keyID_);
-	hasKey_ = false;
 }
 
 void Cartel::generateCollider()
