@@ -5,7 +5,7 @@
 #include "playState.h"
 #include "Camera.h"
 
-Cartel::Cartel()
+Cartel::Cartel(): dialogueActive_(false), hasKey_(false),isFighter_(false)
 {
 	timeStart_ = SDL_GetTicks();
 	timeDisplayInterval_ = 700;
@@ -23,26 +23,45 @@ void Cartel::activate() {
 	/*StringToScreen::Instance()->setMessageAt(Message_, position_.getX(), position_.getY());
 	StringToScreen::Instance()->startMessagin();*/
 
-	std::cout << Message_ << endl;
+	std::cout << Msg_ << endl;
 
-	std::cout << "Hola me has interactuado" << endl;
-
-	if (toShop == 1) {
-		SoundManager::Instance()->stopMusic();
-		GameManager::Instance()->setCurrentLevel(3);
-
+	if (!dialogueActive_ && !GameManager::Instance()->getDialogueState()) {
+		dialogueActive_ = true;
+		GameManager::Instance()->setDialogueState(true);
+		//DESCOMENTAR ESTO CUANDO SE VUELVA A PODER PARAR A LOS NPCs TETES 
 	}
-	else if (tenderMan)
-		TheGame::Instance()->getStateMachine()->pushState(new ShopState());
+	else if (dialogueActive_) {
+		dialogueActive_ = text.nextDialogue();
+ 		if (!dialogueActive_) {
+			GameManager::Instance()->setDialogueState(false);
+			if (isFighter_)
+			{
+				GameManager::Instance()->getInteractuable(this);
+				GameManager::Instance()->toBattle();
+			}
+			else if (toShop == 1) {
+				SoundManager::Instance()->stopMusic();
+				GameManager::Instance()->setCurrentLevel(3);
 
-	else if (toPlayGround) {
-		GameManager::Instance()->setCurrentLevel(0);
+			}
+			else if (tenderMan)
+				TheGame::Instance()->getStateMachine()->pushState(new ShopState());
+
+			else if (toPlayGround) {
+				GameManager::Instance()->setCurrentLevel(0);
+			}
+			else if (!isFighter_ && hasKey_)
+				GameManager::Instance()->setDoor(keyID_);
+		}
 	}
 }
 
 void Cartel::render()
 {
 	if (isActive_) Interactuable::render();
+	if (dialogueActive_ && GameManager::Instance()->getDialogueState()) {
+		text.render();
+	}
 }
 
 void Cartel::update() {
@@ -52,6 +71,13 @@ void Cartel::update() {
 		change();
 		timeStart_ = SDL_GetTicks();
 	}
+	if (dialogueActive_) {
+		text.setX(position_.getX());
+		text.setY(position_.getY());
+		if (!text.isActive()) {
+			text.update();
+		}
+	}
 }
 
 void Cartel::change() {
@@ -60,6 +86,16 @@ void Cartel::change() {
 	if (changed_) col_ = 0;
 	else col_ = 1;
 
+}
+
+void Cartel::isDefeated()
+{
+	isFighter_ = false;
+	Msg_.append("B");
+	text = Dialogue(Msg_);
+
+	GameManager::Instance()->setDoor(keyID_);
+	hasKey_ = false;
 }
 
 void Cartel::generateCollider()

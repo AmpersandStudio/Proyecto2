@@ -1,5 +1,6 @@
 #pragma once
 #include "Interactuable.h"
+#include "Dialogue.h"
 #include "checkML.h"
 class Cartel :
 	public Interactuable
@@ -9,7 +10,8 @@ public:
 	~Cartel();
 	void activate();
 	//Para establecer el mensaje si es necesario
-	void setMessage(std::string msg) { Message_ = msg; };
+	void setMSG(std::string msg) { Msg_ = msg; text = Dialogue(Msg_); };
+	void setFighter(bool set) { isFighter_ = set; };
 	void setShopState(int s) { toShop = s; };
 	void setTenderMan(bool s) { tenderMan = s; };
 	void setToPlay(bool s) { toPlayGround = s; };
@@ -19,18 +21,31 @@ public:
 	virtual void generateCollider();
 	void change();
 
+	void isDefeated();
+
+	inline void setKeyID(int id) { keyID_ = id; }
+	inline void setKey(bool key) { hasKey_ = key; }
+	inline int getKeyID() { return keyID_; };
+
 private:
-	std::string Message;
 	int toShop;
 	bool tenderMan;
 	bool toPlayGround;
 	int col_;
 	bool changed_;
 
+	bool isFighter_ = false;
+	std::string Msg_;
+	Dialogue text;
+	bool dialogueActive_ = false;
+
 	Uint32 timeStart_;
 	Uint32 timeNameInterval_;
 	Uint32 timeDisplayInterval_;
 	Uint32 timeTitleInterval_;
+
+	bool hasKey_;
+	int keyID_;
 };
 
 class CartelCreator : public BaseCreator

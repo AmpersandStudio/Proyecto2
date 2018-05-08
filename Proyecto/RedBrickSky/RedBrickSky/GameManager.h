@@ -3,8 +3,8 @@
 #include <vector>
 #include <iostream>
 #include "GameComponent.h"
-#include "NPC.h"
 #include "Game.h"
+#include "Interactuable.h"
 
 #include "checkML.h"
 
@@ -45,7 +45,7 @@ private:
 
 	bool dialogueActive;
 
-	NPC* currentNPC;
+	Interactuable* currentInter;
 
 	GameManager() 
 	{
@@ -57,7 +57,7 @@ private:
 
 		name = "";
 
-		currentNPC = nullptr;
+		currentInter = nullptr;
 
 		level_ = 0;
 	}
@@ -99,7 +99,7 @@ public:
 
 	void toBattle();
 
-	void getNPC(NPC* n) { currentNPC = n; }
+	void getInteractuable(Interactuable* n) { currentInter = n; }
 	void exitBattle();
 
 	int getHealth() { return playerHP; };
