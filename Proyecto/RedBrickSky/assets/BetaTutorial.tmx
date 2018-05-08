@@ -81,7 +81,7 @@
   </data>
  </layer>
  <objectgroup name="Objects">
-  <object id="37" name="Player" type="Player" x="790.667" y="2689.33" width="32" height="32">
+  <object id="37" name="Player" type="Player" x="794.667" y="2665.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -114,10 +114,10 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="42" name="Personaje2" type="NPC" x="535.666" y="2274" width="32" height="32">
+  <object id="42" name="Personaje2" type="NPC" x="710.666" y="2732" width="32" height="32">
    <properties>
     <property name="Message" value="NPC2"/>
-    <property name="isFighter" type="int" value="0"/>
+    <property name="isFighter" type="int" value="1"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje2"/>

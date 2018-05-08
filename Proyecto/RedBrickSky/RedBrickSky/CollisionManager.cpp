@@ -231,6 +231,7 @@ void CollisionManager::checkInteractions(Player* pPlayer, const std::vector<Inte
 		if (RectRect(playerRect, interRect))
 		{
 			i->activate();
+			break;
 		}
 	}
 
@@ -327,6 +328,7 @@ void CollisionManager::checkNPCInteractions(Player* pPlayer, const std::vector<N
 		if (RectRect(playerRect, interRect))
 		{
 			i->activate();
+			break;
 		}
 	}
 
@@ -344,6 +346,7 @@ void CollisionManager::checkBagsInteractions(Player* pPlayer, const std::vector<
 		if (RectRect(playerRect, interRect))
 		{
 			i->activate();
+			break;
 		}
 	}
 
@@ -361,6 +364,7 @@ void CollisionManager::checkDoorsInteractions(Player* pPlayer, const std::vector
 		if (RectRect(playerRect, interRect))
 		{
 			i->activate();
+			break;
 		}
 	}
 
@@ -419,6 +423,7 @@ void CollisionManager::checkCartelesInteractions(Player* pPlayer, const std::vec
 {
 	SDL_Rect* playerRect = pPlayer->getRect();
 
+	bool interacted = false;
 	for (Cartel* i : c)
 	{
 		SDL_Rect* interRect = i->getRect();
@@ -426,6 +431,7 @@ void CollisionManager::checkCartelesInteractions(Player* pPlayer, const std::vec
 		if (RectRect(playerRect, interRect))
 		{
 				i->activate();
+				break;
 		}
 	}
 

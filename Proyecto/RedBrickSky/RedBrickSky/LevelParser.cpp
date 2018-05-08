@@ -120,13 +120,14 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 	{
 		if (e->Value() == std::string("object"))
 		{
-			int x = 0, y = 0, width = 32, height = 32, numFrames = 1, callbackID = 0, animSpeed = 0, Sweeties = 0, keyID = 0, isFighter = 0;
+			int x = 0, y = 0, width = 32, height = 32, numFrames = 1, callbackID = 0, animSpeed = 0, Sweeties = 0, keyID = 0;
 			std::string textureID = "000";
 			std::string type = "Interactuable";
 			std::string Message = " ";
 			int toShop = 0;
-			bool tendero = false;
-			bool toPlayGround = false;
+			int tendero = 0;
+			int toPlayGround = 0;
+			int isFighter = 0;
 			//bool hasKey = false;
 
 
@@ -189,11 +190,13 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							}
 							else if (property->Attribute("name") == std::string("tendero"))
 							{
-								tendero = property->Attribute("value");
+								//tendero = property->Attribute("value");
+								property->Attribute("value", &tendero);
 							}
 							else if (property->Attribute("name") == std::string("goingToPlay"))
 							{
-								toPlayGround = property->Attribute("value");
+								//toPlayGround = property->Attribute("value");
+								property->Attribute("value", &toPlayGround);
 							}
 							else if (property->Attribute("name") == std::string("isFighter"))
 							{

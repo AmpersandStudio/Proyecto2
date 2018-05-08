@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="25" height="20" tilewidth="32" tileheight="32" nextobjectid="6">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="left-up" width="25" height="20" tilewidth="32" tileheight="32" infinite="0" nextobjectid="6">
  <properties>
   <property name="helicopter" value="..\assets\helicopter.png"/>
  </properties>
@@ -48,23 +48,23 @@
   <object id="1" name="Tendero" type="Cartel" x="130" y="257" width="32" height="32">
    <properties>
     <property name="Message " value="¡HOLA CARACOLA!"/>
-    <property name="tendero" type="bool" value="true"/>
+    <property name="tendero" type="int" value="1"/>
    </properties>
   </object>
   <object id="2" name="Tendero" type="Cartel" x="129" y="323" width="32" height="32">
    <properties>
     <property name="Message " value="¡HOLA CARACOLA!"/>
-    <property name="tendero" type="bool" value="true"/>
+    <property name="tendero" type="int" value="1"/>
    </properties>
   </object>
   <object id="3" name="PuertaTienda1" type="Cartel" x="480" y="542" width="32" height="32">
    <properties>
-    <property name="goingToPlay" type="bool" value="true"/>
+    <property name="goingToPlay" type="int" value="1"/>
    </properties>
   </object>
   <object id="4" name="PuertaTienda1" type="Cartel" x="514" y="542" width="32" height="32">
    <properties>
-    <property name="goingToPlay" type="bool" value="true"/>
+    <property name="goingToPlay" type="int" value="1"/>
    </properties>
   </object>
   <object id="5" name="Player" type="Player" x="494.333" y="475.333" width="32" height="32">
