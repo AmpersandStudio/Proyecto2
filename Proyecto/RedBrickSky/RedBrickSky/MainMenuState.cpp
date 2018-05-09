@@ -62,7 +62,6 @@ MainMenuState::~MainMenuState()
 
 void MainMenuState::toGame() 
 {
-	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), 400, 300);
 	SoundManager::Instance()->stopMusic();
 	Game::Instance()->getStateMachine()->pushState(new PlayState());
 }

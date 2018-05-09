@@ -24,18 +24,18 @@ const Vector2D Camera::getPosition() const
 		{
 			pos.setX(0);
 		}
-		if (pos.getX() > mapWidth - TheGame::Instance()->getWinWidth())
+		if (pos.getX() > mapWidth - TheGame::Instance()->getWinWidth() / 2)
 		{
-			pos.setX(mapWidth - TheGame::Instance()->getWinWidth());
+			pos.setX(mapWidth - TheGame::Instance()->getWinWidth() / 2);
 		}
 
 		if (pos.getY() < 0)
 		{
 			pos.setY(0);
 		}
-		if (pos.getY() > mapHeight - TheGame::Instance()->getWinHeight())
+		if (pos.getY() > mapHeight - TheGame::Instance()->getWinHeight() / 2)
 		{
-			pos.setY(mapHeight - TheGame::Instance()->getWinHeight());
+			pos.setY(mapHeight - TheGame::Instance()->getWinHeight() / 2);
 		}
 
 
