@@ -44,7 +44,6 @@ void ShopState::setMoney(int n) {
 }
 
 void ShopState::toMenu() {
-	
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->popState();
 }

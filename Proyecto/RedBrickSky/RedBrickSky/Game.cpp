@@ -65,6 +65,7 @@ void Game::initSDL()
 
 	// Clear screen (background color)
 	SDL_SetRenderDrawColor(RENDERER_, 0, 0, 0, 255);
+	
 	SDL_RenderClear(RENDERER_);
 	SDL_RenderPresent(RENDERER_);
 

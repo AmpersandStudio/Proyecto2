@@ -17,6 +17,8 @@ GameState::~GameState()
 
 void GameState::render() {
 	
+	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), 800, 600);
+
 	for (unsigned int i = 0; i < stage.size(); i++) {
 		if (stage[i]->getActive())
 			stage[i]->render();
