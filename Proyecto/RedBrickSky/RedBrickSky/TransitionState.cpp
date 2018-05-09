@@ -4,8 +4,8 @@
 TransitionState::TransitionState()
 {
 	Vector2D position0(0, 0);
-	double width = Game::Instance()->getWinWidth() / 5;
-	double height = Game::Instance()->getWinWidth() / 5;
+	double width = Game::Instance()->getWinWidth() / 7;
+	double height = Game::Instance()->getWinWidth() / 7;
 	RenderComponent* rc = new RenderFrameComponent();
 	PhysicsComponent* pc = new DiscretMovementIAComponent();
 	square = new GameComponent();

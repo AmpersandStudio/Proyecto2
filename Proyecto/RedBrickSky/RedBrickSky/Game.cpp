@@ -100,7 +100,7 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\Battle_UI_Vida.png", "20", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\weaponsSet.png", "21", RENDERER_, 8, 8);
 	TheTextureManager::Instance()->load("..\\images\\transition.png", "22", RENDERER_);
-	TheTextureManager::Instance()->load("..\\images\\go.png", "23", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\go2.png", "23", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\bigbox.png", "24", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\enemyBox.png", "25", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\playerBox.png", "26", RENDERER_);
