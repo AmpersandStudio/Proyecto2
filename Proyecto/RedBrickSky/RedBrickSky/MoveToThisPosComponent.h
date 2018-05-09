@@ -14,11 +14,12 @@ private:
 	bool go_;
 	bool back_;
 	bool isMoving_;
+	double vel_;
 	BattleCharacter* bc;
 
 public:
 	MoveToThisPosComponent() {};
-	MoveToThisPosComponent(Vector2D myPos, Vector2D hisPos);
+	MoveToThisPosComponent(Vector2D myPos, Vector2D hisPos, double vel = 0.1);
 	virtual ~MoveToThisPosComponent();
 	virtual void update(GameObject* o);
 };

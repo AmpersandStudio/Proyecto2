@@ -14,9 +14,9 @@ MagicAttackComponent::~MagicAttackComponent()
 }
 
 void MagicAttackComponent::update(GameObject* o) {
-	double pixels = 0.1;
+	double pixels = 0.05;
 	
-	if (counter % 2 == 0 && counter < 8) {
+	if (counter % 2 == 0 && counter < 6) {
 		isMoving = true;
 		Vector2D p = o->getPosition();
 		if (p.getX() < maxX) {
@@ -27,7 +27,7 @@ void MagicAttackComponent::update(GameObject* o) {
 		else
 			counter++;
 	}
-	else if (counter % 2 == 1 && counter < 8 ) {
+	else if (counter % 2 == 1 && counter < 6 ) {
 		isMoving = true;
 		Vector2D p = o->getPosition();
 		if (p.getX() > minX) {

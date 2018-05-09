@@ -83,6 +83,9 @@ protected:
 	bool damagedP = true;
 	bool fail = false;
 	bool keepText = false;
+	bool meleeAttack = false;
+	bool magicAttack = false;
+	bool rangedAttack = false;
 
 	Vector2D iniPos;
 	Vector2D positionW1;

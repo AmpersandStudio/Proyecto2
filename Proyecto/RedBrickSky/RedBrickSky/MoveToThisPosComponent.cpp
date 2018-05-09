@@ -1,7 +1,7 @@
 #include "MoveToThisPosComponent.h"
 #include "BattleState.h"
 
-MoveToThisPosComponent::MoveToThisPosComponent(Vector2D myPos, Vector2D hisPos) : enemPos(hisPos), origPos(myPos)
+MoveToThisPosComponent::MoveToThisPosComponent(Vector2D myPos, Vector2D hisPos, double vel) : enemPos(hisPos), origPos(myPos), vel_(vel)
 {
 	//si el enem esta a la derecha de la pantalla dir = 1
 	if (hisPos.getX() > myPos.getX())
@@ -22,7 +22,7 @@ void MoveToThisPosComponent::update(GameObject* o) {
 	Vector2D currentPos = o->getPosition();
 	double currentX = currentPos.getX();
 	double objectiveX = enemPos.getX();
-	double pixels = 0.1;
+	double pixels = vel_;
 	if (dir == 1 && go_) {
 		if (objectiveX > currentX) {
 			currentX += pixels;

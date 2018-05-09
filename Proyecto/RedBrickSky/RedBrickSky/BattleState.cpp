@@ -444,6 +444,7 @@ void BattleState::createStatus()
 	atqPP->setWidth(60); atqPP->setHeight((60));
 	atqPP->setPosition(pos);
 	atqPP->addRenderComponent(new RenderFrameComponent());
+	atqPP->setActive(false);
 	stage.push_back(atqPP);
 
 	atqMP = new GameComponent();
@@ -452,6 +453,7 @@ void BattleState::createStatus()
 	atqMP->setWidth(60); atqMP->setHeight((60));
 	atqMP->setPosition(pos);
 	atqMP->addRenderComponent(new RenderFrameComponent());
+	atqMP->setActive(false);
 	stage.push_back(atqMP);
 
 	defPP = new GameComponent();
@@ -460,6 +462,7 @@ void BattleState::createStatus()
 	defPP->setWidth(60); defPP->setHeight((60));
 	defPP->setPosition(pos);
 	defPP->addRenderComponent(new RenderFrameComponent());
+	defPP->setActive(false);
 	stage.push_back(defPP);
 
 	defMP = new GameComponent();
@@ -468,6 +471,7 @@ void BattleState::createStatus()
 	defMP->setWidth(60); defMP->setHeight((60));
 	defMP->setPosition(pos);
 	defMP->addRenderComponent(new RenderFrameComponent());
+	defMP->setActive(false);
 	stage.push_back(defMP);
 
 	prcPP = new GameComponent();
@@ -476,6 +480,7 @@ void BattleState::createStatus()
 	prcPP->setWidth(60); prcPP->setHeight((60));
 	prcPP->setPosition(pos);
 	prcPP->addRenderComponent(new RenderFrameComponent());
+	prcPP->setActive(false);
 	stage.push_back(prcPP);
 
 	prcMP = new GameComponent();
@@ -484,6 +489,7 @@ void BattleState::createStatus()
 	prcMP->setWidth(60); prcMP->setHeight((60));
 	prcMP->setPosition(pos);
 	prcMP->addRenderComponent(new RenderFrameComponent());
+	prcMP->setActive(false);
 	stage.push_back(prcMP);
 
 	//ENEMY
@@ -493,6 +499,7 @@ void BattleState::createStatus()
 	atqPE->setWidth(60); atqPE->setHeight((60));
 	atqPE->setPosition(pos);
 	atqPE->addRenderComponent(new RenderFrameComponent());
+	atqPE->setActive(false);
 	stage.push_back(atqPE);
 
 	atqME = new GameComponent();
@@ -501,6 +508,7 @@ void BattleState::createStatus()
 	atqME->setWidth(60); atqME->setHeight((60));
 	atqME->setPosition(pos);
 	atqME->addRenderComponent(new RenderFrameComponent());
+	atqME->setActive(false);
 	stage.push_back(atqME);
 
 	defPE = new GameComponent();
@@ -509,6 +517,7 @@ void BattleState::createStatus()
 	defPE->setWidth(60); defPE->setHeight((60));
 	defPE->setPosition(pos);
 	defPE->addRenderComponent(new RenderFrameComponent());
+	defPE->setActive(false);
 	stage.push_back(defPE);
 
 	defME = new GameComponent();
@@ -517,6 +526,7 @@ void BattleState::createStatus()
 	defME->setWidth(60); defME->setHeight((60));
 	defME->setPosition(pos);
 	defME->addRenderComponent(new RenderFrameComponent());
+	defME->setActive(false);
 	stage.push_back(defME);
 
 	prcPE = new GameComponent();
@@ -525,6 +535,7 @@ void BattleState::createStatus()
 	prcPE->setWidth(60); prcPE->setHeight((60));
 	prcPE->setPosition(pos);
 	prcPE->addRenderComponent(new RenderFrameComponent());
+	prcPE->setActive(false);
 	stage.push_back(prcPE);
 
 	prcME = new GameComponent();
@@ -533,6 +544,7 @@ void BattleState::createStatus()
 	prcME->setWidth(60); prcME->setHeight((60));
 	prcME->setPosition(pos);
 	prcME->addRenderComponent(new RenderFrameComponent());
+	prcME->setActive(false);
 	stage.push_back(prcME);
 }
 
@@ -651,10 +663,22 @@ void BattleState::update() {
 	if (!fade2Done_ && fadeDone_)
 		controlFade();
 	else if (fade2Done_) {
-		if (iniPos.getX() != player->getPosition().getX())
+		if (iniPos.getX() != player->getPosition().getX() && meleeAttack)
 		{
 			int frame = int(((SDL_GetTicks() / (75)) % 8)) + 4;
 			player->setColFrame(frame);
+		}
+		else if (iniPos.getX() != player->getPosition().getX() && magicAttack)
+		{
+			int frame = int(((SDL_GetTicks() / (150)) % 15)) + 12;
+			player->setColFrame(frame);
+		}
+		else if (iniPos.getX() != player->getPosition().getX() && rangedAttack)
+		{
+			int frame = int(((SDL_GetTicks() / (150)) % 9)) + 28;
+			player->setColFrame(frame);
+			if (frame >= 37)
+				rangedAttack = false;
 		}
 		else {
 			player->setColFrame(int(((SDL_GetTicks() / (200)) % 4)));
@@ -878,10 +902,21 @@ bool BattleState::run()
 			enemy->delPhysicsComponent(&mce);
 			enemy->delPhysicsComponent(&mae);
 			Attack a = enemy->getAttack(e_input);
-			if ((a.type == Physical || a.type == Ranged)) {
+
+			if ((a.type == Physical)) {
 				Vector2D p = player->getPosition();
 				Vector2D e = enemy->getPosition();
 				mce = MoveToThisPosComponent(e, p);
+				enemy->addPhysicsComponent(&mce);
+				attackAnim_ = true;
+			}
+			else if (a.type == Ranged) {
+				Vector2D p = player->getPosition();
+				Vector2D e = enemy->getPosition();
+				Vector2D x(0, 0);
+				float px = e.getX() + 1;
+				x.setX(px);
+				mce = MoveToThisPosComponent(e, x);
 				enemy->addPhysicsComponent(&mce);
 				attackAnim_ = true;
 			}
@@ -1078,13 +1113,29 @@ void BattleState::attack(int i) {
 
 	player->delPhysicsComponent(&mcp);
 	player->delPhysicsComponent(&map);
-	if ((a.type == Physical || a.type == Ranged)) {
+	if ((a.type == Physical)) {
 		mcp = MoveToThisPosComponent(p, e);
 		player->addPhysicsComponent(&mcp);
+		meleeAttack = true;
+		magicAttack = false;
+		rangedAttack = false;
+	}
+	else if (a.type == Ranged) {
+		Vector2D x(0,0);
+		float px = p.getX() - 1;
+		x.setX(px);
+		mcp = MoveToThisPosComponent(p, x, 0.05);
+		player->addPhysicsComponent(&mcp);
+		meleeAttack = false;
+		magicAttack = false;
+		rangedAttack = true;
 	}
 	else if ((a.type == Magical || a.type == Support)) {
 		map = MagicAttackComponent(p, 0.3);
 		player->addPhysicsComponent(&map);
+		meleeAttack = false;
+		magicAttack = true;
+		rangedAttack = false;
 	}
 
 	//texto
