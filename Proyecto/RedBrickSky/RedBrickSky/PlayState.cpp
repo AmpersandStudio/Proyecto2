@@ -117,7 +117,9 @@ void PlayState::notOnGrass() {
 
 void PlayState::render()
 {
-	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), 400, 300);
+	
+	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), 800, 600);
+
 	switch (currentLevel_)
 	{
 	case 0:
@@ -135,6 +137,8 @@ void PlayState::render()
 		TextureManager::Instance()->drawFullCamera("tiendaLevel", Game::Instance()->getRenderer());
 		break;
 	}
+
+	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), 400, 300);
 
 	for (unsigned int i = 0; i < stage.size(); i++) {
 		if (stage[i]->getActive())

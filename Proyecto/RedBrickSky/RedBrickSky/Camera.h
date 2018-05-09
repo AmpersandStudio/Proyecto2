@@ -32,6 +32,10 @@ private:
 	int mapWidth;
 	int mapHeight;
 
+	int cameraWidth_;
+	int cameraHeight_;
+	int scaleDownFactor_;
+
 	static Camera s_pCamera;
 
 };
