@@ -9,8 +9,8 @@ public:
 	Cartel();
 	~Cartel();
 	void activate();
+	void selectAction();
 	//Para establecer el mensaje si es necesario
-	void setMSG(std::string msg) { Msg_ = msg; text = Dialogue(Msg_); };
 	void setFighter(bool set) { isFighter_ = set; };
 	void setShopState(int s) { toShop = s; };
 	void setTenderMan(bool s) { tenderMan = s; };
@@ -24,8 +24,9 @@ public:
 	void isDefeated();
 
 	inline void setKeyID(int id) { keyID_ = id; }
-	inline void setKey(bool key) { hasKey_ = key; }
 	inline int getKeyID() { return keyID_; };
+
+	void setMSG(std::string msg);
 
 private:
 	int toShop;
@@ -38,13 +39,14 @@ private:
 	std::string Msg_;
 	Dialogue text;
 	bool dialogueActive_ = false;
+	bool hasDialogue = true;
+
 
 	Uint32 timeStart_;
 	Uint32 timeNameInterval_;
 	Uint32 timeDisplayInterval_;
 	Uint32 timeTitleInterval_;
 
-	bool hasKey_;
 	int keyID_;
 };
 

@@ -117,7 +117,7 @@ void PlayState::notOnGrass() {
 
 void PlayState::render()
 {
-
+	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), 400, 300);
 	switch (currentLevel_)
 	{
 	case 0:
@@ -136,7 +136,10 @@ void PlayState::render()
 		break;
 	}
 
-	GameState::render();
+	for (unsigned int i = 0; i < stage.size(); i++) {
+		if (stage[i]->getActive())
+			stage[i]->render();
+	}
 
 	pLevels.at(GameManager::Instance()->getLevel())->render();
 

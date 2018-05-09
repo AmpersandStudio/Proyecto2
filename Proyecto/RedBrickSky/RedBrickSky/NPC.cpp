@@ -52,6 +52,7 @@ NPC::~NPC()
 }
 
 void NPC::activate() {
+
 	if (!dialogueActive_ && !GameManager::Instance()->getDialogueState()) {
 		dialogueActive_ = true;
 		GameManager::Instance()->setDialogueState(true);

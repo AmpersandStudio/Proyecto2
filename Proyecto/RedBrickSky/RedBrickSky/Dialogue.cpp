@@ -19,11 +19,14 @@ Dialogue::~Dialogue()
 
 void Dialogue::update()
 {
-	if (!isActive())
+	if (numDialogues_ > 0)
 	{
-		if (dialogueIndex_ >= numDialogues_) dialogueIndex_ = 0;
-		splitString(dialogues_.at(dialogueIndex_));
-		setActive(true);
+		if (!isActive())
+		{
+			if (dialogueIndex_ >= numDialogues_) dialogueIndex_ = 0;
+			splitString(dialogues_.at(dialogueIndex_));
+			setActive(true);
+		}
 	}
 
 	if (isActive())

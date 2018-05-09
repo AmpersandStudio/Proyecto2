@@ -125,10 +125,11 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			std::string type = "Interactuable";
 			std::string Message = " ";
 			int toShop = 0;
-			bool tendero = false;
-			bool toPlayGround = false;
-			bool hasKey = false;
-			bool isFighter = false;
+			int tendero = 0;
+			int toPlayGround = 0;
+			int isFighter = 0;
+			//bool hasKey = false;
+
 
 			// get the initial node values type, x and y
 			e->Attribute("x", &x);
@@ -189,19 +190,17 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							}
 							else if (property->Attribute("name") == std::string("tendero"))
 							{
-								tendero = property->Attribute("value");
+								//tendero = property->Attribute("value");
+								property->Attribute("value", &tendero);
 							}
 							else if (property->Attribute("name") == std::string("goingToPlay"))
 							{
-								toPlayGround = property->Attribute("value");
-							}
-							else if (property->Attribute("name") == std::string("hasKey"))
-							{
-								hasKey = property->Attribute("value");
+								//toPlayGround = property->Attribute("value");
+								property->Attribute("value", &toPlayGround);
 							}
 							else if (property->Attribute("name") == std::string("isFighter"))
 							{
-								isFighter = property->Attribute("value");
+								property->Attribute("value", &isFighter);
 							}
 						}
 					}
@@ -243,7 +242,6 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				c->setToPlay(toPlayGround);
 				c->setFighter(isFighter);
 				c->setKeyID(keyID);
-				c->setKey(hasKey);
 				c->setPosition(Vector2D(c->getPosition().getX(), c->getPosition().getY() - 32));
 
 				pLevel->getCarteles()->push_back(c);				

@@ -6,7 +6,7 @@
 class Door : public Interactuable
 {
 public:
-	Door() : active_(false),dialogueActive_(false),isInteracting_(false) {}
+	Door() : active_(false),dialogueActive_(false), keyID_(0) {}
 	virtual ~Door() {}
 
 	inline int getID() const { return keyID_; }
@@ -28,7 +28,6 @@ private:
 	std::string Msg_;
 	Dialogue text;
 	bool dialogueActive_;
-	bool isInteracting_;
 };
 
 class DoorCreator : public BaseCreator
