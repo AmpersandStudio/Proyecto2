@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="150" height="63" tilewidth="32" tileheight="32" nextobjectid="137">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="150" height="63" tilewidth="32" tileheight="32" nextobjectid="138">
  <properties>
   <property name="Personaje1" value="..assetsPersonaje1.png"/>
   <property name="Personaje2" value="..assetsPersonaje2.png"/>
@@ -636,7 +636,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="33" name="Cartel2" type="Cartel" gid="650" x="2943.25" y="4000.92" width="32" height="32"/>
   <object id="34" name="Personaje9" type="NPC" x="2427.25" y="3900.92" width="32" height="32">
    <properties>
@@ -987,6 +987,14 @@
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje5"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="137" name="Player" type="Player" x="4045.33" y="918.667" width="32" height="32">
+   <properties>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="helicopter"/>
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>

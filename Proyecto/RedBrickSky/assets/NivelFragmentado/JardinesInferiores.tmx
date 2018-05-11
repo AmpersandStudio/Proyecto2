@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="97" height="138" tilewidth="32" tileheight="32" nextobjectid="120">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="97" height="138" tilewidth="32" tileheight="32" nextobjectid="121">
  <properties>
   <property name="Personaje1" value="..assetsPersonaje1.png"/>
   <property name="Personaje2" value="..assetsPersonaje2.png"/>
@@ -1310,7 +1310,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="65" x="2477.33" y="3053.33"/>
   <object id="66" name="Mochila" type="Bag" x="1681.33" y="494.67">
    <properties>
@@ -1520,6 +1520,14 @@
   <object id="119" name="Ampersand" type="Cartel" x="2894" y="2606">
    <properties>
     <property name="Message" value="NPC14"/>
+   </properties>
+  </object>
+  <object id="120" name="Player" type="Player" x="1692" y="1734" width="32" height="32">
+   <properties>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="helicopter"/>
+    <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
  </objectgroup>
