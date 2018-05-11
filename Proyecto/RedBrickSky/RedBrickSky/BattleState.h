@@ -86,6 +86,7 @@ protected:
 	bool meleeAttack = false;
 	bool magicAttack = false;
 	bool rangedAttack = false;
+	bool potion = false;
 
 	Vector2D iniPos;
 	Vector2D positionW1;
@@ -178,4 +179,3 @@ public:
 	//bloque 8 (metodo para la animacion)
 	void setAttackAnim(bool b) { attackAnim_ = b; };
 };
-
