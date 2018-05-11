@@ -134,10 +134,10 @@ void ShopState::createShopItems() {
 
 	//Crea el boton para comprar la pocion
 	GameComponent* poti = new GameComponent();
-	Vector2D p(0.5, 2.5);
-	poti->setTextureId("blue"); poti->setOriPos(p); poti->setPosition(p); poti->setWidth(450); poti->setHeight(80);
+	Vector2D p(0.78, 4.5);
+	poti->setTextureId("potiFB"); poti->setOriPos(p); poti->setPosition(p); poti->setWidth(435); poti->setHeight(70);
 	poti->addRenderComponent(new RenderSingleFrameComponent()); poti->addInputComponent(new PotionShop());
-	
+	poti->setColFrame(0); poti->setRowFrame(0);
 	stageBack(poti);
 
 	//Creamos el elemento que nos permitirá movernos con teclado y con el mandop
