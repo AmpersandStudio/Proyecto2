@@ -124,6 +124,7 @@ public:
 	void addPotion() { potions_++; }
 
 	int getPotions() { return potions_; }
+	void setPotions(int p) { potions_ = p; }
 
 	int getPotionsPrize() { return potionsPrize; };
 };

@@ -11,10 +11,10 @@ BattleState::BattleState()
 
 	SDL_ShowCursor(1);
 
-	attack_ = false; 
-	bag_ = false; 
+	attack_ = false;
+	bag_ = false;
 	run_ = false;
-	okEnemy_ = false; 
+	okEnemy_ = false;
 	okPlayer_ = true;
 	END_ = false;
 	Attacking_ = false;
@@ -84,7 +84,7 @@ void BattleState::pickBackground() {
 	fondo_ = new GameComponent();
 
 	int currLevel = GameManager::Instance()->getLevel();
-	
+
 	if (currLevel == 0) {
 		fondo_->setTextureId("battlebg1");
 	}
@@ -388,7 +388,7 @@ void BattleState::createPlayer() {
 	stage.push_back(player);
 }
 
-void BattleState::createEnemy() 
+void BattleState::createEnemy()
 {
 	int rnd = GameManager::Instance()->getEnemy();
 	int lv = GameManager::Instance()->getLevel();
@@ -424,7 +424,7 @@ void BattleState::createEnemy()
 
 	Vector2D pos2(3.3, 0.62);
 	enemy->setPosition(pos2);
-	enemy->setWidth(160); 
+	enemy->setWidth(160);
 	enemy->setHeight(260);
 
 	RenderComponent* rc2 = new RenderFraemeComponent2();
@@ -433,7 +433,7 @@ void BattleState::createEnemy()
 	stage.push_back(enemy);
 }
 
-void BattleState::createStatus() 
+void BattleState::createStatus()
 {
 	Vector2D pos(0, 0);
 
@@ -710,7 +710,7 @@ void BattleState::render() {
 	else {
 		GameState::render();
 		updateVidas();
-		
+
 		if (weaponsEnabled_)
 		{
 			Attack temp_a;
@@ -801,9 +801,8 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 			actButton = false;
 
 		if (actButton && !attack_) {
-			in = true;
-			bag_ = true;
-			in = false; //habra que desactivarla en algun punto
+			potion = true;
+			attack(-1);
 		}
 		else if (actButton && attack_) {
 			attack(2);
@@ -872,17 +871,27 @@ bool BattleState::run()
 		if (pt && !et) {
 			std::cout << std::endl;
 
-			if (!player->useAttack(input)) {
+			if (input != -1 && !player->useAttack(input)) {
 				std::cout << "No quedan PP para este ataque!" << std::endl;
 				fail = true;
 			}
 			else {
 				fail = false;
-				float dmg = player->combat(input, enemy->getDefense(), enemy->getType(), damagedE);
+				float dmg;
+				if (input != -1)
+					dmg = player->combat(input, enemy->getDefense(), enemy->getType(), damagedE);
+				else
+					dmg = 0;
+
 				if (player->hasTarget())
 				{
 					enemy->receiveDamage(dmg);
-					Attack temp_a = player->getAttack(input);
+					Attack temp_a;
+					if (input != -1)
+						temp_a = player->getAttack(input);
+					else
+						temp_a = Attack("Pocion", Support, 100, 100, 0, 1000, 1, 1, 1);
+
 					if (temp_a.type != Support)
 						enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
 				}
@@ -1091,10 +1100,10 @@ void BattleState::displayAttacks()
 {
 	for (int i = 0; i < 4; i++) {
 		Attack temp_a = player->getAttack(i);
-		std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;		
+		std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;
 	}
 
-	
+
 }
 
 void BattleState::attack(int i) {
@@ -1109,33 +1118,57 @@ void BattleState::attack(int i) {
 	Vector2D p = player->getPosition();
 	Vector2D e = enemy->getPosition();
 
-	Attack a = player->getAttack(input);
+	Attack a;
+	if (input != -1)
+		a = player->getAttack(input);
+	else
+		a = Attack("Pocion", Support, 100, 100, 0, 1000, 1, 1, 1);
 
 	player->delPhysicsComponent(&mcp);
 	player->delPhysicsComponent(&map);
-	if ((a.type == Physical)) {
-		mcp = MoveToThisPosComponent(p, e);
-		player->addPhysicsComponent(&mcp);
-		meleeAttack = true;
-		magicAttack = false;
-		rangedAttack = false;
+
+	if (input != -1) {
+		if ((a.type == Physical)) {
+			mcp = MoveToThisPosComponent(p, e);
+			player->addPhysicsComponent(&mcp);
+			meleeAttack = true;
+			magicAttack = false;
+			rangedAttack = false;
+		}
+		else if (a.type == Ranged) {
+			Vector2D x(0, 0);
+			float px = p.getX() - 1;
+			x.setX(px);
+			mcp = MoveToThisPosComponent(p, x, 0.05);
+			player->addPhysicsComponent(&mcp);
+			meleeAttack = false;
+			magicAttack = false;
+			rangedAttack = true;
+		}
+		else if ((a.type == Magical || a.type == Support)) {
+			map = MagicAttackComponent(p, 0.3);
+			player->addPhysicsComponent(&map);
+			meleeAttack = false;
+			magicAttack = true;
+			rangedAttack = false;
+		}
 	}
-	else if (a.type == Ranged) {
-		Vector2D x(0,0);
-		float px = p.getX() - 1;
-		x.setX(px);
-		mcp = MoveToThisPosComponent(p, x, 0.05);
-		player->addPhysicsComponent(&mcp);
-		meleeAttack = false;
-		magicAttack = false;
-		rangedAttack = true;
-	}
-	else if ((a.type == Magical || a.type == Support)) {
-		map = MagicAttackComponent(p, 0.3);
-		player->addPhysicsComponent(&map);
-		meleeAttack = false;
-		magicAttack = true;
-		rangedAttack = false;
+	else {
+		if (potion) {
+			potion = false;
+			map = MagicAttackComponent(p, 0.3);
+			player->addPhysicsComponent(&map);
+			meleeAttack = false;
+			magicAttack = true;
+			rangedAttack = false;
+
+			int potions = GameManager::Instance()->getPotions();
+			if (potions > 0) {
+				potions--;
+				GameManager::Instance()->setPotions(potions);
+				GameManager::Instance()->setHealth(GameManager::Instance()->getHealth() + 50);
+			}
+		}
 	}
 
 	//texto
