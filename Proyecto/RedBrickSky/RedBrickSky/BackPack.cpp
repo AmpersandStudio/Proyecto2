@@ -8,11 +8,11 @@
 BackPack::BackPack()
 {
 
-	TheSoundManager::Instance()->playSound("cremallera", 0); 
+	TheSoundManager::Instance()->playSound("cremallera", 0);
 	money = GameManager::Instance()->getMoney();
 	invent.clear();
 	invent = GameManager::Instance()->copyInventory();
-		
+
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 130, 515);
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getPotions()), 280, 495);
 
@@ -24,7 +24,7 @@ BackPack::BackPack()
 	for (int i = 0; i < numFils; i++) {
 		matriz[i] = new estado[numRows];
 	}
-	
+
 	if (XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
 		XboxController::Instance()->insertController();
 
@@ -34,6 +34,7 @@ BackPack::BackPack()
 	width1 = 256; width2 = 171;
 	height1 = 512; height2 = 341;
 	EItems = 0;
+	leftOccupied = false;
 	creaEscena();
 }
 
@@ -64,32 +65,32 @@ BackPack::~BackPack()
 
 bool BackPack::handleEvent(const SDL_Event & event)
 {
-		// 1) Comprueba las teclas de acceso a los distintos menús, etc.
-		if (event.type == SDL_KEYDOWN)
-		{
-			if (event.key.keysym.sym == SDLK_ESCAPE) {
-				toMenu();
-			}
+	// 1) Comprueba las teclas de acceso a los distintos menús, etc.
+	if (event.type == SDL_KEYDOWN)
+	{
+		if (event.key.keysym.sym == SDLK_ESCAPE) {
+			toMenu();
+		}
+	}
+
+	else if (event.type == SDL_JOYBUTTONDOWN) {
+
+		XboxController::Instance()->onJoystickButtonDown(event);
+
+		if (XboxController::Instance()->getButtonState(0, 6)) {
+			toMenu();
 		}
 
-		else if (event.type == SDL_JOYBUTTONDOWN) {
-
-			XboxController::Instance()->onJoystickButtonDown(event);
-
-			if (XboxController::Instance()->getButtonState(0, 6)) {
-				toMenu();
-			}
-
-			if (XboxController::Instance()->getButtonState(0, 1) && buttonsCreated) {//Si se ha pulsado la B
-				toMenu();
-			}
-						
+		if (XboxController::Instance()->getButtonState(0, 1) && buttonsCreated) {//Si se ha pulsado la B
+			toMenu();
 		}
 
-		else if (event.type == SDL_JOYBUTTONUP)
-			XboxController::Instance()->onJoystickButtonUp(event);
-		// 2) LLama a los input de cada objeto del propio estado
-		return GameState::handleEvent(event);
+	}
+
+	else if (event.type == SDL_JOYBUTTONUP)
+		XboxController::Instance()->onJoystickButtonUp(event);
+	// 2) LLama a los input de cada objeto del propio estado
+	return GameState::handleEvent(event);
 }
 
 void BackPack::toMenu() {
@@ -102,64 +103,43 @@ void BackPack::toMenu() {
 void BackPack::cargaElementos() {
 
 	//Asginamos los elementos dentro del vector de la mochila a cada casilla
-	vector<estado> auxV;
+	int auxP = 0;
 	for (unsigned int i = 0; i < invent.size(); i++) {
-	
-		invent[i].objectID = i;
 
 		if (!invent[i].equiped) {
-			if (invent[i].mX != -10 && invent[i].mY != -10) {
 
-				int x = invent[i].mX;
-				int y = invent[i].mY;
-				createItemAtSP(x, y, invent[i].objectID, invent[i]);
+			invent[i].objectID = auxP;
 
-				bool found = false;
-				for (int i = 0; i < SP.size() && !found; i++) {
-					if (SP[i].mX == x && SP[i].mY == y) {
-						found = true;
-						SP[i].empty = false;
-					}
+			int aux = 0;
+			int h = 0;
+			int j = 0;
+			bool place = false;
+			while (h < numFils && !place) {
+				if (j > numRows) {
+					h++;
+					j = 0;
+				}
+
+				if (SP[aux].empty == true) {
+					int x = SP[aux].mX;
+					int y = SP[aux].mY;
+					createItemAtSP(x, y, invent[i].objectID, invent[i]);
+					SP[aux].empty = false;
+					invent[i].mX = x;
+					invent[i].mY = y;
+					invent[i].GC = invent[invent[i].objectID].GC;
+					place = true;
+				}
+				else {
+					j++;
+					aux++;
 				}
 			}
-			else
-				auxV.push_back(invent[i]);
 		}
+		auxP++;
 	}
-
-	//todos aquellos elementos que no hayan sido ordenados previamente, los asignamos a un lugar 
-
-	for (int p = 0; p < auxV.size(); p++)
-	{
-		int aux = 0;
-		int i = 0;
-		int j = 0;
-		bool place = false;
-		while (i < numFils && !place) {
-			if (j > numRows) {
-				i++;
-				j = 0;
-			}
-
-			if (SP[aux].empty == true) {
-				int x = SP[aux].mX;
-				int y = SP[aux].mY;
-				createItemAtSP(x, y, auxV[p].objectID, auxV[p]);
-				SP[aux].empty = false;
-				auxV[p].mX = x;
-				auxV[p].mY = y;
-				auxV[p].GC = invent[auxV[p].objectID].GC;
-				place = true;
-			}
-			else {
-				j++;
-				aux++;
-			}
-		}
-	}
-
-	vector<estado> auxSP = SP;
-	setSP(auxSP);
+	vector<estado> stand = SP;
+	setSP(stand);
 
 	//Ponemos los objetos que tenga el personaje
 
@@ -168,12 +148,13 @@ void BackPack::cargaElementos() {
 
 		GameComponent* gc = new GameComponent();
 		if (x == 0) {
-			Vector2D position0(EquipedItems[x].x * 2.2, EquipedItems[x].y * 3.9);
+			Vector2D position0(2.6, 9.7);
 			gc->setPosition(position0);
 			gc->setOriPos(position0);
+			leftOccupied = true;
 		}
 		else {
-			Vector2D position1(EquipedItems[x].x * 4.9 , EquipedItems[x].y * 3.9);
+			Vector2D position1(5.8, 9.7);
 			gc->setPosition(position1);
 			gc->setOriPos(position1);
 		}
@@ -184,7 +165,9 @@ void BackPack::cargaElementos() {
 		gc->setColFrame(EquipedItems[x].colFrame); gc->setRowFrame(EquipedItems[x].FilFrame);
 
 		if (actualState_ == 0)
-			gc->addInputComponent(new DragNDropComponent(this, x));
+			gc->addInputComponent(new DragNDropComponent(this, x)); //AQUI ESTA EL CAMBIO 
+
+		
 
 		EquipedItems[x].GC = gc;
 
@@ -219,7 +202,7 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 	gc->addRenderComponent(new RenderSingleFrameComponent());  gc->addInputComponent(new DragNDropComponent(this, aux));
 	gc->setOriPos(position0);
 	gc->setColFrame(matriz[x][y].colFrame); gc->setRowFrame(matriz[x][y].FilFrame);
-	
+
 	st.GC = gc;
 
 	invent[aux].GC = gc;
@@ -229,13 +212,12 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 void BackPack::creaSP() {
 
 	for (int i = 0; i < invent.size(); i++) {
+		
 		if (invent[i].equiped) {
 			EItems++;
 			EquipedItems.push_back(invent[i]);
 		}
 	}
-	
-	std::cout << "Eitems: " << EquipedItems.size() << endl;
 
 	buttonsCreated = false;
 
@@ -247,7 +229,7 @@ void BackPack::creaSP() {
 	Vector2D selecPos;
 	int auxD = 0;
 	int aux = 0;
-	
+
 	//StandPoints para guardar los objetos en el inventario
 	for (int i = 0; i < numFils; i++)
 		for (int j = 0; j < numRows; j++) {
@@ -255,7 +237,7 @@ void BackPack::creaSP() {
 			double width = 45;
 			double height = 45;
 			matriz[i][j].empty = true;
-			matriz[i][j].ID = 0;
+			matriz[i][j].ID = aux;
 			matriz[i][j].objects = 0;
 			matriz[i][j].w = width;
 			matriz[i][j].h = height;
@@ -276,7 +258,7 @@ void BackPack::creaSP() {
 			gc->addRenderComponent(new RenderSingleFrameComponent()); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
 
 			stage.push_back(gc);
-			SP.push_back(matriz[i][j]); 
+			SP.push_back(matriz[i][j]);
 			StandPointsO.push_back(gc);
 			numSP++;
 			aux++;
@@ -292,12 +274,7 @@ void BackPack::creaSP() {
 		estado s;
 		int width = 70;
 		int height = 70;
-		if (EItems > 0) {
-			EItems--;
-			s.empty = false;
-		}
-		else 
-			s.empty = true;
+		s.empty = true;
 		s.ID = 0;
 		s.objects = 0;
 		s.w = width;
@@ -317,10 +294,9 @@ void BackPack::creaSP() {
 		gc->addRenderComponent(new RenderSingleFrameComponent()); //gc->addInputComponent(mooCP); //gc->addInputComponent(auxSCP);
 
 		stage.push_back(gc);
-		SP.push_back(s);
 		StandPointsO.push_back(gc);
 	}
-	
+
 	//Creamos el elemento que nos permitirá movernos con teclado
 	selector_ = new GameComponent();
 
@@ -352,7 +328,7 @@ void BackPack::elimina() {
 
 void BackPack::creaEscena() {
 
-	
+
 	creaFondoTienda();
 
 	//Creamos botón para volver al menú principal y los de cada clase
@@ -397,7 +373,7 @@ void BackPack::createButtons(int x, int y, vector<estado> type, std::string t, i
 	Vector2D position(x, y);
 
 	GC->setTextureId(t); GC->setPosition(position); GC->setWidth(130); GC->setHeight(60);
-	GC->addRenderComponent(new RenderSingleFrameComponent());  
+	GC->addRenderComponent(new RenderSingleFrameComponent());
 
 	stage.push_back(GC);
 	botones.push_back(GC);
@@ -429,7 +405,7 @@ void BackPack::render() {
 	//BARRA DE VIDA
 
 	TheTextureManager::Instance()->drawFull("inventHP", 142, 122,
-		180, 30 ,Game::Instance()->getRenderer(), 0, 255);
+		180, 30, Game::Instance()->getRenderer(), 0, 255);
 
 	Vector2D position0(172, 138);
 
@@ -451,10 +427,10 @@ void BackPack::render() {
 
 	//Sweeties
 	TheTextureManager::Instance()->drawItem("sweet", 90, 510,
-		50, 30, 0,0, 1,2, Game::Instance()->getRenderer(), 0, 255);
+		50, 30, 0, 0, 1, 2, Game::Instance()->getRenderer(), 0, 255);
 	//Potions
 	TheTextureManager::Instance()->drawItem("21", 260, 510,
 		32, 32, 4, 0, 8, 8, Game::Instance()->getRenderer(), 0, 255);
-	
-	
+
+
 }

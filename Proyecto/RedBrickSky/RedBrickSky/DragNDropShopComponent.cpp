@@ -135,8 +135,8 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 					n.objects = StandPoints[i].objects;
 					n.x = StandPoints[i].x;
 					n.y = StandPoints[i].y;
-					n.mX = -10;
-					n.mY = -10;
+					n.mX = 0;
+					n.mY = 0;
 					n.w = StandPoints[i].w;
 					n.h = StandPoints[i].h;
 					n.tx = o->getTextureId();

@@ -78,7 +78,7 @@ void ShopState::createShopItems() {
 	int shopCols = 8;
 
 	for (unsigned int i = 0; i < shopObjects.size(); i++) {
-		std::cout << shopObjects[i].comprado << endl;
+
 		if (i % shopCols == 0) {
 			j++;
 			k = 0;

@@ -25,7 +25,7 @@ private:
 	vector<estado> SP;
 	vector<GameObject*> StandPointsO;
 	vector<GameObject*> auxGOforDeleting;
-	
+
 	vector<GameComponent*> botones;
 
 	//Vectores para los distintos tipos de objetos
@@ -45,6 +45,7 @@ private:
 	int ultimaFilaY;
 
 	int EItems;
+	bool leftOccupied;
 
 	bool buttonsCreated;
 
@@ -65,7 +66,7 @@ public:
 	virtual bool handleEvent(const SDL_Event& event);
 	virtual void render();
 
-    static void toMenu();
+	static void toMenu();
 	vector<estado> getSP() { return SP; };
 	vector<estado> getInvent() { return invent; };
 	void setInvent(vector<estado> v);
@@ -76,8 +77,13 @@ public:
 	void creaEscena();
 	void creaFondoTienda();
 	void createButtons(int x, int y, vector<estado> type, std::string t, int st);
-	void createItemAtSP(int x, int y, int aux, estado st);	
+	void createItemAtSP(int x, int y, int aux, estado st);
 	void setActualState(int i) { actualState_ = i; };
+	int getEItems() { return EItems; };
+	void pushEItem() { EItems++; };
+	void pullEitem() { EItems--; };
+	bool getLeft() {return leftOccupied;};
+	void setLeft(bool l) { leftOccupied = l; };
 };
 
 
