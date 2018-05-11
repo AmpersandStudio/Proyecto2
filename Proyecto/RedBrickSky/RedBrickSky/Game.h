@@ -40,7 +40,7 @@ private:
 	void loadResources();
 	void registerTypes();
 
-	int zoom_;
+	int scaleFact;
 
 	StringToScreen* strings;
 	
@@ -61,7 +61,7 @@ public:
 	inline int getWinWidth() { return winWidth_; }
 	inline int getWinHeight() { return winHeight_; }
 	inline void exitApp() { exit_ = true; }
-	int getZoom() { return zoom_; };
+	inline int getScaleFact() const { return scaleFact; }
 };
 
 typedef Game TheGame;

@@ -17,25 +17,25 @@ const Vector2D Camera::getPosition() const
 {
 	if (m_pTarget != 0)
 	{
-		Vector2D pos(m_pTarget->getX() - (TheGame::Instance()->getWinWidth() / 4), 
-			         m_pTarget->getY() - (TheGame::Instance()->getWinHeight() / 4));
+		Vector2D pos(m_pTarget->getX() - (TheGame::Instance()->getWinWidth() / (2 * Game::Instance()->getScaleFact())),
+			         m_pTarget->getY() - (TheGame::Instance()->getWinHeight() / (2 * Game::Instance()->getScaleFact())));
 
 		if (pos.getX() < 0)
 		{
 			pos.setX(0);
 		}
-		if (pos.getX() > mapWidth - TheGame::Instance()->getWinWidth() / 2)
+		if (pos.getX() > mapWidth - TheGame::Instance()->getWinWidth() / Game::Instance()->getScaleFact())
 		{
-			pos.setX(mapWidth - TheGame::Instance()->getWinWidth() / 2);
+			pos.setX(mapWidth - TheGame::Instance()->getWinWidth() / Game::Instance()->getScaleFact());
 		}
 
 		if (pos.getY() < 0)
 		{
 			pos.setY(0);
 		}
-		if (pos.getY() > mapHeight - TheGame::Instance()->getWinHeight() / 2)
+		if (pos.getY() > mapHeight - TheGame::Instance()->getWinHeight() / Game::Instance()->getScaleFact())
 		{
-			pos.setY(mapHeight - TheGame::Instance()->getWinHeight() / 2);
+			pos.setY(mapHeight - TheGame::Instance()->getWinHeight() / Game::Instance()->getScaleFact());
 		}
 
 

@@ -105,6 +105,7 @@ void Player::update()
 
 bool Player::handleEvent(const SDL_Event& event)
 {
+	bool move = false;
 
 	if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 	{
@@ -114,29 +115,29 @@ bool Player::handleEvent(const SDL_Event& event)
 			{
 				velocity_.set(Vector2D(-m_moveSpeed, 0));
 				direction_.set(-1, 0);
-
+				move = true;
 			}
 			if (event.key.keysym.sym == SDLK_RIGHT)
 			{
 				velocity_.set(Vector2D(m_moveSpeed, 0));
 				direction_.set(1, 0);
-
+				move = true;
 			}
 			if (event.key.keysym.sym == SDLK_UP)
 			{
 				velocity_.set(Vector2D(0, -m_moveSpeed));
 				direction_.set(0, -1);
-
+				move = true;
 			}
 			if (event.key.keysym.sym == SDLK_DOWN)
 			{
 				velocity_.set(Vector2D(0, m_moveSpeed));
 				direction_.set(0, 1);
-
+				move = true;
 			}
 			if (event.key.keysym.sym == SDLK_r)
 			{
-				m_moveSpeed = (running_) ? 10 : 20;
+				m_moveSpeed = (running_) ? 4 : 8;
 				running_ = !running_;
 			}
 			if (event.key.keysym.sym == SDLK_i)

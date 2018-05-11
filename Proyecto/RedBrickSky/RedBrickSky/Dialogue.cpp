@@ -58,26 +58,30 @@ bool Dialogue::nextDialogue() {
 
 void Dialogue::render()
 {
+	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), Game::Instance()->getWinWidth(), Game::Instance()->getWinHeight());
+
 	if (isActive())
 	{
-		if(posX_ - TheCamera::Instance()->getPosition().getX() > (Game::Instance()->getWinWidth() / 2) + offsetX_) {
+		if (posX_ - TheCamera::Instance()->getPosition().getX() > (Game::Instance()->getWinWidth() / 2) + offsetX_) {
 			posX_ += (-2 * offsetX_) - dBoxWidth_;
 		}
-	else {
-		posX_ += 10;
+		else {
+			posX_ += 10;
+		}
+
+		TheTextureManager::Instance()->drawFull("viñeta", posX_ - TheCamera::Instance()->getPosition().getX() - offsetX_, posY_ - TheCamera::Instance()->getPosition().getY() - offsetY_ - 10,
+			dBoxWidth_, dBoxHeight_, Game::Instance()->getRenderer(), 0, 255);
+
+		//RENDERIZO EL BOCADILLO
+		for (int i = 0; i < 3; i++) {
+			TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::Pixel16, { 0,0,0,255 },
+				posX_ - TheCamera::Instance()->getPosition().getX(),
+				posY_ + i * lineSpace_ - TheCamera::Instance()->getPosition().getY(),
+				Game::Instance()->getRenderer());
+		}
 	}
 
-	TheTextureManager::Instance()->drawFull("viñeta", posX_ - TheCamera::Instance()->getPosition().getX() - offsetX_, posY_ - TheCamera::Instance()->getPosition().getY() - offsetY_ - 10,
-		dBoxWidth_, dBoxHeight_, Game::Instance()->getRenderer(), 0, 255);
-
-	//RENDERIZO EL BOCADILLO
-	for (int i = 0; i < 3; i++) {
-		TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::Pixel16, { 0,0,0,255 },
-			posX_ - TheCamera::Instance()->getPosition().getX(),
-			posY_ + i * lineSpace_ - TheCamera::Instance()->getPosition().getY(),
-			Game::Instance()->getRenderer());
-	}
-	}
+	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), Game::Instance()->getWinWidth() / Game::Instance()->getScaleFact(), Game::Instance()->getWinHeight() / Game::Instance()->getScaleFact());
 }
 
 void Dialogue::readFile()

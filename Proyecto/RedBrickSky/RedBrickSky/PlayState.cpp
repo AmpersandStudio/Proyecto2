@@ -118,7 +118,7 @@ void PlayState::notOnGrass() {
 void PlayState::render()
 {
 	
-	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), 800, 600);
+	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), Game::Instance()->getWinWidth(), Game::Instance()->getWinHeight());
 
 	switch (currentLevel_)
 	{
@@ -138,7 +138,7 @@ void PlayState::render()
 		break;
 	}
 
-	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), 400, 300);
+	SDL_RenderSetLogicalSize(Game::Instance()->getRenderer(), Game::Instance()->getWinWidth() / Game::Instance()->getScaleFact(), Game::Instance()->getWinHeight() / Game::Instance()->getScaleFact());
 
 	for (unsigned int i = 0; i < stage.size(); i++) {
 		if (stage[i]->getActive())

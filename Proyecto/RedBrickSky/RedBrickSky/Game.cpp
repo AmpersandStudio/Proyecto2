@@ -69,9 +69,9 @@ void Game::initSDL()
 	SDL_RenderClear(RENDERER_);
 	SDL_RenderPresent(RENDERER_);
 
-	zoom_ = 1;
+	scaleFact = 2;
 
-	strings =	StringToScreen::Instance();
+	strings = StringToScreen::Instance();
 }
 
 void Game::loadResources()
