@@ -136,12 +136,10 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		for (int i = 0; i < SP.size(); i++) {
 			//Busca si el objeto se ha dejado en alguno de los Stand Points
 			{
-				auxX = SP[i]->getPosition().getX() * 50;
-				auxY = SP[i]->getPosition().getY() * 50;
+				auxX = SP[i]->getPosition().getX() * 45;
+				auxY = SP[i]->getPosition().getY() * 45;
 				auxW = SP[i]->getWidth();
 				auxH = SP[i]->getHeight();;
-
-				//cout  << auxY << "," << endl;
 
 				if (x >(auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
 					SP[i]->setColFrame(1);

@@ -4,23 +4,16 @@
 
 ShopState::ShopState()
 {
-	ShopItems* items = new ShopItems();
-	shopObjects = items->getItems();
-	delete items;
-
+	shopObjects = GameManager::Instance()->copyShopItems();
+	
 	SDL_ShowCursor(1);
 
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
-	StringToScreen::Instance()->pushInfinite("Caramelos: " + std::to_string(money), 350, 395);
 
+	StringToScreen::Instance()->pushInfinite("Caramelos: " + std::to_string(money), 350, 395);
 	StringToScreen::Instance()->pushInfinite("Comprar pociones      x" + std::to_string(GameManager::Instance()->getPotions()), 350, 320);
 	
-
-	//Componentes necesarios
-
-	//Separamos elementos dependiendo de su clase
-	separateElements();
 
 	//Imagen de fondo de la tienda
 	GameComponent* backShop = new GameComponent();
@@ -44,12 +37,13 @@ void ShopState::setMoney(int n) {
 }
 
 void ShopState::toMenu() {
-	StateMachine* sm = Game::Instance()->getStateMachine();
+	StateMachine* sm = Game::Instance()->getStateMachine(); 
 	sm->popState();
 }
 
 ShopState::~ShopState()
 {
+	GameManager::Instance()->changeShopItems(shopObjects);
 	SDL_ShowCursor(0);
 	StringToScreen::Instance()->clearInfinite();
 	StringToScreen::Instance()->stopRendering();
@@ -62,22 +56,6 @@ void ShopState::setSP(vector<estado> s) {
 		SP.push_back(s[i]);
 }
 
-void ShopState::separateElements() {
-	//Guardamos los elementos del inventario en sus correspondientes vectores
-	Weapons.clear();
-	Potions.clear();
-	Objects.clear();
-	for (unsigned int i = 0; i < invent.size(); i++) {
-		if (invent[i].type == 0)
-			Weapons.push_back(invent[i]);
-		else if (invent[i].type == 1)
-			Potions.push_back(invent[i]);
-		else if (invent[i].type == 2)
-			Objects.push_back(invent[i]);
-
-		ocupados++;
-	}
-}
 
 void ShopState::mainMenuBotton() {
 
@@ -100,7 +78,7 @@ void ShopState::createShopItems() {
 	int shopCols = 8;
 
 	for (unsigned int i = 0; i < shopObjects.size(); i++) {
-
+		std::cout << shopObjects[i].comprado << endl;
 		if (i % shopCols == 0) {
 			j++;
 			k = 0;
@@ -114,18 +92,18 @@ void ShopState::createShopItems() {
 		gc2->setTextureId(shopObjects[i].tx); gc2->setOriPos(oriPos); gc2->setPosition(position5); gc2->setWidth(50); gc2->setHeight(50);
 		gc2->addRenderComponent(new RenderSingleFrameComponent());
 		gc2->setColFrame(shopObjects[i].colFrame); gc2->setRowFrame(shopObjects[i].FilFrame);
-		
+
 		//Crea los objetos de la tienda que se mueden mover
 		GameComponent* gc = new GameComponent();
-		DragNDropShopComponent* p = new DragNDropShopComponent(this, shopObjects[i].price, false, shopObjects[i].ID, gc, shopObjects[i].type, shopObjects[i].nombre, shopObjects[i].FilFrame, shopObjects[i].colFrame);
+		DragNDropShopComponent* p = new DragNDropShopComponent(this, shopObjects[i].price, shopObjects[i].comprado, shopObjects[i].ID, gc, shopObjects[i].type, shopObjects[i].nombre, shopObjects[i].FilFrame, shopObjects[i].colFrame);
 		gc->setTextureId(shopObjects[i].tx); gc->setOriPos(oriPos); gc->setPosition(position5); gc->setWidth(50); gc->setHeight(50);
 		gc->addRenderComponent(new RenderSingleFrameComponent()); gc->addInputComponent(p); gc->addInputComponent(new MouseInfoClickComponent(shopObjects[i], this));
 		gc->setColFrame(shopObjects[i].colFrame); gc->setRowFrame(shopObjects[i].FilFrame);
 
-
 		stageBack(gc2); //Añadimos la imagen de detrás del objeto al stage
 		stageBack(gc); //Añadimos el objeto
 		GCshopV.push_back(gc); //Añadimos el elemento al vector de Items de la tienda
+
 		k++;
 
 	}
@@ -133,10 +111,10 @@ void ShopState::createShopItems() {
 
 	estado s;
 	s.empty = false;
-	s.comprado = true;
+	s.comprado = false;
 	s.ID = 15;
 	s.objects = 1;
-	s.price = 100;
+	s.price = GameManager::Instance()->getPotionsPrize();
 	s.tx = "21";
 	s.type = 1; //Es una pocion
 	s.nombre = "Pocion de vida";
@@ -147,11 +125,20 @@ void ShopState::createShopItems() {
 	//Crea los objetos de la tienda que se mueden mover
 	GameComponent* gc = new GameComponent();
 	ShopState* shopit = this;
-	
+
 	gc->setTextureId(s.tx); gc->setOriPos(v); gc->setPosition(v); gc->setWidth(50); gc->setHeight(50);
 	gc->addRenderComponent(new RenderSingleFrameComponent()); gc->addInputComponent(new MouseInfoClickComponent(s, shopit));
 	gc->setColFrame(s.colFrame); gc->setRowFrame(s.FilFrame);
 	stageBack(gc); //Añadimos el objeto
+
+
+	//Crea el boton para comprar la pocion
+	GameComponent* poti = new GameComponent();
+	Vector2D p(0.5, 2.5);
+	poti->setTextureId("blue"); poti->setOriPos(p); poti->setPosition(p); poti->setWidth(450); poti->setHeight(80);
+	poti->addRenderComponent(new RenderSingleFrameComponent()); poti->addInputComponent(new PotionShop());
+	
+	stageBack(poti);
 
 	//Creamos el elemento que nos permitirá movernos con teclado y con el mandop
 	selector_ = new GameComponent();
@@ -162,7 +149,7 @@ void ShopState::createShopItems() {
 	selector_->setWidth(50); selector_->setHeight(50);
 	selector_->addRenderComponent(new RenderSingleFrameComponent()); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 1, StandPointsO, nullptr, this));
 	InputComponent* xbox = new ShopXboxControllerComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 2, StandPointsO, nullptr, this);
-	selector_->setColFrame(0); selector_->setRowFrame(0); 
+	selector_->setColFrame(0); selector_->setRowFrame(0);
 	selector_->addInputComponent(xbox);
 
 	stage.push_back(selector_);
@@ -218,9 +205,9 @@ void ShopState::createSP() {
 	double height = 45;
 	for (int i = 0; i < Fils; i++)
 		for (int j = 0; j < Cols; j++) {
-			
+
 			estado s;
-			
+
 			s.empty = true;
 			s.ID = 0;
 			s.objects = 0;
@@ -230,7 +217,6 @@ void ShopState::createSP() {
 			s.mY = j;
 			s.objectID = auxOID;
 			s.type = -1;
-
 
 			Vector2D position0(2 * i + 1.2, 1.7 * j + 2.5);
 			if (i == 0 && j == 0)
@@ -243,8 +229,8 @@ void ShopState::createSP() {
 			GameComponent* gc = new GameComponent();
 
 			gc->setTextureId("8"); gc->setPosition(position0); gc->setWidth(width); gc->setHeight(height);
-			
-			gc->addRenderComponent(new RenderSingleFrameComponent()); 
+
+			gc->addRenderComponent(new RenderSingleFrameComponent());
 
 			stage.push_back(gc);
 			SP.push_back(s);
@@ -260,14 +246,20 @@ void ShopState::createSP() {
 }
 
 bool ShopState::handleEvent(const SDL_Event & event)
- {
+{
 	// 1) Comprueba las teclas de acceso a los distintos menús, etc.
-		if (event.type == SDL_KEYDOWN)
-		 {
-			if (event.key.keysym.sym == SDLK_ESCAPE)
-				toMenu();
-			}
-		// 2) LLama a los input de cada objeto del propio estado
-		return GameState::handleEvent(event);
+	if (event.type == SDL_KEYDOWN)
+	{
+		if (event.key.keysym.sym == SDLK_ESCAPE)
+			toMenu();
 	}
 
+	// 2) LLama a los input de cada objeto del propio estado
+	return GameState::handleEvent(event);
+}
+
+void ShopState::setInvent(vector<estado> v) {
+	invent.clear();
+	for (int i = 0; i < v.size(); i++)
+		invent.push_back(v[i]);
+}

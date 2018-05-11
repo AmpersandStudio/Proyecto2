@@ -8,10 +8,11 @@
 BackPack::BackPack()
 {
 
-	TheSoundManager::Instance()->playSound("cremallera", 0);
+	TheSoundManager::Instance()->playSound("cremallera", 0); 
 	money = GameManager::Instance()->getMoney();
+	invent.clear();
 	invent = GameManager::Instance()->copyInventory();
-
+		
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 130, 515);
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getPotions()), 280, 495);
 
@@ -32,14 +33,13 @@ BackPack::BackPack()
 	pos1 = v; pos2 = v2;
 	width1 = 256; width2 = 171;
 	height1 = 512; height2 = 341;
-
-	//separateElements();
-
+	EItems = 0;
 	creaEscena();
 }
 
 BackPack::~BackPack()
 {
+
 	SDL_ShowCursor(0);
 	StringToScreen::Instance()->clearInfinite();
 	StringToScreen::Instance()->stopRendering();
@@ -97,28 +97,34 @@ void BackPack::toMenu() {
 	sm->popState();
 }
 
+
+
 void BackPack::cargaElementos() {
 
 	//Asginamos los elementos dentro del vector de la mochila a cada casilla
 	vector<estado> auxV;
 	for (unsigned int i = 0; i < invent.size(); i++) {
+	
+		invent[i].objectID = i;
 
-		if (invent[i].mX != -10 && invent[i].mY != -10) {
+		if (!invent[i].equiped) {
+			if (invent[i].mX != -10 && invent[i].mY != -10) {
 
-			int x = invent[i].mX;
-			int y = invent[i].mY;
-			createItemAtSP(x, y, invent[i].objectID, invent[i]);
+				int x = invent[i].mX;
+				int y = invent[i].mY;
+				createItemAtSP(x, y, invent[i].objectID, invent[i]);
 
-			bool found = false;
-			for (int i = 0; i < SP.size() && !found; i++) {
-				if (SP[i].mX == x && SP[i].mY == y) {
-					found = true;
-					SP[i].empty = false;
+				bool found = false;
+				for (int i = 0; i < SP.size() && !found; i++) {
+					if (SP[i].mX == x && SP[i].mY == y) {
+						found = true;
+						SP[i].empty = false;
+					}
 				}
 			}
+			else
+				auxV.push_back(invent[i]);
 		}
-		else
-			auxV.push_back(invent[i]);
 	}
 
 	//todos aquellos elementos que no hayan sido ordenados previamente, los asignamos a un lugar 
@@ -155,33 +161,36 @@ void BackPack::cargaElementos() {
 	vector<estado> auxSP = SP;
 	setSP(auxSP);
 
-	if (auxV.size() != 0) {
-		invent.clear();
-		bool armas = auxV[0].type == 0;
-		bool pociones = auxV[0].type == 1;
-		bool objetos = auxV[0].type == 2;
+	//Ponemos los objetos que tenga el personaje
 
-		if (!armas) { //armas
+	for (int x = 0; x < EquipedItems.size(); x++) {
 
-			for (unsigned int i = 0; i < Weapons.size(); i++)
-				invent.push_back(Weapons[i]);
+
+		GameComponent* gc = new GameComponent();
+		if (x == 0) {
+			Vector2D position0(EquipedItems[x].x * 2.2, EquipedItems[x].y * 3.9);
+			gc->setPosition(position0);
+			gc->setOriPos(position0);
+		}
+		else {
+			Vector2D position1(EquipedItems[x].x * 4.9 , EquipedItems[x].y * 3.9);
+			gc->setPosition(position1);
+			gc->setOriPos(position1);
 		}
 
-		else if (!pociones) { //Pociones
-			for (unsigned int i = 0; i < Potions.size(); i++)
-				invent.push_back(Potions[i]);
-		}
+		gc->setTextureId(EquipedItems[x].tx);  gc->setWidth(EquipedItems[x].w); gc->setHeight(EquipedItems[x].h);
+		gc->addRenderComponent(new RenderSingleFrameComponent());
 
-		else if (!objetos) { //Objetos
-			for (unsigned int i = 0; i < Objects.size(); i++)
-				invent.push_back(Objects[i]);
-		}
+		gc->setColFrame(EquipedItems[x].colFrame); gc->setRowFrame(EquipedItems[x].FilFrame);
 
-		for (unsigned int i = 0; i < auxV.size(); i++)
-			invent.push_back(auxV[i]);
+		if (actualState_ == 0)
+			gc->addInputComponent(new DragNDropComponent(this, x));
 
-		separateElements();
+		EquipedItems[x].GC = gc;
+
+		stage.push_back(gc);
 	}
+
 }
 
 void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
@@ -207,7 +216,7 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 	Vector2D position0(st.x, st.y);
 
 	gc->setTextureId(matriz[x][y].tx); gc->setPosition(position0); gc->setWidth(matriz[x][y].w); gc->setHeight(matriz[x][y].h);
-	gc->addRenderComponent(new RenderSingleFrameComponent()); gc->addInputComponent(new MouseInfoClickComponent(st)); gc->addInputComponent(new DragNDropComponent(this, aux));
+	gc->addRenderComponent(new RenderSingleFrameComponent());  gc->addInputComponent(new DragNDropComponent(this, aux));
 	gc->setOriPos(position0);
 	gc->setColFrame(matriz[x][y].colFrame); gc->setRowFrame(matriz[x][y].FilFrame);
 	
@@ -218,7 +227,16 @@ void BackPack::createItemAtSP(int x, int y, int aux, estado st) {
 }
 
 void BackPack::creaSP() {
+
+	for (int i = 0; i < invent.size(); i++) {
+		if (invent[i].equiped) {
+			EItems++;
+			EquipedItems.push_back(invent[i]);
+		}
+	}
 	
+	std::cout << "Eitems: " << EquipedItems.size() << endl;
+
 	buttonsCreated = false;
 
 	player->setPosition(pos2);
@@ -274,7 +292,12 @@ void BackPack::creaSP() {
 		estado s;
 		int width = 70;
 		int height = 70;
-		s.empty = true;
+		if (EItems > 0) {
+			EItems--;
+			s.empty = false;
+		}
+		else 
+			s.empty = true;
 		s.ID = 0;
 		s.objects = 0;
 		s.w = width;
@@ -296,44 +319,8 @@ void BackPack::creaSP() {
 		stage.push_back(gc);
 		SP.push_back(s);
 		StandPointsO.push_back(gc);
-
-		if(EItems > 0){
-			EItems--;
-			EquipedItems[EItems].x = position0.getX();
-			EquipedItems[EItems].y = position0.getY();
-
-		}
 	}
-
-	//Ponemos los objetos que tenga el personaje
 	
-	for (int x = 0; x < EquipedItems.size(); x++) {
-		GameComponent* gc = new GameComponent();
-		if (x == 0) {
-			Vector2D position0(EquipedItems[x].x + 0.8, EquipedItems[x].y + 2.6);
-			gc->setPosition(position0);
-			gc->setOriPos(position0);
-		}
-		else {
-			Vector2D position1(EquipedItems[x].x + 1.1, EquipedItems[x].y + 2.6);
-			gc->setPosition(position1);
-			gc->setOriPos(position1);
-		}
-
-		gc->setTextureId(EquipedItems[x].tx);  gc->setWidth(EquipedItems[x].w); gc->setHeight(EquipedItems[x].h);
-		gc->addRenderComponent(new RenderSingleFrameComponent()); //gc->addInputComponent(new MouseInfoClickComponent(st)); 
-
-		gc->setColFrame(EquipedItems[x].colFrame); gc->setRowFrame(EquipedItems[x].FilFrame);
-	
-		if(actualState_ == 0)
-			gc->addInputComponent(new DragNDropComponent(this, x * -1));
-
-		EquipedItems[x].GC = gc;
-
-		//invent[aux].GC = gc;
-		stage.push_back(gc);
-
-	}
 	//Creamos el elemento que nos permitirá movernos con teclado
 	selector_ = new GameComponent();
 
@@ -364,11 +351,8 @@ void BackPack::elimina() {
 }
 
 void BackPack::creaEscena() {
-	
-	invent.clear();
-	invent = GameManager::Instance()->copyInventory();
-	separateElements();
 
+	
 	creaFondoTienda();
 
 	//Creamos botón para volver al menú principal y los de cada clase
@@ -396,14 +380,6 @@ void BackPack::creaFondoTienda() {
 	backShop->setTextureId("9"); backShop->addRenderComponent(new RenderFullComponent());
 	stage.push_back(backShop);
 
-	//GameComponent* sweet = new GameComponent();
-	//Vector2D p; p.set(100, 100);
-	//sweet->setWidth(10);
-	//sweet->setHeight(10);
-	//sweet->setPosition(p);
-	//sweet->setTextureId("candy"); sweet->addRenderComponent(new RenderFrame());
-	//stage.push_back(sweet);
-
 	player = new BattlePlayer("Tyler", Physical, 1000, 10, 10, 100, 10);
 	player->setTextureId("tylerSS");
 	player->setPosition(pos1);
@@ -427,45 +403,18 @@ void BackPack::createButtons(int x, int y, vector<estado> type, std::string t, i
 	botones.push_back(GC);
 
 	buttonsCreated = true;
-
 }
 
 void BackPack::setInvent(vector<estado> v) {
 	invent.clear();
 	for (int i = 0; i < v.size(); i++)
 		invent.push_back(v[i]);
-
-	separateElements();
 }
 
 void BackPack::setSP(vector<estado> v) {
 	SP.clear();
 	for (int i = 0; i < v.size(); i++)
 		SP.push_back(v[i]);
-}
-
-void BackPack::separateElements() {
-	//Guardamos los elementos del inventario en sus correspondientes vectores
-	Weapons.clear();
-	Potions.clear();
-	Objects.clear();
-	EquipedItems.clear();
-	EItems = 0;
-	for (unsigned int i = 0; i < invent.size(); i++) {
-		invent[i].objectID = i;
-		if (invent[i].equiped == false) {
-			if (invent[i].type == 0)
-				Weapons.push_back(invent[i]);
-			else if (invent[i].type == 1)
-				Potions.push_back(invent[i]);
-			else if (invent[i].type == 2)
-				Objects.push_back(invent[i]);
-		}
-		else {
-			EquipedItems.push_back(invent[i]);
-			EItems++;
-		}
-	}
 }
 
 void BackPack::update() {
@@ -476,7 +425,6 @@ void BackPack::update() {
 void BackPack::render() {
 
 	GameState::render();
-
 
 	//BARRA DE VIDA
 

@@ -9,6 +9,10 @@ vector<estado> GameManager::copyInventory() { // no queréis que const vector<est
 	return inventory;
 }
 
+vector<estado> GameManager::copyShopItems() { // no queréis que const vector<estado> & GameManager::copyInventory()
+	return shopObjects;
+}
+
 void GameManager::toBattle()
 {
 	TheSoundManager::Instance()->stopMusic();

@@ -16,7 +16,7 @@ MouseInfoClickComponent::~MouseInfoClickComponent()
 
 bool MouseInfoClickComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 	bool handledEvent = false;
-	if (event.type == SDL_MOUSEBUTTONDOWN) { //si es evento de raton
+	if (event.type == SDL_MOUSEMOTION) { //si es evento de raton
 		int x = 0;
 		int y = 0;
 		SDL_GetMouseState(&x, &y); //comprobamos donde se ha producido el click
@@ -24,7 +24,7 @@ bool MouseInfoClickComponent::handleEvent(GameObject* o, const SDL_Event& event)
 		Vector2D position = o->getPosition();
 
 		//si el click es dentro de las dimensiones del boton
-		if (event.button.button == SDL_BUTTON_RIGHT && (x > (position.getX()*o->getWidth()) && x < ((position.getX()*o->getWidth()) + o->getWidth())
+		if ((x > (position.getX()*o->getWidth()) && x < ((position.getX()*o->getWidth()) + o->getWidth())
 			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight()))) {
 			active_ = true;
 
@@ -35,7 +35,7 @@ bool MouseInfoClickComponent::handleEvent(GameObject* o, const SDL_Event& event)
 		}
 	}
 
-	else if (event.type == SDL_MOUSEBUTTONUP) {
+	else {
 		active_ = false;
 	}
 

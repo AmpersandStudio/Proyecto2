@@ -39,6 +39,8 @@ private:
 
 	vector<estado> inventory;
 
+	vector<estado> shopObjects;
+
 	int level_;
 
 	string name;
@@ -71,6 +73,8 @@ private:
 
 	int potions_ = 0;
 
+	int potionsPrize = 100;
+
 public:
 	~GameManager() {};
 	static GameManager* Instance()
@@ -83,10 +87,13 @@ public:
 
 	//Metodos para el inventario
 	vector<estado> copyInventory();	
+	vector<estado> copyShopItems();
 
 	int inventorySize() { return inventory.size(); };
 	void setInventory(estado t) { inventory.push_back(t); };
-	void changeInventory(vector<estado> v) { inventory.clear(); inventory = v; };
+	void changeInventory(vector<estado> &v) { inventory.clear(); inventory = v; };
+
+	void changeShopItems(vector<estado> &v) { shopObjects.clear(); shopObjects = v; };
 
 	int getMoney() { return money; };
 	void addMoney(int m) { money += m; };
@@ -117,4 +124,6 @@ public:
 	void addPotion() { potions_++; }
 
 	int getPotions() { return potions_; }
+
+	int getPotionsPrize() { return potionsPrize; };
 };

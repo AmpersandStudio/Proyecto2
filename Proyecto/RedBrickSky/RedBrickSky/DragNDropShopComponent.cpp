@@ -39,11 +39,17 @@ bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 
 	SDL_GetMouseState(&x, &y); //comprobamos estado del raton
 
-	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT && !comprado) { //si es evento de raton
+	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT ) { //si es evento de raton
 
 		if (x > (position.getX()*o->getWidth()) && x < ((position.getX()*o->getWidth()) + o->getWidth())
-			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight()))
+			&& y >(position.getY()*o->getHeight()) && y < ((position.getY()*o->getHeight()) + o->getHeight())) {
+			if (comprado) {
+				StringToScreen::Instance()->setMessage("¡Ya tienes ese objeto!");
+				StringToScreen::Instance()->startMessagin();
+			}
+			else 
 			isMouseSelection = true;
+		}
 	}
 
 	else if (event.type == SDL_MOUSEMOTION  && isMouseSelection && !comprado) {
@@ -55,8 +61,11 @@ bool DragNDropShopComponent::handleEvent(GameObject* o, const SDL_Event& event) 
 	else  if (event.type == SDL_MOUSEBUTTONUP && isMouseSelection) {
 		isMouseSelection = false;
 
-		if(devMat(x, y, o))
+		if (devMat(x, y, o)) {
 			TheSoundManager::Instance()->playSound("compra", 0);
+			
+			comprado = true;
+		}
 
 		o->setPosition(o->getOriPos());
 	}
@@ -77,11 +86,12 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 	Vector2D v;
 	StandPoints = shop->getSP();
 	unsigned int i = 0;
+	std::cout <<"SP" << StandPoints.size() << endl;
 	while (i < StandPoints.size() && !encontrado) {
 		//Busca si el objeto se ha dejado en alguno de los Stand Points
 		{
-			auxX = StandPoints[i].x * 50;
-			auxY = StandPoints[i].y * 50;
+			auxX = StandPoints[i].x * 45;
+			auxY = StandPoints[i].y * 45;
 			auxW = StandPoints[i].w;
 			auxH = StandPoints[i].h;
 			auxMx = StandPoints[i].mX;
@@ -97,16 +107,15 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 }
 
 	if (encontrado) {
-		//cout << StandPoints[i].ID << "," << identifier << endl;
-		if (StandPoints[i].empty == true || StandPoints[i].ID == identifier) {
-			//comprado = true;
+	
+		if (StandPoints[i].empty == true) {
 			
-			if (shop->getMoney() >= price && !comprado) {
+			if (GameManager::Instance()->getMoney() >= price && !comprado) {
 
-				shop->setMoney(price);
+				GameManager::Instance()->setMoney(GameManager::Instance()->getMoney() - price);
 				StringToScreen::Instance()->setMessage("¡Objeto comprado! ");
 				StringToScreen::Instance()->startMessagin();
-				StringToScreen::Instance()->changeInfinite(0, "Caramelos: " + std::to_string(shop->getMoney()));
+				StringToScreen::Instance()->changeInfinite(0, "Caramelos: " + std::to_string(GameManager::Instance()->getMoney()));
 
 				if (StandPoints[i].empty == true) {
 					StandPoints[i].ID = identifier;
@@ -115,14 +124,12 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 					posX = auxX + auxW / 2;
 					posY = auxY + auxH / 2;
 
-					v.set(posX / 55 - 0.5, posY / 55 - 0.5);
+					v.set(posX / 45 -0.5 , posY / 45 - 0.5);
 					o->setPosition(v);
-					//StandPoints[i].x = x;
-					//StandPoints[i].y = y;
-					//ocupados++;
+
 					estado n;
 					n.price = price;
-					n.comprado = comprado;
+					n.comprado = true;
 					n.ID = identifier;
 					n.empty = false;
 					n.objects = StandPoints[i].objects;
@@ -142,28 +149,39 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 					GameManager::Instance()->setInventory(n);
 
 					GameComponent* gc2 = new GameComponent();
-					gc2->setTextureId(o->getTextureId()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(50); gc2->setHeight(50);
-					gc2->addRenderComponent(new RenderSingleFrameComponent()); gc2->addInputComponent(new MouseScrollShopComponent(shop));
+					gc2->setTextureId(o->getTextureId()); gc2->setOriPos(o->getOriPos()); gc2->setPosition(v); gc2->setWidth(45); gc2->setHeight(45);
+					gc2->addRenderComponent(new RenderSingleFrameComponent()); 
 					gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
 
 					shop->stageBack(gc2);
-				}
-				else
-				{
-					StandPoints[i].objects++;
-					cout << "Tienes " << StandPoints[i].objects + 1 << " " << name << " en tu inventario ahora." << endl;
+
+					//Buscamos el objeto del inventario que tenga la misma fila y columna de frame para marcarlo como comprado
+					vector<estado> aux = shop->getShopItems();
+					for (int p = 0; p < aux.size(); p++) {
+
+						if (aux[p].colFrame == o->getColFrame() && aux[p].FilFrame == o->getRowFrame()) {
+							aux[p].comprado = true;
+							shop->setShopObjects(aux);
+							GameManager::Instance()->changeShopItems(aux);
+						}
+					}
+
 				}
 
 				shop->setSP(StandPoints);
 				aceptada = true;
+
+
 			}
 
-
-			else if (shop->getMoney() < price) {
+			else if (GameManager::Instance()->getMoney() < price) {
 				StringToScreen::Instance()->setMessage("¡No tienes dinero para pagar eso!");
 				StringToScreen::Instance()->startMessagin();
 			}
-			
+		}
+		else {
+			StringToScreen::Instance()->setMessage("¡Ahí hay algo! ");
+			StringToScreen::Instance()->startMessagin();
 		}
 	}
 

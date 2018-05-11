@@ -36,14 +36,14 @@ bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		isMouseSelection = false;
 
 		if (!devMat(x, y, o))
-			o->setPosition(o->getOriPos());	
+			o->setPosition(o->getOriPos());
 	}
 	return handledEvent;
 }
 
 bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 	bool aceptada = false;
-	
+
 	int auxX;
 	int auxY;
 	int auxW;
@@ -63,11 +63,11 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 			auxW = StandPoints[i].w;
 			auxH = StandPoints[i].h;
 			auxX = StandPoints[i].x * auxW;
-			auxY = StandPoints[i].y * auxH;	
+			auxY = StandPoints[i].y * auxH;
 			auxMx = StandPoints[i].mX;
 			auxMy = StandPoints[i].mY;
 
-			if (x >(auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
+			if (x > (auxX) && x < ((auxX)+auxW) && y >(auxY) && y < ((auxY)+auxH)) {
 				encontrado = true;
 			}
 
@@ -76,16 +76,16 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 		}
 	}
 
-	 if (encontrado) {
-	
+	if (encontrado) {
+
 		if (StandPoints[i].empty) {
 
 			StandPoints[i].ID = identifier;
 			StandPoints[i].empty = false;
-
-			x = auxX + auxW / 2;
-			y = auxY + auxH / 2;
-
+			double posX, posY;
+			posX = auxX + auxW / 2;
+			posY = auxY + auxH / 2;
+			
 			bool found = false;
 			for (unsigned int i = 0; i < Inventary.size() && !found; i++) {
 				if (Inventary[i].ID == identifier) {
@@ -97,25 +97,33 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 				}
 			}
 
-			v.set(o->getOriPos().getX() , o->getOriPos().getY());
+			v.set(o->getOriPos().getX(), o->getOriPos().getY());
 
-			if (StandPoints[i].equiped && Inventary[identifier].type == 0) {
+			if (StandPoints[i].equiped)
+			{
 				Inventary[identifier].equiped = true;
 
-				if (auxMy == -1)
-					v.set(x / auxW + 0.3, y / auxH + 2.6);
-				else
-					v.set(x / auxW + 1.1, y / auxH + 2.6);
-			}
+				if (auxMy == -1) 
+					v.set(x / auxW * 1.3, y / auxH * 1.6);
+									
+				else 
+					v.set(x / auxW * 1.4, y / auxH * 1.6);
+			
+				Inventary[identifier].x = 1.2;
+				Inventary[identifier].y = 2.5;
 
-			 if (!StandPoints[i].equiped) {
-				v.set(x / auxW - 0.5, y / auxH);
+				GameManager::Instance()->changeInventory(Inventary);
+				bag->setInvent(Inventary);
+				bag->setSP(StandPoints);
+
+			}
+			else {
+				v.set(posX / 45 - 0.5, posY / 45 - 0.5);
 				Inventary[identifier].equiped = false;
+				GameManager::Instance()->changeInventory(Inventary);
+				bag->setInvent(Inventary);
+				bag->setSP(StandPoints);
 			}
-
-
-			else
-				std::cout << "NO PUEDES EQUIPARTE ESO!!" << endl;
 
 			o->setPosition(v);
 			o->setOriPos(v);
@@ -139,19 +147,12 @@ bool DragNDropComponent::devMat(int x, int y, GameObject* o) {
 				}
 			}
 		}
-		else if (!StandPoints[i].empty && StandPoints[i].equiped && Inventary[identifier].type == 0)
+		else if (!StandPoints[i].empty)
 		{
-			swapElements();
+			std::cout << "Pero hombre que ahi ya tienes un arma..." << endl;
 		}
-
-		GameManager::Instance()->changeInventory(Inventary);
-		bag->setSP(StandPoints);
 	}
 
 	return aceptada;
 }
 
-void DragNDropComponent::swapElements() {
-	std::cout << "Pero hombre que ahi ya tienes un arma..." << endl;
-	
-}

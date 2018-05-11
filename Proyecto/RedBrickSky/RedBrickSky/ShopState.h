@@ -16,6 +16,7 @@
 #include "KeyBoardShopComponent.h"
 #include "ShopXboxControllerComponent.h"
 #include "TextureManager.h"
+#include "PotionShop.h"
 #include <queue>
 
 
@@ -68,16 +69,17 @@ public:
 	//estado** devMat() { return matriz; };
 	vector<estado> getInvent() { return invent; };
 	vector<estado> getShopItems() { return shopObjects; };
+	void setShopObjects(vector<estado> v) { shopObjects.clear(); shopObjects = v; };
 	void setInvent(estado s) { invent.push_back(s); };
 	vector<estado> getSP() { return SP; };
 	void setSP(vector<estado> s);
 	void stageBack(GameComponent* s) { stage.push_back(s); };
-	void separateElements();
 	void mainMenuBotton();
 	void createShopItems();
 	void createBagItems();
 	void destroySP();
 	void createSP();
+	void setInvent(vector<estado> v);
 
 
 

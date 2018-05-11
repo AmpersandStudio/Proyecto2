@@ -12,6 +12,10 @@
 
 MainMenuState::MainMenuState()
 {
+	//Aquí estoy asegurandome que en el primer estado se crea una única vez los elementos de la tienda
+	ShopItems* items = new ShopItems();
+	delete items;
+
 	//Fondo de la tienda
 	gc = new GameComponent();
 	Vector2D positionGC(0, 0);

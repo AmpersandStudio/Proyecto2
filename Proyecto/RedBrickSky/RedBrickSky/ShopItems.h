@@ -16,14 +16,12 @@ public:
 	ShopItems() {
 		shopObjects.resize(16);
 
-		//food = Game::Instance()->getTexture(4); //Item1
-
 		int weaponType = 0;
 		int potionType = 1;
 		int objectType = 2;
 
 		shopObjects[0].empty = false;
-		shopObjects[0].comprado = true;
+		shopObjects[0].comprado = false;
 		shopObjects[0].ID = 0;
 		shopObjects[0].objects = 1;
 		shopObjects[0].price = 800;
@@ -34,7 +32,7 @@ public:
 		shopObjects[0].FilFrame = 0;
 
 		shopObjects[1].empty = false;
-		shopObjects[1].comprado = true;
+		shopObjects[1].comprado = false;
 		shopObjects[1].ID = 1;
 		shopObjects[1].objects = 1;
 		shopObjects[1].price = 75;
@@ -45,7 +43,7 @@ public:
 		shopObjects[1].FilFrame = 0;
 
 		shopObjects[2].empty = false;
-		shopObjects[2].comprado = true;
+		shopObjects[2].comprado = false;
 		shopObjects[2].ID = 2;
 		shopObjects[2].objects = 1;
 		shopObjects[2].price = 50;
@@ -56,7 +54,7 @@ public:
 		shopObjects[2].FilFrame = 0;
 
 		shopObjects[3].empty = false;
-		shopObjects[3].comprado = true;
+		shopObjects[3].comprado = false;
 		shopObjects[3].ID = 3;
 		shopObjects[3].objects = 1;
 		shopObjects[3].price = 50;
@@ -67,7 +65,7 @@ public:
 		shopObjects[3].FilFrame = 0;
 	
 		shopObjects[4].empty = false;
-		shopObjects[4].comprado = true;
+		shopObjects[4].comprado = false;
 		shopObjects[4].ID = 4;
 		shopObjects[4].objects = 1;
 		shopObjects[4].price = 50;
@@ -78,7 +76,7 @@ public:
 		shopObjects[4].FilFrame = 3;
 
 		shopObjects[5].empty = false;
-		shopObjects[5].comprado = true;
+		shopObjects[5].comprado = false;
 		shopObjects[5].ID = 5;
 		shopObjects[5].objects = 1;
 		shopObjects[5].price = 50;
@@ -89,7 +87,7 @@ public:
 		shopObjects[5].FilFrame = 3;
 
 		shopObjects[6].empty = false;
-		shopObjects[6].comprado = true;
+		shopObjects[6].comprado = false;
 		shopObjects[6].ID = 6;
 		shopObjects[6].objects = 1;
 		shopObjects[6].price = 50;
@@ -100,7 +98,7 @@ public:
 		shopObjects[6].FilFrame = 3;
 
 		shopObjects[7].empty = false;
-		shopObjects[7].comprado = true;
+		shopObjects[7].comprado = false;
 		shopObjects[7].ID = 7;
 		shopObjects[7].objects = 1;
 		shopObjects[7].price = 50;
@@ -111,7 +109,7 @@ public:
 		shopObjects[7].FilFrame = 3;
 
 		shopObjects[8].empty = false;
-		shopObjects[8].comprado = true;
+		shopObjects[8].comprado = false;
 		shopObjects[8].ID = 8;
 		shopObjects[8].objects = 1;
 		shopObjects[8].price = 50;
@@ -122,7 +120,7 @@ public:
 		shopObjects[8].FilFrame = 1;
 
 		shopObjects[9].empty = false;
-		shopObjects[9].comprado = true;
+		shopObjects[9].comprado = false;
 		shopObjects[9].ID = 9;
 		shopObjects[9].objects = 1;
 		shopObjects[9].price = 50;
@@ -133,7 +131,7 @@ public:
 		shopObjects[9].FilFrame = 1;
 
 		shopObjects[10].empty = false;
-		shopObjects[10].comprado = true;
+		shopObjects[10].comprado = false;
 		shopObjects[10].ID = 10;
 		shopObjects[10].objects = 1;
 		shopObjects[10].price = 50;
@@ -144,7 +142,7 @@ public:
 		shopObjects[10].FilFrame = 1;
 
 		shopObjects[11].empty = false;
-		shopObjects[11].comprado = true;
+		shopObjects[11].comprado = false;
 		shopObjects[11].ID = 11;
 		shopObjects[11].objects = 1;
 		shopObjects[11].price = 50;
@@ -155,7 +153,7 @@ public:
 		shopObjects[11].FilFrame = 1;
 
 		shopObjects[12].empty = false;
-		shopObjects[12].comprado = true;
+		shopObjects[12].comprado = false;
 		shopObjects[12].ID = 12;
 		shopObjects[12].objects = 1;
 		shopObjects[12].price = 50;
@@ -166,7 +164,7 @@ public:
 		shopObjects[12].FilFrame = 2;
 
 		shopObjects[13].empty = false;
-		shopObjects[13].comprado = true;
+		shopObjects[13].comprado = false;
 		shopObjects[13].ID = 13;
 		shopObjects[13].objects = 1;
 		shopObjects[13].price = 50;
@@ -177,7 +175,7 @@ public:
 		shopObjects[13].FilFrame = 2; 
 
 		shopObjects[14].empty = false;
-		shopObjects[14].comprado = true;
+		shopObjects[14].comprado = false;
 		shopObjects[14].ID = 14;
 		shopObjects[14].objects = 1;
 		shopObjects[14].price = 50;
@@ -188,7 +186,7 @@ public:
 		shopObjects[14].FilFrame = 2;
 
 		shopObjects[15].empty = false;
-		shopObjects[15].comprado = true;
+		shopObjects[15].comprado = false;
 		shopObjects[15].ID = 15;
 		shopObjects[15].objects = 1;
 		shopObjects[15].price = 50;
@@ -197,6 +195,8 @@ public:
 		shopObjects[15].nombre = "Borrador";
 		shopObjects[15].colFrame = 3;
 		shopObjects[15].FilFrame = 2;
+
+		GameManager::Instance()->changeShopItems(shopObjects);
 	};
 
 	virtual ~ShopItems() {};
