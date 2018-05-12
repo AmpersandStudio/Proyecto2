@@ -24,33 +24,15 @@ PlayState::PlayState()
 	LevelParser levelParser;
 	currentLevel_ = GameManager::Instance()->getLevel();
 	lastLevel_ = currentLevel_;
-	pLevels.resize(4);
+	pLevels.resize(7);
 	
-	pLevels[3] = levelParser.parseLevel("..\\assets\\Tienda.tmx");
-	pLevels[2] = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
-	pLevels[0] = levelParser.parseLevel("..\\assets\\BetaTutorial.tmx");
-	//pLevel = levelParser.parseLevel("..\\assets\\BetaTutorial.tmx");
-
-	/*switch (level_)
-	{
-
-	case 0:
-		pLevel = levelParser.parseLevel("..\\assets\\BetaTutorial.tmx");
-		break;
-
-	case 1:
-		pLevel = levelParser.parseLevel("..\\assets\\Nivel1.tmx");
-		break;
-
-	case 2:
-		pLevel = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
-		break;
-
-	case 3:
-		pLevel = levelParser.parseLevel("..\\assets\\Tienda.tmx");
-		break;
-
-	}*/
+	pLevels[6] = levelParser.parseLevel("..\\assets\\Tienda.tmx");
+	pLevels[5] = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
+	//pLevels[4] = levelParser.parseLevel("..\\assets\\Gimnasio.tmx");
+	//pLevels[3] = levelParser.parseLevel("..\\assets\\JardinesSuperiores.tmx");
+	//pLevels[2] = levelParser.parseLevel("..\\assets\\Pasillos.tmx");
+	//pLevels[1] = levelParser.parseLevel("..\\assets\\JardinesInferiores.tmx");
+	pLevels[0] = levelParser.parseLevel("..\\assets\\Tutorial.tmx");
 
 	TheSoundManager::Instance()->playMusic("music", 100);
 
@@ -123,17 +105,30 @@ void PlayState::render()
 	switch (currentLevel_)
 	{
 	case 0:
-		TextureManager::Instance()->drawFullCamera("level0", Game::Instance()->getRenderer());
+		TextureManager::Instance()->drawFullCamera("level1-1", Game::Instance()->getRenderer());
 		break;
 
 	case 1:
-		TextureManager::Instance()->drawFullCamera("level1", Game::Instance()->getRenderer());
+		TextureManager::Instance()->drawFullCamera("level1-2", Game::Instance()->getRenderer());
 		break;
 
 	case 2:
+		TextureManager::Instance()->drawFullCamera("level1-3", Game::Instance()->getRenderer());
+		break;
+
+	case 3:
+		TextureManager::Instance()->drawFullCamera("level1-4", Game::Instance()->getRenderer());
+		break;
+
+	case 4:
+		TextureManager::Instance()->drawFullCamera("level1-5", Game::Instance()->getRenderer());
+		break;
+
+	case 5:
 		TextureManager::Instance()->drawFullCamera("level2", Game::Instance()->getRenderer());
 		break;
-	case 3:
+
+	case 6:
 		TextureManager::Instance()->drawFullCamera("tiendaLevel", Game::Instance()->getRenderer());
 		break;
 	}

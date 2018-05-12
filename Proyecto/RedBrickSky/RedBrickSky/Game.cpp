@@ -155,8 +155,11 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\PRC-.png", "PRC-", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\potionsFB.png", "potiFB", RENDERER_,1,2);
 
-	TheTextureManager::Instance()->load("..\\assets\\Nivel0.png", "level0", RENDERER_);
-	TheTextureManager::Instance()->load("..\\assets\\Nivel1.png", "level1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\assets\\Tutorial.png", "level1-1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\assets\\JardinesInferiores.png", "level1-2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\assets\\Pasillos.png", "level1-3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\assets\\JardinesSuperiores.png", "level1-4", RENDERER_);
+	TheTextureManager::Instance()->load("..\\assets\\Gimnasio.png", "level1-5", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Nivel2.png", "level2", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Tienda.png", "tiendaLevel", RENDERER_);
 
