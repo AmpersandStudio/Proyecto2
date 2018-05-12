@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="169" height="164" tilewidth="32" tileheight="32" nextobjectid="140">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="169" height="164" tilewidth="32" tileheight="32" nextobjectid="145">
  <properties>
-  <property name="Personaje1" value="..assetsPersonaje1.png"/>
-  <property name="Personaje10" value="..assetsPersonaje10.png"/>
-  <property name="Personaje11" value="..assetsPersonaje11.png"/>
-  <property name="Personaje12" value="..assetsPersonaje12.png"/>
-  <property name="Personaje13" value="..assetsPersonaje13.png"/>
-  <property name="Personaje14" value="..assetsPersonaje14.png"/>
-  <property name="Personaje15" value="..assetsPersonaje15.png"/>
-  <property name="Personaje3" value="..assetsPersonaje3.png"/>
-  <property name="Personaje4" value="..assetsPersonaje4.png"/>
-  <property name="Personaje5" value="..assetsPersonaje5.png"/>
-  <property name="Personaje6" value="..assetsPersonaje6.png"/>
-  <property name="Personaje7" value="..assetsPersonaje7.png"/>
-  <property name="Personaje8" value="..assetsPersonaje8.png"/>
-  <property name="Personaje9" value="..assetsPersonaje9.png"/>
-  <property name="bigMetalicDoor">..\\assets\\NivelFragmentado\\puertaMetálica.png
-</property>
-  <property name="libro">..\\assets\\NivelFragmentado\\libro.png
-</property>
-  <property name="miniVerticalDoor">..\\assets\\NivelFragmentado\\PuertaVerticalPequeña.png
-</property>
+  <property name="Personaje1" value="..\assets\Personaje1.png"/>
+  <property name="Personaje10" value="..\assets\Personaje10.png"/>
+  <property name="Personaje11" value="..\assets\Personaje11.png"/>
+  <property name="Personaje12" value="..\assets\Personaje12.png"/>
+  <property name="Personaje13" value="..\assets\Personaje13.png"/>
+  <property name="Personaje14" value="..\assets\Personaje14.png"/>
+  <property name="Personaje15" value="..\assets\Personaje15.png"/>
+  <property name="Personaje3" value="..\assets\Personaje3.png"/>
+  <property name="Personaje4" value="..\assets\Personaje4.png"/>
+  <property name="Personaje5" value="..\assets\Personaje5.png"/>
+  <property name="Personaje6" value="..\assets\Personaje6.png"/>
+  <property name="Personaje7" value="..\assets\Personaje7.png"/>
+  <property name="Personaje8" value="..\assets\Personaje8.png"/>
+  <property name="Personaje9" value="..\assets\Personaje9.png"/>
+  <property name="bigMetalicDoor" value="..\assets\NivelFragmentado\puertaMetálica.png"/>
+  <property name="libro" value="..\assets\NivelFragmentado\libro.png"/>
+  <property name="miniVerticalDoor" value="..\assets\NivelFragmentado\PuertaVerticalPequeña.png"/>
   <property name="trunk" value="..\assets\NivelFragmentado\PuertaTronco.png"/>
   <property name="verticalDoor" value="..\assets\NivelFragmentado\PuertaVertical.png"/>
  </properties>
@@ -1301,7 +1298,7 @@
 1118,1118,3098,0,0,0,0,0,0,0,0,1658,0,1658,0,0,0,0,0,0,0,0,1594,0,1594,0,0,0,0,0,0,0,0,0,0,0,0,0,6826,6827,3038,3038,3038,3038,1610613854,0,0,0,0,0,0,0,0,1610613854,1610613854,1610613854,1610613854,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,1118,0,0,0,0,0,0,0,0,0,0,1118,1118,3098,3098,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,
 1118,1118,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6829,6830,3038,3038,3038,3038,1610613854,0,0,0,0,0,0,0,0,1610613854,1610613854,1610613854,1610613854,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3098,3098,3098,1118,0,0,0,0,0,0,0,0,0,0,1118,1118,3098,3098,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,
 1118,1118,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6832,6833,3038,3038,3038,3038,1610613854,0,0,0,0,0,0,0,0,1610613854,1610613854,1610613854,1610613854,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,1118,3098,3098,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,
-1118,1118,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3038,3038,3038,3038,1610613854,0,0,0,0,0,0,0,0,1610613854,1610613854,1610613854,1610613854,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,1118,3098,3098,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,
+1118,1118,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3038,3038,3038,3038,1610613854,801,0,0,0,0,0,0,800,1610613854,1610613854,1610613854,1610613854,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,1118,3098,3098,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,
 1118,1118,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3038,3038,3038,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,1118,3098,3098,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,
 1118,1118,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3038,3038,3038,3038,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,1610613854,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,1118,3098,3098,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,
 1118,1118,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3038,3038,3038,3038,3038,3038,3038,3038,3038,3038,3038,3038,3038,3038,3038,3038,3038,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,3098,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,1118,3098,3098,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,
@@ -1619,43 +1616,43 @@
   </object>
   <object id="81" name="NPC genérico " type="Cartel" x="813.333" y="2322.67">
    <properties>
-    <property name="Message" value="Tony era mi mejor amigo, era un chico alegre y amable , ahora... bueno, ya no es el mis"/>
+    <property name="Message" value="NPCS9"/>
    </properties>
   </object>
   <object id="84" name="NPC genérico " type="Cartel" x="685.333" y="2321.33">
    <properties>
-    <property name="Message" value="La mamá de tony le dejó hace unos años, desde entonces ha cambiado mucho "/>
+    <property name="Message" value="NPCS8"/>
    </properties>
   </object>
   <object id="85" name="NPC genérico " type="Cartel" x="270.667" y="2321.33">
    <properties>
-    <property name="Message" value="En el fondo Tony es muy buen chico... a pesar de todo lo malvado qeu pueda ser a veces "/>
+    <property name="Message" value="NPCS7"/>
    </properties>
   </object>
   <object id="86" name="NPC genérico " type="Cartel" x="110.667" y="2321.33">
    <properties>
-    <property name="Message" value="Ahí está Tony, uno de los secuaces del matón del cole "/>
+    <property name="Message" value="NPCS6"/>
    </properties>
   </object>
   <object id="87" name="NPC genérico " type="Cartel" x="412.667" y="1888.66" width="35.3333" height="36.6667">
    <properties>
-    <property name="Message" value="La vida es una lenteja... luchemos "/>
+    <property name="Message" value="NPC38"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="88" name="NPC genérico " type="Cartel" x="408.667" y="1982.66" width="42" height="27.3333">
    <properties>
-    <property name="Message" value="Que pasa tio... me aburro mazo, esto de la iblioteca no es lo mío"/>
+    <property name="Message" value="NPC39"/>
    </properties>
   </object>
   <object id="89" name="NPC genérico " type="Cartel" x="301.333" y="1713.33">
    <properties>
-    <property name="Message" value="HolaMundo"/>
+    <property name="Message" value="NPC14"/>
    </properties>
   </object>
   <object id="90" name="NPC genérico " type="Cartel" x="1166.67" y="1237.33">
    <properties>
-    <property name="Message" value="A veces me siento tan solo... que vengo aquí , a veces los libros transmiten mucho más que las personas ... me encanta dejarme llevar por la imaginación "/>
+    <property name="Message" value="NPCS5"/>
    </properties>
   </object>
   <object id="91" name="NPC genérico " type="Cartel" x="1935" y="1173">
@@ -1667,29 +1664,29 @@
   </object>
   <object id="92" name="NPC genérico " type="Cartel" x="2495" y="1314" width="33" height="29">
    <properties>
-    <property name="Message" value="Jimi es muy travieso, dicen que robó y que ahora tiene una copia de la llave del gimnasio"/>
+    <property name="Message" value="SalaConsejreDcha"/>
    </properties>
   </object>
   <object id="93" name="NPC genérico " type="Cartel" x="2879" y="1310" width="31.3333" height="33.3333">
    <properties>
-    <property name="Message" value="Jimi es muy bueno al escondite, no se por que me da que está metido en el cuarto del conserje"/>
+    <property name="Message" value="SalaConserjeIzda"/>
    </properties>
   </object>
   <object id="94" name="NPC genérico " type="Cartel" x="3710.67" y="1313.33" width="34" height="30">
    <properties>
-    <property name="Message" value="HolaMundoDicen que en la biblioteca el tiempo vuela, pero luchando también"/>
+    <property name="Message" value="NPCPuertaCaferteria"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="95" name="NPC genérico " type="Cartel" x="4014" y="656">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPCS3"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="96" name="NPC genérico " type="Cartel" x="3822" y="340">
    <properties>
-    <property name="Message" value="Taratatataaaaaa i lovin it"/>
+    <property name="Message" value="NPC32"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -1700,12 +1697,12 @@
   </object>
   <object id="99" name="NPC genérico " type="Cartel" x="5023.67" y="3584.67" width="32" height="30">
    <properties>
-    <property name="Message" value="No se que me da que andas buscando al conserje , ese ibro de ahí ... es donde anota él todas sus tareas"/>
+    <property name="Message" value="NPCSecretaria"/>
    </properties>
   </object>
   <object id="100" name="MensajeConserje" type="Cartel" x="5216.5" y="4033.5" width="30.0909" height="29.7273">
    <properties>
-    <property name="Message" value="El conserje se encuentra en el recreo , "/>
+    <property name="Message" value="LibroSecretaria"/>
     <property name="keyID" type="int" value="3"/>
     <property name="numFrames" type="int" value="2"/>
     <property name="textueWidht" type="int" value="32"/>
@@ -1721,7 +1718,7 @@
   </object>
   <object id="103" name="MensageElComedorSeAbriráPasadasLas12" x="3516.5" y="1246" width="32" height="64">
    <properties>
-    <property name="Message" value="Dicen que en la biblioteca el tiempo vuela "/>
+    <property name="Message" value=""/>
     <property name="textureID" value="bigMetalicDoor"/>
    </properties>
   </object>
@@ -1737,12 +1734,12 @@
   </object>
   <object id="105" name="SeAbreAbreAlMismoTiempoQueLaCafete" x="4901" y="3500.83">
    <properties>
-    <property name="Message" value="TodavíaNoEstáAbierta, estamos tomadno algo en la cafetería "/>
+    <property name="Message" value="PuertaSecretaria"/>
    </properties>
   </object>
   <object id="107" type="Door" x="4543.67" y="4705" width="4" height="157.667">
    <properties>
-    <property name="Message" value=""/>
+    <property name="Message" value="PuertaAlLaberinto"/>
     <property name="keyID" type="int" value="3"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="160"/>
@@ -1752,7 +1749,7 @@
   </object>
   <object id="108" type="Door" x="4895.92" y="4160.12" width="4" height="63.792">
    <properties>
-    <property name="Message" value=""/>
+    <property name="Message" value="PuertaSecretaria"/>
     <property name="keyID" type="int" value="2"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="160"/>
@@ -1772,7 +1769,7 @@
   </object>
   <object id="111" name="MensageElComedorSeAbriráPasadasLas1" type="Door" x="3615.67" y="1248.44" width="32" height="61.792">
    <properties>
-    <property name="Message" value="La puerta está cerrada, tendré que hacer tiempo"/>
+    <property name="Message" value="PuertaCafeteria"/>
     <property name="keyID" type="int" value="2"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="64"/>
@@ -1782,7 +1779,7 @@
   </object>
   <object id="112" type="Door" x="2560.5" y="1089.1" width="4" height="63.792">
    <properties>
-    <property name="Message" value=""/>
+    <property name="Message" value="PuertaDelSalaConserje"/>
     <property name="keyID" type="int" value="5"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="64"/>
@@ -1812,25 +1809,25 @@
   </object>
   <object id="119" name="NPC genérico " type="Cartel" x="604" y="2055.33" width="38" height="28.6667">
    <properties>
-    <property name="Message" value="Aquí me tienen , vigilando la fregona ... aunque se me da mejor la escoba, lo comprobarás cuando te deje por los suelos"/>
+    <property name="Message" value="NPCS4"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="120" name="NPC genérico " type="Cartel" x="511" y="1476.33" width="35.3333" height="36.6667">
    <properties>
-    <property name="Message" value="TE LE VI .... que te VI ... aaaaa luchar "/>
+    <property name="Message" value="NPC36"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="121" name="NPC genérico " type="Cartel" x="89.6667" y="1215" width="35.3333" height="36.6667">
    <properties>
-    <property name="Message" value="Quieres luchar... no... pos yo si ... ajo y agua"/>
+    <property name="Message" value="NPC37"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="122" name="NPC genérico " type="Cartel" x="1341.33" y="1728.67" width="35.3333" height="36.6667">
    <properties>
-    <property name="Message" value="TANANANANANANAAN ROOOBIIIIN, espera , no era así ... luchemos "/>
+    <property name="Message" value="NPC35 "/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -1971,7 +1968,7 @@
   </object>
   <object id="138" name="Personaje15" type="NPC" x="1395" y="2090" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPC34"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje15"/>
@@ -1984,6 +1981,31 @@
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="helicopter"/>
     <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="140" name="Personaje16" type="NPC" x="1539" y="2368" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC14"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje2"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="141" name="Mochila" type="Bag" x="1458" y="2418">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="142" name="Mochila" type="Bag" x="1679" y="2416">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="144" name="NPC genérico " type="Cartel" x="3120" y="784">
+   <properties>
+    <property name="Message" value="NPC41"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>

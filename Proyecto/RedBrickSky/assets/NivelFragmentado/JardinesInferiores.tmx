@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="97" height="138" tilewidth="32" tileheight="32" nextobjectid="121">
  <properties>
-  <property name="Personaje1" value="..assetsPersonaje1.png"/>
-  <property name="Personaje2" value="..assetsPersonaje2.png"/>
-  <property name="Personaje3" value="..assetsPersonaje3.png"/>
-  <property name="Personaje4" value="..assetsPersonaje4.png"/>
-  <property name="Personaje5" value="..assetsPersonaje5.png"/>
-  <property name="trunk" value="..assetsNivelFragmentadoPuertaTronco.png"/>
+  <property name="Personaje1" value="..\assets\Personaje1.png"/>
+  <property name="Personaje2" value="..\assets\Personaje.png"/>
+  <property name="Personaje3" value="..\assets\Personaje3.png"/>
+  <property name="Personaje4" value="..\assets\Personaje4.png"/>
+  <property name="Personaje5" value="..\assets\Personaje5.png"/>
+  <property name="trunk" value="..\assets\NivelFragmentado\PuertaTronco.png"/>
  </properties>
  <tileset firstgid="1" name="2ckdj8" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="2ckdj8.png" width="512" height="512"/>
@@ -1369,7 +1369,7 @@
   </object>
   <object id="83" name=" Pepe El jardinero " type="Cartel" x="2353.33" y="2900">
    <properties>
-    <property name="Message" value="Así que hay un tronco obstaculizando el paso, yo me encargo de quitarlo del medio chaval "/>
+    <property name="Message" value="PepeElJardinero"/>
     <property name="keyID" value="4"/>
    </properties>
   </object>
@@ -1416,24 +1416,24 @@
   </object>
   <object id="99" name="Martin" type="Cartel" x="2031" y="592">
    <properties>
-    <property name="Message" value="Ese de ahí alante es mi hermano ... a que es un chico super guay ... pero no lucha tan bien como yo"/>
+    <property name="Message" value="HermanoJardinesInferiores"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="100" name="Pedro" type="Cartel" x="1683" y="337">
    <properties>
-    <property name="Message" value="A veces vengo a este sitio para pensar, me pongo a imaginar mis mundos y mis problemas parecen cobrar menos importancia  "/>
+    <property name="Message" value="NPCS2"/>
    </properties>
   </object>
   <object id="101" name="Diana" type="Cartel" x="2512" y="590">
    <properties>
-    <property name="Message" value="Pos ya que estamos ... luchamos"/>
+    <property name="Message" value="HermanoIzdaJardinesInferiores"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="102" name="Miniman" type="Cartel" x="2898" y="496">
    <properties>
-    <property name="Message" value="Yo tenía una imaginación increible... hasta que empecé a madurar, también he de decirte, que desde entonces los problemas son más fáciles de llevar"/>
+    <property name="Message" value="NPCS1"/>
    </properties>
   </object>
   <object id="103" name="Mochila" type="Bag" x="1839" y="1903">
@@ -1453,7 +1453,7 @@
   </object>
   <object id="108" name="AcudeAlJardinero" type="Door" x="2239.67" y="1473.67" width="64.6667" height="30">
    <properties>
-    <property name="Message" value="Me bloquea el paso, debería pedirle al jardinero que me ayudase con esto"/>
+    <property name="Message" value="TroncoJardinesInferiores"/>
     <property name="keyID" type="int" value="4"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -1463,7 +1463,7 @@
   </object>
   <object id="110" name="Pepe el conserje" type="Cartel" x="2799.5" y="3157.5">
    <properties>
-    <property name="Message" value="Que timi se ha quedado encerrado dónde... este chico siempre se mete en líos, toma la llave y sácale de allí"/>
+    <property name="Message" value="PepeElConserje"/>
     <property name="keyID" type="int" value="5"/>
    </properties>
   </object>

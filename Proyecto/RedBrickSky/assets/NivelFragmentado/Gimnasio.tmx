@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="92" height="188" tilewidth="32" tileheight="32" nextobjectid="163">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="92" height="188" tilewidth="32" tileheight="32" nextobjectid="164">
  <properties>
-  <property name="Personaje1" value="..assetsPersonaje41png"/>
-  <property name="Personaje2" value="..assetsPersonaje2.png"/>
-  <property name="Personaje3" value="..assetsPersonaje3.png"/>
-  <property name="Personaje4" value="..assetsPersonaje4.png"/>
-  <property name="Personaje5" value="..assetsPersonaje5.png"/>
-  <property name="Personaje6" value="..assetsPersonaje6.png"/>
-  <property name="Personaje7" value="..assetsPersonaje7.png"/>
+  <property name="Personaje1" value="..\assets\Personaje4.png"/>
+  <property name="Personaje2" value="..\assets\Personaje2.png"/>
+  <property name="Personaje3" value="..\assets\Personaje.png"/>
+  <property name="Personaje4" value="..\assets\Personaje4.png"/>
+  <property name="Personaje5" value="..\assets\Personaje5.png"/>
+  <property name="Personaje6" value="..\assets\Personaje.png"/>
+  <property name="Personaje7" value="..\assets\Personaje7.png"/>
  </properties>
  <tileset firstgid="1" name="2ckdj8" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="2ckdj8.png" width="512" height="512"/>
@@ -1392,7 +1392,7 @@
 0,0,0,0,0,0,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,616,0,0,
 0,0,0,0,0,0,0,1118,2147486746,2147486746,1118,1118,1118,1118,2147486746,2147486746,2147486746,2147486746,2147486746,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,0,0,0,
 0,0,0,0,0,0,0,1118,2147486746,2147486746,1118,1118,1118,1118,1118,1118,2147486746,2147486746,2147486746,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7088,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,0,0,0,
-0,0,0,1411,1412,1413,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,1118,1118,1118,2147486746,2147486746,2147486746,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6807,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7088,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,0,0,0,
+0,0,0,1411,1412,1413,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,1118,1118,1118,2147486746,2147486746,2147486746,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,618,0,6807,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7088,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,0,0,0,
 0,0,0,1471,1472,1473,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6811,0,0,7088,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,0,0,0,
 0,0,0,0,0,0,0,1118,1118,1118,1118,1118,1118,2147486746,2147486746,1118,1118,1118,1118,1118,1118,1118,1118,2147486746,2147486746,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6807,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7088,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,0,0,0,
 0,0,0,0,0,0,0,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,1118,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7088,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,0,0,0,
@@ -1871,47 +1871,52 @@
   </object>
   <object id="151" name="Pablo" type="Cartel" x="1360" y="630">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPC43"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="152" name="Pablo" type="Cartel" x="1710" y="559">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPCS16"/>
    </properties>
   </object>
   <object id="153" name="Pablo" type="Cartel" x="2512" y="1780">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPCS18"/>
    </properties>
   </object>
   <object id="154" name="Pablo" type="Cartel" x="2480" y="1361">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPCS17"/>
    </properties>
   </object>
   <object id="155" name="Pablo" type="Cartel" x="2799" y="853">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPC42"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="156" name="Pablo" type="Cartel" x="2863" y="1040">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPC44"/>
    </properties>
   </object>
   <object id="157" name="Pablo" type="Cartel" x="2190" y="180">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPCS13"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="158" name="Pablo" type="Cartel" x="1775" y="147">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPCS15"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="159" name="Pablo" type="Cartel" x="1807" y="210">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPCS14"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="160" name="Pablo" type="Cartel" x="1103" y="402">
@@ -1930,6 +1935,11 @@
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="helicopter"/>
     <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="163" name="Mochila " type="Bag" x="1713" y="146">
+   <properties>
+    <property name="Sweeties" type="int" value="10"/>
    </properties>
   </object>
  </objectgroup>

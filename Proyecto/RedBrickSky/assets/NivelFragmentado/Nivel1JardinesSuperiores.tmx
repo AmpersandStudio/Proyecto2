@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="150" height="63" tilewidth="32" tileheight="32" nextobjectid="138">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="150" height="63" tilewidth="32" tileheight="32" nextobjectid="139">
  <properties>
-  <property name="Personaje1" value="..assetsPersonaje1.png"/>
-  <property name="Personaje2" value="..assetsPersonaje2.png"/>
-  <property name="Personaje3" value="..assetsPersonaje3.png"/>
-  <property name="Personaje4" value="..assetsPersonaje4.png"/>
-  <property name="Personaje5" value="..assetsPersonaje5.png"/>
-  <property name="metalicDoor" value="..assetsdoor.png"/>
-  <property name="verticalDoor" value="..assetsNivelFragmentadoPuertaVertical.png"/>
+  <property name="Personaje1" value="..\assets\Personaje1.png"/>
+  <property name="Personaje2" value="..\assets\Personaje2.png"/>
+  <property name="Personaje3" value="..\assets\Personaje3.png"/>
+  <property name="Personaje4" value="..\assets\Personaje4.png"/>
+  <property name="Personaje5" value="..\assets\Personaje5.png"/>
+  <property name="metalicDoor" value="..\assets\door.png"/>
+  <property name="verticalDoor" value="..\assets\NivelFragmentado\PuertaVertical.png"/>
  </properties>
  <tileset firstgid="1" name="2ckdj8" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="2ckdj8.png" width="512" height="512"/>
@@ -511,10 +511,10 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1411,1412,1413,1411,1412,1413,1411,1412,1413,0,0,0,1411,1412,1413,1411,1412,1413,1411,1412,1413,1411,1412,1413,1411,1412,1413,1411,1412,1413,1411,1412,1413,1411,1412,1413,1411,1412,1413,1411,1412,1413,1411,1412,1413,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1471,1472,1473,1471,1472,1473,1471,1472,1473,0,0,0,1471,1472,1473,1471,1472,1473,1471,1472,1473,1471,1472,1473,1471,1472,1473,1471,1472,1473,1471,1472,1473,1471,1472,1473,1471,1472,1473,1471,1472,1473,1471,1472,1473,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,630,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,461,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,630,0,0,616,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,461,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,616,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6808,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,616,0,1118,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6807,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,616,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,630,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,2147486746,
@@ -871,33 +871,30 @@
   </object>
   <object id="94" name="Niño" type="Cartel" x="2990.67" y="1808">
    <properties>
-    <property name="Message" value="Dicen que tras la berja del recreo el jardinero guarda un tesoro increible, pero no tengo el valor de adentrarme, ten la llave, veo valor y madurez en tus ojos, igual puedes hacerte con él."/>
+    <property name="Message" value="NPCS11"/>
     <property name="keyID" type="int" value="7"/>
-   </properties>
-  </object>
-  <object id="96" name="Niño" type="Cartel" x="2028" y="331">
-   <properties>
-    <property name="Message" value="NPC14"/>
    </properties>
   </object>
   <object id="98" name="Martin" type="Cartel " x="2030" y="593">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPC40"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="99" name="Aaron" type="Cartel" x="4398" y="467">
    <properties>
-    <property name="Message" value="La puerta está cerrada a cal y canto , he oido que la llave está en la sala del conserje."/>
+    <property name="Message" value="NPCPuertaGimnasio"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="100" name="Pedrp" type="Cartel" x="4303" y="1809">
    <properties>
-    <property name="Message" value="InfinityWar es guay "/>
+    <property name="Message" value="NPCS10"/>
    </properties>
   </object>
   <object id="101" name="Nuria" type="Cartel" x="2288" y="1551">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="NPCS12"/>
    </properties>
   </object>
   <object id="102" name="Pablo" type="Cartel" x="3020" y="270">
@@ -922,7 +919,7 @@
   </object>
   <object id="128" name="Llave necesaria" type="Door" x="2208.13" y="896" width="63.875" height="32">
    <properties>
-    <property name="Message" value="Hace falta una llave... hay una nota, le he conseguido quitar la llave al jardinero, dicen que aquí se guarda un valioso tesoro que ni yo me atrevo a detapar "/>
+    <property name="Message" value="PuertaJardinSecreto"/>
     <property name="keyID" type="int" value="7"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="0"/>
@@ -937,7 +934,7 @@
   </object>
   <object id="131" name="Necesaria Llave del Gimnasio " type="Door" x="4416" y="415.25" width="4" height="159.75">
    <properties>
-    <property name="Message" value="La puerta está cerrada... quizás si consiguiese la llave."/>
+    <property name="Message" value="PuertaGimnasio"/>
     <property name="keyID" type="int" value="6"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="160"/>
@@ -996,6 +993,11 @@
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="helicopter"/>
     <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="138" name="Cofre" type="Bag" x="2031.33" y="247.333">
+   <properties>
+    <property name="Sweeties" type="int" value="10"/>
    </properties>
   </object>
  </objectgroup>
