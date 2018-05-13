@@ -37,7 +37,24 @@ void CollisionManager::checkNPCTileCollision(NPC* pNPC, const std::vector<TileLa
 			if (aux == -1)
 				pNPC->invertVel();
 			else
+			{
+				Vector2D pPos = pNPC->getPosition();
+				Vector2D pDir = pNPC->getVel();
+
+				double pdirX = -5 * pDir.getX();
+				double pdirY = -5 * pDir.getY();
+
+				double px = pdirX + pPos.getX();
+				double py = pdirY + pPos.getY();
+
+				pPos.set(px, py);
+
+				pNPC->setVel(pDir * -1);
+				pNPC->invertVel();
+				pNPC->setPosition(pPos);
+
 				pNPC->collision();
+			}
 		}
 		else
 			pNPC->incrementMovCont();
@@ -72,6 +89,7 @@ void CollisionManager::checkPlayerDoorCollision(Player * pPlayer, std::vector<Do
 
 		if (Collisions::collides(pPlayer, door))
 		{
+			TheSoundManager::Instance()->playSound("rebote", 0);
 
 			Vector2D pPos = pPlayer->getPosition();
 			Vector2D pDir = pPlayer->getDirection();
@@ -95,12 +113,6 @@ void CollisionManager::checkPlayerDoorCollision(Player * pPlayer, std::vector<Do
 
 void CollisionManager::checkNPCDoorCollision(NPC * NPC, std::vector<Door*>& d)
 {
-	Vector2D oriPos = NPC->getPosition();
-	Vector2D v = oriPos + NPC->getVel();
-	v.setX(v.getX() + 2);
-	v.setY(v.getY() + 2);
-	NPC->setPosition(v);
-
 	for (Door* door : d)
 	{
 		if (door->isActive()) continue;
@@ -108,23 +120,23 @@ void CollisionManager::checkNPCDoorCollision(NPC * NPC, std::vector<Door*>& d)
 		if (Collisions::collides(NPC, door)) {
 
 			Vector2D pPos = NPC->getPosition();
-			Vector2D pDir = NPC->getDirection();
+			Vector2D pDir = NPC->getVel();
 
 			double pdirX = -5 * pDir.getX();
 			double pdirY = -5 * pDir.getY();
 
 			double px = pdirX + pPos.getX();
-			px -= NPC->getVel().getX();
 			double py = pdirY + pPos.getY();
-			py = NPC->getVel().getY();
 
 			pPos.set(px, py);
 
+			NPC->setVel(pDir * -1);
+			NPC->invertVel();
 			NPC->setPosition(pPos);
+
 			NPC->collision();
 		}
 	}
-	NPC->setPosition(oriPos);
 }
 
 

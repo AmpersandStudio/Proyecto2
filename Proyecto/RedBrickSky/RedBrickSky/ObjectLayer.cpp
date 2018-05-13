@@ -33,6 +33,8 @@ void ObjectLayer::update(Level* pLevel)
 			//Cabe destacar que la mayor parte del tiempo está parado
 			//LA SIGUIENTE LINEA CONSUME CPU
 			m_collisionManager.checkNPCTileCollision(pLevel->getNPCs()->at(i), pLevel->getCollidableLayers()); //NPC's con las colisiones
+
+			m_collisionManager.checkNPCDoorCollision(pLevel->getNPCs()->at(i), pLevel->getDoorsInteractions());
 				//pLevel->getNPCs()->at(i)->incrementMovCont();
 			 //EL SIGUIENTE BUCLE CONSUME CPU
 			for (int p = 0; p < NPCnumber; p++) {
