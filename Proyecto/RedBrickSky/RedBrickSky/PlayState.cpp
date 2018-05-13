@@ -142,6 +142,10 @@ void PlayState::render()
 
 	pLevels.at(GameManager::Instance()->getLevel())->render();
 
+	if (GameManager::Instance()->getDialogueState()) {
+		GameManager::Instance()->getDialogueCurrent()->render();
+	}
+
 }
 
 

@@ -1,6 +1,7 @@
 #include "GameState.h"
 #include "TextureManager.h"
 #include "NPC.h"
+#include"GameManager.h"
 GameState::GameState()
 {
 }

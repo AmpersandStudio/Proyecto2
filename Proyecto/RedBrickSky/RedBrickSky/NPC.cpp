@@ -55,13 +55,12 @@ void NPC::activate() {
 
 	if (!dialogueActive_ && !GameManager::Instance()->getDialogueState()) {
 		dialogueActive_ = true;
-		GameManager::Instance()->setDialogueState(true);
-		//DESCOMENTAR ESTO CUANDO SE VUELVA A PODER PARAR A LOS NPCs TETES 
+		GameManager::Instance()->setDialogueState(true, &text);
 	}
 	else if (dialogueActive_) {
 		dialogueActive_ = text.nextDialogue();
 		if (!dialogueActive_) {
-			GameManager::Instance()->setDialogueState(false);
+			GameManager::Instance()->setDialogueState(false, nullptr);
  			if (isFighter_)
 			{
 				GameManager::Instance()->getInteractuable(this);
@@ -143,9 +142,9 @@ void NPC::render()
 
 	Interactuable::render();
 
-	if (dialogueActive_ && GameManager::Instance()->getDialogueState()) {
+	/*if (dialogueActive_ && GameManager::Instance()->getDialogueState()) {
 		text.render();
-	}
+	}*/
 }
 
 void NPC::move() {

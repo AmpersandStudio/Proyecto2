@@ -33,7 +33,7 @@ void Cartel::activate()
 		if (!dialogueActive_ && !GameManager::Instance()->getDialogueState())
 		{
 			dialogueActive_ = true;
-			GameManager::Instance()->setDialogueState(true);
+			GameManager::Instance()->setDialogueState(true, &text);
 			//DESCOMENTAR ESTO CUANDO SE VUELVA A PODER PARAR A LOS NPCs TETES 
 		}
 		else if (dialogueActive_)
@@ -41,7 +41,7 @@ void Cartel::activate()
 			dialogueActive_ = text.nextDialogue();
 			if (!dialogueActive_)
 			{
-				GameManager::Instance()->setDialogueState(false);
+				GameManager::Instance()->setDialogueState(false, nullptr);
 				selectAction();
 			}
 		}
@@ -77,10 +77,10 @@ void Cartel::render()
 
 	if (hasDialogue)
 	{
-		if (dialogueActive_ && GameManager::Instance()->getDialogueState())
+		/*if (dialogueActive_ && GameManager::Instance()->getDialogueState())
 		{
 			text.render();
-		}
+		}*/
 	}
 }
 

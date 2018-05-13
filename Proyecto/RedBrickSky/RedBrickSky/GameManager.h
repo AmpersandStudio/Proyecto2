@@ -5,6 +5,7 @@
 #include "GameComponent.h"
 #include "Game.h"
 #include "Interactuable.h"
+#include "GameState.h"
 
 #include "checkML.h"
 
@@ -49,6 +50,8 @@ private:
 
 	Interactuable* currentInter;
 
+	Dialogue* currentDialogue_;
+
 	GameManager() 
 	{
 		doors.resize(30);
@@ -56,6 +59,7 @@ private:
 		money = 500;
 
 		dialogueActive = false;
+		currentDialogue_ = nullptr;
 
 		name = "";
 
@@ -100,7 +104,8 @@ public:
 	void setMoney(int m) { money = m; };
 
 	bool getDialogueState() { return dialogueActive; };
-	void setDialogueState(bool set) { dialogueActive = set; };
+	void setDialogueState(bool set, Dialogue* d) { dialogueActive = set; currentDialogue_ = d; };
+	Dialogue* getDialogueCurrent() { return currentDialogue_; };
 
 	void setName(string n) { name = n;  };
 

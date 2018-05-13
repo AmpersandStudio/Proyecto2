@@ -6,6 +6,7 @@
 #include "GameObject.h"
 #include "RenderFrameComponent.h"
 #include <vector>
+#include "Dialogue.h"
 
 #include "checkML.h"
 

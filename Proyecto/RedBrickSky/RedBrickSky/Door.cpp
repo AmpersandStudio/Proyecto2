@@ -18,7 +18,7 @@ void Door::activate()
 			if (!dialogueActive_ && !GameManager::Instance()->getDialogueState())
 			{
 				dialogueActive_ = true;
-				GameManager::Instance()->setDialogueState(true);
+				GameManager::Instance()->setDialogueState(true, &text);
 				//DESCOMENTAR ESTO CUANDO SE VUELVA A PODER PARAR A LOS NPCs TETES 
 			}
 			else if (dialogueActive_)
@@ -26,7 +26,7 @@ void Door::activate()
 				dialogueActive_ = text.nextDialogue();
 				if (!dialogueActive_)
 				{
-					GameManager::Instance()->setDialogueState(false);
+					GameManager::Instance()->setDialogueState(false, nullptr);
 				}
 			}
 		}
@@ -53,8 +53,8 @@ void Door::render()
 			(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
 			64, 32, TheGame::Instance()->getRenderer(), 0, 255);
 
-		if (dialogueActive_ && GameManager::Instance()->getDialogueState()) {
+		/*if (dialogueActive_ && GameManager::Instance()->getDialogueState()) {
 			text.render();
-		}
+		}*/
 	}
 }
