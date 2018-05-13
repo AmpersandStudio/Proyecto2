@@ -65,7 +65,7 @@ private:
 
 		currentInter = nullptr;
 
-		level_ = 0;
+		level_ = TUTORIAL;
 	}
 
 	static GameManager* s_pInstance;
@@ -88,6 +88,8 @@ public:
 		}
 		return s_pInstance;
 	}
+
+	enum Levels { TUTORIAL, JARDINES_INFERIORES, PASILLOS, JARDINES_SUPERIORES, GIMNASIO, CLASES, TIENDA };
 
 	//Metodos para el inventario
 	vector<estado> copyInventory();	

@@ -58,8 +58,8 @@ void Cartel::selectAction()
 	}
 	else if (toShop == 1)
 	{
-		SoundManager::Instance()->stopMusic();
-		GameManager::Instance()->setCurrentLevel(3);
+		//SoundManager::Instance()->stopMusic();
+		GameManager::Instance()->setCurrentLevel(GameManager::TIENDA);
 	}
 	else if (tenderMan)
 		TheGame::Instance()->getStateMachine()->pushState(new ShopState());

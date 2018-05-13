@@ -167,10 +167,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								property->Attribute("value", &callbackID);
 							}
-							else if (e->Attribute("name") == std::string("animSpeed"))
+							/*else if (e->Attribute("name") == std::string("animSpeed"))
 							{
 								property->Attribute("value", &animSpeed);
-							}
+							}*/
 							else if (property->Attribute("name") == std::string("Message"))
 							{
 								Message = property->Attribute("value");
@@ -207,7 +207,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				}
 			}
 
-			pGameObject->load(Vector2D(x, y), width, height, textureID, numFrames, callbackID, animSpeed);
+			if (pGameObject != nullptr) pGameObject->load(Vector2D(x, y), width, height, textureID, numFrames, callbackID, animSpeed);
 
 			if (type == "Player")
 			{
@@ -255,16 +255,6 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				pLevel->getBags()->push_back(c);
 
 			}
-			/*if (type == "Key")
-			{
-				Key* k = static_cast<Key*>(pGameObject);
-				k->setKeyID(keyID);
-				k->setTileWidth(m_tileSize * m_width);
-				k->setTileHeight(m_tileSize * m_height);
-
-				pLevel->getKeys()->push_back(k);
-
-			}*/
 
 			if (type == "Door")
 			{
@@ -275,7 +265,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				pLevel->getDoors()->push_back(d);
 			}
 
-			pObjectLayer->getGameObjects()->push_back(pGameObject);
+			if (pGameObject != nullptr) pObjectLayer->getGameObjects()->push_back(pGameObject);
 		}
 	}
 
