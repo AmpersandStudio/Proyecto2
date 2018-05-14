@@ -48,7 +48,7 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 			}
 			o->setPosition(position);
 		}
-		else if (event.key.keysym.sym == SDLK_DOWN) {
+		else if (event.key.keysym.sym == SDLK_DOWN || XboxController::Instance()->getButtonState(0, 0)) {
 
 			if (posY < Y_ + fil_ - 2) {
 				posY += distance * 0.75;
@@ -223,6 +223,32 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		}
 	}
 
+	//else if (XboxController::Instance()->getNumControllers() > 0) { //Primero comprobamos si hay algún mando conectado
+	//																//CONTROLAR LOS INPUTS MEDIANTE MANDO DE LA XBOX360
+	// if (event.type == SDL_JOYBUTTONDOWN)
+	//	{
+	//		XboxController::Instance()->onJoystickButtonDown(event);
 
+	//		if (XboxController::Instance()->getButtonState(0, 7)) //botón de pausa
+	//		{
+	//			Game::Instance()->getStateMachine()->pushState(new PauseState());
+	//		}
+	//		if (XboxController::Instance()->getButtonState(0, 6)) //botón de back
+	//		{
+	//			Game::Instance()->getStateMachine()->pushState(new BackPack());
+	//		}
+
+	//		if (XboxController::Instance()->getButtonState(0, 0))	// Botón A
+	//		{
+	//			interacting();
+	//		}
+	//		XboxController::Instance()->onJoystickButtonUp(event); //Aseguro que levantamos el botón después de usarlo
+	//	}
+	//	
+	//}
+
+	if (event.type == SDL_JOYBUTTONUP)
+		XboxController::Instance()->onJoystickButtonUp(event);
+	//TERMINAMOS DE COMPROBAR CON EL MANDO DE LA XBOX
 	return handledEvent;
 }

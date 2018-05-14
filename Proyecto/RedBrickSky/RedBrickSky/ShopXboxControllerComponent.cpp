@@ -15,6 +15,8 @@ ShopXboxControllerComponent::ShopXboxControllerComponent(int iniX, int iniY, int
 	shopObjects = items->getItems();
 	delete items;
 
+	knowWhereWeAre_ = 0;
+
 	if (XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
 		XboxController::Instance()->insertController();
 }
@@ -30,14 +32,22 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 	bool handledEvent = false;
 
 	if (event.type == SDL_JOYHATMOTION) {
+
+		vector<estado> elementosTienda = GameManager::Instance()->copyShopItems();
+
 		Vector2D position = o->getPosition();
 		double posY = position.getY();
 		double posX = position.getX();
 
 		if (event.jhat.value & SDL_HAT_UP) {
 
-			if (posY > Y_)
-				posY -= distance * 1.5;
+			if (posY > Y_ + 1) {
+				posY -= distance* 0.75;
+				knowWhereWeAre_ -= 8;
+				StringToScreen::Instance()->setMessage("Nombre: " + elementosTienda[knowWhereWeAre_].nombre + " ");
+				StringToScreen::Instance()->setMessage("Precio: " + std::to_string(elementosTienda[knowWhereWeAre_].price) + " ");
+				StringToScreen::Instance()->startMessagin();
+			}
 
 			if (posX >= Y_) {
 				position.setY(posY);
@@ -47,9 +57,13 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 		}
 		else if (event.jhat.value & SDL_HAT_DOWN) {
 
-			if (posY < Y_ + fil_ - 1)
-				posY += distance * 1.5;
-
+			if (posY < Y_ + fil_ - 2) {
+				posY += distance * 0.75;
+				knowWhereWeAre_ += 8;
+				StringToScreen::Instance()->setMessage("Nombre: " + elementosTienda[knowWhereWeAre_].nombre + " ");
+				StringToScreen::Instance()->setMessage("Precio: " + std::to_string(elementosTienda[knowWhereWeAre_].price) + " ");
+				StringToScreen::Instance()->startMessagin();
+			}
 			if (posY <= Y_ + fil_) {
 				position.setY(posY);
 				j++;
@@ -58,9 +72,13 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 		}
 		else if (event.jhat.value & SDL_HAT_RIGHT) {
 
-			if (posX < X_ + col_ - 1)
+			if (posX < X_ + col_ - 1) {
 				posX += distance / 2;
-
+				knowWhereWeAre_++;
+				StringToScreen::Instance()->setMessage("Nombre: " + elementosTienda[knowWhereWeAre_].nombre + " ");
+				StringToScreen::Instance()->setMessage("Precio: " + std::to_string(elementosTienda[knowWhereWeAre_].price) + " ");
+				StringToScreen::Instance()->startMessagin();
+			}
 			if (posX <= X_ + col_ - 1) {
 				position.setX(posX);
 				i++;
@@ -70,11 +88,17 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 		}
 		else if (event.jhat.value & SDL_HAT_LEFT) {
 
-			if (posX >= X_)
+			if (posX >= X_) {
 				posX -= distance / 2;
 
+			}
+
 			if (posX >= X_) {
+				knowWhereWeAre_--;
 				position.setX(posX);
+				StringToScreen::Instance()->setMessage("Nombre: " + elementosTienda[knowWhereWeAre_].nombre + " ");
+				StringToScreen::Instance()->setMessage("Precio: " + std::to_string(elementosTienda[knowWhereWeAre_].price) + " ");
+				StringToScreen::Instance()->startMessagin();
 				i--;
 			}
 

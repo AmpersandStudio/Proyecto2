@@ -12,6 +12,7 @@ private:
 
 
 	//////////////////////////////////////////
+	int knowWhereWeAre_;
 
 	int X_;
 	int Y_;
