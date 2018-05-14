@@ -31,5 +31,5 @@ void Font::close()
 
 SDL_Surface* Font::renderText(std::string text, SDL_Color color) const 
 {
-	return (font_) ? TTF_RenderText_Solid(font_, text.c_str(), color) : nullptr;
+	return (font_) ? TTF_RenderUTF8_Blended(font_, text.c_str(), color) : nullptr;
 }
