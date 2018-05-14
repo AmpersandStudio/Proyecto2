@@ -580,82 +580,84 @@ void BattleState::createStatus()
 }
 
 void BattleState::createAttacks() {
-	ataques.resize(33);
+	ataques.resize(35);
 	// Ataques de Armas Fisicas
 	//compas
-	ataques[0] = Attack("360 No Scope", Physical, 20, 20, 65, 70, 1, 1, 0.8f);
-	ataques[1] = Attack("¡Pasalo a Radianes!", Physical, 15, 15, 55, 85, 0.9f, 0.9f, 0.9f);
+	ataques[0] = Attack("360 Grados", Physical, 20, 20, 65, 70, 1, 1, 1);
+	ataques[1] = Attack("2Pi Radianes", Physical, 15, 15, 55, 85, 1, 1, 1);
 	//escobilla
-	ataques[2] = Attack("Eso No Es\nChocolate", Physical, 15, 15, 40, 75, 0.9f, 1, 0.9f);
-	ataques[3] = Attack("Limpieza a Fondo", Physical, 15, 15, 35, 80, 0.9f, 0.9f, 1);
+	ataques[2] = Attack("Lanzachocolate", Physical, 15, 15, 40, 75, 1, 1, 1);
+	ataques[3] = Attack("Limpieza Profunda", Physical, 15, 15, 35, 80, 1, 1, 1);
 	//menstruacion
 	ataques[4] = Attack("Tajo Recto", Physical, 10, 10, 95, 80, 1, 1, 1);
 	ataques[5] = Attack("Golpe de Remo", Physical, 15, 15, 80, 90, 1, 1, 1);
 	//lapiz
 	ataques[6] = Attack("Punta Afilada", Physical, 20, 20, 15, 75, 1, 1, 1);
-	ataques[7] = Attack("Golpe de Goma", Physical, 20, 20, 20, 80, 1, 0.8f, 1);
+	ataques[7] = Attack("Golpe de Goma", Physical, 20, 20, 20, 80, 1, 1, 1);
 
 	// Ataques de Armas Magicas
 	//insulto
-	ataques[8] = Attack("Hijo de Fruta", Magical, 20, 20, 20, 75, 0.9f, 0.9f, 1);
-	ataques[9] = Attack("Dedo Mágico", Magical, 20, 20, 15, 80, 1, 1, 0.8f);
+	ataques[8] = Attack("Hijo de Fruta", Magical, 20, 20, 20, 75, 1, 1, 1);
+	ataques[9] = Attack("Dedo Mágico", Magical, 20, 20, 15, 80, 1, 1, 1);
 	//libro
-	ataques[10] = Attack("Indice Confuso", Magical, 10, 10, 85, 95, 1, 1, 1);
+	ataques[10] = Attack("Índice Confuso", Magical, 10, 10, 85, 95, 1, 1, 1);
 	ataques[11] = Attack("Lectura Ligera", Magical, 10, 10, 95, 80, 1, 1, 1);
 	//pegamento
-	ataques[12] = Attack("Esto No Pega", Magical, 15, 15, 60, 90, 1, 0.9f, 1);
-	ataques[13] = Attack("Metamaterial", Magical, 15, 15, 75, 80, 0.9f, 0.9f, 0.9f);
-
+	ataques[12] = Attack("Esto No Pega", Magical, 15, 15, 60, 90, 1, 1, 1);
+	ataques[13] = Attack("Metamaterial", Magical, 15, 15, 75, 80, 1, 1, 1);
 	//tartera
-	ataques[14] = Attack("Comida Sorpresa", Magical, 20, 20, 30, 80, 1, 0.8f, 1);
-	ataques[15] = Attack("Hoy Toca Lentejas", Magical, 20, 20, 45, 75, 1, 1, 1);
+	ataques[14] = Attack("Almuerzo", Magical, 20, 20, 30, 80, 1, 1, 1);
+	ataques[15] = Attack("Lentejas", Magical, 20, 20, 45, 75, 1, 1, 1);
 
 	// Ataques de Armas con Proyectiles
 	//cerbatana
-	ataques[16] = Attack("Proyectil Humedo", Ranged, 30, 30, 15, 90, 1, 1, 0.8f);
-	ataques[17] = Attack("Escupitajo Supersonico", Ranged, 30, 30, 25, 80, 1, 1, 0.9f);
+	ataques[16] = Attack("Bala Húmeda", Ranged, 30, 30, 15, 90, 1, 1, 1);
+	ataques[17] = Attack("Utra-escupitajo", Ranged, 30, 30, 25, 80, 1, 1, 1);
 	//globo
-	ataques[18] = Attack("Eso no era Agua", Ranged, 15, 15, 65, 85, 1, 1, 0.8f);
-	ataques[19] = Attack("Eso Tampoco", Ranged, 15, 15, 75, 75, 1, 0.8f, 0.9f);
+	ataques[18] = Attack("Agua Sorpresa", Ranged, 15, 15, 65, 85, 1, 1, 1);
+	ataques[19] = Attack("Agua Sospechosa", Ranged, 15, 15, 75, 75, 1, 1, 1);
 	//tirachinas
-	ataques[20] = Attack("¡ZAS! En Toda la Boca", Ranged, 5, 5, 85, 100, 1, 1, 1);
-	ataques[21] = Attack("Meteorito Hentai", Ranged, 5, 5, 95, 90, 1, 1, 1);
+	ataques[20] = Attack("Zasca!", Ranged, 5, 5, 85, 100, 1, 1, 1);
+	ataques[21] = Attack("Meteoro Hentai", Ranged, 5, 5, 95, 90, 1, 1, 1);
 	//grapadora
-	ataques[22] = Attack("Grapas Atómicas", Ranged, 25, 25, 30, 90, 1, 1, 1);
-	ataques[23] = Attack("Corchograpa", Ranged, 25, 25, 45, 75, 1, 0.9f, 0.9f);
+	ataques[22] = Attack("Grapa Atómica", Ranged, 25, 25, 30, 90, 1, 1, 1);
+	ataques[23] = Attack("Corchograpa", Ranged, 25, 25, 45, 75, 1, 1, 1);
+	//ampergun
+	ataques[24] = Attack("Nullptr", Ranged, 10, 10, 45, 100, 1, 1, 0.7f);
+	ataques[25] = Attack("Ampersand", Magical, 10, 10, 120, 100, 1, 1, 1);
 
 	// Ataques de Armas de Apoyo
 	//sacapuntas
-	ataques[24] = Attack("Afilador", Support, 20, 20, 0, 100, 1.2f, 1, 1);
-	ataques[25] = Attack("Trazado Fino", Support, 20, 20, 100, 70, 1, 1, 1.2f);
+	ataques[26] = Attack("Afilador", Support, 20, 20, 0, 100, 1.2f, 1, 1);
+	ataques[27] = Attack("Trazado Fino", Support, 20, 20, 100, 70, 1, 1, 1.2f);
 	//calculadora
-	ataques[26] = Attack("Calculo Algebraico Complejo", Support, 20, 20, 0, 100, 1.2f, 1, 1.1f);
-	ataques[27] = Attack("Stack Overflow", Support, 5, 5, 0, 100, 1.5f, 1, 1);
+	ataques[28] = Attack("Álgebra Compleja", Support, 20, 20, 0, 100, 1.2f, 1, 1.1f);
+	ataques[29] = Attack("Stack Overflow", Support, 5, 5, 0, 100, 1.5f, 1, 1);
 	//bandeja
-	ataques[28] = Attack("Reflejo Fidedigno", Support, 10, 10, 0, 100, 1, 1, 1.5f);
-	ataques[29] = Attack("Escudo de Adamantium", Support, 5, 5, 0, 100, 1, 1.5f, 1);
+	ataques[30] = Attack("Reflejo Fidedigno", Support, 10, 10, 0, 100, 1, 1, 1.5f);
+	ataques[31] = Attack("Escudo Adamantino", Support, 5, 5, 0, 100, 1, 1.5f, 1);
 	//borrador
-	ataques[30] = Attack("Polvos de Tiza", Support, 20, 20, 0, 100, 1, 1.2f, 2);
-	ataques[31] = Attack("Empezamos Tema Nuevo", Support, 5, 5, 0, 100, 1.4f, 1, 1.1f);
+	ataques[32] = Attack("Polvos de Tiza", Support, 20, 20, 0, 100, 1, 1.2f, 2);
+	ataques[33] = Attack("Tema Nuevo", Support, 5, 5, 0, 100, 1.4f, 1, 1.1f);
 
 	//genericone
-	ataques[32] = Attack("Sin Arma", Physical, 5, 5, 10, 100, 1, 1, 1);
+	ataques[34] = Attack("Sin Arma", Physical, 5, 5, 10, 100, 1, 1, 1);
 
 	e_ataques.resize(12);
 	e_ataques[0] = Attack("Placaje", Physical, 20, 20, 20, 90, 1, 1, 1);
-	e_ataques[1] = Attack("Finta Lateral", Physical, 15, 15, 15, 80, 1, 1, 0.9f);
-	e_ataques[2] = Attack("Golpe Bajo", Physical, 10, 10, 15, 30, 1, 0.8f, 1);
-	e_ataques[3] = Attack("Aturdir", Physical, 15, 15, 35, 25, 0.9f, 1, 1);
+	e_ataques[1] = Attack("Finta Lateral", Physical, 15, 15, 15, 80, 1, 1, 1);
+	e_ataques[2] = Attack("Golpe Bajo", Physical, 10, 10, 15, 30, 1, 1, 1);
+	e_ataques[3] = Attack("Aturdir", Physical, 15, 15, 35, 25, 1, 1, 1);
 
-	e_ataques[4] = Attack("Soplo", Ranged, 20, 20, 30, 90, 1, 0.9f, 1);
+	e_ataques[4] = Attack("Soplo", Ranged, 20, 20, 30, 90, 1, 1, 1);
 	e_ataques[5] = Attack("Vendaval", Ranged, 10, 10, 45, 90, 1, 1, 1);
 	e_ataques[6] = Attack("Caida Libre", Ranged, 10, 10, 60, 50, 1, 1, 1);
-	e_ataques[7] = Attack("Polvareda", Ranged, 15, 15, 15, 90, 1, 1, 0.8f);
+	e_ataques[7] = Attack("Polvareda", Ranged, 15, 15, 15, 90, 1, 1, 1);
 
-	e_ataques[8] = Attack("Conjuro", Magical, 15, 15, 70, 90, 0.8f, 1, 1);
-	e_ataques[9] = Attack("Maldición", Magical, 10, 10, 80, 90, 1, 0.8f, 1);
-	e_ataques[10] = Attack("As Oculto", Magical, 5, 5, 90, 90, 0.9f, 0.9f, 1);
-	e_ataques[11] = Attack("Psicosis", Magical, 5, 5, 35, 90, 0.9f, 0.9f, 0.9f);
+	e_ataques[8] = Attack("Conjuro", Magical, 15, 15, 70, 90, 1, 1, 1);
+	e_ataques[9] = Attack("Maldición", Magical, 10, 10, 80, 90, 1, 1, 1);
+	e_ataques[10] = Attack("As Oculto", Magical, 5, 5, 90, 90, 1, 1, 1);
+	e_ataques[11] = Attack("Psicosis", Magical, 5, 5, 35, 90, 1, 1, 1);
 }
 
 void BattleState::initC() {
