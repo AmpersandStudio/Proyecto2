@@ -175,6 +175,7 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_exterior.wav", "exteriores", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_interior.wav", "interiores", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\boss_battle_loop.wav", "BossMusic", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\funk.wav", "funk", SOUND_MUSIC);
 
 	//Load SFX
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);

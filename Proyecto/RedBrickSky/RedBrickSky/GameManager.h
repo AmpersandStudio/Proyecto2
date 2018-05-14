@@ -55,6 +55,8 @@ private:
 	bool ampersand_ = false;
 	bool easterEgg[4] = { false,false, false, false };
 
+	bool charlie_ = false;
+
 	GameManager() 
 	{
 		doors.resize(30);
@@ -142,4 +144,6 @@ public:
 	bool checkEasterEgg();
 	void setAmpersand() { ampersand_ = true; }
 	inline bool getAmpersand() const { return ampersand_; }
+	inline bool getCharlie() const { return charlie_; }
+	inline void toggleCharlie() { charlie_ = !charlie_; }
 };
