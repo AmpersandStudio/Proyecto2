@@ -3,7 +3,10 @@
 #include "InventoryShopFBcomponent.h"
 #include "RenderSingleFrameComponent.h"
 #include "BagXboxControllerComponent.h"
+#include "KeyInputComponentButton.h"
+#include "MouseInputForBattleComponent.h"
 #include "RenderFraemeComponent2.h"
+#include "ClickButtonComp.h"
 
 BackPack::BackPack()
 {
@@ -37,6 +40,14 @@ BackPack::BackPack()
 	EItems = 0;
 	leftOccupied = false;
 	creaEscena();
+
+	Button* button0 = new Button("clb", cleonMode, 0);
+	Vector2D position0(0.05, 0.8);
+	double width = 180;
+	double height = 45;
+	button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(new RenderFrameComponent());
+	button0->addInputComponent(new ClickButtonComp());
+	stage.push_back(button0);
 }
 
 BackPack::~BackPack()

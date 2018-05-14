@@ -15,7 +15,7 @@ class TextureManager
 {
 public:
 
-	enum FontId { ARIAL16, ARIAL24, NESChimera16, NESChimera24, CaptureIt16, CaptureIt24, CHALK24, Pixel16, Pixel32 };
+	enum FontId { ARIAL16, ARIAL24, NESChimera16, NESChimera24, CaptureIt16, CaptureIt24, CHALK24, Pixel16, Pixel32, WapenFont50 };
 
 	~TextureManager();
 

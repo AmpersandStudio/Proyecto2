@@ -84,6 +84,8 @@ public:
 	void pullEitem() { EItems--; };
 	bool getLeft() {return leftOccupied;};
 	void setLeft(bool l) { leftOccupied = l; };
+
+	static void cleonMode() { GameManager::Instance()->toggleCharlie(); }
 };
 
 

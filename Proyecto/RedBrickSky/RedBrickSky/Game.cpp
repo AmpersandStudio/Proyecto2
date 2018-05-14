@@ -167,6 +167,7 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\assets\\Gimnasio.png", "level1-5", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Nivel2.png", "level2", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Tienda.png", "tiendaLevel", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\cleonButton.png", "clb", RENDERER_);
 
 	// Load Music
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);

@@ -746,41 +746,41 @@ void BattleState::render() {
 		}
 
 		if ((!damagedE || fail) && keepText)
-			TheTextureManager::Instance()->drawText("FALLO!", TextureManager::Pixel32, { 255,0,0,255 }, 50, 175, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText("FALLO!", TextureManager::WapenFont50, { 255,0,0,255 }, 50, 175, TheGame::Instance()->getRenderer());
 
 		if (player->isFail() && keepText) {
-			TheTextureManager::Instance()->drawText("FALLO!", TextureManager::Pixel32, { 255,0,0,255 }, 50, 175, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText("FALLO!", TextureManager::WapenFont50, { 255,0,0,255 }, 50, 175, TheGame::Instance()->getRenderer());
 			fai = true;
 		}
 
 		if (player->isCritical() && keepText) {
-			TheTextureManager::Instance()->drawText("CRITICO!", TextureManager::Pixel32, { 255,0,0,255 }, 50, 175, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText("CRITICO!", TextureManager::WapenFont50, { 255,0,0,255 }, 50, 175, TheGame::Instance()->getRenderer());
 			crit = true;
 		}
 		if (player->isEffective() && keepText) {
-			TheTextureManager::Instance()->drawText("MUY EFECTIVO!", TextureManager::Pixel32, { 255,0,0,255 }, 50, 225, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText("MUY EFECTIVO!", TextureManager::WapenFont50, { 255,0,0,255 }, 50, 225, TheGame::Instance()->getRenderer());
 			effect = true;
 		}
 		if (player->isNotEffective() && keepText) {
-			TheTextureManager::Instance()->drawText("POCO EFECTIVO!", TextureManager::Pixel32, { 255,0,0,255 }, 50, 225, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText("POCO EFECTIVO!", TextureManager::WapenFont50, { 255,0,0,255 }, 50, 225, TheGame::Instance()->getRenderer());
 			notEffect = true;
 		}
 
 		if (enemy->isFail() && keepText) {
-			TheTextureManager::Instance()->drawText("FALLO!", TextureManager::Pixel32, { 255,0,0,255 }, 500, 175, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText("FALLO!", TextureManager::WapenFont50, { 255,0,0,255 }, 500, 175, TheGame::Instance()->getRenderer());
 			faiE = true;
 		}
 
 		if (enemy->isCritical() && keepText) {
-			TheTextureManager::Instance()->drawText("CRITICO!", TextureManager::Pixel32, { 255,0,0,255 }, 500, 175, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText("CRITICO!", TextureManager::WapenFont50, { 255,0,0,255 }, 500, 175, TheGame::Instance()->getRenderer());
 			critE = true;
 		}
 		if (enemy->isEffective() && keepText) {
-			TheTextureManager::Instance()->drawText("MUY EFECTIVO!", TextureManager::Pixel32, { 255,0,0,255 }, 450, 225, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText("MUY EFECTIVO!", TextureManager::WapenFont50, { 255,0,0,255 }, 450, 225, TheGame::Instance()->getRenderer());
 			effectE = true;
 		}
 		if (enemy->isNotEffective() && keepText) {
-			TheTextureManager::Instance()->drawText("POCO EFECTIVO!", TextureManager::Pixel32, { 255,0,0,255 }, 450, 225, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText("POCO EFECTIVO!", TextureManager::WapenFont50, { 255,0,0,255 }, 450, 225, TheGame::Instance()->getRenderer());
 			notEffectE = true;
 		}
 	}

@@ -15,7 +15,7 @@ TextureManager::TextureManager()
 	m_Fonts[CHALK24] = { "..\\fonts\\Right Chalk.ttf", 32 };
 	m_Fonts[Pixel16] = { "..\\fonts\\FreePixel.ttf", 25 };
 	m_Fonts[Pixel32] = { "..\\fonts\\FreePixel.ttf", 50 };
-
+	m_Fonts[WapenFont50] = { "..\\fonts\\Vlump Black.ttf", 10 };
 }
 
 TextureManager::~TextureManager()
