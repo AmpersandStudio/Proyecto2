@@ -21,10 +21,11 @@ private:
 
 	int i = 0, j = 0;
 
+	int knowWhereWeAre_;
+
 	vector<GameObject* > SP;
 	ShopState* shop;
 
-	vector<estado> shopObjects;
 public:
 	KeyBoardShopComponent(int iniX, int iniY, int col, int fil, int dis, vector<GameObject*> v, BackPack* b = nullptr, ShopState* s = nullptr);
 	~KeyBoardShopComponent();

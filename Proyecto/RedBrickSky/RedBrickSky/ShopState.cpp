@@ -147,7 +147,7 @@ void ShopState::createShopItems() {
 
 	selector_->setTextureId("12"); selector_->setPosition(selecPos);
 	selector_->setWidth(50); selector_->setHeight(50);
-	selector_->addRenderComponent(new RenderSingleFrameComponent()); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 1, StandPointsO, nullptr, this));
+	selector_->addRenderComponent(new RenderSingleFrameComponent()); selector_->addInputComponent(new KeyBoardShopComponent(selecPos.getX(), selecPos.getY(), 8, 4,2, StandPointsO, nullptr, this));
 	InputComponent* xbox = new ShopXboxControllerComponent(selecPos.getX(), selecPos.getY(), shopCols, 6, 2, StandPointsO, nullptr, this);
 	selector_->setColFrame(0); selector_->setRowFrame(0);
 	selector_->addInputComponent(xbox);

@@ -101,6 +101,7 @@ public:
 	int inventorySize() { return inventory.size(); };
 	void setInventory(estado t) { inventory.push_back(t); };
 	void changeInventory(vector<estado> &v) { inventory.clear(); inventory = v; };
+	
 
 	void changeShopItems(vector<estado> &v) { shopObjects.clear(); shopObjects = v; };
 
