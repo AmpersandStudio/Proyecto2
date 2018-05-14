@@ -173,8 +173,8 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop_new.wav", "test", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_transition.wav", "trans_btl", SOUND_MUSIC);
-	TheSoundManager::Instance()->load("..\\sounds\\music.wav", "music", SOUND_MUSIC);
-	TheSoundManager::Instance()->load("..\\sounds\\theme.ogg", "menu", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\music.wav", "music_", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\theme.ogg", "menu_", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\Battle1.ogg", "battle", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\credits.ogg", "credits", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\departure.ogg", "departure", SOUND_MUSIC);
@@ -183,6 +183,9 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\boss_battle_loop.wav", "BossMusic", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\funk.wav", "funk", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\victory.ogg", "victory", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\ExplorationBSO.ogg", "music", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\ExplorationBSO2.ogg", "music2", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\MainMenuBSO.ogg", "menu", SOUND_MUSIC);
 
 	//Load SFX
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);

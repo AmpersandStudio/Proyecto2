@@ -70,7 +70,7 @@ private:
 
 		currentInter = nullptr;
 
-		level_ = TUTORIAL;
+		level_ = CLASES;
 	}
 
 	static GameManager* s_pInstance;
