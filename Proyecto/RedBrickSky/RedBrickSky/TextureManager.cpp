@@ -16,6 +16,7 @@ TextureManager::TextureManager()
 	m_Fonts[Pixel16] = { "..\\fonts\\FreePixel.ttf", 25 };
 	m_Fonts[Pixel32] = { "..\\fonts\\FreePixel.ttf", 50 };
 	m_Fonts[WapenFont50] = { "..\\fonts\\Vlump Black.ttf", 10 };
+	m_Fonts[Pixel10] = { "..\\fonts\\FreePixel.ttf", 15 };
 }
 
 TextureManager::~TextureManager()

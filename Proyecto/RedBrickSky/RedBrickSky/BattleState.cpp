@@ -335,7 +335,7 @@ void BattleState::pickArmors() {
 		positionW2.setY(interfaz.button_1->getPosition().getY() * scale);
 
 		positionW22.setX(interfaz.button_3->getPosition().getX() * scale);
-		positionW22.setY(interfaz.button_3->getPosition().getY() * scale);
+		positionW22.setY((interfaz.button_3->getPosition().getY() * scale) * 1.01);
 
 		Weapon2 = new GameComponent();
 		Weapon2->addRenderComponent(new RenderSingleFrameComponent());
@@ -446,11 +446,12 @@ void BattleState::createEnemy()
 		break;
 	}
 
-	enemy->setHealth(100 + (50 * lv));
-	enemy->setAttack(10 + (rand() % lv));
-	enemy->setDefense(10 + (rand() % lv));
-	enemy->setVelocity(10 + (rand() % lv));
-
+	if (lv != 0) {
+		enemy->setHealth(100 + (50 * lv));
+		enemy->setAttack(10 + (rand() % lv));
+		enemy->setDefense(10 + (rand() % lv));
+		enemy->setVelocity(10 + (rand() % lv));
+	}
 
 	Vector2D pos2(3.3, 0.62);
 	enemy->setPosition(pos2);
@@ -756,25 +757,29 @@ void BattleState::render() {
 
 		if (weaponsEnabled_)
 		{
+			int posX = 420; int posX2 = 615;
+			int posY = 485; int posY2 = 565;
+			int posXpp = 480; int posXpp2 = 680;
+			int posYpp = 445; int posYpp2 = 530;
 			Attack temp_a;
 			temp_a = player->getAttack(0);
-			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel16, { 0,0,0,255 }, 460, 450, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel10, { 0,0,0,255 }, posX, posY, TheGame::Instance()->getRenderer());
 			std::string temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
-			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, 460, 470, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, posXpp, posYpp, TheGame::Instance()->getRenderer());
 			temp_a = player->getAttack(1);
-			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel16, { 0,0,0,255 }, 460, 540, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel10, { 0,0,0,255 }, posX, posY2, TheGame::Instance()->getRenderer());
 			temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
-			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, 460, 560, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, posXpp, posYpp2, TheGame::Instance()->getRenderer());
 			temp_a = player->getAttack(2);
-			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel16, { 0,0,0,255 }, 660, 450, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel10, { 0,0,0,255 }, posX2, posY, TheGame::Instance()->getRenderer());
 			temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
-			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, 660, 470, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, posXpp2, posYpp, TheGame::Instance()->getRenderer());
 			temp_a = player->getAttack(3);
-			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel16, { 0,0,0,255 }, 660, 540, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText(temp_a.name, TextureManager::Pixel10, { 0,0,0,255 }, posX2, posY2, TheGame::Instance()->getRenderer());
 			temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
-			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, 660, 560, TheGame::Instance()->getRenderer());
+			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, posXpp2, posYpp2, TheGame::Instance()->getRenderer());
 		}
-
+		
 		if ((!damagedE || fail) && keepText)
 			TheTextureManager::Instance()->drawText("FALLO!", TextureManager::WapenFont50, { 255,0,0,255 }, 50, 175, TheGame::Instance()->getRenderer());
 
