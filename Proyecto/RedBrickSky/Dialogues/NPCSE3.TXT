@@ -1,0 +1,11 @@
+10
+¿Qué te parecen los árboles?
+...
+¿Que no te gusta su lengua? ¿De qué me estás hablando?
+Yo me refiero a los árboles binarios de búsqueda.
+Son la mejor opción si estás desarrollando un juego conversacional.
+¡Así es, una aventura gráfica de las de la vieja escuela!
+Quería evitar complicaciones, ¡pero es duro gestionar un proyecto así!
+Anima esos píxeles, ¡seguro que encuentras tu consola!
+¡Quizás algún día puedas jugar a mi aventura en ella!
+Bueno, voy a seguir con lo mío. ¡Adiós!

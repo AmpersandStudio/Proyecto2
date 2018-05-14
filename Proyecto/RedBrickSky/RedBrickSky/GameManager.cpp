@@ -133,3 +133,13 @@ int GameManager::getEnemy()
 		break;
 	}	
 }
+
+bool GameManager::checkEasterEgg()
+{
+	bool check = true;
+	for (size_t i = 0; i < 4; i++)
+	{
+		check = check && easterEgg[i];
+	}
+	return check;
+}

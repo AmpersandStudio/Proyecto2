@@ -1,0 +1,4 @@
+3
+A veces, por la mañana, me encuentro mal.
+Es como si le faltase un frame a mi spritesheet.
+¿...cómo que qué es un spritesheet?

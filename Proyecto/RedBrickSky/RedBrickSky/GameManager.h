@@ -52,6 +52,9 @@ private:
 
 	Dialogue* currentDialogue_;
 
+	bool ampersand_ = false;
+	bool easterEgg[4] = { false,false, false, false };
+
 	GameManager() 
 	{
 		doors.resize(30);
@@ -134,4 +137,9 @@ public:
 	void setPotions(int p) { potions_ = p; }
 
 	int getPotionsPrize() { return potionsPrize; };
+
+	void setEasterEgg(int i) { easterEgg[i] = true; }
+	bool checkEasterEgg();
+	void setAmpersand() { ampersand_ = true; }
+	inline bool getAmpersand() const { return ampersand_; }
 };
