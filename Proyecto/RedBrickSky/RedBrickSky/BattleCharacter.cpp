@@ -95,18 +95,27 @@ float BattleCharacter::defenseRatio(float enemyDef)
 void BattleCharacter::criticalRatio(float & dmg)
 {
 	int rnd_cri = rand() % 100;
+	critical = false;
 
 	if (rnd_cri <= 10) {
 		std::cout << "Un golpe critico!" << std::endl;
+		critical = true;
 		dmg += 0.1f;
 	}
 }
 
 void BattleCharacter::typeRatio(float & dmg, int i, Type enemyType)
 {
+	effective = false; notEffective = false;
 	float type_dmg = TYPE_TABLE[attacks[i].type][enemyType];
-	if (type_dmg == 2) std::cout << "Es muy efectivo!" << std::endl;
-	else if (type_dmg == 0.5) std::cout << "No es muy efectivo..." << std::endl;
+	if (type_dmg == 2) {
+		std::cout << "Es muy efectivo!" << std::endl;
+		effective = true;
+	}
+	else if (type_dmg == 0.5) {
+		std::cout << "No es muy efectivo..." << std::endl;
+		notEffective = true;
+	}
 	dmg *= type_dmg;
 }
 
@@ -119,6 +128,7 @@ float BattleCharacter::combat(int i, float enemyDef, Type enemyType, bool& damag
 {
 	float dmg = 0;
 	damaged = true;
+	fail = false;
 
 	target = precisionRatio(i);
 
@@ -138,6 +148,7 @@ float BattleCharacter::combat(int i, float enemyDef, Type enemyType, bool& damag
 	{
 		std::cout << "Pero fallo!" << std::endl;
 		damaged = false;
+		fail = true;
 	}
 
 	return dmg;

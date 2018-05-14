@@ -88,6 +88,16 @@ public:
 	float getDefFactor() { return defFactor; }
 	float getPrcFactor() { return prcFactor; }
 
+	bool isEffective() { return effective; }
+	bool isNotEffective() { return notEffective; }
+	bool isCritical() { return critical; }
+	bool isFail() { return fail; }
+
+	void cancelEffective() { effective = false; }
+	void cancelNotEffective() { notEffective = false; }
+	void cancelCritical() { critical = false; }
+	void cancelFail() { fail = false; }
+
 protected:
 	std::string name;
 	Type type;
@@ -108,6 +118,11 @@ protected:
 
 	bool support;
 	bool target;
+
+	bool notEffective = false;
+	bool effective = false;
+	bool critical = false;
+	bool fail = false;
 
 	bool turn_ = false;
 	int attackIndex;
