@@ -410,6 +410,11 @@ void BattleState::createEnemy()
 		enemy->setTextureId("bocata");
 		break;
 
+	case 3:
+		enemy = new BattleEnemy("Libro Mates", Magical, 300, 10, 10, 100, 11);
+		enemy->setTextureId("libro1");
+		break;
+
 	case 4:
 		enemy = new BattleEnemy("Escoba", Physical, 300, 10, 10, 100, 11);
 		enemy->setTextureId("escoba");
@@ -419,7 +424,32 @@ void BattleState::createEnemy()
 		enemy = new BattleEnemy("Pelotas", Physical, 300, 10, 10, 100, 11);
 		enemy->setTextureId("pelotas");
 		break;
+
+	case 6:
+		enemy = new BattleEnemy("Libro Lengua", Magical, 300, 10, 10, 100, 11);
+		enemy->setTextureId("libro2");
+		break;
+
+	case 7:
+		enemy = new BattleEnemy("Taquilla", Magical, 300, 10, 10, 100, 11);
+		enemy->setTextureId("taquilla");
+		break;
+
+	case 8:
+		enemy = new BattleEnemy("Avion", Magical, 300, 10, 10, 100, 11);
+		enemy->setTextureId("avion");
+		break;
+
+	case 9:
+		enemy = new BattleEnemy("Globo", Magical, 300, 10, 10, 100, 11);
+		enemy->setTextureId("globo");
+		break;
 	}
+
+	enemy->setHealth(100 + (50 * lv));
+	enemy->setAttack(10 + (rand() % lv));
+	enemy->setDefense(10 + (rand() % lv));
+	enemy->setVelocity(10 + (rand() % lv));
 
 
 	Vector2D pos2(3.3, 0.62);
