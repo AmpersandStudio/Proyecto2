@@ -70,13 +70,13 @@ private:
 
 		currentInter = nullptr;
 
-		level_ = CLASES;
+		level_ = TUTORIAL;
 	}
 
 	static GameManager* s_pInstance;
 
-	int playerHP = 1000;
-	int playerMaxHP = 1000;
+	int playerHP = 350;
+	int playerMaxHP = 350;
 
 	std::vector<bool> doors;
 

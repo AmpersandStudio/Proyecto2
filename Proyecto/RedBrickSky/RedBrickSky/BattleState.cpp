@@ -743,7 +743,6 @@ void BattleState::update() {
 		controlStatus();
 	}
 	if (END_) {
-		TheSoundManager::Instance()->stopMusic();
 		TheSoundManager::Instance()->playMusic("music", 0);
 	}
 }
@@ -1044,6 +1043,9 @@ bool BattleState::run()
 
 	if (GameManager::Instance()->getHealth() > 0 && enemy->getHealth() <= 0) {
 		std::cout << "HAS GANADO!" << std::endl;
+
+		SoundManager::Instance()->stopMusic();
+		SoundManager::Instance()->playMusic("victory", 0);
 		lastTurn = true;
 	}
 	else if (GameManager::Instance()->getHealth() <= 0 && enemy->getHealth() > 0) {
