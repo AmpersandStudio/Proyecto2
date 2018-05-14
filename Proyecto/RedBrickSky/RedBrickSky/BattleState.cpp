@@ -742,9 +742,10 @@ void BattleState::update() {
 		//controlamos status
 		controlStatus();
 	}
-	if (END_) {
-		TheSoundManager::Instance()->playMusic("music", 0);
-	}
+	//if (END_) {
+	//	//SoundManager::Instance()->playMusic("victory", 1);
+	//	//TheSoundManager::Instance()->playMusic("music", 0);
+	//}
 }
 
 void BattleState::render() {
@@ -841,6 +842,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 				}
 
 				if (END_)
+					TheSoundManager::Instance()->playMusic("music", 0);
 					Game::Instance()->getStateMachine()->popState();
 
 				handledEvent = true;
@@ -859,6 +861,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 
 			if (END_) {
 				GameManager::Instance()->exitBattle();
+				TheSoundManager::Instance()->playMusic("music", 0);
 				Game::Instance()->getStateMachine()->popState();
 			}
 
@@ -915,7 +918,6 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 		if (actButton && !attack_) {
 			in = true;
 			run_ = true;
-			TheSoundManager::Instance()->stopMusic();
 			TheSoundManager::Instance()->playMusic("music", 0);
 			Game::Instance()->getStateMachine()->popState();
 		}
@@ -945,7 +947,10 @@ void BattleState::controlFade() {
 bool BattleState::run()
 {
 	if (lastTurn)
+	{
+		
 		return true;
+	}
 
 	else if ((GameManager::Instance()->getHealth() > 0 && enemy->getHealth() > 0) || !lastTurn)
 	{
@@ -1042,17 +1047,18 @@ bool BattleState::run()
 	}
 
 	if (GameManager::Instance()->getHealth() > 0 && enemy->getHealth() <= 0) {
+		TheSoundManager::Instance()->stopMusic();
+		TheSoundManager::Instance()->playMusic("victory", 0);
 		std::cout << "HAS GANADO!" << std::endl;
-
-		SoundManager::Instance()->stopMusic();
-		SoundManager::Instance()->playMusic("victory", 0);
 		lastTurn = true;
 	}
 	else if (GameManager::Instance()->getHealth() <= 0 && enemy->getHealth() > 0) {
+		TheSoundManager::Instance()->stopMusic();
 		std::cout << "HAS PERDIDO!" << std::endl;
 		lastTurn = true;
 	}
 	else if (GameManager::Instance()->getHealth() <= 0 && enemy->getHealth() <= 0) {
+		TheSoundManager::Instance()->stopMusic();
 		std::cout << "WTF EMPATE LOCO!" << std::endl;
 		lastTurn = true;
 	}
@@ -1253,7 +1259,7 @@ void BattleState::attack(int i) {
 			if (potions > 0) {
 				potions--;
 				GameManager::Instance()->setPotions(potions);
-				GameManager::Instance()->setHealth(GameManager::Instance()->getHealth() + 50);
+				GameManager::Instance()->setHealth(GameManager::Instance()->getHealth() + 150);
 			}
 		}
 	}

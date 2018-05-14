@@ -34,7 +34,6 @@ PlayState::PlayState()
 	pLevels[1] = levelParser.parseLevel("..\\assets\\JardinesInferiores.tmx");
 	pLevels[0] = levelParser.parseLevel("..\\assets\\Tutorial.tmx");
 
-
 	TheSoundManager::Instance()->playMusic("music", 100);
 
 	steps_ = 0;
