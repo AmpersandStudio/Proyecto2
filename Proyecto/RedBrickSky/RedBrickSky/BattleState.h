@@ -54,6 +54,7 @@ protected:
 	int W2id = 0;
 	int turno;
 	int contText = 0;
+	int contTextE = 0;
 	int attackPlayer = 0;
 	int defensePlayer = 0;
 	int precitionPlayer = 0;
@@ -83,10 +84,21 @@ protected:
 	bool damagedP = true;
 	bool fail = false;
 	bool keepText = false;
+	bool keepTextE = false;
 	bool meleeAttack = false;
 	bool magicAttack = false;
 	bool rangedAttack = false;
 	bool potion = false;
+
+	bool crit= false;
+	bool effect = false;
+	bool notEffect = false;
+	bool fai = false;
+
+	bool critE = false;
+	bool effectE = false;
+	bool notEffectE = false;
+	bool faiE = false;
 
 	Vector2D iniPos;
 	Vector2D positionW1;

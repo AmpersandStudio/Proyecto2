@@ -11,6 +11,7 @@ ShopState::ShopState()
 	invent = GameManager::Instance()->copyInventory();
 	money = GameManager::Instance()->getMoney();
 
+	
 	StringToScreen::Instance()->pushInfinite("Caramelos: " + std::to_string(money), 350, 395);
 	StringToScreen::Instance()->pushInfinite("Comprar pociones      x" + std::to_string(GameManager::Instance()->getPotions()), 350, 320);
 	

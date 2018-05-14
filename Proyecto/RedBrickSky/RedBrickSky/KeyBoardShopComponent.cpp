@@ -187,6 +187,8 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 				StringToScreen::Instance()->startMessagin();
 			}
 		}
+		GameManager::Instance()->changeShopItems(elementosTienda);
+		shop->setShopObjects(elementosTienda);
 	}
 	
 
@@ -220,6 +222,7 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 			}
 		}
 	}
+
 
 	return handledEvent;
 }

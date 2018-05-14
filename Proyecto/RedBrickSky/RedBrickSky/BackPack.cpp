@@ -12,6 +12,7 @@ BackPack::BackPack()
 	money = GameManager::Instance()->getMoney();
 	invent.clear();
 	invent = GameManager::Instance()->copyInventory();
+	
 
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 130, 515);
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getPotions()), 280, 495);

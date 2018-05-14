@@ -86,7 +86,7 @@ bool DragNDropShopComponent::devMat(int x, int y, GameObject* o) {
 	Vector2D v;
 	StandPoints = shop->getSP();
 	unsigned int i = 0;
-	std::cout <<"SP" << StandPoints.size() << endl;
+	
 	while (i < StandPoints.size() && !encontrado) {
 		//Busca si el objeto se ha dejado en alguno de los Stand Points
 		{
