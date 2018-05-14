@@ -122,6 +122,11 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\pelotas.png", "pelotas", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\basura.png", "basura", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\bocata.png", "bocata", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\Libro_1.png", "libro1", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\Libro_2.png", "libro2", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\Taquilla.png", "taquilla", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\Avion_Pato.png", "avion", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\Globo.png", "globo", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\key.png", "Key", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\bubble_speech.png", "viñeta", Game::Instance()->getRenderer());
 	TheTextureManager::Instance()->load("..\\images\\bg.png", "bgmm", RENDERER_);
@@ -153,8 +158,8 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\DEF-.png", "DEF-", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\PRC+.png", "PRC+", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\PRC-.png", "PRC-", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\pauseBG.png", "pbg", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\potionsFB.png", "potiFB", RENDERER_,1,2);
-
 	TheTextureManager::Instance()->load("..\\assets\\Tutorial.png", "level1-1", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\JardinesInferiores.png", "level1-2", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Pasillos.png", "level1-3", RENDERER_);
