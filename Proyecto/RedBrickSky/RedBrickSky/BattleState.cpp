@@ -377,7 +377,27 @@ void BattleState::constructC() {
 }
 
 void BattleState::createPlayer() {
-	player = new BattlePlayer("Tyler", Physical, GameManager::Instance()->getHealth(), 10, 10, 100, 10);
+
+	Type t;
+
+	switch (GameManager::Instance()->getPlayerType())
+	{
+	case 0:
+		t = Physical;
+		break;
+
+	case 1:
+		t = Magical;
+		break;
+
+	case 2:
+		t = Ranged;
+		break;
+	}
+
+	player = new BattlePlayer("Tyler", t, GameManager::Instance()->getHealth(), GameManager::Instance()->getPlayerAttack(),
+		GameManager::Instance()->getPlayerDeffense(), 100, GameManager::Instance()->getPlayerSpeed());
+
 	player->setTextureId("tylerSS");
 	Vector2D pos(0.85, 0.7);
 	iniPos = pos;
@@ -743,10 +763,6 @@ void BattleState::update() {
 		//controlamos status
 		controlStatus();
 	}
-	//if (END_) {
-	//	//SoundManager::Instance()->playMusic("victory", 1);
-	//	//TheSoundManager::Instance()->playMusic("music", 0);
-	//}
 }
 
 void BattleState::render() {

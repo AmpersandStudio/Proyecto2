@@ -1,6 +1,7 @@
 #include "GameManager.h"
 #include "TransitionState.h"
 #include "StateMachine.h"
+#include "ShopItems.h"
 
 GameManager* GameManager::s_pInstance = 0;
 
@@ -148,4 +149,36 @@ void GameManager::setBattlePlayer(int t, int atk, int def, int spd, int hp)
 	playerSpeed = spd;
 	playerHP = hp;
 	playerMaxHP = hp;
+}
+
+void GameManager::resetGame()
+{
+	shopObjects.clear();
+	ShopItems si = ShopItems();
+	inventory.clear();
+	money = 500;
+	potions_ = 0;
+	potionsPrize = 100;
+	playerType = 0;
+	playerAttack = 12;
+	playerDeffense = 12;
+	playerSpeed = 12;
+	playerHP = 260;
+	playerMaxHP = 260;
+	name = "";
+	atSound = "";
+	doors.clear();
+	level_ = TUTORIAL;
+	dialogueActive = false;
+	currentInter = nullptr;
+	currentDialogue_ = nullptr;
+	ampersand_ = false;
+	easterEgg[0] = false;
+	easterEgg[1] = false;
+	easterEgg[2] = false;
+	easterEgg[3] = false;
+	charlie_ = false;
+	first_ = false;
+	question_ = false;
+	last_ = false;
 }

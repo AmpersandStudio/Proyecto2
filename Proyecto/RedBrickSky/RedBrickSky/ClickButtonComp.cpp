@@ -25,6 +25,7 @@ bool ClickButtonComp::handleEvent(GameObject* o, const SDL_Event& event) {
 			Button* b = dynamic_cast<Button*>(o);
 			if (b != nullptr) {
 				TheSoundManager::Instance()->playSound("click", 0);
+				TheSoundManager::Instance()->playSound("select", 0);
 				CallBackOnClick* cboc = b->getCallback();
 				cboc(); //llamamos a la funcion callback generica que hemos pasado como parametro a la constructora
 				handledEvent = true; //marcamos el evento como handleado

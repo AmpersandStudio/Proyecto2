@@ -4,6 +4,7 @@
 
 #include "KeyInputComponentButton.h"
 #include "MouseInputComponentButton.h"
+#include "GameManager.h"
 
 PauseState::PauseState()
 {
@@ -94,4 +95,6 @@ void PauseState::toMenu()
 	TheSoundManager::Instance()->playMusic("menu", -1);
 	while (Game::Instance()->getStateMachine()->size() > 1) // Desapila todos los estados hasta llegar al menú
 		Game::Instance()->getStateMachine()->popState();
+
+	GameManager::Instance()->resetGame();
 }

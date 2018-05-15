@@ -144,11 +144,12 @@ public:
 	void setAmpersand() { ampersand_ = true; }
 	inline bool getAmpersand() const { return ampersand_; }
 	inline bool getCharlie() const { return charlie_; }
-	inline void toggleCharlie() { charlie_ = !charlie_; }
+	inline void toggleCharlie() { charlie_ = !charlie_; SoundManager::Instance()->playSound("select", 0); }
 
 	//Metodos para el personaje
 	void setName(string n) { name = n; };
 	void setBattlePlayer(int t, int atk, int def, int spd, int hp);
+	inline int getPlayerType() const { return playerType; }
 	inline int getPlayerAttack() const { return playerAttack; }
 	inline int getPlayerDeffense() const { return playerDeffense; }
 	inline int getPlayerSpeed() const { return playerSpeed; }
@@ -166,6 +167,7 @@ public:
 	inline bool getQuestion() const { return question_; }
 	inline void setFirst(bool b) { first_ = b; }
 	inline void setLast(bool b) { last_ = b; }
-	void setQuestion(bool b) {
-		question_ = b; }
+	inline void setQuestion(bool b) { question_ = b; }
+
+	void resetGame();
 };

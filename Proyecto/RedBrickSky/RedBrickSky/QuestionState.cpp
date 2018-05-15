@@ -112,6 +112,8 @@ void QuestionState::render()
 				20, 250, Game::Instance()->getRenderer());
 			break;
 		}
+
+		TheTextureManager::Instance()->drawFull("buttonA", 730, 530, 32, 32, Game::Instance()->getRenderer(), 0, 255);
 	}
 
 	GameState::render();
