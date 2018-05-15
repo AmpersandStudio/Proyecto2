@@ -176,7 +176,7 @@ protected:
 	void disableWapons();
 
 	//Callback para el sonido de huida
-	static void channelDone(int channel) { if(channel == 3) Game::Instance()->getStateMachine()->popState(); };
+	/*static void channelDone(int channel) { if(channel == 3) Game::Instance()->getStateMachine()->popState(); };*/
 
 public:
 	//constructora y destructora

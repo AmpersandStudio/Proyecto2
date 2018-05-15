@@ -925,7 +925,8 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 			run_ = true;
 			TheSoundManager::Instance()->stopMusic();
 			TheSoundManager::Instance()->PlaySoundInChannel(3, "escape", 0);
-			Mix_ChannelFinished(channelDone);
+			/*Mix_ChannelFinished(channelDone);*/
+			Game::Instance()->getStateMachine()->popState();
 		}
 		else if (actButton && attack_) {
 			attack(3);

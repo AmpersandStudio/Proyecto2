@@ -90,7 +90,8 @@ void PauseState::resume()
 void PauseState::toMenu()
 {
 	TheSoundManager::Instance()->stopMusic();
-	TheSoundManager::Instance()->closeChannel(30);
+	TheSoundManager::Instance()->closeChannel(3);
+	TheSoundManager::Instance()->playMusic("menu", -1);
 	while (Game::Instance()->getStateMachine()->size() > 1) // Desapila todos los estados hasta llegar al menú
 		Game::Instance()->getStateMachine()->popState();
 }
