@@ -45,7 +45,7 @@ void QuestionState::update()
 			questions_.at(cont_).answer3->setActive(true);
 		}
 	}
-	
+
 	if (GameManager::Instance()->getQuestion())
 	{
 		// Si contestamos a una pregunta, desactivamos sus respuestas y pasamos a la siguiente
@@ -77,7 +77,7 @@ void QuestionState::render()
 	if (!GameManager::Instance()->getFirst())
 	{
 		TheTextureManager::Instance()->drawFull("election", 0, 0, 800, 600, Game::Instance()->getRenderer(), 0, 255);
-	}	
+	}
 	else if (!GameManager::Instance()->getLast())
 	{
 		TheTextureManager::Instance()->drawFull("qbg", 0, 0, 800, 600, Game::Instance()->getRenderer(), 0, 255);
@@ -115,7 +115,7 @@ void QuestionState::render()
 
 bool QuestionState::handleEvent(const SDL_Event& event)
 {
-	/*if (event.type == SDL_QUIT)
+	if (event.type == SDL_QUIT)
 	{
 		Game::Instance()->exitApp();
 		return true;
@@ -123,7 +123,7 @@ bool QuestionState::handleEvent(const SDL_Event& event)
 	else if (event.type == SDL_KEYDOWN || event.type == SDL_MOUSEBUTTONDOWN)
 	{
 		if (GameManager::Instance()->getLast()) toGame();
-	}*/
+	}
 
 	return GameState::handleEvent(event);
 }
@@ -342,6 +342,16 @@ void QuestionState::assignType()
 
 void QuestionState::toGame()
 {
+	GameManager::Instance()->setFirst(false);
+	GameManager::Instance()->setQuestion(false);
+	GameManager::Instance()->setLast(false);
+
+	cont_ = 0;
+	physicFactor_ = 0;
+	magicFactor_ = 0;
+	flyingFactor_ = 0;
+
+
 	SoundManager::Instance()->playSound("select", 0);
 	Game::Instance()->getStateMachine()->changeState(new PlayState());
 }
