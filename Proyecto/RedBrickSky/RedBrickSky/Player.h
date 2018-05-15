@@ -30,12 +30,16 @@ public:
 	SDL_Rect* getRect() { return &actionRect_; }
 
 	void changedlevel() { levelHasChanged_ = !levelHasChanged_; };
+
+	void setStepsSound(std::string soundFile) { if (soundFile != sFile_) TheSoundManager::Instance()->closeChannel(4); sFile_ = soundFile; };
 	
 private:
 	int m_moveSpeed;
 	bool interacting_;
 	bool running_;
 	bool text;
+
+	std::string sFile_ = "piedra2";
 
 	SDL_Rect actionRect_;
 

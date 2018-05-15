@@ -168,6 +168,46 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\assets\\Nivel2.png", "level2", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Tienda.png", "tiendaLevel", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\cleonButton.png", "clb", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\election.png", "election", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\qbg.png", "qbg", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\yesbutton.png", "yesbutton", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\nobutton.png", "nobutton", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q1_1.png", "q1_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q1_2.png", "q1_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q1_3.png", "q1_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q2_1.png", "q2_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q2_2.png", "q2_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q2_3.png", "q2_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q3_1.png", "q3_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q3_2.png", "q3_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q3_3.png", "q3_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q4_1.png", "q4_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q4_2.png", "q4_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q4_3.png", "q4_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q5_1.png", "q5_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q5_2.png", "q5_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q5_3.png", "q5_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q6_1.png", "q6_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q6_2.png", "q6_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q6_3.png", "q6_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q7_1.png", "q7_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q7_2.png", "q7_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q7_3.png", "q7_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q8_1.png", "q8_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q8_2.png", "q8_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q8_3.png", "q8_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q9_1.png", "q9_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q9_2.png", "q9_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q9_3.png", "q9_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q10_1.png", "q10_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q10_2.png", "q10_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q10_3.png", "q10_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q11_1.png", "q11_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q11_2.png", "q11_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q11_3.png", "q11_3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q12_1.png", "q12_1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q12_2.png", "q12_2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\q12_3.png", "q12_3", RENDERER_);
 
 	// Load Music
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);
@@ -178,21 +218,23 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\Battle1.ogg", "battle", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\credits.ogg", "credits", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\departure.ogg", "departure", SOUND_MUSIC);
-	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_exterior.wav", "exteriores", SOUND_MUSIC);
-	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_interior.wav", "interiores", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\boss_battle_loop.wav", "BossMusic", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\funk.wav", "funk", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\victory.ogg", "victory", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\ExplorationBSO.ogg", "music", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\ExplorationBSO2.ogg", "music2", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\MainMenuBSO.ogg", "menu", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\questions.ogg", "questions", SOUND_MUSIC);
 
 	//Load SFX
+	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_exterior.wav", "exteriores", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_interior.wav", "interiores", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\click.wav", "click", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\punch.wav", "punch", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\punch_alt.wav", "punch_2", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\pasos.wav", "piedra", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\pasos2.wav", "piedra2", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\hierba.wav", "hierba", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\Censor_Beep.wav", "censura", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\coins.wav", "monedas", SOUND_SFX);
@@ -207,8 +249,10 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\reglazo.wav", "reglazo", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\School_ring.wav", "timbre", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\tirachinas.mp3", "Tirachinas", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\newgame.ogg", "newgame", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\select.ogg", "select", SOUND_SFX);
 
-	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
+	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 3);
 }
 
 void Game::registerTypes()

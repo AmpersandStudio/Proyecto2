@@ -850,6 +850,9 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 		}
 
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
+
+			TheSoundManager::Instance()->playSound("dialogo", 0);
+
 			if (enemy->getTurn()) {
 				okEnemy_ = true;
 			}

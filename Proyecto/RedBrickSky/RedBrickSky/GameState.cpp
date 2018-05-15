@@ -38,7 +38,7 @@ bool GameState::handleEvent(const SDL_Event& event) {
 
 	unsigned int i = 0;
 	while (!capturedEvent && i < stage.size()) {
-		capturedEvent = stage[i]->handleEvent(event);
+		if(stage[i]->getActive()) capturedEvent = stage[i]->handleEvent(event);
 		handledEvent = capturedEvent;
 		if (!capturedEvent) ++i;
 	}

@@ -34,7 +34,7 @@ void Cartel::activate()
 		{
 			dialogueActive_ = true;
 			GameManager::Instance()->setDialogueState(true, &text);
-			//DESCOMENTAR ESTO CUANDO SE VUELVA A PODER PARAR A LOS NPCs TETES 
+			TheSoundManager::Instance()->playSound("dialogo", 0);
 		}
 		else if (dialogueActive_)
 		{

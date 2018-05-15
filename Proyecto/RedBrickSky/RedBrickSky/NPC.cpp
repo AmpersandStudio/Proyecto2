@@ -56,6 +56,7 @@ void NPC::activate() {
 	if (!dialogueActive_ && !GameManager::Instance()->getDialogueState()) {
 		dialogueActive_ = true;
 		GameManager::Instance()->setDialogueState(true, &text);
+		TheSoundManager::Instance()->playSound("dialogo", 0);
 	}
 	else if (dialogueActive_) {
 		dialogueActive_ = text.nextDialogue();
