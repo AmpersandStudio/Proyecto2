@@ -42,12 +42,12 @@ private:
 	int potions_ = 0;
 	int potionsPrize = 100;
 
-	int playerType;
-	int playerAttack;
-	int playerDeffense;
-	int playerSpeed;
-	int playerHP = 350;
-	int playerMaxHP = 350;
+	int playerType = 0;
+	int playerAttack = 12;
+	int playerDeffense = 12;
+	int playerSpeed = 12;
+	int playerHP = 260;
+	int playerMaxHP = 260;
 	string name;
 
 	std::vector<bool> doors;
@@ -61,6 +61,10 @@ private:
 	bool ampersand_ = false;
 	bool easterEgg[4] = { false,false, false, false };
 	bool charlie_ = false;
+
+	bool first_ = false;
+	bool question_ = false;
+	bool last_ = false;
 
 	GameManager() 
 	{
@@ -76,12 +80,13 @@ private:
 		currentInter = nullptr;
 
 		level_ = TUTORIAL;
+
+		first_ = false;
+		question_ = false;
+		last_ = false;
 	}
 
 	static GameManager* s_pInstance;
-
-
-
 
 
 public:
@@ -151,4 +156,13 @@ public:
 	inline void addPlayerSpeed(int s) { playerSpeed += s; }
 	inline void addPlayerHealth(int h) { playerMaxHP += h; }
 	inline void setHealth(int h) { playerHP = h; };
+
+	//Metodos para el QuestionState
+	inline bool getFirst() const { return first_; }
+	inline bool getLast() const { return last_; }
+	inline bool getQuestion() const { return question_; }
+	inline void setFirst(bool b) { first_ = b; }
+	inline void setLast(bool b) { last_ = b; }
+	void setQuestion(bool b) {
+		question_ = b; }
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <queue>
+#include <vector>
 #include <string>
 
 #include "GameState.h"
@@ -13,6 +13,8 @@ public:
 	virtual ~QuestionState();
 
 	virtual void update();
+	virtual void render();
+	virtual bool handleEvent(const SDL_Event& event);
 
 	struct Question
 	{
@@ -23,26 +25,27 @@ public:
 	};
 
 protected:
-	std::queue<Question> questions_;
-
-	int physicFactor_;
-	int magicFactor_;
-	int flyingFactor_;
-
-	inline void addPhysic() { physicFactor_++; }
-	inline void addMagic() { magicFactor_++; }
-	inline void addFlying() { flyingFactor_++; }
-
-	void assignType();
-
-	static void toGame();
-	static void beginQuestions();
-
-	void toggleButtons();
+	std::vector<Question> questions_;
 
 	Button* yes;
 	Button* no;
 
-	static bool first_;
+	int finalType_;
+
+	static int cont_;
+	static int physicFactor_;
+	static int magicFactor_;
+	static int flyingFactor_;
+
+	static void toGame();
+	static void beginQuestions();
+	static void addPhysic();
+	static void addMagic();
+	static void addFlying();
+
+	void createInit();
+	void createQuestions();
+	void createButton(Question q);
+	void assignType();
 };
 
