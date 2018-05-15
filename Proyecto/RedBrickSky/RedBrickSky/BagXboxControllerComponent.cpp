@@ -10,8 +10,9 @@ BagXboxControllerComponent::BagXboxControllerComponent(int iniX, int iniY, int c
 	fil_ = fil;
 	distance = dis;
 	SP = v;
-	back = b;
+	bag = b;
 	shop = s;
+	knowWhereWeAre_ = 0;
 
 	if (XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
 		XboxController::Instance()->insertController();
@@ -39,6 +40,7 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 			if (posY >= Y_) {
 				position.setY(posY - 0.7);
 				j--;
+				knowWhereWeAre_ -= 1;
 			}
 			o->setPosition(position);
 		}
@@ -47,6 +49,7 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 			posY += distance;
 			if (posY <= col_ * Y_ + 1) {
 				position.setY(posY + 0.7);
+				knowWhereWeAre_ += 1;
 				j++;
 			}
 			o->setPosition(position);
@@ -56,6 +59,7 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 			posX += distance;
 			if (posX <= fil_ + X_ + 1) {
 				position.setX(posX + 0.7);
+				knowWhereWeAre_ += 6;
 				i++;
 			}
 
@@ -67,6 +71,7 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 			posX -= distance;
 			if (posX >= X_) {
 				position.setX(posX - 0.7);
+				knowWhereWeAre_ -= 6;
 				i--;
 			}
 			o->setPosition(position);
@@ -81,80 +86,133 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 		XboxController::Instance()->onJoystickButtonDown(event);
 
 		if (XboxController::Instance()->getButtonState(0, 0)) { //Si se ha pulsado la A
-
-			invent.clear();
-			if (back != nullptr)
-				invent = back->getInvent();
-
-			if (selection_) {
-				o->setColFrame(0);
-
-				invent[savedInvent].x = posX - 9;
-				invent[savedInvent].y = posY;
-				invent[savedInvent].mX = i;
-				invent[savedInvent].mY = j;
-
-
-				Vector2D pos(posX, posY);
-				invent[savedInvent].GC->setPosition(pos);
-				invent[savedInvent].GC->setOriPos(pos);
-				selection_ = false;
-
-				if (back != nullptr)
-					back->setInvent(invent);
+			vector<estado> sp = bag->getSP();
+			//copio el inventario
+			Inventary.clear();
+			vector<estado>inv = bag->getInvent();
+			vector<estado> aux;
+			for (int c = 0; c < inv.size(); c++) {
+				if (!inv[c].equiped)
+					Inventary.push_back(inv[c]);
+				else aux.push_back(inv[c]);
 			}
 
-			else {
-				int  p = 0;
-				bool encontrado = false;
-				while (p < invent.size() && !encontrado) {
+			std::cout << "INVETNARIO : " << inv.size() << endl;
+			std::cout << "EQUIPED : " << aux.size() << endl;
 
-					if (invent[p].mX == i && invent[p].mY == j)
-						encontrado = true;
-					else
-						p++;
-				}
-
-				if (encontrado) {
-					o->setColFrame(1);
-					savedInvent = p;
-					selection_ = true;
-
-				}
-			}
-
-			//El siguiente bucle Cambia el color del SP en el que estamos y pone los demás normales (CON TECLADO)
-			for (int p = 0; p < SP.size(); p++)
-			{
-				if (SP[p]->getPosition().getX() == o->getPosition().getX() &&
-					SP[p]->getPosition().getY() == o->getPosition().getY()) {
-
-					SP[p]->setColFrame(1);
-				}
-				else
-					SP[p]->setColFrame(0);
-			}
-		}
-		else if (XboxController::Instance()->getButtonState(0, 2)) { //Si pulsa la X equiparemos el objeto
-		/*	invent.clear();
-			if (back != nullptr)
-				invent = back->getInvent();*/
-
-			if (selection_) {
-
-				std::cout << "Gola cagaroac" << endl;
+			if (Inventary.size() != 0 && !sp[knowWhereWeAre_].empty) {
+				
 			
+				Inventary[knowWhereWeAre_].equiped = true;
 
-			/*	if (back != nullptr)
-					back->setInvent(invent);*/
+			
+					//Si tenemos hueco en los SP del personaje
+					if (bag->getEItems() < 2) {
+
+						//Si la casilla izquierda de la mochila está libre
+						if (!bag->getLeft()) {
+							Vector2D position0(2.6, 9.7);
+							Inventary[knowWhereWeAre_].GC->setPosition(position0);
+							bag->setLeft(true);
+							isLeft = true;
+						}
+						else {
+							Vector2D position1(5.8, 9.7);
+							Inventary[knowWhereWeAre_].GC->setPosition(position1);
+						}
+						//Actualizamos la mochila
+						bag->pushEItem();
+						bag->pushEquipedItem(Inventary[knowWhereWeAre_]);
+						//Buscamos el SP que hemos dejado atrás, donde estaba el objeto, y le decimos que está vacío
+						for (int i = 0; i < sp.size(); i++)
+						{
+							if (sp[i].ID == knowWhereWeAre_) {
+								sp[i].empty = true;
+
+							}
+						}
+					}
+
+					else {
+						Inventary[knowWhereWeAre_].equiped = false;
+						//Lanzamos un mensaje diciendo que hay que quitar un objeto
+						StringToScreen::Instance()->renderBackGround();
+						StringToScreen::Instance()->setMessage("¡Desequipa algo! ");
+						StringToScreen::Instance()->startMessagin();
+					}
+					for (int p = 0; p < aux.size(); p++) {
+						Inventary.push_back(aux[p]);
+					}
+
+				GameManager::Instance()->changeInventory(Inventary);
+				bag->setInvent(Inventary);
+				bag->setSP(sp);
+
 			}
 		}
+
+		else if (XboxController::Instance()->getButtonState(0, 2)) {
+			//Si está !equiped, lo ponemos en un lugar vacío en los SP
+
+			Inventary.clear();
+			Inventary = bag->getInvent();
+			
+			for each (estado S in bag->getEquipedItems())
+			{
+
+				vector<estado> sp = bag->getSP();
+				bag->pullEitem();
+				bag->setLeft(false);
+				
+				isLeft = false;
+				//Buscamos la primera casilla libre
+
+				int aux = 0;
+				int i = 0;
+				int j = 0;
+				bool place = false;
+				while (i < 3 && !place) {
+					if (j > 6) {
+						i++;
+						j = 0;
+					}
+
+					if (sp[aux].empty == true) {
+						Vector2D p(sp[aux].x, sp[aux].y);
+						S.GC->setPosition(p);//createItemAtSP(x, y, auxV[p].objectID, auxV[p]);
+						sp[aux].empty = false;
+						place = true;
+						S.equiped = false;
+						bool found = false;
+						int h = 0;
+						while (h < Inventary.size() && !found)
+						{
+							if (Inventary[h].ID == S.ID) {
+								Inventary[h].equiped = false;
+								found = true;
+							}
+							else h++;
+						}
+					}
+					else {
+						j++;
+						aux++;
+					}
+				}
+				GameManager::Instance()->changeInventory(Inventary);
+				bag->setInvent(Inventary);
+				bag->setSP(sp);
+			}
+			bag->pullEquipedItem();
+		}
+
 		else if (XboxController::Instance()->getButtonState(0, 1)) {
 			StateMachine* sm = Game::Instance()->getStateMachine();
 			sm->popState();
 		}
+
+		else if (event.type == SDL_JOYBUTTONUP)
+			XboxController::Instance()->onJoystickButtonUp(event);
 	}
-	else if (event.type == SDL_JOYBUTTONUP)
-		XboxController::Instance()->onJoystickButtonUp(event);
 	return handledEvent;
 }

@@ -12,20 +12,21 @@ private:
 	int Y_;
 	int col_;
 	int fil_;
+	int knowWhereWeAre_;
 
 	bool selection_ = false;
 	int savedInvent = 0;
 
 	int distance;
 
-	BackPack* back;
+	BackPack* bag;
 	ShopState* shop;
-
+	bool isLeft;
 	int i = 0, j = 0;
 
 	vector<GameObject* > SP;
 
-	vector<estado> invent;
+	vector<estado> Inventary;
 
 	/////////////////////////////////////
 	const int m_joystickDeadZone = 10000;

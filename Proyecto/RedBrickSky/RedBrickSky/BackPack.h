@@ -29,9 +29,6 @@ private:
 	vector<GameComponent*> botones;
 
 	//Vectores para los distintos tipos de objetos
-	vector<estado> Weapons; //Vector para las armas
-	vector<estado> Potions; //Vector para las pociones
-	vector<estado> Objects; //Vector para los objetos
 	vector<estado> EquipedItems; //Vector para los objetos equipados
 
 	vector<estado> GCInventV;
@@ -84,6 +81,9 @@ public:
 	void pullEitem() { EItems--; };
 	bool getLeft() {return leftOccupied;};
 	void setLeft(bool l) { leftOccupied = l; };
+	vector<estado> getEquipedItems() { return EquipedItems; };
+	void pushEquipedItem(estado e) { EquipedItems.push_back(e); };
+	void pullEquipedItem() { EquipedItems.clear(); };
 
 	static void cleonMode() { GameManager::Instance()->toggleCharlie(); }
 };

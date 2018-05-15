@@ -18,14 +18,18 @@ private:
 
 	int distance;
 
-	BackPack* back;
+	int knowWhereWeAre_;
+
+	BackPack* bag;
 	ShopState* shop;
 
 	int i = 0, j = 0;
 
 	vector<GameObject* > SP;
 
-	vector<estado> invent;
+	vector<estado> Inventary;
+
+	bool isLeft = false;
 public:
 	KeyBoardBackPackComponent(int iniX, int iniY, int col, int fil, int dis, vector<GameObject*> v, BackPack* b = nullptr, ShopState* s = nullptr);
 	~KeyBoardBackPackComponent();

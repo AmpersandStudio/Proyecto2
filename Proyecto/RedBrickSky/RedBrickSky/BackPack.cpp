@@ -15,7 +15,7 @@ BackPack::BackPack()
 	money = GameManager::Instance()->getMoney();
 	invent.clear();
 	invent = GameManager::Instance()->copyInventory();
-	
+	std::cout << invent.size() << endl;
 
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 130, 515);
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getPotions()), 280, 495);
@@ -56,6 +56,7 @@ BackPack::~BackPack()
 	SDL_ShowCursor(0);
 	StringToScreen::Instance()->clearInfinite();
 	StringToScreen::Instance()->stopRendering();
+	GameManager::Instance()->changeInventory(invent);
 
 	if (matriz != nullptr) {
 		for (int i = 0; i < numFils; i++)
@@ -109,8 +110,6 @@ void BackPack::toMenu() {
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->popState();
 }
-
-
 
 void BackPack::cargaElementos() {
 
