@@ -2,6 +2,8 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "SoundManager.h"
+#include "StateMachine.h"
+#include "MainMenuState.h"
 
 CreditsState::CreditsState()
 {
@@ -11,6 +13,7 @@ CreditsState::CreditsState()
 	timeDisplayInterval_ = 4500;
 	timeTitleInterval_ = 7000;
 	timeNameInterval_ = 6000;
+	timeTotalInterval_ = 80000;
 
 	speed_ = 0.9f;
 	position_ = (TheGame::Instance()->getWinHeight() / 2) - (TheTextureManager::Instance()->getHeight("logo") / 2);
@@ -33,7 +36,9 @@ CreditsState::CreditsState()
 	titleMove_ = false;
 	nameShown_ = false;
 
+	timeInit_ = SDL_GetTicks();
 	SoundManager::Instance()->playMusic("credits", 0);
+	TextureManager::Instance()->drawFull("qbg", 0, 0, Game::Instance()->getWinWidth(), Game::Instance()->getWinHeight(), Game::Instance()->getRenderer(), 0, 255);
 }
 
 CreditsState::~CreditsState()
@@ -77,6 +82,11 @@ void CreditsState::update()
 		timeStart_ = SDL_GetTicks();
 	}
 
+	if (timeInit_ + timeTotalInterval_ <= SDL_GetTicks())
+	{
+		toGame();
+	}
+
 }
 
 void CreditsState::render()
@@ -96,4 +106,9 @@ void CreditsState::render()
 	{
 		if (!names_.empty()) TheTextureManager::Instance()->drawText(names_.front(), TextureManager::CHALK24, { 255, 255, 255, alpha_ }, 230, 290, TheGame::Instance()->getRenderer());
 	}
+}
+
+void CreditsState::toGame()
+{
+	Game::Instance()->getStateMachine()->changeState(new MainMenuState());
 }
