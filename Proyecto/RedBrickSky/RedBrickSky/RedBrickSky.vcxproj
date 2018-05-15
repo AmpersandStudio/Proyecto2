@@ -66,6 +66,7 @@
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PotionShop.cpp" />
+    <ClCompile Include="QuestionState.cpp" />
     <ClCompile Include="RenderFraemeComponent2.cpp" />
     <ClCompile Include="SchoolBag.cpp" />
     <ClCompile Include="ShopXboxControllerComponent.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PotionShop.h" />
+    <ClInclude Include="QuestionState.h" />
     <ClInclude Include="RenderFraemeComponent2.h" />
     <ClInclude Include="SchoolBag.h" />
     <ClInclude Include="ShopXboxControllerComponent.h" />
