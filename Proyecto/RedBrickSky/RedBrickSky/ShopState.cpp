@@ -110,6 +110,7 @@ void ShopState::createShopItems() {
 	}
 
 
+	//POCION
 	estado s;
 	s.empty = false;
 	s.comprado = false;
@@ -162,7 +163,7 @@ void ShopState::createBagItems() {
 	ocupados = 0;
 	for (unsigned int i = 0; i < invent.size(); i++) {
 
-		if (j == 3) { j = 0; k++; }
+		if (j == 6) { j = 0; k++; }
 		if (invent[i].type != 2 && invent[i].type != 1) {
 			SP[i].ID = invent[i].ID;
 			SP[i].objects++;
@@ -173,7 +174,8 @@ void ShopState::createBagItems() {
 			SP[i].type = invent[i].type;
 
 			GameComponent* gc = new GameComponent();
-			Vector2D position0(2 * j + 1.2, 1.7 * k + 2.5);
+
+			Vector2D position0(SP[i].x, SP[i].y);
 			j++;
 			double width = invent[i].w;
 			double height = invent[i].h;

@@ -25,7 +25,7 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
 	if (event.type == SDL_KEYDOWN) {
 
-		vector<estado> elementosTienda = GameManager::Instance()->copyShopItems();
+		vector<estado> elementosTienda = shop->getShopItems();
 		vector<estado> sp = shop->getSP();
 		
 		Vector2D position = o->getPosition();
@@ -48,7 +48,7 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 			}
 			o->setPosition(position);
 		}
-		else if (event.key.keysym.sym == SDLK_DOWN || XboxController::Instance()->getButtonState(0, 0)) {
+		else if (event.key.keysym.sym == SDLK_DOWN) {
 
 			if (posY < Y_ + fil_ - 2) {
 				posY += distance * 0.75;
@@ -101,94 +101,88 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 
 		else if (event.key.keysym.sym == SDLK_SPACE) {
 			//std::cout << "Donde estamos: " << elementosTienda[knowWhereWeAre_].nombre << endl;
-			if (GameManager::Instance()->getMoney() >= elementosTienda[knowWhereWeAre_].price && !elementosTienda[knowWhereWeAre_].comprado) {
+			if (GameManager::Instance()->getMoney() >= elementosTienda[knowWhereWeAre_].price) {
+				if (!elementosTienda[knowWhereWeAre_].comprado) {
 
-				GameManager::Instance()->setMoney(GameManager::Instance()->getMoney() - elementosTienda[knowWhereWeAre_].price);
-				StringToScreen::Instance()->setMessage("¡Objeto comprado! ");
-				StringToScreen::Instance()->startMessagin();
-				StringToScreen::Instance()->changeInfinite(0, "Caramelos: " + std::to_string(GameManager::Instance()->getMoney()));
+					elementosTienda[knowWhereWeAre_].comprado = true;
+					shop->setShopObjects(elementosTienda);
+					GameManager::Instance()->changeShopItems(elementosTienda);
+					
 
-				//Buscamos la primera casilla libre
+					GameManager::Instance()->setMoney(GameManager::Instance()->getMoney() - elementosTienda[knowWhereWeAre_].price);
+					StringToScreen::Instance()->setMessage("¡Objeto comprado! ");
+					StringToScreen::Instance()->startMessagin();
+					StringToScreen::Instance()->changeInfinite(0, "Caramelos: " + std::to_string(GameManager::Instance()->getMoney()));
 
-				int aux = 0;
-				Vector2D p;
-				int i = 0;
-				int j = 0;
-				bool place = false;
-				while (i < 6 && !place) {
-					if (j > 3) {
-						i++;
-						j = 0;
+					//Buscamos la primera casilla libre
+
+					int aux = 0;
+					Vector2D p;
+					int i = 0;
+					int j = 0;
+					bool place = false;
+					while (i < 6 && !place) {
+						if (j > 3) {
+							i++;
+							j = 0;
+						}
+
+						if (sp[aux].empty == true) {
+							p.set(sp[aux].x, sp[aux].y);
+							sp[aux].empty = false;
+							place = true;
+
+						}
+						else {
+							j++;
+							aux++;
+						}
 					}
 
-					if (sp[aux].empty == true) {
-						 p.set(sp[aux].x, sp[aux].y);
-						sp[aux].empty = false;
-						place = true;
+					shop->setSP(sp);
 
-					}
-					else {
-						j++;
-						aux++;
-					}
+					estado n;
+					n.price = elementosTienda[knowWhereWeAre_].price;
+					n.comprado = true;
+					n.ID = elementosTienda[knowWhereWeAre_].ID;
+					n.empty = false;
+					//n.objects = StandPoints[i].objects;
+					n.x = p.getX();
+					n.y = p.getY();
+					n.mX = 0;
+					n.mY = 0;
+					n.w = 45;
+					n.h = 45;
+					n.tx = elementosTienda[knowWhereWeAre_].tx;
+					n.type = 0;
+					n.nombre = elementosTienda[knowWhereWeAre_].nombre;
+					n.FilFrame = elementosTienda[knowWhereWeAre_].FilFrame;
+					n.colFrame = elementosTienda[knowWhereWeAre_].colFrame;
+
+					shop->setInvent(n);
+					GameManager::Instance()->setInventory(n);
+
+					Vector2D v(p);
+					GameComponent* gc2 = new GameComponent();
+					gc2->setTextureId(elementosTienda[knowWhereWeAre_].tx); gc2->setOriPos(v); gc2->setPosition(v); gc2->setWidth(45); gc2->setHeight(45);
+					gc2->addRenderComponent(new RenderSingleFrameComponent());
+					gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
+
+					shop->stageBack(gc2);
+
 				}
-
-				//GameManager::Instance()->changeInventory(Inventary);
-				//shop->setInvent(Inventary);
-				shop->setSP(sp);
-
-
-				//if (StandPoints[i].empty == true) {
-				//	StandPoints[i].ID = identifier;
-				//	StandPoints[i].empty = false;
-				//	double posX, posY;
-				//	posX = auxX + auxW / 2;
-				//	posY = auxY + auxH / 2;
-
-				//	v.set(posX / 45 - 0.5, posY / 45 - 0.5);
-				//	o->setPosition(v);
-
-				estado n;
-				n.price = elementosTienda[knowWhereWeAre_].price;
-				n.comprado = true;
-				n.ID = elementosTienda[knowWhereWeAre_].ID;
-				n.empty = false;
-				//n.objects = StandPoints[i].objects;
-				n.x = p.getX();
-				n.y = p.getY();
-				n.mX = 0;
-				n.mY = 0;
-				n.w = 45;
-				n.h = 45;
-				n.tx = elementosTienda[knowWhereWeAre_].tx;
-				n.type = 0;
-				n.nombre = elementosTienda[knowWhereWeAre_].nombre;
-				n.FilFrame = elementosTienda[knowWhereWeAre_].FilFrame;
-				n.colFrame = elementosTienda[knowWhereWeAre_].colFrame;
-
-				shop->setInvent(n);
-				GameManager::Instance()->setInventory(n);
-
-				Vector2D v(p);
-				GameComponent* gc2 = new GameComponent();
-				gc2->setTextureId(elementosTienda[knowWhereWeAre_].tx); gc2->setOriPos(v); gc2->setPosition(v); gc2->setWidth(45); gc2->setHeight(45);
-				gc2->addRenderComponent(new RenderSingleFrameComponent());
-				gc2->setColFrame(n.colFrame); gc2->setRowFrame(n.FilFrame);
-
-				shop->stageBack(gc2);
-				elementosTienda[knowWhereWeAre_].comprado = true;
-				GameManager::Instance()->changeShopItems(elementosTienda);
-
+				else if (elementosTienda[knowWhereWeAre_].comprado) {
+					StringToScreen::Instance()->setMessage("¡Ya tienes ese arma! ");
+					StringToScreen::Instance()->startMessagin();
+				}
 			}
-
-
+			
 			else if (GameManager::Instance()->getMoney() < elementosTienda[knowWhereWeAre_].price) {
-				StringToScreen::Instance()->setMessage("¡No tienes dinero para pagar eso!");
+				StringToScreen::Instance()->setMessage("¡No tienes dinero para pagar eso! ");
 				StringToScreen::Instance()->startMessagin();
 			}
 		}
-		GameManager::Instance()->changeShopItems(elementosTienda);
-		shop->setShopObjects(elementosTienda);
+		
 	}
 	
 
@@ -223,32 +217,5 @@ bool KeyBoardShopComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 		}
 	}
 
-	//else if (XboxController::Instance()->getNumControllers() > 0) { //Primero comprobamos si hay algún mando conectado
-	//																//CONTROLAR LOS INPUTS MEDIANTE MANDO DE LA XBOX360
-	// if (event.type == SDL_JOYBUTTONDOWN)
-	//	{
-	//		XboxController::Instance()->onJoystickButtonDown(event);
-
-	//		if (XboxController::Instance()->getButtonState(0, 7)) //botón de pausa
-	//		{
-	//			Game::Instance()->getStateMachine()->pushState(new PauseState());
-	//		}
-	//		if (XboxController::Instance()->getButtonState(0, 6)) //botón de back
-	//		{
-	//			Game::Instance()->getStateMachine()->pushState(new BackPack());
-	//		}
-
-	//		if (XboxController::Instance()->getButtonState(0, 0))	// Botón A
-	//		{
-	//			interacting();
-	//		}
-	//		XboxController::Instance()->onJoystickButtonUp(event); //Aseguro que levantamos el botón después de usarlo
-	//	}
-	//	
-	//}
-
-	if (event.type == SDL_JOYBUTTONUP)
-		XboxController::Instance()->onJoystickButtonUp(event);
-	//TERMINAMOS DE COMPROBAR CON EL MANDO DE LA XBOX
 	return handledEvent;
 }

@@ -383,53 +383,6 @@ void CollisionManager::checkDoorsInteractions(Player* pPlayer, const std::vector
 	pPlayer->setInteracting(false);
 }
 
-/*void CollisionManager::checkKeysInteractions(Player* pPlayer, std::vector<Key*>&  k)
-{
-	SDL_Rect* playerRect = pPlayer->getRect();
-
-	int i = 0;
-	int aux;
-	bool activated = false;
-	for (Key* key : k)
-	{
-		SDL_Rect* interRect = key->getRect();
-
-		if (RectRect(playerRect, interRect))
-		{
-				key->activate();
-				activated = true;
-				aux = i;
-
-				std::cout << "HYEYO YOAJYSIJ " << std::endl;
-
-				estado n;
-				n.price = 0;
-				n.comprado = false;
-				n.ID = 0;
-				n.empty = false;
-				n.objects = 0;
-				n.x = 0;
-				n.y = 0;
-				n.mX = -10;
-				n.mY = -10;
-				n.w = 50;
-				n.h = 50;
-				n.tx = "Key";
-				n.type = 2;
-				n.nombre = "LLave";
-				n.FilFrame = 0;
-				n.colFrame = 0;
-
-				GameManager::Instance()->setInventory(n);
-		}
-		i++;
-	}
-
-	if (activated)
-		k.erase(k.begin() + aux);
-
-	pPlayer->setInteracting(false);
-}*/
 
 void CollisionManager::checkCartelesInteractions(Player* pPlayer, const std::vector<Cartel*>&  c)
 {
