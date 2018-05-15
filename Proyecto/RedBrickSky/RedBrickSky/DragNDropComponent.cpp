@@ -71,36 +71,6 @@ bool DragNDropComponent::handleEvent(GameObject* o, const SDL_Event& event) {
 				
 			}
 
-			else {
-				//Si está !equiped, lo ponemos en un lugar vacío en los SP
-				bag->pullEitem();
-				bag->setLeft(false);
-				isLeft = false;
-				//Buscamos la primera casilla libre
-
-				int aux = 0;
-				int i = 0;
-				int j = 0;
-				bool place = false;
-				while (i < 3 && !place) {
-					if (j > 6) {
-						i++;
-						j = 0;
-					}
-
-					if (sp[aux].empty == true) {
-						Vector2D p(sp[aux].x, sp[aux].y);
-						o->setPosition(p);//createItemAtSP(x, y, auxV[p].objectID, auxV[p]);
-						sp[aux].empty = false;
-						place = true;
-						identifier = sp[aux].ID;
-					}
-					else {
-						j++;
-						aux++;
-					}
-				}
-			}
 
 			GameManager::Instance()->changeInventory(Inventary);
 			bag->setInvent(Inventary);

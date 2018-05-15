@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="62">
+ <tileset firstgid="1" name="Tileset_Tutorial_NIVEL_Beta1_NURIA" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="Tileset_Tutorial_NIVEL_Beta1_NURIA.png" width="1920" height="1056"/>
+ </tileset>
+ <tileset firstgid="1981" name="Tileset_Tutorial_NIVEL_Beta1_AARON" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="Tileset_Tutorial_NIVEL_Beta1_AARON.png" width="1920" height="1056"/>
+ </tileset>
+ <tileset firstgid="3961" name="Personaje1" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje1.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="3973" name="Personaje2" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje2.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="3985" name="Personaje3" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje3.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="3997" name="Personaje4" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje4.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4009" name="Personaje5" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje5.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4021" name="Personaje6" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje6.png" width="97" height="128"/>
+ </tileset>
+ <tileset firstgid="4033" name="Personaje6" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje6.png" width="97" height="128"/>
+ </tileset>
+ <tileset firstgid="4045" name="Personaje7" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje7.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4057" name="Personaje8" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje8.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4069" name="Personaje9" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje9.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4081" name="Personaje10" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje10.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4093" name="Personaje11" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje11.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4105" name="Personaje12" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje12.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4117" name="Personaje13" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje13.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4129" name="Personaje14" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje14.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="4141" name="Personaje15" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje15.png" width="96" height="128"/>
+ </tileset>
+ <layer name="Collisions" width="50" height="100">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt20EKhDAQAMH8/1k+bNm7IAsbNa3UQJ9EmEKIp2xjjO0FfWIVd+J4fhytOFpxtKo69sPBcdbuR8PBcdbuv0wcLcdT9694ODg4ODg4ODg4ODg4ODiuduyfn+m+0/GW78HxLMfM+6sdY1y3y93D0RqO1qw+j1f9Kzg4VsfRiqMVRyuOVhytOFpxtOJoxdGK47+uuiM54yjd55xxlOJoxdGKoxVHK45WHK04WnG04mjF0eotjiPT6l047nF8AYjTZQc=
+  </data>
+ </layer>
+ <layer name="Floor" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztmW1OwzAQRP2nvUOAy4fehHuEcpIKkGLJXXm9aydix2h+PPUDAvPi2TjQR0rpA4iHg57v9YLsG+lwZr5IF3rQ47/OxxluUR7WGq2XlN53bhfc3JbH9pP9c+c+scdyTell5/U6l8da9Ojt+swqOhadt+WxFT2SHpvoWHTelsdS9Eh6LKJj0XklrS59XZ4fax2Lzp+pdUnmlq/LY6LzZ2SXfjNbHuUx0flXpUu13Np7uWOR/dqU65I3f9mxyH4tey+snBb550R51K5JJeXX5fvy+VugR22erdnQjon2kOdcy1zbR+Q6RXvUOmOde3SP2gy01qT8vlk9UNfD2i9m8GhdmzyvUTxacz6Lh6c/NQ+k/eMsoj08e4P3PjLao3V/Ys0GsoeW1XqN6mFdk+X7KB6tzmjzgnTdbXloc4+4HtYseOYDYc49HjPct1v5tH0PaT6O7uFneeTPWXq5dWb07CPrQI7skT9n6eVu9MTTL3nMNpAje+TPWXrR/m/V26vymGUgR6vjnr2tpy+9895DzcPzN5D1O0fX5UyPUbQc3plB8rBcPOt4xMPboSPn7Mj6WvcKck+Wj9rz1vkecbXuIbUMf3Fv2dMHZOiBBT2woAcW9MCCHljQAwt6YEEPLOiBBT2woAcW9MCCHljQAwt6YEEPLOiBBT2woAcW9MCCHljQAwt64DJzdnqM8Q3at4Bn
+  </data>
+ </layer>
+ <layer name="Top-Top" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1rFtg0AUBmCkdDROnwHcZz8vkAE8gItgWYnXcGuTOCktGcuFF0gbUlhCJ2hQ4AR8n3TiXXU/8B4iSQAAAAAAAAAA6MpbmiSv5crKtQmuWc3+Xq/T/8/SlKMu19/570GGc7kvynUNrkXN/l5fOriPphx1ubo4H8bqEMzLR2V/rNTfPc7VV+Wsz0qdBxn2Zp0Rus1iJ2CITvpmUHLvixbmj7ETMEXP+o4Je9L/RPDiP7FXM3M+KEvzQQsP5pwIVr5XtPCjb4hgq+96tfO8obWF+QEm6hesJjtI
+  </data>
+ </layer>
+ <objectgroup name="Objects" visible="0">
+  <properties>
+   <property name="Message" value=""/>
+  </properties>
+  <object id="1" name="Mochila" type="Bag" x="48" y="1584">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="2" name="Mochila" type="Bag" x="180" y="1586">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="3" name="Mochila" type="Bag" x="270" y="1584">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="4" name="Mochila" type="Bag" x="370" y="1584">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="5" name="Mochila" type="Bag" x="1234" y="1580">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="6" name="Mochila" type="Bag" x="1330" y="1584">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="7" name="Mochila" type="Bag" x="1424" y="1590">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="8" name="Mochila" type="Bag" x="1552" y="1584">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="9" name="Mochila" type="Bag" x="135" y="1388" width="15.5" height="54.5">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="11" name="Mochila" type="Bag" x="200.25" y="1387.25" width="15.5" height="54.5">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="12" name="Mochila" type="Bag" x="327.75" y="1387.25" width="15.5" height="54.5">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="13" name="Mochila" type="Bag" x="423.75" y="1386.75" width="15.5" height="54.5">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="14" name="Mochila" type="Bag" x="1222.75" y="1386.75" width="15.5" height="54.5">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="15" name="Mochila" type="Bag" x="1288.25" y="1387.25" width="15.5" height="54.5">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="16" name="Mochila" type="Bag" x="1351.25" y="1389.75" width="15.5" height="54.5">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="17" name="Mochila" type="Bag" x="1416.25" y="1386.75" width="15.5" height="54.5">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="18" name="NPC genérico " type="Cartel" x="959" y="2975.67" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo1"/>
+   </properties>
+  </object>
+  <object id="48" name="NPC genérico " type="Cartel" x="705.333" y="2848.67" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo2"/>
+   </properties>
+  </object>
+  <object id="49" name="NPC genérico " type="Cartel" x="960.333" y="2784.67" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo3"/>
+   </properties>
+  </object>
+  <object id="50" name="NPC genérico " type="Cartel" x="701.833" y="2687.17" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo4"/>
+   </properties>
+  </object>
+  <object id="51" name="NPC genérico " type="Cartel" x="961.833" y="1694.83" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo15"/>
+   </properties>
+  </object>
+  <object id="52" name="NPC genérico " type="Cartel" x="958.667" y="2593.5" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo5"/>
+   </properties>
+  </object>
+  <object id="53" name="NPC genérico " type="Cartel" x="705.833" y="2495.5" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo6"/>
+   </properties>
+  </object>
+  <object id="54" name="NPC genérico " type="Cartel" x="956.333" y="2396.67" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo7"/>
+   </properties>
+  </object>
+  <object id="55" name="NPC genérico " type="Cartel" x="705.5" y="2336.17" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo8"/>
+   </properties>
+  </object>
+  <object id="56" name="NPC genérico " type="Cartel" x="959" y="2270.5" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo9"/>
+   </properties>
+  </object>
+  <object id="57" name="NPC genérico " type="Cartel" x="704" y="2173.83" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo10"/>
+   </properties>
+  </object>
+  <object id="58" name="NPC genérico " type="Cartel" x="958.5" y="2050.5" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo11"/>
+   </properties>
+  </object>
+  <object id="59" name="NPC genérico " type="Cartel" x="702.667" y="1954.33" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo12"/>
+   </properties>
+  </object>
+  <object id="60" name="NPC genérico " type="Cartel" x="956.833" y="1859.83" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo13"/>
+   </properties>
+  </object>
+  <object id="61" name="NPC genérico " type="Cartel" x="703.333" y="1792.83" width="33.3333" height="36.6667">
+   <properties>
+    <property name="Message" value="NPCPasillo14"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

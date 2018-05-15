@@ -12,15 +12,17 @@ public:
 	CreditsState();
 	virtual ~CreditsState();
 
-	bool handleEvent(const SDL_Event & event);
+	virtual bool handleEvent(const SDL_Event & event);
 	virtual void update();
 	virtual void render();
 
 private:
+	Uint32 timeInit_;
 	Uint32 timeStart_;
 	Uint32 timeNameInterval_;
 	Uint32 timeDisplayInterval_;
 	Uint32 timeTitleInterval_;
+	Uint32 timeTotalInterval_;
 
 	float position_;
 	float speed_;
@@ -33,5 +35,7 @@ private:
 	bool titleShown_;
 	bool titleMove_;
 	bool nameShown_;
+
+	void toGame();
 };
 
