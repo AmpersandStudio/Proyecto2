@@ -20,6 +20,7 @@ Player::~Player()
 
 void Player::load(Vector2D position, int width, int height, string textureId, int numFrames, int callbackID, int animSpeed)
 {
+	iniPos_ = position;
 	position_ = position;
 	width_ = width;
 	height_ = height;
@@ -273,6 +274,13 @@ void Player::interacting() {
 void Player::collision()
 {
 	velocity_ = Vector2D(0, 0);
+}
+
+void Player::resetPlayer()
+{
+	position_ = iniPos_; 
+	GameManager::Instance()->setHealth(GameManager::Instance()->getMaxHealth());
+	GameManager::Instance()->setMoney(GameManager::Instance()->getMoney() / 2);
 }
 
 void Player::handleAnimation()

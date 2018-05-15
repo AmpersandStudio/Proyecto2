@@ -32,8 +32,10 @@ public:
 	void changedlevel() { levelHasChanged_ = !levelHasChanged_; };
 
 	void setStepsSound(std::string soundFile) { if (soundFile != sFile_) TheSoundManager::Instance()->closeChannel(4); sFile_ = soundFile; };
+	void resetPlayer();
 	
 private:
+	Vector2D iniPos_;
 	int m_moveSpeed;
 	bool interacting_;
 	bool running_;

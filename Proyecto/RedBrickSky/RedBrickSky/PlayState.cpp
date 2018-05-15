@@ -63,6 +63,8 @@ void PlayState::update()
 {
 	currentLevel_ = GameManager::Instance()->getLevel();
 
+	if (GameManager::Instance()->getHealth() <= 0) pLevels[currentLevel_]->getPlayer()->resetPlayer();
+
 	if (currentLevel_ != lastLevel_) {
 		changeLevel();
 		updateAmbienceSounds();
