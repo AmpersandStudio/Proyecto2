@@ -9,6 +9,7 @@
 #include "TextureManager.h"
 #include "SoundManager.h"
 #include "CreditsState.h"
+#include "QuestionState.h"
 
 MainMenuState::MainMenuState()
 {
@@ -67,7 +68,8 @@ MainMenuState::~MainMenuState()
 void MainMenuState::toGame() 
 {
 	SoundManager::Instance()->stopMusic();
-	Game::Instance()->getStateMachine()->pushState(new PlayState());
+	SoundManager::Instance()->playSound("newgame", 0);
+	Game::Instance()->getStateMachine()->pushState(new QuestionState());
 }
 
 void MainMenuState::toGame2()

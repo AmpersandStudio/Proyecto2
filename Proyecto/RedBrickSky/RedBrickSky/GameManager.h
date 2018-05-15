@@ -37,24 +37,29 @@ class GameManager
 private:
 
 	int money;
-
 	vector<estado> inventory;
-
 	vector<estado> shopObjects;
+	int potions_ = 0;
+	int potionsPrize = 100;
 
-	int level_;
-
+	int playerType;
+	int playerAttack;
+	int playerDeffense;
+	int playerSpeed;
+	int playerHP = 350;
+	int playerMaxHP = 350;
 	string name;
 
+	std::vector<bool> doors;
+	int level_;
+
+
 	bool dialogueActive;
-
 	Interactuable* currentInter;
-
 	Dialogue* currentDialogue_;
 
 	bool ampersand_ = false;
 	bool easterEgg[4] = { false,false, false, false };
-
 	bool charlie_ = false;
 
 	GameManager() 
@@ -75,14 +80,9 @@ private:
 
 	static GameManager* s_pInstance;
 
-	int playerHP = 350;
-	int playerMaxHP = 350;
 
-	std::vector<bool> doors;
 
-	int potions_ = 0;
 
-	int potionsPrize = 100;
 
 public:
 	~GameManager() {};
@@ -99,52 +99,56 @@ public:
 	//Metodos para el inventario
 	vector<estado> copyInventory();	
 	vector<estado> copyShopItems();
-
 	int inventorySize() { return inventory.size(); };
 	void setInventory(estado t) { inventory.push_back(t); };
 	void changeInventory(vector<estado> &v) { inventory.clear(); inventory = v; };
-	
-
 	void changeShopItems(vector<estado> &v) { shopObjects.clear(); shopObjects = v; };
-
 	int getMoney() { return money; };
 	void addMoney(int m) { money += m; };
 	void setMoney(int m) { money = m; };
 
+	//Metodos para los dialogos
 	bool getDialogueState() { return dialogueActive; };
 	void setDialogueState(bool set, Dialogue* d) { dialogueActive = set; currentDialogue_ = d; };
 	Dialogue* getDialogueCurrent() { return currentDialogue_; };
-
-	void setName(string n) { name = n;  };
-
-	void toBattle();
-
 	void getInteractuable(Interactuable* n) { currentInter = n; }
+
+	//Metodos para el BattleState
 	void exitBattle();
+	void toBattle();
+	int getEnemy();
 
-	int getHealth() { return playerHP; };
-	int getMaxHealth() { return playerMaxHP; };
-	void setHealth(int h) { playerHP = h; };
-
+	//Metodos para el mapa
 	int getLevel() { return level_; }
 	void setCurrentLevel(int l) { level_ = l; }
-
 	void setDoor(int keyId) { doors[keyId] = true; }
     bool getDoor(int keyId) const { return doors[keyId]; }
 
-	int getEnemy();
-
+	//Metodos para las pociones
 	void addPotion() { potions_++; }
-
 	int getPotions() { return potions_; }
 	void setPotions(int p) { potions_ = p; }
-
 	int getPotionsPrize() { return potionsPrize; };
 
+	//Metodos para el Easter Egg
 	void setEasterEgg(int i) { easterEgg[i] = true; }
 	bool checkEasterEgg();
 	void setAmpersand() { ampersand_ = true; }
 	inline bool getAmpersand() const { return ampersand_; }
 	inline bool getCharlie() const { return charlie_; }
 	inline void toggleCharlie() { charlie_ = !charlie_; }
+
+	//Metodos para el personaje
+	void setName(string n) { name = n; };
+	void setBattlePlayer(int t, int atk, int def, int spd, int hp);
+	inline int getPlayerAttack() const { return playerAttack; }
+	inline int getPlayerDeffense() const { return playerDeffense; }
+	inline int getPlayerSpeed() const { return playerSpeed; }
+	inline int getHealth() { return playerHP; };
+	inline int getMaxHealth() { return playerMaxHP; };
+	inline void addPlayerAttack(int a) { playerAttack += a; }
+	inline void addPlayerDeffense(int d) { playerDeffense += d; }
+	inline void addPlayerSpeed(int s) { playerSpeed += s; }
+	inline void addPlayerHealth(int h) { playerMaxHP += h; }
+	inline void setHealth(int h) { playerHP = h; };
 };

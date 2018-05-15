@@ -168,6 +168,10 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\assets\\Nivel2.png", "level2", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Tienda.png", "tiendaLevel", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\cleonButton.png", "clb", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\election.png", "election", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\qbg.png", "qbg", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\yesbutton.png", "yesbutton", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\nobutton.png", "nobutton", RENDERER_);
 
 	// Load Music
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);
@@ -186,6 +190,7 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\ExplorationBSO.ogg", "music", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\ExplorationBSO2.ogg", "music2", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\MainMenuBSO.ogg", "menu", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\questions.ogg", "questions", SOUND_MUSIC);
 
 	//Load SFX
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
@@ -208,6 +213,8 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\reglazo.wav", "reglazo", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\School_ring.wav", "timbre", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\tirachinas.mp3", "Tirachinas", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\newgame.ogg", "newgame", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\select.ogg", "select", SOUND_SFX);
 
 	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 3);
 }

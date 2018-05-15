@@ -143,3 +143,13 @@ bool GameManager::checkEasterEgg()
 	}
 	return check;
 }
+
+void GameManager::setBattlePlayer(int t, int atk, int def, int spd, int hp)
+{
+	playerType = t;
+	playerAttack = atk;
+	playerDeffense = def;
+	playerSpeed = spd;
+	playerHP = hp;
+	playerMaxHP = hp;
+}
