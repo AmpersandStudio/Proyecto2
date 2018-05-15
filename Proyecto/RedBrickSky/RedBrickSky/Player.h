@@ -31,7 +31,7 @@ public:
 
 	void changedlevel() { levelHasChanged_ = !levelHasChanged_; };
 
-	void setStepsSound(std::string soundFile) { sFile_ = soundFile; };
+	void setStepsSound(std::string soundFile) { if (soundFile != sFile_) TheSoundManager::Instance()->closeChannel(4); sFile_ = soundFile; };
 	
 private:
 	int m_moveSpeed;

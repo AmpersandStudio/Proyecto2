@@ -90,8 +90,8 @@ void Player::update()
 			// refresh animation frame
 			handleAnimation();
 
-			if (!TheSoundManager::Instance()->isPlayingChannel(2)) {
-				TheSoundManager::Instance()->PlaySoundInChannel(2, sFile_ , 0);
+			if (!TheSoundManager::Instance()->isPlayingChannel(4)) {
+				TheSoundManager::Instance()->PlaySoundInChannel(4, sFile_ , 0);
 			}
 		}
 	

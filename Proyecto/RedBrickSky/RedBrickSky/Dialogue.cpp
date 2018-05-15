@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "Camera.h"
+#include "SoundManager.h"
 
 
 Dialogue::Dialogue()
@@ -52,6 +53,7 @@ bool Dialogue::nextDialogue() {
 		return false;
 	}
 	else {
+		TheSoundManager::Instance()->playSound("dialogo", 0);
 		return true;
 	}
 }

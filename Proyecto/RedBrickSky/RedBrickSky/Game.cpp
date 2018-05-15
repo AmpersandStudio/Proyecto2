@@ -182,8 +182,6 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\Battle1.ogg", "battle", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\credits.ogg", "credits", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\departure.ogg", "departure", SOUND_MUSIC);
-	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_exterior.wav", "exteriores", SOUND_MUSIC);
-	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_interior.wav", "interiores", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\boss_battle_loop.wav", "BossMusic", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\funk.wav", "funk", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\victory.ogg", "victory", SOUND_MUSIC);
@@ -193,6 +191,8 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\questions.ogg", "questions", SOUND_MUSIC);
 
 	//Load SFX
+	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_exterior.wav", "exteriores", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_interior.wav", "interiores", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\Crash_Woah.wav", "woah", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\click.wav", "click", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\punch.wav", "punch", SOUND_SFX);

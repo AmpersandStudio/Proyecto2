@@ -19,6 +19,8 @@
 
 PlayState::PlayState()
 {
+
+	TheSoundManager::Instance()->stopMusic();
 	SDL_ShowCursor(0);
 
 	LevelParser levelParser;
@@ -35,7 +37,15 @@ PlayState::PlayState()
 	pLevels[0] = levelParser.parseLevel("..\\assets\\Tutorial.tmx");
 
 
-	TheSoundManager::Instance()->playMusic("music", 100);
+	TheSoundManager::Instance()->playMusic("music", -1);
+
+	TheSoundManager::Instance()->closeChannel(3);
+	if (currentLevel_ == 0 || currentLevel_ == 1 || currentLevel_ == 3) {
+		TheSoundManager::Instance()->PlaySoundInChannel(3, "exteriores", -1);
+	}
+	else {
+		TheSoundManager::Instance()->PlaySoundInChannel(3, "interiores", -1);
+	}
 
 	steps_ = 0;
 	srand(time(NULL));
@@ -63,6 +73,14 @@ void PlayState::update()
 
 	if (currentLevel_ != lastLevel_) {
 		changeLevel();
+
+		TheSoundManager::Instance()->closeChannel(3);
+		if (currentLevel_ == 0 || currentLevel_ == 1 || currentLevel_ == 3) {
+			TheSoundManager::Instance()->PlaySoundInChannel(3, "exteriores", -1);
+		}
+		else {
+			TheSoundManager::Instance()->PlaySoundInChannel(3, "interiores", -1);
+		}
 	}
 	pLevels[currentLevel_]->update();
 
