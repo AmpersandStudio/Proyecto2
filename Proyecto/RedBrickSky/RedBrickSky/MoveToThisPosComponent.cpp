@@ -31,6 +31,7 @@ void MoveToThisPosComponent::update(GameObject* o) {
 		else {
 			back_ = true;
 			go_ = false;
+			TheSoundManager::Instance()->playSound(GameManager::Instance()->getAttackSound(), 0);
 		}
 	}
 	else if (dir == 1 && back_) {

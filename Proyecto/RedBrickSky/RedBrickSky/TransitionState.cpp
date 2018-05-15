@@ -3,6 +3,10 @@
 
 TransitionState::TransitionState()
 {
+	TheSoundManager::Instance()->stopMusic();
+	TheSoundManager::Instance()->closeChannel(3);
+	/*TheSoundManager::Instance()->playMusic("trans_btl", 0);*/
+	TheSoundManager::Instance()->playMusic("battle", 0);
 	Vector2D position0(0, 0);
 	double width = Game::Instance()->getWinWidth() / 7;
 	double height = Game::Instance()->getWinWidth() / 7;

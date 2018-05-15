@@ -23,6 +23,7 @@ public:
 
 	virtual bool handleEvent(const SDL_Event& event);
 	virtual void update();
+	void updateAmbienceSounds();
 	virtual void render();
 	void actSteps();
 	void notOnGrass();

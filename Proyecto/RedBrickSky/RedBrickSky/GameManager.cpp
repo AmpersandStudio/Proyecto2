@@ -15,10 +15,6 @@ vector<estado> GameManager::copyShopItems() { // no queréis que const vector<est
 
 void GameManager::toBattle()
 {
-	TheSoundManager::Instance()->stopMusic();
-	/*TheSoundManager::Instance()->playMusic("trans_btl", 0);*/
-	TheSoundManager::Instance()->playMusic("battle", 0);
-	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
 	Game::Instance()->getStateMachine()->pushState(new TransitionState());
 }
 

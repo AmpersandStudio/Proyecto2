@@ -41,6 +41,7 @@ void MagicAttackComponent::update(GameObject* o) {
 
 	else {
 		isMoving = false;
+		TheSoundManager::Instance()->playSound(GameManager::Instance()->getAttackSound(), 0);
 	}
 	
 	if (!isMoving) {

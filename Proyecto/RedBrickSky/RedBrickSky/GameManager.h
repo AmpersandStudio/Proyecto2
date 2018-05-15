@@ -49,6 +49,7 @@ private:
 	int playerHP = 350;
 	int playerMaxHP = 350;
 	string name;
+	string atSound;
 
 	std::vector<bool> doors;
 	int level_;
@@ -117,6 +118,8 @@ public:
 	void exitBattle();
 	void toBattle();
 	int getEnemy();
+	void setAttackSound(string s) { atSound = s; };
+	string getAttackSound() { return atSound; };
 
 	//Metodos para el mapa
 	int getLevel() { return level_; }

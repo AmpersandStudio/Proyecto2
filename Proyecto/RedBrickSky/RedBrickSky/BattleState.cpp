@@ -39,6 +39,7 @@ BattleState::~BattleState()
 	enemy->clearPhysicscomp();
 }
 
+
 //bloque 1 (constriccion del fade inicial) --------------------------------------------------------------------------------
 void BattleState::makeFade() {
 	rcfade = new RenderFullComponent();
@@ -823,6 +824,7 @@ void BattleState::render() {
 	}
 }
 
+
 bool BattleState::handleEvent(const SDL_Event& event) {
 	bool handledEvent = false;
 	bool actButton = false;
@@ -842,7 +844,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 				}
 
 				if (END_)
-					TheSoundManager::Instance()->playMusic("music", 0);
+					TheSoundManager::Instance()->stopMusic();
 					Game::Instance()->getStateMachine()->popState();
 
 				handledEvent = true;
@@ -864,7 +866,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 
 			if (END_) {
 				GameManager::Instance()->exitBattle();
-				TheSoundManager::Instance()->playMusic("music", 0);
+				TheSoundManager::Instance()->stopMusic();
 				Game::Instance()->getStateMachine()->popState();
 			}
 
@@ -921,8 +923,9 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 		if (actButton && !attack_) {
 			in = true;
 			run_ = true;
-			TheSoundManager::Instance()->playMusic("music", 0);
-			Game::Instance()->getStateMachine()->popState();
+			TheSoundManager::Instance()->stopMusic();
+			TheSoundManager::Instance()->PlaySoundInChannel(3, "escape", 0);
+			Mix_ChannelFinished(channelDone);
 		}
 		else if (actButton && attack_) {
 			attack(3);
@@ -966,6 +969,7 @@ bool BattleState::run()
 			if (input != -1 && !player->useAttack(input)) {
 				std::cout << "No quedan PP para este ataque!" << std::endl;
 				fail = true;
+				TheSoundManager::Instance()->playSound("wrong", 0);
 			}
 			else {
 				fail = false;
@@ -1007,6 +1011,7 @@ bool BattleState::run()
 			if ((a.type == Physical)) {
 				Vector2D p = player->getPosition();
 				Vector2D e = enemy->getPosition();
+				GameManager::Instance()->setAttackSound("punch_2");
 				mce = MoveToThisPosComponent(e, p);
 				enemy->addPhysicsComponent(&mce);
 				attackAnim_ = true;
@@ -1015,6 +1020,7 @@ bool BattleState::run()
 				Vector2D p = player->getPosition();
 				Vector2D e = enemy->getPosition();
 				Vector2D x(0, 0);
+				GameManager::Instance()->setAttackSound("Tirachinas");
 				float px = e.getX() + 1;
 				x.setX(px);
 				mce = MoveToThisPosComponent(e, x);
@@ -1026,6 +1032,7 @@ bool BattleState::run()
 				mae = MagicAttackComponent(e, 0.3);
 				enemy->addPhysicsComponent(&mae);
 				attackAnim_ = true;
+				GameManager::Instance()->setAttackSound("golpe");
 			}
 
 			if (enemy->hasTarget())
@@ -1225,6 +1232,7 @@ void BattleState::attack(int i) {
 
 	if (input != -1) {
 		if ((a.type == Physical)) {
+			GameManager::Instance()->setAttackSound("punch_2");
 			mcp = MoveToThisPosComponent(p, e);
 			player->addPhysicsComponent(&mcp);
 			meleeAttack = true;
@@ -1232,6 +1240,7 @@ void BattleState::attack(int i) {
 			rangedAttack = false;
 		}
 		else if (a.type == Ranged) {
+			GameManager::Instance()->setAttackSound("Tirachinas");
 			Vector2D x(0, 0);
 			float px = p.getX() - 1;
 			x.setX(px);

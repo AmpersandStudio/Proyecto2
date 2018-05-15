@@ -4,6 +4,11 @@
 
 ShopState::ShopState()
 {
+
+	TheSoundManager::Instance()->stopMusic();
+	TheSoundManager::Instance()->closeChannel(3);
+	TheSoundManager::Instance()->playMusic("funk", -1);
+
 	shopObjects = GameManager::Instance()->copyShopItems();
 	
 	SDL_ShowCursor(1);
@@ -39,7 +44,9 @@ void ShopState::setMoney(int n) {
 }
 
 void ShopState::toMenu() {
-	StateMachine* sm = Game::Instance()->getStateMachine(); 
+	StateMachine* sm = Game::Instance()->getStateMachine();
+	TheSoundManager::Instance()->stopMusic();
+	TheSoundManager::Instance()->playMusic("music", -1);
 	sm->popState();
 }
 

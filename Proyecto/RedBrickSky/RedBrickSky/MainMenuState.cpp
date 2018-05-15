@@ -58,7 +58,9 @@ MainMenuState::MainMenuState()
 	button2->setActive(false);
 
 	XboxController::Instance()->insertController();
-	SoundManager::Instance()->playMusic("menu", -1);
+	TheSoundManager::Instance()->stopMusic();
+	TheSoundManager::Instance()->closeChannel(3);
+	TheSoundManager::Instance()->playMusic("menu", -1);
 }
 
 MainMenuState::~MainMenuState()
@@ -67,14 +69,11 @@ MainMenuState::~MainMenuState()
 
 void MainMenuState::toGame() 
 {
-	SoundManager::Instance()->stopMusic();
-	SoundManager::Instance()->playSound("newgame", 0);
 	Game::Instance()->getStateMachine()->pushState(new QuestionState());
 }
 
 void MainMenuState::toGame2()
 {
-	SoundManager::Instance()->stopMusic();
 	Game::Instance()->getStateMachine()->pushState(new PlayState());
 }
 

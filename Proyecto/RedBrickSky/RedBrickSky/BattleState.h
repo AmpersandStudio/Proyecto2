@@ -175,6 +175,9 @@ protected:
 	void enableWapons();
 	void disableWapons();
 
+	//Callback para el sonido de huida
+	static void channelDone(int channel) { if(channel == 3) Game::Instance()->getStateMachine()->popState(); };
+
 public:
 	//constructora y destructora
 	//bloque 0 (constructoras y destructoras)
@@ -186,6 +189,7 @@ public:
 	virtual void update();
 	virtual void render();
 	virtual bool handleEvent(const SDL_Event & event);
+
 
 	//metodos necesariamente publicos
 	//bloque 8 (metodo para la animacion)

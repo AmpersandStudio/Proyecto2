@@ -37,15 +37,7 @@ PlayState::PlayState()
 	pLevels[0] = levelParser.parseLevel("..\\assets\\Tutorial.tmx");
 
 
-	TheSoundManager::Instance()->playMusic("music", -1);
-
-	TheSoundManager::Instance()->closeChannel(3);
-	if (currentLevel_ == 0 || currentLevel_ == 1 || currentLevel_ == 3) {
-		TheSoundManager::Instance()->PlaySoundInChannel(3, "exteriores", -1);
-	}
-	else {
-		TheSoundManager::Instance()->PlaySoundInChannel(3, "interiores", -1);
-	}
+	updateAmbienceSounds();
 
 	steps_ = 0;
 	srand(time(NULL));
@@ -73,20 +65,34 @@ void PlayState::update()
 
 	if (currentLevel_ != lastLevel_) {
 		changeLevel();
+		updateAmbienceSounds();
+	}
+	pLevels[currentLevel_]->update();
 
+	if (!TheSoundManager::Instance()->isPlayingChannel(3)) {
+		updateAmbienceSounds();
+	}
+
+	GameState::update();
+}
+
+void PlayState::updateAmbienceSounds() {
+
+	if (!TheSoundManager::Instance()->isPlayingMusic()) {
+		TheSoundManager::Instance()->playMusic("music", -1);
+	}
+
+	StateMachine* sm = Game::Instance()->getStateMachine();
+	if (sm->currentState() == this) {
 		TheSoundManager::Instance()->closeChannel(3);
-		if (currentLevel_ == 0 || currentLevel_ == 1 || currentLevel_ == 3) {
+		if (GameManager::Instance()->getLevel() == 0 || GameManager::Instance()->getLevel() == 1 || GameManager::Instance()->getLevel() == 3 ) {
 			TheSoundManager::Instance()->PlaySoundInChannel(3, "exteriores", -1);
 		}
 		else {
 			TheSoundManager::Instance()->PlaySoundInChannel(3, "interiores", -1);
 		}
 	}
-	pLevels[currentLevel_]->update();
 
-	
-
-	GameState::update();
 }
 
 void PlayState::changeLevel() {
@@ -184,7 +190,6 @@ void PlayState::toBattle()
 
 	if(!GameManager::Instance()->getCharlie()) TheSoundManager::Instance()->playMusic("battle", 0);
 	else TheSoundManager::Instance()->playMusic("funk", 0);
-	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->pushState(new TransitionState());
 }

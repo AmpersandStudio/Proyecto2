@@ -10,7 +10,6 @@
 
 BackPack::BackPack()
 {
-
 	TheSoundManager::Instance()->playSound("cremallera", 0);
 	money = GameManager::Instance()->getMoney();
 	invent.clear();

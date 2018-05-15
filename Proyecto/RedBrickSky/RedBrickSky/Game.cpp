@@ -208,13 +208,15 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\dialogue_sound.wav", "dialogo", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\door_close.wav", "Puerta_cerrar", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\door_open.wav", "Puerta_abrir", SOUND_SFX);
-	TheSoundManager::Instance()->load("..\\sounds\\hit.ogg", "golpe", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\hit.wav", "golpe", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\pick_up.wav", "recoger", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\reglazo.wav", "reglazo", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\School_ring.wav", "timbre", SOUND_SFX);
-	TheSoundManager::Instance()->load("..\\sounds\\tirachinas.mp3", "Tirachinas", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\tirachinas.wav", "Tirachinas", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\newgame.ogg", "newgame", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\select.ogg", "select", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\Wrong.wav", "wrong", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\Huida.wav", "escape", SOUND_SFX);
 
 	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 3);
 }

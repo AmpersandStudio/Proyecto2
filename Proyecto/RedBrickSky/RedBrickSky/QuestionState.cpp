@@ -12,6 +12,9 @@ bool QuestionState::first_ = false;
 
 QuestionState::QuestionState()
 {
+
+	TheSoundManager::Instance()->stopMusic();
+	TheSoundManager::Instance()->playSound("newgame", 0);
 	//Question q1;
 	//q1.question_ = "¿Qué obras te emocionan más?";
 
