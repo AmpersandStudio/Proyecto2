@@ -12,4 +12,6 @@ public:
 
 	virtual bool useAttack(int i);
 	virtual void receiveDamage(float dmg);
+
+	virtual bool checkPP();
 };

@@ -11,6 +11,16 @@ bool BattleEnemy::useAttack(int i)
 	return BattleCharacter::useAttack(input);
 }
 
+bool BattleEnemy::checkPP()
+{
+	int pp = 0;
+	for (Attack a : attacks)
+	{
+		if (a.name != "") pp += a.pp;
+	}
+	return pp != 0;
+}
+
 int BattleEnemy::selectAttack()
 {
 	int i = 0;

@@ -22,3 +22,8 @@ void BattlePlayer::receiveDamage(float dmg)
 
 	std::cout << name << " pierde " << (int)dmg << " HP!" << std::endl;
 }
+
+bool BattlePlayer::checkPP()
+{
+	return true;
+}

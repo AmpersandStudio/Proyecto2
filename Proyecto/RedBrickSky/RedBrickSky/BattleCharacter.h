@@ -98,6 +98,8 @@ public:
 	void cancelCritical() { critical = false; }
 	void cancelFail() { fail = false; }
 
+	virtual bool checkPP() = 0;
+
 protected:
 	std::string name;
 	Type type;

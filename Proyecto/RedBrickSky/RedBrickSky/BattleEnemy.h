@@ -16,6 +16,8 @@ public:
 
 	int getInput() const { return input; }
 
+	virtual bool checkPP();
+
 private:
 	int input;
 };

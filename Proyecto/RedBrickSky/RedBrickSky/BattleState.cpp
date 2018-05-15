@@ -1015,49 +1015,52 @@ bool BattleState::run()
 
 		if (enemy->getHealth() > 0 && !pt && et && okEnemy_)
 		{
-			interfaz.pruebaTexto_->setTextureId("enemAtacoTexto");
-			enemy->useAttack(0);
-			int e_input = enemy->getInput();
-
-			float dmg = enemy->combat(e_input, player->getDefense(), player->getType(), damagedP);
-
-			enemy->delPhysicsComponent(&mce);
-			enemy->delPhysicsComponent(&mae);
-			Attack a = enemy->getAttack(e_input);
-
-			if ((a.type == Physical)) {
-				Vector2D p = player->getPosition();
-				Vector2D e = enemy->getPosition();
-				GameManager::Instance()->setAttackSound("punch_2");
-				mce = MoveToThisPosComponent(e, p);
-				enemy->addPhysicsComponent(&mce);
-				attackAnim_ = true;
-			}
-			else if (a.type == Ranged) {
-				Vector2D p = player->getPosition();
-				Vector2D e = enemy->getPosition();
-				Vector2D x(0, 0);
-				GameManager::Instance()->setAttackSound("Tirachinas");
-				float px = e.getX() + 1;
-				x.setX(px);
-				mce = MoveToThisPosComponent(e, x);
-				enemy->addPhysicsComponent(&mce);
-				attackAnim_ = true;
-			}
-			else if ((a.type == Magical || a.type == Support)) {
-				Vector2D e = enemy->getPosition();
-				mae = MagicAttackComponent(e, 0.3);
-				enemy->addPhysicsComponent(&mae);
-				attackAnim_ = true;
-				GameManager::Instance()->setAttackSound("golpe");
-			}
-
-			if (enemy->hasTarget())
+			if (enemy->checkPP())
 			{
-				player->receiveDamage(dmg);
-				Attack temp_a = enemy->getAttack(e_input);
-				if (temp_a.type != Support)
-					player->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
+				interfaz.pruebaTexto_->setTextureId("enemAtacoTexto");
+				enemy->useAttack(0);
+				int e_input = enemy->getInput();
+
+				float dmg = enemy->combat(e_input, player->getDefense(), player->getType(), damagedP);
+
+				enemy->delPhysicsComponent(&mce);
+				enemy->delPhysicsComponent(&mae);
+				Attack a = enemy->getAttack(e_input);
+
+				if ((a.type == Physical)) {
+					Vector2D p = player->getPosition();
+					Vector2D e = enemy->getPosition();
+					GameManager::Instance()->setAttackSound("punch_2");
+					mce = MoveToThisPosComponent(e, p);
+					enemy->addPhysicsComponent(&mce);
+					attackAnim_ = true;
+				}
+				else if (a.type == Ranged) {
+					Vector2D p = player->getPosition();
+					Vector2D e = enemy->getPosition();
+					Vector2D x(0, 0);
+					GameManager::Instance()->setAttackSound("Tirachinas");
+					float px = e.getX() + 1;
+					x.setX(px);
+					mce = MoveToThisPosComponent(e, x);
+					enemy->addPhysicsComponent(&mce);
+					attackAnim_ = true;
+				}
+				else if ((a.type == Magical || a.type == Support)) {
+					Vector2D e = enemy->getPosition();
+					mae = MagicAttackComponent(e, 0.3);
+					enemy->addPhysicsComponent(&mae);
+					attackAnim_ = true;
+					GameManager::Instance()->setAttackSound("golpe");
+				}
+
+				if (enemy->hasTarget())
+				{
+					player->receiveDamage(dmg);
+					Attack temp_a = enemy->getAttack(e_input);
+					if (temp_a.type != Support)
+						player->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
+				}
 			}
 
 			enemy->setTurn(false);
