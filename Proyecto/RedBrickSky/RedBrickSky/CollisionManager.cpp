@@ -67,12 +67,14 @@ void CollisionManager::checkPlayerGrassCollision(Player* pPlayer, const std::vec
 		GameState* p = Game::Instance()->getStateMachine()->currentState();
 		PlayState* play = static_cast<PlayState*>(p);
 		play->actSteps();
+		pPlayer->setStepsSound("hierba");
 	}
 
 	else if (pPlayer->getMoved()) {
 		GameState* p = Game::Instance()->getStateMachine()->currentState();
 		PlayState* play = static_cast<PlayState*>(p);
 		play->notOnGrass();
+		pPlayer->setStepsSound("piedra2");
 	}
 }
 

@@ -29,17 +29,20 @@ public:
 	bool load(std::string fileName, std::string id, sound_type type);
 	void playSound(std::string id, int loop);
 	void playMusic(std::string id, int loop);
+	void PlaySoundInChannel(int c, std::string id, int loop);
 	void playSoundFood();
 	int isPlayingMusic();
 	void stopMusic();
 	void setChunkVolume(std::string id, int volume);
 	void setMusicVolume(int volume);
+	void closeChannel(int c);
+	bool isPlayingChannel(int c);
 	void clear();
 
 private:
 	static SoundManager* s_pInstance;
 
-	SoundManager() {}
+	SoundManager() { Mix_AllocateChannels(3); }
 
 	std::map<std::string, Mix_Chunk*> m_sfxs;
 	std::map<std::string, Mix_Music*> m_music;

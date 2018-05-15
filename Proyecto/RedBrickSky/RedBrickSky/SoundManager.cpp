@@ -39,6 +39,10 @@ void SoundManager::playMusic(std::string id, int loop)
 	Mix_PlayMusic(m_music[id], loop);
 }
 
+void SoundManager::PlaySoundInChannel(int c, std::string id, int loop) {
+	Mix_PlayChannel(c , m_sfxs[id], loop);
+}
+
 void SoundManager::playSound(std::string id, int loop)
 {
 	Mix_PlayChannel(-1, m_sfxs[id], loop);
@@ -68,6 +72,15 @@ void SoundManager::setChunkVolume(std::string id, int volume) {
 //Volumen general de la música
 void SoundManager::setMusicVolume(int volume) {
 	Mix_VolumeMusic(volume);
+}
+
+//Cerrar canal
+void SoundManager::closeChannel(int c) {
+	Mix_HaltChannel(c);
+}
+
+bool SoundManager::isPlayingChannel(int c) {
+	return Mix_Playing(c);
 }
 
 // Metodo para liberar el mapa de musica y sonido

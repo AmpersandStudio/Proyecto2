@@ -89,6 +89,10 @@ void Player::update()
 			previousPos_ = position_;
 			// refresh animation frame
 			handleAnimation();
+
+			if (!TheSoundManager::Instance()->isPlayingChannel(2)) {
+				TheSoundManager::Instance()->PlaySoundInChannel(2, sFile_ , 0);
+			}
 		}
 	
 		TheCamera::Instance()->setTarget(&position_);	

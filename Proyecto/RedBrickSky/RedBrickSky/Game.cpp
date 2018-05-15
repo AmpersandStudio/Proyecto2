@@ -193,6 +193,7 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\punch.wav", "punch", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\punch_alt.wav", "punch_2", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\pasos.wav", "piedra", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\pasos2.wav", "piedra2", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\hierba.wav", "hierba", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\Censor_Beep.wav", "censura", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\coins.wav", "monedas", SOUND_SFX);
@@ -208,7 +209,7 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\School_ring.wav", "timbre", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\tirachinas.mp3", "Tirachinas", SOUND_SFX);
 
-	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 2);
+	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 3);
 }
 
 void Game::registerTypes()
