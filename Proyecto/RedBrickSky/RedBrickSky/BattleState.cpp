@@ -1076,7 +1076,14 @@ bool BattleState::run()
 	if (GameManager::Instance()->getHealth() > 0 && enemy->getHealth() <= 0) {
 		TheSoundManager::Instance()->stopMusic();
 		TheSoundManager::Instance()->playMusic("victory", 0);
-		std::cout << "HAS GANADO!" << std::endl;
+
+		int exp = (enemy->getAttack() + enemy->getDefense() + enemy->getVelocity()) * (GameManager::Instance()->getLevel() + (rand() % 5 + 1));
+		GameManager::Instance()->addMoney(exp);
+		// if NPC exp *= 2
+		// if BOSS exp *= 3
+		// if BOSS increase stats
+
+		std::cout << "HAS GANADO! Sweeties: " << to_string(exp) << std::endl;
 		lastTurn = true;
 	}
 	else if (GameManager::Instance()->getHealth() <= 0 && enemy->getHealth() > 0) {
