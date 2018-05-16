@@ -8,6 +8,9 @@
 
 class QuestionState : public GameState
 {
+private:
+	bool started_;
+	bool final_;
 public:
 	QuestionState();
 	virtual ~QuestionState();

@@ -16,7 +16,8 @@ int QuestionState::flyingFactor_ = 0;
 
 QuestionState::QuestionState()
 {
-	
+	started_ = false;
+	final_ = false;
 	TheSoundManager::Instance()->stopMusic();
 	TheSoundManager::Instance()->playSound("newgame", 0);
 
@@ -96,6 +97,7 @@ void QuestionState::render()
 	}
 	else
 	{
+		final_ = true;
 		TheTextureManager::Instance()->drawFull("qbg", 0, 0, 800, 600, Game::Instance()->getRenderer(), 0, 255);
 		TheTextureManager::Instance()->drawText("Siendo así...", TextureManager::Pixel32, { 255, 255, 255, 255 },
 			20, 220, Game::Instance()->getRenderer());
@@ -119,10 +121,50 @@ void QuestionState::render()
 			break;
 		}
 
-		TheTextureManager::Instance()->drawFull("buttonA", 730, 530, 32, 32, Game::Instance()->getRenderer(), 0, 255);
+		//TheTextureManager::Instance()->drawFull("buttonA", 730, 530, 32, 32, Game::Instance()->getRenderer(), 0, 255);
 	}
 
+
 	GameState::render();
+
+
+	if (XboxController::Instance()->getNumControllers() != 0) {
+
+		if (started_ && !final_) {
+
+			//A
+			TheTextureManager::Instance()->drawItem("botonesXbox", 175, 425,
+				70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+			//X
+			TheTextureManager::Instance()->drawItem("botonesXbox", 375, 425,
+				70, 50, 0, 3, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+			//Y
+			TheTextureManager::Instance()->drawItem("botonesXbox", 590, 425,
+				70, 50, 0, 4, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+
+		
+		}
+
+		else if(!final_) {
+			//B
+			TheTextureManager::Instance()->drawItem("botonesXbox", 520, 425,
+				70, 50, 0, 2, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+
+			//A
+			TheTextureManager::Instance()->drawItem("botonesXbox", 240, 425,
+				70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+		}
+
+		else {
+			TheTextureManager::Instance()->drawItem("botonesXbox", 700, 500,
+				70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+		}
+
+	}
 }
 
 bool QuestionState::handleEvent(const SDL_Event& event)
@@ -142,11 +184,32 @@ bool QuestionState::handleEvent(const SDL_Event& event)
 		XboxController::Instance()->onJoystickButtonDown(event);
 
 		if (XboxController::Instance()->getButtonState(0, 0)) { //Si se ha pulsado la A
-			toGame();
+			if (!started_) {
+				beginQuestions();
+				started_ = true;
+			}
+			else if (!final_) { addPhysic(); }
+
+			else if (final_)
+				toGame();
 		}
 
 		else if (XboxController::Instance()->getButtonState(0, 1)) {
-			toGame();
+			if (!started_)
+				toGame();
+			
+
+		}
+		else if (XboxController::Instance()->getButtonState(0, 2)) {
+			if (started_ && !final_)
+				addMagic();
+
+
+		}
+		else if (XboxController::Instance()->getButtonState(0, 3)) {
+			if (started_ && !final_)
+				addFlying();
+
 		}
 
 		XboxController::Instance()->onJoystickButtonUp(event); //Aseguro que levantamos el botón después de usarlo
@@ -295,12 +358,12 @@ void QuestionState::createQuestions()
 
 void QuestionState::createButton(Question q)
 {
-	Vector2D position1(0.50, 1.25);
-	Vector2D position2(1.55, 1.25);
-	Vector2D position3(2.60, 1.25);
+	Vector2D position1(0.50, 3);
+	Vector2D position2(1.55, 3);
+	Vector2D position3(2.60, 3);
 
 	double width_a = 200;
-	double height_a = 200;
+	double height_a = 100;
 
 	q.answer1->setPosition(position1);
 	q.answer1->setWidth(width_a);
