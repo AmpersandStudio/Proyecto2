@@ -121,7 +121,7 @@ public:
 
 	//Metodos para el BattleState
 	void exitBattle();
-	void toBattle();
+	void toBattle(int id);
 	int getEnemy();
 	void setAttackSound(string s) { atSound = s; };
 	string getAttackSound() { return atSound; };

@@ -65,7 +65,7 @@ void NPC::activate() {
  			if (isFighter_)
 			{
 				GameManager::Instance()->getInteractuable(this);
-				GameManager::Instance()->toBattle();
+				GameManager::Instance()->toBattle(0);
 			}
 		}
 	}

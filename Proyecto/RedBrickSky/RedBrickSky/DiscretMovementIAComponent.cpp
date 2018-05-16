@@ -5,7 +5,7 @@
 #include <time.h>       /* time */
 #include <math.h>
 
-DiscretMovementIAComponent::DiscretMovementIAComponent()
+DiscretMovementIAComponent::DiscretMovementIAComponent(int id) : id_(id)
 {
 	srand(time(NULL));
 	movement = rand() % 4 + 1;
@@ -56,7 +56,7 @@ void DiscretMovementIAComponent::horiz1(GameObject * o) {
 			Vector2D oriPos(0, 0);
 			o->setPosition(oriPos);
 			StateMachine* sm = Game::Instance()->getStateMachine();
-			sm->changeState(new BattleState());
+			sm->changeState(new BattleState(id_));
 		}
 	}
 }
@@ -92,7 +92,7 @@ void DiscretMovementIAComponent::horiz2(GameObject * o) {
 		Vector2D oriPos(-1, 0);
 		o->setPosition(oriPos);
 		StateMachine* sm = Game::Instance()->getStateMachine();
-		sm->changeState(new BattleState());
+		sm->changeState(new BattleState(id_));
 	}
 
 }
@@ -122,7 +122,7 @@ void DiscretMovementIAComponent::vert1(GameObject * o) {
 			Vector2D oriPos(0, 0);
 			o->setPosition(oriPos);
 			StateMachine* sm = Game::Instance()->getStateMachine();
-			sm->changeState(new BattleState());
+			sm->changeState(new BattleState(id_));
 		}
 	}
 }
@@ -166,7 +166,7 @@ void DiscretMovementIAComponent::alternate(GameObject * o) {
 			Vector2D oriPos(0, 0);
 			o->setPosition(oriPos);
 			StateMachine* sm = Game::Instance()->getStateMachine();
-			sm->changeState(new BattleState());
+			sm->changeState(new BattleState(id_));
 		}
 	}
 }

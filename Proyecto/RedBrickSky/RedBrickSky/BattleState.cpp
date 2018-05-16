@@ -6,7 +6,7 @@
 #include "GameManager.h"
 
 //bloque 0 (constructoras y destructoras) ---------------------------------------------------------------------------------
-BattleState::BattleState()
+BattleState::BattleState(int id) : id_(id)
 {
 
 	SDL_ShowCursor(1);
@@ -414,64 +414,93 @@ void BattleState::createEnemy()
 	int rnd = GameManager::Instance()->getEnemy();
 	int lv = GameManager::Instance()->getLevel();
 
-	switch (rnd)
-	{
-	case 0:
-		enemy = new BattleEnemy("Arbol", Physical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("arbolSS");
-		break;
+	if (id_ == 0) {
+		switch (rnd)
+		{
+		case 0:
+			enemy = new BattleEnemy("Arbol", Physical, 300, 10, 10, 100, 11);
+			enemy->setTextureId("arbolSS");
+			break;
 
-	case 1:
-		enemy = new BattleEnemy("Basura", Magical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("basura");
-		break;
+		case 1:
+			enemy = new BattleEnemy("Basura", Magical, 300, 10, 10, 100, 11);
+			enemy->setTextureId("basura");
+			break;
 
-	case 2:
-		enemy = new BattleEnemy("Bocata", Magical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("bocata");
-		break;
+		case 2:
+			enemy = new BattleEnemy("Bocata", Magical, 300, 10, 10, 100, 11);
+			enemy->setTextureId("bocata");
+			break;
 
-	case 3:
-		enemy = new BattleEnemy("Libro Mates", Magical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("libro1");
-		break;
+		case 3:
+			enemy = new BattleEnemy("Libro Mates", Magical, 300, 10, 10, 100, 11);
+			enemy->setTextureId("libro1");
+			break;
 
-	case 4:
-		enemy = new BattleEnemy("Escoba", Physical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("escoba");
-		break;
+		case 4:
+			enemy = new BattleEnemy("Escoba", Physical, 300, 10, 10, 100, 11);
+			enemy->setTextureId("escoba");
+			break;
 
-	case 5:
-		enemy = new BattleEnemy("Pelotas", Physical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("pelotas");
-		break;
+		case 5:
+			enemy = new BattleEnemy("Pelotas", Physical, 300, 10, 10, 100, 11);
+			enemy->setTextureId("pelotas");
+			break;
 
-	case 6:
-		enemy = new BattleEnemy("Libro Lengua", Magical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("libro2");
-		break;
+		case 6:
+			enemy = new BattleEnemy("Libro Lengua", Magical, 300, 10, 10, 100, 11);
+			enemy->setTextureId("libro2");
+			break;
 
-	case 7:
-		enemy = new BattleEnemy("Taquilla", Magical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("taquilla");
-		break;
+		case 7:
+			enemy = new BattleEnemy("Taquilla", Magical, 300, 10, 10, 100, 11);
+			enemy->setTextureId("taquilla");
+			break;
 
-	case 8:
-		enemy = new BattleEnemy("Avion", Magical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("avion");
-		break;
+		case 8:
+			enemy = new BattleEnemy("Avion", Magical, 300, 10, 10, 100, 11);
+			enemy->setTextureId("avion");
+			break;
 
-	case 9:
-		enemy = new BattleEnemy("Globo", Magical, 300, 10, 10, 100, 11);
-		enemy->setTextureId("globo");
-		break;
+		case 9:
+			enemy = new BattleEnemy("Globo", Magical, 300, 10, 10, 100, 11);
+			enemy->setTextureId("globo");
+			break;
+		}
+
+		if (lv != 0) {
+			enemy->setHealth(100 + (50 * lv));
+			enemy->setAttack(10 + (rand() % lv));
+			enemy->setDefense(10 + (rand() % lv));
+			enemy->setVelocity(10 + (rand() % lv));
+		}
 	}
+	else if (id_ == 1) {
+		int random = rand() % 3;
+		Type typ;
+		switch (random)
+		{
+		case 0:
+			typ = Physical;
+			break;
+		case 1:
+			typ = Magical;
+			break;
+		case 2:
+			typ = Support;
+			break;
+		default:
+			break;
+		}
+		enemy = new BattleEnemy("NPC", typ, 300, 10, 10, 100, 11);
+		enemy->setTextureId("libro2");
 
-	if (lv != 0) {
-		enemy->setHealth(100 + (50 * lv));
-		enemy->setAttack(10 + (rand() % lv));
-		enemy->setDefense(10 + (rand() % lv));
-		enemy->setVelocity(10 + (rand() % lv));
+		if (lv != 0) {
+			enemy->setHealth(100 + (50 * lv));
+			enemy->setAttack(10 + (rand() % lv));
+			enemy->setDefense(10 + (rand() % lv));
+			enemy->setVelocity(10 + (rand() % lv));
+		}
 	}
 
 	Vector2D pos2(3.3, 0.62);
@@ -691,19 +720,29 @@ void BattleState::initC() {
 		player->addAttack(ataques[GOLPE]);
 	}
 
-	std::vector<bool> ea;
-	for (unsigned int i = 0; i < e_ataques.size(); i++) ea.push_back(true);
-	Type aux_type = enemy->getType();
-	int count = 0;
-	while (count < 2)
-	{
-		int rnd = rand() % e_ataques.size();
-		if (e_ataques[rnd].type == aux_type && ea[rnd])
+	if (id_ == 0) {
+		std::vector<bool> ea;
+		for (unsigned int i = 0; i < e_ataques.size(); i++) ea.push_back(true);
+		Type aux_type = enemy->getType();
+		int count = 0;
+		while (count < 2)
 		{
-			ea[rnd] = false;
-			count++;
-			enemy->addAttack(e_ataques[rnd]);
+			int rnd = rand() % e_ataques.size();
+			if (e_ataques[rnd].type == aux_type && ea[rnd])
+			{
+				ea[rnd] = false;
+				count++;
+				enemy->addAttack(e_ataques[rnd]);
+			}
 		}
+	}
+	else if (id_ == 1) {
+		int rnd = rand() % ataques.size();
+		enemy->addAttack(ataques[rnd]);
+		if (rnd % 2 == 0)
+			enemy->addAttack(ataques[rnd + 1]);
+		else
+			enemy->addAttack(ataques[rnd - 1]);
 	}
 
 	float vel_player = player->getVelocity();

@@ -189,11 +189,8 @@ void PlayState::toInventary() {
 void PlayState::toBattle() 
 {
 	TheSoundManager::Instance()->stopMusic();
-
-	if(!GameManager::Instance()->getCharlie()) TheSoundManager::Instance()->playMusic("battle", 0);
-	else TheSoundManager::Instance()->playMusic("funk", 0);
 	StateMachine* sm = Game::Instance()->getStateMachine();
-	sm->pushState(new TransitionState());
+	sm->pushState(new TransitionState(0));
 }
 
 

@@ -14,9 +14,9 @@ vector<estado> GameManager::copyShopItems() { // no queréis que const vector<est
 	return shopObjects;
 }
 
-void GameManager::toBattle()
+void GameManager::toBattle(int id)
 {
-	Game::Instance()->getStateMachine()->pushState(new TransitionState());
+	Game::Instance()->getStateMachine()->pushState(new TransitionState(id));
 }
 
 void GameManager::exitBattle()

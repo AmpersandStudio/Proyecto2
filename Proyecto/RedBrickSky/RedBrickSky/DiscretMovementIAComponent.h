@@ -7,11 +7,12 @@ class DiscretMovementIAComponent :
 {
 private:
 	int movement;
+	int id_;
 	bool first;
 	bool altLap;
 	bool flag;
 public:
-	DiscretMovementIAComponent();
+	DiscretMovementIAComponent(int id);
 	~DiscretMovementIAComponent();
 	virtual void update(GameObject * o);
 	void horiz1(GameObject * o);

@@ -54,7 +54,7 @@ void Cartel::selectAction()
 	if (isFighter_)
 	{
 		GameManager::Instance()->getInteractuable(this);
-		GameManager::Instance()->toBattle();
+		GameManager::Instance()->toBattle(battleId);
 	}
 	else if (toShop == 1)
 	{

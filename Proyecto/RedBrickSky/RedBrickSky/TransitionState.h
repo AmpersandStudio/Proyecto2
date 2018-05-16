@@ -9,7 +9,7 @@ private:
 	GameComponent* square;
 
 public:
-	TransitionState();
+	TransitionState(int id);
 	~TransitionState();
 	virtual void render();
 };

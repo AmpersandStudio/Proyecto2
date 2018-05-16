@@ -61,6 +61,7 @@ protected:
 	int attackEnemy = 0;
 	int defenseEnemy = 0;
 	int precitionEnemy = 0;
+	int id_ = 0;
 
 	bool attack_;
 	bool bag_;
@@ -181,7 +182,7 @@ protected:
 public:
 	//constructora y destructora
 	//bloque 0 (constructoras y destructoras)
-	BattleState();
+	BattleState(int id);
 	virtual ~BattleState();
 
 	//metodos virtuales de gamestate

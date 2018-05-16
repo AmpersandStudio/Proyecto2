@@ -28,6 +28,8 @@ public:
 
 	void setMSG(std::string msg);
 
+	void setId(int id) { battleId = id; }
+
 private:
 	int toShop;
 	bool tenderMan;
@@ -40,6 +42,7 @@ private:
 	Dialogue text;
 	bool dialogueActive_ = false;
 	bool hasDialogue = true;
+	int battleId = 0;
 
 
 	Uint32 timeStart_;

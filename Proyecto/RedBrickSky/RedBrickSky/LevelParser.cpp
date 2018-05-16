@@ -128,6 +128,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			int tendero = 0;
 			int toPlayGround = 0;
 			int isFighter = 0;
+			int bid = 0;
 			//bool hasKey = false;
 
 
@@ -202,6 +203,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								property->Attribute("value", &isFighter);
 							}
+							else if (property->Attribute("name") == std::string("battleId"))
+							{
+								property->Attribute("value", &bid);
+							}
 						}
 					}
 				}
@@ -227,7 +232,6 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				c->setTileWidth(m_tileSize * m_width);
 				c->setTileHeight(m_tileSize * m_height);
 				c->setFighter(isFighter);
-
 				pLevel->getNPCs()->push_back(c);	
 				//pLevel->getNPCs()->push_back(static_cast<NPC*>(pGameObject));
 			}
@@ -243,6 +247,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				c->setFighter(isFighter);
 				c->setKeyID(keyID);
 				c->setPosition(Vector2D(c->getPosition().getX(), c->getPosition().getY() - 32));
+				c->setId(bid);
 
 				pLevel->getCarteles()->push_back(c);				
 
