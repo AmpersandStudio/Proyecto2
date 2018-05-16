@@ -432,7 +432,7 @@ void BattleState::createEnemy()
 			break;
 		}
 		enemy = new BattleEnemy("NPC", typ, 300, 10, 10, 100, 11);
-		enemy->setTextureId("libro2");
+		enemy->setTextureId("bokoblinSS");
 	}
 
 	else if (id_ == 2) {
@@ -760,6 +760,21 @@ void BattleState::initC() {
 			enemy->addAttack(ataques[rnd - 1]);
 	}
 	else if (id_ == 2) {
+		int rnd = rand() % ataques.size();
+		enemy->addAttack(ataques[rnd]);
+		if (rnd % 2 == 0)
+			enemy->addAttack(ataques[rnd + 1]);
+		else
+			enemy->addAttack(ataques[rnd - 1]);
+
+		rnd = rand() % ataques.size();
+		enemy->addAttack(ataques[rnd]);
+		if (rnd % 2 == 0)
+			enemy->addAttack(ataques[rnd + 1]);
+		else
+			enemy->addAttack(ataques[rnd - 1]);
+	}
+	else {
 		int rnd = rand() % ataques.size();
 		enemy->addAttack(ataques[rnd]);
 		if (rnd % 2 == 0)

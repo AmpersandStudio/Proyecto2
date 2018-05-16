@@ -209,6 +209,7 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\q12_2.png", "q12_2", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\q12_3.png", "q12_3", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\buttonA.png", "buttonA", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\bokoblinSS.png", "bokoblinSS", RENDERER_, 1, 2);
 
 	// Load Music
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);
