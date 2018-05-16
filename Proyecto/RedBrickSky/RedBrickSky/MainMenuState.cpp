@@ -77,16 +77,8 @@ void MainMenuState::toGame2()
 	Game::Instance()->getStateMachine()->pushState(new PlayState());
 }
 
-void MainMenuState::toSelector() {
-	Game::Instance()->getStateMachine()->pushState(new NameSelectorState());
-}
-
 void MainMenuState::toCredits() {
 	Game::Instance()->getStateMachine()->pushState(new CreditsState());
-}
-
-void MainMenuState::update() {
-	
 }
 
 bool MainMenuState::handleEvent(const SDL_Event& event) {
@@ -103,7 +95,7 @@ bool MainMenuState::handleEvent(const SDL_Event& event) {
 		}
 
 		else if (XboxController::Instance()->getButtonState(0, 2)) {
-			toSelector();
+			toCredits();
 		}
 
 		else if (XboxController::Instance()->getButtonState(0, 3)) {
@@ -127,6 +119,24 @@ bool MainMenuState::handleEvent(const SDL_Event& event) {
 	 GameState::handleEvent(event);
 
 	return handleEvent;
+}
+
+void MainMenuState::render() {
+
+	GameState::render();
+
+	if (XboxController::Instance()->getNumControllers() != 0) {
+	
+		TheTextureManager::Instance()->drawItem("botonesXbox", 325, 430,
+			70, 50, 0, 4, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+		TheTextureManager::Instance()->drawItem("botonesXbox", 325, 325,
+			70, 50, 0, 3, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+		TheTextureManager::Instance()->drawItem("botonesXbox", 325, 220,
+			70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+	}
+
 }
 
 //METODOS PARA EL MANDO

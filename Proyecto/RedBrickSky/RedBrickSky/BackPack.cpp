@@ -14,11 +14,12 @@ BackPack::BackPack()
 	money = GameManager::Instance()->getMoney();
 	invent.clear();
 	invent = GameManager::Instance()->copyInventory();
-	std::cout << invent.size() << endl;
-
+	
+	connected_ = false;
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 130, 515);
 	StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getPotions()), 280, 495);
 
+	
 	//Componentes necesarios
 	actualState_ = 0;
 	SDL_ShowCursor(1);
@@ -41,8 +42,8 @@ BackPack::BackPack()
 	creaEscena();
 
 	Button* button0 = new Button("clb", cleonMode, 0);
-	Vector2D position0(0.05, 0.8);
-	double width = 180;
+	Vector2D position0(5.3, 10);
+	double width = 70;
 	double height = 45;
 	button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(new RenderFrameComponent());
 	button0->addInputComponent(new ClickButtonComp());
@@ -342,9 +343,12 @@ void BackPack::creaEscena() {
 	creaFondoTienda();
 
 	//Creamos botón para volver al menú principal y los de cada clase
-	Button* bottonBack = new Button("3", toMenu, 0);
-
-	Vector2D position0(5.25, 0.5);
+	bottonBack = new Button("3", toMenu, 0);
+	Vector2D position0;
+	if (XboxController::Instance()->getNumControllers() != 0)
+		 position0.set(5, 0.5);
+	else 
+		 position0.set(5.25, 0.5);
 
 	double width = 120;
 	double height = 60;
@@ -408,6 +412,12 @@ void BackPack::update() {
 	GameState::update();
 }
 
+void BackPack::msn() {
+	StringToScreen::Instance()->pushInfinite("EQUIPAR", 20, -28);
+	StringToScreen::Instance()->pushInfinite("DESEQUIPAR", 20, -16);
+	StringToScreen::Instance()->pushInfinite("MOVER", 20, -6);
+}
+
 void BackPack::render() {
 
 	GameState::render();
@@ -442,5 +452,38 @@ void BackPack::render() {
 	TheTextureManager::Instance()->drawItem("21", 260, 510,
 		32, 32, 4, 0, 8, 8, Game::Instance()->getRenderer(), 0, 255);
 
+	if (XboxController::Instance()->getNumControllers() != 0) {
+		if (!connected_)
+			msn();
+		connected_ = true;
+		Vector2D c(5,0.5);
+		bottonBack->setPosition(c);
+
+		//B
+		TheTextureManager::Instance()->drawItem("botonesXbox", 720, 35,
+			70, 50, 0, 2, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+		//X
+		TheTextureManager::Instance()->drawItem("botonesXbox", 10, 40,
+			40, 30, 0, 3, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+		//A
+		TheTextureManager::Instance()->drawItem("botonesXbox", 10, 10,
+			40, 30, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+		//MOV
+		TheTextureManager::Instance()->drawItem("botonesXbox", 10, 70,
+			40, 30, 0, 0, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+	}
+	else {
+		Vector2D c(5.25, 0.5);
+		bottonBack->setPosition(c);
+		if (connected_) {
+			connected_ = false;
+			StringToScreen::Instance()->clearInfinite();
+			StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getMoney()), 130, 515);
+			StringToScreen::Instance()->pushInfinite(std::to_string(GameManager::Instance()->getPotions()), 280, 495);
+		}
+	}
 
 }

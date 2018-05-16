@@ -35,7 +35,7 @@ bool PotionShop::handleEvent(GameObject* o, const SDL_Event& event) {
 				StringToScreen::Instance()->changeInfinite(1, "Comprar pociones      x" + std::to_string(GameManager::Instance()->getPotions()));
 			}
 			else {
-				StringToScreen::Instance()->setMessage("¡No tines más dinero! ");
+				StringToScreen::Instance()->setMessage("¡No tienes más dinero! ");
 				StringToScreen::Instance()->startMessagin();
 			}
 		}

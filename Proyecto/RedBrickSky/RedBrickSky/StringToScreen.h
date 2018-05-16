@@ -17,6 +17,10 @@ private:
 
 	int posX_ = 350;
 	int posY_ = 450;
+	int oriX_ = 350;
+	int oriY_ = 450;
+	int oriW_ = 450;
+	int oriH_ = 135;
 	int offsetX_ = 25;
 	int offsetY_ = 20;
 	int dBoxWidth_ = 450;

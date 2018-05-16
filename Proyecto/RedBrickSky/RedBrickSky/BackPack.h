@@ -28,6 +28,8 @@ private:
 
 	vector<GameComponent*> botones;
 
+	Button* bottonBack;
+	bool connected_;
 	//Vectores para los distintos tipos de objetos
 	vector<estado> EquipedItems; //Vector para los objetos equipados
 
@@ -84,6 +86,7 @@ public:
 	vector<estado> getEquipedItems() { return EquipedItems; };
 	void pushEquipedItem(estado e) { EquipedItems.push_back(e); };
 	void pullEquipedItem() { EquipedItems.clear(); };
+	void msn();
 
 	static void cleonMode() { GameManager::Instance()->toggleCharlie(); }
 };

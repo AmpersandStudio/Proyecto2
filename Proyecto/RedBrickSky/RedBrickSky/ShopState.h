@@ -49,6 +49,10 @@ private:
 	int ultimaFilaY;
 	int auxOID;
 
+	Button* bottonBack;
+
+	bool connected_;
+
 	int Fils = 3;
 	int Cols = 6;
 	int Scols_ = 12;
@@ -80,10 +84,7 @@ public:
 	void destroySP();
 	void createSP();
 	void setInvent(vector<estado> v);
-
-
-
-
-
+	virtual void render();
+	void msn();
 };
 

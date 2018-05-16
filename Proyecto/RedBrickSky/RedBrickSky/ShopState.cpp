@@ -25,6 +25,8 @@ ShopState::ShopState()
 	GameComponent* backShop = new GameComponent();
 	backShop->setTextureId("shop1"); backShop->addRenderComponent(new RenderFullComponent());
 	stage.push_back(backShop);
+	
+	connected_ = false;
 
 	//Creamos la matiz y la llenamos de StandPoints
 	createSP();
@@ -64,7 +66,6 @@ void ShopState::setSP(vector<estado> s) {
 	for (int i = 0; i < s.size(); i++)
 		SP.push_back(s[i]);
 }
-
 
 void ShopState::mainMenuBotton() {
 
@@ -254,6 +255,24 @@ void ShopState::createSP() {
 
 	//Creamos los elementos de la mochila
 	createBagItems();
+
+	//Boton para volver atrás
+	bottonBack = new Button("3", toMenu, 0);
+	Vector2D position0;
+	if (XboxController::Instance()->getNumControllers() != 0)
+		position0.set(5, 0.3);
+	else
+		position0.set(5.25, 0.3);
+
+	double w = 120;
+	double h = 60;
+
+	bottonBack->setTextureId("3"); bottonBack->setPosition(position0); bottonBack->setWidth(w); bottonBack->setHeight(h);
+	bottonBack->addRenderComponent(new RenderSingleFrameComponent());// bottonBack->addInputComponent(new MouseScrollComponent());
+	bottonBack->addInputComponent(new MouseInputComponentButton());
+
+	stage.push_back(bottonBack);
+
 }
 
 bool ShopState::handleEvent(const SDL_Event & event)
@@ -273,4 +292,48 @@ void ShopState::setInvent(vector<estado> v) {
 	invent.clear();
 	for (int i = 0; i < v.size(); i++)
 		invent.push_back(v[i]);
+}
+
+void ShopState::msn() {
+	StringToScreen::Instance()->pushInfinite("COMPRAR", 30, -17);
+	StringToScreen::Instance()->pushInfinite("MOVER", 30, -7);
+}
+
+void ShopState::render() {
+	GameState::render();
+
+	if (XboxController::Instance()->getNumControllers() != 0) {
+		if (!connected_)
+			msn();
+		connected_ = true;
+		Vector2D c(5, 0.3);
+		bottonBack->setPosition(c);
+		//B
+		TheTextureManager::Instance()->drawItem("botonesXbox", 720, 25,
+			70, 50, 0, 2, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+		//A
+		TheTextureManager::Instance()->drawItem("botonesXbox", 20, 20,
+			40, 30, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+		//MOV
+		TheTextureManager::Instance()->drawItem("botonesXbox", 20, 50,
+			40, 30, 0, 0, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+		//X
+		TheTextureManager::Instance()->drawItem("botonesXbox", 710, 325,
+			70, 50, 0, 3, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+	}
+
+	else {
+		Vector2D c(5.25, 0.3);
+		bottonBack->setPosition(c);
+		if (connected_) {
+			connected_ = false;
+			StringToScreen::Instance()->clearInfinite();
+			StringToScreen::Instance()->pushInfinite("Caramelos: " + std::to_string(money), 350, 395);
+			StringToScreen::Instance()->pushInfinite("Comprar pociones      x" + std::to_string(GameManager::Instance()->getPotions()), 350, 320);
+
+		}
+	}
 }

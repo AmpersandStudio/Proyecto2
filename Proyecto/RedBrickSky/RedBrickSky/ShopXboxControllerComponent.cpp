@@ -199,6 +199,20 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 			}
 		}
 
+		else if (XboxController::Instance()->getButtonState(0, 2)) {
+			if (GameManager::Instance()->getMoney() >= GameManager::Instance()->getPotionsPrize()) {
+				GameManager::Instance()->addPotion();
+				GameManager::Instance()->setMoney(GameManager::Instance()->getMoney() - GameManager::Instance()->getPotionsPrize());
+				StringToScreen::Instance()->setMessage("¡Pocion comprada! ");
+				StringToScreen::Instance()->startMessagin();
+				StringToScreen::Instance()->changeInfinite(0, "Caramelos: " + std::to_string(GameManager::Instance()->getMoney()));
+				StringToScreen::Instance()->changeInfinite(1, "Comprar pociones      x" + std::to_string(GameManager::Instance()->getPotions()));
+			}
+			else {
+				StringToScreen::Instance()->setMessage("¡No tienes más dinero! ");
+				StringToScreen::Instance()->startMessagin();
+			}
+		}
 
 		else if (XboxController::Instance()->getButtonState(0, 1))
 		{

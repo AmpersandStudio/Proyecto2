@@ -10,13 +10,14 @@ class MainMenuState :
 public:
 	MainMenuState();
 	virtual ~MainMenuState();
+	virtual void render();
 	static void toGame();
 	static void toGame2();
 	bool handleEvent(const SDL_Event& event);
 	static void exit() { Game::Instance()->exitApp(); };
 	static void toSelector();
 	static void toCredits();
-	virtual void update();
+
 	//virtual bool handleEvent(const SDL_Event& event);
 private:
 

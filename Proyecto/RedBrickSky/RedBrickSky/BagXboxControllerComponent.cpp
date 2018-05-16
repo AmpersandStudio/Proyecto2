@@ -97,8 +97,6 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 				else aux.push_back(inv[c]);
 			}
 
-			std::cout << "INVETNARIO : " << inv.size() << endl;
-			std::cout << "EQUIPED : " << aux.size() << endl;
 
 			if (Inventary.size() != 0 && !sp[knowWhereWeAre_].empty) {
 				

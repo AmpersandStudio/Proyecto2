@@ -155,6 +155,8 @@ void StringToScreen::render() {
 
 		if (msgCont_ == 100) {
 			msgCont_ = 0;
+			posX_ = oriX_;
+			posY_ = oriY_;
 			messaging_ = false;
 			renderBack = false;
 		}

@@ -19,13 +19,19 @@ QuestionState::QuestionState()
 	
 	TheSoundManager::Instance()->stopMusic();
 	TheSoundManager::Instance()->playSound("newgame", 0);
-	
-	SDL_ShowCursor(1);
+
+	if (XboxController::Instance()->getNumControllers() != 0)
+		SDL_ShowCursor(0);
+	else
+		SDL_ShowCursor(1);
 
 	createInit();
 	createQuestions();
 
 	finalType_ = 0;
+
+	if (XboxController::Instance()->getNumControllers() == 0) //SOLO UN MANDO
+		XboxController::Instance()->insertController();
 }
 
 QuestionState::~QuestionState()
@@ -131,9 +137,26 @@ bool QuestionState::handleEvent(const SDL_Event& event)
 		if (GameManager::Instance()->getLast()) toGame();
 	}
 
+	else if (event.type == SDL_JOYBUTTONDOWN) {
+
+		XboxController::Instance()->onJoystickButtonDown(event);
+
+		if (XboxController::Instance()->getButtonState(0, 0)) { //Si se ha pulsado la A
+			toGame();
+		}
+
+		else if (XboxController::Instance()->getButtonState(0, 1)) {
+			toGame();
+		}
+
+		XboxController::Instance()->onJoystickButtonUp(event); //Aseguro que levantamos el botón después de usarlo
+	}
+
+	if (event.type == SDL_JOYBUTTONUP)
+		XboxController::Instance()->onJoystickButtonUp(event);
+
 	return GameState::handleEvent(event);
 }
-
 
 void QuestionState::createInit()
 {
@@ -344,7 +367,6 @@ void QuestionState::assignType()
 
 	finalType_ = t;
 }
-
 
 void QuestionState::toGame()
 {
