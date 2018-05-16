@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="120">
  <properties>
@@ -290,3 +291,387 @@
   </object>
  </objectgroup>
 </map>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="133">
+ <properties>
+  <property name="000" value="..\assets\000.png"/>
+  <property name="Personaje1" value="..\assets\Personaje1.png"/>
+  <property name="Personaje10" value="..\assets\Personaje10.png"/>
+  <property name="Personaje11" value="..\assets\Personaje11.png"/>
+  <property name="Personaje12" value="..\assets\Personaje12.png"/>
+  <property name="Personaje13" value="..\assets\Personaje13.png"/>
+  <property name="Personaje14" value="..\assets\Personaje14.png"/>
+  <property name="Personaje15" value="..\assets\Personaje15.png"/>
+  <property name="Personaje2" value="..\assets\Personaje2.png"/>
+  <property name="Personaje3" value="..\assets\Personaje3.png"/>
+  <property name="Personaje4" value="..\assets\Personaje4.png"/>
+  <property name="Personaje5" value="..\assets\Personaje5.png"/>
+  <property name="Personaje6" value="..\assets\Personaje6.png"/>
+  <property name="Personaje7" value="..\assets\Personaje7.png"/>
+  <property name="Personaje8" value="..\assets\Personaje8.png"/>
+  <property name="cartel" value="..\assets\cartel.png"/>
+  <property name="door" value="..\assets\door.png"/>
+  <property name="helicopter" value="..\assets\helicopter.png"/>
+  <property name="key" value="..\assets\key.png"/>
+  <property name="personaje9" value="..\assets\Personaje9.png"/>
+ </properties>
+ <tileset firstgid="1" name="Patrones1" tilewidth="32" tileheight="32" tilecount="168" columns="14">
+  <image source="LevelDesign/Tileset_1.png" width="448" height="384"/>
+ </tileset>
+ <tileset firstgid="169" name="TileSetLevelTutorial" tilewidth="32" tileheight="32" tilecount="272" columns="16">
+  <image source="Tileset_1 (1).png" width="512" height="574"/>
+ </tileset>
+ <tileset firstgid="441" name="TilesetDefinitivo" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="TilesetBetaTutorial.png" width="1920" height="1056"/>
+ </tileset>
+ <tileset firstgid="2421" name="Personajes_1" tilewidth="32" tileheight="32" tilecount="30" columns="3">
+  <image source="Personajes_1.png" width="126" height="320"/>
+ </tileset>
+ <tileset firstgid="2451" name="Personaje1" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje1.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2463" name="Personaje10" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje10.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2475" name="Personaje15" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje15.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2487" name="Personaje7" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje7.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2499" name="Personaje2" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje2.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2511" name="Personaje5" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje5.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2523" name="Personaje13" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje13.png" width="96" height="128"/>
+ </tileset>
+ <layer name="Collisions" width="50" height="100" visible="0">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztWm2KxCAMHfZSe5095R5tfi9lKUhIXr7VyjwQbI1JnpponXm/Xj/vZ5YXKav9CfO4sYEvqfLhsVd5Go8XA47HVf/9+i93fcTYNr4b266C7HJjJ9kd33l57IoqHit50rmjdSrH9RllkO5OaHHNPVv9s/K1+OiRQ/Y4XlEfunhYdVXpO4XHSszYr2bZPo2HxwfJnxn9kJ4OHuN5hZ5pUL+M/Y5Y13hUYQaP284JPE6Zj1N40Ho1OnK35Dv3Dda9d0hzo60PKe9yPJCdCLrW1AWNh4bbr9FHydduHlxdQ3QN7ciDPmtrn8qg/OXNbdG8a9H/BB4RZHkg+Vn7x+iHxa9TeNztXH+JRybverBjvopgNx7W7xUq5+ERyVfedVXJQ9v7vXmX1j3+WeUq54M7J3J1ST4DdAbz2kHyT+ZhuS9xOavY1s6QyB7tb/kd636PbEd5ZHQgoJit3FO6eczCaTw64sNzL1oZHyfkK07vU3lU67GuK6TPWyI+c98tlAdX7+SRPWeh/21IPKQ+mbtGi/+UiyaT+f0jOrY+KzZkvgc/POqx07rKxNBO83EyD6uNndZVxsZO84H6aTK7z4cVT5gPC546H5FzoubXLjye9v3BYdV9YjUy8XFhxrndisxvg6t4RPZT1HYSD61/hsd7KFa/JD80Hy39x+9gp32WRyU8Pll4gLEXdVptI8zigXRWyK3kUR0fVj3V8XEKj0p48pVVXtAB9Rp1iPIz9o+IX1751fs50u21G+XSVWb6RccBjZFl/MZ787udu0tH86HNFWfb46tHv9SeXcureXjlrDiBR3V8WNq9cqh/V5x7/OtcV5Y8osmcwqPq3O7FifOB3qH3lTL0vku6A6PP2X1V8hGNTyWPyP8sLUDnDnpu2ZnHrVP7r0JEp9besa5m2uzQeQIPSxyP7d8VRhm94ztPHenqsknrXcXKY6ZdK6Q8RZHJW8h2dcytQOcczy5/o1YuuQ==
+  </data>
+ </layer>
+ <layer name="Floor" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztnElvEzEUgO2kFfQGrWiuLaEUwYGlQuJSSsSR/T+w/AH+V+k1F8qRU+k9hbIc21IWcaEBnpWxZCwv73nsGU80h0+pmon9vtieeeO8ZIMxdgf4BNxsCJ+BL8BxEfsA2Gg9Wo/Ww+lxqcvYd3i82wB+FPw0eGx1GPvFy7HZmbRJwdevqc1jDdXjKYzHy045nnXpHr5+bW3aPGz9nIH35CE8nuX0GMvi6pvqIZ5f9xyTCtn3V8NzVI8leC9uwONyDeNB6dvn0RRieujnER+xPR6wyXoqC+N0YvQreATM8ng8gfYeI+hG7FNyj+FYRzDD8fjaOkDGJWM7BZz2MIf0OAcsIugVcfo8MLHJ+DB99wI8LsO1+FZnwpVumAflfUnlMVbypN+82R5rHbvHHvDe0s4IWOV5eQhs43GR/+8zKvxWOX291ekhXyd9Vrm9vSZ4xDj/tR7pPfrABQQrmXtcJYBxXqnAYxGOGbMJvjykZ8hrsL6pPY6Uv135yBxyLMsQy8M113vFeJjGJDcP11yXczzlmMTywMzxXD3ENd2Wb5nI1YPqkrMHxSV3D8ERoi/X68cKdXro+bzOyBPHJvAK2KrZwzYu+v2JjddFP28y8ZDjIvHFn6tHKNPoccLw+2ASiodofxwRNbfsF/2d57j9L50+x3mEtu8Ce+9IxeWRAjW3XCj6m+e4+0mdBeR4hLbvQs0j1fUxVP5/wPz3V9cYbX2MHG2GgDlfYc4tt4kedZx3p8FD7rU2yWMHeAfsEsciNw8TdXqoe0EufHsO2DmVygNzHyIYRnLI0QOb4+fqERp/Lh57JePPxaNM7K1H69F61OfxZ0o8sOTsgR2L2B73I3pg14XqgalPwu5ZqLFW7aG2bTomdD+lag/M58vYz+PVWJ93GdvmE14Q669MHkNmXwfY9YHZr9D3S1xg1vkekVjrXD9flfWYAWYdDDVSelxnk5rotQCPeWDBgIxbrQVO6SEcZE23qPFWXUI9TA4pPVQHieoS4vHW4pDCY8fioLvsBnrYasxje7gcdJecxwNb8z8I8HC5NM2jqvNVTI8lYNlBquvHUWSPuog9HjEQdQ16Tu6rcRAe4jsxvu+2ie+hcV6NhylPwtSMYsZkgIzBlbvr9Yu29zjEQzh8YLjrx0eEh6tWRo/PVrcQ4nEI/GX4eYWdG6Z6rNQeAtP3FlW+FcdR5rk+x/T7ul3L63KYV9i14iLUI8W8qtoj5bzy1cfFHo9U80r1obiY9kd8tfrU63mIh8tlzGif4dbtoc4zFf2Yk0CXKj2whLjk6CGg5nE55rvT5EGdW7l6UF1iehwqUOI9dHDgeV4icgfmuQZKGMe3i3Xw1eRiv88uPgfbZri8RBwXu35X7iXHYJ/h8pL9iH3KffBp+d2PWL+XUSfi9zL+AdoVhvw=
+  </data>
+ </layer>
+ <layer name="Hierbable" width="50" height="100">
+  <properties>
+   <property name="BigGrass" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2EsKg0AUBVGXkP2vNryBIMFuO4HIu2UdcOKoC+yf2yZJkiRJ514XTwo7eqF07AgNR+njl6REhP2jPK2je+vVmSvp7ELpKJSOYkdPhIaSPn5Jopqtz0nr9qgjbf95SkcKYkfy2bJ7w+rdsHND+bWjm287uqL8c0ga6wyhoZA60udGoc3z5I6VBjvusdpgxz2oHaP33TskSZKkkcRz+gylo9jRS/Ld9ojSsaN0FEpHoXR8onRRvjXK/LejF8oeSdnvKR3SP7wBibEXoQ==
+  </data>
+ </layer>
+ <layer name="Top" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztmstNBDEMhgfBiW0AWG5IIMSVbQBKoABagHpoYW887yAqQBwBCTqAAkiktRSsOK9xEmfIJ1kMo0zif5yXMzsM+bhVdqfsPmMbVLv3lmvNAypr/o/LxraVo34uIBZgtfzoDMNc2e7q+tlyL4ZNZTNk18puiPJv6wmNEM8erkzzarkX0i7c31K2jexR2RPhy87GMJyv/zVNyD39bCq2ds0695UdIHtZWUscK1sg+1T2VdOpBKai40TZKbJvZT81nep0OtU4WuMx6W3afJgCpg64HhMPCbj8MfdkMc9Jw6WDooQu3IavzRQdEmlVxxL5HKpD+hiRGI935c9HpE8SdWBwX7D569IhVV9tHSljjFrzbPck67CRqoOrfV89oe1IiAfHO8mlY2EpZ/O3dr/iouv4S4yOJbqP9zMmof658qAYjRzxGPNOU/M5zH/sV1R5TIxvHDrma/E64Lkx4HMCSkvo2kL5k1uHyRgd2g+ws8hzhjPj2ZC2fOTMxVrIP0JoQYdt34NpQQeFuTaX1ME1PlLGOSdc85WN0vGotX5wMpV5d0o6Us7YQojVAX7U+DbFqQOIzSWk6cD+j9URm0tScMXDlfdCOUnxAELicWnUW1vHlePboflX4zuLgLK2OmF98+U7lD+54nGJ6nTFw9xvuPYeLkJ14PcQoiOmX/n2Tz5yxUPnDAtB44MiZJwvmXVQY0PDOc5dUDpcvsXQ4nrOmUe1vC/hPvOB+Wk2cq7ScOa1oWfyutzM8B/HyrfHsVEq/3DFY+zaMZZa+UdsP8lxXoIpGQOu9zjleJR8ngvTj5kQn1JwvU+ub4cloHyEtQSuc2vJ2b9BSwv9zdRRa83j2F+30PdD8PWrVpAaD0nnu51pk2M+5axzHjH3X3jm6Fprh4/jRr+/T5GUM4FORxI55jnq3Evy74fMnBMM/HVZ6J5qr7Bu0y+XFlwOkLT+UXtX7CPHHleSbht9/97pdDpl+AU9hqau
+  </data>
+ </layer>
+ <layer name="Top-Top" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt3EFSgzAUgGHSopdox72udem4tAfwAt5Ar+EdvIHdewG14zG8g64L0gjYSBJ4Ngn838wbSoAQAqUhE5plAFy8qCx7bcSbaqfr+Y2qt9kY0jQ1q6bz2f4y03Zdefn4mMtuc7kr/5XhOLry6FOOppO8mi7zdno5b0prbiOx34VgnkN8FvX+Zal7l3XG6nk3XRSxDFkQIadFnP3zPm487zG+68MP5wMA5J0PbIfG5kLweMq6MeV3d4A6ezLsYz2ycwUAAGSl2Fa4T7DM2iHahABqpmekFKV83xuzsfWNhPT7uzq0bsv8pNs4LveTFNtVAOLWZ4zClMc1IG48DwMAXPB7gVik3u8jOQYG4/FoGRdrWx6LtaWcevl74HcTpBwfhS4BgL6mdt+N2XURK89A7UFV8f05b8dtVsVPmtqPWJn60ulfB9BEPxVS4HOdpjCObmrjblL7X4Ou602/j/1X+yr297XLYyvLaCunyzqQEfr70TzPvp9D759rFLDbAvnATss=
+  </data>
+ </layer>
+ <layer name="Fences&amp;Trees" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztXEuPHDUQ7p7ZS/gHIRF3IAfIbQnPwCYCAoTsQ+INP4BwRmRDpJwSfgEkK+W6G1YkxyRICzc4AWduSMAvCA8lB6rUbW3JlO0qu+zZHfikUrt33B5/7Sq7quzZc32377EOHM79z2PPYN54bOxzLsjjGsi2AQ98F1dAriba+hw+/8L43SGPG0bt4bu4DvJlor1N+HzL6N05uPHY75CMx4kZ8pR+N52vDsD1gX64Uqx596F6NbAWsSP6d8rjYbg+2A/XGEL1tHYrrR+yo+0AD8Qjwra5elq7tbbzeVoH9zvWCYfjvU5qQNsH2o9FkBW4PzOKpOzuUZ4BeRbkOSU3+twK075U8LljI4+StfA1ePY0yOvKNnKf80F5lPgm78Gz74N84LXx4aTrzo7y0UT+nBaUx0oFfd+Evh9eGGST4WGJ2jy4sjVajAfil+l88Hiosl614uGXreF4LMP1SFcu6PfdD/Td54H1Noy+98jIYdloLHy/D/uOtsHx4OqXwJKHD+w72oYra+FiKLzSMofaPLhyCs5HWSPXNe9vvj3vVR7aOj6Px6fhmPXodIgDj05l/cldP3J5UN/3YD/09SDTVuwzDq3WD8Tx0fd1cH09y7xz7rMn4f4pkKcZbq3WD8QZT69i75zLL5yC8isgr86Yh69XW9Mhh7AZsAE/v/A23L8D8m6Ax+GCeVcDX68sMUu9skRrvZLycHlEzbzbSq80PHLnXb9cAxoeOE+hnW8FxsNvJ8XDUp+xraWxPX+N1MYksX614LFqxMPPO/8Kff9tlN8ZHpb7UUvEf+R4cH+ncHqJwsUT6JM4353i3mSoT58vwWrFeRdxaGEQDn8b2n5Nv7015oHHsqF9+HmGVF50w9A+EC7mLZ2vuDyDw/XKeYYT/e4+pvX6keJhqc/IwWJfmTvHkOLhzjVwoHsjNFajZVqHjocEj013Y3jqL3LnGFI83LkGDnRvhMZqtEzr5IyHdH86xSMGujdCYzVapnW04+Eg2Z8u4bEI7T8BcgzkK7i/EZGb3cChRRyl5fEi9OklkJdBfoD7HyPyUzdwqHV+pITHG9CnN0HeEvYtV68ksNIrCVJ6FctPpWClVxL7SOlVLD+VgpVe7cD9NxH5tkvrlZ+fCq0fIR5uv7ZEryQ8cuarFutHznyVM+9K14/c8dDOV632P2rPV7V55I4H1SsJLHn4+Y/UeMTyJTl6tWTEg4ujYuORiqM0eQjksLoH7UOLmnmfVB4uBbffLJWa+RLUjfuZY+H2m6VSy85L6j/a5Z3NsIDl+d1FYRvPQxsv9MO+mpZHi3PhUh4OOftqUv+qBBoeFyfp8QjFH9Lz4yHcS9j+94HcNoedSXo8SuKPEmh44Hik/JLY/rgPrV8Qq6/Rqx2BXnEI2bnWL4jV/y/aOSJnPBCcnWvzR7H62vXD8jyDNn+Uqj8r/4rGcFz+3eXXpbGe1r+6BHLZQGgMR/Pv3y0M86jLr9N6Ft97eRyLj733Etu/iX0mjeG0sZ6kH58Y8pDg5wNlz4f6Yc1D+nsj698lWfOQnkmzPLuGfWqtV1Y42f07jpo3vZLsEaTqzEKvEJSHxEeflR+fAuUh8dE1fnxLhOycs4PUWROE5P8aSOo4rENscR7kU5ALkRiS41EC54/E/CvJ/z5wuAV9vw1yB+Trhjwc2PMNffj8Qgh3oe9/gPwJ8tcMeNytnM/1Yc1D838/LFHLPmLI0a8ULHlIf7+d+zvvGBwPmjPWlh2kv8Pm6pV8/8boJ+KasN3vrg/ashPp77Bpvdzv5Mo15qvWqDXvtgbywBjdKtcwC/ls5PAPDdPT5Q==
+  </data>
+ </layer>
+ <layer name="TopFences&amp;Trees" width="50" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2r9Nw0AUx/FzbCJ5BYKYhDABMECMmQAKChBSKpiCBSgp6GhYIBUTpMgWKBScdR2SdQ/Z3N07fz/Sq/yT/CLZ98c5Y3RbxW4AAADgH33NZLknYQ4ActIEus9doPsAkLuO3QAQQGPCzXUAMDUnhTFLW6fFOLlYzmxf57YuPP1Jcu24rf3Jpe2rtXXl+R3SHPK0K11pw3dbcJ5Bblu60u6wcqWd1nH3t+PKFTCmo8rVEL75gfljehaVKwAAAKmb2A0AQGC5fG+XnguX5qZkk8m+eX4QuwMAkOE7NbR4qWW5+57creL/RF8V9566b+F6fJ/4uv1N+H48C3NacV40LamdF+3bf7MvxxAPPePqOvPxNkWPnnfZdz2299qtSz48fXbXu9wnz1jWfgBdoynd
+  </data>
+ </layer>
+ <layer name="Personajes" width="50" height="100" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
+  </data>
+ </layer>
+ <objectgroup name="Objects" visible="0">
+  <object id="37" name="Player" type="Player" x="1232.67" y="381.33" width="32" height="32">
+   <properties>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="helicopter"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="2" name="Cofre" type="Bag" gid="92" x="126.667" y="1184.33" width="32" height="32"/>
+  <object id="9" name="Cofre" type="Bag" gid="108" x="128" y="798.667" width="32" height="32"/>
+  <object id="12" name="Cofre" type="Bag" gid="90" x="1536" y="1374" width="32" height="32"/>
+  <object id="13" name="Cofre" type="Bag" gid="109" x="32" y="2082" width="32" height="32"/>
+  <object id="14" name="Cofre" type="Bag" gid="90" x="1536" y="2560.67" width="32" height="32">
+   <properties>
+    <property name="Sweeties" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="15" name="Cofre" type="Bag" gid="90" x="1533" y="610" width="32" height="32"/>
+  <object id="16" name="Cofre" type="Bag" gid="90" x="1526.33" y="31.3333" width="32" height="32"/>
+  <object id="25" name="Cofre" type="Bag" gid="91" x="1278.67" y="895.333" width="32" height="32"/>
+  <object id="26" name="Cofre" type="Bag" gid="91" x="1313.33" y="898" width="32" height="32"/>
+  <object id="28" name="Cofre" type="Bag" gid="370" x="1533.33" y="1632" width="32" height="32"/>
+  <object id="29" name="Cofre" type="Bag" gid="370" x="1281.33" y="1633.33" width="32" height="32"/>
+  <object id="36" name="Cofre" type="Bag" gid="1289" x="765" y="638" width="32" height="32"/>
+  <object id="39" name="Personaje1" type="NPC" x="369.499" y="1932.91" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC1"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje1"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="42" name="Personaje2" type="NPC" x="710.666" y="2732" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC2"/>
+    <property name="isFighter" type="int" value="1"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje2"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="86" name="Personaje3" type="NPC" x="1132" y="1962.33" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC3"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje3"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="88" name="Personaje4" type="NPC" x="1134.67" y="1489.33" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC4"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje4"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="89" name="Personaje5" type="NPC" x="230" y="596" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC5"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje5"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="90" name="Personaje6" type="NPC" x="1404" y="1798" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC6"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje6"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="91" name="Personaje7" type="NPC" x="122" y="2352" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC7"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje7"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="92" name="Personaje8" type="NPC" x="1060" y="2256" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC8"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje8"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="93" name="Personaje9" type="NPC" x="826" y="254" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC9"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje9"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="94" name="Personaje10" type="NPC" x="1280" y="1058" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC10"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje10"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="95" name="Personaje11" type="NPC" x="658" y="1340" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC11"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje11"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="96" name="Personaje12" type="NPC" x="930" y="1796" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC12"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje12"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="97" name="Personaje13" type="NPC" x="1008" y="668" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC13"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje13"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="100" name="Personaje14" type="NPC" x="142" y="1668" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC14"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje14"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="101" name="Personaje15" type="NPC" x="774.909" y="2290.06" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC15"/>
+    <property name="numFrames" type="int" value="3"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="Personaje15"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="111" name="Tienda" type="Cartel" x="1379.33" y="286.667" width="30.6667" height="31.3333">
+   <properties>
+    <property name="shopping" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="114" name="Tienda" type="Cartel" x="1410" y="288.333" width="30.6667" height="31.3333">
+   <properties>
+    <property name="shopping" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="115" name="Door" type="Door" x="768" y="2496" width="64" height="32">
+   <properties>
+    <property name="Message" value="Door - Verja"/>
+    <property name="keyID" type="int" value="1"/>
+    <property name="numFrames" type="int" value="1"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="door1"/>
+    <property name="textureWidth" type="int" value="64"/>
+   </properties>
+  </object>
+  <object id="117" name="Cartel1" type="Cartel" x="687.5" y="2587.17" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC2Test"/>
+    <property name="isFighter" type="int" value="0"/>
+    <property name="keyID" type="int" value="1"/>
+    <property name="numFrames" type="int" value="2"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="cartel"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="118" name="Cartel3" type="Cartel" x="1312.67" y="2944.67" width="32" height="32">
+   <properties>
+    <property name="numFrames" type="int" value="2"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="cartel"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="119" name="Cartel2" type="Cartel" x="1119.22" y="234.061" width="32" height="32">
+   <properties>
+    <property name="numFrames" type="int" value="2"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="cartel"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="120" name="NPCBattler" type="Cartel" x="1102" y="375" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC2Test"/>
+    <property name="battleId" type="int" value="1"/>
+    <property name="isFighter" type="int" value="1"/>
+    <property name="keyID" type="int" value="0"/>
+    <property name="numFrames" type="int" value="2"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="cartel"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="122" name="NPCBattler" type="Cartel" x="1024" y="288" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC2Test"/>
+    <property name="battleId" type="int" value="2"/>
+    <property name="isFighter" type="int" value="1"/>
+    <property name="keyID" type="int" value="0"/>
+    <property name="numFrames" type="int" value="2"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="cartel"/>
+    <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="124" type="Cartel" x="577.333" y="3108" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO1"/>
+   </properties>
+  </object>
+  <object id="125" type="Cartel" x="961.333" y="3114" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO2"/>
+   </properties>
+  </object>
+  <object id="126" type="Cartel" x="670.667" y="3012.67" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO3"/>
+   </properties>
+  </object>
+  <object id="127" type="Cartel" x="868" y="3011.33" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO4"/>
+   </properties>
+  </object>
+  <object id="128" type="Cartel" x="610.667" y="2784.67" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO5"/>
+   </properties>
+  </object>
+  <object id="129" type="Cartel" x="926.667" y="2788.67" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO6"/>
+   </properties>
+  </object>
+  <object id="130" type="Cartel" x="609.333" y="2666" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO7"/>
+   </properties>
+  </object>
+  <object id="131" type="Cartel" x="930.667" y="2667.33" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO8"/>
+   </properties>
+  </object>
+  <object id="132" type="Cartel" x="865.333" y="2566" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO9"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
+>>>>>>> 556d3642f90dabf0a79a45c5103db0e10bda8dc8
