@@ -824,12 +824,12 @@ void BattleState::update() {
 		enemy->setColFrame(int(((SDL_GetTicks() / (400)) % 2)));
 		GameState::update();
 		if (!END_ && Attacking_) {
-			END_ = run(); 
+			END_ = run();
 		}
 		if (!damagedE || fail || crit || effect || notEffect || fai) contText++;
 		else contText = 0;
-		if (contText > 50) { 
-			keepText = false; fail = false; damagedE = true; damagedP = true; crit = false; 
+		if (contText > 50) {
+			keepText = false; fail = false; damagedE = true; damagedP = true; crit = false;
 			effect = false; notEffect = false; fai = false;
 			player->cancelCritical(); player->cancelEffective(); player->cancelNotEffective(); player->cancelFail();
 		}
@@ -882,7 +882,7 @@ void BattleState::render() {
 			temp_s = to_string(temp_a.pp) + "/" + to_string(temp_a.max_pp);
 			TheTextureManager::Instance()->drawText(temp_s, TextureManager::Pixel16, { 0,0,0,255 }, posXpp2, posYpp2, TheGame::Instance()->getRenderer());
 		}
-		
+
 		if ((!damagedE || fail) && keepText)
 			TheTextureManager::Instance()->drawText("FALLO!", TextureManager::WapenFont50, { 255,0,0,255 }, 50, 175, TheGame::Instance()->getRenderer());
 
@@ -922,6 +922,29 @@ void BattleState::render() {
 			notEffectE = true;
 		}
 	}
+
+
+	//ESTOS SON LOS BOTONES DEL MANDO, PARA QUE LOS COLOQUES DONDE SEAN NECESARIOS
+	//if (XboxController::Instance()->getNumControllers() != 0) {
+
+	//	//A
+	//	TheTextureManager::Instance()->drawItem("botonesXbox", 175, 425,
+	//		70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+	//	//X
+	//	TheTextureManager::Instance()->drawItem("botonesXbox", 375, 425,
+	//		70, 50, 0, 3, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+	//	//Y
+	//	TheTextureManager::Instance()->drawItem("botonesXbox", 590, 425,
+	//		70, 50, 0, 4, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+	//	//B
+	//	TheTextureManager::Instance()->drawItem("botonesXbox", 590, 425,
+	//		70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+	//}
+
+
 }
 
 
@@ -945,7 +968,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 
 				if (END_)
 					TheSoundManager::Instance()->stopMusic();
-					Game::Instance()->getStateMachine()->popState();
+				Game::Instance()->getStateMachine()->popState();
 
 				handledEvent = true;
 			}
@@ -972,6 +995,28 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 
 			handledEvent = true;
 		}
+
+
+		//PARA EL MANDO DE LA XBOX
+		if (event.type == SDL_JOYBUTTONDOWN) {
+
+			XboxController::Instance()->onJoystickButtonDown(event);
+
+			if (XboxController::Instance()->getButtonState(0, 0)) { //BOTON A
+			//AQUI LO QUE HACE CADA BOTON
+			}
+
+			if (XboxController::Instance()->getButtonState(0, 1)) { //BOTON B 
+				
+			}
+
+			//0,2 == BOTON X
+			//0,3 == BOTON Y
+
+		}
+
+		else if (event.type == SDL_JOYBUTTONUP)
+			XboxController::Instance()->onJoystickButtonUp(event);
 
 		if (!attackAnim_ && okPlayer_)
 			actButton = interfaz.button_0->handleEvent(event);
@@ -1055,7 +1100,7 @@ bool BattleState::run()
 {
 	if (lastTurn)
 	{
-		
+
 		return true;
 	}
 
