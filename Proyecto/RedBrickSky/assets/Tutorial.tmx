@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="123">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="133">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -34,12 +34,33 @@
  <tileset firstgid="2421" name="Personajes_1" tilewidth="32" tileheight="32" tilecount="30" columns="3">
   <image source="Personajes_1.png" width="126" height="320"/>
  </tileset>
- <layer name="Collisions" width="50" height="100">
+ <tileset firstgid="2451" name="Personaje1" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje1.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2463" name="Personaje10" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje10.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2475" name="Personaje15" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje15.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2487" name="Personaje7" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje7.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2499" name="Personaje2" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje2.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2511" name="Personaje5" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje5.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2523" name="Personaje13" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="Personaje13.png" width="96" height="128"/>
+ </tileset>
+ <layer name="Collisions" width="50" height="100" visible="0">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmmuq4zAMhctsarZzVzlL6++hXAxG6HH0cmzTAwankSV98SNO0vfr9fM+s7xIeTqfMMfQBrmkypdjr3Iax4sRx/Gp//vzW0Z91nxu/m0+9ylaXO7aSXHn37wcu6qK40lO2ne0Tu24NrON5rtT1rzmjtH8UF4kR4+dFo/jiubQxYH6qvJ3C8eTWnG/WhX7Ng5PDlI+K9ppfjo45v0K3dNo7TLxO+a6xVGlFRwjzg0ct/THLRy0Xq2OtVvKnXsG6753SH1jjQ9p3eU4tDgRdY2pjywOSyOvOUcp124Orm4pOoZ25KDH1tinNtr65V3bousu4v8EjoiyHJr9qvvHnAeS1y0c4zzXXuLIrLse7bheRbQbB/q8Qu08HJH1yjuuKjmse7933aV1T36oXWV/cPtEri7ZZ6TtwbxxNPuTOZD3Ja5kjdjWHlKLR9sj37HG71rsKEfGhyZtzlbeU7o5Vuk2jo754XkvWjk/blivOL+nclT7QceV5s9bIjlzzy2Ug6t3cmT3Wdr/NiQOqU3mXSOSP2WxbDLfP6LX1hcFU+Z58MtRr53GVWYO7dQfN3OgMXYaV5kYO/WH1s6y2b0/UJ3QH4hO7Y/IPtHKaxeO054/OD31PrFamfnx0Yp9O6rMt8GnOCL3U+3cTRxW+wzHeypoXlIeVo5I+/k52Bmf5aiUJyeEQ7n2ok80tqZVHJrPCrsnOarnB+qnen7cwlEpz3qF2gs+VL+gD9F+xf0jkpfX/un7uebbGzfK0lVW5kWvg3aNkOs3vzcf57l36Vp/WH3Fxfbk6vGftUPbn8rB+Tudo3p+rFTnPEfOe+1QzRzIOmLZ3MJRtW/3qprjKUnzg8sTyT9rQ993Se/A6HH1tbXWD2Rcejgi/7NEpO076L5lZ47h0/qvQsSndb5jXK2M2eHzBg50TR42fyuCKrG9dc1XV0xa7yoox8q4HiHfOzLfRCTtuMeIqLOPV5f/8aAisw==
+   eJztWm2KxCAMHfZSe5095R5tfi9lKUhIXr7VyjwQbI1JnpponXm/Xj/vZ5YXKav9CfO4sYEvqfLhsVd5Go8XA47HVf/9+i93fcTYNr4b266C7HJjJ9kd33l57IoqHit50rmjdSrH9RllkO5OaHHNPVv9s/K1+OiRQ/Y4XlEfunhYdVXpO4XHSszYr2bZPo2HxwfJnxn9kJ4OHuN5hZ5pUL+M/Y5Y13hUYQaP284JPE6Zj1N40Ho1OnK35Dv3Dda9d0hzo60PKe9yPJCdCLrW1AWNh4bbr9FHydduHlxdQ3QN7ciDPmtrn8qg/OXNbdG8a9H/BB4RZHkg+Vn7x+iHxa9TeNztXH+JRybverBjvopgNx7W7xUq5+ERyVfedVXJQ9v7vXmX1j3+WeUq54M7J3J1ST4DdAbz2kHyT+ZhuS9xOavY1s6QyB7tb/kd636PbEd5ZHQgoJit3FO6eczCaTw64sNzL1oZHyfkK07vU3lU67GuK6TPWyI+c98tlAdX7+SRPWeh/21IPKQ+mbtGi/+UiyaT+f0jOrY+KzZkvgc/POqx07rKxNBO83EyD6uNndZVxsZO84H6aTK7z4cVT5gPC546H5FzoubXLjye9v3BYdV9YjUy8XFhxrndisxvg6t4RPZT1HYSD61/hsd7KFa/JD80Hy39x+9gp32WRyU8Pll4gLEXdVptI8zigXRWyK3kUR0fVj3V8XEKj0p48pVVXtAB9Rp1iPIz9o+IX1751fs50u21G+XSVWb6RccBjZFl/MZ787udu0tH86HNFWfb46tHv9SeXcureXjlrDiBR3V8WNq9cqh/V5x7/OtcV5Y8osmcwqPq3O7FifOB3qH3lTL0vku6A6PP2X1V8hGNTyWPyP8sLUDnDnpu2ZnHrVP7r0JEp9besa5m2uzQeQIPSxyP7d8VRhm94ztPHenqsknrXcXKY6ZdK6Q8RZHJW8h2dcytQOcczy5/o1YuuQ==
   </data>
  </layer>
  <layer name="Floor" width="50" height="100">
@@ -67,12 +88,12 @@
  </layer>
  <layer name="Fences&amp;Trees" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="TopFences&amp;Trees" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2s8RwUAUx/GNhCIwKkEFKABRAQcHBdCPEjSgCAddGA7W7M2M2WfEbt7m+5l5p7yZ/HJI9k/WGN3msQMAAAD80a0l6zsI+wAgJYtA99kFug8AuXXsAEAACxNurAOAphlmxoxsjbNq+mKZ2FxTWzNPPklfWW20ryxtrtLWyvMc0j6k6Zq70oZ9W3CeQe6Su9KuW7jSTut3992gcAVUqV+4+oVvfGD8aJ5e4QoAAEBqEzsAAASWyn679Fy4tK9Jzomsmzvt2AkAQIZ9ajTFVvE/0aPi7HX3EM7H78zbVeC8aL3U7bzop/U363IgDXvPu+y7XgevecnJk/N1XTp/gV5PXPMktg==
+   eJzt2r9Nw0AUx/FzbCJ5BYKYhDABMECMmQAKChBSKpiCBSgp6GhYIBUTpMgWKBScdR2SdQ/Z3N07fz/Sq/yT/CLZ98c5Y3RbxW4AAADgH33NZLknYQ4ActIEus9doPsAkLuO3QAQQGPCzXUAMDUnhTFLW6fFOLlYzmxf57YuPP1Jcu24rf3Jpe2rtXXl+R3SHPK0K11pw3dbcJ5Bblu60u6wcqWd1nH3t+PKFTCmo8rVEL75gfljehaVKwAAAKmb2A0AQGC5fG+XnguX5qZkk8m+eX4QuwMAkOE7NbR4qWW5+57creL/RF8V9566b+F6fJ/4uv1N+H48C3NacV40LamdF+3bf7MvxxAPPePqOvPxNkWPnnfZdz2299qtSz48fXbXu9wnz1jWfgBdoynd
   </data>
  </layer>
  <layer name="Personajes" width="50" height="100" visible="0">
@@ -80,7 +101,7 @@
    eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="37" name="Player" type="Player" x="1232.67" y="381.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
@@ -310,6 +331,51 @@
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="cartel"/>
     <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="124" type="Cartel" x="577.333" y="3108" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO1"/>
+   </properties>
+  </object>
+  <object id="125" type="Cartel" x="961.333" y="3114" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO2"/>
+   </properties>
+  </object>
+  <object id="126" type="Cartel" x="670.667" y="3012.67" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO3"/>
+   </properties>
+  </object>
+  <object id="127" type="Cartel" x="868" y="3011.33" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO4"/>
+   </properties>
+  </object>
+  <object id="128" type="Cartel" x="610.667" y="2784.67" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO5"/>
+   </properties>
+  </object>
+  <object id="129" type="Cartel" x="926.667" y="2788.67" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO6"/>
+   </properties>
+  </object>
+  <object id="130" type="Cartel" x="609.333" y="2666" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO7"/>
+   </properties>
+  </object>
+  <object id="131" type="Cartel" x="930.667" y="2667.33" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO8"/>
+   </properties>
+  </object>
+  <object id="132" type="Cartel" x="865.333" y="2566" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="TUTO9"/>
    </properties>
   </object>
  </objectgroup>
