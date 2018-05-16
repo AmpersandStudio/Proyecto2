@@ -414,7 +414,49 @@ void BattleState::createEnemy()
 	int rnd = GameManager::Instance()->getEnemy();
 	int lv = GameManager::Instance()->getLevel();
 
-	if (id_ == 0) {
+	if (id_ == 1) {
+		int random = rand() % 3;
+		Type typ;
+		switch (random)
+		{
+		case 0:
+			typ = Physical;
+			break;
+		case 1:
+			typ = Magical;
+			break;
+		case 2:
+			typ = Support;
+			break;
+		default:
+			break;
+		}
+		enemy = new BattleEnemy("NPC", typ, 300, 10, 10, 100, 11);
+		enemy->setTextureId("libro2");
+	}
+
+	else if (id_ == 2) {
+		int random = rand() % 3;
+		Type typ;
+		switch (random)
+		{
+		case 0:
+			typ = Physical;
+			break;
+		case 1:
+			typ = Magical;
+			break;
+		case 2:
+			typ = Support;
+			break;
+		default:
+			break;
+		}
+		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy->setTextureId("libro1");
+	}
+
+	else {
 		switch (rnd)
 		{
 		case 0:
@@ -467,40 +509,13 @@ void BattleState::createEnemy()
 			enemy->setTextureId("globo");
 			break;
 		}
-
-		if (lv != 0) {
-			enemy->setHealth(100 + (50 * lv));
-			enemy->setAttack(10 + (rand() % lv));
-			enemy->setDefense(10 + (rand() % lv));
-			enemy->setVelocity(10 + (rand() % lv));
-		}
 	}
-	else if (id_ == 1) {
-		int random = rand() % 3;
-		Type typ;
-		switch (random)
-		{
-		case 0:
-			typ = Physical;
-			break;
-		case 1:
-			typ = Magical;
-			break;
-		case 2:
-			typ = Support;
-			break;
-		default:
-			break;
-		}
-		enemy = new BattleEnemy("NPC", typ, 300, 10, 10, 100, 11);
-		enemy->setTextureId("libro2");
 
-		if (lv != 0) {
-			enemy->setHealth(100 + (50 * lv));
-			enemy->setAttack(10 + (rand() % lv));
-			enemy->setDefense(10 + (rand() % lv));
-			enemy->setVelocity(10 + (rand() % lv));
-		}
+	if (lv != 0) {
+		enemy->setHealth(100 + (50 * lv));
+		enemy->setAttack(10 + (rand() % lv));
+		enemy->setDefense(10 + (rand() % lv));
+		enemy->setVelocity(10 + (rand() % lv));
 	}
 
 	Vector2D pos2(3.3, 0.62);
@@ -744,6 +759,21 @@ void BattleState::initC() {
 		else
 			enemy->addAttack(ataques[rnd - 1]);
 	}
+	else if (id_ == 2) {
+		int rnd = rand() % ataques.size();
+		enemy->addAttack(ataques[rnd]);
+		if (rnd % 2 == 0)
+			enemy->addAttack(ataques[rnd + 1]);
+		else
+			enemy->addAttack(ataques[rnd - 1]);
+
+		rnd = rand() % ataques.size();
+		enemy->addAttack(ataques[rnd]);
+		if (rnd % 2 == 0)
+			enemy->addAttack(ataques[rnd + 1]);
+		else
+			enemy->addAttack(ataques[rnd - 1]);
+	}
 
 	float vel_player = player->getVelocity();
 	float vel_enemy = enemy->getVelocity();
@@ -975,7 +1005,7 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 		else
 			actButton = false;
 
-		if (actButton && !attack_) {
+		if (actButton && !attack_ && id_ == 0) {
 			in = true;
 			run_ = true;
 			TheSoundManager::Instance()->stopMusic();
