@@ -32,6 +32,7 @@ private:
 	bool connected_;
 	//Vectores para los distintos tipos de objetos
 	vector<estado> EquipedItems; //Vector para los objetos equipados
+	vector<estado> notEquipedItems;
 
 	vector<estado> GCInventV;
 
@@ -88,6 +89,9 @@ public:
 	void pullEquipedItem() { EquipedItems.clear(); };
 	void msn();
 
+	vector<estado> getnotEquipedItems() { return notEquipedItems; };
+	void pushnotEquipedItem(estado e) { notEquipedItems.push_back(e); };
+	void setNotEquipedItems(vector<estado> v) { notEquipedItems.clear(); notEquipedItems = v; }
 	static void cleonMode() { GameManager::Instance()->toggleCharlie(); }
 };
 

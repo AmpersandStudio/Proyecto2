@@ -56,6 +56,15 @@ BackPack::~BackPack()
 	SDL_ShowCursor(0);
 	StringToScreen::Instance()->clearInfinite();
 	StringToScreen::Instance()->stopRendering();
+	invent.clear();
+	for (int p = 0; p < notEquipedItems.size(); p++) {
+		invent.push_back(notEquipedItems[p]);
+	}
+
+	for (int p = 0; p < EquipedItems.size(); p++) {
+		invent.push_back(EquipedItems[p]);
+	}
+
 	GameManager::Instance()->changeInventory(invent);
 
 	if (matriz != nullptr) {
@@ -120,7 +129,7 @@ void BackPack::cargaElementos() {
 		if (!invent[i].equiped) {
 
 			invent[i].objectID = auxP;
-
+			
 			int aux = 0;
 			int h = 0;
 			int j = 0;
@@ -136,6 +145,7 @@ void BackPack::cargaElementos() {
 					int y = SP[aux].mY;
 					createItemAtSP(x, y, invent[i].objectID, invent[i]);
 					SP[aux].empty = false;
+				
 					invent[i].mX = x;
 					invent[i].mY = y;
 					invent[i].GC = invent[invent[i].objectID].GC;
@@ -146,17 +156,24 @@ void BackPack::cargaElementos() {
 					aux++;
 				}
 			}
+			auxP++;
 		}
-		auxP++;
+		
 	}
 	vector<estado> stand = SP;
 	setSP(stand);
 
+	int g = 0;
+	for each(estado S in invent) {
+		if (!S.equiped) {
+			notEquipedItems[g] = S;
+			g++;
+		}
+	}
 	//Ponemos los objetos que tenga el personaje
 
 	for (int x = 0; x < EquipedItems.size(); x++) {
-
-
+		
 		GameComponent* gc = new GameComponent();
 		if (x == 0) {
 			Vector2D position0(2.6, 9.7);
@@ -228,6 +245,8 @@ void BackPack::creaSP() {
 			EItems++;
 			EquipedItems.push_back(invent[i]);
 		}
+		else
+			notEquipedItems.push_back(invent[i]);
 	}
 
 	buttonsCreated = false;
