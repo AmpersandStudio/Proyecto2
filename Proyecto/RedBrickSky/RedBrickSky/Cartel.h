@@ -9,12 +9,9 @@ public:
 	Cartel();
 	~Cartel();
 	void activate();
-	void selectAction();
+
 	//Para establecer el mensaje si es necesario
 	void setFighter(bool set) { isFighter_ = set; };
-	void setShopState(int s) { toShop = s; };
-	void setTenderMan(bool s) { tenderMan = s; };
-	void setToPlay(bool s) { toPlayGround = s; };
 	virtual void update();
 
 	virtual void render();
@@ -30,10 +27,7 @@ public:
 
 	void setId(int id) { battleId = id; }
 
-private:
-	int toShop;
-	bool tenderMan;
-	bool toPlayGround;
+protected:
 	int col_;
 	bool changed_;
 
@@ -51,6 +45,8 @@ private:
 	Uint32 timeTitleInterval_;
 
 	int keyID_;
+
+	virtual void selectAction();
 };
 
 class CartelCreator : public BaseCreator

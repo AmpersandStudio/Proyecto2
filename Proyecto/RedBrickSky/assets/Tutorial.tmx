@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="133">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="138">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -102,7 +102,7 @@
   </data>
  </layer>
  <objectgroup name="Objects" visible="0">
-  <object id="37" name="Player" type="Player" x="1232.67" y="381.33" width="32" height="32">
+  <object id="37" name="Player" type="Player" x="1299.67" y="381.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -262,14 +262,14 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="111" name="Tienda" type="Cartel" x="1379.33" y="286.667" width="30.6667" height="31.3333">
+  <object id="111" name="Tienda" type="Teleport" x="1379.33" y="288.667" width="30.6667" height="31.3333">
    <properties>
-    <property name="shopping" type="int" value="1"/>
+    <property name="changeLevel" type="int" value="6"/>
    </properties>
   </object>
-  <object id="114" name="Tienda" type="Cartel" x="1410" y="288.333" width="30.6667" height="31.3333">
+  <object id="114" name="Tienda" type="Teleport" x="1410" y="288.333" width="30.6667" height="31.3333">
    <properties>
-    <property name="shopping" type="int" value="1"/>
+    <property name="changeLevel" type="int" value="6"/>
    </properties>
   </object>
   <object id="115" name="Door" type="Door" x="768" y="2496" width="64" height="32">
@@ -282,11 +282,11 @@
     <property name="textureWidth" type="int" value="64"/>
    </properties>
   </object>
-  <object id="117" name="Cartel1" type="Cartel" x="687.5" y="2587.17" width="32" height="32">
+  <object id="117" name="Cartel1" type="Cartel" x="1326.5" y="1272.17" width="32" height="32">
    <properties>
     <property name="Message" value="NPC2Test"/>
     <property name="isFighter" type="int" value="0"/>
-    <property name="keyID" type="int" value="1"/>
+    <property name="keyID" type="int" value="2"/>
     <property name="numFrames" type="int" value="2"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="cartel"/>
@@ -376,6 +376,13 @@
   <object id="132" type="Cartel" x="865.333" y="2566" width="29.3333" height="28">
    <properties>
     <property name="Message" value="TUTO9"/>
+   </properties>
+  </object>
+  <object id="135" type="Teleport" x="1484" y="1338" width="55" height="39">
+   <properties>
+    <property name="Message" value="Door - Verja"/>
+    <property name="changeLevel" type="int" value="1"/>
+    <property name="keyID" type="int" value="2"/>
    </properties>
   </object>
  </objectgroup>

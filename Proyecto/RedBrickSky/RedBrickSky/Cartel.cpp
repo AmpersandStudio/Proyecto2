@@ -25,28 +25,29 @@ void Cartel::activate()
 	StringToScreen::Instance()->startMessagin();*/
 
 	std::cout << Msg_ << endl;
-
-	if (!hasDialogue)
-		selectAction();
-	else
+	if (keyID_ == 0 || !GameManager::Instance()->getDoor(keyID_))
 	{
-		if (!dialogueActive_ && !GameManager::Instance()->getDialogueState())
+		if (!hasDialogue)
+			selectAction();
+		else
 		{
-			dialogueActive_ = true;
-			GameManager::Instance()->setDialogueState(true, &text);
-			TheSoundManager::Instance()->playSound("dialogo", 0);
-		}
-		else if (dialogueActive_)
-		{
-			dialogueActive_ = text.nextDialogue();
-			if (!dialogueActive_)
+			if (!dialogueActive_ && !GameManager::Instance()->getDialogueState())
 			{
-				GameManager::Instance()->setDialogueState(false, nullptr);
-				selectAction();
+				dialogueActive_ = true;
+				GameManager::Instance()->setDialogueState(true, &text);
+				TheSoundManager::Instance()->playSound("dialogo", 0);
+			}
+			else if (dialogueActive_)
+			{
+				dialogueActive_ = text.nextDialogue();
+				if (!dialogueActive_)
+				{
+					GameManager::Instance()->setDialogueState(false, nullptr);
+					selectAction();
+				}
 			}
 		}
 	}
-
 }
 
 void Cartel::selectAction()
@@ -56,17 +57,6 @@ void Cartel::selectAction()
 		GameManager::Instance()->getInteractuable(this);
 		GameManager::Instance()->toBattle(battleId);
 	}
-	else if (toShop == 1)
-	{
-		//SoundManager::Instance()->stopMusic();
-		GameManager::Instance()->setCurrentLevel(GameManager::TIENDA);
-	}
-	else if (tenderMan)
-		TheGame::Instance()->getStateMachine()->pushState(new ShopState());
-
-	else if (toPlayGround)
-		GameManager::Instance()->setCurrentLevel(0);
-
 	else if (!isFighter_ && keyID_ != 0)
 		GameManager::Instance()->setDoor(keyID_);
 }

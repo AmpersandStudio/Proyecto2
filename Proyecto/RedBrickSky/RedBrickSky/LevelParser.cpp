@@ -10,6 +10,7 @@
 #include "Level.h"
 #include "Camera.h"
 #include "Key.h"
+#include "Teleport.h"
 
 Level* LevelParser::parseLevel(const char *levelFile)
 {
@@ -124,11 +125,9 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			std::string textureID = "000";
 			std::string type = "Interactuable";
 			std::string Message = " ";
-			int toShop = 0;
-			int tendero = 0;
-			int toPlayGround = 0;
 			int isFighter = 0;
 			int bid = 0;
+			int teleport = 0;
 			//bool hasKey = false;
 
 
@@ -185,19 +184,9 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								property->Attribute("value", &keyID);
 							}
-							else if (property->Attribute("name") == std::string("shopping"))
+							else if (property->Attribute("name") == std::string("changeLevel"))
 							{
-								property->Attribute("value", &toShop);
-							}
-							else if (property->Attribute("name") == std::string("tendero"))
-							{
-								//tendero = property->Attribute("value");
-								property->Attribute("value", &tendero);
-							}
-							else if (property->Attribute("name") == std::string("goingToPlay"))
-							{
-								//toPlayGround = property->Attribute("value");
-								property->Attribute("value", &toPlayGround);
+								property->Attribute("value", &teleport);
 							}
 							else if (property->Attribute("name") == std::string("isFighter"))
 							{
@@ -241,9 +230,6 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			{
 				Cartel* c = static_cast<Cartel*>(pGameObject);
 				c->setMSG(Message);
-				c->setShopState(toShop);
-				c->setTenderMan(tendero);
-				c->setToPlay(toPlayGround);
 				c->setFighter(isFighter);
 				c->setKeyID(keyID);
 				c->setPosition(Vector2D(c->getPosition().getX(), c->getPosition().getY() - 32));
@@ -251,6 +237,17 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 
 				pLevel->getCarteles()->push_back(c);				
 
+			}
+			if (type == "Teleport")
+			{
+				Teleport* c = static_cast<Teleport*>(pGameObject);
+				c->setMSG(Message);
+				c->setKeyID(keyID);
+				c->setLevelTeleport(teleport);
+				c->setPosition(Vector2D(c->getPosition().getX(), c->getPosition().getY() - 32));
+				c->setId(bid);
+
+				pLevel->getCarteles()->push_back(c);
 			}
 
 			if (type == "Bag")

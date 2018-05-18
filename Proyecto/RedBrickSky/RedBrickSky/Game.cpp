@@ -18,6 +18,7 @@
 #include "Cartel.h"
 #include "Key.h"
 #include "Door.h"
+#include"Teleport.h"
 
 #include "StringToScreen.h"
 
@@ -270,6 +271,7 @@ void Game::registerTypes()
 	TheGameObjectFactory::Instance()->registerType("Bag", new BagCreator());
 	TheGameObjectFactory::Instance()->registerType("Key", new KeyCreator());
 	TheGameObjectFactory::Instance()->registerType("Door", new DoorCreator());
+	TheGameObjectFactory::Instance()->registerType("Teleport", new TeleportCreator());
 }
 
 void Game::begin()
