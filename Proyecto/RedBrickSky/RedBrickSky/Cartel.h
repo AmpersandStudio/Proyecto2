@@ -20,6 +20,8 @@ public:
 
 	void isDefeated();
 
+	inline void setToShop(int shop) { toShop = shop; }
+
 	inline void setKeyID(int id) { keyID_ = id; }
 	inline int getKeyID() { return keyID_; };
 
@@ -30,6 +32,8 @@ public:
 protected:
 	int col_;
 	bool changed_;
+
+	bool toShop;
 
 	bool isFighter_ = false;
 	std::string Msg_;

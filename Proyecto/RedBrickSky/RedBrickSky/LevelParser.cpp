@@ -127,6 +127,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			std::string Message = " ";
 			int isFighter = 0;
 			int bid = 0;
+			int toShop = 0;
 			int teleport = 0;
 			//bool hasKey = false;
 
@@ -184,6 +185,10 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								property->Attribute("value", &keyID);
 							}
+							else if (property->Attribute("name") == std::string("toShop"))
+							{
+								property->Attribute("value", &toShop);
+							}
 							else if (property->Attribute("name") == std::string("changeLevel"))
 							{
 								property->Attribute("value", &teleport);
@@ -231,6 +236,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				Cartel* c = static_cast<Cartel*>(pGameObject);
 				c->setMSG(Message);
 				c->setFighter(isFighter);
+				c->setToShop(toShop);
 				c->setKeyID(keyID);
 				c->setPosition(Vector2D(c->getPosition().getX(), c->getPosition().getY() - 32));
 				c->setId(bid);

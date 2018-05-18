@@ -5,7 +5,7 @@
 #include "playState.h"
 #include "Camera.h"
 
-Cartel::Cartel() : dialogueActive_(false), isFighter_(false),hasDialogue(false), keyID_(0)
+Cartel::Cartel() : dialogueActive_(false), isFighter_(false),hasDialogue(false), keyID_(0),toShop(false)
 {
 	timeStart_ = SDL_GetTicks();
 	timeDisplayInterval_ = 700;
@@ -56,6 +56,11 @@ void Cartel::selectAction()
 	{
 		GameManager::Instance()->getInteractuable(this);
 		GameManager::Instance()->toBattle(battleId);
+	}
+	else if (toShop)
+	{
+		//SoundManager::Instance()->stopMusic();
+		TheGame::Instance()->getStateMachine()->pushState(new ShopState());
 	}
 	else if (!isFighter_ && keyID_ != 0)
 		GameManager::Instance()->setDoor(keyID_);

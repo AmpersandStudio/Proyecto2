@@ -44,17 +44,17 @@
    eJxjYIAALg5MTE2AzXxSMa3MHcXUjXtapB9S7aDUj7jUIfOpaQet4oIa7iTFDloBarqVGDtoZQ897EC2h5aAWmUMPcqxgShDBwIDAIsIEqM=
   </data>
  </layer>
- <objectgroup name="Capa de Objetos 1" visible="0">
+ <objectgroup name="Capa de Objetos 1">
   <object id="1" name="Tendero" type="Cartel" x="130" y="257" width="32" height="32">
    <properties>
     <property name="Message " value="¡HOLA CARACOLA!"/>
-    <property name="tendero" type="int" value="1"/>
+    <property name="toShop" type="int" value="1"/>
    </properties>
   </object>
   <object id="2" name="Tendero" type="Cartel" x="129" y="323" width="32" height="32">
    <properties>
     <property name="Message " value="¡HOLA CARACOLA!"/>
-    <property name="tendero" type="int" value="1"/>
+    <property name="toShop" type="int" value="1"/>
    </properties>
   </object>
   <object id="3" name="PuertaTienda1" type="Teleport" x="480" y="542" width="32" height="32">
