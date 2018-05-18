@@ -56,14 +56,6 @@ BackPack::~BackPack()
 	SDL_ShowCursor(0);
 	StringToScreen::Instance()->clearInfinite();
 	StringToScreen::Instance()->stopRendering();
-	invent.clear();
-	for (int p = 0; p < notEquipedItems.size(); p++) {
-		invent.push_back(notEquipedItems[p]);
-	}
-
-	for (int p = 0; p < EquipedItems.size(); p++) {
-		invent.push_back(EquipedItems[p]);
-	}
 
 	GameManager::Instance()->changeInventory(invent);
 
@@ -124,10 +116,8 @@ void BackPack::cargaElementos() {
 
 	//Asginamos los elementos dentro del vector de la mochila a cada casilla
 	int auxP = 0;
+	
 	for (unsigned int i = 0; i < invent.size(); i++) {
-
-		if (!invent[i].equiped) {
-
 			invent[i].objectID = auxP;
 			
 			int aux = 0;
@@ -159,17 +149,17 @@ void BackPack::cargaElementos() {
 			auxP++;
 		}
 		
-	}
+	
 	vector<estado> stand = SP;
 	setSP(stand);
 
-	int g = 0;
-	for each(estado S in invent) {
-		if (!S.equiped) {
-			notEquipedItems[g] = S;
-			g++;
-		}
-	}
+	//int g = 0;
+	//for each(estado S in invent) {
+	//	if (S.equiped) {
+	//		EquipedItems[g] = S;
+	//		g++;
+	//	}
+	//}
 	//Ponemos los objetos que tenga el personaje
 
 	for (int x = 0; x < EquipedItems.size(); x++) {
@@ -198,7 +188,6 @@ void BackPack::cargaElementos() {
 		
 
 		EquipedItems[x].GC = gc;
-
 		stage.push_back(gc);
 	}
 
@@ -505,4 +494,25 @@ void BackPack::render() {
 		}
 	}
 
+}
+
+void BackPack::pullEquipedItem() {
+	bool found = false;
+	for (int i = 0; i < stage.size() && !found; i++) {
+		if (stage[i]->getPosition().getX() == 2.6 && stage[i]->getPosition().getY() == 9.7) {
+			stage.erase(stage.begin() + i);
+			found = true;
+		}
+	}
+
+	found = false;
+
+	for (int i = 0; i < stage.size() && !found; i++) {
+		 if (stage[i]->getPosition().getX() == 5.8 && stage[i]->getPosition().getY() == 9.7) {
+			stage.erase(stage.begin() + i);
+			found = true;
+		}
+	}
+	
+	EquipedItems.clear();
 }

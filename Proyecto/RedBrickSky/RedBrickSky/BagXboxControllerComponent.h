@@ -42,7 +42,5 @@ public:
 
 	bool handleEvent(GameObject* o, const SDL_Event& event);
 
-	void move();
-
 };
 

@@ -86,13 +86,12 @@ public:
 	void setLeft(bool l) { leftOccupied = l; };
 	vector<estado> getEquipedItems() { return EquipedItems; };
 	void pushEquipedItem(estado e) { EquipedItems.push_back(e); };
-	void pullEquipedItem() { EquipedItems.clear(); };
+	void pullEquipedItem();
 	void msn();
 
-	vector<estado> getnotEquipedItems() { return notEquipedItems; };
-	void pushnotEquipedItem(estado e) { notEquipedItems.push_back(e); };
-	void setNotEquipedItems(vector<estado> v) { notEquipedItems.clear(); notEquipedItems = v; }
 	static void cleonMode() { GameManager::Instance()->toggleCharlie(); }
+
+	void stageBack(GameComponent* gc) { stage.push_back(gc); };
 };
 
 

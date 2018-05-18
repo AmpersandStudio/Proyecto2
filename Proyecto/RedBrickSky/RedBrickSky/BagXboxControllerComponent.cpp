@@ -91,9 +91,9 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 			vector<estado> sp = bag->getSP();
 			//copio el inventario
 			Inventary.clear();
-			Inventary = bag->getnotEquipedItems();
-			std::cout << Inventary.size() << endl;
-			if (Inventary.size() != 0 && !sp[knowWhereWeAre_].empty) {
+			Inventary = bag->getInvent();
+			
+			if (Inventary.size() != 0 && !sp[knowWhereWeAre_].empty && !Inventary[knowWhereWeAre_].equiped) {
 
 				Inventary[knowWhereWeAre_].equiped = true;
 				
@@ -103,55 +103,39 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 					//Si la casilla izquierda de la mochila está libre
 					if (!bag->getLeft()) {
 						Vector2D position0(2.6, 9.7);
-						Inventary[knowWhereWeAre_].GC->setPosition(position0);
+						Inventary[knowWhereWeAre_].equiped = true;
 						bag->setLeft(true);
 						isLeft = true;
+						bag->pushEItem();
+						bag->pushEquipedItem(Inventary[knowWhereWeAre_]);
 
-						vector<estado> p;
-						for (int i = 0; i < Inventary.size(); i++) {
-							if (!Inventary[i].equiped) {
-								p.push_back(Inventary[i]);
-							}
+						//Creamos el nuevo objeto
+						
+						GameComponent* gc2 = new GameComponent();
+						gc2->setTextureId(Inventary[knowWhereWeAre_].tx); gc2->setOriPos(position0); gc2->setPosition(position0); gc2->setWidth(45); gc2->setHeight(45);
+						gc2->addRenderComponent(new RenderSingleFrameComponent());
+						gc2->setColFrame(Inventary[knowWhereWeAre_].colFrame); gc2->setRowFrame(Inventary[knowWhereWeAre_].FilFrame);
 
-							else {
-								//Actualizamos la mochila
-								bag->pushEItem();
-								bag->pushEquipedItem(Inventary[knowWhereWeAre_]);
-							}
+						bag->stageBack(gc2);
+						bag->pushEquipedItem(Inventary[knowWhereWeAre_]);
+						
 						}
-
-						bag->setNotEquipedItems(p);
-						std::cout << "P::::" << p.size() << endl;
-					}
+					
 					else {
 						Vector2D position1(5.8, 9.7);
-						Inventary[knowWhereWeAre_].GC->setPosition(position1);
+						Inventary[knowWhereWeAre_].equiped = true;
+						bag->pushEItem();
 
-						vector<estado> p;
-						for (int i = 0; i < Inventary.size(); i++) {
-							if (!Inventary[i].equiped) {
-								p.push_back(Inventary[i]);
-							}
+						//Creamos el nuevo objeto
 
-							else {
-								//Actualizamos la mochila
-								bag->pushEItem();
-								bag->pushEquipedItem(Inventary[knowWhereWeAre_]);
-							}
-						}
-						bag->setNotEquipedItems(p);
-						std::cout << "P::::" << p.size() << endl;
+						GameComponent* gc2 = new GameComponent();
+						gc2->setTextureId(Inventary[knowWhereWeAre_].tx); gc2->setOriPos(position1); gc2->setPosition(position1); gc2->setWidth(45); gc2->setHeight(45);
+						gc2->addRenderComponent(new RenderSingleFrameComponent());
+						gc2->setColFrame(Inventary[knowWhereWeAre_].colFrame); gc2->setRowFrame(Inventary[knowWhereWeAre_].FilFrame);
+
+						bag->stageBack(gc2);
 					}
 				
-					//Buscamos el SP que hemos dejado atrás, donde estaba el objeto, y le decimos que está vacío
-					for (int i = 0; i < sp.size(); i++)
-					{
-						if (sp[i].ID == knowWhereWeAre_) {
-							sp[i].empty = true;
-
-						}
-					}
-					
 				}
 
 				else {
@@ -162,11 +146,9 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 					StringToScreen::Instance()->startMessagin();
 				}
 
-				//GameManager::Instance()->changeInventory(Inventary);
-				//bag->setNotEquipedItems(Inventary);
-				//bag->setInvent(Inventary);
-				bag->setSP(sp);
-				move();
+				GameManager::Instance()->changeInventory(Inventary);
+				bag->setInvent(Inventary);
+
 				
 			}
 		}
@@ -174,47 +156,26 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 		else if (XboxController::Instance()->getButtonState(0, 2)) {
 
 			vector<estado> sp = bag->getSP();
-
+			vector<estado> Inventary = bag->getInvent();
 			for each (estado S in bag->getEquipedItems())
 			{
 
 				bag->pullEitem();
 				bag->setLeft(false);
 				isLeft = false;
-				//Buscamos la primera casilla libre
-
-				int aux = 0;
-				int i = 0;
-				int j = 0;
-				bool place = false;
-				while (i < 3 && !place) {
-					if (j > 6) {
-						i++;
-						j = 0;
-					}
-
-					if (sp[aux].empty == true) {
-						Vector2D p(sp[aux].x, sp[aux].y);
-						S.GC->setPosition(p);//createItemAtSP(x, y, auxV[p].objectID, auxV[p]);
-						sp[aux].empty = false;
-						place = true;
-						S.equiped = false;
-						bag->pushnotEquipedItem(S);
-						bool found = false;
-						
-					}
-					else {
-						j++;
-						aux++;
+				bool found = false;
+				for (int i = 0; i < Inventary.size() && !found; i++) {
+					if (S.ID == Inventary[i].ID) {
+						Inventary[i].equiped = false;
+						found = true;
 					}
 				}
 			}
-
+				
 			bag->pullEquipedItem();
 
-			//GameManager::Instance()->changeInventory(Inventary);
-			//bag->setInvent(Inventary);
-			bag->setSP(sp);
+			GameManager::Instance()->changeInventory(Inventary);
+			bag->setInvent(Inventary);
 		}
 
 		else if (XboxController::Instance()->getButtonState(0, 1)) {
@@ -229,24 +190,3 @@ bool BagXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& eve
 	return handledEvent;
 }
 
-void BagXboxControllerComponent::move() {
-	vector<estado> sp = bag->getSP();
-	int i = 0;
-	bool found = false;
-	while (i < sp.size() && !found) {
-		if (sp[i].empty)
-			found = true;
-		else
-			i++;
-	}
-
-	vector<estado> s = bag->getnotEquipedItems();
-	int aux = s.size() - 1;
-
-	Vector2D p(sp[i].x, sp[i].y);
-	s[aux].GC->setPosition(p);//createItemAtSP(x, y, auxV[p].objectID, auxV[p]);
-	sp[i].empty = false;
-	s[aux].equiped = false;
-
-	bag->setSP(sp);
-}
