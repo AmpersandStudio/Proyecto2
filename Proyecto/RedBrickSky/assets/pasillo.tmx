@@ -54,12 +54,12 @@
  <tileset firstgid="4141" name="Personaje15" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje15.png" width="96" height="128"/>
  </tileset>
- <layer name="Collisions" width="50" height="100">
+ <layer name="Collisions" width="50" height="100" visible="0">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt20EKhDAQAMH8/1k+bNm7IAsbNa3UQJ9EmEKIp2xjjO0FfWIVd+J4fhytOFpxtKo69sPBcdbuR8PBcdbuv0wcLcdT9694ODg4ODg4ODg4ODg4ODiuduyfn+m+0/GW78HxLMfM+6sdY1y3y93D0RqO1qw+j1f9Kzg4VsfRiqMVRyuOVhytOFpxtOJoxdGK47+uuiM54yjd55xxlOJoxdGKoxVHK45WHK04WnG04mjF0eotjiPT6l047nF8AYjTZQc=
+   eJzt21EKAjEMhOHe/1h7sMX3ghhq25kk/0BAEGE+ZtEnnzHGU+Bes3PshCP/4fA6HF6Hw+tcHXNw4NjV/Vtw4NjV/ZcJh5cja38XDw4cOHDgwIEDBw4cOHDgwHHaMb+/033TUWUPHLkc/3xe7RjjXJfbweGVao7Z8gZen060g8P3seq3Akddh7ofe+R0VHm2IlF37LJFpz2yOKo8W5GoO+LIZei0Bw4/i7pfpz26ONT9uu1xe5NT/5GMZKXT7f9zrhrcLhJ1x06OKs9WJOqOOHIZOu2RxVHl2YpE3RFHLkOlPapsEom6I456DnU/9sDhcpm741i7D9NDe9k=
   </data>
  </layer>
  <layer name="Floor" width="50" height="100">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="150" height="63" tilewidth="32" tileheight="32" infinite="0" nextobjectid="139">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="150" height="63" tilewidth="32" tileheight="32" nextobjectid="140">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje2" value="..\assets\Personaje2.png"/>
@@ -38,12 +38,12 @@
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl1uOwyAMRTsbnDXM/lcxX1WqKICxrx+490iR2iSAMaeGvl6EEEIIIYQQEsPvz+tv5/KO4em7pj9geETBrle88n+HJ7Az/9m7ETn0WnN6ZcM6f+m7XuuCXKe7V6h+R2N0xjpPeqUfozOeXnntK6v4ZzV39cw79m/0yrIPZuUwol55jdEZay4refX+vFM3JPOnV/t41/6M+D29subh273a7WO1dl7nkwyvNDn6NlBerZ57eWUZTzNXIoNeEQ+sXmWvUdQ+KPFT+g48CQWhV/b/wztt6JW8Pb2St6FX8vaZ5yvkOu3sgzttvOKtTEevRu9Kns36Xb0naU+v5O0le83J9Ur6Hr26sHr1bidxwIMMr1BjdKaDVx61kF7Z8PbqtEszp1Wb+3NNjk8D5RUonOOIqHEnQq9s0Ktnos5XWecvb3bz12HOEpBeWcZGkHUWW8Vxv4+cc1Wyvco4Z0e49RmXNU8n4uHVjgvqwAcxZHslcR8158pk1yvNeLMY6FUNqnhlXVd6VQukVxoXkLEjvBj1pY2PXp23D47WzOoVAtarXv8HNfF7cEKMnnh4FXW2qbZmoxzc7yWEFk50vUL7h+zLuk/Sqwt6Ra888PBq9tnbK038KOjVRRWvNONVWzN6ddHNK+6DNaBX9MqDbl4pwodBry7olY3VXCvEmEE3r6L3QXr1DL2iVx5080oRvgl69YyXV5IaQK/6gtxLNGNzH+wJYp706vkzvbL3EVnrkHuqFXqFJboujMae3YuAXuHI2G9G48/uRUCvcNCrcVyzeLLjqw69Gsc1iyc7vuqg82PxCuEpCm+vPH7PmfVhND9LH6jxPfNRLf/ZzkTNT9MWQQevtGuR7ctJXu321dWrVR5Q837qzzuXO+ua5TfaqZO82slTFhl5Q3kVMX52Tt7XP+wyQ2I=
+   eJztl1tuwzAMBNML9gy9/yn6FTgIrBe5S1LyDhAgtS2JIieU+3oJIYQQQgghRAy/P6+/lQ87hru/LfMBwxMGVr3SJ/93uAOz+x/lKyKHrLrLKx+e/VufRdYFWavPeVj1f5JX3vHZXnnib83FqP/T+pV3fGuO7zpFedXro6N77Nif6JXnHMzKYUS/Yq1xMp5cVvPq/X2lb8zsX16tw+79GfEzvfLm4elerc4xqh3r/STDK0uOUON3AenV6H5UD6zSS58MyqvRfXn1LLxeZdco6hyc8XP2GXgSCoLyKitfEV6trj/7/MmoX8krBhFeMd+vkHVaOQdXxrDirUzEORjtVS+m0b3evKPnZsbLq/nxM2fNzv1q9jl5deH16j1uxgEGGV6h1jiZE7xi9EJ55YPt1W4fy55GY77vW3K8G0ivQCFtxVO9GSGv7ESdnTsS9X6V9f7FZjV/J+x5hsx+hc5x1rvYKI7v68g9VyXbq4z37Ai3PuPy5mlHGF6tuGAOvBFDtlcz7qP2XJnsfmVZrxeDvKpBFa+8dZVXtUB6ZXEBGTvCi9Zc1vjk1V7nYK9mXq8QqF+d9f+gJX4GO8TIhOFVxHtNxZq1cvB9LSG0cKL7Fdo/5Fzec1JeXcgrecWA4VXvO9srS/wo5NVFFa8s61Wrmby6OM0rnYM1kFfyisFpXhnChyGvLuSVj9FeK8SYwWleRZ+D8uoeeSWvGDC9+rw+csGyXoWayat7WF7N9AB5dS7Is8Syts7BM0HsU17df5dX/jkiex3yTPUir7BE94XW2r1rEcgrHBnnTWv93rUI5BUOedWOqxdPdnzVqeTVe6y82h90frxeeT1FwfaK8XvO7A+t/XnmQK3PzEe1/Gc7E7U/y1gEJ3hlrUW2Lzt5tTrXqV6N8oDa99187Fyu1DXLb7RTO3m1kqcsMvKG8ipi/eycvD//DuVRDg==
   </data>
  </layer>
  <layer name="Floor" width="150" height="63">
   <data encoding="base64" compression="zlib">
-   eJzt2GFKw0AUhdFKRdfgdgSXUOg+3I+/XKgUWoihNplkXmaeORc+EGxLYg81zen5cDhJE5Wu9fEqR1wpIq4UEVeKiCtFxNX2vU00fFzrY93CFFeaG1ea03nBc7iq0/tLvVrZGbf08T6vNMfNnN9ztd9KP5OW9H3kas+drwZqv+YlrvK25hot6vNq+Lpc5exi5+t4v0euIv8XclX/Pd76+2CpqxJLH0+Puz2GK67GPbq2umdmquH3Qq7yttbVVKXX9OfRz1zlbMt7q6XXYaVr/bdUm7hqU4vrq2hHY1NccVXbGFeq2e2ePFeq3ZJ7qFzpr+7dl59riytN5fpKEQ3vcc59DleaiitFVfL+L1nr89t7PY6r/PU4rvLX47jKX4/jKn89jqv89Tiu8tfjuMpfj+MqnwWuxBVXXNUbV1xFjCuuIsYVVxHjiquIccVVxLjiKmJccRUxrvK7+nxd93oR44qriHHFVcS44ipiXHEVMa7yu+pxe3P1H5bhnLjKtwznxFW+ZTgnrnItyzllOEb7vQzvWRb/ZmZmZma2bj8S2KkI
+   eJztnGFOBCEMhTVu9ArqcUy8gFHjPbyI7gH85UENiSS1MgyFFujwXvKi2WUZKN90gJndl9PFxQsM71iq0e2FfRhcwRYGV7CFwRVsYXAFWxhc9ffdjmm50W3twdQqXD1n3nsVlF3Z4Oqvb4XlR3FV0s57YZ2fCYfXw7n0lujrVvkatkaPu+U47V13zonXaKwfrvXcypSUrcgOd+wfj81e+VXyVep8ov7YeX/LvfOVNJ+m2KKxyPWZ8lLyPi23Ald0TrTHwccE7dVkirOVyzFa/r4CVylL49wjZ7UwxdkK17SQp95+GdBsf2QVXLV7VI6rnaOdT3/zlWb7ab3gyqcDO19XaW9xxZnKzZ/A1XiuNNeCe+vBGq5S67dcLB4v845lwNXaXAXzff0wt8pxJY0BXReCK3vX7mFocyV1jrscV/F/cNXH2sfWyHkSZiTzMKlGM+KRq5K9/D1rrNlS9wtKDa7++yjzqxa2pEzxa1oJV3QfH1z54aqWrZY8VcoVPwa48mcJWxpMhfl7jqvUMcBV/7HudbxWpqJze6hbxwBXej5CLszxxNnizziCK1jimvs94ErmJ/ZX+/q39eylZWzuSH+2uKLjn8pTYS+FPucFrurZ0qwzmM9VWuqVfDbG5ynRt1Kuntnr4GpeWz3TQ3MiZWqrPOWkhKsajY71kbmi3/Pa2p+fURptHB37I3NV4hkFrsCVhcAVuLIQuPLLVe393B6K7Wtp4+j4euQqxpzuI/D1V24fjH5uRvH41mg0Ix65ylnCF7iayzNzVWK6/zCjwNUYrlqkWZeVwBW4shC4suMqd6+4RbzdMwpc+c1X4Go+j+CqdT+HxvtWqS4rgSu/+UqjLiuBK3BlIXDll6t7hbqsBK78cqVRl5VW5SqY/zZ6z/pbFD6vtQaw0spcjXSLeF3vN231WQhc+eUq/r4ouFrbWveKeb3gCo5uEbiCwRW48srVjNJo4+gx6jWesyj2ZeZ9BnDlT6EfLd9P7yFw5U8xV838HDK48iXal5mfvzpa3FeQhzE74jkNQRAEQRAEQdB//QAEu7Ai
   </data>
  </layer>
  <layer name="Hierbable" width="150" height="63">
@@ -258,6 +258,12 @@
   <object id="138" name="Cofre" type="Bag" x="2031.33" y="247.333">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="139" name="Nuria" type="Cartel" x="2031" y="594">
+   <properties>
+    <property name="Message" value="NPCS12"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>
