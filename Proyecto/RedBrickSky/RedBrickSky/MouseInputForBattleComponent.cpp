@@ -1,7 +1,8 @@
 #include "MouseInputForBattleComponent.h"
 #include "Button.h"
+#include "XboxController.h"
 
-MouseInputForBattleComponent::MouseInputForBattleComponent()
+MouseInputForBattleComponent::MouseInputForBattleComponent(int a, int b) : a_(a), b_(b)
 {
 }
 
@@ -27,6 +28,17 @@ bool MouseInputForBattleComponent::handleEvent(GameObject* o, const SDL_Event& e
 				TheSoundManager::Instance()->playSound("click", 0);
 				handledEvent = true; //marcamos el evento como handleado
 			}
+		}
+	}
+
+	else if (event.type == SDL_JOYBUTTONDOWN) {
+		XboxController::Instance()->onJoystickButtonDown(event);
+
+		if (XboxController::Instance()->getButtonState(a_, b_)) {
+			handledEvent = true;
+		}
+		else if (event.type == SDL_JOYBUTTONUP) {
+			XboxController::Instance()->onJoystickButtonUp(event);
 		}
 	}
 

@@ -171,7 +171,7 @@ void BattleState::createBattleButtons()
 	position0.setX(2.4); position0.setY(6.4);
 	interfaz.button_0->setPosition(position0); interfaz.button_0->setWidth(buttonWidth); interfaz.button_0->setHeight(buttonHeight);
 	//interfaz.button_0->addRenderComponent(rcF);
-	interfaz.button_0->addInputComponent(new MouseInputForBattleComponent());
+	interfaz.button_0->addInputComponent(new MouseInputForBattleComponent(0, 0));
 	//stage.push_back(interfaz.button_0);
 
 	//Boton 1
@@ -179,7 +179,7 @@ void BattleState::createBattleButtons()
 	position0.setX(3.6); position0.setY(6.4);
 	interfaz.button_1->setPosition(position0); interfaz.button_1->setWidth(buttonWidth); interfaz.button_1->setHeight(buttonHeight);
 	//interfaz.button_1->addRenderComponent(rcF); 
-	interfaz.button_1->addInputComponent(new MouseInputForBattleComponent());
+	interfaz.button_1->addInputComponent(new MouseInputForBattleComponent(0, 3));
 	//stage.push_back(interfaz.button_1);
 
 	//Boton 2
@@ -187,7 +187,7 @@ void BattleState::createBattleButtons()
 	position0.setX(2.4); position0.setY(7.6);
 	//interfaz.button_2->addRenderComponent(rcF);
 	interfaz.button_2->setPosition(position0); interfaz.button_2->setWidth(buttonWidth); interfaz.button_2->setHeight(buttonHeight);
-	interfaz.button_2->addInputComponent(new MouseInputForBattleComponent());
+	interfaz.button_2->addInputComponent(new MouseInputForBattleComponent(0, 2));
 	//stage.push_back(interfaz.button_2);
 
 	//Boton 3
@@ -195,7 +195,7 @@ void BattleState::createBattleButtons()
 	position0.setX(3.6); position0.setY(7.5);
 	interfaz.button_3->setPosition(position0); interfaz.button_3->setWidth(buttonWidth); interfaz.button_3->setHeight(buttonHeight);
 	//interfaz.button_3->addRenderComponent(rcF); 
-	interfaz.button_3->addInputComponent(new MouseInputForBattleComponent());
+	interfaz.button_3->addInputComponent(new MouseInputForBattleComponent(0, 1));
 	//stage.push_back(interfaz.button_3);
 
 	//Boton prueba
@@ -205,6 +205,8 @@ void BattleState::createBattleButtons()
 	interfaz.pruebaTexto_->addRenderComponent(new RenderFrameComponent());
 	//interfaz.pruebaTexto_->addInputComponent(MIC);
 	stage.push_back(interfaz.pruebaTexto_);
+
+	//A 0 0 B 0 1 X 0 2 Y 0 3
 }
 
 void BattleState::createCharacterInfo()
@@ -923,28 +925,24 @@ void BattleState::render() {
 		}
 	}
 
+	if (XboxController::Instance()->getNumControllers() != 0) {
 
-	//ESTOS SON LOS BOTONES DEL MANDO, PARA QUE LOS COLOQUES DONDE SEAN NECESARIOS
-	//if (XboxController::Instance()->getNumControllers() != 0) {
+		//A
+		TheTextureManager::Instance()->drawItem("botonesXbox", 410, 440,
+			35, 25, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
 
-	//	//A
-	//	TheTextureManager::Instance()->drawItem("botonesXbox", 175, 425,
-	//		70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+		//X
+		TheTextureManager::Instance()->drawItem("botonesXbox", 410, 525,
+			35, 25, 0, 3, 1, 5, Game::Instance()->getRenderer(), 0, 255);
 
-	//	//X
-	//	TheTextureManager::Instance()->drawItem("botonesXbox", 375, 425,
-	//		70, 50, 0, 3, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+		//Y
+		TheTextureManager::Instance()->drawItem("botonesXbox", 603, 440,
+			35, 25, 0, 4, 1, 5, Game::Instance()->getRenderer(), 0, 255);
 
-	//	//Y
-	//	TheTextureManager::Instance()->drawItem("botonesXbox", 590, 425,
-	//		70, 50, 0, 4, 1, 5, Game::Instance()->getRenderer(), 0, 255);
-
-	//	//B
-	//	TheTextureManager::Instance()->drawItem("botonesXbox", 590, 425,
-	//		70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
-	//}
-
-
+		//B
+		TheTextureManager::Instance()->drawItem("botonesXbox", 603, 525,
+			35, 25, 0, 2, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+	}
 }
 
 
@@ -957,6 +955,8 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 
 		if (event.type == SDL_KEYDOWN) {
 			if (event.key.keysym.sym == SDLK_RETURN) {
+				TheSoundManager::Instance()->playSound("dialogo", 0);
+
 				if (enemy->getTurn()) {
 					okEnemy_ = true;
 				}
@@ -966,9 +966,11 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 					interfaz.pruebaTexto_->setTextureId("selOptTexto");
 				}
 
-				if (END_)
+				if (END_) {
+					GameManager::Instance()->exitBattle();
 					TheSoundManager::Instance()->stopMusic();
-				Game::Instance()->getStateMachine()->popState();
+					Game::Instance()->getStateMachine()->popState();
+				}
 
 				handledEvent = true;
 			}
@@ -1002,21 +1004,31 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 
 			XboxController::Instance()->onJoystickButtonDown(event);
 
-			if (XboxController::Instance()->getButtonState(0, 0)) { //BOTON A
-			//AQUI LO QUE HACE CADA BOTON
+			if (XboxController::Instance()->getButtonState(0, 7)) { //BOTON START
+				TheSoundManager::Instance()->playSound("dialogo", 0);
+
+				if (enemy->getTurn()) {
+					okEnemy_ = true;
+				}
+				else if (!enemy->getTurn() && !attackAnim_) {
+					okPlayer_ = true;
+					okEnemy_ = false;
+					interfaz.pruebaTexto_->setTextureId("selOptTexto");
+				}
+
+				if (END_) {
+					GameManager::Instance()->exitBattle();
+					TheSoundManager::Instance()->stopMusic();
+					Game::Instance()->getStateMachine()->popState();
+				}
+
+				handledEvent = true;
 			}
-
-			if (XboxController::Instance()->getButtonState(0, 1)) { //BOTON B 
-				
-			}
-
-			//0,2 == BOTON X
-			//0,3 == BOTON Y
-
 		}
 
-		else if (event.type == SDL_JOYBUTTONUP)
+		else if (event.type == SDL_JOYBUTTONUP) {
 			XboxController::Instance()->onJoystickButtonUp(event);
+		}
 
 		if (!attackAnim_ && okPlayer_)
 			actButton = interfaz.button_0->handleEvent(event);
