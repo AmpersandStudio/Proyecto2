@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="155">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="156">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -56,14 +56,6 @@
  <tileset firstgid="2523" name="Personaje13" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje13.png" width="96" height="128"/>
  </tileset>
- <layer name="Collisions" width="50" height="100" visible="0">
-  <properties>
-   <property name="collidable" type="bool" value="true"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztWlluxCAMHfVSvU5P2aPNdxVVkZDl5XkjgOZJaAgY24/FEDLv1+vnvWd6kfS0P2EeNxbwJZU+PNZKu/F4MeB4XPnfr/9050eMdWPZWHclzS7Xd5LdsczLowIeHh6dVjlqF7VZDTp2NE/luDajjKa7E9a65p5R/1C+iI8eOc0exyvqQxcPVFeVPo+uJ+LLDpixX82yfRoPjw+SPzPaaXo6eIznFXqm0dpl7HesdYtHFWbwuO2cwOOU8TiFB81XoyN2S75z72Dde4c0Ntb8kOIux0OzE0HXnLpg8bBw+zX6KPnazYPLW4jOoRV50Gdr7lMZLX55Y1s07iL6d+ARQZaHJj9r/xj9QPw6hcddz7WXeGTirgcrxqsIVuOBvq9QOQ+PSLzyzqtKHtbe7427NO/xD5WrHA/unMjlJfkMtDOY144mvzMP5L7E5axh2zpDavZoe+Q71l2u2Y5yiOqwoK3Zyj2lm8csnMajY3147kWzfXlavOL07sqjWg86rzR93hTxmXtvoTy4fCeP7DlL+9+GxENqk7lrRPynXCyZzPePaN/6rGDIvA9+eNRjpXmVWUMrjcfJPFAbK82rjI2VxkNrZ8msPh4odhgPBLuOR+ScaPm1Co/d3j84PHGf2MElsz6ob13ndhSZb4NP8Yjsp1rdSTys9hke7yGhfkl+WD5a7a80vgc77bM8KuHxCeGh9L2oE7VdhQwPTWelHKqrkkf1+kD1VK+PU3hUwhOvUHlBB6vXqUOUn7F/RPzyyj+9n2u6vXajXLrSTL9oP4y/UpnWf+O9+V3P3aXboyzb4uxKMlr7TH12LnM+z+ThlUNxAo8n5pVXTmuPrvOI/RXmFRJHLJlTeDxxbr9w4nhoZVp5pQy975LuwOhzdl+VfNT6p5JH5H+WCLRzBz23rMzj1mn9VyGi06rvmFczbXboPIEHso7H+u8Ko4zescyT13R12aT5roTymGkXhRSnKDJxS7NdveaeQOcYz05/2Us9aw==
-  </data>
- </layer>
  <layer name="Floor" width="50" height="100">
   <data encoding="base64" compression="zlib">
    eJztnElvEzEUgO2kFfQGrWiuLaEUwYGlQuJSSsSR/T+w/AH+V+k1F8qRU+k9hbIc21IWcaEBnpWxZCwv73nsGU80h0+pmon9vtieeeO8ZIMxdgf4BNxsCJ+BL8BxEfsA2Gg9Wo/Ww+lxqcvYd3i82wB+FPw0eGx1GPvFy7HZmbRJwdevqc1jDdXjKYzHy045nnXpHr5+bW3aPGz9nIH35CE8nuX0GMvi6pvqIZ5f9xyTCtn3V8NzVI8leC9uwONyDeNB6dvn0RRieujnER+xPR6wyXoqC+N0YvQreATM8ng8gfYeI+hG7FNyj+FYRzDD8fjaOkDGJWM7BZz2MIf0OAcsIugVcfo8MLHJ+DB99wI8LsO1+FZnwpVumAflfUnlMVbypN+82R5rHbvHHvDe0s4IWOV5eQhs43GR/+8zKvxWOX291ekhXyd9Vrm9vSZ4xDj/tR7pPfrABQQrmXtcJYBxXqnAYxGOGbMJvjykZ8hrsL6pPY6Uv135yBxyLMsQy8M113vFeJjGJDcP11yXczzlmMTywMzxXD3ENd2Wb5nI1YPqkrMHxSV3D8ERoi/X68cKdXro+bzOyBPHJvAK2KrZwzYu+v2JjddFP28y8ZDjIvHFn6tHKNPoccLw+2ASiodofxwRNbfsF/2d57j9L50+x3mEtu8Ce+9IxeWRAjW3XCj6m+e4+0mdBeR4hLbvQs0j1fUxVP5/wPz3V9cYbX2MHG2GgDlfYc4tt4kedZx3p8FD7rU2yWMHeAfsEsciNw8TdXqoe0EufHsO2DmVygNzHyIYRnLI0QOb4+fqERp/Lh57JePPxaNM7K1H69F61OfxZ0o8sOTsgR2L2B73I3pg14XqgalPwu5ZqLFW7aG2bTomdD+lag/M58vYz+PVWJ93GdvmE14Q669MHkNmXwfY9YHZr9D3S1xg1vkekVjrXD9flfWYAWYdDDVSelxnk5rotQCPeWDBgIxbrQVO6SEcZE23qPFWXUI9TA4pPVQHieoS4vHW4pDCY8fioLvsBnrYasxje7gcdJecxwNb8z8I8HC5NM2jqvNVTI8lYNlBquvHUWSPuog9HjEQdQ16Tu6rcRAe4jsxvu+2ie+hcV6NhylPwtSMYsZkgIzBlbvr9Yu29zjEQzh8YLjrx0eEh6tWRo/PVrcQ4nEI/GX4eYWdG6Z6rNQeAtP3FlW+FcdR5rk+x/T7ul3L63KYV9i14iLUI8W8qtoj5bzy1cfFHo9U80r1obiY9kd8tfrU63mIh8tlzGif4dbtoc4zFf2Yk0CXKj2whLjk6CGg5nE55rvT5EGdW7l6UF1iehwqUOI9dHDgeV4icgfmuQZKGMe3i3Xw1eRiv88uPgfbZri8RBwXu35X7iXHYJ/h8pL9iH3KffBp+d2PWL+XUSfi9zL+AdoVhvw=
@@ -102,8 +94,16 @@
    eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
-  <object id="37" name="Player" type="Player" x="1299.67" y="381.33" width="32" height="32">
+ <layer name="Collisions" width="50" height="100" visible="0">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztWllqAzEMDb1Ur9NT9mj5LkMwCKF98XhEH5g4tiy9N17Hyfv1+nk/M71QuptPWMfCAVxS6V/HWWmqjiv/+/VJKw8B62AZrLsS9k8B86DiwjKvjgp4dHB1nH1WR6VOLyLjiqpf5ZzvKq47dEi+rXy8/Ck7KR6lK8qhS4fVV+X48DyHimcRiX0yuvalO2JP0+HhwPHZ0U7y06EDnlfwmUZql4nfMdc1HVXYoWPFmaBjSn9M0YHz1ehYuznu1DtY997B9Y02Prh1l9IhxYmga0xd0HRoWLwgR45rtw4qryE6hk7Ugb9rYx/bSOuXd22LrrsW/0/QEUFWh2S/a/+APCy8puhY9VR7Tkdm3fXgxPUqgtN0WN9XsJ1HR2S98o6rSh3a3u9dd3Hew89qV9kf1DmRynP2GUhnMG8cyf7JOiz3JS6ySmztDCnFw+0tv2Otcik2FcfCQfKRgTRnK/eUbh27ME1Hx/zw3Itmn+W09Yry+1Qd1X6s40ry500RztR7C9ZB5Tt1ZM9Z0v82OB1cm8xdo4U/1qLZZH7/8O71nftH5n0wOkZ8UWyYpKNiXHnsq/xBnNQfk3VYY5w0rjIxTuoPqZ1mc3p/WPGE/rDgqf0ROSdqvE7RkXn/8PC6c35Uxu08K2bmB+bWdW63IvPb4F06IvupVDdJh9Y+o+MNkpUXx0PjqLW/EnwPdsYndVTCw8miQ3j2rE9r7CpkdEg+K+2svip1VM8Pq5/q+TFFRyU865XVnvFB+nX6YO137B8RXl77u/dzybc3blRLV9rJCz8H+MmVSc8P3puveuouXe9lPhYVl7OR2mfjV/qp1mHlWaUH+nu6jo5xtUuHZ55H4p8wrizriGYzRccd5/YLE/tDKpPKK23wfRd3B4a/Z/dVjqP0fCp1RP5naYF07sDnlpN1LJ/afxUiPrX6jnFVHXOKjoq4Xl/aurzSd0VQwi8s8+QlX10xcb4rWXXsjGsFt05hZNYtKXb1nLsDnX28O/0Bc9Je0Q==
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="37" name="Player" type="Player" x="765.67" y="2619.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -273,19 +273,11 @@
     <property name="textureWidth" type="int" value="64"/>
    </properties>
   </object>
-  <object id="117" name="Cartel1" type="Cartel" x="1326.5" y="1272.17" width="32" height="32">
+  <object id="117" name="Cartel1" type="Cartel" x="1311.83" y="1278.84" width="32" height="32">
    <properties>
     <property name="Message" value="NPC2Test"/>
     <property name="isFighter" type="int" value="0"/>
     <property name="keyID" type="int" value="2"/>
-    <property name="numFrames" type="int" value="2"/>
-    <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="cartel"/>
-    <property name="textureWidth" type="int" value="32"/>
-   </properties>
-  </object>
-  <object id="118" name="Cartel3" type="Cartel" x="1312.67" y="2944.67" width="32" height="32">
-   <properties>
     <property name="numFrames" type="int" value="2"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="cartel"/>
@@ -300,7 +292,7 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="120" name="NPCBattler" type="Cartel" x="1102" y="375" width="32" height="32">
+  <object id="120" name="NPCBattler" type="Cartel" x="1122" y="384.333" width="32" height="32">
    <properties>
     <property name="Message" value="NPC2Test"/>
     <property name="battleId" type="int" value="1"/>
@@ -469,6 +461,17 @@
     <property name="textureHeight" type="int" value="64"/>
     <property name="textureID" value="MiniVerticalDoor"/>
     <property name="textureWidht" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="155" name="Cartel" type="Cartel" x="1312" y="2943.75" width="32" height="32">
+   <properties>
+    <property name="Message" value="NPC2Test"/>
+    <property name="isFighter" type="int" value="0"/>
+    <property name="keyID" type="int" value="0"/>
+    <property name="numFrames" type="int" value="2"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="cartel"/>
+    <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
  </objectgroup>
