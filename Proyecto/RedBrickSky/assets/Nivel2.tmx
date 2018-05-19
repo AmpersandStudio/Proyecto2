@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="left-up" width="236" height="201" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#000000" nextobjectid="369">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="left-up" width="236" height="201" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#000000" nextobjectid="373">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje10" value="..\assets\Personaje10.png"/>
@@ -15,6 +15,7 @@
   <property name="Personaje6" value="..\assets\Personaje6.png"/>
   <property name="Personaje7" value="..\assets\Personaje7.png"/>
   <property name="Personaje8" value="..\assets\Personaje8.png"/>
+  <property name="dragon" value="..\assets\dragon.png"/>
   <property name="helicopter" value="..\assets\helicopter.png"/>
   <property name="personaje9" value="..\assets\Personaje9.png"/>
  </properties>
@@ -35,9 +36,18 @@
  <tileset firstgid="4217" name="Personajes_Aaron" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
   <image source="Personajes_Aaron.png" width="1920" height="1056"/>
  </tileset>
+ <tileset firstgid="6197" name="celiana2" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="celiana2.png" width="1920" height="1056"/>
+ </tileset>
+ <tileset firstgid="8177" name="TileSetLevelTutorial" tilewidth="32" tileheight="32" tilecount="272" columns="16">
+  <image source="Tileset_1 (1).png" width="512" height="574"/>
+ </tileset>
+ <tileset firstgid="8449" name="dragon" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="dragon.png" width="32" height="32"/>
+ </tileset>
  <layer name="Ground and Walls" width="236" height="201">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Fences" width="236" height="201">
@@ -55,12 +65,12 @@
  </layer>
  <layer name="Objects" width="236" height="201">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Objects2" width="236" height="201">
   <data encoding="base64" compression="zlib">
-   eJztzsEAAAAIBLBjyC9/jSyqx0awBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAD7quBwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABsGpF8AHA=
+   eJzt3LENhTAMBcDMQEfYgAIxBzv8df4CMAPrwEjQQ0EkJAO6a9y6sRTZ0UsJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAn+FXRHQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFBiaKI7AK76m1cAAAAAAAAAAAAAAAAAAAAAgMcac0pTPtYz8p8g1rLP5pqP9Yz8JwAo09bRHQAAQJz+wnvYfhjew34YAAAAgBKzPxPwGe458B7uOQAAAAAAAAAAAAAAAAAAAAAAAAAAwN06ueMAAAAAAHCbDXMeD6Q=
   </data>
  </layer>
  <layer name="Trees and Statues" width="236" height="201">
@@ -68,8 +78,8 @@
    eJzt3ctuG1UYwPFJYJOk27ZJAQkhcX0HLq8AtAWWXN8D3oPre8COy4p92yTAhneAFUeKUCfJ2D62x5nzffP7SUf6mkxdy/KR/03sma4jiz8Ou+7Psv46bG8GLnvuqOueL+uFo/Zm4LIPyr74sKyPjtqbgcta6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49DHVa6F49PK5H5bF7XNYTj2E6LXSvHh7X7fLY3SnrrscwnRa6Vw+P693y2L1X1vsew3Q0bT56OC9Nm48ezkvT5qOH89LD+ejhvPRwPno4Lz2cjx7OSw/no4fz0sP56OG89HA+ejgvPZyPHs4rQg/3n3/rznOkh/OK0MP959+68xzp4bwi9HD/+bfuPEdz74vMovUwq829LzKL1sOsNve+yCxaD7OaHslLD+ejR/LSw/nokbz0cD56JC89nI8eyUsP56NH8tLD+eiRvPRwPnokLz2cjx7JSw/no0fy0sP56JG89HA+Qz3SwvXLzO3Pu3r+sdhQj7Rw/TJz+/Ounn8sNtQjLVy/zNz+vKvnH4vpYbMejkMPm/VwHHrYrIfj0MNmPRyHHjbr4Tj0sFkPx6GHzXo4Dj1sbqWHXY9jNT1sbqWHXY9jNT1sbqWHXY9jNT1snrKHWY8eNk/Zw6xHD5un7GHWo4fNejgOPWzWw3HoYbMejkMPm/VwHHrYrIfjmPvvnyGSub8fEyKZ+/sxIRI9TEbbfO4nygxZbPO5nygzZLHN536izENOy+vuWVnnvdffLw+67quD5ccMHTfFsTAnx2Ufn5R1r7effyx75aeD5ccMHTfFsTAn98vz/0FZD3v74J+yV/49WH7M0HFTHAsAAAAAAAAAAAAA7M4m58T02RqYxibnxPTZGpjGJufE9NkamMaY54gfo5O1Niw25jnix+hkrQ2LjXmO+DE6WWvDYjdxzaQpGldXk9EmPbzuXpiicXU1GW3Sw+vuhSkaV1eT0SY9bC/ANFxDFOJwDVGI4yZ+PgyMQw9DHHoY4tDDEIcehjj0MMShhyEOPQxx6GGIQw9DHHoY4tDDEIcehjj0MMShhyEOPQxx6GGIQw9DHHoY4tDDEIcehjj0MMShhyEOPQxx6GGIQw9DHHoY4tDDEIcehjj0MMShhyEOPQxx6GGIQw9DHHoY4tDDAAAAAAAAtOz0sOvOyjpv+L0gEe4j3ITjo647Ketew79bjnAf4SbcL3vgQVkPe3vhxaOn66YN/dtD9xG4rr9/xtzHu7pd4LpN9ph9CcCcLWrVbRt2V7cLc3J1b6y7B6c+Fubk6utZf365zK+U9WpZr5X1ellvLDh21evkprc79GeYs/7e6u+Nj8v8SVmflvVZWZ+X9cWav/sZOqbmdq/eL+CpoX31dZm/Kevbsr4r6/uyfljyOrjq9te5XfsUVuvvk0dlflzWk7JOyzor63zFfv378GKNfbvAdf29cvtW190p625Zx2WdlHXv1vCx/3vp6GKNfbvAddv+HLfm9XXM+wBztu2+qnl9HfM+wJxt+76GZa+v3i8BbVn0+goAc7HJuRu26dVN/q7zS8CFbc7dsM7/Nbf5f6nzS8CFsc7dsMufHTm/BAAAAAAAAAAAAAAAALDMz3td98ve8Pd+LV//bcH3lvl9b3gGtrO333X7+8Pfe6Z8/dkF3wNu3ptlP761YE++Xb7+jv0KAAAAAAAAABDSfyZrs7w=
   </data>
  </layer>
- <objectgroup name="Objetos" visible="0">
-  <object id="2" name="Player" type="Player" x="2410.28" y="3454.03" width="32" height="32">
+ <objectgroup name="Objetos">
+  <object id="2" name="Player" type="Player" x="5023.11" y="5855.03" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -357,7 +367,7 @@
     <property name="Message" value="CARSL6"/>
    </properties>
   </object>
-  <object id="79" name="Taquillas2" type="Cartel" x="2687.92" y="4431.25" width="31.5603" height="34.3333">
+  <object id="79" name="Libreria" type="Cartel" x="2687.92" y="4431.25" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
@@ -372,39 +382,39 @@
     <property name="Message" value="CARSL6"/>
    </properties>
   </object>
-  <object id="86" name="Taquillas" type="Cartel" x="4768.08" y="6127.96" width="31.833" height="32.5833">
+  <object id="86" name="Librerias" type="Cartel" x="4768.08" y="6111.63" width="31.833" height="32.5833">
    <properties>
-    <property name="Message" value="CARSL6"/>
+    <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="87" name="Taquillas" type="Cartel" x="4800.33" y="6127.71" width="31.833" height="32.5833">
+  <object id="87" name="Librerias" type="Cartel" x="4800.33" y="6111.38" width="31.833" height="32.5833">
    <properties>
-    <property name="Message" value="CARSL6"/>
+    <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="88" name="Taquillas" type="Cartel" x="4832.33" y="6127.71" width="31.833" height="32.5833">
+  <object id="88" name="Librerias" type="Cartel" x="4832.33" y="6111.38" width="31.833" height="32.5833">
    <properties>
-    <property name="Message" value="CARSL6"/>
+    <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="89" name="Taquillas" type="Cartel" x="4864.08" y="6128.21" width="31.833" height="32.5833">
+  <object id="89" name="Librerias" type="Cartel" x="4864.08" y="6111.88" width="31.833" height="32.5833">
    <properties>
-    <property name="Message" value="CARSL6"/>
+    <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="90" name="Taquillas" type="Cartel" x="4896.08" y="6127.46" width="31.833" height="32.5833">
+  <object id="90" name="Librerias" type="Cartel" x="4896.08" y="6111.13" width="31.833" height="32.5833">
    <properties>
-    <property name="Message" value="CARSL6"/>
+    <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="91" name="Taquillas" type="Cartel" x="4927.83" y="6128.21" width="31.833" height="32.5833">
+  <object id="91" name="Librerias" type="Cartel" x="4927.83" y="6111.88" width="31.833" height="32.5833">
    <properties>
-    <property name="Message" value="CARSL6"/>
+    <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="92" name="Taquillas" type="Cartel" x="4960.33" y="6127.96" width="31.833" height="32.5833">
+  <object id="92" name="Librerias" type="Cartel" x="4960.33" y="6111.63" width="31.833" height="32.5833">
    <properties>
-    <property name="Message" value="CARSL6"/>
+    <property name="Message" value="CARSL7"/>
    </properties>
   </object>
   <object id="93" name="Taquillas" type="Cartel" x="4384.42" y="6128.38" width="31.833" height="32.5833">
@@ -1527,202 +1537,197 @@
     <property name="Message" value="CARSL1"/>
    </properties>
   </object>
-  <object id="323" name="Taquillas2" type="Cartel" x="2720.22" y="4430.83" width="31.5603" height="34.3333">
+  <object id="323" name="Libreria" type="Cartel" x="2720.22" y="4430.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="324" name="Taquillas2" type="Cartel" x="2753.22" y="4430.33" width="31.5603" height="34.3333">
+  <object id="324" name="Libreria" type="Cartel" x="2753.22" y="4430.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="325" name="Taquillas2" type="Cartel" x="2785.72" y="4430.83" width="31.5603" height="34.3333">
+  <object id="325" name="Libreria" type="Cartel" x="2785.72" y="4430.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="326" name="Taquillas2" type="Cartel" x="2815.72" y="4430.83" width="31.5603" height="34.3333">
+  <object id="326" name="Libreria" type="Cartel" x="2815.72" y="4430.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="327" name="Taquillas2" type="Cartel" x="2848.22" y="4431.33" width="31.5603" height="34.3333">
+  <object id="327" name="Libreria" type="Cartel" x="2848.22" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="328" name="Taquillas2" type="Cartel" x="2883.22" y="4430.33" width="31.5603" height="34.3333">
+  <object id="328" name="Libreria" type="Cartel" x="2883.22" y="4430.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="329" name="Taquillas2" type="Cartel" x="2912.72" y="4430.83" width="31.5603" height="34.3333">
+  <object id="329" name="Libreria" type="Cartel" x="2912.72" y="4430.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="330" name="Taquillas2" type="Cartel" x="2944.72" y="4431.33" width="31.5603" height="34.3333">
+  <object id="330" name="Libreria" type="Cartel" x="2944.72" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="331" name="Taquillas2" type="Cartel" x="2976.72" y="4430.83" width="31.5603" height="34.3333">
+  <object id="331" name="Libreria" type="Cartel" x="2976.72" y="4430.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="332" name="Taquillas2" type="Cartel" x="3007.72" y="4430.33" width="31.5603" height="34.3333">
+  <object id="332" name="Libreria" type="Cartel" x="3007.72" y="4430.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="333" name="Taquillas2" type="Cartel" x="3040.72" y="4431.33" width="31.5603" height="34.3333">
+  <object id="333" name="Libreria" type="Cartel" x="3040.72" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="334" name="Taquillas2" type="Cartel" x="3071.72" y="4431.33" width="31.5603" height="34.3333">
+  <object id="334" name="Libreria" type="Cartel" x="3071.72" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="335" name="Taquillas2" type="Cartel" x="3104.22" y="4432.33" width="31.5603" height="34.3333">
+  <object id="335" name="Libreria" type="Cartel" x="3104.22" y="4432.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="336" name="Taquillas2" type="Cartel" x="3134.72" y="4432.33" width="31.5603" height="34.3333">
+  <object id="336" name="Libreria" type="Cartel" x="3134.72" y="4432.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="337" name="Taquillas2" type="Cartel" x="3167.72" y="4432.33" width="31.5603" height="34.3333">
+  <object id="337" name="Libreria" type="Cartel" x="3167.72" y="4432.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="338" name="Taquillas2" type="Cartel" x="3201.22" y="4429.83" width="31.5603" height="34.3333">
+  <object id="338" name="Libreria" type="Cartel" x="3201.22" y="4429.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="339" name="Taquillas2" type="Cartel" x="3233.72" y="4430.83" width="31.5603" height="34.3333">
+  <object id="339" name="Libreria" type="Cartel" x="3233.72" y="4430.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="340" name="Taquillas2" type="Cartel" x="3265.22" y="4430.83" width="31.5603" height="34.3333">
+  <object id="340" name="Libreria" type="Cartel" x="3265.22" y="4430.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="341" name="Taquillas2" type="Cartel" x="3296.22" y="4430.83" width="31.5603" height="34.3333">
+  <object id="341" name="Libreria" type="Cartel" x="3296.22" y="4430.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="342" name="Taquillas2" type="Cartel" x="3328.72" y="4430.83" width="31.5603" height="34.3333">
+  <object id="342" name="Libreria" type="Cartel" x="3328.72" y="4430.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="343" name="Taquillas2" type="Cartel" x="3360.22" y="4430.83" width="31.5603" height="34.3333">
+  <object id="343" name="Libreria" type="Cartel" x="3360.22" y="4430.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="344" name="Taquillas2" type="Cartel" x="3392.72" y="4431.33" width="31.5603" height="34.3333">
+  <object id="344" name="Libreria" type="Cartel" x="3392.72" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="345" name="Taquillas2" type="Cartel" x="3425.22" y="4431.33" width="31.5603" height="34.3333">
+  <object id="345" name="Libreria" type="Cartel" x="3425.22" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="346" name="Taquillas2" type="Cartel" x="3456.22" y="4431.33" width="31.5603" height="34.3333">
+  <object id="346" name="Libreria" type="Cartel" x="3456.22" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="347" name="Taquillas2" type="Cartel" x="3489.22" y="4431.33" width="31.5603" height="34.3333">
+  <object id="347" name="Libreria" type="Cartel" x="3489.22" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="348" name="Taquillas2" type="Cartel" x="3520.22" y="4431.83" width="31.5603" height="34.3333">
+  <object id="348" name="Libreria" type="Cartel" x="3520.22" y="4431.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="349" name="Taquillas2" type="Cartel" x="3552.22" y="4431.33" width="31.5603" height="34.3333">
+  <object id="349" name="Libreria" type="Cartel" x="3552.22" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="350" name="Taquillas2" type="Cartel" x="3584.22" y="4430.33" width="31.5603" height="34.3333">
+  <object id="350" name="Libreria" type="Cartel" x="3584.22" y="4430.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="351" name="Taquillas2" type="Cartel" x="3615.72" y="4429.33" width="31.5603" height="34.3333">
+  <object id="351" name="Libreria" type="Cartel" x="3615.72" y="4429.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="352" name="Taquillas2" type="Cartel" x="3648.72" y="4429.83" width="31.5603" height="34.3333">
+  <object id="352" name="Libreria" type="Cartel" x="3648.72" y="4429.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="353" name="Taquillas2" type="Cartel" x="3679.72" y="4429.33" width="31.5603" height="34.3333">
+  <object id="353" name="Libreria" type="Cartel" x="3679.72" y="4429.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="354" name="Taquillas2" type="Cartel" x="3712.22" y="4430.33" width="31.5603" height="34.3333">
+  <object id="354" name="Libreria" type="Cartel" x="3712.22" y="4430.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="355" name="Taquillas2" type="Cartel" x="3744.22" y="4431.83" width="31.5603" height="34.3333">
+  <object id="355" name="Libreria" type="Cartel" x="3744.22" y="4431.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="356" name="Taquillas2" type="Cartel" x="3775.72" y="4431.33" width="31.5603" height="34.3333">
+  <object id="356" name="Libreria" type="Cartel" x="3775.72" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="357" name="Taquillas2" type="Cartel" x="3809.72" y="4431.83" width="31.5603" height="34.3333">
+  <object id="357" name="Libreria" type="Cartel" x="3809.72" y="4431.83" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="358" name="Taquillas2" type="Cartel" x="3840.22" y="4432.33" width="31.5603" height="34.3333">
+  <object id="358" name="Libreria" type="Cartel" x="3840.22" y="4432.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="359" name="Taquillas2" type="Cartel" x="3872.22" y="4430.33" width="31.5603" height="34.3333">
+  <object id="359" name="Libreria" type="Cartel" x="3872.22" y="4430.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="360" name="Taquillas2" type="Cartel" x="3904.22" y="4432.33" width="31.5603" height="34.3333">
+  <object id="360" name="Libreria" type="Cartel" x="3904.22" y="4432.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
   </object>
-  <object id="361" name="Taquillas2" type="Cartel" x="3936.22" y="4431.33" width="31.5603" height="34.3333">
-   <properties>
-    <property name="Message" value="CARSL7"/>
-   </properties>
-  </object>
-  <object id="362" name="Taquillas2" type="Cartel" x="3968.72" y="4430.33" width="31.5603" height="34.3333">
+  <object id="361" name="Libreria" type="Cartel" x="3936.22" y="4431.33" width="31.5603" height="34.3333">
    <properties>
     <property name="Message" value="CARSL7"/>
    </properties>
@@ -1757,13 +1762,31 @@
     <property name="Message" value="NPCSL1"/>
    </properties>
   </object>
+  <object id="371" name="Carta" type="Cartel" x="4799.42" y="6208.38" width="31.833" height="32.5833">
+   <properties>
+    <property name="Message" value="CARSL8"/>
+   </properties>
+  </object>
+  <object id="372" name="Dragon" type="Cartel" x="4928.08" y="6303.71" width="31.833" height="32.5833">
+   <properties>
+    <property name="Message" value="BOSSSL2"/>
+    <property name="battleId" type="int" value="2"/>
+    <property name="isFighter" type="int" value="1"/>
+    <property name="keyID" type="int" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
- <layer name="Collisions" width="236" height="201" visible="0" opacity="0.7">
+ <layer name="Doors" width="236" height="201" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt2sEJwDAMA8B4vQ6Wufsw2aAFi9yB/vpLawEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAPZ7qAPPt6gAAAAAA0M7OYeuA+c7OYesAAAAAAAAAAABul/R9TOoKf0j6PiZ1BQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJjgqU6SxM7whV2dJImdAQAAAAAAAAAAJnoBOUgKqw==
+  </data>
+ </layer>
+ <layer name="Collisions" width="236" height="201" visible="0" opacity="0.5">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
 </map>
