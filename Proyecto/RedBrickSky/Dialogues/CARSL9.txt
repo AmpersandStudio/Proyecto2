@@ -1,0 +1,5 @@
+4
+Es una nota:
+"He salido a comer
+Vuelvo en 5 minutos."
+...En fin.

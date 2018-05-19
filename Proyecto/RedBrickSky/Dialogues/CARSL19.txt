@@ -1,0 +1,3 @@
+2
+A la derecha: sala de estudio.
+A la izquierda: patio interior.
