@@ -41,7 +41,6 @@ void MagicAttackComponent::update(GameObject* o) {
 
 	else {
 		isMoving = false;
-		TheSoundManager::Instance()->playSound(GameManager::Instance()->getAttackSound(), 0);
 	}
 	
 	if (!isMoving) {
@@ -51,6 +50,7 @@ void MagicAttackComponent::update(GameObject* o) {
 			bc = static_cast<BattleCharacter*>(o);
 			bc->setTurn(false);
 			flag = true;
+			TheSoundManager::Instance()->playSound(GameManager::Instance()->getAttackSound(), 0);
 		}
 		o->setPosition(origPosition_);
 	}

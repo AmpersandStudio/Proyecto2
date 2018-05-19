@@ -16,7 +16,13 @@ void BattleCharacter::addAttack(Attack a)
 
 bool BattleCharacter::useAttack(int i)
 {
-	if (attacks[i].type == Support) support = true;
+	if (attacks[i].type == Support) {
+		support = true;
+		GameManager::Instance()->setAttackSound("golpe");
+	}
+	else if (attacks[i].type == Physical) GameManager::Instance()->setAttackSound("punch_2");
+	else if (attacks[i].type == Ranged) GameManager::Instance()->setAttackSound("Tirachinas");
+	else if (attacks[i].type == Magical) GameManager::Instance()->setAttackSound("golpe");
 	std::cout << name << " uso " << attacks[i].name << "!" << std::endl;
 	attacks[i].pp--;
 	return true;

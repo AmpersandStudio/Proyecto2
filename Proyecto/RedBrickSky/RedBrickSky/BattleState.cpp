@@ -1081,7 +1081,8 @@ bool BattleState::handleEvent(const SDL_Event& event) {
 			in = true;
 			run_ = true;
 			TheSoundManager::Instance()->stopMusic();
-			TheSoundManager::Instance()->PlaySoundInChannel(3, "escape", 0);
+			TheSoundManager::Instance()->PlaySoundInChannel(5, "escape", 0);
+			SDL_Delay(1800);
 			/*Mix_ChannelFinished(channelDone);*/
 			Game::Instance()->getStateMachine()->popState();
 		}
@@ -1188,11 +1189,11 @@ bool BattleState::run()
 					attackAnim_ = true;
 				}
 				else if ((a.type == Magical || a.type == Support)) {
+					GameManager::Instance()->setAttackSound("golpe");
 					Vector2D e = enemy->getPosition();
 					mae = MagicAttackComponent(e, 0.3);
 					enemy->addPhysicsComponent(&mae);
 					attackAnim_ = true;
-					GameManager::Instance()->setAttackSound("golpe");
 				}
 
 				if (enemy->hasTarget())

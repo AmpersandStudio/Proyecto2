@@ -42,7 +42,7 @@ public:
 private:
 	static SoundManager* s_pInstance;
 
-	SoundManager() { Mix_AllocateChannels(5); }
+	SoundManager() { Mix_AllocateChannels(6); }
 
 	std::map<std::string, Mix_Chunk*> m_sfxs;
 	std::map<std::string, Mix_Music*> m_music;
