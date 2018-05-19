@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="150" height="63" tilewidth="32" tileheight="32" infinite="0" nextobjectid="141">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="150" height="63" tilewidth="32" tileheight="32" nextobjectid="141">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje2" value="..\assets\Personaje2.png"/>
@@ -43,7 +43,7 @@
  </layer>
  <layer name="Floor" width="150" height="63">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Hierbable" width="150" height="63">
@@ -51,7 +51,7 @@
    <property name="BigGrass" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2dFqwzAMheHSJ9mj7qV3P8YwpFnWRrUkSzn/B2FQWttSzpLUvd0AAAAAAIDV1912dNR13Z4+7n8Py2eAI9ZM7T+XZXad/B/k6nKeZuYkV/ks/X7nnulldj5yFeO/vna5T3isrXJ9XZ3N1bPeH72Xc6XNIwPkCnuRuSJbujzPP7nCQK4QITpX3CM1rcwV+bourleI0P35in3Rmq6Qq+q/4yhen7vvX83MlbFO1fv+lXJlmS9jncrPk9G5UuvnoN4HxZozqfbX+bn9c/t3hf3cM3se43XrZ47eo5Yvr3q3mRrH/KiP4z8bN2rPzJoNcvWrQ73bPL3K6z57la5XSjrkCv2QK0QgV4hArhCBXCFClVxt12HZF1i5V3ZGlf5mW1n3q+/9J77Tu++TeSNXiKDaX9W6s6j2V7XuLKr97Vx39WerH537OyO67sjxyVVdnXPVgWr92bnynq/6NYtc5YxPrjR0z1V1avUO5CqWWr2rqPVZrd5VPPvM74MYvHPlM1IcctUPuYIqcoUI5AoAEKnDszsAcK0CAAAAAFzVNxrkU6g=
+   eJzt2VFqwzAQhOGQk/SovXTfSwkC101iq9pZaT3/B6YQEkm7ntqOcrsBAAAAAIBeX/e+o6Kq6470cf979HwGeKY3U/vPZRldJ/8Huaqcp5E5yVW+nn7/554ZZXQ+cqXxqq9V7hMRa1u5vqrO5upd75+9l3PlLSID5Ap7ylyRLV+R559coSFXUFDninukp5m5Il/XxfUKCtWfr9gXXdMVcrX67ziO1+fq+1cjc2Ws0/W+f6Vc9cyXsU7n50l1rtz62bj3wbHmTK79DX5u/9z+nWE/98ieR3u957rz6r1u+Yqqd5updoyP+nv8d+Oq9sx6s0GuHirUu83TUV732VNcr44+8ypXTirkCvWQKyiQKyiQKyiQKyiskqvtOnr2BWbulZ2xSn+zzaz76Hv/ie/04ftk0cgVFFz761p3Ftf+utadxbW/lete/dnqR+X+jlDXrRyfXK2rcq4qcK0/O1fR861+zSJXOeOTKw/Vc7U6t3obcqXlVu8sbn12q3eWyD7z+yCa6FzFjKRDruohV3BFrqBArgAAShWe3QGAaxUAAAAA4Kq+AZPnU2Q=
   </data>
  </layer>
  <layer name="Top-Top" width="150" height="63">
@@ -76,7 +76,7 @@
  </layer>
  <layer name="TopFences&amp;Trees" width="150" height="63">
   <data encoding="base64" compression="zlib">
-   eJzt3UFK5EAYhuGytXauXfTCo7n2BO1WUDceQAUPo6KIIH0nE7ExSFWsivn7r89+X/ggMD1O7DyTwTBiCES/d3IQwvIwnJfO+3xJI1yRRbgii3DVdhcxhMtuVzF/XPt66+M+XLXdQ3edHrs9xfxx7eutj/twRRbharzV4vv4dJF/nVLrPfs/A1fjtWLpbul9BnXhiuZs8/cQV2QVrvK18u+gYrjKt8LV5HBFFtW4eokhKG7THB+Dxrv5+toVV2V738Jzn/8UrnTvV9cxvRbCla6r15heC+GqbLdiz7w9q30u6u2D+5VGuMKVRbgqH18Plocr7lcW4QpXFuEKVxbhClcW4ap8Z/zfhs9KnuPhCldjHe1P+324qv8YNF5vCldarrprsNWVnMfPcIWrv9jKhStcWbjDFa5whas+b0O4whWucJXqOPHsyNsQrvRdpfI2hKt2XPXv/ea9rlnqmnkbwlVbrmqHK43hCle4wpXKcIUrXOFKZbjCFa5wpTJc4QpXuFIZrnCl5Opt8L3195nvU8EVrrhf4QpXbQxXPs15zbwNWbl67q6RypRd7dr9yttKzYaf49ThClcWrlq7Zt7ngyttV9yv2p2yq+E1G/7sQe/zKTnHKa6E5v5+z3XN1O5Xg1/zNmAx9/ebuRtgjDHGGNvZfQDEUYrn
+   eJzt3cFKAzEUheFUzc61iy58NNc+gW4FdeNeFHyYKooI0ndyZjEQaqa9qbm9ueY/cGBwhjZOPkInWAyBkN25OAlheRpupLUeL/ERXBGN4IpoBFdt5zaGcDf0Ps4fl16vfTwGV21nNczT69C3OH9cer328RhcEY307uryaPv5q+T8rmu9ZL3Qf4/eXXnJ89J6BGXBFamZaU3HFdEKrohGenZV8rmdlKVnV6ReHjeeLUpcfcQQPHZKjdcgsuBK1u8D7Pv8p+DK73r1EPNtIbjy6+oz5ttCcCXrk7M9b8uU7ota+2C98hFc4UojuJKX50F5cMV6pRFc4UojuMKVRnCFK43gClfbcnb8+2eSfTxcyXvN38yIgyvWq9oZTeHKl6thDg5ayTg2gytc/cXWXHCFKw13uMIVrnA1xtoQrnCFK1zlcp7Zk7Q2hCv/rnKxNoSrdlyN93661yXNzZm1IVy15aq0uPJRXOEKV7jyUlzhCle48lJc4QpXuPJSXOEKV7jyUlzhypOrr+S79S8z31PBFa5Yr3CFqzaKK5vUnDNrQ1qu3oc58lLPrnpbr6ytlDT9HfctrnCl4aq1ObMeD658u2K9areeXaVzlv7vQevxSMa4jytHNb/ftebM23qVnLM2oFHz+03NDVBKKaWUdtsfwDKKbQ==
   </data>
  </layer>
  <layer name="Personajes" width="150" height="63">
@@ -84,18 +84,18 @@
    eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgb5OoAAE=
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="71" name="Cofre" type="Bag" x="1934" y="240">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
    </properties>
   </object>
-  <object id="75" name="Cofre" type="Bag" x="1934" y="278.667">
+  <object id="75" name="Cofre" type="Bag" x="1679" y="244.667">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
    </properties>
   </object>
-  <object id="78" name="Cofre" type="Bag" x="1932.67" y="369.333">
+  <object id="78" name="Cofre" type="Bag" x="1678.67" y="400.333">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
    </properties>
@@ -103,11 +103,6 @@
   <object id="79" name="Cofre" type="Bag" x="1934" y="400.667">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
-   </properties>
-  </object>
-  <object id="80" name="Cofre" type="Bag" x="2035.33" y="847.333">
-   <properties>
-    <property name="Sweeties" type="int" value="5"/>
    </properties>
   </object>
   <object id="81" name="Cofre" type="Bag" x="2034" y="878.667">
@@ -146,9 +141,10 @@
     <property name="keyID" type="int" value="7"/>
    </properties>
   </object>
-  <object id="99" name="Aaron" type="Cartel" x="4398" y="467">
+  <object id="99" name="Aaron" type="Cartel" x="4335.67" y="435">
    <properties>
     <property name="Message" value="NPCPuertaGimnasio"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -164,10 +160,12 @@
   </object>
   <object id="102" name="Pablo" type="Cartel" x="3020" y="270">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Battler9"/>
+    <property name="battleId" type="int" value="0"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
-  <object id="103" name="Mochila" type="Bag" x="3984" y="874">
+  <object id="103" name="Mochila" type="Bag" x="3986" y="845.5">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
    </properties>
@@ -179,7 +177,9 @@
   </object>
   <object id="112" name="Fercho" type="Cartel" x="4144.5" y="849">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Battler10"/>
+    <property name="battleId" type="int" value="0"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="128" name="Llave necesaria" type="Door" x="2208.13" y="896" width="63.875" height="32">
@@ -205,7 +205,7 @@
   </object>
   <object id="132" name="Personaje2" type="NPC" x="2621.33" y="862.667" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie6"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje2"/>
@@ -223,7 +223,7 @@
   </object>
   <object id="134" name="Personaje4" type="NPC" x="2461.33" y="352" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie7"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje4"/>
@@ -232,7 +232,7 @@
   </object>
   <object id="135" name="Personaje1" type="NPC" x="3422.67" y="889.333" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie8"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje1"/>
@@ -241,7 +241,7 @@
   </object>
   <object id="136" name="Personaje5" type="NPC" x="4068" y="448" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie5"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje5"/>
@@ -264,6 +264,7 @@
   <object id="139" name="Nuria" type="Cartel" x="2031" y="594">
    <properties>
     <property name="Message" value="NPCS12"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>

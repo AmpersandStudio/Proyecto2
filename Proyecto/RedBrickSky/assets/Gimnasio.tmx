@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="85" height="68" tilewidth="32" tileheight="32" infinite="0" nextobjectid="193">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="85" height="68" tilewidth="32" tileheight="32" nextobjectid="193">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje2" value="..\assets\Personaje2.png"/>
@@ -108,10 +108,10 @@
    eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeDZaUAAB
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="131" name="Personaje1" type="NPC" x="192" y="420" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie16"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje1"/>
@@ -120,7 +120,7 @@
   </object>
   <object id="132" name="Personaje2" type="NPC" x="768" y="574.667" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie15"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje2"/>
@@ -129,7 +129,7 @@
   </object>
   <object id="133" name="Personaje3" type="NPC" x="2158.67" y="190.667" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie10"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje3"/>
@@ -138,7 +138,7 @@
   </object>
   <object id="134" name="Personaje4" type="NPC" x="2469.33" y="240.667" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie9"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje4"/>
@@ -147,7 +147,7 @@
   </object>
   <object id="135" name="Personaje5" type="NPC" x="2200" y="617.333" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie14"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje5"/>
@@ -156,7 +156,7 @@
   </object>
   <object id="136" name="Personaje7" type="NPC" x="1101.33" y="1525.33" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie20"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje7"/>
@@ -165,7 +165,7 @@
   </object>
   <object id="137" name="Personaje6" type="NPC" x="1916" y="1534.67" width="32" height="32">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Normie18"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje6"/>
@@ -204,12 +204,13 @@
   </object>
   <object id="150" name="Pablo" type="Cartel" x="1010" y="922">
    <properties>
-    <property name="Message" value="NPC14"/>
+    <property name="Message" value="Battler8"/>
    </properties>
   </object>
   <object id="151" name="Pablo" type="Cartel" x="1136" y="630">
    <properties>
     <property name="Message" value="NPC43"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -231,6 +232,7 @@
   <object id="155" name="Pablo" type="Cartel" x="2575" y="853">
    <properties>
     <property name="Message" value="NPC42"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -242,18 +244,21 @@
   <object id="157" name="Pablo" type="Cartel" x="1966" y="180">
    <properties>
     <property name="Message" value="NPCS13"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="158" name="Pablo" type="Cartel" x="1551" y="147">
    <properties>
     <property name="Message" value="NPCS15"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="159" name="Pablo" type="Cartel" x="1583" y="210">
    <properties>
     <property name="Message" value="NPCS14"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -273,24 +278,28 @@
   <object id="164" name=" Pepe El jardinero " type="Cartel" x="1488" y="1786.67" width="88" height="45.3333">
    <properties>
     <property name="Message" value="BossNivel1"/>
+    <property name="battleId" type="int" value="2"/>
     <property name="keyID" value="9"/>
    </properties>
   </object>
   <object id="165" name="Pablo" type="Cartel" x="2288" y="118">
    <properties>
-    <property name="Message" value="NPCS15"/>
+    <property name="Message" value="Battler7"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="166" name="Pablo" type="Cartel" x="2130" y="689">
    <properties>
-    <property name="Message" value="NPCS15"/>
+    <property name="Message" value="Battler6"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="167" name="Pablo" type="Cartel" x="2576" y="563">
    <properties>
     <property name="Message" value="NPCS15"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -321,73 +330,84 @@
   </object>
   <object id="174" name="Pablo" type="Cartel" x="1200" y="1332">
    <properties>
-    <property name="Message" value="NPCS14"/>
+    <property name="Message" value="Battler3"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="175" name="Pablo" type="Cartel" x="1006.67" y="1720">
    <properties>
     <property name="Message" value="NPC28"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="176" name="Pablo" type="Cartel" x="1648" y="1780">
    <properties>
     <property name="Message" value="NPC27"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="177" name="Pablo" type="Cartel" x="1425.33" y="1778.67">
    <properties>
     <property name="Message" value="NPC26"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="178" name="Pablo" type="Cartel" x="2064" y="1298.67">
    <properties>
     <property name="Message" value="NPC29"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="179" name="Pablo" type="Cartel" x="1841.33" y="1334.67">
    <properties>
     <property name="Message" value="NPCS14"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="180" name="Pablo" type="Cartel" x="2096" y="503.333">
    <properties>
-    <property name="Message" value="NPCS14"/>
+    <property name="Message" value="Battler5"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="181" name="Pablo" type="Cartel" x="656" y="1268">
    <properties>
-    <property name="Message" value="NPCS14"/>
+    <property name="Message" value="Battler9"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="182" name="Pablo" type="Cartel" x="2611" y="1686">
    <properties>
     <property name="Message" value="NPC31"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="183" name="Pablo" type="Cartel" x="2161" y="1810">
    <properties>
     <property name="Message" value="NPC30"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="184" name="Pablo" type="Cartel" x="2481" y="917">
    <properties>
-    <property name="Message" value="NPCS14"/>
+    <property name="Message" value="Battler4"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="185" name="Pablo" type="Cartel" x="2159" y="916">
    <properties>
     <property name="Message" value="NPCS14"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -399,13 +419,15 @@
   </object>
   <object id="187" name="Pablo" type="Cartel" x="272" y="341.333">
    <properties>
-    <property name="Message" value="NPCS14"/>
+    <property name="Message" value="Battler1"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="188" name="Pablo" type="Cartel" x="882.67" y="409.333">
    <properties>
-    <property name="Message" value="NPCS14"/>
+    <property name="Message" value="Battler2"/>
+    <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>

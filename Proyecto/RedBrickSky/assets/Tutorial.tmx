@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="157">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="158">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -86,7 +86,7 @@
  </layer>
  <layer name="TopFences&amp;Trees" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2k9qwkAUx/FRo5ArWPEktidoe4D6Z+lGXSqFrtpT9AI9QHfd9AJdeYIuegupCyfMRgSZJ4l5M5PvBx4IeZCfkMxMkjEmbk/aAQAAAK5o15b1vQn7ACAl45rOs67pPADkltoBgBqMTX1zHQA0zahlzK2tu1Y1fVruba4HW4+efJK+abXRLjKxuaa2Zp7/Ie1Dmv46rmKj8d6W7+eI1W/HVez6mavYxTrunhpmroAqDTJXZfjma+bz5rnJXAEAAEittAMAqNxcO0DgUtknLd0XLu1rkp9Enpt7Xe0E5TFeAeUsjn5v1FL48Z4asfjIZX0bYR9Q2AvX4/+Br9s/hdf9e+L3B/tFwxLaftFzz988l6OM5zPj6kvi422IXj33su+4tq/crUu+PTmL40XflmssaQeu/ypm
+   eJzt2r9twkAUx3EDBskrQJRJQiYIDEAgZRqSEoSUikxBScMAdDQsQMUEKdgCQZFD16Ao6B6yff/8/UhPQvIT/iGdz2dzSRK2gesAAAAAJTrWZX3fwj4AiMmrpfNMLJ0HgNyH6wBAif67v9m65wFAVTzVkqSr6rlWTJ8rLypXT1XfkE/SNyo22l2GKtdI1Zvhd0j7YJ+N/2sPDV2h4b0tIPfT0BW6dqordKHOu389prqAIj2kuvIwrZ/YD1c9nVQXAACA1KfrAAAK9+46gOdied8u3Rcu7auSXSTPza2m6wT5MV8B+YyvPk+dpTAr8z31Mivxy1E5K+F4mjLucIezcD1+8nzdvhaO+0Xk1wf7Rf3i237RW8/fPJcjj9mNefUr8vnWR3PDtWw67tom0+uSrSHn5filb88Yi9ovVWcrDw==
   </data>
  </layer>
  <layer name="Personajes" width="50" height="100" visible="0">
@@ -102,7 +102,7 @@
    eJztWllqAzEMDb1Ur9NT9mj5LkMwCKF98XhEH5g4tiy9N17Hyfv1+nk/M71QuptPWMfCAVxS6V/HWWmqjiv/+/VJKw8B62AZrLsS9k8B86DiwjKvjgp4dHB1nH1WR6VOLyLjiqpf5ZzvKq47dEi+rXy8/Ck7KR6lK8qhS4fVV+X48DyHimcRiX0yuvalO2JP0+HhwPHZ0U7y06EDnlfwmUZql4nfMdc1HVXYoWPFmaBjSn9M0YHz1ehYuznu1DtY997B9Y02Prh1l9IhxYmga0xd0HRoWLwgR45rtw4qryE6hk7Ugb9rYx/bSOuXd22LrrsW/0/QEUFWh2S/a/+APCy8puhY9VR7Tkdm3fXgxPUqgtN0WN9XsJ1HR2S98o6rSh3a3u9dd3Hew89qV9kf1DmRynP2GUhnMG8cyf7JOiz3JS6ySmztDCnFw+0tv2Otcik2FcfCQfKRgTRnK/eUbh27ME1Hx/zw3Itmn+W09Yry+1Qd1X6s40ry500RztR7C9ZB5Tt1ZM9Z0v82OB1cm8xdo4U/1qLZZH7/8O71nftH5n0wOkZ8UWyYpKNiXHnsq/xBnNQfk3VYY5w0rjIxTuoPqZ1mc3p/WPGE/rDgqf0ROSdqvE7RkXn/8PC6c35Uxu08K2bmB+bWdW63IvPb4F06IvupVDdJh9Y+o+MNkpUXx0PjqLW/EnwPdsYndVTCw8miQ3j2rE9r7CpkdEg+K+2svip1VM8Pq5/q+TFFRyU865XVnvFB+nX6YO137B8RXl77u/dzybc3blRLV9rJCz8H+MmVSc8P3puveuouXe9lPhYVl7OR2mfjV/qp1mHlWaUH+nu6jo5xtUuHZ55H4p8wrizriGYzRccd5/YLE/tDKpPKK23wfRd3B4a/Z/dVjqP0fCp1RP5naYF07sDnlpN1LJ/afxUiPrX6jnFVHXOKjoq4Xl/aurzSd0VQwi8s8+QlX10xcb4rWXXsjGsFt05hZNYtKXb1nLsDnX28O/0Bc9Je0Q==
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="37" name="Player" type="Player" x="1472.34" y="1371.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
@@ -398,17 +398,17 @@
     <property name="Sweeties" type="int" value="10"/>
    </properties>
   </object>
-  <object id="144" name="Mochila " type="Bag" x="1548" y="1298">
+  <object id="144" name="Mochila " type="Bag" x="1549" y="1236">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
    </properties>
   </object>
-  <object id="145" name="Mochila " type="Bag" x="1292" y="882">
+  <object id="145" name="Mochila " type="Bag" x="1233" y="881">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
    </properties>
   </object>
-  <object id="146" name="Mochila " type="Bag" x="1332" y="878">
+  <object id="146" name="Mochila " type="Bag" x="1390.5" y="880.5">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
    </properties>
@@ -467,6 +467,13 @@
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="cartel"/>
     <property name="textureWidth" type="int" value="32"/>
+   </properties>
+  </object>
+  <object id="157" type="Cartel" x="673.333" y="2563" width="29.3333" height="28">
+   <properties>
+    <property name="Message" value="BattlerTutorial"/>
+    <property name="battleId" type="int" value="0"/>
+    <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>
