@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="62">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="64">
  <tileset firstgid="1" name="Tileset_Tutorial_NIVEL_Beta1_NURIA" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
   <image source="Tileset_Tutorial_NIVEL_Beta1_NURIA.png" width="1920" height="1056"/>
  </tileset>
@@ -72,7 +72,7 @@
    eJzt1rFtg0AUBmCkdDROnwHcZz8vkAE8gItgWYnXcGuTOCktGcuFF0gbUlhCJ2hQ4AR8n3TiXXU/8B4iSQAAAAAAAAAA6MpbmiSv5crKtQmuWc3+Xq/T/8/SlKMu19/570GGc7kvynUNrkXN/l5fOriPphx1ubo4H8bqEMzLR2V/rNTfPc7VV+Wsz0qdBxn2Zp0Rus1iJ2CITvpmUHLvixbmj7ETMEXP+o4Je9L/RPDiP7FXM3M+KEvzQQsP5pwIVr5XtPCjb4hgq+96tfO8obWF+QEm6hesJjtI
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
+ <objectgroup name="Objects">
   <properties>
    <property name="Message" value=""/>
   </properties>
@@ -229,6 +229,11 @@
   <object id="61" name="NPC genérico " type="Cartel" x="703.333" y="1792.83" width="33.3333" height="36.6667">
    <properties>
     <property name="Message" value="NPCPasillo14"/>
+   </properties>
+  </object>
+  <object id="62" name="PasilloFinal-&gt;Nivel2" type="Teleport" x="831.75" y="3184.25" width="32" height="6.75">
+   <properties>
+    <property name="changeLevel" type="int" value="5"/>
    </properties>
   </object>
  </objectgroup>
