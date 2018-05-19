@@ -467,7 +467,7 @@
    <properties>
     <property name="Message" value="NPC2Test"/>
     <property name="isFighter" type="int" value="0"/>
-    <property name="keyID" type="int" value="0"/>
+    <property name="keyID" type="int" value="1"/>
     <property name="numFrames" type="int" value="2"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="cartel"/>
