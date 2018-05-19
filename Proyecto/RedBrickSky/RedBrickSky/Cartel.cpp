@@ -116,6 +116,7 @@ void Cartel::isDefeated()
 	Msg_.append("B");
 	text = Dialogue(Msg_);
 
+	if(keyID_ != 0)
 	GameManager::Instance()->setDoor(keyID_);
 }
 

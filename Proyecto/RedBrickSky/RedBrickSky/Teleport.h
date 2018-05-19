@@ -8,10 +8,14 @@ public:
 	~Teleport();
 
 	void setLevelTeleport(int lvl) { changeLevel = lvl; };
+	void update();
+	void render();
+	void activate();
 protected:
 
 	int changeLevel;
 	virtual void selectAction();
+	
 };
 
 class TeleportCreator : public BaseCreator

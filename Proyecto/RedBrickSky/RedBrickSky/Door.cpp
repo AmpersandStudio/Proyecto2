@@ -48,10 +48,11 @@ void Door::render()
 {
 	if (!active_)
 	{
-		TheTextureManager::Instance()->drawFull("door",
+		Interactuable::render();
+		/*TheTextureManager::Instance()->drawFull("door",
 			(Uint32)position_.getX() - TheCamera::Instance()->getPosition().getX(),
 			(Uint32)position_.getY() - TheCamera::Instance()->getPosition().getY(),
-			64, 32, TheGame::Instance()->getRenderer(), 0, 255);
+			64, 32, TheGame::Instance()->getRenderer(), 0, 255);*/
 
 		/*if (dialogueActive_ && GameManager::Instance()->getDialogueState()) {
 			text.render();

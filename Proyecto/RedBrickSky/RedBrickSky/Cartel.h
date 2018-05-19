@@ -8,7 +8,7 @@ class Cartel :
 public:
 	Cartel();
 	~Cartel();
-	void activate();
+	virtual	void activate();
 
 	//Para establecer el mensaje si es necesario
 	void setFighter(bool set) { isFighter_ = set; };

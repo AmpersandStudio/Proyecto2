@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="left-up" width="236" height="201" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#000000" nextobjectid="373">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="left-up" width="236" height="201" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#000000" nextobjectid="376">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje10" value="..\assets\Personaje10.png"/>
@@ -1773,6 +1773,11 @@
     <property name="battleId" type="int" value="2"/>
     <property name="isFighter" type="int" value="1"/>
     <property name="keyID" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="373" name="Nivel2-&gt;Tutorial" type="Teleport" x="5792" y="6393.5" width="95.5" height="15">
+   <properties>
+    <property name="changeLevel" type="int" value="0"/>
    </properties>
   </object>
  </objectgroup>

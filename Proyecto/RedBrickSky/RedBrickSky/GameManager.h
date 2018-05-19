@@ -100,7 +100,7 @@ public:
 		return s_pInstance;
 	}
 
-	enum Levels { TUTORIAL, JARDINES_INFERIORES, PASILLOS, JARDINES_SUPERIORES, GIMNASIO, CLASES, TIENDA };
+	enum Levels { TUTORIAL, JARDINES_INFERIORES, PASILLOS, JARDINES_SUPERIORES, GIMNASIO, CLASES, TIENDA, PASILLO_FINAL };
 
 	//Metodos para el inventario
 	vector<estado> copyInventory();	

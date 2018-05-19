@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="169" height="164" tilewidth="32" tileheight="32" nextobjectid="147">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="169" height="164" tilewidth="32" tileheight="32" infinite="0" nextobjectid="150">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje10" value="..\assets\Personaje10.png"/>
@@ -57,7 +57,7 @@
  <tileset firstgid="10807" name="Personaje12" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje12.png" width="96" height="128"/>
  </tileset>
- <layer name="Collisions" width="169" height="164" visible="0">
+ <layer name="Collisions" width="169" height="164">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
@@ -108,7 +108,7 @@
    eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHg0sR8AAQ==
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
+ <objectgroup name="Objects">
   <object id="65" name="Mochila" type="Bag" x="366.667" y="2318">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
@@ -551,6 +551,16 @@
    <properties>
     <property name="Message" value="NPC24"/>
     <property name="isFighter" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="147" name="Pasillos-&gt;JardinesInf" type="Teleport" x="4481.92" y="4192.42" width="5.33333" height="95.25">
+   <properties>
+    <property name="changeLevel" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="148" name="Pasillos-&gt;JardinesSup" type="Teleport" x="4030.67" y="158.667" width="65.3333" height="10">
+   <properties>
+    <property name="changeLevel" type="int" value="3"/>
    </properties>
   </object>
  </objectgroup>

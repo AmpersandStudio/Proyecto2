@@ -250,7 +250,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				c->setMSG(Message);
 				c->setKeyID(keyID);
 				c->setLevelTeleport(teleport);
-				c->setPosition(Vector2D(c->getPosition().getX(), c->getPosition().getY() - 32));
+				c->setPosition(Vector2D(c->getPosition().getX(), c->getPosition().getY()));
 				c->setId(bid);
 
 				pLevel->getCarteles()->push_back(c);

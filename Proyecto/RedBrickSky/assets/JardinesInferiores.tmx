@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="97" height="138" tilewidth="32" tileheight="32" nextobjectid="132">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="97" height="138" tilewidth="32" tileheight="32" infinite="0" nextobjectid="135">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje2" value="..\assets\Personaje2.png"/>
@@ -33,12 +33,15 @@
  <tileset firstgid="6805" name="Personajes_1" tilewidth="32" tileheight="32" tilecount="30" columns="3">
   <image source="Personajes_1.png" width="126" height="320"/>
  </tileset>
- <layer name="Collisions" width="97" height="138" visible="0">
+ <tileset firstgid="6835" name="Patrones1" tilewidth="32" tileheight="32" tilecount="168" columns="14">
+  <image source="LevelDesign/Tileset_1.png" width="448" height="384"/>
+ </tileset>
+ <layer name="Collisions" width="97" height="138">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Floor" width="97" height="138">
@@ -84,7 +87,7 @@
    eJzt3bENwCAMBEAKJkyf/ddIQ50K6Q2+kxgAv2RkKBgDgJ3eWXt1kK6xDPI17prBzXs7hQzyZJB1e589QYfzrjr1BwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACS/KMEAAAAAAAAAP8eb+sAAMBiPgAAAACS3E0AFelNAAAAAAA1fbXOMvw=
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
+ <objectgroup name="Objects">
   <object id="66" name="Mochila" type="Bag" x="1681.33" y="494.67">
    <properties>
     <property name="Sweeties" value="10"/>
@@ -324,6 +327,16 @@
    <properties>
     <property name="Message" value="NPC24"/>
     <property name="isFighter" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="132" name="jardines-tutorial" type="Teleport" x="1628" y="1713.33" width="5.33333" height="65.3333">
+   <properties>
+    <property name="changeLevel" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="133" name="Jardines-&gt;Pasillos" type="Teleport" x="2870.33" y="1693.33" width="5.33333" height="97.3333">
+   <properties>
+    <property name="changeLevel" type="int" value="2"/>
    </properties>
   </object>
  </objectgroup>
