@@ -19,7 +19,7 @@ TransitionState::TransitionState(int id)
 			TheSoundManager::Instance()->playMusic("battle", 0);
 		}
 		else {
-			TheSoundManager::Instance()->playMusic("battle", 0);
+			TheSoundManager::Instance()->playMusic("bbattle", 0);
 		}
 	}
 	else {

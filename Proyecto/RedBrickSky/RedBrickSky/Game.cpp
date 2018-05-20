@@ -234,7 +234,7 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\ExplorationBSO2.ogg", "music2", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\MainMenuBSO.ogg", "menu", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\questions.ogg", "questions", SOUND_MUSIC);
-	TheSoundManager::Instance()->load("..\\sounds\\Battle3.ogg", "bbattle", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\TheLastBrick.mp3", "bbattle", SOUND_MUSIC);
 
 	//Load SFX
 	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_exterior.wav", "exteriores", SOUND_SFX);
