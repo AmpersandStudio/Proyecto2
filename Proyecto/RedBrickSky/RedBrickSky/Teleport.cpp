@@ -71,6 +71,8 @@ void Teleport::activate()
 	}
 	else
 	{
+		TheSoundManager::Instance()->playSound("Puerta_abrir", 0);
+		SDL_Delay(800);
 		GameManager::Instance()->setCurrentLevel(changeLevel);
 		isActive_ = false;
 	}
@@ -80,6 +82,8 @@ void Teleport::selectAction()
 {
 	if (keyID_ == 0 || GameManager::Instance()->getDoor(keyID_))
 	{
+		TheSoundManager::Instance()->playSound("Puerta_abrir", 0);
+		SDL_Delay(800);
 		GameManager::Instance()->setCurrentLevel(changeLevel);
 		isActive_ = false;
 	}

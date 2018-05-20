@@ -36,9 +36,9 @@ bool BattleCharacter::useAttack(int i)
 			support = true;
 			SoundManager::Instance()->playSound("golpe", 0);
 		}
-		else if (attacks[i].type == Physical) SoundManager::Instance()->playSound("punch_2", 0);
-		else if (attacks[i].type == Ranged) SoundManager::Instance()->playSound("Tirachinas", 0);
-		else if (attacks[i].type == Magical) SoundManager::Instance()->playSound("golpe", 0);
+		else if (attacks[i].type == Physical) GameManager::Instance()->setAttackSound("punch_2");
+		else if (attacks[i].type == Ranged) GameManager::Instance()->setAttackSound("Tirachinas");
+		else if (attacks[i].type == Magical) GameManager::Instance()->setAttackSound("magic");
 	}
 
 	std::cout << name << " uso " << attacks[i].name << "!" << std::endl;

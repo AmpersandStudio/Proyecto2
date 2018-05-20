@@ -1190,7 +1190,7 @@ bool BattleState::run()
 					attackAnim_ = true;
 				}
 				else if ((a.type == Magical || a.type == Support)) {
-					GameManager::Instance()->setAttackSound("golpe");
+					GameManager::Instance()->setAttackSound("magic");
 					Vector2D e = enemy->getPosition();
 					mae = MagicAttackComponent(e, 0.3);
 					enemy->addPhysicsComponent(&mae);

@@ -217,6 +217,8 @@ bool ShopXboxControllerComponent::handleEvent(GameObject* o, const SDL_Event& ev
 		else if (XboxController::Instance()->getButtonState(0, 1))
 		{
 			StateMachine* sm = Game::Instance()->getStateMachine();
+			TheSoundManager::Instance()->stopMusic();
+			TheSoundManager::Instance()->playMusic("music", -1);
 			sm->popState();
 		}
 		XboxController::Instance()->onJoystickButtonUp(event); //Aseguro que levantamos el botón después de usarlo
