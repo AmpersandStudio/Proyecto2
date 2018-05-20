@@ -1,8 +1,4 @@
-7
-Las mesas de la cafete,
-unas limpias,
-otras sucias,
-Que rabia me da la gente que deja
-la mesa sucia cuando se levanta...
-ya podrían llevar la caca que generan
-a la basura.
+3
+Las mesas de la cafete, unas limpias, otras sucias.
+Que rabia me da la gente que deja la mesa sucia...
+ya podrían llevar la caca que generan a la basura.

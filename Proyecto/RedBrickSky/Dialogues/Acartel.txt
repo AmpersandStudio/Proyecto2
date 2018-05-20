@@ -1,6 +1,4 @@
-5
-Un cartel:
-Los perros no pueden
-hacer caca ahí...
-Pero si ni siquiera tengo perro 
-Hulio...
+3
+Un cartel.
+"Los perros no pueden hacer caca ahí"
+Pero si ni siquiera tengo perro Hulio...

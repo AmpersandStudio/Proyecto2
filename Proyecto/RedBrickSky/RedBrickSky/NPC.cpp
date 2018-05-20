@@ -82,7 +82,7 @@ void NPC::update() {
 		stopped_ = false;
 		collided_ = false;
 		
-		if (rnd < 55)
+		if (rnd < 55 && !dialogueActive_)
 			 collision();
 		else {
 			stopped_ = true;

@@ -1,7 +1,5 @@
-6
-Es una farola,
-se enciende de noche 
-y de madrugada las apaga Dumbeldore
+4
+Es una farola, se enciende de noche... 
+y de madrugada las apaga Dumbeldore.
 Ojalá algun día poder ser como él
-y tener semejante 
-barba...
+y tener semejante barba.

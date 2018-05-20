@@ -1,4 +1,3 @@
-3
-Un balancín:
-Dadme una palanca ,
-y moveré el mundo.
+2
+Un balancín.
+Dadme una palanca y moveré el mundo.
