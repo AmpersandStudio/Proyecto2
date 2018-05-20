@@ -259,6 +259,7 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\select.ogg", "select", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\Wrong.wav", "wrong", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\Huida.wav", "escape", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\ampersand.wav", "ampersand", SOUND_SFX);
 
 	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 3);
 }

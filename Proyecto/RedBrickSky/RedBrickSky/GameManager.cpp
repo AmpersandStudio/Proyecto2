@@ -141,6 +141,27 @@ bool GameManager::checkEasterEgg()
 	return check;
 }
 
+void GameManager::setAmpersand()
+{
+	ampersand_ = true;
+
+	estado n;
+	n.price = 0;
+	n.comprado = true;
+	n.ID = 16;
+	n.empty = false;
+	n.mX = 0;
+	n.mY = 0;
+	n.w = 45;
+	n.h = 45;
+	n.tx = "21";
+	n.type = 0;
+	n.nombre = "Ampergun";
+	n.FilFrame = 4;
+	n.colFrame = 1;
+	setInventory(n);
+}
+
 void GameManager::setBattlePlayer(int t, int atk, int def, int spd, int hp)
 {
 	playerType = t;

@@ -11,6 +11,8 @@ Cartel::Cartel() : dialogueActive_(false), isFighter_(false),hasDialogue(false),
 	timeDisplayInterval_ = 700;
 	col_ = 0;
 	changed_ = true;
+	cleon_ = false;
+	nugget_ = -1;
 }
 
 
@@ -23,6 +25,18 @@ void Cartel::activate()
 
 	/*StringToScreen::Instance()->setMessageAt(Message_, position_.getX(), position_.getY());
 	StringToScreen::Instance()->startMessagin();*/
+
+	if (cleon_ && !GameManager::Instance()->getAmpersand())
+	{		
+		if (GameManager::Instance()->checkEasterEgg())
+		{
+			Msg_.append("B");
+			text = Dialogue(Msg_);
+			GameManager::Instance()->setAmpersand();
+		}
+	}
+
+	if (nugget_ != -1) GameManager::Instance()->setEasterEgg(nugget_);
 
 	std::cout << Msg_ << endl;
 	if (keyID_ == 0 || !GameManager::Instance()->getDoor(keyID_))

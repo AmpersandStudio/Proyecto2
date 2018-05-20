@@ -1,11 +1,11 @@
-ï»¿10
-Â¿QuÃ© te parecen los Ã¡rboles?
+10
+¿Qué te parecen los árboles?
 ...
-Â¿Que no te gusta su lengua? Â¿De quÃ© me estÃ¡s hablando?
-Yo me refiero a los Ã¡rboles binarios de bÃºsqueda.
-Son la mejor opciÃ³n si estÃ¡s desarrollando un juego conversacional.
-Â¡AsÃ­ es, una aventura grÃ¡fica de las de la vieja escuela!
-QuerÃ­a evitar complicaciones, Â¡pero es duro gestionar un proyecto asÃ­!
-Anima esos pÃ­xeles, Â¡seguro que encuentras tu consola!
-Â¡QuizÃ¡s algÃºn dÃ­a puedas jugar a mi aventura en ella!
-Bueno, voy a seguir con lo mÃ­o. Â¡AdiÃ³s!
+¿Que no te gusta su lengua? ¿De qué me estás hablando?
+Yo me refiero a los árboles binarios de búsqueda.
+Son la mejor opción si estás desarrollando un juego conversacional.
+¡Así es, una aventura gráfica de las de la vieja escuela!
+Quería evitar complicaciones, ¡pero es duro gestionar un proyecto así!
+Anima esos píxeles, ¡seguro que encuentras tu consola!
+¡Quizás algún día puedas jugar a mi aventura en ella!
+Bueno, voy a seguir con lo mío. ¡Adiós!

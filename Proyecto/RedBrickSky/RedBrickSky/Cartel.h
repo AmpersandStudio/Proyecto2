@@ -28,6 +28,8 @@ public:
 	void setMSG(std::string msg);
 
 	void setId(int id) { battleId = id; }
+	void setCleon(bool c) { cleon_ = c; }
+	void setNugget(int n) { nugget_ = n; }
 
 protected:
 	int col_;
@@ -42,6 +44,8 @@ protected:
 	bool hasDialogue = true;
 	int battleId = 0;
 
+	bool cleon_ = false;
+	int nugget_ = -1;
 
 	Uint32 timeStart_;
 	Uint32 timeNameInterval_;

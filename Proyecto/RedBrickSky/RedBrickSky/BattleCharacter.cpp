@@ -11,7 +11,7 @@ void BattleCharacter::addAttack(Attack a)
 	{
 		attacks.at(attackIndex) = a;
 		attackIndex++;
-	}	
+	}
 }
 
 bool BattleCharacter::useAttack(int i)
@@ -23,6 +23,13 @@ bool BattleCharacter::useAttack(int i)
 	else if (attacks[i].type == Physical) GameManager::Instance()->setAttackSound("punch_2");
 	else if (attacks[i].type == Ranged) GameManager::Instance()->setAttackSound("Tirachinas");
 	else if (attacks[i].type == Magical) GameManager::Instance()->setAttackSound("golpe");
+
+	if (attacks[i].name == "Ampersand")
+	{
+		SoundManager::Instance()->playSound("ampersand", 0);
+		SDL_Delay(2500);
+	}
+
 	std::cout << name << " uso " << attacks[i].name << "!" << std::endl;
 	attacks[i].pp--;
 	return true;
@@ -140,7 +147,7 @@ float BattleCharacter::combat(int i, float enemyDef, Type enemyType, bool& damag
 
 	if (target)
 	{
-		if (support) 
+		if (support)
 			supportAttack(i);
 		else
 		{

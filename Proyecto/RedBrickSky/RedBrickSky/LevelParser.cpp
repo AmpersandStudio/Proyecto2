@@ -129,6 +129,8 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			int bid = 0;
 			int toShop = 0;
 			int teleport = 0;
+			int cleon = 0;
+			int nugget = -1;
 			//bool hasKey = false;
 
 
@@ -201,6 +203,14 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 							{
 								property->Attribute("value", &bid);
 							}
+							else if (property->Attribute("name") == std::string("cleon"))
+							{
+								property->Attribute("value", &cleon);
+							}
+							else if (property->Attribute("name") == std::string("nugget"))
+							{
+								property->Attribute("value", &nugget);
+							}
 						}
 					}
 				}
@@ -240,6 +250,8 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				c->setKeyID(keyID);
 				c->setPosition(Vector2D(c->getPosition().getX(), c->getPosition().getY() - 32));
 				c->setId(bid);
+				c->setCleon(cleon);
+				c->setNugget(nugget);
 
 				pLevel->getCarteles()->push_back(c);				
 

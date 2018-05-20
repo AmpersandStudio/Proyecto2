@@ -60,7 +60,7 @@ private:
 	Dialogue* currentDialogue_;
 
 	bool ampersand_ = false;
-	bool easterEgg[4] = { false,false, false, false };
+	bool easterEgg[4] = { false, false, false, false };
 	bool charlie_ = false;
 
 	bool first_ = false;
@@ -141,8 +141,9 @@ public:
 	//Metodos para el Easter Egg
 	void setEasterEgg(int i) { easterEgg[i] = true; }
 	bool checkEasterEgg();
-	void setAmpersand() { ampersand_ = true; }
+	void setAmpersand();
 	inline bool getAmpersand() const { return ampersand_; }
+
 	inline bool getCharlie() const { return charlie_; }
 	inline void toggleCharlie() { charlie_ = !charlie_; SoundManager::Instance()->playSound("select", 0); }
 
