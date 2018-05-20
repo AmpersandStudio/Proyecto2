@@ -16,18 +16,29 @@ void BattleCharacter::addAttack(Attack a)
 
 bool BattleCharacter::useAttack(int i)
 {
-	if (attacks[i].type == Support) {
-		support = true;
-		GameManager::Instance()->setAttackSound("golpe");
-	}
-	else if (attacks[i].type == Physical) GameManager::Instance()->setAttackSound("punch_2");
-	else if (attacks[i].type == Ranged) GameManager::Instance()->setAttackSound("Tirachinas");
-	else if (attacks[i].type == Magical) GameManager::Instance()->setAttackSound("golpe");
+	//if (attacks[i].type == Support)	{
+	//	support = true;
+	//	GameManager::Instance()->setAttackSound("golpe");
+	//}
+	//else if (attacks[i].type == Physical) GameManager::Instance()->setAttackSound("punch_2");
+	//else if (attacks[i].type == Ranged) GameManager::Instance()->setAttackSound("Tirachinas");
+	//else if (attacks[i].type == Magical) GameManager::Instance()->setAttackSound("golpe");
 
 	if (attacks[i].name == "Ampersand")
 	{
 		SoundManager::Instance()->playSound("ampersand", 0);
 		SDL_Delay(2500);
+	}
+	else
+	{
+		if (attacks[i].type == Support)
+		{
+			support = true;
+			SoundManager::Instance()->playSound("golpe", 0);
+		}
+		else if (attacks[i].type == Physical) SoundManager::Instance()->playSound("punch_2", 0);
+		else if (attacks[i].type == Ranged) SoundManager::Instance()->playSound("Tirachinas", 0);
+		else if (attacks[i].type == Magical) SoundManager::Instance()->playSound("golpe", 0);
 	}
 
 	std::cout << name << " uso " << attacks[i].name << "!" << std::endl;

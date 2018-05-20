@@ -427,7 +427,7 @@
     <property name="Sweeties" type="int" value="10"/>
    </properties>
   </object>
-  <object id="191" name="Gimnasio-&gt;JardinesSup" type="Teleporter" x="2.33333" y="415.667" width="9.33333" height="160.333">
+  <object id="191" name="Gimnasio-&gt;JardinesSup" type="Teleport" x="2.33333" y="415.667" width="9.33333" height="160.333">
    <properties>
     <property name="changeLevel" type="int" value="3"/>
    </properties>
@@ -467,7 +467,7 @@
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="200" x="2145.17" y="353" width="381.667" height="50">
+  <object id="200" type="Cartel" x="2145.17" y="353" width="381.667" height="50">
    <properties>
     <property name="Message" value="AVolley"/>
    </properties>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="239">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="239">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -102,7 +102,7 @@
    eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
+ <objectgroup name="Objects">
   <object id="37" name="Player" type="Player" x="1472.34" y="1371.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
@@ -281,30 +281,6 @@
   </object>
   <object id="119" name="Cartel2" type="Cartel" x="1119.22" y="234.061" width="32" height="32">
    <properties>
-    <property name="numFrames" type="int" value="2"/>
-    <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="cartel"/>
-    <property name="textureWidth" type="int" value="32"/>
-   </properties>
-  </object>
-  <object id="120" name="NPCBattler" type="Cartel" x="1122" y="384.333" width="32" height="32">
-   <properties>
-    <property name="Message" value="NPC2Test"/>
-    <property name="battleId" type="int" value="1"/>
-    <property name="isFighter" type="int" value="1"/>
-    <property name="keyID" type="int" value="0"/>
-    <property name="numFrames" type="int" value="2"/>
-    <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="cartel"/>
-    <property name="textureWidth" type="int" value="32"/>
-   </properties>
-  </object>
-  <object id="122" name="NPCBattler" type="Cartel" x="1024" y="288" width="32" height="32">
-   <properties>
-    <property name="Message" value="NPC2Test"/>
-    <property name="battleId" type="int" value="2"/>
-    <property name="isFighter" type="int" value="1"/>
-    <property name="keyID" type="int" value="0"/>
     <property name="numFrames" type="int" value="2"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="cartel"/>
@@ -566,17 +542,17 @@
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="178" x="578.5" y="768" width="27" height="25">
+  <object id="178" type="Cartel" x="578.5" y="768" width="27" height="25">
    <properties>
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="179" x="963.5" y="776" width="27" height="25">
+  <object id="179" type="Cartel" x="963.5" y="776" width="27" height="25">
    <properties>
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="180" x="577.5" y="164" width="27" height="62">
+  <object id="180" type="Cartel" x="577.5" y="164" width="27" height="62">
    <properties>
     <property name="Message" value="AFarola"/>
    </properties>
@@ -601,7 +577,7 @@
     <property name="Message" value="Atronco"/>
    </properties>
   </object>
-  <object id="186" x="39.8331" y="1576.33" width="52.3337" height="27.3333">
+  <object id="186" type="Cartel" x="39.8331" y="1576.33" width="52.3337" height="27.3333">
    <properties>
     <property name="Message" value="Atronco"/>
    </properties>

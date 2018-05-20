@@ -576,12 +576,12 @@
     <property name="Sweeties" type="int" value="5"/>
    </properties>
   </object>
-  <object id="157" x="256.166" y="1318.17" width="30.167" height="50.6666">
+  <object id="157" type="Cartel" x="256.166" y="1318.17" width="30.167" height="50.6666">
    <properties>
     <property name="Message" value="Atelevisión"/>
    </properties>
   </object>
-  <object id="158" x="480.916" y="1318.67" width="30.167" height="50.6666">
+  <object id="158" type="Cartel" x="480.916" y="1318.67" width="30.167" height="50.6666">
    <properties>
     <property name="Message" value="Atelevisión"/>
    </properties>

@@ -755,7 +755,7 @@ void BattleState::initC() {
 		}
 	}
 	else if (id_ == 1) {
-		int rnd = rand() % 34;
+		int rnd = rand() % 32;
 		enemy->addAttack(ataques[rnd]);
 		if (rnd % 2 == 0)
 			enemy->addAttack(ataques[rnd + 1]);
@@ -763,14 +763,14 @@ void BattleState::initC() {
 			enemy->addAttack(ataques[rnd - 1]);
 	}
 	else if (id_ == 2) {
-		int rnd = rand() % 34;
+		int rnd = rand() % 32;
 		enemy->addAttack(ataques[rnd]);
 		if (rnd % 2 == 0)
 			enemy->addAttack(ataques[rnd + 1]);
 		else
 			enemy->addAttack(ataques[rnd - 1]);
 
-		rnd = rand() % 34;
+		rnd = rand() % 32;
 		enemy->addAttack(ataques[rnd]);
 		if (rnd % 2 == 0)
 			enemy->addAttack(ataques[rnd + 1]);
@@ -778,14 +778,14 @@ void BattleState::initC() {
 			enemy->addAttack(ataques[rnd - 1]);
 	}
 	else {
-		int rnd = rand() % 34;
+		int rnd = rand() % 32;
 		enemy->addAttack(ataques[rnd]);
 		if (rnd % 2 == 0)
 			enemy->addAttack(ataques[rnd + 1]);
 		else
 			enemy->addAttack(ataques[rnd - 1]);
 
-		rnd = rand() % 34;
+		rnd = rand() % 32;
 		enemy->addAttack(ataques[rnd]);
 		if (rnd % 2 == 0)
 			enemy->addAttack(ataques[rnd + 1]);
