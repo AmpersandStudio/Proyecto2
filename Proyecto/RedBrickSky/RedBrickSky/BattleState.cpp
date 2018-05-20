@@ -418,6 +418,7 @@ void BattleState::createEnemy()
 	int rnd = GameManager::Instance()->getEnemy();
 	int lv = GameManager::Instance()->getLevel();
 
+	//NPC
 	if (id_ == 1) {
 		int random = rand() % 3;
 		Type typ;
@@ -439,26 +440,19 @@ void BattleState::createEnemy()
 		enemy->setTextureId("bokoblinSS");
 	}
 
+	//DRAGON
 	else if (id_ == 2) {
-		int random = rand() % 3;
-		Type typ;
-		switch (random)
-		{
-		case 0:
-			typ = Physical;
-			break;
-		case 1:
-			typ = Magical;
-			break;
-		case 2:
-			typ = Support;
-			break;
-		default:
-			break;
-		}
+		Type typ = Ranged;
 		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
 		enemy->setTextureId("dragonSS");
 		isDragon = true;
+	}
+
+	//DIRECTOR
+	else if (id_ == 3) {
+		Type typ = Physical;
+		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy->setTextureId("directorSS");
 	}
 
 	else {
