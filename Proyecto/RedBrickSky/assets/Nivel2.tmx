@@ -2790,197 +2790,197 @@
   </object>
   <object id="537" name="Mochila " type="Bag" x="7171.5" y="6242.83" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="538" name="Mochila " type="Bag" x="7170.5" y="6273.75" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="539" name="Mochila " type="Bag" x="6656.5" y="6239.25" width="33" height="29">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="540" name="Mochila " type="Bag" x="6243.25" y="6145.75" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="541" name="Mochila " type="Bag" x="6243.75" y="6179.5" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="542" name="Mochila " type="Bag" x="6243.25" y="6212.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="543" name="Mochila " type="Bag" x="5571" y="6372.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="544" name="Mochila " type="Bag" x="5122.75" y="6339.5" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="545" name="Mochila " type="Bag" x="4450" y="6371.75" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="546" name="Mochila " type="Bag" x="4034" y="6210.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="547" name="Mochila " type="Bag" x="2691" y="6372.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="548" name="Mochila " type="Bag" x="2307.5" y="6307.75" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="549" name="Mochila " type="Bag" x="2434.67" y="5634.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="550" name="Mochila " type="Bag" x="866.333" y="5794.92" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="551" name="Mochila " type="Bag" x="965.667" y="5568.92" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="552" name="Mochila " type="Bag" x="257.667" y="5821.58" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="553" name="Mochila " type="Bag" x="259" y="5346.92" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="554" name="Mochila " type="Bag" x="482.636" y="4354.43" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="555" name="Mochila " type="Bag" x="1443.13" y="3523.88" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="556" name="Mochila " type="Bag" x="2435" y="3298.92" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="557" name="Mochila " type="Bag" x="2851" y="3522.92" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="558" name="Mochila " type="Bag" x="4931" y="4420.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="559" name="Mochila " type="Bag" x="4643" y="3330.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="560" name="Mochila " type="Bag" x="6847.61" y="5221.58" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="561" name="Mochila " type="Bag" x="7238.52" y="5315.52" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="562" name="Mochila " type="Bag" x="5924" y="4417.75" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="563" name="Mochila " type="Bag" x="5604.33" y="3362.92" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="564" name="Mochila " type="Bag" x="7490" y="612.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="565" name="Mochila " type="Bag" x="7493" y="165.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="566" name="Mochila " type="Bag" x="6851" y="255.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="567" name="Mochila " type="Bag" x="6753" y="100.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="568" name="Mochila " type="Bag" x="5158" y="1861.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="569" name="Mochila " type="Bag" x="5285" y="2145.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="570" name="Mochila " type="Bag" x="5093" y="2337.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="571" name="Mochila " type="Bag" x="5283" y="1539.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="572" name="Mochila " type="Bag" x="5605" y="2531.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="573" name="Mochila " type="Bag" x="5027" y="2623.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="574" name="Mochila " type="Bag" x="6083" y="2881.58" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="575" name="Mochila " type="Bag" x="6051" y="3140.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="576" name="Libreria2" type="Cartel" x="1022.33" y="5737.67" width="63.3333" height="35.333">
@@ -2991,7 +2991,7 @@
   </object>
   <object id="577" name="Mochila " type="Bag" x="7491" y="4484.25" width="26" height="23.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
  </objectgroup>

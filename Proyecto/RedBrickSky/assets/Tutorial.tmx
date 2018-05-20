@@ -105,7 +105,7 @@
   </object>
   <object id="14" name="Cofre" type="Bag" gid="90" x="1536" y="2560.67" width="32" height="32">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="39" name="Personaje1" type="NPC" x="369.499" y="1932.91" width="32" height="32">
@@ -335,84 +335,83 @@
     <property name="Message" value="PuertaPPalMessage"/>
     <property name="changeLevel" type="int" value="5"/>
     <property name="keyID" type="int" value="8"/>
-    <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureWidht" type="int" value="64"/>
    </properties>
   </object>
   <object id="139" name="Mochila " type="Bag" x="1552" y="19.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="140" name="Mochila " type="Bag" x="1556.5" y="596">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="141" name="Mochila " type="Bag" x="788.5" y="626">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="142" name="Mochila " type="Bag" x="144" y="784">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="143" name="Mochila " type="Bag" x="142" y="1166">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="144" name="Mochila " type="Bag" x="1549" y="1236">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="145" name="Mochila " type="Bag" x="1233" y="881">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="146" name="Mochila " type="Bag" x="1390.5" y="880.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="147" name="Mochila " type="Bag" x="1298" y="1622">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="148" name="Mochila " type="Bag" x="1548" y="1616">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="149" name="Mochila " type="Bag" x="306" y="2550">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="150" name="Mochila " type="Bag" x="206" y="2546">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="151" name="Mochila " type="Bag" x="50" y="2064">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="152" name="Mochila " type="Bag" x="1520" y="2386">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="153" name="Mochila " type="Bag" x="1518" y="2192">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="154" name="Tutorial-&gt;JaridnesInf" type="Teleport" x="1563.17" y="1327.6" width="5" height="63.792">
