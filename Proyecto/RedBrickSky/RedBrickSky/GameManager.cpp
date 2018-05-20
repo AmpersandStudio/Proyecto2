@@ -177,6 +177,12 @@ void GameManager::resetGame()
 	shopObjects.clear();
 	ShopItems si = ShopItems();
 	inventory.clear();
+	for (size_t i = 0; i < doors.size(); i++)
+	{
+		doors.at(i) = false;
+	}
+
+	level_ = TUTORIAL;
 	money = 500;
 	potions_ = 0;
 	potionsPrize = 100;
@@ -186,13 +192,14 @@ void GameManager::resetGame()
 	playerSpeed = 12;
 	playerHP = 260;
 	playerMaxHP = 260;
+
 	name = "";
 	atSound = "";
-	doors.clear();
-	level_ = TUTORIAL;
-	dialogueActive = false;
+
 	currentInter = nullptr;
 	currentDialogue_ = nullptr;
+
+	dialogueActive = false;
 	ampersand_ = false;
 	easterEgg[0] = false;
 	easterEgg[1] = false;

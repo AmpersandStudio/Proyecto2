@@ -130,7 +130,7 @@ public:
 	int getLevel() { return level_; }
 	void setCurrentLevel(int l) { level_ = l; }
 	void setDoor(int keyId) { doors[keyId] = true; }
-    bool getDoor(int keyId) const { return doors[keyId]; }
+    bool getDoor(int keyId) const { return doors.at(keyId); }
 
 	//Metodos para las pociones
 	void addPotion() { potions_++; }

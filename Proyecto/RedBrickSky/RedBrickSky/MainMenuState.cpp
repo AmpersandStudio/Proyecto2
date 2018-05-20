@@ -69,6 +69,7 @@ MainMenuState::~MainMenuState()
 
 void MainMenuState::toGame() 
 {
+	GameManager::Instance()->resetGame();
 	Game::Instance()->getStateMachine()->pushState(new QuestionState());
 }
 
