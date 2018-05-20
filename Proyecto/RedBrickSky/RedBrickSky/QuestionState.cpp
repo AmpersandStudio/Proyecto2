@@ -399,7 +399,7 @@ void QuestionState::assignType()
 {
 	int ret = max(physicFactor_, max(flyingFactor_, magicFactor_));
 
-	int t = 0, a = 12, d = 12, s = 12, h = 260;
+	int t = 0, a = 12, d = 12, s = 12, h = 360;
 
 	if (ret == physicFactor_)
 	{
@@ -407,7 +407,7 @@ void QuestionState::assignType()
 		a = rand() % 16 + 14;
 		d = rand() % 12 + 10;
 		s = rand() % 14 + 12;
-		h = rand() % 280 + 270;
+		h = rand() % 380 + 370;
 	}
 	else if (ret == magicFactor_)
 	{
@@ -415,7 +415,7 @@ void QuestionState::assignType()
 		a = rand() % 14 + 12;
 		d = rand() % 16 + 14;
 		s = rand() % 12 + 10;
-		h = rand() % 260 + 250;
+		h = rand() % 360 + 350;
 	}
 	else
 	{
@@ -423,7 +423,7 @@ void QuestionState::assignType()
 		a = rand() % 12 + 10;
 		d = rand() % 14 + 12;
 		s = rand() % 16 + 14;
-		h = rand() % 270 + 260;
+		h = rand() % 370 + 360;
 	}
 
 	GameManager::Instance()->setBattlePlayer(t, a, d, s, h);

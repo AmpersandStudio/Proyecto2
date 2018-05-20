@@ -512,6 +512,7 @@ void BattleState::createEnemy()
 
 	if (lv != 0) {
 		enemy->setHealth(100 + (50 * lv));
+		enemy->setMaxHealth(100 + (50 * lv));
 		enemy->setAttack(10 + (rand() % lv));
 		enemy->setDefense(10 + (rand() % lv));
 		enemy->setVelocity(10 + (rand() % lv));

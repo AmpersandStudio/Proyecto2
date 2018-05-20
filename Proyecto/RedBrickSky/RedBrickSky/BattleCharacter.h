@@ -51,6 +51,7 @@ public:
 	std::string getName() const { return name; }
 	Type getType() const { return type; }
 
+	float getMaxHealth() const { return maxHealth; }
 	float getHealth() const { return health; }
 	float getAttack() const { return attack; }
 	float getDefense() const { return defense; }
@@ -60,6 +61,7 @@ public:
 	bool isSupport() const { return support; }
 	bool hasTarget() const { return target; }
 
+	void setMaxHealth(float h) { maxHealth = h; }
 	void setHealth(float h) { health = h; }
 	void setAttack(float a) { attack = a; }
 	void setDefense(float d) { defense = d; }
@@ -82,7 +84,6 @@ public:
 	void receiveFactors(float atk, float def, float prc);
 	void setTurn(bool b) { turn_ = b; };
 	bool getTurn() { return turn_; };
-	float getMaxHealth() const { return maxHealth; }
 
 	float getAtkFactor() { return atkFactor; }
 	float getDefFactor() { return defFactor; }
