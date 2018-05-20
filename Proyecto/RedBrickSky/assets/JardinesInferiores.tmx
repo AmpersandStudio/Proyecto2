@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="95" height="138" tilewidth="32" tileheight="32" nextobjectid="164">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="95" height="138" tilewidth="32" tileheight="32" nextobjectid="165">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje2" value="..\assets\Personaje2.png"/>
   <property name="Personaje3" value="..\assets\Personaje3.png"/>
   <property name="Personaje4" value="..\assets\Personaje4.png"/>
   <property name="Personaje5" value="..\assets\Personaje5.png"/>
+  <property name="door" value="..\assets\door.png"/>
   <property name="trunk" value="..\assets\NivelFragmentado\PuertaTronco.png"/>
-  <property name="verticalDoor" value="..\assets\door.png"/>
  </properties>
  <tileset firstgid="1" name="2ckdj8" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="2ckdj8.png" width="512" height="512"/>
@@ -192,7 +192,7 @@
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="truck"/>
-    <property name="textureWidht" type="int" value="64"/>
+    <property name="textureWidth" type="int" value="64"/>
    </properties>
   </object>
   <object id="110" name="Pepe el conserje" type="Cartel" x="2799.5" y="3157.5">
@@ -252,16 +252,6 @@
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="helicopter"/>
     <property name="textureWidth" type="int" value="32"/>
-   </properties>
-  </object>
-  <object id="121" type="Door" x="2239.33" y="2013.17" width="64" height="37.667">
-   <properties>
-    <property name="Message" value="PuertaAlLaberinto"/>
-    <property name="keyID" type="int" value="4"/>
-    <property name="numFrames" type="int" value="1"/>
-    <property name="textureHeight" type="int" value="160"/>
-    <property name="textureID" value="verticalDoor"/>
-    <property name="textureWidht" type="int" value="4"/>
    </properties>
   </object>
   <object id="122" name="Mochila" type="Bag" x="2481" y="3055">
@@ -430,6 +420,16 @@
   <object id="163" name="agua" type="Cartel" x="2621.42" y="483.75" width="197.167" height="56.5">
    <properties>
     <property name="Message" value="Aagua"/>
+   </properties>
+  </object>
+  <object id="164" name="Door" type="Door" x="2239" y="2015" width="64" height="32">
+   <properties>
+    <property name="Message" value="PuertaAlLaberinto"/>
+    <property name="keyID" type="int" value="4"/>
+    <property name="numFrames" type="int" value="1"/>
+    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureID" value="door"/>
+    <property name="textureWidth" type="int" value="64"/>
    </properties>
   </object>
  </objectgroup>

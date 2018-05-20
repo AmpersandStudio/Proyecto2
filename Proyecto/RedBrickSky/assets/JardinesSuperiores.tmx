@@ -181,7 +181,7 @@
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="metalicDoor"/>
-    <property name="textureWidht" type="int" value="64"/>
+    <property name="textureWidth" type="int" value="64"/>
    </properties>
   </object>
   <object id="131" name="Necesaria Llave del Gimnasio " type="Teleport" x="4416" y="415.25" width="4" height="159.75">
@@ -192,7 +192,7 @@
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="160"/>
     <property name="textureID" value="verticalDoor"/>
-    <property name="textureWidht" type="int" value="4"/>
+    <property name="textureWidth" type="int" value="4"/>
    </properties>
   </object>
   <object id="132" name="Personaje2" type="NPC" x="2621.33" y="862.667" width="32" height="32">

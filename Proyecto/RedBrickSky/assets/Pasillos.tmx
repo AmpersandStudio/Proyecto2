@@ -16,7 +16,7 @@
   <property name="Personaje8" value="..\assets\Personaje8.png"/>
   <property name="Personaje9" value="..\assets\Personaje9.png"/>
   <property name="bigMetalicDoor" value="..\assets\NivelFragmentado\puertaMetálica.png"/>
-  <property name="libro" value="..\assets\NivelFragmentado\libro.png"/>
+  <property name="libro" value="..\assets\libro.png"/>
   <property name="miniVerticalDoor" value="..\assets\NivelFragmentado\PuertaVerticalPequeña.png"/>
   <property name="trunk" value="..\assets\NivelFragmentado\PuertaTronco.png"/>
   <property name="verticalDoor" value="..\assets\NivelFragmentado\PuertaVertical.png"/>
@@ -261,9 +261,9 @@
     <property name="Message" value="LibroSecretaria"/>
     <property name="keyID" type="int" value="4"/>
     <property name="numFrames" type="int" value="2"/>
-    <property name="textueWidht" type="int" value="22"/>
-    <property name="textureHeight" type="int" value="32"/>
+    <property name="textureHeight" type="int" value="20"/>
     <property name="textureID" value="libro"/>
+    <property name="textureWidth" type="int" value="22"/>
    </properties>
   </object>
   <object id="102" name="LLaveGimnasio" type="Cartel" x="1854" y="1161">
@@ -279,7 +279,7 @@
     <property name="keyID" type="int" value="3"/>
     <property name="numFrames" type="int" value="0"/>
     <property name="textureHeight" type="int" value="0"/>
-    <property name="textureWidht" type="int" value="0"/>
+    <property name="textureWidth" type="int" value="0"/>
    </properties>
   </object>
   <object id="105" name="SeAbreAbreAlMismoTiempoQueLaCafete" type="Cartel" x="4901" y="3500.83">
@@ -290,21 +290,21 @@
   <object id="108" type="Door" x="4895.92" y="4160.12" width="4" height="63.792">
    <properties>
     <property name="Message" value="PuertaSecretaria"/>
-    <property name="keyID" type="int" value="2"/>
+    <property name="keyID" type="int" value="3"/>
     <property name="numFrames" type="int" value="1"/>
-    <property name="textureHeight" type="int" value="160"/>
-    <property name="textureID" value="MiniVerticalDoor"/>
-    <property name="textureWidht" type="int" value="4"/>
+    <property name="textureHeight" type="int" value="64"/>
+    <property name="textureID" value="miniVerticalDoor"/>
+    <property name="textureWidth" type="int" value="4"/>
    </properties>
   </object>
   <object id="110" type="Door" x="4895.75" y="3519.6" width="4" height="63.792">
    <properties>
-    <property name="Message" value=""/>
+    <property name="Message" value="PuertaSecretaria"/>
     <property name="keyID" type="int" value="3"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="64"/>
-    <property name="textureID" value="MiniVerticalDoor"/>
-    <property name="textureWidht" type="int" value="4"/>
+    <property name="textureID" value="miniVerticalDoor"/>
+    <property name="textureWidth" type="int" value="4"/>
    </properties>
   </object>
   <object id="111" name="MensageElComedorSeAbriráPasadasLas1" type="Door" x="3615.67" y="1248.44" width="32" height="61.792">
@@ -314,7 +314,7 @@
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="64"/>
     <property name="textureID" value="bigMetalicDoor"/>
-    <property name="textureWidht" type="int" value="4"/>
+    <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
   <object id="112" type="Door" x="2560.5" y="1089.1" width="4" height="63.792">
@@ -323,8 +323,8 @@
     <property name="keyID" type="int" value="5"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="64"/>
-    <property name="textureID" value="MiniVerticalDoor"/>
-    <property name="textureWidht" type="int" value="4"/>
+    <property name="textureID" value="         "/>
+    <property name="textureWidth" type="int" value="4"/>
    </properties>
   </object>
   <object id="115" name="Mochila" type="Bag" x="742" y="2026" width="19.3333" height="60">
