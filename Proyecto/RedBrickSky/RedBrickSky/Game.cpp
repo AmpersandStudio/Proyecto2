@@ -10,6 +10,7 @@
 #include "TransitionState.h"
 #include "CreditsState.h"
 #include "PreloadState.h"
+#include "IntroState.h"
 
 #include "TextureManager.h"
 #include "GameObjectFactory.h" 
@@ -217,6 +218,12 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\controlbutton.png", "ctrlbutton", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\Controles_Menu.png", "ctrlmenu", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\directorSS.png", "directorSS", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\intro1.png", "intro1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\intro2.png", "intro2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\intro3.png", "intro3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\intro4.png", "intro4", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\intro5.png", "intro5", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\intro6.png", "intro6", RENDERER_);
 
 	// Load Music
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);
@@ -235,6 +242,7 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\MainMenuBSO.ogg", "menu", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\questions.ogg", "questions", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\TheLastBrick.mp3", "bbattle", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\intro.ogg", "intro", SOUND_MUSIC);
 
 	//Load SFX
 	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_exterior.wav", "exteriores", SOUND_SFX);
@@ -265,6 +273,7 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\Huida.wav", "escape", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\ampersand.wav", "ampersand", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\magic_attack.wav", "magic", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\chalk.wav", "chalk", SOUND_SFX);
 
 	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 3);
 }
@@ -285,7 +294,7 @@ void Game::registerTypes()
 void Game::begin()
 {
 	stateMachine_ = new StateMachine();
-	stateMachine_->pushState(new MainMenuState());
+	stateMachine_->pushState(new IntroState());
 	run();
 }
 
