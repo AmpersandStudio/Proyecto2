@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="95" height="138" tilewidth="32" tileheight="32" nextobjectid="135">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="95" height="138" tilewidth="32" tileheight="32" nextobjectid="164">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje2" value="..\assets\Personaje2.png"/>
@@ -36,7 +36,7 @@
  <tileset firstgid="6835" name="Patrones1" tilewidth="32" tileheight="32" tilecount="168" columns="14">
   <image source="LevelDesign/Tileset_1.png" width="448" height="384"/>
  </tileset>
- <layer name="Collisions" width="95" height="138">
+ <layer name="Collisions" width="95" height="138" visible="0">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
@@ -348,6 +348,96 @@
   <object id="133" name="Jardines-&gt;Pasillos" type="Teleport" x="3031.66" y="1700" width="5.33333" height="97.3333">
    <properties>
     <property name="changeLevel" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="135" type="Cartel" x="1793.5" y="2180" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="136" type="Cartel" x="1792.5" y="2339" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="137" type="Cartel" x="2754.5" y="2339" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="138" type="Cartel" x="2753.5" y="2177" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="139" name="SetosSinFruto" type="Cartel" x="2914.75" y="3009.58" width="26.5003" height="862.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="140" name="SetosSinFruto" type="Cartel" x="3009.75" y="2616.58" width="26.5003" height="218.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="141" name="SetosSinFruto" type="Cartel" x="2945.75" y="2825.58" width="26.5003" height="174.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="142" name="SetosSinFruto" type="Cartel" x="1634.75" y="771.583" width="26.5003" height="858.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="143" name="SetosSinFruto" type="Cartel" x="1633.75" y="536.583" width="26.5003" height="160.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="144" name="SetosSinFruto" type="Cartel" x="1633.42" y="352.25" width="26.5003" height="123.5">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="155" name="fuente" type="Cartel" x="2257.42" y="681.833" width="29.167" height="68.333">
+   <properties>
+    <property name="Message" value="AFuente"/>
+   </properties>
+  </object>
+  <object id="156" name="estatue" type="Cartel" x="2366.92" y="727.333" width="29.167" height="68.333">
+   <properties>
+    <property name="Message" value="Aestatua"/>
+   </properties>
+  </object>
+  <object id="158" name="basurallena" type="Cartel" x="2886" y="2058.5" width="26" height="17">
+   <properties>
+    <property name="Message" value="AbasuraLlena"/>
+   </properties>
+  </object>
+  <object id="159" name="basurallena" type="Cartel" x="2886" y="2436.5" width="26" height="17">
+   <properties>
+    <property name="Message" value="AbasuraLlena"/>
+   </properties>
+  </object>
+  <object id="160" name="agua" type="Cartel" x="1921.42" y="495.25" width="61.167" height="777.5">
+   <properties>
+    <property name="Message" value="Aagua"/>
+   </properties>
+  </object>
+  <object id="161" name="agua" type="Cartel" x="2559.42" y="490.25" width="61.167" height="777.5">
+   <properties>
+    <property name="Message" value="Aagua"/>
+   </properties>
+  </object>
+  <object id="162" name="agua" type="Cartel" x="1794.42" y="481.25" width="129.167" height="56.5">
+   <properties>
+    <property name="Message" value="Aagua"/>
+   </properties>
+  </object>
+  <object id="163" name="agua" type="Cartel" x="2621.42" y="483.75" width="197.167" height="56.5">
+   <properties>
+    <property name="Message" value="Aagua"/>
    </properties>
   </object>
  </objectgroup>

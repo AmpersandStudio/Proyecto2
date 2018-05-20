@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="158">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="239">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -56,6 +56,14 @@
  <tileset firstgid="2523" name="Personaje13" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje13.png" width="96" height="128"/>
  </tileset>
+ <layer name="Collisions" width="50" height="100" visible="0">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztWllqAzEMDb1Ur9NT9mj5LkMwCKF98XhEH5g4tiy9N17Hyfv1+nk/M71QuptPWMfCAVxS6V/HWWmqjiv/+/VJKw8B62AZrLsS9k8B86DiwjKvjgp4dHB1nH1WR6VOLyLjiqpf5ZzvKq47dEi+rXy8/Ck7KR6lK8qhS4fVV+X48DyHimcRiX0yuvalO2JP0+HhwPHZ0U7y06EDnlfwmUZql4nfMdc1HVXYoWPFmaBjSn9M0YHz1ehYuznu1DtY997B9Y02Prh1l9IhxYmga0xd0HRoWLwgR45rtw4qryE6hk7Ugb9rYx/bSOuXd22LrrsW/0/QEUFWh2S/a/+APCy8puhY9VR7Tkdm3fXgxPUqgtN0WN9XsJ1HR2S98o6rSh3a3u9dd3Hew89qV9kf1DmRynP2GUhnMG8cyf7JOiz3JS6ySmztDCnFw+0tv2Otcik2FcfCQfKRgTRnK/eUbh27ME1Hx/zw3Itmn+W09Yry+1Qd1X6s40ry500RztR7C9ZB5Tt1ZM9Z0v82OB1cm8xdo4U/1qLZZH7/8O71nftH5n0wOkZ8UWyYpKNiXHnsq/xBnNQfk3VYY5w0rjIxTuoPqZ1mc3p/WPGE/rDgqf0ROSdqvE7RkXn/8PC6c35Uxu08K2bmB+bWdW63IvPb4F06IvupVDdJh9Y+o+MNkpUXx0PjqLW/EnwPdsYndVTCw8miQ3j2rE9r7CpkdEg+K+2svip1VM8Pq5/q+TFFRyU865XVnvFB+nX6YO137B8RXl77u/dzybc3blRLV9rJCz8H+MmVSc8P3puveuouXe9lPhYVl7OR2mfjV/qp1mHlWaUH+nu6jo5xtUuHZ55H4p8wrizriGYzRccd5/YLE/tDKpPKK23wfRd3B4a/Z/dVjqP0fCp1RP5naYF07sDnlpN1LJ/afxUiPrX6jnFVHXOKjoq4Xl/aurzSd0VQwi8s8+QlX10xcb4rWXXsjGsFt05hZNYtKXb1nLsDnX28O/0Bc9Je0Q==
+  </data>
+ </layer>
  <layer name="Floor" width="50" height="100">
   <data encoding="base64" compression="zlib">
    eJztnElvEzEUgO2kFfQGrWiuLaEUwYGlQuJSSsSR/T+w/AH+V+k1F8qRU+k9hbIc21IWcaEBnpWxZCwv73nsGU80h0+pmon9vtieeeO8ZIMxdgf4BNxsCJ+BL8BxEfsA2Gg9Wo/Ww+lxqcvYd3i82wB+FPw0eGx1GPvFy7HZmbRJwdevqc1jDdXjKYzHy045nnXpHr5+bW3aPGz9nIH35CE8nuX0GMvi6pvqIZ5f9xyTCtn3V8NzVI8leC9uwONyDeNB6dvn0RRieujnER+xPR6wyXoqC+N0YvQreATM8ng8gfYeI+hG7FNyj+FYRzDD8fjaOkDGJWM7BZz2MIf0OAcsIugVcfo8MLHJ+DB99wI8LsO1+FZnwpVumAflfUnlMVbypN+82R5rHbvHHvDe0s4IWOV5eQhs43GR/+8zKvxWOX291ekhXyd9Vrm9vSZ4xDj/tR7pPfrABQQrmXtcJYBxXqnAYxGOGbMJvjykZ8hrsL6pPY6Uv135yBxyLMsQy8M113vFeJjGJDcP11yXczzlmMTywMzxXD3ENd2Wb5nI1YPqkrMHxSV3D8ERoi/X68cKdXro+bzOyBPHJvAK2KrZwzYu+v2JjddFP28y8ZDjIvHFn6tHKNPoccLw+2ASiodofxwRNbfsF/2d57j9L50+x3mEtu8Ce+9IxeWRAjW3XCj6m+e4+0mdBeR4hLbvQs0j1fUxVP5/wPz3V9cYbX2MHG2GgDlfYc4tt4kedZx3p8FD7rU2yWMHeAfsEsciNw8TdXqoe0EufHsO2DmVygNzHyIYRnLI0QOb4+fqERp/Lh57JePPxaNM7K1H69F61OfxZ0o8sOTsgR2L2B73I3pg14XqgalPwu5ZqLFW7aG2bTomdD+lag/M58vYz+PVWJ93GdvmE14Q669MHkNmXwfY9YHZr9D3S1xg1vkekVjrXD9flfWYAWYdDDVSelxnk5rotQCPeWDBgIxbrQVO6SEcZE23qPFWXUI9TA4pPVQHieoS4vHW4pDCY8fioLvsBnrYasxje7gcdJecxwNb8z8I8HC5NM2jqvNVTI8lYNlBquvHUWSPuog9HjEQdQ16Tu6rcRAe4jsxvu+2ie+hcV6NhylPwtSMYsZkgIzBlbvr9Yu29zjEQzh8YLjrx0eEh6tWRo/PVrcQ4nEI/GX4eYWdG6Z6rNQeAtP3FlW+FcdR5rk+x/T7ul3L63KYV9i14iLUI8W8qtoj5bzy1cfFHo9U80r1obiY9kd8tfrU63mIh8tlzGif4dbtoc4zFf2Yk0CXKj2whLjk6CGg5nE55rvT5EGdW7l6UF1iehwqUOI9dHDgeV4icgfmuQZKGMe3i3Xw1eRiv88uPgfbZri8RBwXu35X7iXHYJ/h8pL9iH3KffBp+d2PWL+XUSfi9zL+AdoVhvw=
@@ -86,20 +94,12 @@
  </layer>
  <layer name="TopFences&amp;Trees" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2r9twkAUx3EDBskrQJRJQiYIDEAgZRqSEoSUikxBScMAdDQsQMUEKdgCQZFD16Ao6B6yff/8/UhPQvIT/iGdz2dzSRK2gesAAAAAJTrWZX3fwj4AiMmrpfNMLJ0HgNyH6wBAif67v9m65wFAVTzVkqSr6rlWTJ8rLypXT1XfkE/SNyo22l2GKtdI1Zvhd0j7YJ+N/2sPDV2h4b0tIPfT0BW6dqordKHOu389prqAIj2kuvIwrZ/YD1c9nVQXAACA1KfrAAAK9+46gOdied8u3Rcu7auSXSTPza2m6wT5MV8B+YyvPk+dpTAr8z31Mivxy1E5K+F4mjLucIezcD1+8nzdvhaO+0Xk1wf7Rf3i237RW8/fPJcjj9mNefUr8vnWR3PDtWw67tom0+uSrSHn5filb88Yi9ovVWcrDw==
+   eJzt2j1qAkEUwPE1rgGvECUnSTyB2tj5kTJNYhkRrPQUljYewM4mF7DyBBbeQrTIyDQhRObJ7nzs7P8HDxb2sfuE2flykqTY+r4LAAAAsOj0IMtbCPMAICYDR+/5cvQeAHKfvgsALPpvfHM15gFAWbxUkuRVRauST54vbVVXR0XXUJ8kb5RvaXcZqrpGKt4Mv0OaB/dc/F97rOooGvZtAblDVYdtPcvjyFOqo+iK2u/+9ZzqAPLUTHVkYZo/cR6ufBqpDgAAAKmx7wIA5O7ddwGBi2W/XXouXJpXJrtI1s2PNd8VZEd/BWTz8et64q0KM5v71Ku6xYejdNbC9jSh3eEOF+F8/Bz4vH0jbPfLyL8PzouGJbTzorfW36zLkcX0Rr86i7y/DdHc8C2b7vu2ret5ybehzuv9a96eNha1H3DoK2M=
   </data>
  </layer>
  <layer name="Personajes" width="50" height="100" visible="0">
   <data encoding="base64" compression="zlib">
    eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
-  </data>
- </layer>
- <layer name="Collisions" width="50" height="100" visible="0">
-  <properties>
-   <property name="collidable" type="bool" value="true"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztWllqAzEMDb1Ur9NT9mj5LkMwCKF98XhEH5g4tiy9N17Hyfv1+nk/M71QuptPWMfCAVxS6V/HWWmqjiv/+/VJKw8B62AZrLsS9k8B86DiwjKvjgp4dHB1nH1WR6VOLyLjiqpf5ZzvKq47dEi+rXy8/Ck7KR6lK8qhS4fVV+X48DyHimcRiX0yuvalO2JP0+HhwPHZ0U7y06EDnlfwmUZql4nfMdc1HVXYoWPFmaBjSn9M0YHz1ehYuznu1DtY997B9Y02Prh1l9IhxYmga0xd0HRoWLwgR45rtw4qryE6hk7Ugb9rYx/bSOuXd22LrrsW/0/QEUFWh2S/a/+APCy8puhY9VR7Tkdm3fXgxPUqgtN0WN9XsJ1HR2S98o6rSh3a3u9dd3Hew89qV9kf1DmRynP2GUhnMG8cyf7JOiz3JS6ySmztDCnFw+0tv2Otcik2FcfCQfKRgTRnK/eUbh27ME1Hx/zw3Itmn+W09Yry+1Qd1X6s40ry500RztR7C9ZB5Tt1ZM9Z0v82OB1cm8xdo4U/1qLZZH7/8O71nftH5n0wOkZ8UWyYpKNiXHnsq/xBnNQfk3VYY5w0rjIxTuoPqZ1mc3p/WPGE/rDgqf0ROSdqvE7RkXn/8PC6c35Uxu08K2bmB+bWdW63IvPb4F06IvupVDdJh9Y+o+MNkpUXx0PjqLW/EnwPdsYndVTCw8miQ3j2rE9r7CpkdEg+K+2svip1VM8Pq5/q+TFFRyU865XVnvFB+nX6YO137B8RXl77u/dzybc3blRLV9rJCz8H+MmVSc8P3puveuouXe9lPhYVl7OR2mfjV/qp1mHlWaUH+nu6jo5xtUuHZ55H4p8wrizriGYzRccd5/YLE/tDKpPKK23wfRd3B4a/Z/dVjqP0fCp1RP5naYF07sDnlpN1LJ/afxUiPrX6jnFVHXOKjoq4Xl/aurzSd0VQwi8s8+QlX10xcb4rWXXsjGsFt05hZNYtKXb1nLsDnX28O/0Bc9Je0Q==
   </data>
  </layer>
  <objectgroup name="Objects" visible="0">
@@ -474,6 +474,311 @@
     <property name="Message" value="BattlerTutorial"/>
     <property name="battleId" type="int" value="0"/>
     <property name="isFighter" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="158" type="Cartel" x="418" y="3046" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="161" type="Cartel" x="322.5" y="3050" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="162" type="Cartel" x="226.5" y="3044" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="163" type="Cartel" x="128.5" y="3045" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="164" type="Cartel" x="36.5" y="3043" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="165" type="Cartel" x="1056.5" y="3046" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="166" type="Cartel" x="1153.5" y="3049" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="167" type="Cartel" x="1251.5" y="3048" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="168" type="Cartel" x="1346.5" y="3049" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="169" type="Cartel" x="1443.5" y="3043" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="170" type="Cartel" x="1540.5" y="3047" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="171" type="Cartel" x="580.5" y="2116" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="172" type="Cartel" x="962.5" y="2124" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="173" type="Cartel" x="963.5" y="1963" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="174" type="Cartel" x="575.5" y="1960" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="175" type="Cartel" x="577.5" y="1417" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="176" type="Cartel" x="962.5" y="1419" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="177" type="Cartel" x="577.5" y="1249" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="178" x="578.5" y="768" width="27" height="25">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="179" x="963.5" y="776" width="27" height="25">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="180" x="577.5" y="164" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="181" type="Cartel" x="963.5" y="165" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="182" type="Cartel" x="962.5" y="323" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="183" type="Cartel" x="576.5" y="322" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="185" type="Cartel" x="1125.83" y="1575.33" width="52.3337" height="27.3333">
+   <properties>
+    <property name="Message" value="Atronco"/>
+   </properties>
+  </object>
+  <object id="186" x="39.8331" y="1576.33" width="52.3337" height="27.3333">
+   <properties>
+    <property name="Message" value="Atronco"/>
+   </properties>
+  </object>
+  <object id="187" type="Cartel" x="328.833" y="775.333" width="52.3337" height="27.3333">
+   <properties>
+    <property name="Message" value="Atronco"/>
+   </properties>
+  </object>
+  <object id="188" type="Cartel" x="1282.5" y="289" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="189" type="Cartel" x="1476.5" y="288" width="27" height="62">
+   <properties>
+    <property name="Message" value="AFarola"/>
+   </properties>
+  </object>
+  <object id="190" name="SetosSinFruto" type="Cartel" x="1.74985" y="2103.58" width="26.5003" height="388.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="191" name="SetosSinFruto" type="Cartel" x="0.74985" y="751.584" width="26.5003" height="1224.83">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="192" name="SetosSinFruto" type="Cartel" x="31.7499" y="587.584" width="26.5003" height="139.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="193" name="SetosSinFruto" type="Cartel" x="31.7499" y="469.584" width="475.5" height="29.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="194" name="SetosSinFruto" type="Cartel" x="1537.75" y="483.584" width="26.5003" height="77.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="195" name="SetosSinFruto" type="Cartel" x="1537.75" y="643.083" width="26.5003" height="77.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="196" name="SetosSinFruto" type="Cartel" x="1569.75" y="741.083" width="26.5003" height="436.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="197" name="SetosSinFruto" type="Cartel" x="1569.75" y="1668.58" width="26.5003" height="440.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="198" name="SetosSinFruto" type="Cartel" x="1570.75" y="1420.58" width="26.5003" height="137.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="199" name="SetosconFruto" type="Cartel" x="353.417" y="2542.92" width="26.5003" height="155.5">
+   <properties>
+    <property name="Message" value="Asetos"/>
+   </properties>
+  </object>
+  <object id="200" name="SetosconFruto" type="Cartel" x="129.417" y="2543.58" width="26.5003" height="155.5">
+   <properties>
+    <property name="Message" value="Asetos"/>
+   </properties>
+  </object>
+  <object id="215" name="estatue" type="Cartel" x="623.416" y="2862.83" width="29.167" height="37.333">
+   <properties>
+    <property name="Message" value="Aestatua"/>
+   </properties>
+  </object>
+  <object id="216" name="estatue" type="Cartel" x="686.416" y="2868.83" width="29.167" height="68.333">
+   <properties>
+    <property name="Message" value="Aestatua"/>
+   </properties>
+  </object>
+  <object id="217" name="estatue" type="Cartel" x="847.416" y="2868.83" width="29.167" height="68.333">
+   <properties>
+    <property name="Message" value="Aestatua"/>
+   </properties>
+  </object>
+  <object id="218" name="estatue" type="Cartel" x="913.416" y="2866.83" width="29.167" height="36.333">
+   <properties>
+    <property name="Message" value="Aestatua"/>
+   </properties>
+  </object>
+  <object id="219" name="estatue" type="Cartel" x="1269.42" y="2834.83" width="29.167" height="68.333">
+   <properties>
+    <property name="Message" value="Aestatua"/>
+   </properties>
+  </object>
+  <object id="220" name="estatue" type="Cartel" x="1326.42" y="2829.83" width="29.167" height="68.333">
+   <properties>
+    <property name="Message" value="Aestatua"/>
+   </properties>
+  </object>
+  <object id="221" name="estatue" type="Cartel" x="625.416" y="227.833" width="29.167" height="22.333">
+   <properties>
+    <property name="Message" value="Aestatua"/>
+   </properties>
+  </object>
+  <object id="222" name="estatue" type="Cartel" x="913.416" y="229.833" width="29.167" height="22.333">
+   <properties>
+    <property name="Message" value="Aestatua"/>
+   </properties>
+  </object>
+  <object id="223" name="cartel" type="Cartel" x="608.25" y="2293.83" width="34.5" height="9.333">
+   <properties>
+    <property name="Message" value="Acartel"/>
+   </properties>
+  </object>
+  <object id="224" name="cartel" type="Cartel" x="926.75" y="2294.33" width="34.5" height="9.333">
+   <properties>
+    <property name="Message" value="Acartel"/>
+   </properties>
+  </object>
+  <object id="225" name="cartel" type="Cartel" x="739.75" y="2096.33" width="13.5" height="9.333">
+   <properties>
+    <property name="Message" value="Acartel"/>
+   </properties>
+  </object>
+  <object id="226" name="cartel" type="Cartel" x="957.75" y="1329.33" width="34.5" height="9.333">
+   <properties>
+    <property name="Message" value="Acartel"/>
+   </properties>
+  </object>
+  <object id="227" name="cartel" type="Cartel" x="607.75" y="409.334" width="34.5" height="9.333">
+   <properties>
+    <property name="Message" value="Acartel"/>
+   </properties>
+  </object>
+  <object id="228" name="basurallena" type="Cartel" x="931" y="2236.17" width="26" height="17">
+   <properties>
+    <property name="Message" value="AbasuraLlena"/>
+   </properties>
+  </object>
+  <object id="229" name="basurallena" type="Cartel" x="932.333" y="1282.17" width="26" height="17">
+   <properties>
+    <property name="Message" value="AbasuraLlena"/>
+   </properties>
+  </object>
+  <object id="230" name="basurallena" type="Cartel" x="35" y="526.167" width="26" height="27.6667">
+   <properties>
+    <property name="Message" value="ABasuraGrande"/>
+   </properties>
+  </object>
+  <object id="231" name="basurallena" type="Cartel" x="5" y="238.167" width="26" height="27.6667">
+   <properties>
+    <property name="Message" value="ABasuraGrande"/>
+   </properties>
+  </object>
+  <object id="232" name="basurallena" type="Cartel" x="3.66667" y="174.167" width="26" height="27.6667">
+   <properties>
+    <property name="Message" value="ABasuraGrande"/>
+   </properties>
+  </object>
+  <object id="233" name="basurallena" type="Cartel" x="1537" y="2218.17" width="26" height="80.3334">
+   <properties>
+    <property name="Message" value="ABasuraGrande"/>
+   </properties>
+  </object>
+  <object id="237" name="basura" type="Cartel" x="609" y="733.167" width="26" height="19.0001">
+   <properties>
+    <property name="Message" value="Abasura"/>
+   </properties>
+  </object>
+  <object id="238" name="basura" type="Cartel" x="931.667" y="733.833" width="26" height="19.0001">
+   <properties>
+    <property name="Message" value="Abasura"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="169" height="164" tilewidth="32" tileheight="32" nextobjectid="157">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="169" height="164" tilewidth="32" tileheight="32" nextobjectid="223">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje10" value="..\assets\Personaje10.png"/>
@@ -57,7 +57,7 @@
  <tileset firstgid="10807" name="Personaje12" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje12.png" width="96" height="128"/>
  </tileset>
- <layer name="Collisions" width="169" height="164">
+ <layer name="Collisions" width="169" height="164" visible="0">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
@@ -135,7 +135,7 @@
     <property name="Sweeties" type="int" value="5"/>
    </properties>
   </object>
-  <object id="75" name="Mochila" type="Bag" x="1358.67" y="1236">
+  <object id="75" name="Mochila" type="Bag" x="1362" y="1232.67">
    <properties>
     <property name="Sweeties" type="int" value="5"/>
    </properties>
@@ -273,7 +273,7 @@
   </object>
   <object id="104" name="MiniBoss" type="Cartel" x="1197" y="2319.66" width="39.3333" height="76">
    <properties>
-    <property name="Message" value="Que tarde se ha hecho, vooy a tomarme algo a la cafete, seguro que ya la han abierto"/>
+    <property name="Message" value="MiniBossNivel1"/>
     <property name="battleId" type="int" value="1"/>
     <property name="keyID" type="int" value="2"/>
     <property name="numFrames" type="int" value="0"/>
@@ -360,7 +360,7 @@
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
-  <object id="121" name="NPC genérico " type="Cartel" x="127" y="1183" width="35.3333" height="36.6667">
+  <object id="121" name="NPC genérico " type="Cartel" x="123" y="1183" width="35.3333" height="36.6667">
    <properties>
     <property name="Message" value="NPC37"/>
     <property name="battleId" type="int" value="0"/>
@@ -574,6 +574,316 @@
   <object id="156" name="Mochila" type="Bag" x="1072.67" y="1237.33">
    <properties>
     <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="157" x="256.166" y="1318.17" width="30.167" height="50.6666">
+   <properties>
+    <property name="Message" value="Atelevisión"/>
+   </properties>
+  </object>
+  <object id="158" x="480.916" y="1318.67" width="30.167" height="50.6666">
+   <properties>
+    <property name="Message" value="Atelevisión"/>
+   </properties>
+  </object>
+  <object id="159" type="Cartel" x="664.417" y="2017.17" width="65.667" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="160" type="Cartel" x="803.667" y="2017.67" width="65.667" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="161" type="Cartel" x="1055.67" y="2018.17" width="68.167" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="162" type="Cartel" x="1152.67" y="2018.17" width="65.667" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="163" name="Mochila" type="Bag" x="1031.83" y="2018.5" width="19.3333" height="60">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="164" name="Mochila" type="Bag" x="1127.33" y="2020" width="19.3333" height="60">
+   <properties>
+    <property name="Sweeties" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="165" type="Cartel" x="1528.67" y="1281.17" width="227.167" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="166" type="Cartel" x="1797.17" y="1282.17" width="281" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="167" type="Cartel" x="2116.5" y="1282.83" width="121" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="168" type="Cartel" x="2275.17" y="1282.17" width="65.667" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="169" type="Cartel" x="2969.17" y="1282.17" width="525" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="170" type="Cartel" x="3899.83" y="1280.17" width="617" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="171" type="Cartel" x="4187.17" y="1637.5" width="204.334" height="53.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="172" type="Cartel" x="3974.5" y="1633.5" width="65.667" height="59.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="173" type="Cartel" x="3833.17" y="1632.17" width="73.0003" height="63.6666">
+   <properties>
+    <property name="Message" value="Ataquilla"/>
+   </properties>
+  </object>
+  <object id="174" name="EstatneriaSinLibros" type="Cartel" x="959.75" y="1408.83" width="32.5003" height="66.3333">
+   <properties>
+    <property name="Message" value="AsinLibros"/>
+   </properties>
+  </object>
+  <object id="175" name="EstatneriaSinLibros" type="Cartel" x="1087.75" y="1318.17" width="32.5003" height="39">
+   <properties>
+    <property name="Message" value="AsinLibros"/>
+   </properties>
+  </object>
+  <object id="176" name="EstatneriaSinLibros" type="Cartel" x="1181.75" y="1342.17" width="32.5003" height="39.6666">
+   <properties>
+    <property name="Message" value="AsinLibros"/>
+   </properties>
+  </object>
+  <object id="178" name="EstatneriaSinLibros" type="Cartel" x="610.75" y="1314.33" width="58.5003" height="56.8333">
+   <properties>
+    <property name="Message" value="AsinLibros"/>
+   </properties>
+  </object>
+  <object id="179" name="EstatneriaSinLibros" type="Cartel" x="163.75" y="1161.83" width="57.0003" height="50.3333">
+   <properties>
+    <property name="Message" value="AsinLibros"/>
+   </properties>
+  </object>
+  <object id="180" name="EstatneriaSinLibros" type="Cartel" x="259" y="1160.33" width="57.0003" height="50.3333">
+   <properties>
+    <property name="Message" value="AsinLibros"/>
+   </properties>
+  </object>
+  <object id="181" name="SillaComoda" type="Cartel" x="512.5" y="1569.83" width="26.5003" height="90.8333">
+   <properties>
+    <property name="Message" value="Asillacomoda"/>
+   </properties>
+  </object>
+  <object id="182" name="WC" type="Cartel" x="4058.08" y="2410.92" width="42.5003" height="104.833">
+   <properties>
+    <property name="Message" value="Aretrete"/>
+   </properties>
+  </object>
+  <object id="183" name="WC" type="Cartel" x="3961.42" y="2415.58" width="42.5003" height="104.833">
+   <properties>
+    <property name="Message" value="Aretrete"/>
+   </properties>
+  </object>
+  <object id="184" name="WC" type="Cartel" x="3869.42" y="2386.92" width="42.5003" height="104.833">
+   <properties>
+    <property name="Message" value="Aretrete"/>
+   </properties>
+  </object>
+  <object id="185" name="WC" type="Cartel" x="4060.75" y="2030.25" width="42.5003" height="104.833">
+   <properties>
+    <property name="Message" value="Aretrete"/>
+   </properties>
+  </object>
+  <object id="186" name="WC" type="Cartel" x="3966.08" y="2026.92" width="42.5003" height="104.833">
+   <properties>
+    <property name="Message" value="Aretrete"/>
+   </properties>
+  </object>
+  <object id="187" name="WC" type="Cartel" x="3870.08" y="2018.92" width="42.5003" height="104.833">
+   <properties>
+    <property name="Message" value="Aretrete"/>
+   </properties>
+  </object>
+  <object id="188" name="Papel" type="Cartel" x="4418.92" y="1986.83" width="24.1667" height="28.333">
+   <properties>
+    <property name="Message" value="Apapel"/>
+   </properties>
+  </object>
+  <object id="189" name="Papel" type="Cartel" x="4421.92" y="2372.83" width="24.1667" height="28.333">
+   <properties>
+    <property name="Message" value="Apapel"/>
+   </properties>
+  </object>
+  <object id="190" name="mesascafete" type="Cartel" x="3134.92" y="842.833" width="604.167" height="28.333">
+   <properties>
+    <property name="Message" value="AmesasCafeteria"/>
+   </properties>
+  </object>
+  <object id="191" name="mesascafete" type="Cartel" x="3138.92" y="714.833" width="604.167" height="28.333">
+   <properties>
+    <property name="Message" value="AmesasCafeteria"/>
+   </properties>
+  </object>
+  <object id="192" name="mesascafete" type="Cartel" x="3136.92" y="586.833" width="604.167" height="28.333">
+   <properties>
+    <property name="Message" value="AmesasCafeteria"/>
+   </properties>
+  </object>
+  <object id="193" name="mesascafete" type="Cartel" x="3175.92" y="460.833" width="565.167" height="28.333">
+   <properties>
+    <property name="Message" value="AmesasCafeteria"/>
+   </properties>
+  </object>
+  <object id="194" name="cocaMachine" type="Cartel" x="3651.92" y="288.833" width="134.167" height="57.333">
+   <properties>
+    <property name="Message" value="AMaquinaCocacola"/>
+   </properties>
+  </object>
+  <object id="195" name="cocaMachine" type="Cartel" x="3997.92" y="700.333" width="29.167" height="57.333">
+   <properties>
+    <property name="Message" value="AMaquinaCocacola"/>
+   </properties>
+  </object>
+  <object id="196" name="cocaMachine" type="Cartel" x="3999.42" y="804.333" width="29.167" height="57.333">
+   <properties>
+    <property name="Message" value="AMaquinaCocacola"/>
+   </properties>
+  </object>
+  <object id="197" name="cocaMachine" type="Cartel" x="4001.42" y="903.333" width="29.167" height="57.333">
+   <properties>
+    <property name="Message" value="AMaquinaCocacola"/>
+   </properties>
+  </object>
+  <object id="198" name="Estanterias Libros" type="Cartel" x="318.25" y="1284.08" width="126.5" height="86.833">
+   <properties>
+    <property name="Message" value="Aestanterias"/>
+   </properties>
+  </object>
+  <object id="199" name="Estanterias Libros" type="Cartel" x="340.75" y="1163.58" width="228.5" height="44.833">
+   <properties>
+    <property name="Message" value="Aestanterias"/>
+   </properties>
+  </object>
+  <object id="200" name="Estanterias Libros" type="Cartel" x="896.75" y="1152.58" width="127.5" height="55.833">
+   <properties>
+    <property name="Message" value="Aestanterias"/>
+   </properties>
+  </object>
+  <object id="201" name="Estanterias Libros" type="Cartel" x="1214.75" y="1158.58" width="76.5" height="58.833">
+   <properties>
+    <property name="Message" value="Aestanterias"/>
+   </properties>
+  </object>
+  <object id="202" name="Estanterias Libros" type="Cartel" x="1239.75" y="1415.58" width="76.5" height="58.833">
+   <properties>
+    <property name="Message" value="Aestanterias"/>
+   </properties>
+  </object>
+  <object id="205" name="Estanterias Libros" type="Cartel" x="900.75" y="1413.58" width="21.5" height="58.833">
+   <properties>
+    <property name="Message" value="Aestanterias"/>
+   </properties>
+  </object>
+  <object id="206" name="Estanterias Libros" type="Cartel" x="1031.25" y="1414.58" width="21.5" height="58.833">
+   <properties>
+    <property name="Message" value="Aestanterias"/>
+   </properties>
+  </object>
+  <object id="207" name="Estanterias Libros" type="Cartel" x="1093.25" y="1411.58" width="21.5" height="58.833">
+   <properties>
+    <property name="Message" value="Aestanterias"/>
+   </properties>
+  </object>
+  <object id="209" name="Estanterias Libros" type="Cartel" x="363.25" y="1672.58" width="126.5" height="19.833">
+   <properties>
+    <property name="Message" value="Aestanterias"/>
+   </properties>
+  </object>
+  <object id="210" name="Espejo" type="Cartel" x="4262.75" y="2035.08" width="144.5" height="32.833">
+   <properties>
+    <property name="Message" value="AEspejo"/>
+   </properties>
+  </object>
+  <object id="211" name="Espejo" type="Cartel" x="4260.75" y="2422.58" width="144.5" height="32.833">
+   <properties>
+    <property name="Message" value="AEspejo"/>
+   </properties>
+  </object>
+  <object id="212" name="Escaleras" type="Cartel" x="2616.75" y="484.583" width="67.5" height="58.833">
+   <properties>
+    <property name="Message" value="Aescaleras"/>
+   </properties>
+  </object>
+  <object id="213" name="Ascensor" type="Cartel" x="2725.75" y="481.584" width="46.5" height="58.833">
+   <properties>
+    <property name="Message" value="Aascensor"/>
+   </properties>
+  </object>
+  <object id="214" name="cafete" type="Cartel" x="3136.83" y="273.667" width="314.333" height="108.667">
+   <properties>
+    <property name="Message" value="ACafete"/>
+   </properties>
+  </object>
+  <object id="215" name="documentos" type="Cartel" x="261.75" y="1764.58" width="26.5003" height="29.8333">
+   <properties>
+    <property name="Message" value="Adocumentos"/>
+   </properties>
+  </object>
+  <object id="216" name="documentos" type="Cartel" x="528.75" y="1787.08" width="26.5003" height="29.8333">
+   <properties>
+    <property name="Message" value="Adocumentos"/>
+   </properties>
+  </object>
+  <object id="217" name="documentos" type="Cartel" x="655.75" y="1785.08" width="26.5003" height="29.8333">
+   <properties>
+    <property name="Message" value="Adocumentos"/>
+   </properties>
+  </object>
+  <object id="218" name="documentos" type="Cartel" x="1042.75" y="1817.08" width="101.5" height="29.8333">
+   <properties>
+    <property name="Message" value="Adocumentos"/>
+   </properties>
+  </object>
+  <object id="219" name="documentos" type="Cartel" x="1199.75" y="1819.08" width="26.5003" height="29.8333">
+   <properties>
+    <property name="Message" value="Adocumentos"/>
+   </properties>
+  </object>
+  <object id="220" name="documentos" type="Cartel" x="1330.75" y="1816.08" width="26.5003" height="29.8333">
+   <properties>
+    <property name="Message" value="Adocumentos"/>
+   </properties>
+  </object>
+  <object id="221" name="documentos" type="Cartel" x="5216.75" y="3776.08" width="26.5003" height="29.8333">
+   <properties>
+    <property name="Message" value="Adocumentos"/>
+   </properties>
+  </object>
+  <object id="222" name="documentos" type="Cartel" x="5217.75" y="3960.08" width="26.5003" height="29.8333">
+   <properties>
+    <property name="Message" value="Adocumentos"/>
    </properties>
   </object>
  </objectgroup>

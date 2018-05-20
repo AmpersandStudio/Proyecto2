@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="150" height="63" tilewidth="32" tileheight="32" nextobjectid="141">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="150" height="63" tilewidth="32" tileheight="32" nextobjectid="144">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje2" value="..\assets\Personaje2.png"/>
@@ -271,6 +271,21 @@
   <object id="140" name="JardinesSup-&gt;Pasillos" type="Teleport" x="4031.33" y="919.667" width="64.3333" height="7">
    <properties>
     <property name="changeLevel" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="141" name="SetosSinFruto" type="Cartel" x="1250.75" y="280.584" width="210.5" height="1396.83">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="142" name="SetosSinFruto" type="Cartel" x="1550.75" y="457.585" width="168.5" height="1166.83">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="143" name="SetosSinFruto" type="Cartel" x="1764.75" y="1557.59" width="240.5" height="58.83">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
    </properties>
   </object>
  </objectgroup>
