@@ -188,7 +188,7 @@
   <object id="87" name="NPC genérico " type="Cartel" x="412.667" y="1888.66" width="35.3333" height="36.6667">
    <properties>
     <property name="Message" value="NPC38"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -210,7 +210,7 @@
   <object id="91" name="NPC genérico " type="Cartel" x="1935" y="1173">
    <properties>
     <property name="Message" value="Pues empezamos a jugar al escondite, me metí aquí y aquí me quedé, pero me has liberado, así que te daré una cosita... pero antes , a luchar "/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
     <property name="keyID" type="int" value="6"/>
    </properties>
@@ -228,21 +228,21 @@
   <object id="94" name="NPC genérico " type="Cartel" x="3710.67" y="1313.33" width="34" height="30">
    <properties>
     <property name="Message" value="NPCPuertaCaferteria"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="95" name="NPC genérico " type="Cartel" x="4014" y="656">
    <properties>
     <property name="Message" value="NPCS3"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="96" name="NPC genérico " type="Cartel" x="3822" y="340">
    <properties>
     <property name="Message" value="NPC32"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -259,7 +259,7 @@
   <object id="100" name="MensajeConserje" type="Cartel" x="5216.5" y="4033.5" width="30.0909" height="29.7273">
    <properties>
     <property name="Message" value="LibroSecretaria"/>
-    <property name="keyID" type="int" value="3"/>
+    <property name="keyID" type="int" value="4"/>
     <property name="numFrames" type="int" value="2"/>
     <property name="textueWidht" type="int" value="22"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -274,8 +274,9 @@
   <object id="104" name="MiniBoss" type="Cartel" x="1197" y="2319.66" width="39.3333" height="76">
    <properties>
     <property name="Message" value="MiniBossNivel1"/>
-    <property name="battleId" type="int" value="1"/>
-    <property name="keyID" type="int" value="2"/>
+    <property name="battleId" type="int" value="3"/>
+    <property name="isFighter" type="int" value="1"/>
+    <property name="keyID" type="int" value="3"/>
     <property name="numFrames" type="int" value="0"/>
     <property name="textureHeight" type="int" value="0"/>
     <property name="textureWidht" type="int" value="0"/>
@@ -299,7 +300,7 @@
   <object id="110" type="Door" x="4895.75" y="3519.6" width="4" height="63.792">
    <properties>
     <property name="Message" value=""/>
-    <property name="keyID" type="int" value="2"/>
+    <property name="keyID" type="int" value="3"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="64"/>
     <property name="textureID" value="MiniVerticalDoor"/>
@@ -309,7 +310,7 @@
   <object id="111" name="MensageElComedorSeAbriráPasadasLas1" type="Door" x="3615.67" y="1248.44" width="32" height="61.792">
    <properties>
     <property name="Message" value="PuertaCafeteria"/>
-    <property name="keyID" type="int" value="2"/>
+    <property name="keyID" type="int" value="3"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="64"/>
     <property name="textureID" value="bigMetalicDoor"/>
@@ -349,28 +350,28 @@
   <object id="119" name="NPC genérico " type="Cartel" x="604" y="2055.33" width="38" height="28.6667">
    <properties>
     <property name="Message" value="NPCS4"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="120" name="NPC genérico " type="Cartel" x="511" y="1476.33" width="35.3333" height="36.6667">
    <properties>
     <property name="Message" value="NPC36"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="121" name="NPC genérico " type="Cartel" x="123" y="1183" width="35.3333" height="36.6667">
    <properties>
     <property name="Message" value="NPC37"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="122" name="NPC genérico " type="Cartel" x="1341.33" y="1728.67" width="35.3333" height="36.6667">
    <properties>
     <property name="Message" value="NPC35 "/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -518,14 +519,14 @@
   <object id="145" name="Pablo" type="Cartel" x="4882" y="2005">
    <properties>
     <property name="Message" value="NPC25"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="146" name="Pablo" type="Cartel" x="4591" y="1838">
    <properties>
     <property name="Message" value="NPC24"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -552,7 +553,7 @@
   <object id="152" name="Pablo" type="Cartel" x="3887" y="2547">
    <properties>
     <property name="Message" value="NPC24"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>

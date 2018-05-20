@@ -57,14 +57,6 @@
  <tileset firstgid="10939" name="Personaje12" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje12.png" width="96" height="128"/>
  </tileset>
- <layer name="Collisions" width="85" height="68" visible="0">
-  <properties>
-   <property name="collidable" type="bool" value="true"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztnOtqBCEMhZfSt+h79WefsY+4DMuASKK5nGh0PCBDHc3lG824bdnX66P/n/Ftlt/bd5T/SNuH6WlejlmYXvr7/rSRfil/FAeOT92XhWkpqq8lzo5mrsWvxlYGplSsEf6eylSai2etUhwsdjIzRa7Ver6Ug5UrZ3cmUyq/CKa9nxFMZzYuPmmOWhbcmvWKY9obf+k+80hay57Ep+Z5ePeGV1qmaEl9RjDl/GjtUPVDkxtSqOdI1UyPLS4+K9NVVeaBsIOKZWWmKB2meCE4zGY6o45HaxemWZ4J9b4cHRvl1/p7vtueRvXZeefzqfbMx+WhPaNGnOtmthZrzZVjJe3bman12qoJVB/FxMp1R6atXKV9qFxm8+SYWhhL8nwyU/R6pXwcpvKrJOfDFLNONWO1Km3O5olkqllHkaLy4sZo2HDzWv33PeqKFMomZyeSqSfOkXuj9uu5lrH38hzNNFJSplS9iGCKkLSeamvkjusUsQ9nrVOk7axMI31FP7esTFGxc/MilZGpde15/CKVkWmp1v+ylON7Odx2WuMs7Kn72ZhK1VqnVmnis97r+ZrF1JuPNk9kfD1fvT3MjfHELB3vYaGNrx4XxRSlsp5q/GhjQtUgqe9ZTC+bo5gipWWK9GlZS6OZzq6n0e+oWUwlMVPvC4vdw5T2N7Pu3P41Y7MyjfBtlbVeoW1y857CtDXPY8/DYtW935vrteXhugvTej6CKUIrM61j9+ZymGKZeutpK67RysjU+97MwBS1XyPqqeUzSwamqPkReTyJabnPWn1e7chU+veonq2enZbNpzGVCmVHouxML3l5jOR5aQWmq6j+fqxZqn2PWlORfjIwLf2vxrT+jhLk5zGrJO9Vrv1+8c1jF9VWY9rieZiedXqY7sv07H080xXaG8OMHwQ=
-  </data>
- </layer>
  <layer name="Floor" width="85" height="68">
   <data encoding="base64" compression="zlib">
    eJzt289P1EAUB/Btwx8Ap4VtE40o6FFxlZN4MfGA3gwIGCVRDviDo1f/EM8uu3r0oib+MYJy8YomxoPz3L7sY3Y6M51OZ2a7neQbAmyn7YfXdqYtrdaw7Z9zn0dpq/Uj8ZfF1N6+9JJRWh5N37P177M8dxzY70OWfjLcjg8XygX6OAjItOchd6LhV5umdF+myRQtqSm0t4vlAi0kU9w/E5+8iBz55abJVGal68j3k/ezOpvKatXUWOdvMC2mHzt6mY/EwX7ms37pz12ZPpjxZ3qiUae2r1Eh1in0YcsU+pKdE6vydGWKv3dZp7jOsq6q5XydT+lnXJtSVxc16sPUlSu/zrqYbs7I+3VhKapX3fFQiGMplWkVrqptbEztmb5k2/OKZTVShx7bqs9CnwecP6zrcVqfY19kC/s4YNlj+3tXM7D9qs8MklGoaz9btqxnEVOX1yjwNLmn3DNYBl2rNPU9lgJP2J52zOaQOVlg+aZxfT9iOZb0Bf30M1c0reOYv5+ZXmL7+6sjzhN23vvMvn7p5NuC5afO8HO7aX5fuD4Xpi4tMXgMqkyprcgVPWWWjam+axHPxlTt2ivomWdqo026KUZ17vRlCvdPfaWsqUlCMf06ayehmQ4StVVVpn9m7YQ3DsH0laUUNb0xZye8sU/T74nd94ROCpr+nbUT3vgmMz2f+jG9H9u/T7sen73uy5otUwzMR1czz4GnOrVtCp4+TeG422SmO41p6fBtI3OddNNbrK810p/P5vMadS9z0M1tyd9gnfvdtJrq1B/eM1zIzNa4esRssZ9tZ2lMFZ4RicBW5BuS6QrbvutcbBjS/rqx3PTMvexI3N98Tu1SY51ma26aZyqazxwIavdaog79/HI8mtfT51Mi07bB35D3LVKnVc9NB8n4szl6PrjIxgYr7HvVu/8vWK7CcqnYFJ/18aZtSV3qZNnAtOq5qcx0KR55Pkvl58Cn6VlXHVO+Pk1sTUyrnpvKTGF7dTx511PNOqXnF9Na9WnKz033yH7KTE3G4bhsEVOXx37Vc1OVqW6N0loVmYquUSpTHEuFasq3DeLqu05zx06R/HtT06qazjXKl2ne/ws0pnLTtuD65Oq679sU3tm5onlOvZwOo2O6Eo/XpKpO62AK41N8R0LlCpb4DsVSgWO/jOckmsI203dP8lyp526BeZTofKry5L+fRFMd18Nk/J0U0/GpTm3WwZS6vhPUKZieCva17Ji/qvFpKKaQ3w5MZdesxlRtKqtP3XptTPVMi6Q7xaYm8/28us2r0ZBMeVcXpm3BOMrUdDtuTHEepfvsSzbX598VmERTGKMecTkuaEqfHfO+Reb83YBNRedT0bPUIukq6hSyJTgf0rkVvbeCof3D50M1FbnaeC+U9vc6Gn+vkXfNe36Knvw1HrITmCnc85fd77cV8HwINRaJ/6cdXfOODWqJ5w0I7xmA6RtI1a6c5/91iu7D0Hd0ZBEtG5opuuI7x/CsymZofcK6qnifN0RT3ZTZV1v91MG0yv2vm6lpw7HCzyw4Pgqlrc6Vj+vWJ56YxrRc4z0xobRJNA29/QPHi96c
@@ -210,7 +202,7 @@
   <object id="151" name="Pablo" type="Cartel" x="1136" y="630">
    <properties>
     <property name="Message" value="NPC43"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -232,7 +224,7 @@
   <object id="155" name="Pablo" type="Cartel" x="2575" y="853">
    <properties>
     <property name="Message" value="NPC42"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -244,21 +236,21 @@
   <object id="157" name="Pablo" type="Cartel" x="1966" y="180">
    <properties>
     <property name="Message" value="NPCS13"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="158" name="Pablo" type="Cartel" x="1551" y="147">
    <properties>
     <property name="Message" value="NPCS15"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="159" name="Pablo" type="Cartel" x="1583" y="210">
    <properties>
     <property name="Message" value="NPCS14"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -278,28 +270,28 @@
   <object id="164" name=" Pepe El jardinero " type="Cartel" x="1488" y="1786.67" width="88" height="45.3333">
    <properties>
     <property name="Message" value="BossNivel1"/>
-    <property name="battleId" type="int" value="2"/>
-    <property name="keyID" value="9"/>
+    <property name="battleId" type="int" value="4"/>
+    <property name="keyID" value="8"/>
    </properties>
   </object>
   <object id="165" name="Pablo" type="Cartel" x="2288" y="118">
    <properties>
     <property name="Message" value="Battler7"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="166" name="Pablo" type="Cartel" x="2130" y="689">
    <properties>
     <property name="Message" value="Battler6"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="167" name="Pablo" type="Cartel" x="2576" y="563">
    <properties>
     <property name="Message" value="NPCS15"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -338,7 +330,7 @@
   <object id="175" name="Pablo" type="Cartel" x="1006.67" y="1720">
    <properties>
     <property name="Message" value="NPC28"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -359,41 +351,42 @@
   <object id="178" name="Pablo" type="Cartel" x="2064" y="1298.67">
    <properties>
     <property name="Message" value="NPC29"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="180" name="Pablo" type="Cartel" x="2096" y="503.333">
    <properties>
     <property name="Message" value="Battler5"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="181" name="Pablo" type="Cartel" x="656" y="1268">
    <properties>
     <property name="Message" value="Battler9"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="182" name="Pablo" type="Cartel" x="2611" y="1686">
    <properties>
     <property name="Message" value="NPC31"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="183" name="Pablo" type="Cartel" x="2161" y="1810">
    <properties>
     <property name="Message" value="NPC30"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="184" name="Pablo" type="Cartel" x="2481" y="917">
    <properties>
     <property name="Message" value="Battler4"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -406,14 +399,14 @@
   <object id="187" name="Pablo" type="Cartel" x="272" y="341.333">
    <properties>
     <property name="Message" value="Battler1"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
   <object id="188" name="Pablo" type="Cartel" x="882.67" y="409.333">
    <properties>
     <property name="Message" value="Battler2"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -623,4 +616,12 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="Collisions" width="85" height="68" visible="0">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztnOtqAyEQhUPpW/S9+rPP2EcMS1gQmdG5nHHU9YAsMTqXb3XWNCWv10f/P+Nblt/bd5T/SNuH6WlejrMwvfT3/Wkj/VL+KA4cn7pvFqalqL6WODuauRa/GlszMKVijfD3VKbSXDxrleJgsTMzU+RaredLOVi5cnYzmVL5RTDtvUYwzWxcfNIctSy4NesVx7Q3/tJ95pG0lj2JT8398O4Nr7RM0ZL6jGDK+dHaoeqHJjekUPeRqpkeW1x8VqarqswDYQcVy8pMUTpM8UJwyGaaUcejtQvTWe4J9bwcHRvl1/p3vtueRvXZeefzqfbMx+WhPaNGnOsyW4u15sqxkvbtzNR6bdUEqo9iYuW6I9NWrtI+VC7ZPDmmFsaSPJ/MFL1eKR+HqfwqyfkwxaxTzVitSpvZPJFMNesoUlRe3BgNG25eq/9+j7oihbLJ2Ylk6olz5N6o/XquZey9PEczjZSUKVUvIpgiJK2n2hq54zpF7MOsdYq0PSvTSF/R921WpqjYuXmRmpGpde15/CI1I9NSrf9lKcf3cujZaeUp8U/ZsfiKYCpVa51apYnP+l7PVxZTbz7aPJHx9Xz19jA3xhOzdLyHhTa+elwUU5TKOqjxo40JVYOkvrOYXjZHMUVKyxTp07KWRjPNrqfRz6gsppKYqeeFxe5hSvvLrDu3f83YWZlG+LbKWq/QNrl5T2Hamuex52Gx6t7vzfXa8nDdhWk9H8EUoZWZ1rF7czlMsUy99bQV12jNyNT73JyBKWq/RtRTy2eWGZii5kfk8SSm5T5r9Xm1I1PJ91GSOij5PoqK6YlMpULZkWh2ppe8PEbyvLQC01VU/z5Wlmrfo9ZUpJ8ZmJb+V2Na/0YJ8vOYVZLnKtd+v/jmsYtqqzFt8TxMzzo9TPdlevY+nukK7Q3grh/P
+  </data>
+ </layer>
 </map>

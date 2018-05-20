@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="239">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="241">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -56,14 +56,6 @@
  <tileset firstgid="2523" name="Personaje13" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje13.png" width="96" height="128"/>
  </tileset>
- <layer name="Collisions" width="50" height="100" visible="0">
-  <properties>
-   <property name="collidable" type="bool" value="true"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztWllqAzEMDb1Ur9NT9mj5LkMwCKF98XhEH5g4tiy9N17Hyfv1+nk/M71QuptPWMfCAVxS6V/HWWmqjiv/+/VJKw8B62AZrLsS9k8B86DiwjKvjgp4dHB1nH1WR6VOLyLjiqpf5ZzvKq47dEi+rXy8/Ck7KR6lK8qhS4fVV+X48DyHimcRiX0yuvalO2JP0+HhwPHZ0U7y06EDnlfwmUZql4nfMdc1HVXYoWPFmaBjSn9M0YHz1ehYuznu1DtY997B9Y02Prh1l9IhxYmga0xd0HRoWLwgR45rtw4qryE6hk7Ugb9rYx/bSOuXd22LrrsW/0/QEUFWh2S/a/+APCy8puhY9VR7Tkdm3fXgxPUqgtN0WN9XsJ1HR2S98o6rSh3a3u9dd3Hew89qV9kf1DmRynP2GUhnMG8cyf7JOiz3JS6ySmztDCnFw+0tv2Otcik2FcfCQfKRgTRnK/eUbh27ME1Hx/zw3Itmn+W09Yry+1Qd1X6s40ry500RztR7C9ZB5Tt1ZM9Z0v82OB1cm8xdo4U/1qLZZH7/8O71nftH5n0wOkZ8UWyYpKNiXHnsq/xBnNQfk3VYY5w0rjIxTuoPqZ1mc3p/WPGE/rDgqf0ROSdqvE7RkXn/8PC6c35Uxu08K2bmB+bWdW63IvPb4F06IvupVDdJh9Y+o+MNkpUXx0PjqLW/EnwPdsYndVTCw8miQ3j2rE9r7CpkdEg+K+2svip1VM8Pq5/q+TFFRyU865XVnvFB+nX6YO137B8RXl77u/dzybc3blRLV9rJCz8H+MmVSc8P3puveuouXe9lPhYVl7OR2mfjV/qp1mHlWaUH+nu6jo5xtUuHZ55H4p8wrizriGYzRccd5/YLE/tDKpPKK23wfRd3B4a/Z/dVjqP0fCp1RP5naYF07sDnlpN1LJ/afxUiPrX6jnFVHXOKjoq4Xl/aurzSd0VQwi8s8+QlX10xcb4rWXXsjGsFt05hZNYtKXb1nLsDnX28O/0Bc9Je0Q==
-  </data>
- </layer>
  <layer name="Floor" width="50" height="100">
   <data encoding="base64" compression="zlib">
    eJztnElvEzEUgO2kFfQGrWiuLaEUwYGlQuJSSsSR/T+w/AH+V+k1F8qRU+k9hbIc21IWcaEBnpWxZCwv73nsGU80h0+pmon9vtieeeO8ZIMxdgf4BNxsCJ+BL8BxEfsA2Gg9Wo/Ww+lxqcvYd3i82wB+FPw0eGx1GPvFy7HZmbRJwdevqc1jDdXjKYzHy045nnXpHr5+bW3aPGz9nIH35CE8nuX0GMvi6pvqIZ5f9xyTCtn3V8NzVI8leC9uwONyDeNB6dvn0RRieujnER+xPR6wyXoqC+N0YvQreATM8ng8gfYeI+hG7FNyj+FYRzDD8fjaOkDGJWM7BZz2MIf0OAcsIugVcfo8MLHJ+DB99wI8LsO1+FZnwpVumAflfUnlMVbypN+82R5rHbvHHvDe0s4IWOV5eQhs43GR/+8zKvxWOX291ekhXyd9Vrm9vSZ4xDj/tR7pPfrABQQrmXtcJYBxXqnAYxGOGbMJvjykZ8hrsL6pPY6Uv135yBxyLMsQy8M113vFeJjGJDcP11yXczzlmMTywMzxXD3ENd2Wb5nI1YPqkrMHxSV3D8ERoi/X68cKdXro+bzOyBPHJvAK2KrZwzYu+v2JjddFP28y8ZDjIvHFn6tHKNPoccLw+2ASiodofxwRNbfsF/2d57j9L50+x3mEtu8Ce+9IxeWRAjW3XCj6m+e4+0mdBeR4hLbvQs0j1fUxVP5/wPz3V9cYbX2MHG2GgDlfYc4tt4kedZx3p8FD7rU2yWMHeAfsEsciNw8TdXqoe0EufHsO2DmVygNzHyIYRnLI0QOb4+fqERp/Lh57JePPxaNM7K1H69F61OfxZ0o8sOTsgR2L2B73I3pg14XqgalPwu5ZqLFW7aG2bTomdD+lag/M58vYz+PVWJ93GdvmE14Q669MHkNmXwfY9YHZr9D3S1xg1vkekVjrXD9flfWYAWYdDDVSelxnk5rotQCPeWDBgIxbrQVO6SEcZE23qPFWXUI9TA4pPVQHieoS4vHW4pDCY8fioLvsBnrYasxje7gcdJecxwNb8z8I8HC5NM2jqvNVTI8lYNlBquvHUWSPuog9HjEQdQ16Tu6rcRAe4jsxvu+2ie+hcV6NhylPwtSMYsZkgIzBlbvr9Yu29zjEQzh8YLjrx0eEh6tWRo/PVrcQ4nEI/GX4eYWdG6Z6rNQeAtP3FlW+FcdR5rk+x/T7ul3L63KYV9i14iLUI8W8qtoj5bzy1cfFHo9U80r1obiY9kd8tfrU63mIh8tlzGif4dbtoc4zFf2Yk0CXKj2whLjk6CGg5nE55rvT5EGdW7l6UF1iehwqUOI9dHDgeV4icgfmuQZKGMe3i3Xw1eRiv88uPgfbZri8RBwXu35X7iXHYJ/h8pL9iH3KffBp+d2PWL+XUSfi9zL+AdoVhvw=
@@ -84,7 +76,7 @@
  </layer>
  <layer name="Top-Top" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt3M0NgjAYgOFW0CUg3vXs1XjUAVzAddzBEby7gD9xDHfQsyCgEAulWC3q+yRfgNKfT1BCCFUIAHVspRC7XOxlsTzbPshHm4OiLCM7ydLrPO9Ttavqy8TJs9tmnOY/UXyOqj6a5JHX95Nl6BfL421VWb6NjXEDi32+4hwd94vm2Nep86s26TKIInSZiCWDKIZvHmNueI0xrQ8znA8AwCeNXrxHBwAAAAAAAACgyTsK//xeAwAAAACg3ErzXqxuf1usNXlm+4+O5ybY0uu6zgBAU/923W2zaRQzw8DDUiZxW/eLsRBJ3Mvkc7SV6lk6z9cBAMAn/dL/GmTzscvur75hvnacoy7POnVgh+vfR/48m667Hp/vKKB3BerEQT0=
+   eJzt3M0NgjAYgOEW0CUg3nUH41EHcAHXcQdH8O4C/sQx3EHPgoBArJZitSjvk3wptLT9BCSGgEIAqGMrhdiVYi+r9fn6QRZ9Doq6nPTS0vce21T9Xo1l4uTb7TPO8p8oPserMZrkUTYI0jIKqvXJuqqu3MfGvKHFMd9xjvf7RbPv62zzrzZZGcYRuUzEkmEcow/PMTe8xphuDzMcDwAAAAAAAAAAAAC/pMkzCl1+rgEAAAAA8NxK81ysrr0t1po88/aj43cTbOn3XGcAoKmuXXfbbBrHzDBQWMo0bstBNRYijXudfIy2Ut1L5/46AAD4pn/6X4P8fexnv69+4X3tJEddnnW2gR2uvx/l42y67Hp+zlFA7wqYBEEG
   </data>
  </layer>
  <layer name="Fences&amp;Trees" width="50" height="100">
@@ -94,7 +86,7 @@
  </layer>
  <layer name="TopFences&amp;Trees" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2j1qAkEUwPE1rgGvECUnSTyB2tj5kTJNYhkRrPQUljYewM4mF7DyBBbeQrTIyDQhRObJ7nzs7P8HDxb2sfuE2flykqTY+r4LAAAAsOj0IMtbCPMAICYDR+/5cvQeAHKfvgsALPpvfHM15gFAWbxUkuRVRauST54vbVVXR0XXUJ8kb5RvaXcZqrpGKt4Mv0OaB/dc/F97rOooGvZtAblDVYdtPcvjyFOqo+iK2u/+9ZzqAPLUTHVkYZo/cR6ufBqpDgAAAKmx7wIA5O7ddwGBi2W/XXouXJpXJrtI1s2PNd8VZEd/BWTz8et64q0KM5v71Ku6xYejdNbC9jSh3eEOF+F8/Bz4vH0jbPfLyL8PzouGJbTzorfW36zLkcX0Rr86i7y/DdHc8C2b7vu2ret5ybehzuv9a96eNha1H3DoK2M=
+   eJzt2z1KA0EUwPGJWYW9goon0ZzA2NipsbRRS0PAKiGiR7C08QB2Nl7AyhNYeAvRwgnTiBjmhfme/f/gQWAf7BuYnY/diVJlO0pdAIBiTFulZm3qKtzNdRtuKmjHrW7DXQXtAEL7XJPlzYR5AFCT40j3uYp0HwByF6kLAAL6b36LNecBQFfs9pTa0zHo+clLZV/XNdRxYKlPkjfyW9pKTnRdIx2nlnZI8xBfjO+1H30TpeG9LSD33jcR2mHgeWSzMVG6Usfdv3YaE4BP240JF7b1E+fhumerMQEAACB1mboAAN6dpS4gc7W8b5eeC5fmdclrJfvmjfXUFbhjvALcnP/6PU5WhV3I99QP/J8QHj0K+9OYfocVfAvX41+Zr9ufhP3+vvLng/OiecntvOiy/Tf7criYLBlXrysfb3M0tTzLtuupPbdmXfJiqXNxfZH3Rh+r2g+Poi60
   </data>
  </layer>
  <layer name="Personajes" width="50" height="100" visible="0">
@@ -102,7 +94,7 @@
    eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="37" name="Player" type="Player" x="1472.34" y="1371.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
@@ -111,7 +103,6 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="2" name="Cofre" type="Bag" gid="92" x="126.667" y="1184.33" width="32" height="32"/>
   <object id="14" name="Cofre" type="Bag" gid="90" x="1536" y="2560.67" width="32" height="32">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
@@ -341,9 +332,9 @@
   </object>
   <object id="138" name="teleportNivelaNivel2" type="Door" x="673.729" y="133.333" width="223.875" height="58">
    <properties>
-    <property name="Message" value="PuertaJardinSecreto"/>
+    <property name="Message" value="PuertaPPalMessage"/>
     <property name="changeLevel" type="int" value="5"/>
-    <property name="keyID" type="int" value="9"/>
+    <property name="keyID" type="int" value="8"/>
     <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureWidht" type="int" value="64"/>
@@ -428,7 +419,7 @@
    <properties>
     <property name="Message" value="AccesoNivel1MSG"/>
     <property name="changeLevel" type="int" value="1"/>
-    <property name="keyID" type="int" value="12"/>
+    <property name="keyID" type="int" value="2"/>
     <property name="textureHeight" type="int" value="64"/>
     <property name="textureID" value="miniVerticalDoor"/>
     <property name="textureWidth" type="int" value="4"/>
@@ -437,7 +428,6 @@
   <object id="155" name="Cartel" type="Cartel" x="1312" y="2943.75" width="32" height="32">
    <properties>
     <property name="Message" value="NPC2Test"/>
-    <property name="isFighter" type="int" value="0"/>
     <property name="keyID" type="int" value="1"/>
     <property name="numFrames" type="int" value="2"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -448,7 +438,7 @@
   <object id="157" type="Cartel" x="673.333" y="2563" width="29.3333" height="28">
    <properties>
     <property name="Message" value="BattlerTutorial"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -757,5 +747,29 @@
     <property name="Message" value="Abasura"/>
    </properties>
   </object>
+  <object id="239" name="SetosSinFruto" type="Cartel" x="1034.25" y="477.083" width="475.5" height="29.833">
+   <properties>
+    <property name="Message" value="AsetosSinFruta"/>
+   </properties>
+  </object>
+  <object id="240" name="BosTutorial" type="Cartel" x="526.333" y="211" width="39.3333" height="76">
+   <properties>
+    <property name="Message" value="DialogBossTutorial"/>
+    <property name="battleId" type="int" value="2"/>
+    <property name="isFighter" type="int" value="1"/>
+    <property name="keyID" type="int" value="2"/>
+    <property name="numFrames" type="int" value="0"/>
+    <property name="textureHeight" type="int" value="0"/>
+    <property name="textureWidht" type="int" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
+ <layer name="Collisions" width="50" height="100" visible="0">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztWmuKAyEMLnupvc6eco/W38tQhBDyfjhO2A+kVmOSb4zRsX2/Xj/vZ5YXKnf7E+axcIAvqfLP46wylcdV//36lFWHgH2wDfZdBeungP2g7MI2L48osB9WHlwfJ5/lofVTc1WFSFxR/aud093jfQ8PSTdu9/qYkZPiKqO7i4dVV5U+j67quNwV593o2pfusD2Nh8cHzp8d4yQ9HTzgeYXaJ0/jwUHjUYUdPJadCTymzMcUHrhejY7czflOvYN17x3c3GjxweVdiodkJ4KumLqg8dCw/II+cr5286DqGqIxdCIP/Em14TGwTcpf3twWzbsW/U/gEUGWhyS/a/+Aflj8msJj9VPjOR6ZvOvBifkqgtN4WN9XsJyHRyRfeeOqkoe293vzLq57/LPKVc4HdU6k6px8BtIZzGtHkn8yD8t9ictZxbZ2hpTs4fGW37FWu2SbsmPxQdKRgbRmK/eUbh67MI1Hx/rw3Itmn+W0fEXpfSqPaj3WuJL0eUvEZ+q9BfOg6p08sucs6X8bHA9uTOau0eI/5qLJZH7/8O71nftH5n0wGiM+KzZM4lERVx75Kn0QJ83HZB5WGyfFVcbGSfMhjdNkTp8PK54wHxY8dT4i50TNr1N4ZN4/PH7duT4q7XaeFTPrA/vWdW63IvPb4F08Ivup1DeJhzY+w+MNitUvzg/NR238VeB7sNM+yaMSHp8sPIRnz+q02q5Choeks1LOqquSR/X6sOqpXh9TeFTCk6+s8owOUq9TByu/Y/+I+OWVv3s/l3R77Ua5dJWdfuHnAD+5Nun5wXvz1U/dpeuzzNui7HIy0nirnch4r/5qHlmeUUzg0RFXu3h41nnE/glxZckjmswUHnec2y9MnA+pTWqvlMH3XdwdGP6e3Vc5H6XnU8kj8j9LC6RzBz63nMxj6dT+qxDRqfV3xFW1zSk8Kux6dWl5eZXvCqOEXtjmqUu6umzielex8thp1wouT2Fk8pZku3rN3YHOOd5d/gB6MWET
+  </data>
+ </layer>
 </map>

@@ -33,14 +33,6 @@
  <tileset firstgid="6805" name="Personajes_1" tilewidth="32" tileheight="32" tilecount="30" columns="3">
   <image source="Personajes_1.png" width="126" height="320"/>
  </tileset>
- <layer name="Collisions" width="150" height="63" visible="0">
-  <properties>
-   <property name="collidable" type="bool" value="true"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJztl1tuwzAMBNML9gy9/yn6FTgIrBe5S1LyDhAgtS2JIieU+3oJIYQQQgghRAy/P6+/lQ87hru/LfMBwxMGVr3SJ/93uAOz+x/lKyKHrLrLKx+e/VufRdYFWavPeVj1f5JX3vHZXnnib83FqP/T+pV3fGuO7zpFedXro6N77Nif6JXnHMzKYUS/Yq1xMp5cVvPq/X2lb8zsX16tw+79GfEzvfLm4elerc4xqh3r/STDK0uOUON3AenV6H5UD6zSS58MyqvRfXn1LLxeZdco6hyc8XP2GXgSCoLyKitfEV6trj/7/MmoX8krBhFeMd+vkHVaOQdXxrDirUzEORjtVS+m0b3evKPnZsbLq/nxM2fNzv1q9jl5deH16j1uxgEGGV6h1jiZE7xi9EJ55YPt1W4fy55GY77vW3K8G0ivQCFtxVO9GSGv7ESdnTsS9X6V9f7FZjV/J+x5hsx+hc5x1rvYKI7v68g9VyXbq4z37Ai3PuPy5mlHGF6tuGAOvBFDtlcz7qP2XJnsfmVZrxeDvKpBFa+8dZVXtUB6ZXEBGTvCi9Zc1vjk1V7nYK9mXq8QqF+d9f+gJX4GO8TIhOFVxHtNxZq1cvB9LSG0cKL7Fdo/5Fzec1JeXcgrecWA4VXvO9srS/wo5NVFFa8s61Wrmby6OM0rnYM1kFfyisFpXhnChyGvLuSVj9FeK8SYwWleRZ+D8uoeeSWvGDC9+rw+csGyXoWayat7WF7N9AB5dS7Is8Syts7BM0HsU17df5dX/jkiex3yTPUir7BE94XW2r1rEcgrHBnnTWv93rUI5BUOedWOqxdPdnzVqeTVe6y82h90frxeeT1FwfaK8XvO7A+t/XnmQK3PzEe1/Gc7E7U/y1gEJ3hlrUW2Lzt5tTrXqV6N8oDa99187Fyu1DXLb7RTO3m1kqcsMvKG8ipi/eycvD//DuVRDg==
-  </data>
- </layer>
  <layer name="Floor" width="150" height="63">
   <data encoding="base64" compression="zlib">
    eJztnGFO3DAQhbeA2isAh6kqpF4AAUKIW/QilAP0FwdtLdXS7OA4HnvG9sTvSU+grOPYky8T28nu49Xp9AjDO5ZqdHthHwZXsIXBFWxhcAVbGFzBFgZX/X2zY1pudFt7MLUKVw+Zz54EZVc2uDr3tbD8KK5K2nkrrPN3wmF7uJaeE33dKl/D1ujzbnme9u4774ltNNZ3X/XcypSUrcgOd+wfj81e+VXyVep6on7b+XzLvfOVNJ+m2KKxyPWZ8lLyOS23Ald0TLTHwdsE7dVkirOVyzFa/rgEVylL49wjZ7UwxdkK97SQp57/M6DZ/sgquGr3qBxXO0Z7vzrPV5rtp/WCK58O7Py5THuLK85UbvwErsZzpTkX3JsP1nCVmr/lYvHzS96xDLham6tgvq4fxlY5rqQxoPNCcGXv2jUMba6kznGX4yr+D676WPvYGjlPwoxkHCbVaEY8clWylr9njTlb6nlBqcHVZx9lfNXClpQpfk8r4Yqu44MrP1zVstWSp0q54scAV/4sYUuDqTB+z3GVOga46n+uex2vlano3Brq1jHAlZ6PkAtzPHG2+DuO4AqWuOZ5D7iS+Z791b7/bb17aRmbG9If6u8Xp9OPi/M1Th7P6LCWQt/zAlf1bGnWGczHKi31SvaN8blnfXv5x9RrIVcPbDu4mtdW7/TQnEiZ2ipPOSnhqkajY31kruj3vLbW52eURhtHx/7IXJV4RoErcGUhcAWuLASu/HJV+zy3h2L7Wto4Or4euYoxp+sIfP6VWwej+80oHt8ajWbEI1c5S/gCV3N5Zq5KTNcfZhS4GsNVizTrshK4AlcWAld2XOWeFbeIt3tGgSu/+QpczecRXLWu59B4XyvVZSVw5TdfadRlJXAFriwErvxydatQl5XAlV+uNOqy0qpcBfPfRu9Zf4vC/lpzACutzNVIt4jX9etbW30WAld+uYq/Lwqu1rbWs2JeL7iCo1sErmBwBa68cjWjNNo4+hz1Op+zKPZl5nUGcOVPoR8t30/vIXDlTzFXzfweMrjyJdqXmd+/OlrcV5CHc3bEaxqCIAiCIAiCoM/6C7GZr/o=
@@ -144,7 +136,7 @@
   <object id="99" name="Aaron" type="Cartel" x="4335.67" y="435">
    <properties>
     <property name="Message" value="NPCPuertaGimnasio"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -161,7 +153,7 @@
   <object id="102" name="Pablo" type="Cartel" x="3020" y="270">
    <properties>
     <property name="Message" value="Battler9"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -178,7 +170,7 @@
   <object id="112" name="Fercho" type="Cartel" x="4144.5" y="849">
    <properties>
     <property name="Message" value="Battler10"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -264,7 +256,7 @@
   <object id="139" name="Nuria" type="Cartel" x="2031" y="594">
    <properties>
     <property name="Message" value="NPCS12"/>
-    <property name="battleId" type="int" value="0"/>
+    <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
    </properties>
   </object>
@@ -289,4 +281,12 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="Collisions" width="150" height="63" visible="0">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztl9ltxDAMBTcNpob0X0W+DCeGLpKPh+Q3wAIb25IocpZyPh9CCCGEEEIIieH76/Mj+XjH0PpbMx8wPKJA6hU/+b/DHVjd/yxfETn0qju9smHZv/ZZZF2Qtfo7j1f93+SVdXy2V5b4e3N51P9t/co6vjfHs05RXo366Oyed+xvcWuUv5Wx2fmL6FfoNd7oVev7aGwlr67vkp6xsn96Jce792fE7+mVNRdv90o6x0ouPVzN8EqTo17Mp4L0anY/qgdW6aWj+LLWjgLl1ew+vfofX9baUVi9qlQjz3NwxU/pM/BkFALlVVaeIrySrr/6/MmwX9ErDyK88ny/QtZJcg5KxnjFW5mIczDaq1FMs3ujeWfPrYynV+vjV86anfvV6nP06sbq1TVuxQEPMrxCrXEyJ3jl0QvplQ1vr3b7aPY0G/O8r8nxbiC9AoW0DW/2Zga9shFxdu5I1PtV1vuXN9L8nbDnFTL7FTrH2e9mfL+6yfYq4z07yqNWfumVbA5Jja3rjWLIdKgXRy9PJ5PdrzTrjWKgVzWo4pW1rvSqFkivNC4gY0d40ZtLGx+92uscHNXM6hUC9quz/h/UxO/BDjF64uFVxHtNxZr1cvC8lhBaONH9Cu0fci7rOUmvbugVvfLAw6vRd2+vNPGjoFc3VbzSrFetZvTq5jSveA7WgF7RKw9O80oRPgx6dUOvbMz2WiHGDE7zKvocpFdt6BW98sDTq7/XZy5o1qtQM3rVxsurlR5Ar84FeZZo1uY5eCaIfdKr9nd6ZZ8jstchz1Qr9ApLdF/orT26FgG9wpFx3vTWH12LgF7hoFf9uEbxZMdXnUpeXWMre/WMMSm88qDzY/XK6imKkVeI2Dx+z5n9obc/yxyo9T3zUS3/2c5E7U8zFsEJXmlrke3LTl5J5zrVq1keUPtuzeedS0lds/xGO7WTV5I8ZZGRN5RXEetn5+T6/ALQEmDH
+  </data>
+ </layer>
 </map>

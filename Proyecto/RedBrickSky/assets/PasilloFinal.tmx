@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="65">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="66">
  <properties>
   <property name="helicopter" value="..\assets\helicopter.png"/>
  </properties>
@@ -64,10 +64,10 @@
  </layer>
  <layer name="Top-Top" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt1rFtg0AUBmCkdDROnwHcZz8vkAE8gItgWYnXcGuTOCktGcuFF0gbUlhCJ2hQ4AR8n3TiXXU/8B4iSQAAAAAAAAAA6MpbmiSv5crKtQmuWc3+Xq/T/8/SlKMu19/570GGc7kvynUNrkXN/l5fOriPphx1ubo4H8bqEMzLR2V/rNTfPc7VV+Wsz0qdBxn2Zp0Rus1iJ2CITvpmUHLvixbmj7ETMEXP+o4Je9L/RPDiP7FXM3M+KEvzQQsP5pwIVr5XtPCjb4hgq+96tfO8obWF+QEm6hesJjtI
+   eJzt2TEKwjAUxvGAW5e6e4A6eyW9hhfwAK6KgxVRr+GqVesoWHHwAq7GoRBCihBpQ5P/D0KTKd+r74mgEAAAAL8lkRD9yHWK/w1lDSMP6pjJGuYe1AEAAAAAAAAAQAg2kRBLuVK51tozNZzL/aqG/wKqcphyfe/fahnu8lzI9dSeheFc7h811FGVw5SrjvsBXx21eTkp54uyvzY4V7ly11nZZ1qGA7MOD71i1wnQRjf6plUyPi9YSLquEyBEA/oOAevR/3Bgwu/ERsXMeatMmQ9Y6DDncGDB9xUsvOkbOLCj7xq1530D1sbMD4BAfQBnBT3Z
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="1" name="Mochila" type="Bag" x="48" y="1584">
    <properties>
     <property name="Sweeties" type="int" value="5"/>
@@ -236,13 +236,23 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
+  <object id="65" name="BosFinal" type="Cartel" x="801" y="338.667" width="66.6666" height="76">
+   <properties>
+    <property name="Message" value="BattlerTutorial"/>
+    <property name="battleId" type="int" value="20"/>
+    <property name="isFighter" type="int" value="1"/>
+    <property name="numFrames" type="int" value="0"/>
+    <property name="textureHeight" type="int" value="0"/>
+    <property name="textureWidht" type="int" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Collisions" width="50" height="100" visible="0" opacity="0.52">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt21EKAjEMhOHe/1h7sMX3ghhq25kk/0BAEGE+ZtEnnzHGU+Bes3PshCP/4fA6HF6Hw+tcHXNw4NjV/Vtw4NjV/ZcJh5cja38XDw4cOHDgwIEDBw4cOHDgwHHaMb+/033TUWUPHLkc/3xe7RjjXJfbweGVao7Z8gZen060g8P3seq3Akddh7ofe+R0VHm2IlF37LJFpz2yOKo8W5GoO+LIZei0Bw4/i7pfpz26ONT9uu1xe5NT/5GMZKXT7f9zrhrcLhJ1x06OKs9WJOqOOHIZOu2RxVHl2YpE3RFHLkOlPapsEom6I456DnU/9sDhcpm741i7D9NDe9k=
+   eJzt20EKhEAMRNHc/1geTGY7CIPBsbsqyQ8EBBHqUY2uPCLiaLCn2TpmwlF/cXgtDq/F4bWujvhxjUPn+J5KjuzgwPFW9jsTDi9H1fwuHhw4cODAgQMHDhw4cODAgWO143r/TfdOR5c+cNRy/PO82hGxLsvuweE13RxXy5m4Xj3ZDA7vY9W3AkdfhzoffdR0dDlbmVFnnNLFpD6qOLqcrcyoM+KoZZjUBw4/izrfpD6mONT5pvWxu5NV/0hm5kmm3f9zPjW4bWbUGSc5upytzKgz4qhlmNRHFUeXs5UZdUYctQyd+ujSSWbUGXH0c6jz0QcOl62cHcez/QC1Un/R
   </data>
  </layer>
 </map>
