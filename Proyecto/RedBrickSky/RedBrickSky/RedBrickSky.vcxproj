@@ -64,6 +64,7 @@
     <ClCompile Include="NameSelectorState.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjectLayer.cpp" />
+    <ClCompile Include="OutroState.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="NameSelectorState.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="ObjectLayer.h" />
+    <ClInclude Include="OutroState.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="Player.h" />

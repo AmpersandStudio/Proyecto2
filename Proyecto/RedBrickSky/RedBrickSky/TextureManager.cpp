@@ -219,6 +219,7 @@ void TextureManager::drawText(std::string text, FontId id, const SDL_Color color
 	}
 
 	std::cout << "Algo no ha salido bien.\n";
+	delete font;
 }
 
 void TextureManager::drawItem(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, int rows, int cols, SDL_Renderer *pRenderer, double angle, int alpha, SDL_RendererFlip flip)

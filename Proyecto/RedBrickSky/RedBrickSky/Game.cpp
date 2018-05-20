@@ -11,6 +11,7 @@
 #include "CreditsState.h"
 #include "PreloadState.h"
 #include "IntroState.h"
+#include "OutroState.h"
 
 #include "TextureManager.h"
 #include "GameObjectFactory.h" 
@@ -224,6 +225,31 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\intro4.png", "intro4", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\intro5.png", "intro5", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\intro6.png", "intro6", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro1.png", "outro1", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro2.png", "outro2", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro3.png", "outro3", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro4.png", "outro4", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro5.png", "outro5", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro6.png", "outro6", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro7.png", "outro7", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro8.png", "outro8", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro9.png", "outro9", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro10.png", "outro10", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro11.png", "outro11", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro12.png", "outro12", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro13.png", "outro13", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro14.png", "outro14", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro15.png", "outro15", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro16.png", "outro16", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro17.png", "outro17", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro18.png", "outro18", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro19.png", "outro19", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro20.png", "outro20", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro21.png", "outro21", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro22.png", "outro22", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro23.png", "outro23", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\outro24.png", "outro24", RENDERER_);
+
 
 	// Load Music
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);
@@ -243,6 +269,7 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\questions.ogg", "questions", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\TheLastBrick.mp3", "bbattle", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\intro.ogg", "intro", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\outro.wav", "outro", SOUND_MUSIC);
 
 	//Load SFX
 	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_exterior.wav", "exteriores", SOUND_SFX);
