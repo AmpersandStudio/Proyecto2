@@ -168,6 +168,7 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\assets\\Gimnasio.png", "level1-5", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Nivel2.png", "level2", RENDERER_);
 	TheTextureManager::Instance()->load("..\\assets\\Tienda.png", "tiendaLevel", RENDERER_);
+	TheTextureManager::Instance()->load("..\\assets\\PasilloFinal.png", "level3", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\cleonButton.png", "clb", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\election.png", "election", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\qbg.png", "qbg", RENDERER_);

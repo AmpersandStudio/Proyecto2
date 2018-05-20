@@ -80,7 +80,7 @@ private:
 
 		currentInter = nullptr;
 
-		level_ = TUTORIAL;
+		level_ = CLASES;
 
 		first_ = false;
 		question_ = false;

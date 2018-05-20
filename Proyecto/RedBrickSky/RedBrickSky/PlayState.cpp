@@ -26,16 +26,17 @@ PlayState::PlayState()
 	LevelParser levelParser;
 	currentLevel_ = GameManager::Instance()->getLevel();
 	lastLevel_ = currentLevel_;
-	pLevels.resize(7);
+	pLevels.resize(8);
 	
+	pLevels[7] = levelParser.parseLevel("..\\assets\\PasilloFinal.tmx");
 	pLevels[6] = levelParser.parseLevel("..\\assets\\Tienda.tmx");
-	pLevels[5] = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
+	
 	pLevels[4] = levelParser.parseLevel("..\\assets\\Gimnasio.tmx");
 	pLevels[3] = levelParser.parseLevel("..\\assets\\JardinesSuperiores.tmx");
 	pLevels[2] = levelParser.parseLevel("..\\assets\\Pasillos.tmx");
 	pLevels[1] = levelParser.parseLevel("..\\assets\\JardinesInferiores.tmx");
 	pLevels[0] = levelParser.parseLevel("..\\assets\\Tutorial.tmx");
-
+	pLevels[5] = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
 
 	updateAmbienceSounds();
 
@@ -109,7 +110,7 @@ void PlayState::changeLevel() {
 void PlayState::actSteps() {
 	steps_++;
 
-	int rnd = rand() % 150 + 1;
+	int rnd = rand() % 250 + 1;
 	if (steps_ > 30 && rnd < steps_)
 	{
 		pLevels.at(currentLevel_)->getPlayer()->setVel(Vector2D(0, 0));
@@ -157,6 +158,10 @@ void PlayState::render()
 
 	case 6:
 		TextureManager::Instance()->drawFullCamera("tiendaLevel", Game::Instance()->getRenderer());
+		break;
+
+	case 7:
+		TextureManager::Instance()->drawFullCamera("level3", Game::Instance()->getRenderer());
 		break;
 	}
 

@@ -79,13 +79,13 @@
    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
   </data>
  </layer>
- <layer name="Doors" width="236" height="201">
+ <layer name="Doors" width="236" height="201" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt27EJwDAQA0D/eh7Mc6f4ypAihQMW3IF6DSCNAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADvZnWA+63qAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwzaw9wL1W7QEAAAAAAAAAOMF2CHLYDgEAAAAA7PykIYefNAAAAAAAAAAAQEvaPiZ1hT8kbR+TugIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADcYFYnSWJnOGFVJ0liZwAAAAAAAAAAgBs9qdQPlw==
   </data>
  </layer>
- <objectgroup name="Objetos">
-  <object id="2" name="Player" type="Player" x="5824.44" y="6335.03" width="32" height="32">
+ <objectgroup name="Objetos" visible="0">
+  <object id="2" name="Player" type="Player" x="7292.77" y="3870.36" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -2244,7 +2244,7 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="Collisions" width="236" height="201" opacity="0.5">
+ <layer name="Collisions" width="236" height="201" visible="0" opacity="0.5">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
