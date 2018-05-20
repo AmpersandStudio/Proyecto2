@@ -214,6 +214,8 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\BotonesXbox.png", "botonesXbox", RENDERER_,1,5);
 	TheTextureManager::Instance()->load("..\\images\\bokoblinSS.png", "bokoblinSS", RENDERER_, 1, 2);
 	TheTextureManager::Instance()->load("..\\images\\dragonSS.png", "dragonSS", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\controlbutton.png", "ctrlbutton", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\Controles_Menu.png", "ctrlmenu", RENDERER_);
 
 	// Load Music
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);

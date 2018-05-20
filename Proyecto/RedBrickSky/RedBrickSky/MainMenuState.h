@@ -12,21 +12,17 @@ public:
 	virtual ~MainMenuState();
 	virtual void render();
 	static void toGame();
-	static void toGame2();
 	bool handleEvent(const SDL_Event& event);
 	static void exit() { Game::Instance()->exitApp(); };
-	static void toSelector();
 	static void toCredits();
+	static void toggleCtrl() { ctrl_ = !ctrl_; SoundManager::Instance()->playSound("select", 0); }
 
-	//virtual bool handleEvent(const SDL_Event& event);
 private:
+	static bool ctrl_;	
 
 	int m_joystickDeadZone = XboxController::Instance()->getDeadZone();
 
 	GameComponent* gc;
-	InputComponent* ic2;
-	//FUNCIONES PARA MOVER EL RATON MEDIANTE EL MANDO
-
-	
+	InputComponent* ic2;	
 };
 

@@ -11,6 +11,8 @@
 #include "CreditsState.h"
 #include "QuestionState.h"
 
+bool MainMenuState::ctrl_ = false;
+
 MainMenuState::MainMenuState()
 {
 	//Aquí estoy asegurandome que en el primer estado se crea una única vez los elementos de la tienda
@@ -35,7 +37,6 @@ MainMenuState::MainMenuState()
 	// New Main Menu
 	Button* button0 = new Button("nbutton", toGame, 0);
 	Button* button3 = new Button("ebutton", exit, 3);
-	Button* button2 = new Button("nbutton", toGame2, 0);
 	Button* button4 = new Button("credits", toCredits, 0);
 
 	Vector2D position0(0.4, 3);
@@ -48,19 +49,18 @@ MainMenuState::MainMenuState()
 
 	button0->setPosition(position0); button0->setWidth(width); button0->setHeight(height); button0->addRenderComponent(new RenderFrameComponent()); button0->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button0->addInputComponent(new MouseInputComponentButton(this));
 	button3->setPosition(position3); button3->setWidth(width); button3->setHeight(height); button3->addRenderComponent(new RenderFrameComponent()); button3->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button3->addInputComponent(new MouseInputComponentButton(this));
-	button2->setPosition(position2); button2->setWidth(width); button2->setHeight(height); button2->addRenderComponent(new RenderFrameComponent()); button2->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button2->addInputComponent(new MouseInputComponentButton(this));
 	button4->setPosition(position2); button4->setWidth(width); button4->setHeight(height); button4->addRenderComponent(new RenderFrameComponent()); button4->addInputComponent(new KeyInputComponentButton(SDLK_1, SDLK_3, SDLK_2, SDLK_4, SDLK_RETURN)); button4->addInputComponent(new MouseInputComponentButton(this));
 
 	stage.push_back(button0);
 	stage.push_back(button3);
-	stage.push_back(button2);
 	stage.push_back(button4);
-	button2->setActive(false);
 
 	XboxController::Instance()->insertController();
 	TheSoundManager::Instance()->stopMusic();
 	TheSoundManager::Instance()->closeChannel(3);
 	TheSoundManager::Instance()->playMusic("menu", -1);
+	
+	ctrl_ = false;
 }
 
 MainMenuState::~MainMenuState()
@@ -70,11 +70,6 @@ MainMenuState::~MainMenuState()
 void MainMenuState::toGame() 
 {
 	Game::Instance()->getStateMachine()->pushState(new QuestionState());
-}
-
-void MainMenuState::toGame2()
-{
-	Game::Instance()->getStateMachine()->pushState(new PlayState());
 }
 
 void MainMenuState::toCredits() {
@@ -91,10 +86,15 @@ bool MainMenuState::handleEvent(const SDL_Event& event) {
 		
 
 		 if (XboxController::Instance()->getButtonState(0, 0)) {
+			 ctrl_ = false;
 			 toGame();
 		}
+		 else if (XboxController::Instance()->getButtonState(0, 1)) {
+			 toggleCtrl();
+		 }
 
 		else if (XboxController::Instance()->getButtonState(0, 2)) {
+			ctrl_ = false;
 			toCredits();
 		}
 
@@ -137,6 +137,10 @@ void MainMenuState::render() {
 			70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
 	}
 
+	if (ctrl_)
+	{
+		TheTextureManager::Instance()->drawFull("ctrlmenu", 0, 0, Game::Instance()->getWinWidth(), Game::Instance()->getWinHeight(), Game::Instance()->getRenderer(), 0, 255);
+	}
 }
 
 //METODOS PARA EL MANDO
