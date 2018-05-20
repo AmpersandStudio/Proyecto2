@@ -413,6 +413,8 @@ void BattleState::createPlayer() {
 
 void BattleState::createEnemy()
 {
+	bool isDragon = false;
+
 	int rnd = GameManager::Instance()->getEnemy();
 	int lv = GameManager::Instance()->getLevel();
 
@@ -455,7 +457,8 @@ void BattleState::createEnemy()
 			break;
 		}
 		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
-		enemy->setTextureId("libro1");
+		enemy->setTextureId("dragonSS");
+		isDragon = true;
 	}
 
 	else {
@@ -524,6 +527,14 @@ void BattleState::createEnemy()
 	enemy->setPosition(pos2);
 	enemy->setWidth(160);
 	enemy->setHeight(260);
+
+	//si es dragon
+	if (isDragon) {
+		Vector2D pos2(2.55, 0.77);
+		enemy->setPosition(pos2);
+		enemy->setWidth(200);
+		enemy->setHeight(260);
+	}
 
 	RenderComponent* rc2 = new RenderFraemeComponent2();
 	enemy->addRenderComponent(rc2);
