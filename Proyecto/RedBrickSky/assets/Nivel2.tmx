@@ -16,13 +16,13 @@
   <property name="Personaje6" value="..\assets\Personaje6.png"/>
   <property name="Personaje7" value="..\assets\Personaje7.png"/>
   <property name="Personaje8" value="..\assets\Personaje8.png"/>
-  <property name="bigMetalicDoor" value="..\assets\NivelFragmentado\puertaMetálica.png"/>
+  <property name="bigMetalicDoor" value="..\assets\puertaMetálica.png"/>
   <property name="door" value="..\assets\door.png"/>
   <property name="dragon" value="..\assets\dragon.png"/>
   <property name="helicopter" value="..\assets\helicopter.png"/>
-  <property name="miniVerticalDoor" value="..\assets\NivelFragmentado\PuertaVerticalPequeña.png"/>
+  <property name="miniVerticalDoor" value="..\assets\PuertaVerticalPequeña.png"/>
   <property name="personaje9" value="..\assets\Personaje9.png"/>
-  <property name="verticalDoor" value="..\assets\NivelFragmentado\PuertaVertical.png"/>
+  <property name="verticalDoor" value="..\assets\PuertaVertical.png"/>
  </properties>
  <tileset firstgid="1" name="2ckdj8" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="2ckdj8.png" width="512" height="512"/>
