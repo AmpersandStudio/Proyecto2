@@ -112,7 +112,7 @@ void PlayState::actSteps() {
 	steps_++;
 
 	int rnd = rand() % 250 + 1;
-	if (steps_ > 30 && rnd < steps_)
+	if (steps_ > 70 && rnd < steps_)
 	{
 		pLevels.at(currentLevel_)->getPlayer()->setVel(Vector2D(0, 0));
 		toBattle();

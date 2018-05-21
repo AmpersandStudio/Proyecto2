@@ -712,7 +712,7 @@ void BattleState::createAttacks() {
 
 	//ampergun
 	ataques[32] = Attack("Nullptr", Ranged, 10, 10, 45, 100, 1, 1, 0.7f);
-	ataques[33] = Attack("Ampersand", Magical, 10, 10, 120, 100, 1, 1, 1);
+	ataques[33] = Attack("Ampersand", Magical, 10, 10, 300, 100, 1, 1, 1);
 
 	//genericone
 	ataques[34] = Attack("Sin Arma", Physical, 5, 5, 10, 100, 1, 1, 1);

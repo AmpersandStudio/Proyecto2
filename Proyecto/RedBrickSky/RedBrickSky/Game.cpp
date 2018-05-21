@@ -249,6 +249,7 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\outro22.png", "outro22", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\outro23.png", "outro23", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\outro24.png", "outro24", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\loading.png", "loading", RENDERER_);
 
 
 	// Load Music

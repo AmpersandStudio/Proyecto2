@@ -18,6 +18,8 @@ QuestionState::QuestionState()
 {
 	started_ = false;
 	final_ = false;
+	load_ = false;
+
 	TheSoundManager::Instance()->stopMusic();
 	TheSoundManager::Instance()->playSound("newgame", 0);
 
@@ -85,6 +87,7 @@ void QuestionState::update()
 
 void QuestionState::render()
 {
+
 	if (!GameManager::Instance()->getFirst())
 	{
 		TheTextureManager::Instance()->drawFull("election", 0, 0, 800, 600, Game::Instance()->getRenderer(), 0, 255);
@@ -121,7 +124,6 @@ void QuestionState::render()
 			break;
 		}
 
-		//TheTextureManager::Instance()->drawFull("buttonA", 730, 530, 32, 32, Game::Instance()->getRenderer(), 0, 255);
 	}
 
 
@@ -144,11 +146,9 @@ void QuestionState::render()
 			TheTextureManager::Instance()->drawItem("botonesXbox", 590, 425,
 				70, 50, 0, 4, 1, 5, Game::Instance()->getRenderer(), 0, 255);
 
-
-		
 		}
 
-		else if(!final_) {
+		else if (!final_) {
 			//B
 			TheTextureManager::Instance()->drawItem("botonesXbox", 520, 425,
 				70, 50, 0, 2, 1, 5, Game::Instance()->getRenderer(), 0, 255);
@@ -165,6 +165,7 @@ void QuestionState::render()
 		}
 
 	}
+
 }
 
 bool QuestionState::handleEvent(const SDL_Event& event)
@@ -196,9 +197,10 @@ bool QuestionState::handleEvent(const SDL_Event& event)
 
 		else if (XboxController::Instance()->getButtonState(0, 1)) {
 			if (!started_)
+			{
+				load_ = true;
 				toGame();
-			
-
+			}
 		}
 		else if (XboxController::Instance()->getButtonState(0, 2)) {
 			if (started_ && !final_)
@@ -433,6 +435,8 @@ void QuestionState::assignType()
 
 void QuestionState::toGame()
 {
+	TheTextureManager::Instance()->drawFull("loading", 0, 0, 800, 600, Game::Instance()->getRenderer(), 0, 255);
+	SDL_RenderPresent(Game::Instance()->getRenderer());
 	GameManager::Instance()->setFirst(false);
 	GameManager::Instance()->setQuestion(false);
 	GameManager::Instance()->setLast(false);
@@ -441,7 +445,6 @@ void QuestionState::toGame()
 	physicFactor_ = 0;
 	magicFactor_ = 0;
 	flyingFactor_ = 0;
-
 
 	SoundManager::Instance()->playSound("select", 0);
 	Game::Instance()->getStateMachine()->changeState(new PlayState());

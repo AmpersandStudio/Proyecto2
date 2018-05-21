@@ -11,6 +11,8 @@ class QuestionState : public GameState
 private:
 	bool started_;
 	bool final_;
+	bool load_;
+
 public:
 	QuestionState();
 	virtual ~QuestionState();
@@ -51,4 +53,3 @@ protected:
 	void createButton(Question q);
 	void assignType();
 };
-
