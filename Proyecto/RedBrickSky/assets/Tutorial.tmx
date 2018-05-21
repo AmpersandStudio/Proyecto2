@@ -94,7 +94,7 @@
    eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="37" name="Player" type="Player" x="1472.34" y="1371.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
@@ -344,7 +344,7 @@
     <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
-  <object id="140" name="Mochila " type="Bag" x="1556.5" y="596">
+  <object id="140" name="Mochila " type="Bag" x="1537.5" y="579" width="30" height="57">
    <properties>
     <property name="Sweeties" type="int" value="25"/>
    </properties>
@@ -369,12 +369,12 @@
     <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
-  <object id="145" name="Mochila " type="Bag" x="1233" y="881">
+  <object id="145" name="Mochila " type="Bag" x="1219" y="876" width="26" height="43">
    <properties>
     <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
-  <object id="146" name="Mochila " type="Bag" x="1390.5" y="880.5">
+  <object id="146" name="Mochila " type="Bag" x="1379.5" y="873.5" width="26" height="48">
    <properties>
     <property name="Sweeties" type="int" value="25"/>
    </properties>
@@ -389,12 +389,12 @@
     <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
-  <object id="149" name="Mochila " type="Bag" x="305" y="2566">
+  <object id="149" name="Mochila " type="Bag" x="291" y="2538" width="28.6667" height="44">
    <properties>
     <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
-  <object id="150" name="Mochila " type="Bag" x="207" y="2568">
+  <object id="150" name="Mochila " type="Bag" x="193" y="2542" width="25.3333" height="42.6667">
    <properties>
     <property name="Sweeties" type="int" value="25"/>
    </properties>
@@ -546,12 +546,7 @@
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="183" type="Cartel" x="576.5" y="349" width="27" height="35">
-   <properties>
-    <property name="Message" value="AFarola"/>
-   </properties>
-  </object>
-  <object id="185" type="Cartel" x="1126.83" y="1592.33" width="52.3337" height="27.3333">
+  <object id="185" type="Cartel" x="1126.83" y="1581.33" width="52.3337" height="38.3333">
    <properties>
     <property name="Message" value="Atronco"/>
    </properties>
@@ -631,22 +626,12 @@
     <property name="Message" value="Asetos"/>
    </properties>
   </object>
-  <object id="215" name="estatue" type="Cartel" x="623.416" y="2862.83" width="29.167" height="37.333">
-   <properties>
-    <property name="Message" value="Aestatua"/>
-   </properties>
-  </object>
   <object id="216" name="estatue" type="Cartel" x="686.416" y="2868.83" width="29.167" height="68.333">
    <properties>
     <property name="Message" value="Aestatua"/>
    </properties>
   </object>
   <object id="217" name="estatue" type="Cartel" x="847.416" y="2868.83" width="29.167" height="68.333">
-   <properties>
-    <property name="Message" value="Aestatua"/>
-   </properties>
-  </object>
-  <object id="218" name="estatue" type="Cartel" x="913.416" y="2866.83" width="29.167" height="36.333">
    <properties>
     <property name="Message" value="Aestatua"/>
    </properties>
@@ -691,7 +676,7 @@
     <property name="Message" value="Acartel"/>
    </properties>
   </object>
-  <object id="227" name="cartel" type="Cartel" x="607.75" y="409.334" width="34.5" height="9.333">
+  <object id="227" name="cartel" type="Cartel" x="607.75" y="396.001" width="34.5" height="27.9997">
    <properties>
     <property name="Message" value="Acartel"/>
    </properties>

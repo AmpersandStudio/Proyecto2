@@ -100,7 +100,7 @@
    eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHg0sR8AAQ==
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="65" name="Mochila" type="Bag" x="366.667" y="2318">
    <properties>
     <property name="Sweeties" type="int" value="10"/>
@@ -147,7 +147,7 @@
     <property name="Sweeties" type="int" value="5"/>
    </properties>
   </object>
-  <object id="79" name="Mochila" type="Bag" x="3116" y="433.333">
+  <object id="79" name="Mochila" type="Bag" x="3108" y="422.333" width="22" height="35">
    <properties>
     <property name="Sweeties" type="int" value="5"/>
    </properties>
@@ -194,20 +194,20 @@
     <property name="Message" value="NPCS5"/>
    </properties>
   </object>
-  <object id="91" name="NPC genérico " type="Cartel" x="1935" y="1173">
+  <object id="91" name="NPC genérico " type="Cartel" x="1918.2" y="1153.05" width="33.5993" height="57.7488">
    <properties>
-    <property name="Message" value="Pues empezamos a jugar al escondite, me metí aquí y aquí me quedé, pero me has liberado, así que te daré una cosita... pero antes , a luchar "/>
+    <property name="Message" value="Tymi"/>
     <property name="battleId" type="int" value="1"/>
     <property name="isFighter" type="int" value="1"/>
     <property name="keyID" type="int" value="6"/>
    </properties>
   </object>
-  <object id="92" name="NPC genérico " type="Cartel" x="2495" y="1314" width="33" height="29">
+  <object id="92" name="NPC genérico " type="Cartel" x="2495" y="1314" width="28.8001" height="48.9496">
    <properties>
     <property name="Message" value="SalaConsejreDcha"/>
    </properties>
   </object>
-  <object id="93" name="NPC genérico " type="Cartel" x="2879" y="1310" width="31.3333" height="33.3333">
+  <object id="93" name="NPC genérico " type="Cartel" x="2879" y="1310" width="32.3833" height="44.8831">
    <properties>
     <property name="Message" value="SalaConserjeIzda"/>
    </properties>
@@ -253,7 +253,7 @@
     <property name="textureWidth" type="int" value="22"/>
    </properties>
   </object>
-  <object id="102" name="LLaveGimnasio" type="Cartel" x="1854" y="1161">
+  <object id="102" name="LLaveGimnasio" type="Cartel" x="1719.6" y="1000.35">
    <properties>
     <property name="Message" value="Esta llave abre la puerta del gimnasio"/>
    </properties>
@@ -485,7 +485,7 @@
     <property name="Sweeties" type="int" value="5"/>
    </properties>
   </object>
-  <object id="144" name="NPC genérico " type="Cartel" x="3120" y="784">
+  <object id="144" name="NPC genérico " type="Cartel" x="3110.67" y="778.667" width="20" height="27.3333">
    <properties>
     <property name="Message" value="NPC41"/>
     <property name="isFighter" type="int" value="1"/>
@@ -692,22 +692,22 @@
     <property name="Message" value="Apapel"/>
    </properties>
   </object>
-  <object id="190" name="mesascafete" type="Cartel" x="3134.92" y="842.833" width="604.167" height="28.333">
+  <object id="190" name="mesascafete" type="Cartel" x="3144.25" y="858.833" width="604.167" height="28.333">
    <properties>
     <property name="Message" value="AmesasCafeteria"/>
    </properties>
   </object>
-  <object id="191" name="mesascafete" type="Cartel" x="3138.92" y="714.833" width="604.167" height="28.333">
+  <object id="191" name="mesascafete" type="Cartel" x="3142.92" y="728.166" width="604.167" height="28.333">
    <properties>
     <property name="Message" value="AmesasCafeteria"/>
    </properties>
   </object>
-  <object id="192" name="mesascafete" type="Cartel" x="3136.92" y="586.833" width="604.167" height="28.333">
+  <object id="192" name="mesascafete" type="Cartel" x="3136.92" y="600.833" width="604.167" height="28.333">
    <properties>
     <property name="Message" value="AmesasCafeteria"/>
    </properties>
   </object>
-  <object id="193" name="mesascafete" type="Cartel" x="3175.92" y="460.833" width="565.167" height="28.333">
+  <object id="193" name="mesascafete" type="Cartel" x="3142.92" y="474.833" width="590.167" height="28.333">
    <properties>
     <property name="Message" value="AmesasCafeteria"/>
    </properties>
@@ -797,7 +797,7 @@
     <property name="Message" value="Aascensor"/>
    </properties>
   </object>
-  <object id="214" name="cafete" type="Cartel" x="3136.83" y="273.667" width="314.333" height="108.667">
+  <object id="214" name="cafete" type="Cartel" x="3135.83" y="322.667" width="314.333" height="75.667">
    <properties>
     <property name="Message" value="ACafete"/>
    </properties>
@@ -843,7 +843,7 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="Collisions" width="169" height="164">
+ <layer name="Collisions" width="169" height="164" visible="0">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
