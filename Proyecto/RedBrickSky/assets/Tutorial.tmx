@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="241">
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="241">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -349,7 +349,7 @@
     <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
-  <object id="141" name="Mochila " type="Bag" x="788.5" y="626">
+  <object id="141" name="Mochila " type="Bag" x="769.5" y="606" width="29" height="59">
    <properties>
     <property name="Sweeties" type="int" value="25"/>
    </properties>
@@ -359,7 +359,7 @@
     <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
-  <object id="143" name="Mochila " type="Bag" x="142" y="1166">
+  <object id="143" name="Mochila " type="Bag" x="129" y="1153" width="27" height="58">
    <properties>
     <property name="Sweeties" type="int" value="25"/>
    </properties>
@@ -389,17 +389,17 @@
     <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
-  <object id="149" name="Mochila " type="Bag" x="306" y="2550">
+  <object id="149" name="Mochila " type="Bag" x="305" y="2566">
    <properties>
     <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
-  <object id="150" name="Mochila " type="Bag" x="206" y="2546">
+  <object id="150" name="Mochila " type="Bag" x="207" y="2568">
    <properties>
     <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
-  <object id="151" name="Mochila " type="Bag" x="50" y="2064">
+  <object id="151" name="Mochila " type="Bag" x="47" y="2086">
    <properties>
     <property name="Sweeties" type="int" value="25"/>
    </properties>
@@ -536,17 +536,7 @@
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="179" type="Cartel" x="963.5" y="776" width="27" height="25">
-   <properties>
-    <property name="Message" value="AFarola"/>
-   </properties>
-  </object>
-  <object id="180" type="Cartel" x="577.5" y="164" width="27" height="62">
-   <properties>
-    <property name="Message" value="AFarola"/>
-   </properties>
-  </object>
-  <object id="181" type="Cartel" x="963.5" y="165" width="27" height="62">
+  <object id="180" type="Cartel" x="576.5" y="154" width="27" height="37">
    <properties>
     <property name="Message" value="AFarola"/>
    </properties>
@@ -556,22 +546,22 @@
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="183" type="Cartel" x="576.5" y="322" width="27" height="62">
+  <object id="183" type="Cartel" x="576.5" y="349" width="27" height="35">
    <properties>
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="185" type="Cartel" x="1125.83" y="1575.33" width="52.3337" height="27.3333">
+  <object id="185" type="Cartel" x="1126.83" y="1592.33" width="52.3337" height="27.3333">
    <properties>
     <property name="Message" value="Atronco"/>
    </properties>
   </object>
-  <object id="186" type="Cartel" x="39.8331" y="1576.33" width="52.3337" height="27.3333">
+  <object id="186" type="Cartel" x="37.8331" y="1582.33" width="52.3337" height="40.3333">
    <properties>
     <property name="Message" value="Atronco"/>
    </properties>
   </object>
-  <object id="187" type="Cartel" x="328.833" y="775.333" width="52.3337" height="27.3333">
+  <object id="187" type="Cartel" x="322.833" y="772.333" width="58.3337" height="50.3333">
    <properties>
     <property name="Message" value="Atronco"/>
    </properties>
@@ -601,22 +591,22 @@
     <property name="Message" value="AsetosSinFruta"/>
    </properties>
   </object>
-  <object id="193" name="SetosSinFruto" type="Cartel" x="31.7499" y="469.584" width="475.5" height="29.833">
+  <object id="193" name="SetosSinFruto" type="Cartel" x="103.75" y="478.584" width="404.5" height="51.833">
    <properties>
     <property name="Message" value="AsetosSinFruta"/>
    </properties>
   </object>
-  <object id="194" name="SetosSinFruto" type="Cartel" x="1537.75" y="483.584" width="26.5003" height="77.833">
+  <object id="194" name="SetosSinFruto" type="Cartel" x="1538.75" y="464.584" width="26.5003" height="77.833">
    <properties>
     <property name="Message" value="AsetosSinFruta"/>
    </properties>
   </object>
-  <object id="195" name="SetosSinFruto" type="Cartel" x="1537.75" y="643.083" width="26.5003" height="77.833">
+  <object id="195" name="SetosSinFruto" type="Cartel" x="1537.75" y="681.083" width="26.5003" height="77.833">
    <properties>
     <property name="Message" value="AsetosSinFruta"/>
    </properties>
   </object>
-  <object id="196" name="SetosSinFruto" type="Cartel" x="1569.75" y="741.083" width="26.5003" height="436.833">
+  <object id="196" name="SetosSinFruto" type="Cartel" x="1569.75" y="749.083" width="26.5003" height="428.833">
    <properties>
     <property name="Message" value="AsetosSinFruta"/>
    </properties>
@@ -631,12 +621,12 @@
     <property name="Message" value="AsetosSinFruta"/>
    </properties>
   </object>
-  <object id="199" name="SetosconFruto" type="Cartel" x="353.417" y="2542.92" width="26.5003" height="155.5">
+  <object id="199" name="SetosconFruto" type="Cartel" x="353.417" y="2587.92" width="26.5003" height="155.5">
    <properties>
     <property name="Message" value="Asetos"/>
    </properties>
   </object>
-  <object id="200" name="SetosconFruto" type="Cartel" x="129.417" y="2543.58" width="26.5003" height="155.5">
+  <object id="200" name="SetosconFruto" type="Cartel" x="132.417" y="2595.58" width="26.5003" height="155.5">
    <properties>
     <property name="Message" value="Asetos"/>
    </properties>
@@ -671,12 +661,12 @@
     <property name="Message" value="Aestatua"/>
    </properties>
   </object>
-  <object id="221" name="estatue" type="Cartel" x="625.416" y="227.833" width="29.167" height="22.333">
+  <object id="221" name="estatue" type="Cartel" x="625.416" y="227.833" width="29.167" height="41.333">
    <properties>
     <property name="Message" value="Aestatua"/>
    </properties>
   </object>
-  <object id="222" name="estatue" type="Cartel" x="913.416" y="229.833" width="29.167" height="22.333">
+  <object id="222" name="estatue" type="Cartel" x="913.416" y="229.833" width="29.167" height="43.333">
    <properties>
     <property name="Message" value="Aestatua"/>
    </properties>
@@ -716,17 +706,12 @@
     <property name="Message" value="AbasuraLlena"/>
    </properties>
   </object>
-  <object id="230" name="basurallena" type="Cartel" x="35" y="526.167" width="26" height="27.6667">
+  <object id="230" name="basurallena" type="Cartel" x="35" y="511.167" width="26" height="50.6667">
    <properties>
     <property name="Message" value="ABasuraGrande"/>
    </properties>
   </object>
-  <object id="231" name="basurallena" type="Cartel" x="5" y="238.167" width="26" height="27.6667">
-   <properties>
-    <property name="Message" value="ABasuraGrande"/>
-   </properties>
-  </object>
-  <object id="232" name="basurallena" type="Cartel" x="3.66667" y="174.167" width="26" height="27.6667">
+  <object id="231" name="basurallena" type="Cartel" x="-1" y="191.167" width="33" height="117.667">
    <properties>
     <property name="Message" value="ABasuraGrande"/>
    </properties>
@@ -741,12 +726,12 @@
     <property name="Message" value="Abasura"/>
    </properties>
   </object>
-  <object id="238" name="basura" type="Cartel" x="931.667" y="733.833" width="26" height="19.0001">
+  <object id="238" name="basura" type="Cartel" x="932.667" y="738.833" width="19" height="54.0001">
    <properties>
     <property name="Message" value="Abasura"/>
    </properties>
   </object>
-  <object id="239" name="SetosSinFruto" type="Cartel" x="1034.25" y="477.083" width="475.5" height="29.833">
+  <object id="239" name="SetosSinFruto" type="Cartel" x="1060.25" y="477.083" width="442.5" height="29.833">
    <properties>
     <property name="Message" value="AsetosSinFruta"/>
    </properties>
