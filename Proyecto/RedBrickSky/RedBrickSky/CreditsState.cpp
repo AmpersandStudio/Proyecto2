@@ -47,7 +47,13 @@ CreditsState::~CreditsState()
 
 bool CreditsState::handleEvent(const SDL_Event & event)
 {
-	return GameState::handleEvent(event);
+	if (event.type == SDL_KEYDOWN ||
+		event.type == SDL_MOUSEBUTTONDOWN ||
+		event.type == SDL_JOYBUTTONDOWN)
+	{
+		toGame();
+	}
+	return false;
 }
 
 void CreditsState::update()

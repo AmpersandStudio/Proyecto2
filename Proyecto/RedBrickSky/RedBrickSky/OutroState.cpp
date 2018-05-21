@@ -1,5 +1,5 @@
 #include "OutroState.h"
-#include "MainMenuState.h"
+#include "CreditsState.h"
 #include "StateMachine.h"
 
 OutroState::OutroState() : end(false)
@@ -49,12 +49,12 @@ OutroState::~OutroState()
 
 bool OutroState::handleEvent(const SDL_Event & event)
 {
-	/*if (event.type == SDL_KEYDOWN ||
+	if (event.type == SDL_KEYDOWN ||
 		event.type == SDL_MOUSEBUTTONDOWN ||
 		event.type == SDL_JOYBUTTONDOWN)
 	{
 		toMenu();
-	}*/
+	}
 	return false;
 }
 
@@ -101,5 +101,5 @@ void OutroState::render()
 void OutroState::toMenu()
 {
 	SoundManager::Instance()->stopMusic();
-	Game::Instance()->getStateMachine()->changeState(new MainMenuState());
+	Game::Instance()->getStateMachine()->changeState(new CreditsState());
 }

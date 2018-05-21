@@ -8,7 +8,7 @@
 #include "NameSelectorState.h"
 #include "TextureManager.h"
 #include "SoundManager.h"
-#include "CreditsState.h"
+#include "OutroState.h"
 #include "QuestionState.h"
 
 bool MainMenuState::ctrl_ = false;
@@ -77,7 +77,7 @@ void MainMenuState::toGame()
 }
 
 void MainMenuState::toCredits() {
-	Game::Instance()->getStateMachine()->pushState(new CreditsState());
+	Game::Instance()->getStateMachine()->pushState(new OutroState());
 }
 
 bool MainMenuState::handleEvent(const SDL_Event& event) {

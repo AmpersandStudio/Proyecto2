@@ -36,6 +36,7 @@ PlayState::PlayState()
 	pLevels[2] = levelParser.parseLevel("..\\assets\\Pasillos.tmx");
 	pLevels[1] = levelParser.parseLevel("..\\assets\\JardinesInferiores.tmx");
 	pLevels[0] = levelParser.parseLevel("..\\assets\\Tutorial.tmx");
+	
 
 
 	updateAmbienceSounds();
