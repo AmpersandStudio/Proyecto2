@@ -189,13 +189,13 @@ void TextureManager::drawTile(std::string id, int margin, int spacing, int x, in
 
 void TextureManager::drawText(std::string text, FontId id, const SDL_Color color, int x, int y, SDL_Renderer * pRenderer, SDL_RendererFlip flip, int alpha)
 {
-	Font* font = nullptr;
-	try {
+	Font* font = new Font(m_Fonts[id].fileName, m_Fonts[id].size);
+	/*try {
 		font = new Font(m_Fonts[id].fileName, m_Fonts[id].size);
 	}
 	catch (const std::exception& e) {
 		cout << "POR QUË COJONES FALLA LA FONT SI ES LA CLASE DE SAMIR" << endl;
-	}
+	}*/
 
 	if (font != nullptr)
 	{
@@ -220,8 +220,10 @@ void TextureManager::drawText(std::string text, FontId id, const SDL_Color color
 				return;
 			}
 		}
-		else
+		else {
 			delete font;
+			return;
+		}
 	}
 
 	std::cout << "Algo no ha salido bien.\n";
