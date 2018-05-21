@@ -79,7 +79,7 @@
    eJzt2LEJwDAMBEAXnjB99l/DG5hgApKfO1AvfyEJjwHAiXf2rmTV2cq+b6VJfNMtZF9H9jVS5+gNkvdYd3IHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADSPLO6AwAA4C/uewAAAOALfwhAJTMIAAAAAGBvAS21Mps=
   </data>
  </layer>
- <objectgroup name="Objects" visible="0">
+ <objectgroup name="Objects">
   <object id="66" name="Mochila" type="Bag" x="1681.33" y="494.67">
    <properties>
     <property name="Sweeties" value="10"/>
@@ -189,9 +189,8 @@
    <properties>
     <property name="Message" value="TroncoJardinesInferiores"/>
     <property name="keyID" type="int" value="5"/>
-    <property name="numFrames" type="int" value="1"/>
     <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="truck"/>
+    <property name="textureID" value="trunk"/>
     <property name="textureWidth" type="int" value="64"/>
    </properties>
   </object>

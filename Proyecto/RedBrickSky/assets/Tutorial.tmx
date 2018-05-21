@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" nextobjectid="241">
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="50" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="241">
  <properties>
   <property name="000" value="..\assets\000.png"/>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
@@ -56,12 +56,15 @@
  <tileset firstgid="2523" name="Personaje13" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje13.png" width="96" height="128"/>
  </tileset>
- <layer name="Floor" width="50" height="100" visible="0">
+ <tileset firstgid="2535" name="Tileset_Tutorial_NIVEL_Beta1_NURIA" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="Tileset_Tutorial_NIVEL_Beta1_NURIA.png" width="1920" height="1056"/>
+ </tileset>
+ <layer name="Floor" width="50" height="100">
   <data encoding="base64" compression="zlib">
    eJztnElvEzEUgO2kFfQGrWiuLaEUwYGlQuJSSsSR/T+w/AH+V+k1F8qRU+k9hbIc21IWcaEBnpWxZCwv73nsGU80h0+pmon9vtieeeO8ZIMxdgf4BNxsCJ+BL8BxEfsA2Gg9Wo/Ww+lxqcvYd3i82wB+FPw0eGx1GPvFy7HZmbRJwdevqc1jDdXjKYzHy045nnXpHr5+bW3aPGz9nIH35CE8nuX0GMvi6pvqIZ5f9xyTCtn3V8NzVI8leC9uwONyDeNB6dvn0RRieujnER+xPR6wyXoqC+N0YvQreATM8ng8gfYeI+hG7FNyj+FYRzDD8fjaOkDGJWM7BZz2MIf0OAcsIugVcfo8MLHJ+DB99wI8LsO1+FZnwpVumAflfUnlMVbypN+82R5rHbvHHvDe0s4IWOV5eQhs43GR/+8zKvxWOX291ekhXyd9Vrm9vSZ4xDj/tR7pPfrABQQrmXtcJYBxXqnAYxGOGbMJvjykZ8hrsL6pPY6Uv135yBxyLMsQy8M113vFeJjGJDcP11yXczzlmMTywMzxXD3ENd2Wb5nI1YPqkrMHxSV3D8ERoi/X68cKdXro+bzOyBPHJvAK2KrZwzYu+v2JjddFP28y8ZDjIvHFn6tHKNPoccLw+2ASiodofxwRNbfsF/2d57j9L50+x3mEtu8Ce+9IxeWRAjW3XCj6m+e4+0mdBeR4hLbvQs0j1fUxVP5/wPz3V9cYbX2MHG2GgDlfYc4tt4kedZx3p8FD7rU2yWMHeAfsEsciNw8TdXqoe0EufHsO2DmVygNzHyIYRnLI0QOb4+fqERp/Lh57JePPxaNM7K1H69F61OfxZ0o8sOTsgR2L2B73I3pg14XqgalPwu5ZqLFW7aG2bTomdD+lag/M58vYz+PVWJ93GdvmE14Q669MHkNmXwfY9YHZr9D3S1xg1vkekVjrXD9flfWYAWYdDDVSelxnk5rotQCPeWDBgIxbrQVO6SEcZE23qPFWXUI9TA4pPVQHieoS4vHW4pDCY8fioLvsBnrYasxje7gcdJecxwNb8z8I8HC5NM2jqvNVTI8lYNlBquvHUWSPuog9HjEQdQ16Tu6rcRAe4jsxvu+2ie+hcV6NhylPwtSMYsZkgIzBlbvr9Yu29zjEQzh8YLjrx0eEh6tWRo/PVrcQ4nEI/GX4eYWdG6Z6rNQeAtP3FlW+FcdR5rk+x/T7ul3L63KYV9i14iLUI8W8qtoj5bzy1cfFHo9U80r1obiY9kd8tfrU63mIh8tlzGif4dbtoc4zFf2Yk0CXKj2whLjk6CGg5nE55rvT5EGdW7l6UF1iehwqUOI9dHDgeV4icgfmuQZKGMe3i3Xw1eRiv88uPgfbZri8RBwXu35X7iXHYJ/h8pL9iH3KffBp+d2PWL+XUSfi9zL+AdoVhvw=
   </data>
  </layer>
- <layer name="Hierbable" width="50" height="100" visible="0">
+ <layer name="Hierbable" width="50" height="100">
   <properties>
    <property name="BigGrass" type="bool" value="true"/>
   </properties>
@@ -69,22 +72,22 @@
    eJzt2EsKg0AUBVGXkP2vNryBIMFuO4HIu2UdcOKoC+yf2yZJkiRJ514XTwo7eqF07AgNR+njl6REhP2jPK2je+vVmSvp7ELpKJSOYkdPhIaSPn5Jopqtz0nr9qgjbf95SkcKYkfy2bJ7w+rdsHND+bWjm287uqL8c0ga6wyhoZA60udGoc3z5I6VBjvusdpgxz2oHaP33TskSZKkkcRz+gylo9jRS/Ld9ojSsaN0FEpHoXR8onRRvjXK/LejF8oeSdnvKR3SP7wBibEXoQ==
   </data>
  </layer>
- <layer name="Top" width="50" height="100" visible="0">
+ <layer name="Top" width="50" height="100">
   <data encoding="base64" compression="zlib">
    eJztmstNLDEQRXsEKyYBYNghgRBbJgEIYQIgBuIhBXZ89yAiQCwBCTKAALClKcmUbLc/Zbvc1JFKr1+rbd/b5W8Pw1COWxV3Ku4LtuFq995yrXlAz5r/x8/GtlWifiogFxCtdAjDsFCxt75+ttyLYUvFHMW1ihvH828bCY04yh6tQ/NquRfSLtzfVrGD4lHFk0PL7uYwnG/8DU3IPV02FVu7Zp0HKg5RvKyjJ05ULFF8qvhqKSqBqfg4VXGG4lvFT0tRgiA043hGE9zbtGmYAqYPuM7JBwd8esw9WUw5bvh8uKjhC7cx1maKD478Nx/cxwjHfLwrPR+Rmjj6wOC+YNPr88HVX2sfKWPMtebZ7nH2YSPVB1X7Y/WEtsMhHxTvpKYPm97W/YoK8fGXUj5C9fnOQTEeKXzkvNPU8xxG+pWbGG0UPhazeB9QLgf8ncDlJXRtcekp7cMkx4fWAbGK/M6wMsqGtDVGybNYD+ePEMQHL2r6oBofKeOcEqr5ykbtfLRaPyiZyrw7JR8p39hCiPUBOlr8NkXpA4g9S3DzgfXn+og9S7r4r/kAevNx6fnt0PxXc+Wpx/RhqxPWt7HzjktPqXxcoDp9+TD3G769h49QH/g9UPrQjO2fxiiVj2Wkj1x6GueusaGhHOc+XD582mLoKR8A5Tmqt/UDa0nFVhbmp3nmXKWpda7FPuaGfopc1Tp/+PKRu3bk0ur8EdtPSnwvwdTMAdV7nHI+apanwtQxZ6IpBd/7pPrtsAYujbCWwHVpLyX7N3jpob+ZPlqteRT76x76fghj/aoXuOaD0/ddYdqUmE8p61wQzv2t1g5BEIRalJjnXN+9OP/9kHnmhAC9vgjdU+1X9m3q8nnBzwGc1j/X3hVrpNjjcvJtQ/bvgiAIdfgF/jOdng==
   </data>
  </layer>
- <layer name="Top-Top" width="50" height="100" visible="0">
+ <layer name="Top-Top" width="50" height="100">
   <data encoding="base64" compression="zlib">
    eJzt3M0NgjAYgOEW0CUg3nUH41EHcAHXcQdH8O4C/sQx3EHPgoBArJZitSjvk3wptLT9BCSGgEIAqGMrhdiVYi+r9fn6QRZ9Doq6nPTS0vce21T9Xo1l4uTb7TPO8p8oPserMZrkUTYI0jIKqvXJuqqu3MfGvKHFMd9xjvf7RbPv62zzrzZZGcYRuUzEkmEcow/PMTe8xphuDzMcDwAAAAAAAAAAAAC/pMkzCl1+rgEAAAAA8NxK81ysrr0t1po88/aj43cTbOn3XGcAoKmuXXfbbBrHzDBQWMo0bstBNRYijXudfIy2Ut1L5/46AAD4pn/6X4P8fexnv69+4X3tJEddnnW2gR2uvx/l42y67Hp+zlFA7wqYBEEG
   </data>
  </layer>
- <layer name="Fences&amp;Trees" width="50" height="100" visible="0">
+ <layer name="Fences&amp;Trees" width="50" height="100">
   <data encoding="base64" compression="zlib">
    eJztXE+PFUUQn3lvL/gNEMJd5aDcVgQUXQiIiuyfBEXUDyCejSyScAI+gcAmXHdxIxwBk9WbnNCzNxL0E6AYOFiVmc5W2uruqp7qfrtPf0llet709PRvurq7qrrnnW+bbY9l4HD+fx5bBtPGY2Wbc0EeN0HWDXjgu7gOciNR1rdw/Zrxu0Met43Kw3dxC+S7RHmrcH3N6N05uPbY7pC0x5EJ8pQ+m45XO+D4QtsdKZa881C+EliK9CP6O+XxEhxfbLtjDKF82n4rzR/qR+sBHoiXhWVz+bT91rqfT9M8uN2xTDgcbnVSAto60HrMgizA+aleJGl3jnII5E2Qt5Tc6H0LTPlSwfv29zyGzIUfwL0nQT5UlpF7nw/KY4ht8inc+xnI514ZX4ya5lwvX47k92lBeSwU0PdVqPvumU5WGR6WKM2DS1ujRnsgHo2ng8eewnpVi4eftobjMQ/Hvc1wQbvveaDuPg/Mt2L03L09h3mjtvDtPqw79g2OB5d/CCx5+MC6Y99waS2cD4VHmuZQmgeXTsHZKEvkuOT95vfnrcpDm8fn8do47LPuG3d+4L6xrD6580cuD2r77my7uu5kyopd41Br/kAc7m1fB1fXc8w75669AecHQA4y3GrNH4hTnl7F3jkXXzgB6fdA3p8wD1+v1sZdDGE10Af8+MIZOP8E5GyAx+4B464Gvl5ZYpJ6ZYnaeiXl4eKImnG3ll5peOSOu366BDQ8cJzCfr4WaA+/nBQPS33Gsub68vw5UuuTxOpVg8eiEQ8/7vwY6v57L38wPCzXo+aI/cjx4H6ncHqJwvkTaJM4253i2ajLT+8fgsWC4y5i10wnHP427Psl7fbamAYe84b9w48zpOKiK4b9A+F83qHjFRdncLhVOM5wpN1cx7SeP1I8LPUZOVisK3P7GFI83L4GDnRthPpqNE3z0PaQ4NXxpg9P7UVuH0OKh9vXwIGujVBfjaZpnpz2kK5Pp3jEQNdGqK9G0zSPtj0cJOvTQ3jMQvmvg+wH+R7Ob0fkTtNxqOFHaXkcgzodB3kX5CGc/xKRX5uOQ6n9I0N4nIY6fQTysbBuuXolgZVeSZDSq1h8KgUrvZL0j5RexeJTKVjp1Qac/xiRn5q0XvnxqdD8EeLh1muH6JWER854VWP+yBmvcsZd6fyR2x7a8arW+kfp8ao0j9z2oHolgSUPP/6Rao9YvCRHr+aMeHB+VKw9Un6UJg6BHBa3YP/QomTcJxWHS8GtN0ulZLwEdeN5Zlu49WaplOrnQ/K/0uTtzbCA5f7dWWEZb0MZ77TdupqWR4194VIeDjnralL7agg0PC6N0u0R8j+k+8dDeGY4Dm+M0u0xxP+oBWyPlF0SWx/3obULYvk1erUh0CsOoX6utQti+f+L/RyR0x4Irp9r40ex/Nr5w3I/gzZ+lMo/KfuK+nBc/N3F16W+nta+ugxyxUCoD0fj7z+D//FgZjO+TvNZPPdK3xZfee8ltn4Tuyb14bS+nqQeXxvykOC3HcPuD9XDmof0eyPr75KseUj3pFnuXcM61dYrKxxt/u1HTZteSdYIUnkmoVcIykNio29VO57ykNjoGju+JkL9nOsHqb0mCMn/GkjyOCyDb3EB5BuQixEfkuMxBM4eidlXkv8+cLgLdb8Hch/kh4o8HNj9DW14/0IIT6Duf4L8BfJ0AjyeFI7n+rDmofnfD0uU6h8x5OhXCpY8pN9v537nHYPjQWPG2rSD9DtsLt+Q56/0diLOCevt5vygTTuRfodN8+U+k0uXGK9qo9S4WxvIA310q1jDJORqz+EfD4/SSw==
   </data>
  </layer>
- <layer name="TopFences&amp;Trees" width="50" height="100" visible="0">
+ <layer name="TopFences&amp;Trees" width="50" height="100">
   <data encoding="base64" compression="zlib">
    eJzt2z1KA0EUwPGJWYW9goon0ZzA2NipsbRRS0PAKiGiR7C08QB2Nl7AyhNYeAvRwgnTiBjmhfme/f/gQWAf7BuYnY/diVJlO0pdAIBiTFulZm3qKtzNdRtuKmjHrW7DXQXtAEL7XJPlzYR5AFCT40j3uYp0HwByF6kLAAL6b36LNecBQFfs9pTa0zHo+clLZV/XNdRxYKlPkjfyW9pKTnRdIx2nlnZI8xBfjO+1H30TpeG9LSD33jcR2mHgeWSzMVG6Usfdv3YaE4BP240JF7b1E+fhumerMQEAACB1mboAAN6dpS4gc7W8b5eeC5fmdclrJfvmjfXUFbhjvALcnP/6PU5WhV3I99QP/J8QHj0K+9OYfocVfAvX41+Zr9ufhP3+vvLng/OiecntvOiy/Tf7criYLBlXrysfb3M0tTzLtuupPbdmXfJiqXNxfZH3Rh+r2g+Poi60
   </data>
@@ -94,7 +97,7 @@
    eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAeDBOIAAB
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="37" name="Player" type="Player" x="1472.34" y="1371.33" width="32" height="32">
    <properties>
     <property name="numFrames" type="int" value="3"/>
@@ -110,7 +113,7 @@
   </object>
   <object id="39" name="Personaje1" type="NPC" x="369.499" y="1932.91" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega1"/>
+    <property name="Message" value="NPC1"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje1"/>
@@ -119,7 +122,7 @@
   </object>
   <object id="42" name="Personaje2" type="NPC" x="710.666" y="2732" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega2"/>
+    <property name="Message" value="NPC2"/>
     <property name="isFighter" type="int" value="1"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
@@ -129,7 +132,7 @@
   </object>
   <object id="86" name="Personaje3" type="NPC" x="1132" y="1962.33" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega3"/>
+    <property name="Message" value="NPC3"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje3"/>
@@ -147,7 +150,7 @@
   </object>
   <object id="89" name="Personaje5" type="NPC" x="230" y="596" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega5"/>
+    <property name="Message" value="NPC5"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje5"/>
@@ -156,7 +159,7 @@
   </object>
   <object id="90" name="Personaje6" type="NPC" x="1404" y="1798" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega6"/>
+    <property name="Message" value="NPC6"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje6"/>
@@ -165,7 +168,7 @@
   </object>
   <object id="91" name="Personaje7" type="NPC" x="122" y="2352" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega7"/>
+    <property name="Message" value="NPC7"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje7"/>
@@ -174,7 +177,7 @@
   </object>
   <object id="92" name="Personaje8" type="NPC" x="1060" y="2256" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega8"/>
+    <property name="Message" value="NPC8"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje8"/>
@@ -183,7 +186,7 @@
   </object>
   <object id="93" name="Personaje9" type="NPC" x="826" y="254" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega9"/>
+    <property name="Message" value="NPC9"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje9"/>
@@ -192,7 +195,7 @@
   </object>
   <object id="94" name="Personaje10" type="NPC" x="1280" y="1058" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega10"/>
+    <property name="Message" value="NPC10"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje10"/>
@@ -201,7 +204,7 @@
   </object>
   <object id="95" name="Personaje11" type="NPC" x="658" y="1340" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega11"/>
+    <property name="Message" value="NPC11"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje11"/>
@@ -210,7 +213,7 @@
   </object>
   <object id="96" name="Personaje12" type="NPC" x="930" y="1796" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega12"/>
+    <property name="Message" value="NPC12"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje12"/>
@@ -219,7 +222,7 @@
   </object>
   <object id="97" name="Personaje13" type="NPC" x="1008" y="668" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega13"/>
+    <property name="Message" value="NPC13"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje13"/>
@@ -228,7 +231,7 @@
   </object>
   <object id="100" name="Personaje14" type="NPC" x="142" y="1668" width="32" height="32">
    <properties>
-    <property name="Message" value="Nopega14"/>
+    <property name="Message" value="NPC14"/>
     <property name="numFrames" type="int" value="3"/>
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="Personaje14"/>
@@ -721,7 +724,7 @@
     <property name="Message" value="AsetosSinFruta"/>
    </properties>
   </object>
-  <object id="240" name="BosTutorial" type="Cartel" x="526.333" y="211" width="39.3333" height="76">
+  <object id="240" name="BosTutorial" type="Cartel" x="512.333" y="269" width="60.3333" height="28">
    <properties>
     <property name="Message" value="DialogBossTutorial"/>
     <property name="battleId" type="int" value="2"/>
@@ -738,7 +741,7 @@
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztWmuKAyEMLnupvc6eco/W38tQhBDyfjhO2A+kVmOSb4zRsX2/Xj/vZ5YXKnf7E+axcIAvqfLP46wylcdV//36lFWHgH2wDfZdBeungP2g7MI2L48osB9WHlwfJ5/lofVTc1WFSFxR/aud093jfQ8PSTdu9/qYkZPiKqO7i4dVV5U+j67quNwV593o2pfusD2Nh8cHzp8d4yQ9HTzgeYXaJ0/jwUHjUYUdPJadCTymzMcUHrhejY7czflOvYN17x3c3GjxweVdiodkJ4KumLqg8dCw/II+cr5286DqGqIxdCIP/Em14TGwTcpf3twWzbsW/U/gEUGWhyS/a/+Aflj8msJj9VPjOR6ZvOvBifkqgtN4WN9XsJyHRyRfeeOqkoe293vzLq57/LPKVc4HdU6k6px8BtIZzGtHkn8yD8t9ictZxbZ2hpTs4fGW37FWu2SbsmPxQdKRgbRmK/eUbh67MI1Hx/rw3Itmn+W0fEXpfSqPaj3WuJL0eUvEZ+q9BfOg6p08sucs6X8bHA9uTOau0eI/5qLJZH7/8O71nftH5n0wGiM+KzZM4lERVx75Kn0QJ83HZB5WGyfFVcbGSfMhjdNkTp8PK54wHxY8dT4i50TNr1N4ZN4/PH7duT4q7XaeFTPrA/vWdW63IvPb4F08Ivup1DeJhzY+w+MNitUvzg/NR238VeB7sNM+yaMSHp8sPIRnz+q02q5Choeks1LOqquSR/X6sOqpXh9TeFTCk6+s8owOUq9TByu/Y/+I+OWVv3s/l3R77Ua5dJWdfuHnAD+5Nun5wXvz1U/dpeuzzNui7HIy0nirnch4r/5qHlmeUUzg0RFXu3h41nnE/glxZckjmswUHnec2y9MnA+pTWqvlMH3XdwdGP6e3Vc5H6XnU8kj8j9LC6RzBz63nMxj6dT+qxDRqfV3xFW1zSk8Kux6dWl5eZXvCqOEXtjmqUu6umzielex8thp1wouT2Fk8pZku3rN3YHOOd5d/gB6MWET
+   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
   </data>
  </layer>
 </map>
