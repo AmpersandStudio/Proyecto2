@@ -23,7 +23,7 @@ public:
 
 	virtual bool handleEvent(const SDL_Event& event);
 	virtual void update();
-	void updateAmbienceSounds();
+	void updateAmbienceSounds(int currentLvl, int lastLvl);
 	virtual void render();
 	void actSteps();
 	void notOnGrass();
@@ -32,5 +32,7 @@ public:
 private:
 	int steps_;
 	void changeLevel();
+
+	std::string currMusic_ = "music";
 };
 

@@ -39,7 +39,7 @@ PlayState::PlayState()
 	
 
 
-	updateAmbienceSounds();
+	updateAmbienceSounds(currentLevel_, lastLevel_);
 
 	steps_ = 0;
 	srand(time(NULL));
@@ -68,28 +68,61 @@ void PlayState::update()
 	if (GameManager::Instance()->getHealth() <= 0) pLevels[currentLevel_]->getPlayer()->resetPlayer();
 
 	if (currentLevel_ != lastLevel_) {
+		updateAmbienceSounds(currentLevel_, lastLevel_);
 		changeLevel();
-		updateAmbienceSounds();
 	}
 	pLevels[currentLevel_]->update();
 
 	if (!TheSoundManager::Instance()->isPlayingChannel(3)) {
-		updateAmbienceSounds();
+		updateAmbienceSounds(currentLevel_, lastLevel_);
 	}
 
 	GameState::update();
 }
 
-void PlayState::updateAmbienceSounds() {
+void PlayState::updateAmbienceSounds(int currentLvl, int lastLvl) {
 
-	if (!TheSoundManager::Instance()->isPlayingMusic()) {
-		TheSoundManager::Instance()->playMusic("music", -1);
+
+//Música de fondo
+
+	//Estados
+	enum stateChanges {INTERIOR_TO_EXTERIOR, EXTERIOR_TO_INTERIOR, NO_CHANGE};
+	stateChanges state = NO_CHANGE;
+
+	if ( (currentLvl == 0 || currentLvl == 1 || currentLvl == 3) && (lastLvl != 0 && lastLvl != 1 && lastLvl != 3) ) {
+		state = INTERIOR_TO_EXTERIOR;
+	}
+	else if ((currentLvl != 0 && currentLvl != 1 && currentLvl != 3) && (lastLvl == 0 || lastLvl == 1 || lastLvl == 3)) {
+		state = EXTERIOR_TO_INTERIOR;
 	}
 
+	switch (state){
+
+	case INTERIOR_TO_EXTERIOR:
+		currMusic_ = "music";
+		TheSoundManager::Instance()->stopMusic();
+		break;
+
+	case EXTERIOR_TO_INTERIOR:
+		currMusic_ = "music2";
+		TheSoundManager::Instance()->stopMusic();
+		break;
+
+	case NO_CHANGE:
+		break;
+	}
+
+	//Actualización de la música de fondo
+	if (!TheSoundManager::Instance()->isPlayingMusic()) {
+		TheSoundManager::Instance()->playMusic(currMusic_, -1);
+	}
+
+
+//Sonidos de ambiente
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	if (sm->currentState() == this) {
 		TheSoundManager::Instance()->closeChannel(3);
-		if (GameManager::Instance()->getLevel() == 0 || GameManager::Instance()->getLevel() == 1 || GameManager::Instance()->getLevel() == 3 ) {
+		if (currentLvl == 0 || currentLvl == 1 || currentLvl == 3 ) {
 			TheSoundManager::Instance()->PlaySoundInChannel(3, "exteriores", -1);
 		}
 		else {
