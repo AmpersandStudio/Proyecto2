@@ -53,7 +53,7 @@ private:
 
 	std::vector<bool> doors;
 	int level_;
-
+	bool gameOver_;
 
 	bool dialogueActive;
 	Interactuable* currentInter;
@@ -75,6 +75,7 @@ private:
 
 		dialogueActive = false;
 		currentDialogue_ = nullptr;
+		gameOver_ = false;
 
 		name = "";
 
@@ -125,6 +126,8 @@ public:
 	int getEnemy();
 	void setAttackSound(string s) { atSound = s; };
 	string getAttackSound() { return atSound; };
+	inline bool getGameOver() const { return gameOver_; }
+	inline void setGameOver(bool b) { gameOver_ = b; }
 
 	//Metodos para el mapa
 	int getLevel() { return level_; }

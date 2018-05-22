@@ -17,6 +17,8 @@ protected:
 	static void toInventary();
 	static void toBattle();
 
+	void toGameOver();
+
 public:
 	PlayState();
 	virtual ~PlayState();

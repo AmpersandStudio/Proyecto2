@@ -13,6 +13,7 @@
 #include "RenderFrameNDComponent.h"
 #include "TextureManager.h"
 #include "Camera.h"
+#include "GameOverState.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -65,7 +66,7 @@ void PlayState::update()
 {
 	currentLevel_ = GameManager::Instance()->getLevel();
 
-	if (GameManager::Instance()->getHealth() <= 0) pLevels[currentLevel_]->getPlayer()->resetPlayer();
+	if (GameManager::Instance()->getGameOver()) toGameOver();
 
 	if (currentLevel_ != lastLevel_) {
 		updateAmbienceSounds(currentLevel_, lastLevel_);
@@ -230,6 +231,13 @@ void PlayState::toBattle()
 	TheSoundManager::Instance()->stopMusic();
 	StateMachine* sm = Game::Instance()->getStateMachine();
 	sm->pushState(new TransitionState(0));
+}
+
+void PlayState::toGameOver()
+{
+	GameManager::Instance()->setGameOver(false);
+	pLevels[currentLevel_]->getPlayer()->resetPlayer();
+	Game::Instance()->getStateMachine()->pushState(new GameOverState());
 }
 
 

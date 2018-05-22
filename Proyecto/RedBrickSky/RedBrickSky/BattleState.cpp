@@ -1240,11 +1240,15 @@ bool BattleState::run()
 	}
 	else if (GameManager::Instance()->getHealth() <= 0 && enemy->getHealth() > 0) {
 		TheSoundManager::Instance()->stopMusic();
+		TheSoundManager::Instance()->playMusic("defeat", 0);
+		GameManager::Instance()->setGameOver(true);
 		std::cout << "HAS PERDIDO!" << std::endl;
 		lastTurn = true;
 	}
 	else if (GameManager::Instance()->getHealth() <= 0 && enemy->getHealth() <= 0) {
 		TheSoundManager::Instance()->stopMusic();
+		TheSoundManager::Instance()->playMusic("defeat", 0);
+		GameManager::Instance()->setGameOver(true);
 		std::cout << "WTF EMPATE LOCO!" << std::endl;
 		lastTurn = true;
 	}

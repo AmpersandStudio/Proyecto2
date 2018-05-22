@@ -199,6 +199,7 @@ void GameManager::resetGame()
 	currentInter = nullptr;
 	currentDialogue_ = nullptr;
 
+	gameOver_ = false;
 	dialogueActive = false;
 	ampersand_ = false;
 	easterEgg[0] = false;

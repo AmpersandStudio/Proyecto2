@@ -250,7 +250,8 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\outro23.png", "outro23", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\outro24.png", "outro24", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\loading.png", "loading", RENDERER_);
-
+	TheTextureManager::Instance()->load("..\\images\\gameover.png", "gameover", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\trybutton.png", "gobutton", RENDERER_);
 
 	// Load Music
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);
@@ -271,6 +272,8 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\TheLastBrick.mp3", "bbattle", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\intro.ogg", "intro", SOUND_MUSIC);
 	TheSoundManager::Instance()->load("..\\sounds\\outro.wav", "outro", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\gameover.ogg", "gameover", SOUND_MUSIC);
+	TheSoundManager::Instance()->load("..\\sounds\\defeat.ogg", "defeat", SOUND_MUSIC);
 
 	//Load SFX
 	TheSoundManager::Instance()->load("..\\sounds\\Ambiente_exterior.wav", "exteriores", SOUND_SFX);

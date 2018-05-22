@@ -401,7 +401,7 @@ void QuestionState::assignType()
 {
 	int ret = max(physicFactor_, max(flyingFactor_, magicFactor_));
 
-	int t = 0, a = 12, d = 12, s = 12, h = 360;
+	int t = 0, a = 12, d = 12, s = 12, h = 100;
 
 	if (ret == physicFactor_)
 	{
