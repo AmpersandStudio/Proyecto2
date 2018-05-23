@@ -440,8 +440,29 @@ void BattleState::createEnemy()
 		enemy->setTextureId("bokoblinSS");
 	}
 
-	//DRAGON
+	//BOKO
 	else if (id_ == 2) {
+		Type typ = Physical;
+		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy->setTextureId("dragonSS");
+	}
+
+	//KRATOS
+	else if (id_ == 3) {
+		Type typ = Physical;
+		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy->setTextureId("directorSS");
+	}
+
+	//OSO
+	else if (id_ == 4) {
+		Type typ = Ranged;
+		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy->setTextureId("directorSS");
+	}
+
+	//DRAGON
+	else if (id_ == 5) {
 		Type typ = Ranged;
 		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
 		enemy->setTextureId("dragonSS");
@@ -449,8 +470,15 @@ void BattleState::createEnemy()
 	}
 
 	//DIRECTOR
-	else if (id_ == 3) {
-		Type typ = Physical;
+	else if (id_ == 6) {
+		Type typ = Magical;
+		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy->setTextureId("directorSS");
+	}
+
+	//DARKTYLER
+	else if (id_ == 7) {
+		Type typ = Magical;
 		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
 		enemy->setTextureId("directorSS");
 	}
@@ -510,12 +538,22 @@ void BattleState::createEnemy()
 		}
 	}
 
-	if (lv != 0) {
+	if (lv != 0 && id_ < 2) 
+	{
 		enemy->setHealth(100 + (50 * lv));
 		enemy->setMaxHealth(100 + (50 * lv));
 		enemy->setAttack(10 + (rand() % lv));
 		enemy->setDefense(10 + (rand() % lv));
 		enemy->setVelocity(10 + (rand() % lv));
+	}
+
+	else if (lv == 0)
+	{
+		enemy->setHealth(150);
+		enemy->setMaxHealth(150);
+		enemy->setAttack(10);
+		enemy->setDefense(10);
+		enemy->setVelocity(10);
 	}
 
 	Vector2D pos2(3.3, 0.62);
@@ -1230,10 +1268,43 @@ bool BattleState::run()
 		TheSoundManager::Instance()->playMusic("victory", 0);
 
 		int exp = (enemy->getAttack() + enemy->getDefense() + enemy->getVelocity()) * (GameManager::Instance()->getLevel() + (rand() % 5 + 1));
-		GameManager::Instance()->addMoney(exp);
+		
 		// if NPC exp *= 2
+		if (id_ == 1) {
+			exp *= 2;
+		}
 		// if BOSS exp *= 3
+		else if (id_ > 1) {
+			exp *= 3;
+		}
+
 		// if BOSS increase stats
+		if (id_ > 1) {
+			switch (id_)
+			{
+			case 2:
+				GameManager::Instance()->setHealth(GameManager::Instance()->getHealth() + 100);
+				GameManager::Instance()->setMaxHealth(GameManager::Instance()->getMaxHealth() + 100);
+				break;
+			case 3:
+				GameManager::Instance()->setPlayerAttack(GameManager::Instance()->getPlayerAttack() + 1);
+				break;
+			case 4:
+				GameManager::Instance()->setPlayerDeffense(GameManager::Instance()->getPlayerDeffense() + 1);
+				break;
+			case 5:
+				GameManager::Instance()->setPlayerAttack(GameManager::Instance()->getPlayerAttack() + 1);
+				break;
+			case 6:
+				GameManager::Instance()->setPlayerDeffense(GameManager::Instance()->getPlayerDeffense() + 1);
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		GameManager::Instance()->addMoney(exp);
 
 		std::cout << "HAS GANADO! Sweeties: " << to_string(exp) << std::endl;
 		lastTurn = true;

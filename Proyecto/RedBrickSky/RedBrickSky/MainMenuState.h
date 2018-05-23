@@ -24,5 +24,6 @@ private:
 
 	GameComponent* gc;
 	InputComponent* ic2;	
+	Button* button1;
 };
 

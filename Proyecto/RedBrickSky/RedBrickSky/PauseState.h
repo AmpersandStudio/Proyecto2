@@ -13,5 +13,6 @@ public:
 	virtual bool handleEvent(const SDL_Event& event);
 	static void resume();
 	static void toMenu();
+	virtual void render();
 };
 

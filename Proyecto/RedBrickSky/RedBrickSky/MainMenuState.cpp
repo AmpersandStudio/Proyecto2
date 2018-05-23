@@ -36,7 +36,7 @@ MainMenuState::MainMenuState()
 
 	// New Main Menu
 	Button* button0 = new Button("nbutton", toGame, 0);
-	Button* button1 = new Button("ctrlbutton", toggleCtrl, 0);
+	button1 = new Button("ctrlbutton", toggleCtrl, 0);
 	Button* button3 = new Button("ebutton", exit, 3);
 	Button* button4 = new Button("credits", toCredits, 0);
 
@@ -120,6 +120,13 @@ bool MainMenuState::handleEvent(const SDL_Event& event) {
 		return true;
 	}
 
+	 if (event.type == SDL_KEYDOWN) {
+		 if (event.key.keysym.sym == SDLK_RETURN) {
+			 toGame();
+			 return true;
+		 }
+	 }
+
 	 GameState::handleEvent(event);
 
 	return handleEvent;
@@ -145,5 +152,10 @@ void MainMenuState::render() {
 	{
 		TheTextureManager::Instance()->drawFull("ctrlmenu", 0, 0, Game::Instance()->getWinWidth(), Game::Instance()->getWinHeight(), Game::Instance()->getRenderer(), 0, 255);
 		stage.at(2)->render();
+		button1->setTextureId("3");
+	}
+	else
+	{
+		button1->setTextureId("ctrlbutton");
 	}
 }

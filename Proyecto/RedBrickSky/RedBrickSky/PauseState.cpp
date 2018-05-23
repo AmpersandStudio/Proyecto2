@@ -96,3 +96,18 @@ void PauseState::toMenu()
 	while (Game::Instance()->getStateMachine()->size() > 1) // Desapila todos los estados hasta llegar al menú
 		Game::Instance()->getStateMachine()->popState();
 }
+
+void PauseState::render()
+{
+	GameState::render();
+
+	if (XboxController::Instance()->getNumControllers() != 0) {
+		//A
+		TheTextureManager::Instance()->drawItem("botonesXbox", 230, 350,
+			70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+
+		//B
+		TheTextureManager::Instance()->drawItem("botonesXbox", 530, 350,
+			70, 50, 0, 2, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+	}
+}

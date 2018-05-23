@@ -164,6 +164,9 @@ public:
 	inline void addPlayerSpeed(int s) { playerSpeed += s; }
 	inline void addPlayerHealth(int h) { playerMaxHP += h; }
 	inline void setHealth(int h) { playerHP = h; };
+	inline void setMaxHealth(int h) { playerMaxHP = h; };
+	inline void setPlayerAttack(int pa) { playerAttack = pa; };
+	inline void setPlayerDeffense(int pd) { playerDeffense = pd; };
 
 	//Metodos para el QuestionState
 	inline bool getFirst() const { return first_; }
