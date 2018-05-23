@@ -177,4 +177,5 @@ public:
 	inline void setQuestion(bool b) { question_ = b; }
 
 	void resetGame();
+	void toLevel2();
 };

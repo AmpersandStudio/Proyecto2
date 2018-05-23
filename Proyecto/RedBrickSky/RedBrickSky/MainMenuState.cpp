@@ -80,6 +80,15 @@ void MainMenuState::toCredits() {
 	Game::Instance()->getStateMachine()->pushState(new OutroState());
 }
 
+void MainMenuState::tolevel2()
+{
+	TheTextureManager::Instance()->drawFull("loading", 0, 0, 800, 600, Game::Instance()->getRenderer(), 0, 255);
+	SDL_RenderPresent(Game::Instance()->getRenderer());
+
+	SoundManager::Instance()->playSound("select", 0);
+	Game::Instance()->getStateMachine()->changeState(new PlayState());
+}
+
 bool MainMenuState::handleEvent(const SDL_Event& event) {
 
 	bool handleEvent = false;
@@ -125,6 +134,9 @@ bool MainMenuState::handleEvent(const SDL_Event& event) {
 			 toGame();
 			 return true;
 		 }
+		 else if (event.key.keysym.sym == SDLK_2) {
+			 tolevel2();
+			 return true;
 	 }
 
 	 GameState::handleEvent(event);

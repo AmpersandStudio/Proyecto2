@@ -211,3 +211,61 @@ void GameManager::resetGame()
 	question_ = false;
 	last_ = false;
 }
+
+void GameManager::toLevel2()
+{
+	shopObjects.clear();
+	ShopItems si = ShopItems();
+	inventory.clear();
+	for (size_t i = 0; i < doors.size(); i++)
+	{
+		doors.at(i) = false;
+	}
+
+	level_ = CLASES;
+	money = 500;
+	potions_ = 0;
+	potionsPrize = 100;
+	playerType = 0;
+	playerAttack = 12;
+	playerDeffense = 12;
+	playerSpeed = 12;
+	playerHP = 260;
+	playerMaxHP = 260;
+
+	name = "";
+	atSound = "";
+
+	currentInter = nullptr;
+	currentDialogue_ = nullptr;
+
+	gameOver_ = false;
+	dialogueActive = false;
+	ampersand_ = false;
+	easterEgg[0] = false;
+	easterEgg[1] = false;
+	easterEgg[2] = false;
+	easterEgg[3] = false;
+	charlie_ = false;
+	first_ = false;
+	question_ = false;
+	last_ = false;
+
+	ampersand_ = true;
+
+	estado n;
+	n.price = 0;
+	n.comprado = true;
+	n.ID = 16;
+	n.empty = false;
+	n.mX = 0;
+	n.mY = 0;
+	n.w = 45;
+	n.h = 45;
+	n.tx = "21";
+	n.type = 0;
+	n.nombre = "Ampergun";
+	n.FilFrame = 4;
+	n.colFrame = 1;
+	setInventory(n);
+}

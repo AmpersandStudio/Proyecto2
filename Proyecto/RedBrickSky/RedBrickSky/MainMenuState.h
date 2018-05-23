@@ -16,6 +16,7 @@ public:
 	static void exit() { Game::Instance()->exitApp(); };
 	static void toCredits();
 	static void toggleCtrl() { ctrl_ = !ctrl_; SoundManager::Instance()->playSound("select", 0); }
+	void tolevel2();
 
 private:
 	static bool ctrl_;	
