@@ -57,14 +57,20 @@
  <tileset firstgid="4141" name="Personaje15" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje15.png" width="96" height="128"/>
  </tileset>
+ <tileset firstgid="4153" name="Personajes" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="Personajes.png" width="1920" height="1056"/>
+ </tileset>
+ <tileset firstgid="6133" name="celiana2" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="celiana2.png" width="1920" height="1056"/>
+ </tileset>
  <layer name="Floor" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJztmW1OwzAQRP2nvUOAy4fehHuEcpIKkGLJXXm9aydix2h+PPUDAvPi2TjQR0rpA4iHg57v9YLsG+lwZr5IF3rQ47/OxxluUR7WGq2XlN53bhfc3JbH9pP9c+c+scdyTell5/U6l8da9Ojt+swqOhadt+WxFT2SHpvoWHTelsdS9Eh6LKJj0XklrS59XZ4fax2Lzp+pdUnmlq/LY6LzZ2SXfjNbHuUx0flXpUu13Np7uWOR/dqU65I3f9mxyH4tey+snBb550R51K5JJeXX5fvy+VugR22erdnQjon2kOdcy1zbR+Q6RXvUOmOde3SP2gy01qT8vlk9UNfD2i9m8GhdmzyvUTxacz6Lh6c/NQ+k/eMsoj08e4P3PjLao3V/Ys0GsoeW1XqN6mFdk+X7KB6tzmjzgnTdbXloc4+4HtYseOYDYc49HjPct1v5tH0PaT6O7uFneeTPWXq5dWb07CPrQI7skT9n6eVu9MTTL3nMNpAje+TPWXrR/m/V26vymGUgR6vjnr2tpy+9895DzcPzN5D1O0fX5UyPUbQc3plB8rBcPOt4xMPboSPn7Mj6WvcKck+Wj9rz1vkecbXuIbUMf3Fv2dMHZOiBBT2woAcW9MCCHljQAwt6YEEPLOiBBT2woAcW9MCCHljQAwt6YEEPLOiBBT2woAcW9MCCHljQAwt64DJzdnqM8Q3at4Bn
+   eJztmWFOwzAMhfNnvUOhZ0cquwn3KOMkE1TUUmTFsZNW+AX5x9PabtneFz83gT5TSh9AehrU8lmrkHk9Ga7058kSHMHxX/vjCjYvDq1G6y2l90P3G65vjWP78f556DEwxzyl9HLodRqLY81y9DantEy/2o9XljFvvzWOLcvR7j3XxjLm7bfGMWc5ojpQXWaWMW+/XHleKEcL4/hi7+VjvP2T8ryQT+6bn+djvP2TeJZ2zxpHPsbb/ypkqeRbukYZ88zXxrIkSfKfZ8wzX/ORC82nJvoeLw4+39QXvD9K1/nx4shR6metN6Qx3hx8ziXP/LVUJ2+OUma0uUfnKPVArSb550blQK2Htl6MwFG7N1nOUThqfT4KhyU/JQ6k9eMqeXNY1gbrPtKbo7Y/0XoDmUPyqp2jcmj3ZH4dhaOWGalfkO67NQ6p7xHrofWCpT8Q+tzCMcK+XfMnrXtI/XF2Db+Kg56ztOre6NGyjqwdPoiDnrO06qHkxJIvPmbr8EEc9JylVdL/rVpzlY+ZO3zUMm5Z21ry0trvLSpxWP4G0n6zty5XcvRK8mHtGSQOjcVSxzMc1gydmbMz9dX2CnxN5q/ScW2+e1i1PaTk4S/2li15QFZwYCk4sBQcWAoOLAUHloIDS8GBpeDAUnBgKTiwFBxYCg4sBQeWggNLwYGl4MBScGApOLAUHFgKDiwFB5aCA0vBgauRvQdHn74BDw6Fdg==
   </data>
  </layer>
  <layer name="Top-Top" width="50" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2TEKwjAUxvGAW5e6e4A6eyW9hhfwAK6KgxVRr+GqVesoWHHwAq7GoRBCihBpQ5P/D0KTKd+r74mgEAAAAL8lkRD9yHWK/w1lDSMP6pjJGuYe1AEAAAAAAAAAQAg2kRBLuVK51tozNZzL/aqG/wKqcphyfe/fahnu8lzI9dSeheFc7h811FGVw5SrjvsBXx21eTkp54uyvzY4V7ly11nZZ1qGA7MOD71i1wnQRjf6plUyPi9YSLquEyBEA/oOAevR/3Bgwu/ERsXMeatMmQ9Y6DDncGDB9xUsvOkbOLCj7xq1530D1sbMD4BAfQBnBT3Z
+   eJzt1j8KwjAUx/GAW5e6OBQP4O79vIAHcBUcrIh6BjdXrf8GB8GKgxdwNVIKIaRLsA1pvh94NJnya/teqRAAAKBO06Qo392Sony37blOAAAAAAAAAAAAQrOKhJjLSmUttWtq2JfrRfT/LFU5TLl+56+1DA+5z2W9tGtu2JfrZw33UZXDlKuO84G2OmjzclT2Z2V9bXCuLspZJ2WdaRn2zDpa6B27TgAf3ekbr2S8L1gYdF0nQIiG9B0C1qf/4cCY/8RGxcy5VybMByx0mHM4MON7BQsf+gYObOi7Ru143oC1EfMDIFBfKbw/dQ==
   </data>
  </layer>
  <objectgroup name="Objects" visible="0">
@@ -236,9 +242,9 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="65" name="BosFinal" type="Cartel" x="801" y="338.667" width="66.6666" height="76">
+  <object id="65" name="BosFinal" type="Cartel" x="798" y="344.667" width="33.6666" height="45">
    <properties>
-    <property name="Message" value="BattlerTutorial"/>
+    <property name="Message" value="BossFinal"/>
     <property name="battleId" type="int" value="20"/>
     <property name="isFighter" type="int" value="1"/>
     <property name="numFrames" type="int" value="0"/>
@@ -252,7 +258,7 @@
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt20EKhEAMRNHc/1geTGY7CIPBsbsqyQ8EBBHqUY2uPCLiaLCn2TpmwlF/cXgtDq/F4bWujvhxjUPn+J5KjuzgwPFW9jsTDi9H1fwuHhw4cODAgQMHDhw4cODAgWO143r/TfdOR5c+cNRy/PO82hGxLsvuweE13RxXy5m4Xj3ZDA7vY9W3AkdfhzoffdR0dDlbmVFnnNLFpD6qOLqcrcyoM+KoZZjUBw4/izrfpD6mONT5pvWxu5NV/0hm5kmm3f9zPjW4bWbUGSc5upytzKgz4qhlmNRHFUeXs5UZdUYctQyd+ujSSWbUGXH0c6jz0QcOl62cHcez/QC1Un/R
+   eJzt21EKg0AMhOHc/1geTPoqQmmw7s4k+QdCBVuYjyz2ySMijgZzmo1jJxz1B4fX4PAaHF7j6ojLZyS+7+y4Boe++7fgwPFW918mHF6Oqv1dPDhw4MCBAwcOHDhw4MCBA8dqx/3+m+6dji77wFHL8c/v1Y6IdV12B4dXujnuljNxvTrZDg7PY9V/BY6+DnU/9lHT0eVsZaLuOGUXk/ZRxdHlbGWi7oijlmHSPnD4WdT9Ju1jikPdb9o+du9k1TuSmTzptPt9zqcGt8lE3XGSo8vZykTdEUctw6R9VHF0OVuZqDviqGXotI8uO8lE3RFHP4e6H/vA4TKVu+N4Nh9xBnzX
   </data>
  </layer>
 </map>
