@@ -1,8 +1,7 @@
-8
+6
 El jardinero esconde una copia de seguridad
 de la llave para acceder al jardín superior en una de 
 las estatuas...
 la puerta es la que se encuentra en la zona intermedia de este
 jardín al este.
-
 -El directroll. 
