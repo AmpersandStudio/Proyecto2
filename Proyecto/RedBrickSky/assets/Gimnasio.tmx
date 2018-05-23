@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="85" height="68" tilewidth="32" tileheight="32" nextobjectid="238">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="85" height="68" tilewidth="32" tileheight="32" nextobjectid="246">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje2" value="..\assets\Personaje2.png"/>
@@ -57,6 +57,9 @@
  <tileset firstgid="10939" name="Personaje12" tilewidth="32" tileheight="32" tilecount="12" columns="3">
   <image source="Personaje12.png" width="96" height="128"/>
  </tileset>
+ <tileset firstgid="10951" name="Personajes" tilewidth="32" tileheight="32" tilecount="1980" columns="60">
+  <image source="Personajes.png" width="1920" height="1056"/>
+ </tileset>
  <layer name="Floor" width="85" height="68">
   <data encoding="base64" compression="zlib">
    eJzt289P1EAUB/Btwx8Ap4VtE40o6FFxlZN4MfGA3gwIGCVRDviDo1f/EM8uu3r0oib+MYJy8YomxoPz3L7sY3Y6M51OZ2a7neQbAmyn7YfXdqYtrdaw7Z9zn0dpq/Uj8ZfF1N6+9JJRWh5N37P177M8dxzY70OWfjLcjg8XygX6OAjItOchd6LhV5umdF+myRQtqSm0t4vlAi0kU9w/E5+8iBz55abJVGal68j3k/ezOpvKatXUWOdvMC2mHzt6mY/EwX7ms37pz12ZPpjxZ3qiUae2r1Eh1in0YcsU+pKdE6vydGWKv3dZp7jOsq6q5XydT+lnXJtSVxc16sPUlSu/zrqYbs7I+3VhKapX3fFQiGMplWkVrqptbEztmb5k2/OKZTVShx7bqs9CnwecP6zrcVqfY19kC/s4YNlj+3tXM7D9qs8MklGoaz9btqxnEVOX1yjwNLmn3DNYBl2rNPU9lgJP2J52zOaQOVlg+aZxfT9iOZb0Bf30M1c0reOYv5+ZXmL7+6sjzhN23vvMvn7p5NuC5afO8HO7aX5fuD4Xpi4tMXgMqkyprcgVPWWWjam+axHPxlTt2ivomWdqo026KUZ17vRlCvdPfaWsqUlCMf06ayehmQ4StVVVpn9m7YQ3DsH0laUUNb0xZye8sU/T74nd94ROCpr+nbUT3vgmMz2f+jG9H9u/T7sen73uy5otUwzMR1czz4GnOrVtCp4+TeG422SmO41p6fBtI3OddNNbrK810p/P5vMadS9z0M1tyd9gnfvdtJrq1B/eM1zIzNa4esRssZ9tZ2lMFZ4RicBW5BuS6QrbvutcbBjS/rqx3PTMvexI3N98Tu1SY51ma26aZyqazxwIavdaog79/HI8mtfT51Mi07bB35D3LVKnVc9NB8n4szl6PrjIxgYr7HvVu/8vWK7CcqnYFJ/18aZtSV3qZNnAtOq5qcx0KR55Pkvl58Cn6VlXHVO+Pk1sTUyrnpvKTGF7dTx511PNOqXnF9Na9WnKz033yH7KTE3G4bhsEVOXx37Vc1OVqW6N0loVmYquUSpTHEuFasq3DeLqu05zx06R/HtT06qazjXKl2ne/ws0pnLTtuD65Oq679sU3tm5onlOvZwOo2O6Eo/XpKpO62AK41N8R0LlCpb4DsVSgWO/jOckmsI203dP8lyp526BeZTofKry5L+fRFMd18Nk/J0U0/GpTm3WwZS6vhPUKZieCva17Ji/qvFpKKaQ3w5MZdesxlRtKqtP3XptTPVMi6Q7xaYm8/28us2r0ZBMeVcXpm3BOMrUdDtuTHEepfvsSzbX598VmERTGKMecTkuaEqfHfO+Reb83YBNRedT0bPUIukq6hSyJTgf0rkVvbeCof3D50M1FbnaeC+U9vc6Gn+vkXfNe36Knvw1HrITmCnc85fd77cV8HwINRaJ/6cdXfOODWqJ5w0I7xmA6RtI1a6c5/91iu7D0Hd0ZBEtG5opuuI7x/CsymZofcK6qnifN0RT3ZTZV1v91MG0yv2vm6lpw7HCzyw4Pgqlrc6Vj+vWJ56YxrRc4z0xobRJNA29/QPHi96c
@@ -72,7 +75,7 @@
  </layer>
  <layer name="Top-Top" width="85" height="68">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Door0" width="85" height="68">
@@ -267,7 +270,7 @@
     <property name="Sweeties" type="int" value="10"/>
    </properties>
   </object>
-  <object id="164" name=" Pepe El jardinero " type="Cartel" x="1488" y="1786.67" width="88" height="45.3333">
+  <object id="164" name="BossNivel1" type="Cartel" x="1503" y="1784.67" width="33.5" height="51.3333">
    <properties>
     <property name="Message" value="BossNivel1"/>
     <property name="battleId" type="int" value="4"/>
@@ -440,16 +443,6 @@
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="196" type="Cartel" x="1218.5" y="1808" width="27" height="62">
-   <properties>
-    <property name="Message" value="AFarola"/>
-   </properties>
-  </object>
-  <object id="197" type="Cartel" x="1793.5" y="1802" width="27" height="62">
-   <properties>
-    <property name="Message" value="AFarola"/>
-   </properties>
-  </object>
   <object id="198" type="Cartel" x="1921.5" y="1925" width="27" height="62">
    <properties>
     <property name="Message" value="AFarola"/>
@@ -460,7 +453,7 @@
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="200" type="Cartel" x="2145.17" y="353" width="381.667" height="50">
+  <object id="200" type="Cartel" x="2149.84" y="373" width="25.0003" height="30.6667">
    <properties>
     <property name="Message" value="AVolley"/>
    </properties>
@@ -480,12 +473,12 @@
     <property name="Message" value="Atronco"/>
    </properties>
   </object>
-  <object id="204" type="Cartel" x="2051.17" y="1635.67" width="119" height="80.6666">
+  <object id="204" type="Cartel" x="2072.17" y="1677.67" width="59" height="61.6666">
    <properties>
     <property name="Message" value="ATobogan"/>
    </properties>
   </object>
-  <object id="205" type="Cartel" x="2054.5" y="1507.67" width="111" height="80.6666">
+  <object id="205" type="Cartel" x="2079.5" y="1544.67" width="39" height="54.6666">
    <properties>
     <property name="Message" value="ATobogan"/>
    </properties>
@@ -500,12 +493,12 @@
     <property name="Message" value="Aretrete"/>
    </properties>
   </object>
-  <object id="209" name="WC" type="Cartel" x="342.75" y="1217.83" width="208.5" height="119.333">
+  <object id="209" name="WC" type="Cartel" x="522.75" y="1293.83" width="11.5" height="54.333">
    <properties>
     <property name="Message" value="Aretrete"/>
    </properties>
   </object>
-  <object id="211" name="Porterias" type="Cartel" x="2399.25" y="97.8335" width="99.5" height="28.333">
+  <object id="211" name="Porterias" type="Cartel" x="2425.25" y="97.8335" width="37.5" height="28.333">
    <properties>
     <property name="Message" value="Aporterias"/>
    </properties>
@@ -520,7 +513,7 @@
     <property name="Message" value="AEspejo"/>
    </properties>
   </object>
-  <object id="218" name="Espejo" type="Cartel" x="713.75" y="1242.92" width="112.5" height="32.833">
+  <object id="218" name="Espejo" type="Cartel" x="784.75" y="1242.92" width="41.5" height="32.833">
    <properties>
     <property name="Message" value="AEspejo"/>
    </properties>
@@ -533,21 +526,6 @@
   <object id="220" name="caseta" type="Cartel" x="2095.5" y="1172.33" width="166.333" height="80.6666">
    <properties>
     <property name="Message" value="ACaseta"/>
-   </properties>
-  </object>
-  <object id="221" name="Porterias" type="Cartel" x="2174.92" y="95.1668" width="73.5" height="28.333">
-   <properties>
-    <property name="Message" value="Aporterias"/>
-   </properties>
-  </object>
-  <object id="222" name="Porterias" type="Cartel" x="2562.92" y="609.167" width="20.8333" height="28.333">
-   <properties>
-    <property name="Message" value="Aporterias"/>
-   </properties>
-  </object>
-  <object id="223" name="Porterias" type="Cartel" x="2091.58" y="612.5" width="22.1667" height="28.333">
-   <properties>
-    <property name="Message" value="Aporterias"/>
    </properties>
   </object>
   <object id="224" name="canasta" type="Cartel" x="2120.92" y="39.1668" width="11.5" height="88.9997">
@@ -570,17 +548,17 @@
     <property name="Message" value="Acaballos"/>
    </properties>
   </object>
-  <object id="228" name="balancin" type="Cartel" x="2506.83" y="1266.67" width="85.333" height="42.6666">
+  <object id="228" name="balancin" type="Cartel" x="2513.83" y="1287.67" width="48.333" height="26.6666">
    <properties>
     <property name="Message" value="ABalancin"/>
    </properties>
   </object>
-  <object id="230" name="balancin" type="Cartel" x="2440.33" y="1167.67" width="85.333" height="42.6666">
+  <object id="230" name="balancin" type="Cartel" x="2440.33" y="1187.67" width="77.333" height="22.6666">
    <properties>
     <property name="Message" value="ABalancin"/>
    </properties>
   </object>
-  <object id="231" name="arenero" type="Cartel" x="2240.83" y="1415.67" width="186.333" height="78.6666">
+  <object id="231" name="arenero" type="Cartel" x="2256.83" y="1435.67" width="57.333" height="78.6666">
    <properties>
     <property name="Message" value="Aarenero"/>
    </properties>
@@ -613,6 +591,41 @@
   <object id="237" name="basura" type="Cartel" x="1056" y="579.5" width="26" height="19.0001">
    <properties>
     <property name="Message" value="Abasura"/>
+   </properties>
+  </object>
+  <object id="238" type="Cartel" x="2216.83" y="374" width="25.0003" height="30.6667">
+   <properties>
+    <property name="Message" value="AVolley"/>
+   </properties>
+  </object>
+  <object id="239" type="Cartel" x="2289.5" y="374.667" width="25.0003" height="30.6667">
+   <properties>
+    <property name="Message" value="AVolley"/>
+   </properties>
+  </object>
+  <object id="240" type="Cartel" x="2366.17" y="376" width="25.0003" height="30.6667">
+   <properties>
+    <property name="Message" value="AVolley"/>
+   </properties>
+  </object>
+  <object id="241" type="Cartel" x="2442.17" y="377.333" width="25.0003" height="30.6667">
+   <properties>
+    <property name="Message" value="AVolley"/>
+   </properties>
+  </object>
+  <object id="242" type="Cartel" x="2505.5" y="377.333" width="25.0003" height="30.6667">
+   <properties>
+    <property name="Message" value="AVolley"/>
+   </properties>
+  </object>
+  <object id="243" name="arenero" type="Cartel" x="2351.33" y="1433.67" width="57.333" height="78.6666">
+   <properties>
+    <property name="Message" value="Aarenero"/>
+   </properties>
+  </object>
+  <object id="244" name="WC" type="Cartel" x="454.75" y="1294.83" width="16.5" height="54.333">
+   <properties>
+    <property name="Message" value="Aretrete"/>
    </properties>
   </object>
  </objectgroup>

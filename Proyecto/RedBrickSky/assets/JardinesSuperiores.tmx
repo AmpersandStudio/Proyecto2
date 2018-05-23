@@ -79,22 +79,22 @@
  <objectgroup name="Objects" visible="0">
   <object id="71" name="Cofre" type="Bag" x="1934" y="240">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="55"/>
    </properties>
   </object>
   <object id="75" name="Cofre" type="Bag" x="1679" y="244.667">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="55"/>
    </properties>
   </object>
   <object id="78" name="Cofre" type="Bag" x="1678.67" y="400.333">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="55"/>
    </properties>
   </object>
   <object id="79" name="Cofre" type="Bag" x="1934" y="400.667">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="55"/>
    </properties>
   </object>
   <object id="81" name="Cofre" type="Bag" x="2034" y="878.667">
@@ -104,7 +104,7 @@
   </object>
   <object id="82" name="Cofre" type="Bag" x="4367.5" y="307.75">
    <properties>
-    <property name="Sweeties" type="int" value="0"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="84" name="Mochila" type="Bag" x="2034.67" y="690.667">
@@ -119,7 +119,7 @@
   </object>
   <object id="90" name="Cofre" type="Bag" x="2189.33" y="1548">
    <properties>
-    <property name="Sweeties" type="int" value="0"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="92" name="Mochila " type="Bag" x="3632" y="238.667">
@@ -159,12 +159,12 @@
   </object>
   <object id="103" name="Mochila" type="Bag" x="3986" y="845.5">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="106" name="Mochila " type="Bag" x="2928" y="1132">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="112" name="Fercho" type="Cartel" x="4144.5" y="849">
@@ -250,7 +250,7 @@
   </object>
   <object id="138" name="Cofre" type="Bag" x="2031.33" y="247.333">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="55"/>
    </properties>
   </object>
   <object id="139" name="Nuria" type="Cartel" x="2031" y="594">

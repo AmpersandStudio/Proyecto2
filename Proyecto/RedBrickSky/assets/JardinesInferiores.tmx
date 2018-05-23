@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="95" height="138" tilewidth="32" tileheight="32" infinite="0" nextobjectid="165">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="95" height="138" tilewidth="32" tileheight="32" nextobjectid="165">
  <properties>
   <property name="Personaje1" value="..\assets\Personaje1.png"/>
   <property name="Personaje2" value="..\assets\Personaje2.png"/>
@@ -71,7 +71,7 @@
  </layer>
  <layer name="TopFences&amp;Trees" width="95" height="138">
   <data encoding="base64" compression="zlib">
-   eJzt3c1q1FAYgOF0CF2JG5uCo+Cu4M6lP9WbcCnqShCrW93oUhB3gh0LrhT1Bvy5Cy/BG/AixIRQMi1pciYn+X5O3gc+FGbqhJfgTE4y6fJcli0ZhmGYjce609v7IO8e7Z609zHWdW2vx/ae0F5P17Zrd6S9r/Ek9fZHS5mOQ6Te3jLP2+4d7ds9X0z/GrTXk3r7NwL77xCrZfrtLaO9jrstawRz9iHiWGC1wc8+XjTt19dpIIP9Xg/t9Xhv/zbg8+MLo58xvbf3TKL9xZ2w532+MP5rj+Xpov3vMdjvu32ccP2Z9npor4f2emivJ9X2B0Y/06/Tav/aQZuppbrfe0B7PbTXQ3s9oe1f8t44OvZ7PbTX47V9dezk4fipi9f2KaC9Htrrob0u2uuhvR7r7d9vZdlhOautcZ5nifX2X8qWX8v51tM09Hl9DgW/GxfS/pniccyPsuXPcn71NA19niVX8pMDObTXI91+UdSDLLuXn5yxWb7OEgAwnX879UDezaIeZNnDXHZNgc+Y5b63Xf9ZtV/vP7U7RT2a9rd1X/+YdHtpU35vJ1bq7S2Tbr9f1BPjSc+6at/jVsxhv9/N42fMf+t4qt6pt7eq6i15H5FbRT2Qb4+G9fO1KZtb+6tK5+baXndu7R8ptW973bm1t4T2emivZ27tea/VY+m99r7wuRM0ztrvXzlZC/SMawL10F4P7fVMfT3mXHyPOP8e87PY3Cb3bB+K65D1hN6TN/R5sO2vg3OS185rb8E09na1twAAAMSQOC6aQsjvh4nl5VpYAEDjnYN1ntun1oAl78Eztt8OesOnmN/VuonLgfvwpRns657/L4KslO8TaJ30fQLRSPk+gVLOOh879DytxLoQAABefOq5Nq3vcQxTrSn86WlbPR669uCVlXtVYZ5Yz5o3y/dwAwAgxpHye1yq33cAAOCGsXWs68a2BwAAAAAAAABg33/Qouru
+   eJzt3ctq1FAYwPF0CF2JG5uCo+Cu4M6ll+pLuBR1JYjFrW50KYg7wY4FV4r6Al7ewkfwBXwIaUIomZZpcnL7Luf8f/DhYqYm/AmdmZNMuryQZUuGYRim91h3dn8f5e2j3ZP2Psa6tv312N4T2utp23ftjrT3NZ7E3v5oKdNxiNjbW+Z5372j/WYvFvNvg/Z6Ym//VuD4HWK1jL+9ZbTXcX/DGkHKPo74LLDq8bNPF0379XUayOC410N7Pd7bvwt4//jS6HtM7+09k2h/eSfseV8uTb9tyzju232acf2Z9npor4f2emivJ9b2B0bf06/Tav/GQZu5xXrce0B7PbTXQ3s9oe1f8do4OY57PbTX47V99dnJw+enNl7bx4D2emivh/a6aK+H9nqst/+wlWWH5ay2pnmeJdbbfy1bfivne0fT0Od1ORT8blxI++eKn2N+li1/lfO7o2no8yy5lp8eyKG9Hun2i6IeZNmD/PRMLbXrLAEAtf879UDe7aIeZNnjXHZNgfeY5bG3Xf9btV/vP7d7RT2a9rd1t39Cur20Ob+3M1bs7S2Tbr9f1DPGs4511a7HrUjhuN/Nx8+U/9fJVL1jb29V1VvyPiJ3inog3x4N6+drY5Za++tK5+Y2bTe19k+U2m/abmrtLaG9HtrrSa09r7V6LL3WPhQ+d4LGecf9aydrgZ5xTaAe2uuhvZ65r8dMxY8R59/H/Cz663PP9qG4DllP6D15Q58H2/45OCd546L2Hsxjb1d7DwAAwBgSn4vmEPL3Ycbyci0sAKDx3sE6z90za8CS9+CZ2h8HveHTmL/V2sfVwGP4SgLHuuffRZAV830CrZO+TyAaMd8nUMp552OHnqeVWBcCAMCLzx3XpnU9jmGqNYW/HW2rx0PXHryycq8qpIn1rLRZvocbAABjHCm/xsX6fQcAAG4ZW8e6aWx/AAAAAAAAAAD2HQNObuoS
   </data>
  </layer>
  <layer name="Personajes" width="95" height="138">
@@ -79,40 +79,30 @@
    eJzt2LEJwDAMBEAXnjB99l/DG5hgApKfO1AvfyEJjwHAiXf2rmTV2cq+b6VJfNMtZF9H9jVS5+gNkvdYd3IHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADSPLO6AwAA4C/uewAAAOALfwhAJTMIAAAAAGBvAS21Mps=
   </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Objects" visible="0">
   <object id="66" name="Mochila" type="Bag" x="1681.33" y="494.67">
    <properties>
-    <property name="Sweeties" value="10"/>
+    <property name="Sweeties" type="int" value="45"/>
    </properties>
   </object>
   <object id="67" name="Mochila" type="Bag" x="2126.67" y="429.33">
    <properties>
-    <property name="Sweeties" type="int" value="10"/>
-   </properties>
-  </object>
-  <object id="68" name="Mochila" type="Bag" x="2223.33" y="783.67">
-   <properties>
-    <property name="Sweeties" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="69" name="Mochila" type="Bag" x="2319.67" y="787">
-   <properties>
-    <property name="Sweeties" type="int" value="10"/>
+    <property name="Sweeties" type="int" value="35"/>
    </properties>
   </object>
   <object id="70" name="Mochila" type="Bag" x="2862.67" y="1868">
    <properties>
-    <property name="Sweeties" type="int" value="0"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="71" name="Mochila" type="Bag" x="2513.33" y="2580">
    <properties>
-    <property name="Sweeties" type="int" value="0"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="72" name="Mochila" type="Bag" x="2893.33" y="2697.33">
    <properties>
-    <property name="Sweeties" type="int" value="5"/>
+    <property name="Sweeties" type="int" value="35"/>
    </properties>
   </object>
   <object id="78" name="Mochila" type="Bag" x="2768.67" y="3503.67">
@@ -122,17 +112,17 @@
   </object>
   <object id="80" name="Mochila" type="Bag" x="2797.33" y="3753.33">
    <properties>
-    <property name="Sweeties" type="int" value="0"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="81" name="Mochila" type="Bag" x="2861.33" y="3922.67">
    <properties>
-    <property name="Sweeties" type="int" value="0"/>
+    <property name="Sweeties" type="int" value="35"/>
    </properties>
   </object>
   <object id="82" name="Mochila" type="Bag" x="1714.67" y="3920">
    <properties>
-    <property name="Sweeties" type="int" value="5"/>
+    <property name="Sweeties" type="int" value="35"/>
    </properties>
   </object>
   <object id="83" name=" Pepe El jardinero " type="Cartel" x="2353.33" y="2900">
@@ -143,7 +133,7 @@
   </object>
   <object id="93" name="Mochila" type="Bag" x="2993.33" y="2578.67" rotation="180">
    <properties>
-    <property name="Sweeties" type="int" value="5"/>
+    <property name="Sweeties" type="int" value="55"/>
    </properties>
   </object>
   <object id="99" name="Martin" type="Cartel" x="2031" y="592">
@@ -172,17 +162,17 @@
   </object>
   <object id="103" name="Mochila" type="Bag" x="1839" y="1903">
    <properties>
-    <property name="Sweeties" type="int" value="0"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="104" name="Mochila" type="Bag" x="2864.67" y="591.333">
    <properties>
-    <property name="Sweeties" type="int" value="5"/>
+    <property name="Sweeties" type="int" value="35"/>
    </properties>
   </object>
   <object id="105" name="mochi" type="Bag" x="1680" y="721.667">
    <properties>
-    <property name="Sweeties" type="int" value="5"/>
+    <property name="Sweeties" type="int" value="35"/>
    </properties>
   </object>
   <object id="108" name="AcudeAlJardinero" type="Door" x="2239.67" y="1473.67" width="64.6667" height="30">
@@ -198,15 +188,6 @@
    <properties>
     <property name="Message" value="PepeElConserje"/>
     <property name="keyID" type="int" value="5"/>
-   </properties>
-  </object>
-  <object id="112" name="Personaje1" type="NPC" x="2272" y="1730.67" width="32" height="32">
-   <properties>
-    <property name="Message" value="Normie3"/>
-    <property name="numFrames" type="int" value="3"/>
-    <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="Personaje1"/>
-    <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
   <object id="113" name="Personaje3" type="NPC" x="2084" y="2110.66" width="32" height="32">
@@ -236,7 +217,7 @@
     <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
-  <object id="116" name="Personaje5" type="NPC" x="2713.33" y="918.667" width="32" height="32">
+  <object id="116" name="Personaje5" type="NPC" x="2682.33" y="968.667" width="32" height="32">
    <properties>
     <property name="Message" value="Normie5"/>
     <property name="numFrames" type="int" value="3"/>
@@ -255,7 +236,7 @@
   </object>
   <object id="122" name="Mochila" type="Bag" x="2481" y="3055">
    <properties>
-    <property name="Sweeties" type="int" value="0"/>
+    <property name="Sweeties" type="int" value="25"/>
    </properties>
   </object>
   <object id="123" name="Pablo" type="Cartel" x="2607.33" y="3062">
@@ -351,44 +332,9 @@
     <property name="Message" value="AFarola"/>
    </properties>
   </object>
-  <object id="139" name="SetosSinFruto" type="Cartel" x="2914.75" y="3009.58" width="26.5003" height="862.833">
-   <properties>
-    <property name="Message" value="AsetosSinFruta"/>
-   </properties>
-  </object>
-  <object id="140" name="SetosSinFruto" type="Cartel" x="3009.75" y="2616.58" width="26.5003" height="218.833">
-   <properties>
-    <property name="Message" value="AsetosSinFruta"/>
-   </properties>
-  </object>
-  <object id="141" name="SetosSinFruto" type="Cartel" x="2945.75" y="2825.58" width="26.5003" height="174.833">
-   <properties>
-    <property name="Message" value="AsetosSinFruta"/>
-   </properties>
-  </object>
-  <object id="142" name="SetosSinFruto" type="Cartel" x="1634.75" y="771.583" width="26.5003" height="858.833">
-   <properties>
-    <property name="Message" value="AsetosSinFruta"/>
-   </properties>
-  </object>
-  <object id="143" name="SetosSinFruto" type="Cartel" x="1633.75" y="536.583" width="26.5003" height="160.833">
-   <properties>
-    <property name="Message" value="AsetosSinFruta"/>
-   </properties>
-  </object>
-  <object id="144" name="SetosSinFruto" type="Cartel" x="1633.42" y="352.25" width="26.5003" height="123.5">
-   <properties>
-    <property name="Message" value="AsetosSinFruta"/>
-   </properties>
-  </object>
-  <object id="155" name="fuente" type="Cartel" x="2257.42" y="681.833" width="29.167" height="68.333">
+  <object id="155" name="fuente" type="Cartel" x="2255.42" y="731.833" width="31.8337" height="34.9997">
    <properties>
     <property name="Message" value="AFuente"/>
-   </properties>
-  </object>
-  <object id="156" name="estatue" type="Cartel" x="2366.92" y="727.333" width="29.167" height="68.333">
-   <properties>
-    <property name="Message" value="Aestatua"/>
    </properties>
   </object>
   <object id="158" name="basurallena" type="Cartel" x="2886" y="2058.5" width="26" height="17">
@@ -399,26 +345,6 @@
   <object id="159" name="basurallena" type="Cartel" x="2886" y="2436.5" width="26" height="17">
    <properties>
     <property name="Message" value="AbasuraLlena"/>
-   </properties>
-  </object>
-  <object id="160" name="agua" type="Cartel" x="1921.42" y="495.25" width="61.167" height="777.5">
-   <properties>
-    <property name="Message" value="Aagua"/>
-   </properties>
-  </object>
-  <object id="161" name="agua" type="Cartel" x="2559.42" y="490.25" width="61.167" height="777.5">
-   <properties>
-    <property name="Message" value="Aagua"/>
-   </properties>
-  </object>
-  <object id="162" name="agua" type="Cartel" x="1794.42" y="481.25" width="129.167" height="56.5">
-   <properties>
-    <property name="Message" value="Aagua"/>
-   </properties>
-  </object>
-  <object id="163" name="agua" type="Cartel" x="2621.42" y="483.75" width="197.167" height="56.5">
-   <properties>
-    <property name="Message" value="Aagua"/>
    </properties>
   </object>
   <object id="164" name="Door" type="Door" x="2239" y="2015" width="64" height="32">

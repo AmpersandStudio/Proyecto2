@@ -252,7 +252,7 @@
     <property name="changeLevel" type="int" value="6"/>
    </properties>
   </object>
-  <object id="115" name="Door" type="Door" x="768" y="2496" width="64" height="32">
+  <object id="115" name="Door" type="Door" x="775.667" y="2496" width="44" height="32">
    <properties>
     <property name="Message" value="Door - Verja"/>
     <property name="keyID" type="int" value="1"/>
@@ -260,17 +260,6 @@
     <property name="textureHeight" type="int" value="32"/>
     <property name="textureID" value="door"/>
     <property name="textureWidth" type="int" value="64"/>
-   </properties>
-  </object>
-  <object id="117" name="Cartel1" type="Cartel" x="1312.83" y="1309.84" width="32" height="32">
-   <properties>
-    <property name="Message" value="NPC2Test"/>
-    <property name="isFighter" type="int" value="0"/>
-    <property name="keyID" type="int" value="2"/>
-    <property name="numFrames" type="int" value="2"/>
-    <property name="textureHeight" type="int" value="32"/>
-    <property name="textureID" value="cartel"/>
-    <property name="textureWidth" type="int" value="32"/>
    </properties>
   </object>
   <object id="119" name="Cartel2" type="Cartel" x="1119.22" y="234.061" width="32" height="32">
@@ -337,7 +326,7 @@
   </object>
   <object id="139" name="Mochila " type="Bag" x="1552" y="19.5">
    <properties>
-    <property name="Sweeties" type="int" value="25"/>
+    <property name="Sweeties" type="int" value="45"/>
    </properties>
   </object>
   <object id="140" name="Mochila " type="Bag" x="1537.5" y="579" width="30" height="57">
@@ -610,7 +599,7 @@
     <property name="Message" value="ABasuraGrande"/>
    </properties>
   </object>
-  <object id="233" name="basurallena" type="Cartel" x="1537" y="2218.17" width="26" height="80.3334">
+  <object id="233" name="basurallena" type="Cartel" x="1531.67" y="2252.84" width="26" height="41.6667">
    <properties>
     <property name="Message" value="ABasuraGrande"/>
    </properties>
@@ -625,7 +614,7 @@
     <property name="Message" value="Aestatua"/>
    </properties>
   </object>
-  <object id="242" name="estatue" type="Cartel" x="859.417" y="2505.83" width="29.167" height="68.333">
+  <object id="242" name="estatue" type="Cartel" x="862.417" y="2524.83" width="29.167" height="42.333">
    <properties>
     <property name="Message" value="Aestatua"/>
    </properties>
@@ -672,7 +661,7 @@
    <property name="collidable" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
 </map>
