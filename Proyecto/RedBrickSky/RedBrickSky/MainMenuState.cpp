@@ -137,6 +137,7 @@ bool MainMenuState::handleEvent(const SDL_Event& event) {
 		 else if (event.key.keysym.sym == SDLK_2) {
 			 tolevel2();
 			 return true;
+		 }
 	 }
 
 	 GameState::handleEvent(event);
