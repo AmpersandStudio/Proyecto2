@@ -68,6 +68,7 @@ private:
 	bool last_ = false;
 
 	bool endGame_;
+	bool doorColl_;
 
 	GameManager() 
 	{
@@ -89,6 +90,7 @@ private:
 		question_ = false;
 		last_ = false;
 		endGame_ = false;
+		doorColl_ = false;
 	}
 
 	static GameManager* s_pInstance;
@@ -180,6 +182,9 @@ public:
 	inline void setFirst(bool b) { first_ = b; }
 	inline void setLast(bool b) { last_ = b; }
 	inline void setQuestion(bool b) { question_ = b; }
+
+	inline bool getDoorColl() const { return doorColl_; }
+	inline void setDoorColl(bool b) { doorColl_ = b; }
 
 	void resetGame();
 	void toLevel2();

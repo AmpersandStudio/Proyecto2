@@ -91,20 +91,21 @@ void CollisionManager::checkPlayerDoorCollision(Player * pPlayer, std::vector<Do
 
 		if (Collisions::collides(pPlayer, door))
 		{
+			GameManager::Instance()->setDoorColl(true);
 			TheSoundManager::Instance()->playSound("rebote", 0);
 
-			//Vector2D pPos = pPlayer->getPosition();
-			//Vector2D pDir = pPlayer->getDirection();
+			Vector2D pPos = pPlayer->getPosition();
+			Vector2D pDir = pPlayer->getDirection();
 
-			//double pdirX = -5 * pDir.getX();
-			//double pdirY = -5 * pDir.getY();
+			double pdirX = -5 * pDir.getX();
+			double pdirY = -5 * pDir.getY();
 
-			//double px = pdirX + pPos.getX();
-			//double py = pdirY + pPos.getY();
+			double px = pdirX + pPos.getX();
+			double py = pdirY + pPos.getY();
 
-			//pPos.set(px, py);
+			pPos.set(px, py);
 
-			//pPlayer->setPosition(pPos);
+			pPlayer->setPosition(pPos);
 			pPlayer->collision();
 		
 		}

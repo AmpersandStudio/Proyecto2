@@ -211,6 +211,7 @@ void GameManager::resetGame()
 	question_ = false;
 	last_ = false;
 	endGame_ = false;
+	doorColl_ = false;
 }
 
 void GameManager::toLevel2()
@@ -255,6 +256,7 @@ void GameManager::toLevel2()
 	last_ = false;
 	endGame_ = false;
 	ampersand_ = true;
+	doorColl_ = false;
 
 	estado n;
 	n.price = 0;

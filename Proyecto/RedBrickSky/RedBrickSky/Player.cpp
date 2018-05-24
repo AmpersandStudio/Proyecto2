@@ -276,16 +276,20 @@ bool Player::handleEvent(const SDL_Event& event)
 void Player::interacting() {
 	std::cout << "Interacting...\n";
 	updateRect();
-
 	setInteracting(true);
 }
 
 void Player::collision()
 {
-	if (moved_)
+	if (moved_ && !GameManager::Instance()->getDoorColl())
 	{
 		position_ = previousPos_;
 		velocity_ = Vector2D(0, 0);
+	}
+	else if (GameManager::Instance()->getDoorColl())
+	{
+		velocity_ = Vector2D(0, 0);
+		GameManager::Instance()->setDoorColl(false);
 	}
 	
 }
