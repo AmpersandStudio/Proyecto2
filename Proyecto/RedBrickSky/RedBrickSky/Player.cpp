@@ -110,7 +110,8 @@ void Player::update()
 
 bool Player::handleEvent(const SDL_Event& event)
 {
-	bool move = false;
+	prevPos_ = position_;
+	moved_ = false;
 
 	if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 	{
@@ -120,25 +121,25 @@ bool Player::handleEvent(const SDL_Event& event)
 			{
 				velocity_.set(Vector2D(-m_moveSpeed, 0));
 				direction_.set(-1, 0);
-				move = true;
+				moved_ = true;
 			}
 			if (event.key.keysym.sym == SDLK_RIGHT)
 			{
 				velocity_.set(Vector2D(m_moveSpeed, 0));
 				direction_.set(1, 0);
-				move = true;
+				moved_ = true;
 			}
 			if (event.key.keysym.sym == SDLK_UP)
 			{
 				velocity_.set(Vector2D(0, -m_moveSpeed));
 				direction_.set(0, -1);
-				move = true;
+				moved_ = true;
 			}
 			if (event.key.keysym.sym == SDLK_DOWN)
 			{
 				velocity_.set(Vector2D(0, m_moveSpeed));
 				direction_.set(0, 1);
-				move = true;
+				moved_ = true;
 			}
 			if (event.key.keysym.sym == SDLK_r)
 			{
@@ -189,24 +190,28 @@ bool Player::handleEvent(const SDL_Event& event)
 			{
 				velocity_.set(Vector2D(-m_moveSpeed, 0));
 				direction_.set(-1, 0);
+				moved_ = true;
 
 			}
 			else if (XboxController::Instance()->xvalue(0, 1) > 0)
 			{
 				velocity_.set(Vector2D(m_moveSpeed, 0));
 				direction_.set(1, 0);
+				moved_ = true;
 
 			}
 			else if (XboxController::Instance()->yvalue(0, 1) < 0)
 			{
 				velocity_.set(Vector2D(0, -m_moveSpeed));
 				direction_.set(0, -1);
+				moved_ = true;
 
 			}
 			else if (XboxController::Instance()->yvalue(0, 1) > 0)
 			{
 				velocity_.set(Vector2D(0, m_moveSpeed));
 				direction_.set(0, 1);
+				moved_ = true;
 
 			}
 			else {
@@ -277,6 +282,10 @@ void Player::interacting() {
 
 void Player::collision()
 {
+	if (moved_)
+	{
+		position_ = previousPos_;
+	}
 	velocity_ = Vector2D(0, 0);
 }
 

@@ -33,6 +33,8 @@ public:
 
 	void setStepsSound(std::string soundFile) { if (soundFile != sFile_) TheSoundManager::Instance()->closeChannel(4); sFile_ = soundFile; };
 	void resetPlayer();
+
+	const Vector2D& getPrevPosition() const { return prevPos_; };
 	
 private:
 	Vector2D iniPos_;
@@ -57,6 +59,8 @@ private:
 	Dialogue d_;
 
 	bool levelHasChanged_;
+
+	Vector2D prevPos_;
 
 };
 
