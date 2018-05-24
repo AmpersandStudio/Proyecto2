@@ -448,21 +448,21 @@ void BattleState::createEnemy()
 	else if (id_ == 2) {
 		Type typ = Physical;
 		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
-		enemy->setTextureId("dragonSS");
+		enemy->setTextureId("goblinShinySS");
 	}
 
 	//KRATOS
 	else if (id_ == 3) {
 		Type typ = Physical;
 		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
-		enemy->setTextureId("directorSS");
+		enemy->setTextureId("kratosSS");
 	}
 
 	//OSO
 	else if (id_ == 4) {
 		Type typ = Ranged;
 		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
-		enemy->setTextureId("directorSS");
+		enemy->setTextureId("bearSS");
 	}
 
 	//DRAGON
@@ -484,7 +484,7 @@ void BattleState::createEnemy()
 	else if (id_ == 7) {
 		Type typ = Magical;
 		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
-		enemy->setTextureId("directorSS");
+		enemy->setTextureId("darkTylerSS");
 	}
 
 	else {

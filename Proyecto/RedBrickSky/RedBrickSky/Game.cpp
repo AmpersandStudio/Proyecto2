@@ -252,6 +252,10 @@ void Game::loadResources()
 	TheTextureManager::Instance()->load("..\\images\\loading.png", "loading", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\gameover.png", "gameover", RENDERER_);
 	TheTextureManager::Instance()->load("..\\images\\trybutton.png", "gobutton", RENDERER_);
+	TheTextureManager::Instance()->load("..\\images\\Kratxs.png", "kratosSS", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\Boy_Bear.png", "bearSS", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\Dark_Tyler.png", "darkTylerSS", RENDERER_, 1, 2);
+	TheTextureManager::Instance()->load("..\\images\\Gobling_Extra.png", "goblinShinySS", RENDERER_, 1, 2);
 
 	// Load Music
 	TheSoundManager::Instance()->load("..\\sounds\\Battle_loop.wav", "loop_btl", SOUND_MUSIC);
