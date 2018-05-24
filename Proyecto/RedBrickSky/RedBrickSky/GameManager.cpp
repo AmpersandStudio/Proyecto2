@@ -210,6 +210,7 @@ void GameManager::resetGame()
 	first_ = false;
 	question_ = false;
 	last_ = false;
+	endGame_ = false;
 }
 
 void GameManager::toLevel2()
@@ -222,6 +223,7 @@ void GameManager::toLevel2()
 		doors.at(i) = false;
 	}
 	doors.at(8) = true;
+	doors.at(13) = true;
 
 	level_ = CLASES;
 	money = 500;
@@ -251,7 +253,7 @@ void GameManager::toLevel2()
 	first_ = false;
 	question_ = false;
 	last_ = false;
-
+	endGame_ = false;
 	ampersand_ = true;
 
 	estado n;

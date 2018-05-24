@@ -141,9 +141,13 @@ void BattleState::pickBackground() {
 			break;
 		}
 	}
+	else if (currLevel == 6)
+	{
+		fondo_->setTextureId("battlebg2");
+	}
 
 	else {
-		fondo_->setTextureId("battlebg4");
+		fondo_->setTextureId("battlebg5");
 	}
 
 	fondo_->addRenderComponent(new RenderFullComponent());
@@ -1297,6 +1301,7 @@ bool BattleState::run()
 				break;
 			case 6:
 				GameManager::Instance()->setPlayerDeffense(GameManager::Instance()->getPlayerDeffense() + 1);
+				GameManager::Instance()->setEnd(true);
 				break;
 
 			default:

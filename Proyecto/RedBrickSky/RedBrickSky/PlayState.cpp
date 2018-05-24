@@ -14,6 +14,7 @@
 #include "TextureManager.h"
 #include "Camera.h"
 #include "GameOverState.h"
+#include "OutroState.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -40,8 +41,15 @@ PlayState::PlayState()
 	if (GameManager::Instance()->getLevel() == GameManager::CLASES) pLevels[5] = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
 	
 
-
-	updateAmbienceSounds(currentLevel_, lastLevel_);
+	if (GameManager::Instance()->getLevel() == GameManager::CLASES)
+	{
+		updateAmbienceSounds(5, 0);
+	}
+	else
+	{
+		updateAmbienceSounds(currentLevel_, lastLevel_);
+	}
+	
 
 	steps_ = 0;
 	srand(time(NULL));
@@ -65,6 +73,12 @@ bool PlayState::handleEvent(const SDL_Event & event)
 
 void PlayState::update()
 {
+	if (GameManager::Instance()->getEnd())
+	{
+		Game::Instance()->getStateMachine()->changeState(new OutroState());
+		return;
+	}
+
 	currentLevel_ = GameManager::Instance()->getLevel();
 
 	if (GameManager::Instance()->getGameOver()) toGameOver();

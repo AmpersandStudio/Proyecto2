@@ -67,6 +67,8 @@ private:
 	bool question_ = false;
 	bool last_ = false;
 
+	bool endGame_;
+
 	GameManager() 
 	{
 		doors.resize(30);
@@ -86,6 +88,7 @@ private:
 		first_ = false;
 		question_ = false;
 		last_ = false;
+		endGame_ = false;
 	}
 
 	static GameManager* s_pInstance;
@@ -128,6 +131,8 @@ public:
 	string getAttackSound() { return atSound; };
 	inline bool getGameOver() const { return gameOver_; }
 	inline void setGameOver(bool b) { gameOver_ = b; }
+	inline bool getEnd() const { return endGame_; }
+	inline void setEnd(bool b) { endGame_ = b; }
 
 	//Metodos para el mapa
 	int getLevel() { return level_; }
