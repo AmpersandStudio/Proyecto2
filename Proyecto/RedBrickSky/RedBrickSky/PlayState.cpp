@@ -31,12 +31,13 @@ PlayState::PlayState()
 	
 	pLevels[7] = levelParser.parseLevel("..\\assets\\PasilloFinal.tmx");
 	pLevels[6] = levelParser.parseLevel("..\\assets\\Tienda.tmx");
-	pLevels[5] = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
+	if (GameManager::Instance()->getLevel() == GameManager::TUTORIAL) pLevels[5] = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
 	pLevels[4] = levelParser.parseLevel("..\\assets\\Gimnasio.tmx");
 	pLevels[3] = levelParser.parseLevel("..\\assets\\JardinesSuperiores.tmx");
 	pLevels[2] = levelParser.parseLevel("..\\assets\\Pasillos.tmx");
 	pLevels[1] = levelParser.parseLevel("..\\assets\\JardinesInferiores.tmx");
 	pLevels[0] = levelParser.parseLevel("..\\assets\\Tutorial.tmx");
+	if (GameManager::Instance()->getLevel() == GameManager::CLASES) pLevels[5] = levelParser.parseLevel("..\\assets\\Nivel2.tmx");
 	
 
 

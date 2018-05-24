@@ -27,7 +27,9 @@ bool BattleCharacter::useAttack(int i)
 	if (attacks[i].name == "Ampersand")
 	{
 		SoundManager::Instance()->playSound("ampersand", 0);
-		SDL_Delay(2500);
+		SDL_Delay(1000);
+		SoundManager::Instance()->playSound("magic", 0);
+		SDL_Delay(1500);
 	}
 	else
 	{

@@ -228,7 +228,11 @@ bool Player::handleEvent(const SDL_Event& event)
 			{
 				Game::Instance()->getStateMachine()->pushState(new BackPack());
 			}
-
+			if (XboxController::Instance()->getButtonState(0, 5)) //botón de back
+			{
+				m_moveSpeed = (running_) ? 4 : 8;
+				running_ = !running_;
+			}
 			if (XboxController::Instance()->getButtonState(0, 0))	// Botón A
 			{
 				interacting();

@@ -19,10 +19,19 @@ private:
 	int posY_ = 450;
 	int oriX_ = 350;
 	int oriY_ = 450;
+
 	int oriW_ = 450;
 	int oriH_ = 135;
+
+	int boxWidth = 300;
+	int boxHeight= 100;
+	int oriBoxWidth = 300;
+	int oriBoxheight = 100;
+
+
 	int offsetX_ = 25;
 	int offsetY_ = 20;
+
 	int dBoxWidth_ = 450;
 	int dBoxHeight_ = 135;
 	int lineSpace_ = 30;

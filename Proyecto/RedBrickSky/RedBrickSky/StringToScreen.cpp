@@ -18,7 +18,7 @@ void StringToScreen::renderMessage() {
 
 	if(renderBack)
 		TheTextureManager::Instance()->drawFull("viñeta", posX_ - offsetX_, posY_ - offsetY_,
-		300, 100, Game::Instance()->getRenderer(), 0, 255);
+		boxWidth, boxHeight, Game::Instance()->getRenderer(), 0, 255);
 
 	for (int i = 0; i < 3; i++) {
 		TheTextureManager::Instance()->drawText(currentLines_[i], TextureManager::Pixel16, { 0,0,0,255 },
@@ -157,6 +157,8 @@ void StringToScreen::render() {
 			msgCont_ = 0;
 			posX_ = oriX_;
 			posY_ = oriY_;
+			boxWidth = oriBoxWidth;
+			boxHeight = oriBoxheight;
 			messaging_ = false;
 			renderBack = false;
 		}
