@@ -303,10 +303,12 @@ void Game::loadResources()
 	TheSoundManager::Instance()->load("..\\sounds\\Wrong.wav", "wrong", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\Huida.wav", "escape", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\ampersand.wav", "ampersand", SOUND_SFX);
-	TheSoundManager::Instance()->load("..\\sounds\\magic_attack.wav", "magic", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\magic_attack.ogg", "magic", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\kame.ogg", "kame", SOUND_SFX);
 	TheSoundManager::Instance()->load("..\\sounds\\chalk.wav", "chalk", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\recovery.ogg", "recovery", SOUND_SFX);
+	TheSoundManager::Instance()->load("..\\sounds\\physic.ogg", "physic", SOUND_SFX);
 
-	TheSoundManager::Instance()->setMusicVolume(MIX_MAX_VOLUME / 3);
 }
 
 void Game::registerTypes()

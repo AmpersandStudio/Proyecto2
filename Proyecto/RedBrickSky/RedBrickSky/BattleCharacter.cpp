@@ -27,20 +27,22 @@ bool BattleCharacter::useAttack(int i)
 	if (attacks[i].name == "Ampersand")
 	{
 		SoundManager::Instance()->playSound("ampersand", 0);
-		SDL_Delay(1000);
-		SoundManager::Instance()->playSound("magic", 0);
-		SDL_Delay(1500);
+		SDL_Delay(2500);
+	}
+	else if (attacks[i].name == "Ampersand")
+	{
+		SoundManager::Instance()->playSound("punch_2", 0);
 	}
 	else
 	{
 		if (attacks[i].type == Support)
 		{
 			support = true;
-			SoundManager::Instance()->playSound("golpe", 0);
+			SoundManager::Instance()->playSound("recovery", 0);
 		}
-		else if (attacks[i].type == Physical) GameManager::Instance()->setAttackSound("punch_2");
-		else if (attacks[i].type == Ranged) GameManager::Instance()->setAttackSound("Tirachinas");
-		else if (attacks[i].type == Magical) GameManager::Instance()->setAttackSound("magic");
+		else if (attacks[i].type == Physical) SoundManager::Instance()->playSound("physic", 0);
+		else if (attacks[i].type == Ranged) SoundManager::Instance()->playSound("Tirachinas", 0);
+		else if (attacks[i].type == Magical) SoundManager::Instance()->playSound("magic", 0);
 	}
 
 	std::cout << name << " uso " << attacks[i].name << "!" << std::endl;

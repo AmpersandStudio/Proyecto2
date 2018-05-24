@@ -40,7 +40,7 @@ void GameOverState::render()
 
 	if (XboxController::Instance()->getNumControllers() != 0) {
 		//A
-		TheTextureManager::Instance()->drawItem("botonesXbox", 280, 700,
+		TheTextureManager::Instance()->drawItem("botonesXbox", 385, 500,
 			70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
 	}
 }

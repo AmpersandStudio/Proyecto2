@@ -1217,7 +1217,7 @@ bool BattleState::run()
 				if ((a.type == Physical)) {
 					Vector2D p = player->getPosition();
 					Vector2D e = enemy->getPosition();
-					GameManager::Instance()->setAttackSound("punch_2");
+					//GameManager::Instance()->setAttackSound("punch_2");
 					mce = MoveToThisPosComponent(e, p);
 					enemy->addPhysicsComponent(&mce);
 					attackAnim_ = true;
@@ -1226,7 +1226,7 @@ bool BattleState::run()
 					Vector2D p = player->getPosition();
 					Vector2D e = enemy->getPosition();
 					Vector2D x(0, 0);
-					GameManager::Instance()->setAttackSound("Tirachinas");
+					//GameManager::Instance()->setAttackSound("Tirachinas");
 					float px = e.getX() + 1;
 					x.setX(px);
 					mce = MoveToThisPosComponent(e, x);
@@ -1234,7 +1234,7 @@ bool BattleState::run()
 					attackAnim_ = true;
 				}
 				else if ((a.type == Magical || a.type == Support)) {
-					GameManager::Instance()->setAttackSound("magic");
+					//GameManager::Instance()->setAttackSound("magic");
 					Vector2D e = enemy->getPosition();
 					mae = MagicAttackComponent(e, 0.3);
 					enemy->addPhysicsComponent(&mae);
@@ -1483,7 +1483,7 @@ void BattleState::attack(int i) {
 
 	if (input != -1) {
 		if ((a.type == Physical)) {
-			GameManager::Instance()->setAttackSound("punch_2");
+			//GameManager::Instance()->setAttackSound("punch_2");
 			mcp = MoveToThisPosComponent(p, e);
 			player->addPhysicsComponent(&mcp);
 			meleeAttack = true;
@@ -1491,7 +1491,7 @@ void BattleState::attack(int i) {
 			rangedAttack = false;
 		}
 		else if (a.type == Ranged) {
-			GameManager::Instance()->setAttackSound("Tirachinas");
+			//GameManager::Instance()->setAttackSound("Tirachinas");
 			Vector2D x(0, 0);
 			float px = p.getX() - 1;
 			x.setX(px);

@@ -62,7 +62,7 @@ MainMenuState::MainMenuState()
 	TheSoundManager::Instance()->stopMusic();
 	TheSoundManager::Instance()->closeChannel(3);
 	TheSoundManager::Instance()->playMusic("menu", -1);
-	
+
 	ctrl_ = false;
 }
 
@@ -70,7 +70,7 @@ MainMenuState::~MainMenuState()
 {
 }
 
-void MainMenuState::toGame() 
+void MainMenuState::toGame()
 {
 	GameManager::Instance()->resetGame();
 	Game::Instance()->getStateMachine()->pushState(new QuestionState());
@@ -86,32 +86,30 @@ void MainMenuState::tolevel2()
 	SDL_RenderPresent(Game::Instance()->getRenderer());
 	SoundManager::Instance()->playSound("select", 0);
 	GameManager::Instance()->toLevel2();
-	Game::Instance()->getStateMachine()->changeState(new PlayState());
+	Game::Instance()->getStateMachine()->pushState(new PlayState());
 }
 
 bool MainMenuState::handleEvent(const SDL_Event& event) {
 
 	bool handleEvent = false;
-	
+
 	if (event.type == SDL_JOYBUTTONDOWN) {
 
 		XboxController::Instance()->onJoystickButtonDown(event);
-		
 
-		 if (XboxController::Instance()->getButtonState(0, 0)) {
-			 ctrl_ = false;
-			 toGame();
+
+		if (XboxController::Instance()->getButtonState(0, 0) && !ctrl_) {
+			toGame();
 		}
-		 else if (XboxController::Instance()->getButtonState(0, 1)) {
-			 toggleCtrl();
-		 }
+		else if (XboxController::Instance()->getButtonState(0, 1)) {
+			toggleCtrl();
+		}
 
-		else if (XboxController::Instance()->getButtonState(0, 2)) {
-			ctrl_ = false;
+		else if (XboxController::Instance()->getButtonState(0, 2) && !ctrl_) {
 			toCredits();
 		}
 
-		else if (XboxController::Instance()->getButtonState(0, 3)) {
+		else if (XboxController::Instance()->getButtonState(0, 3) && !ctrl_) {
 			Game::Instance()->exitApp();
 			return true;
 		}
@@ -123,24 +121,24 @@ bool MainMenuState::handleEvent(const SDL_Event& event) {
 	else if (event.type == SDL_JOYBUTTONUP)
 		XboxController::Instance()->onJoystickButtonUp(event);
 
-	 if (event.type == SDL_QUIT)
+	if (event.type == SDL_QUIT)
 	{
 		Game::Instance()->exitApp();
 		return true;
 	}
 
-	 if (event.type == SDL_KEYDOWN) {
-		 if (event.key.keysym.sym == SDLK_RETURN) {
-			 toGame();
-			 return true;
-		 }
-		 else if (event.key.keysym.sym == SDLK_2) {
-			 tolevel2();
-			 return true;
-		 }
-	 }
+	if (event.type == SDL_KEYDOWN) {
+		if (event.key.keysym.sym == SDLK_RETURN && !ctrl_) {
+			toGame();
+			return true;
+		}
+		else if (event.key.keysym.sym == SDLK_2 && !ctrl_) {
+			tolevel2();
+			return true;
+		}
+	}
 
-	 GameState::handleEvent(event);
+	GameState::handleEvent(event);
 
 	return handleEvent;
 }
@@ -150,7 +148,7 @@ void MainMenuState::render() {
 	GameState::render();
 
 	if (XboxController::Instance()->getNumControllers() != 0) {
-	
+
 		TheTextureManager::Instance()->drawItem("botonesXbox", 325, 430,
 			70, 50, 0, 4, 1, 5, Game::Instance()->getRenderer(), 0, 255);
 
@@ -159,6 +157,9 @@ void MainMenuState::render() {
 
 		TheTextureManager::Instance()->drawItem("botonesXbox", 325, 220,
 			70, 50, 0, 1, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+		//B - Controles
+		TheTextureManager::Instance()->drawItem("botonesXbox", 700, 435,
+			70, 50, 0, 2, 1, 5, Game::Instance()->getRenderer(), 0, 255);
 	}
 
 	if (ctrl_)
@@ -166,6 +167,11 @@ void MainMenuState::render() {
 		TheTextureManager::Instance()->drawFull("ctrlmenu", 0, 0, Game::Instance()->getWinWidth(), Game::Instance()->getWinHeight(), Game::Instance()->getRenderer(), 0, 255);
 		stage.at(2)->render();
 		button1->setTextureId("3");
+
+		if (XboxController::Instance()->getNumControllers() != 0) {
+			TheTextureManager::Instance()->drawItem("botonesXbox", 700, 435,
+				70, 50, 0, 2, 1, 5, Game::Instance()->getRenderer(), 0, 255);
+		}
 	}
 	else
 	{
