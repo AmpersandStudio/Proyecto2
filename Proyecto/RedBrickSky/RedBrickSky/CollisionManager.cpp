@@ -93,18 +93,18 @@ void CollisionManager::checkPlayerDoorCollision(Player * pPlayer, std::vector<Do
 		{
 			TheSoundManager::Instance()->playSound("rebote", 0);
 
-			Vector2D pPos = pPlayer->getPosition();
-			Vector2D pDir = pPlayer->getDirection();
+			//Vector2D pPos = pPlayer->getPosition();
+			//Vector2D pDir = pPlayer->getDirection();
 
-			double pdirX = -5 * pDir.getX();
-			double pdirY = -5 * pDir.getY();
+			//double pdirX = -5 * pDir.getX();
+			//double pdirY = -5 * pDir.getY();
 
-			double px = pdirX + pPos.getX();
-			double py = pdirY + pPos.getY();
+			//double px = pdirX + pPos.getX();
+			//double py = pdirY + pPos.getY();
 
-			pPos.set(px, py);
+			//pPos.set(px, py);
 
-			pPlayer->setPosition(pPos);
+			//pPlayer->setPosition(pPos);
 			pPlayer->collision();
 		
 		}
@@ -378,6 +378,13 @@ void CollisionManager::checkDoorsInteractions(Player* pPlayer, const std::vector
 		if (RectRect(playerRect, interRect))
 		{
 			i->activate();
+			//Vector2D d = pPlayer->getDirection();
+			//Vector2D p = pPlayer->getPosition();
+			//d.setX(-d.getX());
+			//d.setY(-d.getY());
+			//p.setX(p.getX() + (16 * d.getX()));
+			//p.setY(p.getY() + (16 * d.getY()));
+			//pPlayer->setPosition(p);
 			break;
 		}
 	}

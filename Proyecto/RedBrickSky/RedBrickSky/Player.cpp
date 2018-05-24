@@ -285,8 +285,9 @@ void Player::collision()
 	if (moved_)
 	{
 		position_ = previousPos_;
+		velocity_ = Vector2D(0, 0);
 	}
-	velocity_ = Vector2D(0, 0);
+	
 }
 
 void Player::resetPlayer()

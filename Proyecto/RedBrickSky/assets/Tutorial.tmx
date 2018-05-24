@@ -252,7 +252,7 @@
     <property name="changeLevel" type="int" value="6"/>
    </properties>
   </object>
-  <object id="115" name="Door" type="Door" x="768.031" y="2496" width="63.8182" height="32">
+  <object id="115" name="Door" type="Door" x="768.031" y="2496" width="63.8182" height="25.25">
    <properties>
     <property name="Message" value="Door - Verja"/>
     <property name="keyID" type="int" value="1"/>
