@@ -45,7 +45,7 @@ void Teleport::activate()
 	/*StringToScreen::Instance()->setMessageAt(Message_, position_.getX(), position_.getY());
 	StringToScreen::Instance()->startMessagin();*/
 
-	std::cout << Msg_ << endl;
+	//std::cout << Msg_ << endl;
 	if (keyID_ == 0 || !GameManager::Instance()->getDoor(keyID_))
 	{
 		if (!hasDialogue)

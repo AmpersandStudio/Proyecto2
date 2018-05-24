@@ -45,7 +45,7 @@ bool BattleCharacter::useAttack(int i)
 		else if (attacks[i].type == Magical) SoundManager::Instance()->playSound("magic", 0);
 	}
 
-	std::cout << name << " uso " << attacks[i].name << "!" << std::endl;
+	//std::cout << name << " uso " << attacks[i].name << "!" << std::endl;
 	attacks[i].pp--;
 	return true;
 }
@@ -58,12 +58,12 @@ void BattleCharacter::supportAttack(int i)
 
 		if (attack > 2)
 		{
-			std::cout << "El ataque no subira mas!" << std::endl;
+			//std::cout << "El ataque no subira mas!" << std::endl;
 			attack = 2;
 		}
 		else
 		{
-			std::cout << "Subio el ataque!" << std::endl;
+			//std::cout << "Subio el ataque!" << std::endl;
 		}
 
 		atkFactor = attacks[i].atk_factor;
@@ -75,12 +75,12 @@ void BattleCharacter::supportAttack(int i)
 
 		if (defense > 2)
 		{
-			std::cout << "La defensa no subira mas!" << std::endl;
+			//std::cout << "La defensa no subira mas!" << std::endl;
 			defense = 2;
 		}
 		else
 		{
-			std::cout << "Subio la defensa!" << std::endl;
+			//std::cout << "Subio la defensa!" << std::endl;
 		}
 
 		defFactor = attacks[i].def_factor;
@@ -92,12 +92,12 @@ void BattleCharacter::supportAttack(int i)
 
 		if (precision > 2)
 		{
-			std::cout << "La precision no subira mas!" << std::endl;
+			//std::cout << "La precision no subira mas!" << std::endl;
 			precision = 2;
 		}
 		else
 		{
-			std::cout << "Subio la precision!" << std::endl;
+			//std::cout << "Subio la precision!" << std::endl;
 		}
 
 		prcFactor = attacks[i].prc_factor;
@@ -126,7 +126,7 @@ void BattleCharacter::criticalRatio(float & dmg)
 	critical = false;
 
 	if (rnd_cri <= 10) {
-		std::cout << "Un golpe critico!" << std::endl;
+		//std::cout << "Un golpe critico!" << std::endl;
 		critical = true;
 		dmg += 0.1f;
 	}
@@ -137,11 +137,11 @@ void BattleCharacter::typeRatio(float & dmg, int i, Type enemyType)
 	effective = false; notEffective = false;
 	float type_dmg = TYPE_TABLE[attacks[i].type][enemyType];
 	if (type_dmg == 2) {
-		std::cout << "Es muy efectivo!" << std::endl;
+		//std::cout << "Es muy efectivo!" << std::endl;
 		effective = true;
 	}
 	else if (type_dmg == 0.5) {
-		std::cout << "No es muy efectivo..." << std::endl;
+		//std::cout << "No es muy efectivo..." << std::endl;
 		notEffective = true;
 	}
 	dmg *= type_dmg;
@@ -174,7 +174,7 @@ float BattleCharacter::combat(int i, float enemyDef, Type enemyType, bool& damag
 	}
 	else
 	{
-		std::cout << "Pero fallo!" << std::endl;
+		//std::cout << "Pero fallo!" << std::endl;
 		damaged = false;
 		fail = true;
 	}
@@ -186,7 +186,7 @@ void BattleCharacter::receiveDamage(float dmg)
 {
 	health -= (int)dmg;
 
-	std::cout << name << " pierde " << (int)dmg << " HP!" << std::endl;
+	//std::cout << name << " pierde " << (int)dmg << " HP!" << std::endl;
 }
 
 void BattleCharacter::receiveFactors(float atk, float def, float prc)
@@ -197,12 +197,12 @@ void BattleCharacter::receiveFactors(float atk, float def, float prc)
 
 		if (attack < 0.5f)
 		{
-			std::cout << "El ataque no bajara mas!" << std::endl;
+			//std::cout << "El ataque no bajara mas!" << std::endl;
 			attack = 0.5f;
 		}
 		else
 		{
-			std::cout << "Bajo el ataque!" << std::endl;
+			//std::cout << "Bajo el ataque!" << std::endl;
 		}
 
 		atkFactor = atk;
@@ -214,12 +214,12 @@ void BattleCharacter::receiveFactors(float atk, float def, float prc)
 
 		if (defense < 0.5f)
 		{
-			std::cout << "La defensa no bajara mas!" << std::endl;
+			//std::cout << "La defensa no bajara mas!" << std::endl;
 			defense = 0.5f;
 		}
 		else
 		{
-			std::cout << "Bajo la defensa!" << std::endl;
+			//std::cout << "Bajo la defensa!" << std::endl;
 		}
 
 		defFactor = def;
@@ -231,12 +231,12 @@ void BattleCharacter::receiveFactors(float atk, float def, float prc)
 
 		if (precision < 0.5f)
 		{
-			std::cout << "La precision no bajara mas!" << std::endl;
+			//std::cout << "La precision no bajara mas!" << std::endl;
 			precision = 0.5f;
 		}
 		else
 		{
-			std::cout << "Bajo la precision!" << std::endl;
+			//d::cout << "Bajo la precision!" << std::endl;
 		}
 
 		prcFactor = prc;

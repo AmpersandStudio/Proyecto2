@@ -34,7 +34,7 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 
 	if (pTempSurface == nullptr)
 	{
-		std::cout << "Cant open " << fileName << std::endl;
+		//std::cout << "Cant open " << fileName << std::endl;
 		return false;
 	}
 
@@ -52,8 +52,8 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 	}
 
 	else {
-		std::cout << "Cant open " << fileName << " REASON:  ";
-		cout << SDL_GetError() << endl;
+		//std::cout << "Cant open " << fileName << " REASON:  ";
+		//cout << SDL_GetError() << endl;
 		return false;
 	}
 }
@@ -226,7 +226,7 @@ void TextureManager::drawText(std::string text, FontId id, const SDL_Color color
 		}
 	}
 
-	std::cout << "Algo no ha salido bien.\n";
+	//std::cout << "Algo no ha salido bien.\n";
 	delete font;
 }
 

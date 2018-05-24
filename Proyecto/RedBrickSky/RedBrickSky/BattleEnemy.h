@@ -18,6 +18,15 @@ public:
 
 	virtual bool checkPP();
 
+	void increasePP()
+	{
+		for (Attack a : attacks)
+		{
+			a.max_pp = 100;
+			a.pp = 100;
+		}
+	}
+
 private:
 	int input;
 };

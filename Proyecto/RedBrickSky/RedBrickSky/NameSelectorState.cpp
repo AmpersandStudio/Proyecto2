@@ -51,7 +51,7 @@ bool NameSelectorState::handleEvent(const SDL_Event& event) {
 		}
 		else if (event.key.keysym.sym == SDLK_RETURN) {
 			handledEvent = true;
-			cout << name_ << endl;
+			//cout << name_ << endl;
 			GameManager::Instance()->setName(name_);
 		}
 	}

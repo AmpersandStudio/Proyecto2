@@ -38,7 +38,7 @@ void Cartel::activate()
 
 	if (nugget_ != -1) GameManager::Instance()->setEasterEgg(nugget_);
 
-	std::cout << Msg_ << endl;
+	//std::cout << Msg_ << endl;
 
 	if (!hasDialogue)
 		selectAction();

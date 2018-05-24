@@ -185,13 +185,7 @@ void GameManager::resetGame()
 	level_ = TUTORIAL;
 	money = 500;
 	potions_ = 0;
-	potionsPrize = 100;
-	playerType = 0;
-	playerAttack = 12;
-	playerDeffense = 12;
-	playerSpeed = 12;
-	playerHP = 260;
-	playerMaxHP = 260;
+	potionsPrize = 200;
 
 	name = "";
 	atSound = "";
@@ -234,8 +228,8 @@ void GameManager::toLevel2()
 	playerAttack = 12;
 	playerDeffense = 12;
 	playerSpeed = 12;
-	playerHP = 260;
-	playerMaxHP = 260;
+	playerHP = 250;
+	playerMaxHP = 250;
 
 	name = "";
 	atSound = "";

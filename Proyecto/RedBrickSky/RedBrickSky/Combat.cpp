@@ -98,7 +98,7 @@ void Combat::init()
 	// TODO
 	// Definir quién empieza
 
-	std::cout << enemy->getName() << " quiere luchar!" << std::endl;
+	//std::cout << enemy->getName() << " quiere luchar!" << std::endl;
 
 }
 
@@ -106,7 +106,7 @@ void Combat::displayAttacks()
 {
 	for (int i = 0; i < 4; i++) {
 		Attack temp_a = player->getAttack(i);
-		std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;
+		//std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;
 	}
 }
 
@@ -115,11 +115,11 @@ void Combat::handleInput()
 	displayAttacks();
 	input = 0;
 	do {
-		std::cout << "Que quieres hacer? ";
+		//std::cout << "Que quieres hacer? ";
 		std::cin >> input;
 	} while (input < 1 || input > 4);
 
-	std::cout << std::endl;
+	//std::cout << std::endl;
 
 	input--;
 }
@@ -130,11 +130,11 @@ bool Combat::run()
 
 	if (player->getHealth() > 0 && enemy->getHealth() > 0)
 	{
-		std::cout << std::endl;
+		//std::cout << std::endl;
 
 		handleInput();
 		while (!player->useAttack(input)) {
-			std::cout << "No quedan PP para este ataque!" << std::endl;
+			//std::cout << "No quedan PP para este ataque!" << std::endl;
 		}
 
 		bool b;
@@ -146,7 +146,7 @@ bool Combat::run()
 			enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
 		}
 
-		std::cout << std::endl;
+		//std::cout << std::endl;
 
 		if (enemy->getHealth() > 0)
 		{
@@ -162,22 +162,22 @@ bool Combat::run()
 			}
 		}
 
-		std::cout << player->getName() << ": " << player->getHealth() << " HP" << std::endl;
-		std::cout << enemy->getName() << ": " << enemy->getHealth() << " HP" << std::endl;
+		//std::cout << player->getName() << ": " << player->getHealth() << " HP" << std::endl;
+		//std::cout << enemy->getName() << ": " << enemy->getHealth() << " HP" << std::endl;
 
-		std::cout << std::endl << "-------------------------------------------------------------" << std::endl;
+		//std::cout << std::endl << "-------------------------------------------------------------" << std::endl;
 	}
 
 	if (player->getHealth() > 0 && enemy->getHealth() <= 0) {
-		std::cout << "HAS GANADO!" << std::endl;
+		//std::cout << "HAS GANADO!" << std::endl;
 		endBattle = true;
 	}
 	else if (player->getHealth() <= 0 && enemy->getHealth() > 0) {
-		std::cout << "HAS PERDIDO!" << std::endl;
+		//std::cout << "HAS PERDIDO!" << std::endl;
 		endBattle = true;
 	}
 	else if (player->getHealth() <= 0 && enemy->getHealth() <= 0) {
-		std::cout << "WTF EMPATE LOCO!" << std::endl;
+		//std::cout << "WTF EMPATE LOCO!" << std::endl;
 		endBattle = true;
 	}
 	return endBattle;

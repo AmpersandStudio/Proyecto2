@@ -51,7 +51,7 @@ void Interactuable::clean()
 
 void Interactuable::activate()
 {
-	std::cout << "Elemento interactuado." << std::endl;
+	//std::cout << "Elemento interactuado." << std::endl;
 	//TheGame::Instance()->getStateMachine()->pushState(new ShopState());
 }
 

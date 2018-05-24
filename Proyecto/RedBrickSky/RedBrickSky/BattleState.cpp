@@ -440,35 +440,35 @@ void BattleState::createEnemy()
 		default:
 			break;
 		}
-		enemy = new BattleEnemy("NPC", typ, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("NPC", typ, 200, 14, 12, 100, 12);
 		enemy->setTextureId("bokoblinSS");
 	}
 
 	//BOKO
 	else if (id_ == 2) {
 		Type typ = Physical;
-		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Boss", typ, 215, 14, 12, 100, 12);
 		enemy->setTextureId("goblinShinySS");
 	}
 
 	//KRATOS
 	else if (id_ == 3) {
 		Type typ = Physical;
-		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Boss", typ, 230, 15, 13, 100, 12);
 		enemy->setTextureId("kratosSS");
 	}
 
 	//OSO
 	else if (id_ == 4) {
 		Type typ = Ranged;
-		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Boss", typ, 250, 14, 12, 100, 11);
 		enemy->setTextureId("bearSS");
 	}
 
 	//DRAGON
 	else if (id_ == 5) {
 		Type typ = Ranged;
-		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Boss", typ, 270, 15, 13, 100, 13);
 		enemy->setTextureId("dragonSS");
 		isDragon = true;
 	}
@@ -476,14 +476,14 @@ void BattleState::createEnemy()
 	//DIRECTOR
 	else if (id_ == 6) {
 		Type typ = Magical;
-		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Boss", typ, 300, 16, 16, 100, 16);
 		enemy->setTextureId("directorSS");
 	}
 
 	//DARKTYLER
 	else if (id_ == 7) {
 		Type typ = Magical;
-		enemy = new BattleEnemy("Boss", typ, 300, 10, 10, 100, 11);
+		enemy = new BattleEnemy("Boss", typ, 360, 17, 17, 100, 17);
 		enemy->setTextureId("darkTylerSS");
 	}
 
@@ -544,17 +544,16 @@ void BattleState::createEnemy()
 
 	if (lv != 0 && id_ < 2) 
 	{
-		enemy->setHealth(100 + (50 * lv));
-		enemy->setMaxHealth(100 + (50 * lv));
-		enemy->setAttack(10 + (rand() % lv));
-		enemy->setDefense(10 + (rand() % lv));
-		enemy->setVelocity(10 + (rand() % lv));
+		enemy->setHealth(100 + (20 * lv));
+		enemy->setMaxHealth(100 + (20 * lv));
+		enemy->setAttack(9 + (rand() % lv));
+		enemy->setDefense(9 + (rand() % lv));
+		enemy->setVelocity(9 + (rand() % lv));
 	}
-
-	else if (lv == 0)
+	else if (lv == 0 && id_ < 2)
 	{
-		enemy->setHealth(150);
-		enemy->setMaxHealth(150);
+		enemy->setHealth(110);
+		enemy->setMaxHealth(110);
 		enemy->setAttack(10);
 		enemy->setDefense(10);
 		enemy->setVelocity(10);
@@ -699,49 +698,49 @@ void BattleState::createAttacks() {
 	// Ataques de Armas Fisicas
 	//compas
 	ataques[0] = Attack("360 Grados", Physical, 20, 20, 65, 100, 1, 1, 1);
-	ataques[1] = Attack("2Pi Radianes", Physical, 15, 15, 55, 100, 1, 1, 1);
+	ataques[1] = Attack("2Pi Radianes", Physical, 15, 15, 85, 90, 1, 0.8, 1);
 	//escobilla
-	ataques[2] = Attack("Lanzachocolate", Physical, 15, 15, 40, 100, 1, 1, 1);
-	ataques[3] = Attack("Limpieza Profunda", Physical, 15, 15, 35, 100, 1, 1, 1);
+	ataques[2] = Attack("Lanzachocolate", Physical, 15, 15, 60, 90, 1, 1, 1);
+	ataques[3] = Attack("Limpieza Profunda", Physical, 15, 15, 75, 100, 0.9, 1, 1);
 	//menstruacion
 	ataques[4] = Attack("Tajo Recto", Physical, 10, 10, 95, 100, 1, 1, 1);
-	ataques[5] = Attack("Golpe de Remo", Physical, 15, 15, 80, 100, 1, 1, 1);
+	ataques[5] = Attack("Golpe de Remo", Physical, 15, 15, 80, 100, 1, 0.8, 1);
 	//lapiz
-	ataques[6] = Attack("Punta Afilada", Physical, 20, 20, 15, 100, 1, 1, 1);
-	ataques[7] = Attack("Golpe de Goma", Physical, 20, 20, 20, 100, 1, 1, 1);
+	ataques[6] = Attack("Punta Afilada", Physical, 20, 20, 70, 100, 1, 1, 1);
+	ataques[7] = Attack("Golpe de Goma", Physical, 20, 20, 40, 100, 0.9, 1, 1);
 
 	// Ataques de Armas Magicas
 	//insulto
-	ataques[8] = Attack("Hijo de Fruta", Magical, 20, 20, 20, 100, 1, 1, 1);
-	ataques[9] = Attack("Dedo Mágico", Magical, 20, 20, 15, 100, 1, 1, 1);
+	ataques[8] = Attack("Hijo de Fruta", Magical, 20, 20, 40, 90, 1, 1, 0.8);
+	ataques[9] = Attack("Dedo Mágico", Magical, 20, 20, 70, 100, 1, 1, 1);
 	//libro
-	ataques[10] = Attack("Índice Confuso", Magical, 10, 10, 85, 105, 1, 1, 1);
-	ataques[11] = Attack("Lectura Ligera", Magical, 10, 10, 95, 100, 1, 1, 1);
+	ataques[10] = Attack("Índice Confuso", Magical, 10, 10, 45, 90, 1, 1, 0.7);
+	ataques[11] = Attack("Lectura Ligera", Magical, 10, 10, 70, 100, 1, 1, 1);
 	//pegamento
-	ataques[12] = Attack("Esto No Pega", Magical, 15, 15, 60, 100, 1, 1, 1);
+	ataques[12] = Attack("Esto No Pega", Magical, 15, 15, 60, 95, 0.9, 1, 1);
 	ataques[13] = Attack("Metamaterial", Magical, 15, 15, 75, 100, 1, 1, 1);
 	//tartera
-	ataques[14] = Attack("Almuerzo", Magical, 20, 20, 30, 100, 1, 1, 1);
-	ataques[15] = Attack("Lentejas", Magical, 20, 20, 45, 100, 1, 1, 1);
+	ataques[14] = Attack("Almuerzo", Magical, 20, 20, 50, 100, 0.8, 1, 1);
+	ataques[15] = Attack("Lentejas", Magical, 20, 20, 80, 100, 0.9, 1, 1);
 
 	// Ataques de Armas con Proyectiles
 	//cerbatana
-	ataques[16] = Attack("Bala Húmeda", Ranged, 30, 30, 15, 100, 1, 1, 1);
-	ataques[17] = Attack("Utra-escupitajo", Ranged, 30, 30, 100, 80, 1, 1, 1);
+	ataques[16] = Attack("Bala Húmeda", Ranged, 30, 30, 30, 100, 1, 1, 1);
+	ataques[17] = Attack("Utra-escupitajo", Ranged, 30, 30, 90, 80, 1, 1, 1);
 	//globo
-	ataques[18] = Attack("Agua Sorpresa", Ranged, 15, 15, 65, 100, 1, 1, 1);
-	ataques[19] = Attack("Agua Sospechosa", Ranged, 15, 15, 75, 100, 1, 1, 1);
+	ataques[18] = Attack("Agua Sorpresa", Ranged, 15, 15, 65, 100, 1, 1, 0.9);
+	ataques[19] = Attack("Agua Sospechosa", Ranged, 15, 15, 75, 90, 1, 1, 1);
 	//tirachinas
-	ataques[20] = Attack("Zasca!", Ranged, 5, 5, 85, 100, 1, 1, 1);
-	ataques[21] = Attack("Meteoro Hentai", Ranged, 5, 5, 95, 100, 1, 1, 1);
+	ataques[20] = Attack("Zasca!", Ranged, 5, 5, 85, 95, 1, 1, 1);
+	ataques[21] = Attack("Meteoro Hentai", Ranged, 5, 5, 95, 90, 1, 1, 1);
 	//grapadora
-	ataques[22] = Attack("Grapa Atómica", Ranged, 25, 25, 30, 100, 1, 1, 1);
-	ataques[23] = Attack("Corchograpa", Ranged, 25, 25, 45, 100, 1, 1, 1);
+	ataques[22] = Attack("Grapa Atómica", Ranged, 25, 25, 60, 95, 0.8, 1, 1);
+	ataques[23] = Attack("Corchograpa", Ranged, 25, 25, 80, 95, 1, 0.9, 1);
 
 	// Ataques de Armas de Apoyo
 	//sacapuntas
 	ataques[24] = Attack("Afilador", Support, 20, 20, 0, 100, 1.2f, 1, 1);
-	ataques[25] = Attack("Trazado Fino", Support, 20, 20, 100, 70, 1, 1, 1.2f);
+	ataques[25] = Attack("Trazado Fino", Support, 20, 20, 0, 100, 1, 1, 1.2f);
 	//calculadora
 	ataques[26] = Attack("Álgebra Compleja", Support, 20, 20, 0, 100, 1.2f, 1, 1.1f);
 	ataques[27] = Attack("Stack Overflow", Support, 5, 5, 0, 100, 1.5f, 1, 1);
@@ -753,27 +752,27 @@ void BattleState::createAttacks() {
 	ataques[31] = Attack("Tema Nuevo", Support, 5, 5, 0, 100, 1.4f, 1, 1.1f);
 
 	//ampergun
-	ataques[32] = Attack("Nullptr", Ranged, 10, 10, 45, 100, 1, 1, 0.7f);
+	ataques[32] = Attack("Nullptr", Ranged, 10, 10, 85, 100, 1, 1, 0.7f);
 	ataques[33] = Attack("Ampersand", Magical, 10, 10, 300, 100, 1, 1, 1);
 
 	//genericone
-	ataques[34] = Attack("Sin Arma", Physical, 5, 5, 10, 100, 1, 1, 1);
+	ataques[34] = Attack("Sin Arma", Physical, 5, 5, 30, 100, 1, 1, 1);
 
 	e_ataques.resize(12);
-	e_ataques[0] = Attack("Placaje", Physical, 20, 20, 20, 90, 1, 1, 1);
-	e_ataques[1] = Attack("Finta Lateral", Physical, 15, 15, 15, 80, 1, 1, 1);
-	e_ataques[2] = Attack("Golpe Bajo", Physical, 10, 10, 15, 30, 1, 1, 1);
-	e_ataques[3] = Attack("Aturdir", Physical, 15, 15, 35, 25, 1, 1, 1);
+	e_ataques[0] = Attack("Placaje", Physical, 20, 20, 30, 95, 1, 1, 1);
+	e_ataques[1] = Attack("Finta Lateral", Physical, 15, 15, 50, 100, 1, 1, 1);
+	e_ataques[2] = Attack("Golpe Bajo", Physical, 10, 10, 60, 95, 1, 0.9, 1);
+	e_ataques[3] = Attack("Aturdir", Physical, 15, 15, 55, 100, 1, 0.8, 1);
 
-	e_ataques[4] = Attack("Soplo", Ranged, 20, 20, 30, 90, 1, 1, 1);
-	e_ataques[5] = Attack("Vendaval", Ranged, 10, 10, 45, 90, 1, 1, 1);
-	e_ataques[6] = Attack("Caida Libre", Ranged, 10, 10, 60, 50, 1, 1, 1);
-	e_ataques[7] = Attack("Polvareda", Ranged, 15, 15, 15, 90, 1, 1, 1);
+	e_ataques[4] = Attack("Soplo", Ranged, 20, 20, 35, 95, 0.8, 1, 1);
+	e_ataques[5] = Attack("Vendaval", Ranged, 10, 10, 50, 100, 1, 1, 1);
+	e_ataques[6] = Attack("Caida Libre", Ranged, 10, 10, 60, 90, 1, 1, 1);
+	e_ataques[7] = Attack("Polvareda", Ranged, 15, 15, 35, 100, 1, 1, 0.8);
 
-	e_ataques[8] = Attack("Conjuro", Magical, 15, 15, 70, 90, 1, 1, 1);
-	e_ataques[9] = Attack("Maldición", Magical, 10, 10, 80, 90, 1, 1, 1);
-	e_ataques[10] = Attack("As Oculto", Magical, 5, 5, 90, 90, 1, 1, 1);
-	e_ataques[11] = Attack("Psicosis", Magical, 5, 5, 35, 90, 1, 1, 1);
+	e_ataques[8] = Attack("Conjuro", Magical, 15, 15, 70, 90, 0.9, 1, 1);
+	e_ataques[9] = Attack("Maldición", Magical, 10, 10, 80, 90, 1, 0.9, 1);
+	e_ataques[10] = Attack("As Oculto", Magical, 5, 5, 90, 90, 1, 1, 0.9);
+	e_ataques[11] = Attack("Psicosis", Magical, 5, 5, 20, 80, 0.8, 0.8, 0.8);
 }
 
 void BattleState::initC() {
@@ -841,10 +840,12 @@ void BattleState::initC() {
 			enemy->addAttack(ataques[rnd - 1]);
 	}
 
+	enemy->increasePP();
+
 	float vel_player = player->getVelocity();
 	float vel_enemy = enemy->getVelocity();
 
-	std::cout << std::endl << enemy->getName() << " quiere luchar!" << std::endl;
+	//std::cout << std::endl << enemy->getName() << " quiere luchar!" << std::endl;
 }
 
 //bloque 4 (metodos del polimorfismo) -------------------------------------------------------------------------------------
@@ -1172,10 +1173,10 @@ bool BattleState::run()
 		bool et = enemy->getTurn();
 
 		if (pt && !et) {
-			std::cout << std::endl;
+			//std::cout << std::endl;
 
 			if (input != -1 && !player->useAttack(input)) {
-				std::cout << "No quedan PP para este ataque!" << std::endl;
+				//std::cout << "No quedan PP para este ataque!" << std::endl;
 				fail = true;
 				TheSoundManager::Instance()->playSound("wrong", 0);
 			}
@@ -1200,7 +1201,7 @@ bool BattleState::run()
 						enemy->receiveFactors(temp_a.atk_factor, temp_a.def_factor, temp_a.prc_factor);
 				}
 			}
-			std::cout << std::endl;
+			//std::cout << std::endl;
 			enemy->setTurn(true);
 		}
 
@@ -1258,10 +1259,10 @@ bool BattleState::run()
 		}
 
 		if (!pt && !et && Attacking_) {
-			std::cout << player->getName() << ": " << GameManager::Instance()->getHealth() << " HP" << std::endl;
-			std::cout << enemy->getName() << ": " << enemy->getHealth() << " HP" << std::endl;
+			//std::cout << player->getName() << ": " << GameManager::Instance()->getHealth() << " HP" << std::endl;
+			//std::cout << enemy->getName() << ": " << enemy->getHealth() << " HP" << std::endl;
 
-			std::cout << std::endl << "-------------------------------------------------------------" << std::endl;
+			//std::cout << std::endl << "-------------------------------------------------------------" << std::endl;
 
 			Attacking_ = false;
 		}
@@ -1311,21 +1312,21 @@ bool BattleState::run()
 
 		GameManager::Instance()->addMoney(exp);
 
-		std::cout << "HAS GANADO! Sweeties: " << to_string(exp) << std::endl;
+		//std::cout << "HAS GANADO! Sweeties: " << to_string(exp) << std::endl;
 		lastTurn = true;
 	}
 	else if (GameManager::Instance()->getHealth() <= 0 && enemy->getHealth() > 0) {
 		TheSoundManager::Instance()->stopMusic();
 		TheSoundManager::Instance()->playMusic("defeat", 0);
 		GameManager::Instance()->setGameOver(true);
-		std::cout << "HAS PERDIDO!" << std::endl;
+		//std::cout << "HAS PERDIDO!" << std::endl;
 		lastTurn = true;
 	}
 	else if (GameManager::Instance()->getHealth() <= 0 && enemy->getHealth() <= 0) {
 		TheSoundManager::Instance()->stopMusic();
 		TheSoundManager::Instance()->playMusic("defeat", 0);
 		GameManager::Instance()->setGameOver(true);
-		std::cout << "WTF EMPATE LOCO!" << std::endl;
+		//std::cout << "WTF EMPATE LOCO!" << std::endl;
 		lastTurn = true;
 	}
 	return false;
@@ -1459,7 +1460,7 @@ void BattleState::displayAttacks()
 {
 	for (int i = 0; i < 4; i++) {
 		Attack temp_a = player->getAttack(i);
-		std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;
+		//std::cout << temp_a.pp << "/" << temp_a.max_pp << " " << temp_a.name << " (" << temp_a.strength << ")" << std::endl;
 	}
 
 

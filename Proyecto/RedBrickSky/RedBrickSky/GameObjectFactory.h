@@ -46,7 +46,7 @@ public:
 
 		if (it == m_creators.end())
 		{
-			std::cout << "Could not find type: " << typeID << "\n";
+			//std::cout << "Could not find type: " << typeID << "\n";
 			return NULL;
 		}
 

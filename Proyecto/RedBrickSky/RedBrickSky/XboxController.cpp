@@ -55,12 +55,12 @@ void XboxController::insertController() {
 			}
 			else
 			{
-				std::cout << "Joystick load fail! SDL Error: " << SDL_GetError() << "\n";
+				//std::cout << "Joystick load fail! SDL Error: " << SDL_GetError() << "\n";
 			}
 		}
 		SDL_JoystickEventState(SDL_ENABLE);
 		m_bJoysticksInitialised = true;
-		std::cout << "Initialised " << m_joysticks.size() << " joystick(s)\n";
+		//std::cout << "Initialised " << m_joysticks.size() << " joystick(s)\n";
 	}
 	else
 	{

@@ -199,6 +199,7 @@ bool QuestionState::handleEvent(const SDL_Event& event)
 			if (!started_)
 			{
 				load_ = true;
+				assignType();
 				toGame();
 			}
 		}
@@ -401,31 +402,31 @@ void QuestionState::assignType()
 {
 	int ret = max(physicFactor_, max(flyingFactor_, magicFactor_));
 
-	int t = 0, a = 12, d = 12, s = 12, h = 100;
+	int t = 0, a = 12, d = 12, s = 12, h = 150;
 
 	if (ret == physicFactor_)
 	{
 		t = 0;
-		a = rand() % 16 + 14;
-		d = rand() % 12 + 10;
-		s = rand() % 14 + 12;
-		h = rand() % 380 + 370;
+		a = 14 + rand() % 3;
+		d = 10 + rand() % 3;
+		s = 12 + rand() % 3;
+		h = 170 + rand() % 11;
 	}
 	else if (ret == magicFactor_)
 	{
 		t = 1;
-		a = rand() % 14 + 12;
-		d = rand() % 16 + 14;
-		s = rand() % 12 + 10;
-		h = rand() % 360 + 350;
+		a = 12 + rand() % 3;
+		d = 14 + rand() % 3;
+		s = 10 + rand() % 3;
+		h = 150 + rand() % 11;
 	}
 	else
 	{
 		t = 2;
-		a = rand() % 12 + 10;
-		d = rand() % 14 + 12;
-		s = rand() % 16 + 14;
-		h = rand() % 370 + 360;
+		a = 10 + rand() % 3;
+		d = 12 + rand() % 3;
+		s = 14 + rand() % 3;
+		h = 160 + rand() % 11;
 	}
 
 	GameManager::Instance()->setBattlePlayer(t, a, d, s, h);

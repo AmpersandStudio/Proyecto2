@@ -10,7 +10,7 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 		Mix_Music* pMusic = Mix_LoadMUS(fileName.c_str());
 		if (pMusic == 0)
 		{
-			std::cout << "Could not load music! SDL_mixer error: " << Mix_GetError() << std::endl;
+			//std::cout << "Could not load music! SDL_mixer error: " << Mix_GetError() << std::endl;
 			return false;
 		}
 
@@ -22,7 +22,7 @@ bool SoundManager::load(std::string fileName, std::string id, sound_type type)
 		Mix_Chunk* pChunk = Mix_LoadWAV(fileName.c_str());
 		if (pChunk == 0)
 		{
-			std::cout << "Could not load SFX! SDL_mixer error: " << Mix_GetError() << std::endl;
+			//std::cout << "Could not load SFX! SDL_mixer error: " << Mix_GetError() << std::endl;
 			return false;
 		}
 

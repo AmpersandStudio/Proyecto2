@@ -274,7 +274,7 @@ bool Player::handleEvent(const SDL_Event& event)
 }
 
 void Player::interacting() {
-	std::cout << "Interacting...\n";
+	//std::cout << "Interacting...\n";
 	updateRect();
 	setInteracting(true);
 }

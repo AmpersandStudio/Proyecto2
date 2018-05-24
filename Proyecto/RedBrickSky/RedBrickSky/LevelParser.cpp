@@ -23,9 +23,9 @@ Level* LevelParser::parseLevel(const char *levelFile)
 
 	// get the root node and display some values
 	TiXmlElement* pRoot = levelDocument.RootElement();
-	std::cout << "Loading level:\n" << "Version: " << pRoot->Attribute("version") << "\n";
-	std::cout << "Width:" << pRoot->Attribute("width") << " - Height:" << pRoot->Attribute("height") << "\n";
-	std::cout << "Tile Width:" << pRoot->Attribute("tilewidth") << " - Tile Height:" << pRoot->Attribute("tileheight") << "\n";
+	//std::cout << "Loading level:\n" << "Version: " << pRoot->Attribute("version") << "\n";
+	//std::cout << "Width:" << pRoot->Attribute("width") << " - Height:" << pRoot->Attribute("height") << "\n";
+	//std::cout << "Tile Width:" << pRoot->Attribute("tilewidth") << " - Tile Height:" << pRoot->Attribute("tileheight") << "\n";
 
 
 	pRoot->Attribute("tilewidth", &m_tileSize);
@@ -85,7 +85,7 @@ Level* LevelParser::parseLevel(const char *levelFile)
 void LevelParser::parseTextures(TiXmlElement* pTextureRoot)
 {
 	// agrega al Texture Manager las texturas de objetos necesarias
-	std::cout << "adding texture " << pTextureRoot->Attribute("value") << " with ID " << pTextureRoot->Attribute("name") << std::endl;
+	//std::cout << "adding texture " << pTextureRoot->Attribute("value") << " with ID " << pTextureRoot->Attribute("name") << std::endl;
 	TheTextureManager::Instance()->load(pTextureRoot->Attribute("value"), pTextureRoot->Attribute("name"), TheGame::Instance()->getRenderer());
 }
 
@@ -93,7 +93,7 @@ void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot, std::vector<Tileset>
 {
 	// first add the tileset to texture manager
 	std::string assetsTag = "..\\assets\\";
-	std::cout << "adding texture " << pTilesetRoot->FirstChildElement()->Attribute("source") << " with ID " << pTilesetRoot->Attribute("name") << std::endl;
+	//std::cout << "adding texture " << pTilesetRoot->FirstChildElement()->Attribute("source") << " with ID " << pTilesetRoot->Attribute("name") << std::endl;
 	TheTextureManager::Instance()->load(assetsTag.append(pTilesetRoot->FirstChildElement()->Attribute("source")), pTilesetRoot->Attribute("name"), TheGame::Instance()->getRenderer());
 
 	// create a tileset object
