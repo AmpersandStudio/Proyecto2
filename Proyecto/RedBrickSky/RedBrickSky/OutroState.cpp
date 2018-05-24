@@ -1,6 +1,7 @@
 #include "OutroState.h"
 #include "CreditsState.h"
 #include "StateMachine.h"
+#include "XboxController.h"
 
 OutroState::OutroState() : end(false)
 {
@@ -50,11 +51,30 @@ OutroState::~OutroState()
 bool OutroState::handleEvent(const SDL_Event & event)
 {
 	if (event.type == SDL_KEYDOWN ||
-		event.type == SDL_MOUSEBUTTONDOWN ||
-		event.type == SDL_JOYBUTTONDOWN)
+		event.type == SDL_MOUSEBUTTONDOWN)
 	{
 		toMenu();
 	}
+	else if (event.type == SDL_JOYBUTTONDOWN) {
+
+		XboxController::Instance()->onJoystickButtonDown(event);
+
+		if (XboxController::Instance()->getButtonState(0, 1)) {
+			toMenu();
+		}
+
+		XboxController::Instance()->onJoystickButtonUp(event);
+	}
+
+	else if (event.type == SDL_JOYBUTTONUP)
+		XboxController::Instance()->onJoystickButtonUp(event);
+
+	if (event.type == SDL_QUIT)
+	{
+		Game::Instance()->exitApp();
+		return true;
+	}
+
 	return false;
 }
 

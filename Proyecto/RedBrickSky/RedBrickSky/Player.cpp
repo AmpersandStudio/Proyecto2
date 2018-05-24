@@ -142,7 +142,7 @@ bool Player::handleEvent(const SDL_Event& event)
 			}
 			if (event.key.keysym.sym == SDLK_r)
 			{
-				m_moveSpeed = (running_) ? 4 : 8;
+				m_moveSpeed = (running_) ? 4 : 6;
 				running_ = !running_;
 			}
 			if (event.key.keysym.sym == SDLK_i)
@@ -230,7 +230,7 @@ bool Player::handleEvent(const SDL_Event& event)
 			}
 			if (XboxController::Instance()->getButtonState(0, 5)) //botón de back
 			{
-				m_moveSpeed = (running_) ? 4 : 8;
+				m_moveSpeed = (running_) ? 4 : 6;
 				running_ = !running_;
 			}
 			if (XboxController::Instance()->getButtonState(0, 0))	// Botón A
