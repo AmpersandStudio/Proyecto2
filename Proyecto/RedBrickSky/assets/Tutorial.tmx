@@ -315,7 +315,7 @@
     <property name="Message" value="TUTO9"/>
    </properties>
   </object>
-  <object id="138" name="teleportNivelaNivel2" type="Door" x="766.979" y="159.833" width="32.375" height="31.5">
+  <object id="138" name="teleportNivelaNivel2" type="Teleport" x="766.979" y="159.833" width="32.375" height="31.5">
    <properties>
     <property name="Message" value="PuertaPPalMessage"/>
     <property name="changeLevel" type="int" value="5"/>

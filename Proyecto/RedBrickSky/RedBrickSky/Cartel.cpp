@@ -5,7 +5,7 @@
 #include "playState.h"
 #include "Camera.h"
 
-Cartel::Cartel() : dialogueActive_(false), isFighter_(false),hasDialogue(false), keyID_(0),toShop(false)
+Cartel::Cartel() : dialogueActive_(false), isFighter_(false), hasDialogue(false), keyID_(0), toShop(false)
 {
 	timeStart_ = SDL_GetTicks();
 	timeDisplayInterval_ = 700;
@@ -27,7 +27,7 @@ void Cartel::activate()
 	StringToScreen::Instance()->startMessagin();*/
 
 	if (cleon_ && !GameManager::Instance()->getAmpersand())
-	{		
+	{
 		if (GameManager::Instance()->checkEasterEgg())
 		{
 			Msg_.append("B");
@@ -39,29 +39,28 @@ void Cartel::activate()
 	if (nugget_ != -1) GameManager::Instance()->setEasterEgg(nugget_);
 
 	std::cout << Msg_ << endl;
-	if (keyID_ == 0 || !GameManager::Instance()->getDoor(keyID_))
+
+	if (!hasDialogue)
+		selectAction();
+	else
 	{
-		if (!hasDialogue)
-			selectAction();
-		else
+		if (!dialogueActive_ && !GameManager::Instance()->getDialogueState())
 		{
-			if (!dialogueActive_ && !GameManager::Instance()->getDialogueState())
+			dialogueActive_ = true;
+			GameManager::Instance()->setDialogueState(true, &text);
+			TheSoundManager::Instance()->playSound("dialogo", 0);
+		}
+		else if (dialogueActive_)
+		{
+			dialogueActive_ = text.nextDialogue();
+			if (!dialogueActive_)
 			{
-				dialogueActive_ = true;
-				GameManager::Instance()->setDialogueState(true, &text);
-				TheSoundManager::Instance()->playSound("dialogo", 0);
-			}
-			else if (dialogueActive_)
-			{
-				dialogueActive_ = text.nextDialogue();
-				if (!dialogueActive_)
-				{
-					GameManager::Instance()->setDialogueState(false, nullptr);
-					selectAction();
-				}
+				GameManager::Instance()->setDialogueState(false, nullptr);
+				selectAction();
 			}
 		}
 	}
+
 }
 
 void Cartel::selectAction()
@@ -130,8 +129,8 @@ void Cartel::isDefeated()
 	Msg_.append("B");
 	text = Dialogue(Msg_);
 
-	if(keyID_ != 0)
-	GameManager::Instance()->setDoor(keyID_);
+	if (keyID_ != 0)
+		GameManager::Instance()->setDoor(keyID_);
 }
 
 void Cartel::setMSG(std::string msg)

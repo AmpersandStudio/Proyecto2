@@ -221,6 +221,7 @@ void GameManager::toLevel2()
 	{
 		doors.at(i) = false;
 	}
+	doors.at(8) = true;
 
 	level_ = CLASES;
 	money = 500;
